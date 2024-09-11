@@ -41,13 +41,13 @@ Make sure you have Docker and Docker Compose installed on your machine.
 1. **Clone the repository:**
 
     ```bash
-    git clone 
+    git clone https://github.com/itsproutorg/olx-killer-monorepo.git
     ```
 
 2. **Navigate to the project directory:**
 
    ```bash
-    cd olx_killer
+    cd backend
     ```
 
 3. In root project [olx_killer](./):
