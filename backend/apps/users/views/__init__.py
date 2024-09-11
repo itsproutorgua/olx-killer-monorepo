@@ -1,0 +1,1 @@
+from apps.users.views.registration_auth0 import UserRegistrationView
