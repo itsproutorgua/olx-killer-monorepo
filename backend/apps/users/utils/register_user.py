@@ -18,17 +18,17 @@ def register_user(email, username, email_verified, picture):
     tokens = get_jwt_tokens(user)
 
     return {
-        "email": user.email,
-        "username": user.username,
-        "tokens": tokens,
+        'email': user.email,
+        'username': user.username,
+        'tokens': tokens,
     }
 
 
 def get_jwt_tokens(user):
     refresh = RefreshToken.for_user(user)
-    refresh["role"] = user.role
+    refresh['role'] = user.role
 
     return {
-        "refresh": str(refresh),
-        "access": str(refresh.access_token),
+        'refresh': str(refresh),
+        'access': str(refresh.access_token),
     }

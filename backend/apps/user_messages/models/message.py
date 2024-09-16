@@ -9,9 +9,7 @@ User = get_user_model()
 
 
 class Message(TimestampMixin, models.Model):
-    subject = models.CharField(
-        _("Message subject"), max_length=255, blank=True, null=True
-    )
+    subject = models.CharField(_("Message subject"), max_length=255, blank=True, null=True)
     body = models.TextField(_("Message"))
     is_read = models.BooleanField(_("Is the message read"), default=False)
     sender = models.ForeignKey(
@@ -26,9 +24,7 @@ class Message(TimestampMixin, models.Model):
         related_name="received_messages",
         verbose_name=_("The recipient of the message"),
     )
-    parent = models.ForeignKey(
-        "self", on_delete=models.SET_NULL, related_name="replies", null=True, blank=True
-    )
+    parent = models.ForeignKey("self", on_delete=models.SET_NULL, related_name="replies", null=True, blank=True)
 
     def __str__(self):
         return f"Message {self.id}"
@@ -40,9 +36,7 @@ class Message(TimestampMixin, models.Model):
             parent_message = parent_message.parent
 
         return (
-            Message.objects.filter(
-                models.Q(id=parent_message.id) | models.Q(parent=parent_message)
-            )
+            Message.objects.filter(models.Q(id=parent_message.id) | models.Q(parent=parent_message))
             .order_by("updated_at")
             .select_related("sender", "recipient")
         )

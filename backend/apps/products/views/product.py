@@ -15,14 +15,14 @@ from apps.products.serializers import ProductSerializer
 
 
 class ProductAPIViewSet(ViewSet):
-    queryset = Product.objects.all().select_related("seller", "category")
+    queryset = Product.objects.all().select_related('seller', 'category')
     serializer_class = ProductSerializer
     permission_classes = (IsAdminUser,)
 
     @extend_schema(
         tags=[PRODUCT_TAG],
-        summary=_("List all products"),
-        description=_("Retrieve a list of all products"),
+        summary=_('List all products'),
+        description=_('Retrieve a list of all products'),
         responses={status.HTTP_200_OK: ProductSerializer(many=True)},
     )
     def list(self, request):
@@ -33,8 +33,8 @@ class ProductAPIViewSet(ViewSet):
 
     @extend_schema(
         tags=[PRODUCT_TAG],
-        summary=_("Create a product"),
-        description=_("Create a new product with the provided data"),
+        summary=_('Create a product'),
+        description=_('Create a new product with the provided data'),
         request=ProductSerializer,
         responses={
             status.HTTP_201_CREATED: ProductSerializer,
@@ -52,8 +52,8 @@ class ProductAPIViewSet(ViewSet):
 
     @extend_schema(
         tags=[PRODUCT_TAG],
-        summary=_("Retrieve a product"),
-        description=_("Retrieve a single product by ID"),
+        summary=_('Retrieve a product'),
+        description=_('Retrieve a single product by ID'),
         responses={status.HTTP_200_OK: ProductSerializer},
     )
     def retrieve(self, request, pk=None):
@@ -63,8 +63,8 @@ class ProductAPIViewSet(ViewSet):
 
     @extend_schema(
         tags=[PRODUCT_TAG],
-        summary=_("Update a product"),
-        description=_("Update a product with the provided data"),
+        summary=_('Update a product'),
+        description=_('Update a product with the provided data'),
         request=ProductSerializer,
         responses={
             status.HTTP_200_OK: ProductSerializer,
@@ -83,8 +83,8 @@ class ProductAPIViewSet(ViewSet):
 
     @extend_schema(
         tags=[PRODUCT_TAG],
-        summary=_("Partial update a product"),
-        description=_("Partial update a product with the provided data"),
+        summary=_('Partial update a product'),
+        description=_('Partial update a product with the provided data'),
         request=ProductSerializer,
         responses={
             status.HTTP_200_OK: ProductSerializer,
@@ -103,8 +103,8 @@ class ProductAPIViewSet(ViewSet):
 
     @extend_schema(
         tags=[PRODUCT_TAG],
-        summary=_("Delete a product"),
-        description=_("Delete a product by ID"),
+        summary=_('Delete a product'),
+        description=_('Delete a product by ID'),
         responses={
             status.HTTP_204_NO_CONTENT: None,
             status.HTTP_401_UNAUTHORIZED: UNAUTHORIZED_ERROR,

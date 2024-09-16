@@ -1,9 +1,7 @@
 from anymail.message import AnymailMessage
 
 
-def send_email(
-    *, subject: str, body: str, to: list, from_email: str = None, headers: dict = None
-):
+def send_email(*, subject: str, body: str, to: list, from_email: str = None, headers: dict = None):
     message = AnymailMessage(
         subject=subject,
         body=body,

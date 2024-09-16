@@ -15,25 +15,23 @@ from apps.products.serializers import CategorySerializer
 @extend_schema_view(
     list=extend_schema(
         tags=[CATEGORY_TAG],
-        summary=_("List all categories"),
-        description=_("Retrieve a list of all categories"),
+        summary=_('List all categories'),
+        description=_('Retrieve a list of all categories'),
         responses={
             status.HTTP_200_OK: CategorySerializer(many=True),
         },
     ),
     retrieve=extend_schema(
         tags=[CATEGORY_TAG],
-        summary=_("Retrieve a category by ID"),
-        description=_("Retrieve a single category by ID"),
+        summary=_('Retrieve a category by ID'),
+        description=_('Retrieve a single category by ID'),
         responses={
             status.HTTP_200_OK: CategorySerializer,
             status.HTTP_404_NOT_FOUND: NOT_FOUND,
         },
     ),
 )
-class CategoryAPIViewSet(
-    mixins.ListModelMixin, mixins.RetrieveModelMixin, GenericViewSet
-):
-    queryset = Category.objects.all().select_related("parent")
+class CategoryAPIViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, GenericViewSet):
+    queryset = Category.objects.all().select_related('parent')
     serializer_class = CategorySerializer
     permission_classes = (AllowAny,)

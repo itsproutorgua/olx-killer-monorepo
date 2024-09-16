@@ -6,7 +6,7 @@ import django
 from apps.common.create_categories.olx_categories import categories
 
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings.main")
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings.main')
 
 django.setup()
 
@@ -32,28 +32,26 @@ def create_olx_categories(categories_tree: dict, parent: int = None):
     from apps.products.models import Category
 
     for category_id, category_data in categories_tree.items():
-        title = category_data.get("title")
+        title = category_data.get('title')
 
-        languages = category_data.get("languages")
+        languages = category_data.get('languages')
         try:
             category, created = Category.objects.get_or_create(
                 title=title,
-                title_uk=languages.get("uk"),
-                title_en=languages.get("en"),
-                title_ru=languages.get("ru"),
+                title_uk=languages.get('uk'),
+                title_en=languages.get('en'),
+                title_ru=languages.get('ru'),
                 parent=parent,
             )
 
-            category_data["server_id"] = category.id
+            category_data['server_id'] = category.id
 
-            if "children" in category_data:
-                create_olx_categories(
-                    categories_tree=category_data["children"], parent=category
-                )
+            if 'children' in category_data:
+                create_olx_categories(categories_tree=category_data['children'], parent=category)
 
         except Exception as e:
-            print(f"Error creating category {title}: {e}")
+            print(f'Error creating category {title}: {e}')
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     create_olx_categories(categories)

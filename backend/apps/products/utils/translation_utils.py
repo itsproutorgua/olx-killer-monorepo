@@ -8,7 +8,7 @@ def translate_text(text: str, target_language: str) -> str | None:
     try:
         return GoogleTranslator(target=target_language).translate(text)
     except Exception as e:
-        print(f"Error translating to {target_language}: {e}")
+        print(f'Error translating to {target_language}: {e}')
         return None
 
 
@@ -18,9 +18,7 @@ def set_translated_field(instance, field_name, translated_text):
         setattr(instance, field_name, translated_text)
 
 
-def translate_and_set_fields(
-    instance: Model, field_name_prefix: str = "title", field_to_translate: str = "title"
-):
+def translate_and_set_fields(instance: Model, field_name_prefix: str = 'title', field_to_translate: str = 'title'):
     """
     Переводит и устанавливает значения для полей модели.
 
@@ -29,7 +27,7 @@ def translate_and_set_fields(
     :param field_to_translate: Имя поля, значение которого нужно перевести.
     """
     for code_lang, _ in settings.LANGUAGES:
-        field_name = f"{field_name_prefix}_{code_lang}"
+        field_name = f'{field_name_prefix}_{code_lang}'
         current_value = getattr(instance, field_name, None)
         text_to_translate = getattr(instance, field_to_translate, None)
 

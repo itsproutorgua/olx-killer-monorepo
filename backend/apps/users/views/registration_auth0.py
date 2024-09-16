@@ -17,8 +17,8 @@ class UserRegistrationView(views.APIView):
 
     @extend_schema(
         tags=[USER_TAG],
-        summary=_("Register a new user"),
-        description=_("Register a new user using the provided Auth0 token."),
+        summary=_('Register a new user'),
+        description=_('Register a new user using the provided Auth0 token.'),
         request=AuthSerializer,
         responses={
             status.HTTP_201_CREATED: AuthSerializer,
@@ -29,9 +29,7 @@ class UserRegistrationView(views.APIView):
     def post(self, request):
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
-        data = serializer.validated_data["auth_token"]
-        if "error" in data:
-            return response.Response(
-                {"error": data["error"]}, status=status.HTTP_400_BAD_REQUEST
-            )
+        data = serializer.validated_data['auth_token']
+        if 'error' in data:
+            return response.Response({'error': data['error']}, status=status.HTTP_400_BAD_REQUEST)
         return response.Response(data, status=status.HTTP_201_CREATED)

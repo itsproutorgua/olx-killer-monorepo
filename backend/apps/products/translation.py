@@ -6,4 +6,4 @@ from apps.products.models import Category
 
 @register(Category)
 class CategoryTranslationOptions(TranslationOptions):
-    fields = ("title",)
+    fields = ('title',)

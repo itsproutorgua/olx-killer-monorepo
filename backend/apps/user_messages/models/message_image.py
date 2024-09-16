@@ -6,12 +6,8 @@ from apps.user_messages.models.message import Message
 
 
 class MessageImage(TimestampMixin, models.Model):
-    message = models.ForeignKey(
-        Message, related_name="message_images", on_delete=models.CASCADE
-    )
-    image = models.ImageField(
-        _("Image"), upload_to="messages/%Y/%m/%d", null=True, blank=True
-    )
+    message = models.ForeignKey(Message, related_name="message_images", on_delete=models.CASCADE)
+    image = models.ImageField(_("Image"), upload_to="messages/%Y/%m/%d", null=True, blank=True)
 
     def __str__(self):
         return f"Image for message {self.message.id}"

@@ -11,8 +11,8 @@ class CategorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Category
-        fields = ("id", "title", "parent", "img", "created_at", "updated_at")
-        read_only_fields = ("img", "created_at", "updated_at")
+        fields = ('id', 'title', 'parent', 'img', 'created_at', 'updated_at')
+        read_only_fields = ('img', 'created_at', 'updated_at')
 
     @extend_schema_field(ParentSerializer)
     def get_parent(self, category: Category) -> dict[str, any] | None:
@@ -23,8 +23,6 @@ class CategorySerializer(serializers.ModelSerializer):
     def to_representation(self, instance):
         """Переводим title на используемый язык"""
         representation = super().to_representation(instance)
-        language_code = get_language() or "en"
-        representation["title"] = getattr(
-            instance, f"title_{language_code}", instance.title
-        )
+        language_code = get_language() or 'en'
+        representation['title'] = getattr(instance, f'title_{language_code}', instance.title)
         return representation

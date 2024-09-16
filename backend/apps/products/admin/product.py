@@ -10,5 +10,4 @@ class ProductAdmin(admin.ModelAdmin):
 
     def get_queryset(self, request):
         queryset = super().get_queryset(request)
-        # filters or other modifications here
-        return queryset.select_related("category", "seller")
+        return queryset.select_related('category', 'seller')

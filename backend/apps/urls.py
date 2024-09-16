@@ -28,27 +28,25 @@ from drf_spectacular.views import SpectacularSwaggerView
 
 
 api = [
-    path("", include("apps.users.urls", namespace="users")),
-    path("", include("apps.products.urls", namespace="products")),
+    path('', include('apps.users.urls', namespace='users')),
+    path('', include('apps.products.urls', namespace='products')),
     # Spectacular
-    path("schema/", SpectacularAPIView.as_view(), name="schema"),
+    path('schema/', SpectacularAPIView.as_view(), name='schema'),
     # Optional UI:
-    path(
-        "swagger/", SpectacularSwaggerView.as_view(url_name="schema"), name="swagger-ui"
-    ),
-    path("redoc/", SpectacularRedocView.as_view(url_name="schema"), name="redoc"),
+    path('swagger/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
+    path('redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
 ]
 
 urlpatterns = i18n_patterns(
-    path("admin/", admin.site.urls),
+    path('admin/', admin.site.urls),
     # Rosetta
-    re_path("rosetta/", include("rosetta.urls")),
+    re_path('rosetta/', include('rosetta.urls')),
     # API
-    path("api/v1/", include(api)),
+    path('api/v1/', include(api)),
 )
 
 if settings.DEBUG:
     urlpatterns += [
-        path("__debug__/", include("debug_toolbar.urls")),
+        path('__debug__/', include('debug_toolbar.urls')),
     ]
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

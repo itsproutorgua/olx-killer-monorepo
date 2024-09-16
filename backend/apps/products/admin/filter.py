@@ -5,4 +5,4 @@ from apps.products.models.filters.filter import Filter
 
 @admin.register(Filter)
 class FilterAdmin(admin.ModelAdmin):
-    search_fields = ("name", "label")
+    search_fields = ('name', 'label')

@@ -11,7 +11,7 @@ from deep_translator import GoogleTranslator
 from django.conf import settings
 
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings.main")
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings.main')
 django.setup()
 
 
@@ -22,7 +22,7 @@ def get_po_file_path(language_code: str) -> str:
     :param language_code: Строка с кодом языка (например, 'uk', 'en').
     :return: Строка с полным путём к файлу .po.
     """
-    return settings.BASE_DIR / f"locale/{language_code}/LC_MESSAGES/django.po"
+    return settings.BASE_DIR / f'locale/{language_code}/LC_MESSAGES/django.po'
 
 
 def translate_po_file(path_to_po: str, language_code: str) -> None:
@@ -36,12 +36,10 @@ def translate_po_file(path_to_po: str, language_code: str) -> None:
     for entry in po:
         if not entry.msgstr:
             try:
-                translated_text = GoogleTranslator(target=language_code).translate(
-                    entry.msgid
-                )
+                translated_text = GoogleTranslator(target=language_code).translate(entry.msgid)
                 entry.msgstr = translated_text
             except Exception as e:
-                print(f"Ошибка при переводе {entry.msgid}: {e}")
+                print(f'Ошибка при переводе {entry.msgid}: {e}')
 
     po.save()
 
@@ -57,8 +55,8 @@ def translate_all_po_files() -> None:
         path = get_po_file_path(language_code=code_lang)
 
         translate_po_file(path_to_po=path, language_code=code_lang)
-        print(f"Перевод для {name_lang} завершен.")
+        print(f'Перевод для {name_lang} завершен.')
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     translate_all_po_files()
