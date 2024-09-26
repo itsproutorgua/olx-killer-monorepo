@@ -1,3 +1,3 @@
 # Golang OLX Parser 
 ##
-**To run script user command from parser folder: "go run main.go"**
+**To run script use command from parser folder: "go run main.go"**
