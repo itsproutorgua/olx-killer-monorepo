@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { cn } from '@/shared/library/utils'
 
 import { Checkbox } from '@/shared/ui/shadcn-ui/checkbox'
 import {
@@ -8,7 +9,6 @@ import {
   TabsTrigger,
 } from '@/shared/ui/shadcn-ui/tabs'
 import { ChevronLeftIcon, ChevronRightIcon } from '@/shared/ui'
-import { cn } from '@/shared/lib/utils'
 import { FILTERS } from '../mock'
 
 export const FiltersMobile = () => {

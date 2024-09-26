@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 export const Logo = () => {
   return (
     <Link
-      to='/public'
-      className='text-primary-foreground hidden text-[32px] font-semibold xl:inline-block'
+      to='/'
+      className='hidden text-[32px] font-semibold text-primary-foreground xl:inline-block'
     >
       OLX Killer
     </Link>

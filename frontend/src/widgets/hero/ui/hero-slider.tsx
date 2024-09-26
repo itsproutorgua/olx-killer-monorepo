@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { cn } from '@/shared/library/utils'
 
 import {
   Carousel,
@@ -9,7 +10,6 @@ import {
   type CarouselApi,
 } from '@/shared/ui/shadcn-ui/carousel.tsx'
 import { Picture } from '@/shared/ui'
-import { cn } from '@/shared/lib/utils'
 import { HERO_DATA } from '../mock/hero.mock'
 
 export const HeroSlider = () => {

@@ -1,11 +1,11 @@
 import React from 'react'
+import { cn } from '@/shared/library/utils'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
 import type { BestDeal } from '@/entities/product'
 import { HeartIcon, Picture } from '@/shared/ui'
 import { PUBLIC_PAGES } from '@/shared/constants'
-import { cn } from '@/shared/lib/utils'
 
 interface ItemCardProps {
   image: BestDeal['image']

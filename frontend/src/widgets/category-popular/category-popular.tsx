@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useMediaQuery } from '@/shared/library/hooks'
 import { CollapsibleContent } from '@radix-ui/react-collapsible'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
@@ -9,7 +10,6 @@ import {
   CollapsibleTrigger,
 } from '@/shared/ui/shadcn-ui/collapsible'
 import { Picture, SectionTitle } from '@/shared/ui'
-import { useMediaQuery } from '@/shared/lib/hooks'
 
 export const PopularCategories = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -31,7 +31,7 @@ export const PopularCategories = () => {
                   key={cat.name}
                   className='cursor-pointer transition duration-300 hover:scale-105'
                 >
-                  <Link to={`/public`} className='space-y-[15px]'>
+                  <Link to={cat.href} reloadDocument className='space-y-[15px]'>
                     <div className='size-[172px] rounded-full xl:size-[150px]'>
                       <Picture
                         src={cat.image.src}

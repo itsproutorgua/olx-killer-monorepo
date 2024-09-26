@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useMediaQuery } from '@/shared/library/hooks'
 import { useTranslation } from 'react-i18next'
 
 import { BEST_DEALS } from '@/entities/product'
@@ -8,7 +9,6 @@ import {
   CollapsibleTrigger,
 } from '@/shared/ui/shadcn-ui/collapsible.tsx'
 import { SectionTitle } from '@/shared/ui'
-import { useMediaQuery } from '@/shared/lib/hooks'
 import { ProductCard } from '../product-card'
 
 export const BestDeals = () => {

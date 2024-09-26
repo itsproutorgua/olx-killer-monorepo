@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { cn } from '@/shared/library/utils'
 import { useTranslation } from 'react-i18next'
 
 import { ProductCard } from '@/widgets/product-card'
@@ -10,7 +11,6 @@ import {
   type CarouselApi,
 } from '@/shared/ui/shadcn-ui/carousel.tsx'
 import { SectionTitle } from '@/shared/ui'
-import { cn } from '@/shared/lib/utils'
 
 export const NewProductsSlider = () => {
   const [api, setApi] = useState<CarouselApi>(),

@@ -1,4 +1,5 @@
 import React from 'react'
+import { cn } from '@/shared/library/utils'
 import { ChevronLeft } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 
@@ -9,7 +10,6 @@ import {
   BreadcrumbList,
   BreadcrumbSeparator,
 } from '@/shared/ui/shadcn-ui/breadcrumb'
-import { cn } from '@/shared/lib/utils'
 
 export const Breadcrumbs = ({
   crumbs = [],

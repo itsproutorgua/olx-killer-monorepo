@@ -1,7 +1,7 @@
 import React from 'react'
+import { cn } from '@/shared/library/utils'
 
 import { HeartIcon } from '@/shared/ui'
-import { cn } from '@/shared/lib/utils'
 
 interface Props {
   className?: string

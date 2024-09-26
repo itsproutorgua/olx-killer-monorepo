@@ -34,9 +34,12 @@ export const AsideNav = () => {
                 >
                   {cat.sub.map(sub => (
                     <div key={sub.label} className='space-y-5'>
-                      <h4 className='text-base/[19.36px] font-semibold'>
-                        {sub.label}
-                      </h4>
+                      <Link to={sub.href}>
+                        <h4 className='text-base/[19.36px] font-semibold hover:text-accent'>
+                          {sub.label}
+                        </h4>
+                      </Link>
+
                       <ul className='space-y-2.5'>
                         {sub.items.map(item => (
                           <li key={item.label}>

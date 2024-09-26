@@ -1,4 +1,4 @@
-import { cn } from '@/shared/lib/utils/cn-merge.ts'
+import { cn } from '@/shared/library/utils/cn-merge.ts'
 
 export const Picture = ({
   src,

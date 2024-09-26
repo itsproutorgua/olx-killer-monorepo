@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { cn } from '@/shared/library/utils'
 
 import { PRODUCT_PHOTO } from '@/widgets/product-details/mock/product-images.mock.ts'
 import {
@@ -10,7 +11,6 @@ import {
   type CarouselApi,
 } from '@/shared/ui/shadcn-ui/carousel.tsx'
 import { Picture } from '@/shared/ui'
-import { cn } from '@/shared/lib/utils'
 
 export const ProductCarousel = () => {
   const [api, setApi] = useState<CarouselApi>()
