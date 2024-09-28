@@ -44,7 +44,7 @@ msgstr "Не найдено"
 
 #: .\apps\products\apps.py:8 .\apps\products\models\product.py:46
 msgid "Products"
-msgstr "Продукция"
+msgstr "Продукты"
 
 #: .\apps\products\models\category.py:9
 msgid "Category name"
