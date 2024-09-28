@@ -32,17 +32,3 @@ class Category(TimestampMixin, models.Model):
         verbose_name = _('Category')
         verbose_name_plural = _('Categories')
         unique_together = (('title', 'parent'),)
-
-    # url = models.URLField(_('Посилання'), unique=True)
-
-    # def save(self, *args, **kwargs):
-    #     if not self.url:
-    #         self.url = self.generate_url()
-    #     return super().save(*args, **kwargs)
-
-    # def generate_url(self):
-    #     if self.parent:
-    #         parent_url = self.parent.generate_url()
-    #         return f'{parent_url}/{slugify(self.title)}'
-    #     else:
-    #         return slugify(self.title)
