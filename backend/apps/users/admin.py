@@ -19,7 +19,7 @@ class UserAdmin(BaseUserAdmin):
         'date_joined',
     )
     list_display_links = ('email',)
-    raw_id_fields = ('user_permissions',)
+
     fieldsets = (
         (None, {'fields': ('username', 'password')}),
         (_('Personal info'), {'fields': ('first_name', 'last_name', 'email')}),
@@ -38,7 +38,7 @@ class UserAdmin(BaseUserAdmin):
         ),
         (_('Important dates'), {'fields': ('last_login', 'date_joined')}),
     )
-
+    show_full_result_count = False
     add_fieldsets = (
         (
             None,
