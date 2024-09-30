@@ -1,0 +1,6 @@
+export * from './icons-pack.tsx'
+export { Picture } from './picture.tsx'
+export { SectionTitle } from './section-title.tsx'
+export { Logo } from './logo.tsx'
+export { Breadcrumbs } from './breadcrumbs.tsx'
+export { PageHeading } from './page-heading.tsx'
