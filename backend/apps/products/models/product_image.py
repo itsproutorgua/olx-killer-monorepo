@@ -1,4 +1,8 @@
+import os
+
 from django.db import models
+from django.db.models.signals import post_delete
+from django.dispatch import receiver
 from django.utils.translation import gettext_lazy as _
 
 
@@ -13,3 +17,10 @@ class ProductImage(models.Model):
         db_table = 'product_image'
         verbose_name = _('Product Image')
         verbose_name_plural = _('Product Images')
+
+
+@receiver(post_delete, sender=ProductImage)
+def delete_image_file(sender, instance, **kwargs):
+    """Удаляет файл изображения с сервера при удалении ProductImage."""
+    if instance.image and os.path.isfile(instance.image.path):
+        os.remove(instance.image.path)
