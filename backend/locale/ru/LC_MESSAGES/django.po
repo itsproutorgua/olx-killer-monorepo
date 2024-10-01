@@ -122,7 +122,7 @@ msgstr "Продавец"
 
 #: .\apps\products\models\product.py:38
 msgid "Parameters"
-msgstr ""
+msgstr "Параметры"
 
 #: .\apps\products\models\product.py:48
 msgid "Product"
