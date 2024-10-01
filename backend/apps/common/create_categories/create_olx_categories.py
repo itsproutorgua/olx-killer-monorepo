@@ -42,7 +42,7 @@ def create_olx_categories(categories_tree: dict, parent: int = None):
                 title_en=languages.get('en'),
                 title_ru=languages.get('ru'),
                 parent=parent,
-                cat_id_olx=category_id
+                cat_id_olx=category_id,
             )
 
             category_data['server_id'] = category.id
@@ -56,4 +56,4 @@ def create_olx_categories(categories_tree: dict, parent: int = None):
 
 if __name__ == '__main__':
     create_olx_categories(categories)
-    print(f'Finished creating categories.')
+    print('Finished creating categories.')
