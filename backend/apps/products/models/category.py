@@ -17,6 +17,7 @@ class Category(TimestampMixin, models.Model):
         verbose_name=_('Parent category'),
     )
     img = models.ImageField(_('Image'), upload_to='categories', blank=True, null=True)
+    cat_id_olx = models.IntegerField('Category ID OLX', blank=True, null=True)
 
     def __str__(self):
         return self.title
@@ -31,4 +32,4 @@ class Category(TimestampMixin, models.Model):
         db_table = 'category'
         verbose_name = _('Category')
         verbose_name_plural = _('Categories')
-        unique_together = (('title', 'parent'),)
+        unique_together = (('title', 'parent', 'cat_id_olx'),)
