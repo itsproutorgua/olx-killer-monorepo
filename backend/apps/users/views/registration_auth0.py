@@ -6,8 +6,7 @@ from rest_framework import views
 from rest_framework.permissions import AllowAny
 
 from apps.api_tags import USER_TAG
-from apps.common.permissions import BAD_REQUEST
-from apps.common.permissions import UNAUTHORIZED_ERROR
+from apps.common import responses
 from apps.users.serializers import AuthSerializer
 
 
@@ -22,8 +21,8 @@ class UserRegistrationView(views.APIView):
         request=AuthSerializer,
         responses={
             status.HTTP_201_CREATED: AuthSerializer,
-            status.HTTP_400_BAD_REQUEST: BAD_REQUEST,
-            status.HTTP_401_UNAUTHORIZED: UNAUTHORIZED_ERROR,
+            status.HTTP_400_BAD_REQUEST: responses.BAD_REQUEST,
+            status.HTTP_401_UNAUTHORIZED: responses.UNAUTHORIZED_ERROR,
         },
     )
     def post(self, request):
