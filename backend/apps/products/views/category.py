@@ -7,7 +7,7 @@ from rest_framework.permissions import AllowAny
 from rest_framework.viewsets import GenericViewSet
 
 from apps.api_tags import CATEGORY_TAG
-from apps.common.permissions import NOT_FOUND
+from apps.common import responses
 from apps.products.models import Category
 from apps.products.serializers import CategorySerializer
 
@@ -27,7 +27,7 @@ from apps.products.serializers import CategorySerializer
         description=_('Retrieve a single category by ID'),
         responses={
             status.HTTP_200_OK: CategorySerializer,
-            status.HTTP_404_NOT_FOUND: NOT_FOUND,
+            status.HTTP_404_NOT_FOUND: responses.CATEGORY_NOT_FOUND,
         },
     ),
 )
