@@ -7,7 +7,7 @@ repos:
         language: system
         types: [ python ]
         pass_filenames: true
-        args: [ '--settings-file', '.isort.cfg' ]
+        args: [ '--settings-file', 'backend/.isort.cfg' ]
 
       - id: black
         name: black
@@ -15,7 +15,7 @@ repos:
         language: system
         types: [ python ]
         pass_filenames: true
-        args: ['--config', 'pyproject.toml']
+        args: ['--config', 'backend/pyproject.toml']
 
       - id: flake8
         name: flake8
@@ -23,4 +23,4 @@ repos:
         language: system
         types: [python]
         pass_filenames: false
-        args: ['--config', '.flake8']
+        args: ['--config', 'backend/.flake8']
