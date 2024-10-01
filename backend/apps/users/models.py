@@ -62,6 +62,8 @@ class User(PermissionsMixin, AbstractBaseUser):
     )
     phone_number = models.CharField(_('phone number'), max_length=13, blank=True, null=True)
     date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
+    is_fake_user = models.BooleanField(_('fake user'), default=False)
+    olx_id = models.IntegerField('USER OLX ID', blank=True, null=True)
 
     objects = UserManager()
 
