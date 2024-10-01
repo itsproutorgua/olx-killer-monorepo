@@ -26,7 +26,6 @@ def register_user(email, username, email_verified, picture):
 
 def get_jwt_tokens(user):
     refresh = RefreshToken.for_user(user)
-    refresh['role'] = user.role
 
     return {
         'refresh': str(refresh),
