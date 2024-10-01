@@ -10,6 +10,7 @@ class CategoryAdmin(TranslationAdmin):
     readonly_fields = ('created_at', 'updated_at')
     search_fields = ('title', 'parent__title')
     list_filter = ('title',)
+    show_full_result_count = False
 
     def get_queryset(self, request):
         queryset = super().get_queryset(request)
