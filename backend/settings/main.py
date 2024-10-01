@@ -36,7 +36,7 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.BasicAuthentication',
     ),
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10,
+    'PAGE_SIZE': 41,
     'TEST_REQUEST_DEFAULT_FORMAT': 'json',
     'DEFAULT_VERSION': 'v1',
     'ALLOWED_VERSIONS': ('v1',),
