@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-11 03:02+0300\n"
+"POT-Creation-Date: 2024-10-02 01:04+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: .\apps\common\models.py:6
 msgid "Create date"
@@ -26,23 +28,31 @@ msgstr "Дата создания"
 msgid "Update date"
 msgstr "Дата обновления"
 
-#: .\apps\common\permissions\responses.py:5
+#: .\apps\common\responses.py:5
 msgid "Unauthorized"
 msgstr "Несанкционированный"
 
-#: .\apps\common\permissions\responses.py:6
+#: .\apps\common\responses.py:6
 msgid "Access denied"
 msgstr "Доступ запрещен"
 
-#: .\apps\common\permissions\responses.py:7
+#: .\apps\common\responses.py:7
 msgid "Validation errors"
 msgstr "Ошибки проверки"
 
-#: .\apps\common\permissions\responses.py:8
-msgid "Not found"
-msgstr "Не найдено"
+#: .\apps\common\responses.py:8
+msgid "Invalid category ID"
+msgstr "Неверный идентификатор категории"
 
-#: .\apps\products\apps.py:8 .\apps\products\models\product.py:46
+#: .\apps\common\responses.py:9
+msgid "Category not found"
+msgstr "Категория не найдена"
+
+#: .\apps\common\responses.py:10
+msgid "Product not found"
+msgstr "Продукт не найден"
+
+#: .\apps\products\apps.py:8 .\apps\products\models\product.py:49
 msgid "Products"
 msgstr "Продукты"
 
@@ -55,16 +65,16 @@ msgid "Parent category"
 msgstr "Родительская категория"
 
 #: .\apps\products\models\category.py:19
-#: .\apps\products\models\product_image.py:7
+#: .\apps\products\models\product_image.py:11
 #: .\apps\user_messages\models\message_image.py:10
 msgid "Image"
 msgstr "Изображение"
 
-#: .\apps\products\models\category.py:32 .\apps\products\models\product.py:37
+#: .\apps\products\models\category.py:33 .\apps\products\models\product.py:36
 msgid "Category"
 msgstr "Категория"
 
-#: .\apps\products\models\category.py:33
+#: .\apps\products\models\category.py:34
 msgid "Categories"
 msgstr "Категории"
 
@@ -106,25 +116,29 @@ msgstr "Цена"
 msgid "Product description"
 msgstr "Описание продукта"
 
-#: .\apps\products\models\product.py:26
-msgid "Characteristics"
-msgstr "Характеристики"
-
-#: .\apps\products\models\product.py:31
+#: .\apps\products\models\product.py:30
 msgid "Seller"
 msgstr "Продавец"
 
-#: .\apps\products\models\product.py:45
+#: .\apps\products\models\product.py:38
+msgid "Parameters"
+msgstr ""
+
+#: .\apps\products\models\product.py:48
 msgid "Product"
 msgstr "Продукт"
 
-#: .\apps\products\models\product_image.py:14
+#: .\apps\products\models\product_image.py:18
 msgid "Product Image"
 msgstr "Изображение продукта"
 
-#: .\apps\products\models\product_image.py:15
+#: .\apps\products\models\product_image.py:19
 msgid "Product Images"
 msgstr "Изображения продукта"
+
+#: .\apps\products\serializers\product.py:35
+msgid "Category ID must be provided."
+msgstr ""
 
 #: .\apps\products\views\category.py:18
 msgid "List all categories"
@@ -142,53 +156,61 @@ msgstr "Получить категорию по идентификатору"
 msgid "Retrieve a single category by ID"
 msgstr "Получить одну категорию по идентификатору"
 
-#: .\apps\products\views\product.py:24
+#: .\apps\products\views\product.py:32
 msgid "List all products"
 msgstr "Список всех продуктов"
 
-#: .\apps\products\views\product.py:25
+#: .\apps\products\views\product.py:33
 msgid "Retrieve a list of all products"
 msgstr "Получить список всех продуктов"
 
-#: .\apps\products\views\product.py:36
+#: .\apps\products\views\product.py:43
 msgid "Create a product"
 msgstr "Создать продукт"
 
-#: .\apps\products\views\product.py:37
+#: .\apps\products\views\product.py:44
 msgid "Create a new product with the provided data"
 msgstr "Создайте новый продукт с предоставленными данными"
 
-#: .\apps\products\views\product.py:55
+#: .\apps\products\views\product.py:62
 msgid "Retrieve a product"
 msgstr "Получить продукт"
 
-#: .\apps\products\views\product.py:56
+#: .\apps\products\views\product.py:63
 msgid "Retrieve a single product by ID"
 msgstr "Получить один продукт по идентификатору"
 
-#: .\apps\products\views\product.py:66
+#: .\apps\products\views\product.py:73
 msgid "Update a product"
 msgstr "Обновить продукт"
 
-#: .\apps\products\views\product.py:67
+#: .\apps\products\views\product.py:74
 msgid "Update a product with the provided data"
 msgstr "Обновите продукт с предоставленными данными"
 
-#: .\apps\products\views\product.py:86
+#: .\apps\products\views\product.py:93
 msgid "Partial update a product"
 msgstr "Частичное обновление продукта"
 
-#: .\apps\products\views\product.py:87
+#: .\apps\products\views\product.py:94
 msgid "Partial update a product with the provided data"
 msgstr "Частичное обновление продукта с предоставленными данными"
 
-#: .\apps\products\views\product.py:106
+#: .\apps\products\views\product.py:113
 msgid "Delete a product"
 msgstr "Удалить продукт"
 
-#: .\apps\products\views\product.py:107
+#: .\apps\products\views\product.py:114
 msgid "Delete a product by ID"
 msgstr "Удалить продукт по идентификатору"
+
+#: .\apps\products\views\product.py:128 .\apps\products\views\product.py:134
+msgid "Filter products by category ID"
+msgstr "Фильтровать продукты по идентификатору категории"
+
+#: .\apps\products\views\product.py:129
+msgid "Retrieve a list of products filtered by category"
+msgstr "Получить список продуктов, отсортированных по категории"
 
 #: .\apps\user_messages\apps.py:8
 msgid "User messages"
@@ -199,7 +221,7 @@ msgid "Message subject"
 msgstr "Тема сообщения"
 
 #: .\apps\user_messages\models\message.py:13
-#: .\apps\user_messages\models\message.py:52
+#: .\apps\user_messages\models\message.py:46
 msgid "Message"
 msgstr "Сообщение"
 
@@ -215,7 +237,7 @@ msgstr "Отправитель сообщения"
 msgid "The recipient of the message"
 msgstr "Получатель сообщения"
 
-#: .\apps\user_messages\models\message.py:53
+#: .\apps\user_messages\models\message.py:47
 msgid "Messages"
 msgstr "Сообщения"
 
@@ -243,7 +265,7 @@ msgstr "Важные даты"
 msgid "Passwords do not match."
 msgstr "Пароли не совпадают."
 
-#: .\apps\users\apps.py:8 .\apps\users\models.py:76
+#: .\apps\users\apps.py:8 .\apps\users\models.py:73
 msgid "Users"
 msgstr "Пользователи"
 
@@ -279,39 +301,31 @@ msgstr "Обязательно. Не более 150 символов."
 msgid "last name"
 msgstr "фамилия"
 
-#: .\apps\users\models.py:39
+#: .\apps\users\models.py:38
 msgid "email address"
 msgstr "Адрес электронной почты"
 
-#: .\apps\users\models.py:41
-msgid ""
-"Please enter a valid email address. This will be used for login and "
-"notifications."
-msgstr ""
-"Введите действительный адрес электронной почты. Он будет использоваться для "
-"входа и уведомлений."
-
-#: .\apps\users\models.py:45
+#: .\apps\users\models.py:40
 msgid "email confirm"
 msgstr "подтверждение по электронной почте"
 
-#: .\apps\users\models.py:47
+#: .\apps\users\models.py:42
 msgid "Indicates whether the user has verified their email address."
 msgstr "Указывает, подтвердил ли пользователь свой адрес электронной почты."
 
-#: .\apps\users\models.py:50
+#: .\apps\users\models.py:45
 msgid "staff status"
 msgstr "статус персонала"
 
-#: .\apps\users\models.py:52
+#: .\apps\users\models.py:47
 msgid "Designates whether the user can log into this admin site."
 msgstr "Определяет, может ли пользователь войти на этот сайт администратора."
 
-#: .\apps\users\models.py:55
+#: .\apps\users\models.py:50
 msgid "active"
 msgstr "активный"
 
-#: .\apps\users\models.py:58
+#: .\apps\users\models.py:53
 msgid ""
 "Designates whether this user should be treated as active. Unselect this "
 "instead of deleting accounts."
@@ -319,23 +333,27 @@ msgstr ""
 "Определяет, следует ли считать этого пользователя активным. Снимите этот "
 "флажок вместо удаления учетных записей."
 
-#: .\apps\users\models.py:62
+#: .\apps\users\models.py:57
 msgid "profile picture"
 msgstr "фотография профиля"
 
-#: .\apps\users\models.py:66
+#: .\apps\users\models.py:61
 msgid "Upload a profile picture."
 msgstr "Загрузите фотографию профиля."
 
-#: .\apps\users\models.py:68
+#: .\apps\users\models.py:63
 msgid "phone number"
 msgstr "номер телефона"
 
-#: .\apps\users\models.py:69
+#: .\apps\users\models.py:64
 msgid "date joined"
 msgstr "дата присоединения"
 
-#: .\apps\users\models.py:75
+#: .\apps\users\models.py:65
+msgid "fake user"
+msgstr ""
+
+#: .\apps\users\models.py:72
 msgid "User"
 msgstr "Пользователь"
 
@@ -368,35 +386,46 @@ msgstr "Ошибка декодирования токена"
 msgid "Invalid token"
 msgstr "Недействительный токен"
 
-#: .\apps\users\tasks.py:26
-msgid "Confirm your email address."
-msgstr "Подтвердите свой адрес электронной почты."
-
-#: .\apps\users\tasks.py:27
-msgid ""
-"{user.first_name.title() or user.username.title()} click {link} to confirm "
-"your email address."
-msgstr ""
-"{user.first_name.title() или user.username.title()} нажмите {link}, чтобы "
-"подтвердить свой адрес электронной почты."
-
-#: .\apps\users\views\registration_auth0.py:20
+#: .\apps\users\views\registration_auth0.py:19
 msgid "Register a new user"
 msgstr "Зарегистрировать нового пользователя"
 
-#: .\apps\users\views\registration_auth0.py:21
+#: .\apps\users\views\registration_auth0.py:20
 msgid "Register a new user using the provided Auth0 token."
 msgstr ""
 "Зарегистрируйте нового пользователя, используя предоставленный токен Auth0."
 
-#: .\settings\base.py:129
+#: .\settings\base.py:130
 msgid "Ukrainian"
 msgstr "украинский"
 
-#: .\settings\base.py:130
+#: .\settings\base.py:131
 msgid "English"
 msgstr "Английский"
 
-#: .\settings\base.py:131
+#: .\settings\base.py:132
 msgid "Russian"
 msgstr "Русский"
+
+#~ msgid "Not found"
+#~ msgstr "Не найдено"
+
+#~ msgid "Characteristics"
+#~ msgstr "Характеристики"
+
+#~ msgid ""
+#~ "Please enter a valid email address. This will be used for login and "
+#~ "notifications."
+#~ msgstr ""
+#~ "Введите действительный адрес электронной почты. Он будет использоваться "
+#~ "для входа и уведомлений."
+
+#~ msgid "Confirm your email address."
+#~ msgstr "Подтвердите свой адрес электронной почты."
+
+#~ msgid ""
+#~ "{user.first_name.title() or user.username.title()} click {link} to "
+#~ "confirm your email address."
+#~ msgstr ""
+#~ "{user.first_name.title() или user.username.title()} нажмите {link}, чтобы "
+#~ "подтвердить свой адрес электронной почты."
