@@ -16,6 +16,7 @@ repos:
         types: [ python ]
         pass_filenames: true
         args: ['--config', 'backend/pyproject.toml']
+        exclude: 'migrations/.*\.py'
 
       - id: flake8
         name: flake8
