@@ -12,7 +12,7 @@ def register_user(email, username, email_verified, picture):
         user.username = username
         user.email_verified = email_verified
         user.picture = picture
-        user.set_password(User.objects.make_random_password())
+        user.set_password(User.make_random_password())
         user.save()
 
     tokens = get_jwt_tokens(user)
