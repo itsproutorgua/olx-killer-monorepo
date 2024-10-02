@@ -1,5 +1,6 @@
 from django.utils.translation import gettext_lazy as _
-from drf_spectacular.utils import extend_schema, OpenApiExample
+from drf_spectacular.utils import extend_schema
+from drf_spectacular.utils import OpenApiExample
 from rest_framework import response
 from rest_framework import status
 from rest_framework import views
@@ -23,7 +24,7 @@ class UserRegistrationView(views.APIView):
             status.HTTP_201_CREATED: AuthSerializer,
             status.HTTP_400_BAD_REQUEST: responses.BAD_REQUEST,
             status.HTTP_401_UNAUTHORIZED: responses.UNAUTHORIZED_ERROR,
-            },
+        },
         examples=[
             OpenApiExample(
                 name=_('User registration example response'),
@@ -31,15 +32,12 @@ class UserRegistrationView(views.APIView):
                 value={
                     'email': 'example@example-email.com',
                     'username': 'example-username',
-                    'tokens': {
-                        'refresh': 'string',
-                        'access': 'string'
-                        }
-                    },
+                    'tokens': {'refresh': 'string', 'access': 'string'},
+                },
                 response_only=True,
-                )
-            ]
-        )
+            )
+        ],
+    )
     def post(self, request):
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
