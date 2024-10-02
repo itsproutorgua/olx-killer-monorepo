@@ -8,6 +8,10 @@ from django.utils.translation import gettext_lazy as _
 from apps.users.managers import UserManager
 
 
+def get_default_location():
+    return {'region': '', 'city': ''}
+
+
 class User(PermissionsMixin, AbstractBaseUser):
     EMAIL_FIELD = 'email'
     USERNAME_FIELD = 'email'
@@ -60,6 +64,7 @@ class User(PermissionsMixin, AbstractBaseUser):
         null=True,
         help_text=_('Upload a profile picture.'),
     )
+    location = models.JSONField(_('Location'), default=get_default_location, blank=True, null=True)
     phone_number = models.CharField(_('phone number'), max_length=13, blank=True, null=True)
     date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
     is_fake_user = models.BooleanField(_('fake user'), default=False)
