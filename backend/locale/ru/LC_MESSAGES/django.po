@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-02 01:04+0300\n"
+"POT-Creation-Date: 2024-10-02 15:43+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -52,7 +52,7 @@ msgstr "Категория не найдена"
 msgid "Product not found"
 msgstr "Продукт не найден"
 
-#: .\apps\products\apps.py:8 .\apps\products\models\product.py:49
+#: .\apps\products\apps.py:8 .\apps\products\models\product.py:62
 msgid "Products"
 msgstr "Продукты"
 
@@ -70,7 +70,7 @@ msgstr "Родительская категория"
 msgid "Image"
 msgstr "Изображение"
 
-#: .\apps\products\models\category.py:33 .\apps\products\models\product.py:36
+#: .\apps\products\models\category.py:33 .\apps\products\models\product.py:42
 msgid "Category"
 msgstr "Категория"
 
@@ -109,22 +109,26 @@ msgid "Product name"
 msgstr "Название продукта"
 
 #: .\apps\products\models\product.py:20
-msgid "Price"
-msgstr "Цена"
+msgid "Price UAH"
+msgstr "Цена в грн."
 
-#: .\apps\products\models\product.py:25
+#: .\apps\products\models\product.py:26
+msgid "Price USD"
+msgstr "Цена в usd."
+
+#: .\apps\products\models\product.py:31
 msgid "Product description"
 msgstr "Описание продукта"
 
-#: .\apps\products\models\product.py:30
+#: .\apps\products\models\product.py:36
 msgid "Seller"
 msgstr "Продавец"
 
-#: .\apps\products\models\product.py:38
+#: .\apps\products\models\product.py:44
 msgid "Parameters"
 msgstr "Параметры"
 
-#: .\apps\products\models\product.py:48
+#: .\apps\products\models\product.py:61
 msgid "Product"
 msgstr "Продукт"
 
@@ -136,7 +140,7 @@ msgstr "Изображение продукта"
 msgid "Product Images"
 msgstr "Изображения продукта"
 
-#: .\apps\products\serializers\product.py:35
+#: .\apps\products\serializers\product.py:37
 msgid "Category ID must be provided."
 msgstr ""
 
@@ -265,7 +269,7 @@ msgstr "Важные даты"
 msgid "Passwords do not match."
 msgstr "Пароли не совпадают."
 
-#: .\apps\users\apps.py:8 .\apps\users\models.py:73
+#: .\apps\users\apps.py:8 .\apps\users\models.py:78
 msgid "Users"
 msgstr "Пользователи"
 
@@ -281,51 +285,51 @@ msgstr "Суперпользователь должен иметь is_staff=True
 msgid "Superuser must have is_superuser=True."
 msgstr "Суперпользователь должен иметь is_superuser=True."
 
-#: .\apps\users\models.py:19
+#: .\apps\users\models.py:23
 msgid "username"
 msgstr "имя пользователя"
 
-#: .\apps\users\models.py:21
+#: .\apps\users\models.py:25
 msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
 msgstr "Обязательно. Не более 150 символов. Только буквы, цифры и @/./+/-/_."
 
-#: .\apps\users\models.py:25
+#: .\apps\users\models.py:29
 msgid "first name"
 msgstr "имя"
 
-#: .\apps\users\models.py:27 .\apps\users\models.py:34
+#: .\apps\users\models.py:31 .\apps\users\models.py:38
 msgid "Required. 150 characters or fewer."
 msgstr "Обязательно. Не более 150 символов."
 
-#: .\apps\users\models.py:32
+#: .\apps\users\models.py:36
 msgid "last name"
 msgstr "фамилия"
 
-#: .\apps\users\models.py:38
+#: .\apps\users\models.py:42
 msgid "email address"
 msgstr "Адрес электронной почты"
 
-#: .\apps\users\models.py:40
+#: .\apps\users\models.py:44
 msgid "email confirm"
 msgstr "подтверждение по электронной почте"
 
-#: .\apps\users\models.py:42
+#: .\apps\users\models.py:46
 msgid "Indicates whether the user has verified their email address."
 msgstr "Указывает, подтвердил ли пользователь свой адрес электронной почты."
 
-#: .\apps\users\models.py:45
+#: .\apps\users\models.py:49
 msgid "staff status"
 msgstr "статус персонала"
 
-#: .\apps\users\models.py:47
+#: .\apps\users\models.py:51
 msgid "Designates whether the user can log into this admin site."
 msgstr "Определяет, может ли пользователь войти на этот сайт администратора."
 
-#: .\apps\users\models.py:50
+#: .\apps\users\models.py:54
 msgid "active"
 msgstr "активный"
 
-#: .\apps\users\models.py:53
+#: .\apps\users\models.py:57
 msgid ""
 "Designates whether this user should be treated as active. Unselect this "
 "instead of deleting accounts."
@@ -333,27 +337,31 @@ msgstr ""
 "Определяет, следует ли считать этого пользователя активным. Снимите этот "
 "флажок вместо удаления учетных записей."
 
-#: .\apps\users\models.py:57
+#: .\apps\users\models.py:61
 msgid "profile picture"
 msgstr "фотография профиля"
 
-#: .\apps\users\models.py:61
+#: .\apps\users\models.py:65
 msgid "Upload a profile picture."
 msgstr "Загрузите фотографию профиля."
 
-#: .\apps\users\models.py:63
+#: .\apps\users\models.py:67
+msgid "Location"
+msgstr ""
+
+#: .\apps\users\models.py:68
 msgid "phone number"
 msgstr "номер телефона"
 
-#: .\apps\users\models.py:64
+#: .\apps\users\models.py:69
 msgid "date joined"
 msgstr "дата присоединения"
 
-#: .\apps\users\models.py:65
+#: .\apps\users\models.py:70
 msgid "fake user"
 msgstr ""
 
-#: .\apps\users\models.py:72
+#: .\apps\users\models.py:77
 msgid "User"
 msgstr "Пользователь"
 
@@ -394,6 +402,14 @@ msgstr "Зарегистрировать нового пользователя"
 msgid "Register a new user using the provided Auth0 token."
 msgstr ""
 "Зарегистрируйте нового пользователя, используя предоставленный токен Auth0."
+
+#: .\apps\users\views\registration_auth0.py:29
+msgid "User registration example response"
+msgstr ""
+
+#: .\apps\users\views\registration_auth0.py:30
+msgid "Example of a successful response after user registration."
+msgstr ""
 
 #: .\settings\base.py:130
 msgid "Ukrainian"
