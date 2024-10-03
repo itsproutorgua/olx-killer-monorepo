@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-02 15:43+0300\n"
+"POT-Creation-Date: 2024-10-03 11:50+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,7 +50,7 @@ msgstr "Category not found"
 msgid "Product not found"
 msgstr "Product not found"
 
-#: .\apps\products\apps.py:8 .\apps\products\models\product.py:62
+#: .\apps\products\apps.py:8 .\apps\products\models\product.py:63
 msgid "Products"
 msgstr "Products"
 
@@ -68,7 +68,7 @@ msgstr "Parent category"
 msgid "Image"
 msgstr "Image"
 
-#: .\apps\products\models\category.py:33 .\apps\products\models\product.py:42
+#: .\apps\products\models\category.py:33 .\apps\products\models\product.py:43
 msgid "Category"
 msgstr "Category"
 
@@ -97,36 +97,36 @@ msgstr "Filter value"
 msgid "Filter values"
 msgstr "Filter values"
 
-#: .\apps\products\models\product.py:14
+#: .\apps\products\models\product.py:15
 #, python-brace-format
 msgid "Must be greater than or equal to {MIN_PRICE}."
 msgstr "Must be greater than or equal to {MIN_PRICE}."
 
-#: .\apps\products\models\product.py:18
+#: .\apps\products\models\product.py:19
 msgid "Product name"
 msgstr "Product name"
 
-#: .\apps\products\models\product.py:20
+#: .\apps\products\models\product.py:21
 msgid "Price UAH"
 msgstr "Price UAH"
 
-#: .\apps\products\models\product.py:26
+#: .\apps\products\models\product.py:27
 msgid "Price USD"
 msgstr "Price USD"
 
-#: .\apps\products\models\product.py:31
+#: .\apps\products\models\product.py:32
 msgid "Product description"
 msgstr "Product description"
 
-#: .\apps\products\models\product.py:36
+#: .\apps\products\models\product.py:37
 msgid "Seller"
 msgstr "Seller"
 
-#: .\apps\products\models\product.py:44
+#: .\apps\products\models\product.py:45
 msgid "Parameters"
 msgstr ""
 
-#: .\apps\products\models\product.py:61
+#: .\apps\products\models\product.py:62
 msgid "Product"
 msgstr "Product"
 
@@ -138,7 +138,7 @@ msgstr "Product Image"
 msgid "Product Images"
 msgstr "Product Images"
 
-#: .\apps\products\serializers\product.py:37
+#: .\apps\products\serializers\product.py:38
 msgid "Category ID must be provided."
 msgstr ""
 
@@ -267,7 +267,7 @@ msgstr "Important dates"
 msgid "Passwords do not match."
 msgstr "Passwords do not match."
 
-#: .\apps\users\apps.py:8 .\apps\users\models.py:78
+#: .\apps\users\apps.py:8 .\apps\users\models.py:85
 msgid "Users"
 msgstr "Users"
 
@@ -283,51 +283,51 @@ msgstr "Superuser must have is_staff=True."
 msgid "Superuser must have is_superuser=True."
 msgstr "Superuser must have is_superuser=True."
 
-#: .\apps\users\models.py:23
+#: .\apps\users\models.py:24
 msgid "username"
 msgstr "username"
 
-#: .\apps\users\models.py:25
+#: .\apps\users\models.py:26
 msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
 msgstr "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
 
-#: .\apps\users\models.py:29
+#: .\apps\users\models.py:30
 msgid "first name"
 msgstr "first name"
 
-#: .\apps\users\models.py:31 .\apps\users\models.py:38
+#: .\apps\users\models.py:32 .\apps\users\models.py:39
 msgid "Required. 150 characters or fewer."
 msgstr "Required. 150 characters or fewer."
 
-#: .\apps\users\models.py:36
+#: .\apps\users\models.py:37
 msgid "last name"
 msgstr "last name"
 
-#: .\apps\users\models.py:42
+#: .\apps\users\models.py:43
 msgid "email address"
 msgstr "email address"
 
-#: .\apps\users\models.py:44
+#: .\apps\users\models.py:45
 msgid "email confirm"
 msgstr "email confirm"
 
-#: .\apps\users\models.py:46
+#: .\apps\users\models.py:47
 msgid "Indicates whether the user has verified their email address."
 msgstr "Indicates whether the user has verified their email address."
 
-#: .\apps\users\models.py:49
+#: .\apps\users\models.py:50
 msgid "staff status"
 msgstr "staff status"
 
-#: .\apps\users\models.py:51
+#: .\apps\users\models.py:52
 msgid "Designates whether the user can log into this admin site."
 msgstr "Designates whether the user can log into this admin site."
 
-#: .\apps\users\models.py:54
+#: .\apps\users\models.py:55
 msgid "active"
 msgstr "active"
 
-#: .\apps\users\models.py:57
+#: .\apps\users\models.py:58
 msgid ""
 "Designates whether this user should be treated as active. Unselect this "
 "instead of deleting accounts."
@@ -335,31 +335,35 @@ msgstr ""
 "Designates whether this user should be treated as active. Unselect this "
 "instead of deleting accounts."
 
-#: .\apps\users\models.py:61
+#: .\apps\users\models.py:62
 msgid "profile picture"
 msgstr "profile picture"
 
-#: .\apps\users\models.py:65
+#: .\apps\users\models.py:66
 msgid "Upload a profile picture."
 msgstr "Upload a profile picture."
 
-#: .\apps\users\models.py:67
+#: .\apps\users\models.py:68
 msgid "Location"
 msgstr ""
 
-#: .\apps\users\models.py:68
-msgid "phone number"
-msgstr "phone number"
+#: .\apps\users\models.py:70
+msgid "phone numbers"
+msgstr "phone numbers"
 
-#: .\apps\users\models.py:69
+#: .\apps\users\models.py:74
+msgid "You can add up to 3 phone numbers."
+msgstr "You can add up to 3 phone numbers."
+
+#: .\apps\users\models.py:76
 msgid "date joined"
 msgstr "date joined"
 
-#: .\apps\users\models.py:70
+#: .\apps\users\models.py:77
 msgid "fake user"
 msgstr ""
 
-#: .\apps\users\models.py:77
+#: .\apps\users\models.py:84
 msgid "User"
 msgstr "User"
 
@@ -392,19 +396,19 @@ msgstr "Error decoding token"
 msgid "Invalid token"
 msgstr "Invalid token"
 
-#: .\apps\users\views\registration_auth0.py:19
+#: .\apps\users\views\registration_auth0.py:20
 msgid "Register a new user"
 msgstr "Register a new user"
 
-#: .\apps\users\views\registration_auth0.py:20
+#: .\apps\users\views\registration_auth0.py:21
 msgid "Register a new user using the provided Auth0 token."
 msgstr "Register a new user using the provided Auth0 token."
 
-#: .\apps\users\views\registration_auth0.py:29
+#: .\apps\users\views\registration_auth0.py:30
 msgid "User registration example response"
 msgstr ""
 
-#: .\apps\users\views\registration_auth0.py:30
+#: .\apps\users\views\registration_auth0.py:31
 msgid "Example of a successful response after user registration."
 msgstr ""
 
@@ -419,29 +423,3 @@ msgstr "English"
 #: .\settings\base.py:132
 msgid "Russian"
 msgstr "Russian"
-
-#~ msgid "Not found"
-#~ msgstr "Not found"
-
-#~ msgid "Filter products by category"
-#~ msgstr "Filter products by category"
-
-#~ msgid "Characteristics"
-#~ msgstr "Characteristics"
-
-#~ msgid ""
-#~ "Please enter a valid email address. This will be used for login and "
-#~ "notifications."
-#~ msgstr ""
-#~ "Please enter a valid email address. This will be used for login and "
-#~ "notifications."
-
-#~ msgid "Confirm your email address."
-#~ msgstr "Confirm your email address."
-
-#~ msgid ""
-#~ "{user.first_name.title() or user.username.title()} click {link} to "
-#~ "confirm your email address."
-#~ msgstr ""
-#~ "{user.first_name.title() or user.username.title()} click {link} to "
-#~ "confirm your email address."

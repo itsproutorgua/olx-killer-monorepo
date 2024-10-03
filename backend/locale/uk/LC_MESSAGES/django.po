@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-02 15:43+0300\n"
+"POT-Creation-Date: 2024-10-03 11:50+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -53,7 +53,7 @@ msgstr "Категорія не знайдена"
 msgid "Product not found"
 msgstr "Товар не знайдено"
 
-#: .\apps\products\apps.py:8 .\apps\products\models\product.py:62
+#: .\apps\products\apps.py:8 .\apps\products\models\product.py:63
 msgid "Products"
 msgstr "Продукти"
 
@@ -71,7 +71,7 @@ msgstr "Батьківська категорія"
 msgid "Image"
 msgstr "Зображення"
 
-#: .\apps\products\models\category.py:33 .\apps\products\models\product.py:42
+#: .\apps\products\models\category.py:33 .\apps\products\models\product.py:43
 msgid "Category"
 msgstr "Категорія"
 
@@ -100,36 +100,36 @@ msgstr "Значення фільтра"
 msgid "Filter values"
 msgstr "Значення фільтра"
 
-#: .\apps\products\models\product.py:14
+#: .\apps\products\models\product.py:15
 #, python-brace-format
 msgid "Must be greater than or equal to {MIN_PRICE}."
 msgstr "Має бути більше або дорівнювати {MIN_PRICE}."
 
-#: .\apps\products\models\product.py:18
+#: .\apps\products\models\product.py:19
 msgid "Product name"
 msgstr "Назва продукту"
 
-#: .\apps\products\models\product.py:20
+#: .\apps\products\models\product.py:21
 msgid "Price UAH"
 msgstr "Ціна в грн."
 
-#: .\apps\products\models\product.py:26
+#: .\apps\products\models\product.py:27
 msgid "Price USD"
 msgstr "Ціна в usd."
 
-#: .\apps\products\models\product.py:31
+#: .\apps\products\models\product.py:32
 msgid "Product description"
 msgstr "Опис товару"
 
-#: .\apps\products\models\product.py:36
+#: .\apps\products\models\product.py:37
 msgid "Seller"
 msgstr "Продавець"
 
-#: .\apps\products\models\product.py:44
+#: .\apps\products\models\product.py:45
 msgid "Parameters"
 msgstr "Параметри"
 
-#: .\apps\products\models\product.py:61
+#: .\apps\products\models\product.py:62
 msgid "Product"
 msgstr "Продукт"
 
@@ -141,7 +141,7 @@ msgstr "Зображення продукту"
 msgid "Product Images"
 msgstr "Зображення продукту"
 
-#: .\apps\products\serializers\product.py:37
+#: .\apps\products\serializers\product.py:38
 msgid "Category ID must be provided."
 msgstr "Потрібно вказати ідентифікатор категорії."
 
@@ -270,7 +270,7 @@ msgstr "Важливі дати"
 msgid "Passwords do not match."
 msgstr "Паролі не збігаються."
 
-#: .\apps\users\apps.py:8 .\apps\users\models.py:78
+#: .\apps\users\apps.py:8 .\apps\users\models.py:85
 msgid "Users"
 msgstr "Користувачі"
 
@@ -286,51 +286,51 @@ msgstr "Суперкористувач повинен мати is_staff=True."
 msgid "Superuser must have is_superuser=True."
 msgstr "Суперкористувач повинен мати is_superuser=True."
 
-#: .\apps\users\models.py:23
+#: .\apps\users\models.py:24
 msgid "username"
 msgstr "ім'я користувача"
 
-#: .\apps\users\models.py:25
+#: .\apps\users\models.py:26
 msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
 msgstr "Обов'язковий. 150 символів або менше. Лише літери, цифри та @/./+/-/_."
 
-#: .\apps\users\models.py:29
+#: .\apps\users\models.py:30
 msgid "first name"
 msgstr "ім'я"
 
-#: .\apps\users\models.py:31 .\apps\users\models.py:38
+#: .\apps\users\models.py:32 .\apps\users\models.py:39
 msgid "Required. 150 characters or fewer."
 msgstr "Обов'язковий. 150 символів або менше."
 
-#: .\apps\users\models.py:36
+#: .\apps\users\models.py:37
 msgid "last name"
 msgstr "прізвище"
 
-#: .\apps\users\models.py:42
+#: .\apps\users\models.py:43
 msgid "email address"
 msgstr "адреса електронної пошти"
 
-#: .\apps\users\models.py:44
+#: .\apps\users\models.py:45
 msgid "email confirm"
 msgstr "підтвердження електронної пошти"
 
-#: .\apps\users\models.py:46
+#: .\apps\users\models.py:47
 msgid "Indicates whether the user has verified their email address."
 msgstr "Вказує, чи підтвердив користувач свою електронну адресу."
 
-#: .\apps\users\models.py:49
+#: .\apps\users\models.py:50
 msgid "staff status"
 msgstr "статус персоналу"
 
-#: .\apps\users\models.py:51
+#: .\apps\users\models.py:52
 msgid "Designates whether the user can log into this admin site."
 msgstr "Визначає, чи може користувач увійти на цей сайт адміністратора."
 
-#: .\apps\users\models.py:54
+#: .\apps\users\models.py:55
 msgid "active"
 msgstr "активний"
 
-#: .\apps\users\models.py:57
+#: .\apps\users\models.py:58
 msgid ""
 "Designates whether this user should be treated as active. Unselect this "
 "instead of deleting accounts."
@@ -338,31 +338,35 @@ msgstr ""
 "Визначає, чи слід розглядати цього користувача як активного. Зніміть цей "
 "прапорець замість того, щоб видаляти облікові записи."
 
-#: .\apps\users\models.py:61
+#: .\apps\users\models.py:62
 msgid "profile picture"
 msgstr "зображення профілю"
 
-#: .\apps\users\models.py:65
+#: .\apps\users\models.py:66
 msgid "Upload a profile picture."
 msgstr "Завантажте зображення профілю."
 
-#: .\apps\users\models.py:67
+#: .\apps\users\models.py:68
 msgid "Location"
 msgstr ""
 
-#: .\apps\users\models.py:68
-msgid "phone number"
-msgstr "номер телефону"
+#: .\apps\users\models.py:70
+msgid "phone numbers"
+msgstr "номери телефонів"
 
-#: .\apps\users\models.py:69
+#: .\apps\users\models.py:74
+msgid "You can add up to 3 phone numbers."
+msgstr ""
+
+#: .\apps\users\models.py:76
 msgid "date joined"
 msgstr "дата приєднання"
 
-#: .\apps\users\models.py:70
+#: .\apps\users\models.py:77
 msgid "fake user"
 msgstr ""
 
-#: .\apps\users\models.py:77
+#: .\apps\users\models.py:84
 msgid "User"
 msgstr "Користувач"
 
@@ -395,19 +399,19 @@ msgstr "Помилка декодування маркера"
 msgid "Invalid token"
 msgstr "Недійсний маркер"
 
-#: .\apps\users\views\registration_auth0.py:19
+#: .\apps\users\views\registration_auth0.py:20
 msgid "Register a new user"
 msgstr "Зареєструйте нового користувача"
 
-#: .\apps\users\views\registration_auth0.py:20
+#: .\apps\users\views\registration_auth0.py:21
 msgid "Register a new user using the provided Auth0 token."
 msgstr "Зареєструйте нового користувача за допомогою наданого токена Auth0."
 
-#: .\apps\users\views\registration_auth0.py:29
+#: .\apps\users\views\registration_auth0.py:30
 msgid "User registration example response"
 msgstr ""
 
-#: .\apps\users\views\registration_auth0.py:30
+#: .\apps\users\views\registration_auth0.py:31
 msgid "Example of a successful response after user registration."
 msgstr ""
 
@@ -422,26 +426,3 @@ msgstr "англійська"
 #: .\settings\base.py:132
 msgid "Russian"
 msgstr "російська"
-
-#~ msgid "Not found"
-#~ msgstr "Не знайдено"
-
-#~ msgid "Characteristics"
-#~ msgstr "характеристики"
-
-#~ msgid ""
-#~ "Please enter a valid email address. This will be used for login and "
-#~ "notifications."
-#~ msgstr ""
-#~ "Введіть дійсну електронну адресу. Це буде використано для входу та "
-#~ "сповіщень."
-
-#~ msgid "Confirm your email address."
-#~ msgstr "Підтвердьте адресу електронної пошти."
-
-#~ msgid ""
-#~ "{user.first_name.title() or user.username.title()} click {link} to "
-#~ "confirm your email address."
-#~ msgstr ""
-#~ "{user.first_name.title() або user.username.title()} натисніть {link}, щоб "
-#~ "підтвердити свою електронну адресу."
