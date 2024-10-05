@@ -22,7 +22,7 @@ class UserAdmin(BaseUserAdmin):
 
     fieldsets = (
         (None, {'fields': ('username', 'password')}),
-        (_('Personal info'), {'fields': ('first_name', 'last_name', 'email')}),
+        (_('Personal info'), {'fields': ('picture', 'first_name', 'last_name', 'email', 'phone_numbers')}),
         (
             _('Permissions'),
             {
@@ -36,9 +36,11 @@ class UserAdmin(BaseUserAdmin):
                 ),
             },
         ),
+        (_('Location'), {'fields': ('location',)}),
         (_('Important dates'), {'fields': ('last_login', 'date_joined')}),
     )
     show_full_result_count = False
+    autocomplete_fields = ('location',)
     add_fieldsets = (
         (
             None,
