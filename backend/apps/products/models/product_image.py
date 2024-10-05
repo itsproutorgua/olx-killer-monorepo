@@ -1,5 +1,4 @@
-import os
-
+from django.core.files.storage import default_storage
 from django.db import models
 from django.db.models.signals import post_delete
 from django.dispatch import receiver
@@ -22,5 +21,7 @@ class ProductImage(models.Model):
 @receiver(post_delete, sender=ProductImage)
 def delete_image_file(sender, instance, **kwargs):
     """Удаляет файл изображения с сервера при удалении ProductImage."""
-    if instance.image and os.path.isfile(instance.image.path):
-        os.remove(instance.image.path)
+    if instance.image:
+        file_path = instance.image.path
+        if default_storage.exists(file_path) and 'examples' not in file_path:
+            default_storage.delete(file_path)
