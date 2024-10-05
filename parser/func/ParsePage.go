@@ -5,39 +5,12 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	models "olxparser/models"
+	set "olxparser/set"
 	"os"
-	"strconv"
-	"strings"
 
 	"github.com/tidwall/pretty"
 )
-
-type Response struct {
-	Data []struct {
-		Id              int    `json:"id"`
-		Url             string `json:"url"`
-		LastRefreshTime string `json:"last_refresh_time"`
-		Status          string `json:"status"`
-		IsProtectPhone  bool   `json:"protect_phone"`
-		User            struct {
-			Name   string `json:"name"`
-			Status string `json:"status"`
-		} `json:"user"`
-		Photos []struct {
-			Id       string `json:"id"`
-			Filename string `json:"filename"`
-			Width    int    `json:"width"`
-			Height   int    `json:"height"`
-			Link     string `json:"link"`
-		} `json:"photos"`
-		Contact struct {
-			Name      string `json:"name"`
-			IsPhone   bool   `json:"phone"`
-			IsChat    bool   `json:"chat"`
-			IsCourier bool   `json:"courier"`
-		} `json:"contact"`
-	} `json:"data"`
-}
 
 func ParsePage(i int) {
 	var Url string = fmt.Sprint("https://www.olx.ua/api/v1/offers/?offset=", i)
@@ -60,38 +33,40 @@ func ParsePage(i int) {
 	/*Save raw JSON for -=i=- page*/
 	os.WriteFile(file_name, json_data, 0644)
 
-	var result Response
+	var result models.OlxAds
 	if err := json.Unmarshal(json_data, &result); err != nil { // Parse []byte to the go struct pointer
-		HandleMessage("Can not unmarshal JSON")
+		HandleMessage("Can not unmarshal JSON!")
 	}
 
+	var n int = 1
 	/*Loop through the data*/
-	for _, rec := range result.Data {
+	PrepareDir(fmt.Sprint(set.DataGetFolder))
+	for _, OlxAd := range result.OlxData {
+		//fmt.Println(OlxAd)
 
-		PrepareDir(fmt.Sprint("./data/", rec.Id, "/"))
+		PrepareDir(fmt.Sprint(set.DataGetFolder, "/", OlxAd.OlxId, "/"))
 
-		PrepareDir(fmt.Sprint("./data/", rec.Id, "/images/"))
+		PrepareDir(fmt.Sprint(set.DataGetFolder, "/", OlxAd.OlxId, "/images/"))
 
-		ads_json, _ := json.Marshal(rec)
-		ads_json = pretty.Pretty(ads_json)
-		os.WriteFile(fmt.Sprint("./data/", rec.Id, "/adt.json"), ads_json, 0644)
+		ad_json, _ := json.Marshal(OlxAd)
+		ad_json = pretty.Pretty(ad_json)
+		os.WriteFile(fmt.Sprint(set.DataGetFolder, "/", OlxAd.OlxId, "/ad.json"), ad_json, 0644)
 
 		/*Saving images*/
-		if len(rec.Photos) > 0 {
-			for _, photo := range rec.Photos {
-				var filename = fmt.Sprint("./data/", rec.Id, "/images/", photo.Filename, ".webp")
-				link := strings.Replace(photo.Link, "{width}", strconv.Itoa(photo.Width), 1)
-				link = strings.Replace(link, "{height}", strconv.Itoa(photo.Height), 1)
-
-				SaveImages(link, filename)
-			}
+		if len(OlxAd.Photos) > 0 {
+			SaveImages(OlxAd.Photos, OlxAd.OlxId)
 		}
 
 		/*Saving Phones*/
-		if rec.Contact.IsPhone {
-			SavePhones(rec.Id, rec.IsProtectPhone)
+		if OlxAd.Contact.IsPhone {
+			SavePhones(OlxAd.OlxId)
 		}
 
+		fmt.Print("\033[1K\r ", n, " OlxId: ", OlxAd.OlxId, " Ads ", i+1, "-", i+1+set.ParseOlxPagesQty)
+		n++
+
 	}
+	//SaveToDb(result)
+	//SavePhonesToDb(Phone, OlxId)
 
 }

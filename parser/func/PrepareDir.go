@@ -1,7 +1,6 @@
 package olxparser
 
 import (
-	"fmt"
 	"os"
 )
 
@@ -13,11 +12,11 @@ func PrepareDir(directoryPath string) {
 		// Creating folder
 		err := os.MkdirAll(directoryPath, 0755)
 		if err != nil {
-			HandleMessage(fmt.Sprint("Creating folder error:", err))
+			//HandleMessage(fmt.Sprint("Creating folder error:", err))
 		} else {
-			HandleMessage("Creating folder success!")
+			//HandleMessage("Creating folder success!")
 		}
 	} else {
-		HandleMessage("Folder exists.")
+		//HandleMessage("Folder exists.")
 	}
 }
