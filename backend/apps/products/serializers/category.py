@@ -11,8 +11,8 @@ class CategorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Category
-        fields = ('id', 'title', 'parent', 'img', 'created_at', 'updated_at')
-        read_only_fields = ('title', 'img', 'parent', 'created_at', 'updated_at')
+        fields = ('id', 'title', 'parent', 'img')
+        read_only_fields = ('title', 'img', 'parent')
 
     @extend_schema_field(ParentSerializer)
     def get_parent(self, category: Category) -> dict[str, any] | None:
