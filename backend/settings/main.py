@@ -19,6 +19,7 @@ INSTALLED_APPS += [
     'apps.users.apps.UsersConfig',
     'apps.products.apps.ProductsConfig',
     'apps.user_messages.apps.UserMessagesConfig',
+    'apps.locations.apps.LocationsConfig',
 ]
 
 MIDDLEWARE += [
@@ -108,7 +109,6 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
-
 
 DEVELOPMENT_ENVIRONMENT = 'development'
 PRODUCTION_ENVIRONMENT = 'production'
