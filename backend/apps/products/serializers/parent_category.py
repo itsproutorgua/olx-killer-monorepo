@@ -4,6 +4,13 @@ from apps.products.models import Category
 
 
 class ParentSerializer(serializers.ModelSerializer):
+    parent = serializers.SerializerMethodField()
+
     class Meta:
         model = Category
-        fields = ('id', 'title', 'created_at', 'updated_at')
+        fields = ('id', 'title', 'parent')
+
+    def get_parent(self, category: Category) -> dict | None:
+        if category.parent:
+            return ParentSerializer(category.parent).data
+        return None
