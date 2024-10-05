@@ -2,6 +2,7 @@ package olxparser
 
 import (
 	models "olxparser/models"
+	"olxparser/set"
 
 	"gorm.io/driver/mysql"
 	//"gorm.io/driver/postgres"
@@ -13,7 +14,7 @@ func SaveToDb(OlxAd models.OlxAd) {
 
 	//return
 
-	dsn := "upw:2HSxItC4lHIdftIZ@tcp(65.109.112.40:3306)/upw?charset=utf8&parseTime=True&loc=Local"
+	dsn := set.DSN
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 
 	if err != nil {
