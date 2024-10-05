@@ -61,7 +61,7 @@ Make sure you have Docker and Docker Compose installed on your machine.
 
 4. **Start the development server:**
    ```bash
-    docker-compose up --build
+    docker-compose build --no-cache && docker-compose up
     ```
    
 5. **Create superuser**
