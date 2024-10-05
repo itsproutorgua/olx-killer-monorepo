@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-03 11:50+0300\n"
+"POT-Creation-Date: 2024-10-05 11:16+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -53,7 +53,35 @@ msgstr "Категорія не знайдена"
 msgid "Product not found"
 msgstr "Товар не знайдено"
 
-#: .\apps\products\apps.py:8 .\apps\products\models\product.py:63
+#: .\apps\locations\apps.py:8
+msgid "Locations"
+msgstr "Розташування"
+
+#: .\apps\locations\models\city.py:9 .\apps\locations\models\city.py:26
+msgid "City"
+msgstr "Місто"
+
+#: .\apps\locations\models\city.py:12
+msgid "Latitude"
+msgstr "Широта"
+
+#: .\apps\locations\models\city.py:13
+msgid "Longitude"
+msgstr "Довгота"
+
+#: .\apps\locations\models\city.py:27
+msgid "Cities"
+msgstr "Міста"
+
+#: .\apps\locations\models\region.py:9 .\apps\locations\models\region.py:23
+msgid "Region"
+msgstr "Область"
+
+#: .\apps\locations\models\region.py:24
+msgid "Regions"
+msgstr "Області"
+
+#: .\apps\products\apps.py:8 .\apps\products\models\product.py:62
 msgid "Products"
 msgstr "Продукти"
 
@@ -66,7 +94,7 @@ msgid "Parent category"
 msgstr "Батьківська категорія"
 
 #: .\apps\products\models\category.py:19
-#: .\apps\products\models\product_image.py:11
+#: .\apps\products\models\product_image.py:10
 #: .\apps\user_messages\models\message_image.py:10
 msgid "Image"
 msgstr "Зображення"
@@ -129,91 +157,115 @@ msgstr "Продавець"
 msgid "Parameters"
 msgstr "Параметри"
 
-#: .\apps\products\models\product.py:62
+#: .\apps\products\models\product.py:61
 msgid "Product"
 msgstr "Продукт"
 
-#: .\apps\products\models\product_image.py:18
+#: .\apps\products\models\product_image.py:17
 msgid "Product Image"
 msgstr "Зображення продукту"
 
-#: .\apps\products\models\product_image.py:19
+#: .\apps\products\models\product_image.py:18
 msgid "Product Images"
 msgstr "Зображення продукту"
 
-#: .\apps\products\serializers\product.py:38
-msgid "Category ID must be provided."
-msgstr "Потрібно вказати ідентифікатор категорії."
+#: .\apps\products\serializers\product.py:45
+msgid "Database integrity error: {}"
+msgstr "Помилка цілісності бази даних: {}"
 
-#: .\apps\products\views\category.py:18
+#: .\apps\products\views\category.py:22
 msgid "List all categories"
 msgstr "Список усіх категорій"
 
-#: .\apps\products\views\category.py:19
+#: .\apps\products\views\category.py:23
 msgid "Retrieve a list of all categories"
 msgstr "Отримати список усіх категорій"
 
-#: .\apps\products\views\category.py:26
+#: .\apps\products\views\category.py:30
 msgid "Retrieve a category by ID"
 msgstr "Отримати категорію за ідентифікатором"
 
-#: .\apps\products\views\category.py:27
+#: .\apps\products\views\category.py:31
 msgid "Retrieve a single category by ID"
 msgstr "Отримати одну категорію за ідентифікатором"
 
-#: .\apps\products\views\product.py:32
+#: .\apps\products\views\category.py:51
+msgid "List root categories"
+msgstr "Список основних категорій"
+
+#: .\apps\products\views\category.py:52
+msgid "Retrieve a list of root categories (where parent is None)"
+msgstr "Отримати список основних категорій (де батьківський — Немає)"
+
+#: .\apps\products\views\category.py:64
+msgid "List child categories"
+msgstr "Список дочірніх категорій"
+
+#: .\apps\products\views\category.py:65
+msgid "Retrieve a list of child categories by parent ID"
+msgstr "Отримати список дочірніх категорій за батьківським ідентифікатором"
+
+#: .\apps\products\views\category.py:67
+msgid "ID of the parent category"
+msgstr "ID батьківської категорії"
+
+#: .\apps\products\views\category.py:76
+msgid "Invalid parent ID"
+msgstr "Недійсний ідентифікатор батьківської категорії"
+
+#: .\apps\products\views\product.py:33
 msgid "List all products"
 msgstr "Список усіх продуктів"
 
-#: .\apps\products\views\product.py:33
+#: .\apps\products\views\product.py:34
 msgid "Retrieve a list of all products"
 msgstr "Отримати список усіх продуктів"
 
-#: .\apps\products\views\product.py:43
+#: .\apps\products\views\product.py:47
 msgid "Create a product"
 msgstr "Створіть продукт"
 
-#: .\apps\products\views\product.py:44
+#: .\apps\products\views\product.py:48
 msgid "Create a new product with the provided data"
 msgstr "Створіть новий продукт із наданими даними"
 
-#: .\apps\products\views\product.py:62
+#: .\apps\products\views\product.py:66
 msgid "Retrieve a product"
 msgstr "Отримати товар"
 
-#: .\apps\products\views\product.py:63
+#: .\apps\products\views\product.py:67
 msgid "Retrieve a single product by ID"
 msgstr "Отримати один продукт за ідентифікатором"
 
-#: .\apps\products\views\product.py:73
+#: .\apps\products\views\product.py:77
 msgid "Update a product"
 msgstr "Оновити продукт"
 
-#: .\apps\products\views\product.py:74
+#: .\apps\products\views\product.py:78
 msgid "Update a product with the provided data"
 msgstr "Оновіть продукт за допомогою наданих даних"
 
-#: .\apps\products\views\product.py:93
+#: .\apps\products\views\product.py:97
 msgid "Partial update a product"
 msgstr "Часткове оновлення продукту"
 
-#: .\apps\products\views\product.py:94
+#: .\apps\products\views\product.py:98
 msgid "Partial update a product with the provided data"
 msgstr "Часткове оновлення продукту за допомогою наданих даних"
 
-#: .\apps\products\views\product.py:113
+#: .\apps\products\views\product.py:117
 msgid "Delete a product"
 msgstr "Видалити товар"
 
-#: .\apps\products\views\product.py:114
+#: .\apps\products\views\product.py:118
 msgid "Delete a product by ID"
 msgstr "Видалення товару за ID"
 
-#: .\apps\products\views\product.py:128 .\apps\products\views\product.py:134
+#: .\apps\products\views\product.py:132 .\apps\products\views\product.py:138
 msgid "Filter products by category ID"
 msgstr "Фільтрувати продукти за ідентифікатором категорії"
 
-#: .\apps\products\views\product.py:129
+#: .\apps\products\views\product.py:133
 msgid "Retrieve a list of products filtered by category"
 msgstr "Отримати список продуктів, відфільтрованих за категоріями"
 
@@ -262,15 +314,19 @@ msgstr "Особиста інформація"
 msgid "Permissions"
 msgstr "Дозволи"
 
-#: .\apps\users\admin.py:39
+#: .\apps\users\admin.py:39 .\apps\users\models.py:74
+msgid "Location"
+msgstr "Розташування"
+
+#: .\apps\users\admin.py:40
 msgid "Important dates"
 msgstr "Важливі дати"
 
-#: .\apps\users\admin.py:64
+#: .\apps\users\admin.py:66
 msgid "Passwords do not match."
 msgstr "Паролі не збігаються."
 
-#: .\apps\users\apps.py:8 .\apps\users\models.py:85
+#: .\apps\users\apps.py:8 .\apps\users\models.py:90
 msgid "Users"
 msgstr "Користувачі"
 
@@ -346,27 +402,27 @@ msgstr "зображення профілю"
 msgid "Upload a profile picture."
 msgstr "Завантажте зображення профілю."
 
-#: .\apps\users\models.py:68
-msgid "Location"
-msgstr ""
+#: .\apps\users\models.py:75
+msgid "This field allows you to specify the user's city and region."
+msgstr "У цьому полі можна вказати місто та регіон користувача."
 
-#: .\apps\users\models.py:70
-msgid "phone numbers"
-msgstr "номери телефонів"
+#: .\apps\users\models.py:78
+msgid "Phone numbers"
+msgstr "Номери телефонів"
 
-#: .\apps\users\models.py:74
-msgid "You can add up to 3 phone numbers."
-msgstr ""
+#: .\apps\users\models.py:78
+msgid "You can add multiple phone numbers."
+msgstr "Ви можете додати кілька телефонних номерів."
 
-#: .\apps\users\models.py:76
+#: .\apps\users\models.py:80
 msgid "date joined"
 msgstr "дата приєднання"
 
-#: .\apps\users\models.py:77
+#: .\apps\users\models.py:82
 msgid "fake user"
-msgstr ""
+msgstr "не справжній користувач"
 
-#: .\apps\users\models.py:84
+#: .\apps\users\models.py:89
 msgid "User"
 msgstr "Користувач"
 
@@ -409,11 +465,11 @@ msgstr "Зареєструйте нового користувача за доп
 
 #: .\apps\users\views\registration_auth0.py:30
 msgid "User registration example response"
-msgstr ""
+msgstr "Приклад відповіді щодо реєстрації користувача"
 
 #: .\apps\users\views\registration_auth0.py:31
 msgid "Example of a successful response after user registration."
-msgstr ""
+msgstr "Приклад успішної відповіді після реєстрації користувача."
 
 #: .\settings\base.py:130
 msgid "Ukrainian"
