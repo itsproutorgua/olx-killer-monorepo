@@ -5,7 +5,7 @@ from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
-from apps.locations.models import City
+from apps.locations.models import Location
 from apps.users.managers import UserManager
 
 
@@ -66,7 +66,7 @@ class User(PermissionsMixin, AbstractBaseUser):
         help_text=_('Upload a profile picture.'),
     )
     location = models.ForeignKey(
-        to=City,
+        to=Location,
         on_delete=models.SET_NULL,
         blank=True,
         null=True,
