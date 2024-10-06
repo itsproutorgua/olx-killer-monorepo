@@ -21,6 +21,7 @@ services:
       django-admin compilemessages &&
       python manage.py migrate &&
       python apps/common/create_categories/create_olx_categories.py &&
+      apps/common/locations/create_regions_and_cities.py &&
       python manage.py runserver 0.0.0.0:8000
       "
     depends_on:
