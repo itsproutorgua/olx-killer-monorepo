@@ -33,7 +33,6 @@ class Location(TimestampMixin, models.Model):
         if self.city and self.village:
             raise ValidationError(_('Location cannot be both city and village at the same time.'))
 
-
     class Meta:
         db_table = 'location'
         verbose_name = _('Location')
