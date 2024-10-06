@@ -6,3 +6,6 @@ class LocationsConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
     name = 'apps.locations'
     verbose_name = _('Locations')
+
+    def ready(self):
+        import apps.locations.translation  # noqa: F401
