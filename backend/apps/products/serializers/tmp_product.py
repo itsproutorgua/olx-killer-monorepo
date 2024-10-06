@@ -2,18 +2,20 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
-from apps.common.api_parser_helpers.image_utils import save_base64_image_to_product
-from apps.common.api_parser_helpers.image_utils import save_image_without_data_image
-from apps.common.api_parser_helpers.user_utils import create_user
 from apps.products.models import Category
+from apps.products.models import Currency
+from apps.products.models import Price
 from apps.products.models import Product
+from apps.products.utils.api_parser_helpers.image_utils import save_base64_image_to_product
+from apps.products.utils.api_parser_helpers.image_utils import save_image_without_data_image
+from apps.products.utils.api_parser_helpers.user_utils import create_user
 from settings import env
 
 
 User = get_user_model()
 
 
-class ImageSerializer(serializers.Serializer):
+class TMPImageSerializer(serializers.Serializer):
     name = serializers.CharField(required=True)
     data = serializers.CharField(required=True)
 
@@ -21,10 +23,10 @@ class ImageSerializer(serializers.Serializer):
 class TMPProductSerializer(serializers.Serializer):
     cat_id_olx = serializers.IntegerField(write_only=True)
     title = serializers.CharField()
-    price_uah = serializers.DecimalField(max_digits=10, decimal_places=2)
-    price_usd = serializers.DecimalField(max_digits=10, decimal_places=2)
+    price_uah = serializers.DecimalField(max_digits=10, decimal_places=2, write_only=True)
+    price_usd = serializers.DecimalField(max_digits=10, decimal_places=2, write_only=True)
     description = serializers.CharField(required=False)
-    images = serializers.ListField(child=ImageSerializer(), write_only=True, required=False, allow_null=True)
+    images = serializers.ListField(child=TMPImageSerializer(), write_only=True, required=False, allow_null=True)
     seller = serializers.JSONField(write_only=True)
     prod_olx_id = serializers.IntegerField(write_only=True)
     secret_key = serializers.CharField(write_only=True, required=False)
@@ -54,6 +56,8 @@ class TMPProductSerializer(serializers.Serializer):
         images_data = validated_data.pop('images') or []
         user_data = validated_data.pop('seller')
         product_title = validated_data.pop('title')
+        price_uah = validated_data.pop('price_uah')
+        price_usd = validated_data.pop('price_usd')
 
         if secret_key != env('SECRET_KEY_PRODUCT'):
             raise serializers.ValidationError('Не угадал...')
@@ -73,7 +77,10 @@ class TMPProductSerializer(serializers.Serializer):
         product = Product.objects.filter(category=category, seller=user, title=product_title).first()
 
         if product is None:
+            currencies = Currency.objects.filter(code__in=['UAH', 'USD']).all()
             product = Product.objects.create(category=category, seller=user, title=product_title, **validated_data)
+            Price.objects.create(product=product, amount=price_uah, currency=currencies.get(code='UAH'))
+            Price.objects.create(product=product, amount=price_usd, currency=currencies.get(code='USD'))
             created = bool(product)
 
         if len(images_data) > 0:
