@@ -9,11 +9,9 @@ class City(TimestampMixin, models.Model):
     name = models.CharField(_('City'), max_length=100)
     region = models.ForeignKey('Region', on_delete=models.CASCADE, related_name='cities')
     slug = models.SlugField('Slug', blank=True, null=True)
-    latitude = models.DecimalField(_('Latitude'), max_digits=9, decimal_places=6, blank=True, null=True)
-    longitude = models.DecimalField(_('Longitude'), max_digits=9, decimal_places=6, blank=True, null=True)
 
     def __str__(self):
-        return f'{self.name}, {self.region}'
+        return f'{self.name}'
 
     def save(self, *args, **kwargs):
         if self.name:
