@@ -5,17 +5,16 @@ import django
 from apps.locations.utils.locations.cities import cities
 from apps.locations.utils.locations.regions import regions
 
+
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings.main')
 
 django.setup()
 
 
 def create_regions_and_cities():
-    from django.db import IntegrityError
-
     from apps.locations.models import City
-    from apps.locations.models.region import Region
     from apps.locations.models.location import Location
+    from apps.locations.models.region import Region
 
     for id_region, region_data in regions.items():
         name, slug = region_data['region'], region_data['slug']
@@ -26,7 +25,7 @@ def create_regions_and_cities():
             name_en=region_languages.get('en'),
             name_ru=region_languages.get('ru'),
             slug=slug,
-            )
+        )
 
         data_cities = cities[name]
 
@@ -41,15 +40,12 @@ def create_regions_and_cities():
                 name_uk=city_languages.get('uk'),
                 name_en=city_languages.get('en'),
                 name_ru=city_languages.get('ru'),
-                region=region
-                )
+                region=region,
+            )
 
             Location.objects.get_or_create(
-                location_type=location_type,
-                city=city,
-                latitude=latitude,
-                longitude=longitude
-                )
+                location_type=location_type, city=city, latitude=latitude, longitude=longitude
+            )
 
     print('Finished creating regions and cities')
 
