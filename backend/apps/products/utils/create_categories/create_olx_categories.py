@@ -3,7 +3,7 @@ import os
 
 import django
 
-from apps.common.create_categories.olx_categories import categories
+from apps.products.utils.create_categories.olx_categories import categories
 
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings.main')

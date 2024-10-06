@@ -3,8 +3,7 @@ import random
 from django.contrib.auth import get_user_model
 from faker import Faker
 
-from apps.locations.models import City
-
+from apps.locations.models import Location
 
 User = get_user_model()
 faker = Faker(['en_US', 'uk_UA', 'ru_RU'])
@@ -43,7 +42,7 @@ def get_phones(user_data: dict) -> list[str]:
 
 
 def create_user(user_data: dict) -> User:
-    locations = City.objects.all()
+    locations = Location.objects.all()
     location = random.choice(locations)
     phone_numbers = get_phones(user_data)
     email = user_data.get('email', get_email())

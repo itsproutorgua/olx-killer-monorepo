@@ -20,8 +20,8 @@ def save_image_without_data_image(product: Product):
         return product_image, bool(product_image)
 
 
-def save_base64_image_to_product(image_data, product: Product) -> tuple[ProductImage, bool] | tuple[None, bool]:
-    product_image, created = None, False
+# def save_base64_image_to_product(image_data, product: Product) -> tuple[ProductImage, bool] | tuple[None, bool]:
+def save_base64_image_to_product(image_data, product: Product) -> None:
 
     data_image = image_data.get('data')
     file_name = image_data.get('name').split('.')[0]
@@ -34,7 +34,7 @@ def save_base64_image_to_product(image_data, product: Product) -> tuple[ProductI
     existing_image = check_image(product=product, image_name=image_file.name)
 
     if not existing_image:
-        product_image = ProductImage.objects.create(product=product, image=image_file)
-        created = True
+        ProductImage.objects.create(product=product, image=image_file)
+        # created = True
 
-    return product_image, created
+    # return product_image, created
