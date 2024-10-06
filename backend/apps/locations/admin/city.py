@@ -6,7 +6,7 @@ from apps.locations.models import City
 
 @admin.register(City)
 class CityAdmin(admin.ModelAdmin):
-    list_display = ('name', 'region',)
+    list_display = ('name', 'region')
     search_fields = ['name']
     show_full_result_count = False
 
