@@ -117,8 +117,7 @@ LOCALE_PATHS = [
 
 LANGUAGE_CODE = 'uk'
 
-# TIME_ZONE = 'Europe/Kiev'
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Kiev'
 
 USE_I18N = True
 
