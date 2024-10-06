@@ -3,7 +3,8 @@ from pathlib import Path
 
 from django.core.files.base import ContentFile
 
-from apps.products.models import Product, ProductImage
+from apps.products.models import Product
+from apps.products.models import ProductImage
 
 
 def check_image(product: Product, image_name: str) -> bool:

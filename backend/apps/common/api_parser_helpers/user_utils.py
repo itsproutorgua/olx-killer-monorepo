@@ -5,6 +5,7 @@ from faker import Faker
 
 from apps.locations.models import City
 
+
 User = get_user_model()
 faker = Faker(['en_US', 'uk_UA', 'ru_RU'])
 faker_ua = Faker('uk_UA')
