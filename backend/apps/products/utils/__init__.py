@@ -1,1 +1,2 @@
+from apps.products.utils.default_currency import DEFAULT_CURRENCIES
 from apps.products.utils.translation_utils import translate_and_set_fields
