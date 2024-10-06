@@ -9,4 +9,4 @@ class CitySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = City
-        fields = ['id', 'name', 'region', 'slug', 'latitude', 'longitude']
+        fields = ['id', 'name', 'region']
