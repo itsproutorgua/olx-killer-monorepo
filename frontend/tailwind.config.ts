@@ -1,3 +1,5 @@
+import tailwindcssAnimate from 'tailwindcss-animate'
+
 import type { Config } from 'tailwindcss'
 
 const config = {
@@ -20,71 +22,68 @@ const config = {
     },
     colors: {
       transparent: 'transparent',
-      border: 'hsl(var(--border))', //#d9d9d9
-      input: 'hsl(var(--input))', //
-      background: 'hsl(var(--background))', //#fafafa
-      foreground: 'hsl(var(--foreground))', //#333333
+      current: 'currentColor',
+      background: '#F9FAFB',
+      foreground: '#111827',
       primary: {
-        DEFAULT: 'hsl(var(--primary))', //#292c6b
-        foreground: 'hsl(var(--primary-foreground))', //#fafafa
-        gray: 'var(--primary-gray)',
+        50: '#EEF4FF',
+        100: '#E0EAFF',
+        200: '#C6D7FE',
+        300: '#A4BCFD',
+        400: '#8098F9',
+        500: '#6172F3',
+        600: '#444CE7',
+        700: '#3538CD',
+        800: '#2D31A6',
+        900: '#292C6D',
       },
-      secondary: {
-        500: {
-          DEFAULT: 'hsl(var(--secondary))', //#f1f5f9
-          foreground: 'hsl(var(--secondary-foreground))', //#0f1729
-        },
-      },
-      destructive: {
-        DEFAULT: 'hsl(var(--destructive))',
-        foreground: 'hsl(var(--destructive-foreground))',
-      },
-      muted: {
-        DEFAULT: 'hsl(var(--muted))', //#d9d9d9
-        foreground: 'hsl(var(--muted-foreground))', //#fafafa
-      },
-      accent: {
-        DEFAULT: 'hsl(var(--accent))', //#565de1
-        foreground: 'hsl(var(--accent-foreground))', //#fafafa
-      },
-      purple: {
-        light: '#EEE3FF',
-        dark: '#7F56D9',
-      },
-      popover: {
-        DEFAULT: 'hsl(var(--popover))',
-        foreground: 'hsl(var(--popover-foreground))',
-      },
-      card: {
-        DEFAULT: 'hsl(var(--card))',
-        foreground: 'hsl(var(--card-foreground))',
-      },
-      black: '#000000',
       gray: {
-        50: '#f9fafb',
-        100: '#f9f9f9',
-        150: '#e8e8e8',
-        200: '#dddddd',
-        400: '#a3a3a3',
+        50: '#F9FAFB',
+        100: '#F3F4F6',
+        200: '#E5E7EB',
+        300: '#D1D5DB',
+        400: '#9CA3AF',
+        500: '#6B7280',
+        600: '#4B5563',
+        700: '#374151',
+        800: '#1F2937',
+        900: '#111827',
+        950: '#030712',
+      },
+      error: {
+        50: '#FEF3F2',
+        100: '#FEE4E2',
+        200: '#FECDCA',
+        300: '#FDA29B',
+        400: '#F97066',
+        500: '#F04438',
+        600: '#D92D20',
+        700: '#B42318',
+        800: '#912018',
+        900: '#7A271A',
       },
     },
+
     extend: {
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
       },
-      // borderRadius: {
-      //   lg: 'var(--radius)',
-      //   md: 'calc(var(--radius) - 20px)',
-      //   sm: 'calc(var(--radius) - 35px)',
-      // },
       keyframes: {
         'accordion-down': {
-          from: { height: '0' },
-          to: { height: 'var(--radix-accordion-content-height)' },
+          from: {
+            height: '0',
+          },
+          to: {
+            height: 'var(--radix-accordion-content-height)',
+          },
         },
         'accordion-up': {
-          from: { height: 'var(--radix-accordion-content-height)' },
-          to: { height: '0' },
+          from: {
+            height: 'var(--radix-accordion-content-height)',
+          },
+          to: {
+            height: '0',
+          },
         },
       },
       animation: {
@@ -93,7 +92,7 @@ const config = {
       },
     },
   },
-  plugins: [require('tailwindcss-animate')],
+  plugins: [tailwindcssAnimate],
 } satisfies Config
 
 export default config
