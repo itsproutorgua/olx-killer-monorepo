@@ -11,7 +11,7 @@ import {
   MenubarTrigger,
 } from '@/shared/ui/shadcn-ui/menubar.tsx'
 import { Separator } from '@/shared/ui/shadcn-ui/separator'
-import { CommentIcon, TruckIcon } from '@/shared/ui'
+import {FacebookIconOutline, InstagramIconOutline} from '@/shared/ui';
 
 export const AsideNav = () => {
   const { t } = useTranslation()
@@ -59,17 +59,27 @@ export const AsideNav = () => {
           ))}
         </ul>
       </Menubar>
-      <div className='flex items-center justify-center py-[27px] pr-[43px]'>
-        <Separator className='bg-muted' />
+      <div className='flex items-center justify-center pt-[19px] pb-[26px] pr-[43px]'>
+        <Separator className='bg-gray-200' />
       </div>
-      <div className='felx flex-col space-y-2'>
-        <div className='flex w-[271px] cursor-pointer items-center justify-between gap-3 rounded-[81px] py-0.5 pl-1 transition-colors duration-300 hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground'>
-          <TruckIcon />
-          <p className='flex-1'>{t('asideLinks.trackParcel')}</p>
-        </div>
-        <div className='flex w-[271px] cursor-pointer items-center justify-between gap-3 rounded-[81px] py-0.5 pl-1 transition-colors duration-300 hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground'>
-          <CommentIcon />
-          <p className='flex-1'>{t('asideLinks.helpCenter')}</p>
+      <div className='felx flex-col'>
+          <p className='flex-1 pl-2.5'>{t('asideLinks.socialMedia')}</p>
+        <div
+          className='flex w-[271px] cursor-pointer items-center gap-0 rounded-[81px] py-0.5 transition-colors duration-300 hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground'>
+          <a
+            href='#'
+            aria-label='Instagram'
+            className='transition-colors duration-300 hover:text-primary-200'
+          >
+            <InstagramIconOutline/>
+          </a>
+          <a
+            href='#'
+            aria-label='Facebook'
+            className='transition-colors duration-300 hover:text-primary-200'
+          >
+            <FacebookIconOutline/>
+          </a>
         </div>
       </div>
     </aside>

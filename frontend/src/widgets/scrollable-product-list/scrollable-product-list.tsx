@@ -135,7 +135,7 @@ export const ScrollableProductList: React.FC<ScrollableProductListProps> = ({
           </div>
         </div>
         <div
-          className='flex gap-[7px] overflow-x-auto pb-[50px] pr-4 xl:gap-5'
+          className='flex gap-[7px] overflow-x-auto pb-[50px] pr-4 xl:gap-5 scrollbar-hide'
           ref={scrollContainerRef}
           onScroll={handleScroll}
         >

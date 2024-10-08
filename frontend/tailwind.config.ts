@@ -1,5 +1,3 @@
-import tailwindcssAnimate from 'tailwindcss-animate'
-
 import type { Config } from 'tailwindcss'
 
 const config = {
@@ -92,7 +90,21 @@ const config = {
       },
     },
   },
-  plugins: [tailwindcssAnimate],
+  plugins: [
+    function({ addUtilities }) {
+      const newUtilities = {
+        '.scrollbar-hide': {
+          '-ms-overflow-style': 'none', /* IE and Edge */
+          'scrollbar-width': 'none', /* Firefox */
+        },
+        '.scrollbar-hide::-webkit-scrollbar': {
+          display: 'none', /* Chrome, Safari, Opera */
+        },
+      };
+
+      addUtilities(newUtilities, ['responsive', 'hover']);
+    }
+  ],
 } satisfies Config
 
 export default config

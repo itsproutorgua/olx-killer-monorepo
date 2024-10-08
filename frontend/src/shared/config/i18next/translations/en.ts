@@ -68,7 +68,7 @@ export const en = {
     rights: 'All rights reserved',
   },
   asideLinks: {
-    trackParcel: 'Track your parcel',
+    socialMedia: 'Social media',
     helpCenter: 'Help center',
   },
   currency: 'UAH',
