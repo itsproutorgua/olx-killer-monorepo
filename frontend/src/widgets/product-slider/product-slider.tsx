@@ -56,7 +56,7 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({
 
   return (
     <Carousel
-      className='mb-6 mt-[19px]'
+      className='mb-6'
       setApi={setApi}
       opts={{
         align: 'start',
