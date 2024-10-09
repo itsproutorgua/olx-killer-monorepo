@@ -7,11 +7,13 @@ import (
 	"io"
 	"math"
 	"net/http"
+	"net/url"
 	models "olxparser/models"
 	set "olxparser/set"
 	"os"
 
 	"github.com/tidwall/pretty"
+	"golang.org/x/exp/rand"
 )
 
 func SaveToClone() {
@@ -23,14 +25,14 @@ func SaveToClone() {
 
 	files, err := os.ReadDir(set.DataGetFolder)
 	if err != nil {
-		fmt.Println("Error reading folder:", err)
+		HandleMessage("Error reading folder:", err)
 		return
 	}
+	var n = 0
 
 	if len(files) == 0 {
-		fmt.Println("No ads in folder:", set.DataGetFolder)
+		HandleMessage("No ads in folder:", set.DataGetFolder)
 	} else {
-		var n = 1
 		for _, f := range files {
 
 			var OlxId = f.Name()
@@ -40,7 +42,7 @@ func SaveToClone() {
 
 			json_file, err := os.Open(json_file_name)
 			if err != nil {
-				fmt.Println("Error opening file:", err)
+				HandleMessage("Error opening file:", err)
 				return
 			}
 			defer json_file.Close()
@@ -49,7 +51,7 @@ func SaveToClone() {
 			var Ad models.OlxAd
 			decoder := json.NewDecoder(json_file)
 			if err := decoder.Decode(&Ad); err != nil {
-				fmt.Println("Error decoding JSON:", err)
+				HandleMessage("Error decoding JSON:", err)
 				return
 			}
 
@@ -84,7 +86,7 @@ func SaveToClone() {
 				var Phones models.OlxPhones
 				decoder_phones := json.NewDecoder(json_file_phones)
 				if err := decoder_phones.Decode(&Phones); err != nil {
-					fmt.Println("Ошибка при декодировании JSON phones:", err)
+					HandleMessage("Ошибка при декодировании JSON phones:", err)
 					return
 				}
 				if len(Phones.Data.Phones) == 0 {
@@ -101,7 +103,7 @@ func SaveToClone() {
 
 			img_files, err := os.ReadDir(fmt.Sprint(set.DataGetFolder, "/", OlxId, "/images/"))
 			if err != nil {
-				//fmt.Println("Error read dir:", err)
+				//HandleMessage("Error read dir:", err)
 				return
 			}
 
@@ -139,22 +141,39 @@ func SaveToClone() {
 				// Parse errors
 			}
 
+			var client *http.Client
+
+			// Send request
+			if set.UseProxyToGet {
+
+				proxyList := ProxyURLs(set.ProxyURLs)
+				URL := proxyList[rand.Intn(len(proxyList)-1)]
+
+				//HandleMessage("\033[1K\r Current proxy:", URL, "\n")
+
+				proxyURL, _ := url.Parse(URL)
+				proxy := http.ProxyURL(proxyURL)
+				transport := &http.Transport{Proxy: proxy}
+				client = &http.Client{Transport: transport}
+			} else {
+				client = &http.Client{}
+			}
+
 			// Create HTTP request
 			url := set.OlxCloneApiUrl
+
 			req, err := http.NewRequest("POST", url, bytes.NewBuffer(req_json_data))
 			if err != nil {
-				//fmt.Println("Error creating request:", err)
+				//HandleMessage("Error creating request:", err)
 				return
 			}
 			req.Header.Set("Content-Type", "application/json")
 
-			is_sended := ""
-
-			// Send request
-			client := &http.Client{}
 			resp, err := client.Do(req)
+
+			is_sended := ""
 			if err != nil {
-				//fmt.Println(" Error sending request:", err)
+				//HandleMessage(" Error sending request:", err)
 				// Save file with raw json
 				PrepareDir(fmt.Sprint(set.DataSendFolder, "/err/", OlxId))
 				os.WriteFile(fmt.Sprint(set.DataSendFolder, "/err/", OlxId, "/req.json"), req_json_data, 0644)
@@ -162,14 +181,14 @@ func SaveToClone() {
 				return
 			}
 			res_json_data, err := io.ReadAll(resp.Body)
-			res_json_data = pretty.Pretty(res_json_data)
-
 			defer resp.Body.Close()
+
+			res_json_data = pretty.Pretty(res_json_data)
 
 			// Get Response
 			if resp.StatusCode == http.StatusOK ||
 				resp.StatusCode == http.StatusCreated {
-				//fmt.Println("Request successful!")
+				//HandleMessage("Request successful!")
 				// Save file with raw json
 				PrepareDir(fmt.Sprint(set.DataSendFolder, "/ok/", OlxId))
 				os.WriteFile(fmt.Sprint(set.DataSendFolder, "/ok/", OlxId, "/req.json"), req_json_data, 0644)
@@ -177,7 +196,7 @@ func SaveToClone() {
 				is_sended = "Ok"
 
 			} else {
-				fmt.Println("Request failed with status code", err)
+				//HandleMessage("Request failed with status code", err)
 				// Save file with raw json
 				PrepareDir(fmt.Sprint(set.DataSendFolder, "/err/", OlxId))
 				os.WriteFile(fmt.Sprint(set.DataSendFolder, "/err/", OlxId, "/req.json"), req_json_data, 0644)
@@ -185,9 +204,11 @@ func SaveToClone() {
 				is_sended = "Not ok"
 			}
 
-			fmt.Print("\033[1K\r ", n, ") OlxId: ", OlxId, ", State: ", is_sended)
+			HandleMessage("\033[1K\r ", n+1, ") OlxId: ", OlxId, ", State: ", is_sended)
 			n++
 
 		}
+
 	}
+	HandleMessage("\033[1K\r --= Uploaded ", n, " ads=--")
 }

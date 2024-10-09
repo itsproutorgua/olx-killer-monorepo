@@ -2,6 +2,6 @@ package olxparser
 
 import "fmt"
 
-func HandleMessage(str string) {
-	fmt.Println(str)
+func HandleMessage(str ...any) {
+	fmt.Print(str...)
 }

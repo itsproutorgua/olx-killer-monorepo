@@ -2,9 +2,9 @@ package olxparser
 
 import (
 	"encoding/base64"
-	"io/ioutil"
 	"log"
 	"net/http"
+	"os"
 )
 
 func toBase64(b []byte) string {
@@ -12,18 +12,18 @@ func toBase64(b []byte) string {
 }
 
 func ImageToBase64(filename string) string {
-	// Прочитаем файл изображения в виде среза байтов
-	bytes, err := ioutil.ReadFile(filename)
+	// Read the image file as a slice of bytes
+	bytes, err := os.ReadFile(filename)
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	var base64Encoding string
 
-	// Определим MIME-тип изображения
+	// Determine the MIME type of the image
 	mimeType := http.DetectContentType(bytes)
 
-	// Добавим соответствующий заголовок URI-схемы в зависимости от MIME-типа
+	// Add the appropriate URI scheme header depending on the MIME type
 	switch mimeType {
 	case "image/jpeg":
 		base64Encoding += "data:image/jpeg;base64,"
@@ -31,9 +31,9 @@ func ImageToBase64(filename string) string {
 		base64Encoding += "data:image/png;base64,"
 	}
 
-	// Добавим закодированное в base64 изображение
+	// Add a base64 encoded image
 	base64Encoding += toBase64(bytes)
 
-	// Выведем полное base64-представление изображения
+	// Return the full base64 encoded image
 	return base64Encoding
 }

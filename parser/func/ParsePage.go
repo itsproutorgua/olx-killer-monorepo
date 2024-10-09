@@ -42,7 +42,6 @@ func ParsePage(i int) {
 	/*Loop through the data*/
 	PrepareDir(fmt.Sprint(set.DataGetFolder))
 	for _, OlxAd := range result.OlxData {
-		//fmt.Println(OlxAd)
 
 		PrepareDir(fmt.Sprint(set.DataGetFolder, "/", OlxAd.OlxId, "/"))
 
@@ -62,11 +61,9 @@ func ParsePage(i int) {
 			SavePhones(OlxAd.OlxId)
 		}
 
-		fmt.Print("\033[1K\r ", n, " OlxId: ", OlxAd.OlxId, " Ads ", i+1, "-", i+1+set.ParseOlxPagesQty)
+		HandleMessage("\033[1K\r ", n, " OlxId: ", OlxAd.OlxId, " Ads ", i+1, "-", i+set.OlxAdsOnPage)
 		n++
+		ProcessedAds++
 
 	}
-	//SaveToDb(result)
-	//SavePhonesToDb(Phone, OlxId)
-
 }

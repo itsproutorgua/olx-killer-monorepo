@@ -2,7 +2,6 @@ package olxparser
 
 import (
 	"bufio"
-	"fmt"
 	"net/http"
 )
 
@@ -11,7 +10,7 @@ func ProxyURLs(proxyURL string) []string {
 
 	response, err := http.Get(proxyURL)
 	if err != nil {
-		HandleMessage(fmt.Sprint("Data receive error:", err))
+		HandleMessage("Data receive error:", err)
 		//return
 	}
 	defer response.Body.Close()
@@ -25,7 +24,7 @@ func ProxyURLs(proxyURL string) []string {
 	}
 
 	if err := scanner.Err(); err != nil {
-		HandleMessage(fmt.Sprint("Ошибка при чтении данных:", err))
+		HandleMessage("Read data error:", err)
 	}
 	return proxyList
 }

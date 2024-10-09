@@ -19,7 +19,7 @@ func getSettings(json_file_name string) models.Settings {
 	var settings models.Settings
 	decoder := json.NewDecoder(json_file)
 	if err := decoder.Decode(&settings); err != nil {
-		fmt.Println("Decode error on settings:", err)
+		fmt.Print("Decode error on settings:", err)
 		return settings
 	}
 
@@ -43,4 +43,12 @@ var CurrencyVal = settings.CurrencyVal
 
 var DSN = settings.DSN
 
+var DB_TYPE = settings.DB_TYPE
+
 var ParseOlxPagesQty = settings.ParseOlxPagesQty
+
+var OlxAdsOnPage = settings.OlxAdsOnPage
+
+var UseProxyToSend = settings.UseProxyToSend
+
+var UseProxyToGet = settings.UseProxyToGet
