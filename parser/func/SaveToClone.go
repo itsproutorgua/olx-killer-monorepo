@@ -24,6 +24,7 @@ func SaveToClone() {
 	PrepareDir(fmt.Sprint(set.DataSendFolder, "/err"))
 
 	files, err := os.ReadDir(set.DataGetFolder)
+
 	if err != nil {
 		HandleMessage("Error reading folder:", err)
 		return
@@ -33,6 +34,9 @@ func SaveToClone() {
 	if len(files) == 0 {
 		HandleMessage("No ads in folder:", set.DataGetFolder)
 	} else {
+
+		HandleMessage("\n******\nAds to send:", len(files), "\n*****\n")
+
 		for _, f := range files {
 
 			var OlxId = f.Name()
@@ -119,7 +123,7 @@ func SaveToClone() {
 			}
 
 			product = models.Product{
-				SecretKey:   "fake_product",
+				SecretKey:   set.CloneSecretKey,
 				ProdOlxId:   Ad.OlxId,
 				CatIDOLX:    Ad.Category.OlxCatId,
 				Title:       Ad.Title,
@@ -149,7 +153,7 @@ func SaveToClone() {
 				proxyList := ProxyURLs(set.ProxyURLs)
 				URL := proxyList[rand.Intn(len(proxyList)-1)]
 
-				//HandleMessage("\033[1K\r Current proxy:", URL, "\n")
+				HandleMessage("\033[1K\r Current proxy:", URL, "\n")
 
 				proxyURL, _ := url.Parse(URL)
 				proxy := http.ProxyURL(proxyURL)

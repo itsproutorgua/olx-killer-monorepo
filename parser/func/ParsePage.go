@@ -12,8 +12,13 @@ import (
 	"github.com/tidwall/pretty"
 )
 
-func ParsePage(i int) {
-	var Url string = fmt.Sprint("https://www.olx.ua/api/v1/offers/?offset=", i)
+func ParsePage(i int, olx_cat_id int) {
+	var Url = ""
+	if olx_cat_id > 0 {
+		Url = fmt.Sprint("https://www.olx.ua/api/v1/offers/?offset=", i, "&category_id=", olx_cat_id)
+	} else {
+		Url = fmt.Sprint("https://www.olx.ua/api/v1/offers/?offset=", i)
+	}
 
 	resp, err := http.Get(Url)
 	if err != nil {
@@ -28,7 +33,8 @@ func ParsePage(i int) {
 
 	json_data = pretty.Pretty(json_data)
 
-	var file_name string = fmt.Sprint("./data/olx", i, ".json")
+	PrepareDir(fmt.Sprint(set.DataGetRawFolder))
+	var file_name string = fmt.Sprint(set.DataGetRawFolder, "/olx", i, ".json")
 
 	/*Save raw JSON for -=i=- page*/
 	os.WriteFile(file_name, json_data, 0644)
@@ -57,13 +63,12 @@ func ParsePage(i int) {
 		}
 
 		/*Saving Phones*/
-		if OlxAd.Contact.IsPhone {
-			SavePhones(OlxAd.OlxId)
-		}
+		// if OlxAd.Contact.IsPhone {
+		// 	SavePhones(OlxAd.OlxId)
+		// }
 
 		HandleMessage("\033[1K\r ", n, " OlxId: ", OlxAd.OlxId, " Ads ", i+1, "-", i+set.OlxAdsOnPage)
 		n++
 		ProcessedAds++
-
 	}
 }

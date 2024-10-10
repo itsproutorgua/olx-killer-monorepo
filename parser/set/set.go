@@ -35,6 +35,8 @@ var DataSendFolder = settings.DataSendFolder
 
 var DataGetFolder = settings.DataGetFolder
 
+var DataGetRawFolder = settings.DataGetRawFolder
+
 var OlxApiKey = settings.Token
 
 var ProxyURLs = settings.ProxyList
@@ -52,3 +54,7 @@ var OlxAdsOnPage = settings.OlxAdsOnPage
 var UseProxyToSend = settings.UseProxyToSend
 
 var UseProxyToGet = settings.UseProxyToGet
+
+var GetCertainCategories = settings.GetCertainCategories
+
+var CloneSecretKey = settings.CloneSecretKey
