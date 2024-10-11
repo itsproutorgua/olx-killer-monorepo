@@ -19,7 +19,10 @@ export const UserMenu = () => {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild className='flex items-center justify-center'>
+      <DropdownMenuTrigger
+        asChild
+        className='flex size-11 items-center justify-center text-gray-50'
+      >
         <div onClick={() => setIsOpen(!isOpen)}>
           {error && <ErrorIcon />}
           {!error && isLoading && (

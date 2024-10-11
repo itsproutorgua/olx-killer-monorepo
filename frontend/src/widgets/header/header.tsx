@@ -4,11 +4,13 @@ import { NavToolbar } from './ui'
 
 export const Header = () => {
   return (
-    <header className='mx-auto w-full rounded-b-[30px] bg-primary xl:mt-5 xl:w-[1360px] xl:rounded-[50px]'>
-      <div className='flex items-center justify-between px-[11px] py-[17px] xl:px-[38px]'>
-        <Logo />
-        <SearchBar />
-        <NavToolbar />
+    <header className='rounded-b-[30px] bg-primary-900 xl:mt-5 xl:rounded-none xl:bg-transparent'>
+      <div className='container'>
+        <div className='flex h-20 items-center justify-between xl:h-[76px] xl:rounded-[50px] xl:bg-primary-900 xl:px-[38px]'>
+          <Logo />
+          <SearchBar />
+          <NavToolbar />
+        </div>
       </div>
     </header>
   )
