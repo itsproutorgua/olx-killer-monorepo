@@ -37,6 +37,10 @@ var DataGetFolder = settings.DataGetFolder
 
 var DataGetRawFolder = settings.DataGetRawFolder
 
+var DataGetRegionsFolder = settings.DataGetRegionsFolder
+
+var DataGetCitiesFolder = settings.DataGetCitiesFolder
+
 var OlxApiKey = settings.Token
 
 var ProxyURLs = settings.ProxyList

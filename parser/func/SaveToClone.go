@@ -90,7 +90,7 @@ func SaveToClone() {
 				var Phones models.OlxPhones
 				decoder_phones := json.NewDecoder(json_file_phones)
 				if err := decoder_phones.Decode(&Phones); err != nil {
-					HandleMessage("Ошибка при декодировании JSON phones:", err)
+					HandleMessage("Error while decoding JSON phones:", err)
 					return
 				}
 				if len(Phones.Data.Phones) == 0 {
@@ -140,20 +140,27 @@ func SaveToClone() {
 
 			// Convert to JSON
 			req_json_data, err := json.Marshal(product)
-			req_json_data = pretty.Pretty(req_json_data)
 			if err != nil {
-				// Parse errors
+				//HandleMessage("Error converting JSON:", err)
 			}
+			req_json_data = pretty.Pretty(req_json_data)
+
+			// Create HTTP request
+			req, err := http.NewRequest("POST", set.OlxCloneApiUrl, bytes.NewBuffer(req_json_data))
+			if err != nil {
+				//HandleMessage("Error creating request:", err)
+			}
+			req.Header.Set("Content-Type", "application/json")
 
 			var client *http.Client
 
 			// Send request
-			if set.UseProxyToGet {
+			if set.UseProxyToSend {
 
 				proxyList := ProxyURLs(set.ProxyURLs)
 				URL := proxyList[rand.Intn(len(proxyList)-1)]
 
-				HandleMessage("\033[1K\r Current proxy:", URL, "\n")
+				//HandleMessage("\033[1K\r Current proxy:", URL, "\n")
 
 				proxyURL, _ := url.Parse(URL)
 				proxy := http.ProxyURL(proxyURL)
@@ -163,25 +170,15 @@ func SaveToClone() {
 				client = &http.Client{}
 			}
 
-			// Create HTTP request
-			url := set.OlxCloneApiUrl
-
-			req, err := http.NewRequest("POST", url, bytes.NewBuffer(req_json_data))
-			if err != nil {
-				//HandleMessage("Error creating request:", err)
-				return
-			}
-			req.Header.Set("Content-Type", "application/json")
-
 			resp, err := client.Do(req)
 
-			is_sended := ""
+			IsSent := ""
 			if err != nil {
 				//HandleMessage(" Error sending request:", err)
 				// Save file with raw json
 				PrepareDir(fmt.Sprint(set.DataSendFolder, "/err/", OlxId))
 				os.WriteFile(fmt.Sprint(set.DataSendFolder, "/err/", OlxId, "/req.json"), req_json_data, 0644)
-				is_sended = "Not ok"
+				IsSent = "Not ok"
 				return
 			}
 			res_json_data, err := io.ReadAll(resp.Body)
@@ -197,7 +194,7 @@ func SaveToClone() {
 				PrepareDir(fmt.Sprint(set.DataSendFolder, "/ok/", OlxId))
 				os.WriteFile(fmt.Sprint(set.DataSendFolder, "/ok/", OlxId, "/req.json"), req_json_data, 0644)
 				os.WriteFile(fmt.Sprint(set.DataSendFolder, "/ok/", OlxId, "/res.json"), res_json_data, 0644)
-				is_sended = "Ok"
+				IsSent = "Ok"
 
 			} else {
 				//HandleMessage("Request failed with status code", err)
@@ -205,10 +202,10 @@ func SaveToClone() {
 				PrepareDir(fmt.Sprint(set.DataSendFolder, "/err/", OlxId))
 				os.WriteFile(fmt.Sprint(set.DataSendFolder, "/err/", OlxId, "/req.json"), req_json_data, 0644)
 				os.WriteFile(fmt.Sprint(set.DataSendFolder, "/err/", OlxId, "/res.json"), res_json_data, 0644)
-				is_sended = "Not ok"
+				IsSent = "Not ok"
 			}
 
-			HandleMessage("\033[1K\r ", n+1, ") OlxId: ", OlxId, ", State: ", is_sended)
+			HandleMessage("\033[1K\r ", n+1, ") OlxId: ", OlxId, ", State: ", IsSent)
 			n++
 
 		}

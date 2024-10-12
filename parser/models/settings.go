@@ -8,6 +8,8 @@ type Settings struct {
 	DataSendFolder       string  `json:"data_send_folder"`
 	DataGetFolder        string  `json:"data_get_folder"`
 	DataGetRawFolder     string  `json:"data_get_raw_folder"`
+	DataGetRegionsFolder string  `json:"data_get_regions_folder"`
+	DataGetCitiesFolder  string  `json:"data_get_cities_folder"`
 	DSN                  string  `json:"dsn"`
 	DB_TYPE              string  `json:"db_type"`
 	ParseOlxPagesQty     int     `json:"parse_olx_pages_qty"`

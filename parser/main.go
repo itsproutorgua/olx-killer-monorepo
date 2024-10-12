@@ -33,9 +33,9 @@ func main() {
 			"\nSelect:\n",
 			"1 to start parsing ", set.ParseOlxPagesQty, " OLX pages ( ~ ", set.ParseOlxPagesQty*set.OlxAdsOnPage, "ads )\n",
 			"2 to start uploading to Clone\n",
+			"3 to start parsing Regions from OLX\n",
+			"4 to start parsing Cities from OLX\n",
 			"Or other key to Exit\n",
-			//"3 to start parsing Cities from OLX\n",
-			//"4 to start parsing Regions from OLX\n",
 		)
 		scanner := bufio.NewScanner(os.Stdin)
 		scanner.Scan()
@@ -91,6 +91,17 @@ func main() {
 			var start_time = time.Now()
 			olxparser.SaveToClone()
 			timeTrack(start_time, "Send Ads") // Теперь вызываем timeTrack
+		}
+
+		if input == 3 {
+			var start_time = time.Now()
+			olxparser.SaveRegions()
+			timeTrack(start_time, "Get Regions") // Теперь вызываем timeTrack
+		}
+		if input == 4 {
+			var start_time = time.Now()
+			olxparser.SaveCities()
+			timeTrack(start_time, "Get Cities") // Теперь вызываем timeTrack
 		}
 
 	}

@@ -12,13 +12,14 @@ import (
 	"github.com/tidwall/pretty"
 )
 
-func ParsePage(i int, olx_cat_id int) {
+func ParsePage(i int, OlxCatID int) {
 	var Url = ""
-	if olx_cat_id > 0 {
-		Url = fmt.Sprint("https://www.olx.ua/api/v1/offers/?offset=", i, "&category_id=", olx_cat_id)
+	if OlxCatID > 0 {
+		Url = fmt.Sprint("https://www.olx.ua/api/v1/offers/?offset=", i, "&category_id=", OlxCatID)
 	} else {
 		Url = fmt.Sprint("https://www.olx.ua/api/v1/offers/?offset=", i)
 	}
+	PrepareDir(fmt.Sprint(set.DataGetRawFolder))
 
 	resp, err := http.Get(Url)
 	if err != nil {
@@ -30,13 +31,10 @@ func ParsePage(i int, olx_cat_id int) {
 	if err != nil {
 		HandleMessage("Cant read response")
 	}
-
 	json_data = pretty.Pretty(json_data)
 
-	PrepareDir(fmt.Sprint(set.DataGetRawFolder))
-	var file_name string = fmt.Sprint(set.DataGetRawFolder, "/olx", i, ".json")
-
-	/*Save raw JSON for -=i=- page*/
+	var file_name string = fmt.Sprint(set.DataGetRawFolder, "/regions.json")
+	/*Save raw regions JSON */
 	os.WriteFile(file_name, json_data, 0644)
 
 	var result models.OlxAds
