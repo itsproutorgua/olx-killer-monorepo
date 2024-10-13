@@ -164,6 +164,5 @@ cython_debug/
 
 
 # parser data folder  #
-/parser/data_read/*
-/parser/data_send/*
+/parser/data_*
 /parser/env.json

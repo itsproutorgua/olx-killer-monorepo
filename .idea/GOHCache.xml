@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GoORMHelperCache">
+    <option name="schemaMapping">
+      <map>
+        <entry key="CloneImages">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/parser/models/models_olxclone.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="ComonModel">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/parser/models/models_db.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="DbAd">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/parser/models/models_db.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="DbCategory">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/parser/models/models_db.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="DbContact">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/parser/models/models_db.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="DbParam">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/parser/models/models_db.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="DbParamValue">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/parser/models/models_db.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="DbPhones">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/parser/models/models_db.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="DbPhoto">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/parser/models/models_db.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="DbUser">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/parser/models/models_db.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="InitialFields">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/parser/models/models_db.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="Model">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/parser/models/models_db.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="OlxAd">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/parser/models/models_olx.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="OlxAds">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/parser/models/models_olx.go" />
+              <option value="file://$PROJECT_DIR$/parser/models/models_olx_regions.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="OlxCategory">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/parser/models/models_olx.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="OlxCities">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/parser/models/models_olx_cities.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="OlxCity">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/parser/models/models_olx_cities.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="OlxContact">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/parser/models/models_olx.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="OlxParam">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/parser/models/models_olx.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="OlxPhones">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/parser/models/models_olx.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="OlxPhoto">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/parser/models/models_olx.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="OlxRegions">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/parser/models/models_olx_regions.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="OlxUser">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/parser/models/models_olx.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="Product">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/parser/models/models_olxclone.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="SellerInfo">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/parser/models/models_olxclone.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="Settings">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/parser/models/settings.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="initialFields">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/parser/models/models_db.go" />
+            </set>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="scannedPathMapping">
+      <map>
+        <entry key="file://$PROJECT_DIR$/parser/func/HandleMessage.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1728498711046" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/parser/func/ImageToBase64.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1728477631034" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/parser/func/ParsePage.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1728703440554" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/parser/func/PrepareDir.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1728062855278" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/parser/func/ProxyURLs.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1728504579496" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/parser/func/SaveCities.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1728735559785" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/parser/func/SaveImages.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1728062202250" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/parser/func/SavePhones.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1728504502066" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/parser/func/SavePhonesToDb.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1728157250010" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/parser/func/SaveRawData.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1728650249136" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/parser/func/SaveRegions.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1728730691225" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/parser/func/SaveToClone.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1728702084796" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/parser/func/SaveToDb.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1728157169563" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/parser/func/olxparser.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1728496925351" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/parser/main.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1728730766917" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/parser/models/models_db.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1728634734591" />
+              <option name="schema">
+                <list>
+                  <option value="ComonModel" />
+                  <option value="DbAd" />
+                  <option value="DbPhones" />
+                  <option value="DbParam" />
+                  <option value="DbParamValue" />
+                  <option value="DbUser" />
+                  <option value="DbCategory" />
+                  <option value="DbPhoto" />
+                  <option value="DbContact" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/parser/models/models_olx.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1728046357431" />
+              <option name="schema">
+                <list>
+                  <option value="OlxAds" />
+                  <option value="OlxAd" />
+                  <option value="OlxPhones" />
+                  <option value="OlxParam" />
+                  <option value="OlxUser" />
+                  <option value="OlxCategory" />
+                  <option value="OlxPhoto" />
+                  <option value="OlxContact" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/parser/models/models_olx_cities.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1728734973895" />
+              <option name="schema">
+                <list>
+                  <option value="OlxCities" />
+                  <option value="OlxCity" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/parser/models/models_olx_regions.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1728720017748" />
+              <option name="schema">
+                <list>
+                  <option value="OlxRegions" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/parser/models/models_olxclone.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1728149997583" />
+              <option name="schema">
+                <list>
+                  <option value="Product" />
+                  <option value="SellerInfo" />
+                  <option value="CloneImages" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/parser/models/settings.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1728730896747" />
+              <option name="schema">
+                <list>
+                  <option value="Settings" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/parser/set/set.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1728730874487" />
+            </ScannedPath>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="tableStructMapping">
+      <map>
+        <entry key="clone_images" value="CloneImages" />
+        <entry key="comon_model" value="ComonModel" />
+        <entry key="db_ad" value="DbAd" />
+        <entry key="db_category" value="DbCategory" />
+        <entry key="db_contact" value="DbContact" />
+        <entry key="db_param" value="DbParam" />
+        <entry key="db_param_value" value="DbParamValue" />
+        <entry key="db_phones" value="DbPhones" />
+        <entry key="db_photo" value="DbPhoto" />
+        <entry key="db_user" value="DbUser" />
+        <entry key="initial_fields" value="initialFields" />
+        <entry key="model" value="Model" />
+        <entry key="olx_ad" value="OlxAd" />
+        <entry key="olx_ads" value="OlxAds" />
+        <entry key="olx_category" value="OlxCategory" />
+        <entry key="olx_cities" value="OlxCities" />
+        <entry key="olx_city" value="OlxCity" />
+        <entry key="olx_contact" value="OlxContact" />
+        <entry key="olx_param" value="OlxParam" />
+        <entry key="olx_phones" value="OlxPhones" />
+        <entry key="olx_photo" value="OlxPhoto" />
+        <entry key="olx_regions" value="OlxRegions" />
+        <entry key="olx_user" value="OlxUser" />
+        <entry key="product" value="Product" />
+        <entry key="seller_info" value="SellerInfo" />
+        <entry key="settings" value="Settings" />
+      </map>
+    </option>
+    <option name="lastTimeChecked" value="1728627690279" />
+  </component>
+</project>

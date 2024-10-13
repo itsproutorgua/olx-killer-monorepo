@@ -18,4 +18,5 @@ type Settings struct {
 	UseProxyToGet        bool    `json:"use_proxy_to_get"`
 	GetCertainCategories string  `json:"get_certain_categories"`
 	CloneSecretKey       string  `json:"clone_secret_key"`
+	SendToCloneThreadQty int     `json:"send_to_clone_thread_qty"`
 }

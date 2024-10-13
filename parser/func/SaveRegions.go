@@ -5,13 +5,11 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"net/url"
 	models "olxparser/models"
 	set "olxparser/set"
 	"os"
 
 	"github.com/tidwall/pretty"
-	"golang.org/x/exp/rand"
 )
 
 func SaveRegions() {
@@ -20,36 +18,12 @@ func SaveRegions() {
 
 	var Url = "https://www.olx.ua/api/partner/regions"
 
-	req, err := http.NewRequest("GET", Url, nil)
-	if err != nil {
-		HandleMessage("Error in building proxy query:", err)
-		return
-	}
-	/*If file did not exist, create it*/
-	var client *http.Client
-	if set.UseProxyToGet {
-		proxyList := ProxyURLs(set.ProxyURLs)
-		URL := proxyList[rand.Intn(len(proxyList)-1)]
-
-		//HandleMessage("\033[1K\r Current proxy:", URL, "\n")
-
-		proxyURL, _ := url.Parse(URL)
-		proxy := http.ProxyURL(proxyURL)
-		transport := &http.Transport{Proxy: proxy}
-		client = &http.Client{Transport: transport}
-	} else {
-		client = &http.Client{}
-	}
-
+	req, _ := http.NewRequest("GET", Url, nil)
 	req.Header.Add("Authorization", set.OlxApiKey)
 	req.Header.Add("Version", "v2.0")
 
-	/*Run GET query*/
-	resp, err := client.Do(req)
-	if err != nil {
-		HandleMessage("Running Get query error:", err)
-		return
-	}
+	resp, _ := InitHttpRequest(req, set.UseProxyToGet)
+
 	defer resp.Body.Close()
 	json_data, err := io.ReadAll(resp.Body) // response body is []byte
 	if err != nil {
@@ -77,6 +51,4 @@ func SaveRegions() {
 
 	}
 	return
-
-	//HandleMessage("Phone file already exists.")
 }

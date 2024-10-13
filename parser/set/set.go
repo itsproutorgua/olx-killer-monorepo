@@ -62,3 +62,5 @@ var UseProxyToGet = settings.UseProxyToGet
 var GetCertainCategories = settings.GetCertainCategories
 
 var CloneSecretKey = settings.CloneSecretKey
+
+var SendToCloneThreadQty = settings.SendToCloneThreadQty
