@@ -5,7 +5,9 @@ from apps.products.models import Price
 
 class PriceInline(admin.TabularInline):
     model = Price
-    extra = 1
+    extra = 0
+    fields = ('amount', 'currency', 'updated_at')
+    readonly_fields = ('updated_at',)
 
     def get_queryset(self, request):
         qs = super().get_queryset(request)
