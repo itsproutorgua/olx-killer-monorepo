@@ -1,17 +1,31 @@
+from django.conf import settings
 from drf_spectacular.utils import extend_schema
 from drf_spectacular.utils import OpenApiExample
+from drf_spectacular.utils import OpenApiResponse
 from rest_framework import status
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
+from rest_framework.throttling import SimpleRateThrottle
 from rest_framework.views import APIView
 
 from apps.api_tags import SERVICE_INFO_TAG
-from apps.common import responses
-from apps.products.serializers.tmp_product import TMPProductSerializer
+from apps.common import errors
+from apps.products.serializers.product.tmp_product import TMPProductSerializer
+
+
+class DynamicRateThrottle(SimpleRateThrottle):
+    rate = settings.DYNAMIC_THROTTLE_RATE
+    scope = 'dynamic_request_rate'
+
+    def get_cache_key(self, request, view):
+        if request.user.is_authenticated:
+            return f'{self.scope}:{request.user.id}'
+        return f'{self.scope}:{self.get_ident(request)}'
 
 
 class TMPProductCreateAPIView(APIView):
     serializer_class = TMPProductSerializer
+    throttle_classes = [DynamicRateThrottle]
     permission_classes = [
         AllowAny,
     ]
@@ -24,7 +38,7 @@ class TMPProductCreateAPIView(APIView):
         responses={
             status.HTTP_201_CREATED: TMPProductSerializer,
             status.HTTP_200_OK: TMPProductSerializer,
-            status.HTTP_400_BAD_REQUEST: responses.BAD_REQUEST,
+            status.HTTP_400_BAD_REQUEST: OpenApiResponse(description=errors.BAD_REQUEST),
         },
         examples=[
             OpenApiExample(
