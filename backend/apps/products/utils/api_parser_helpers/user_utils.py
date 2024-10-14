@@ -4,11 +4,13 @@ from django.contrib.auth import get_user_model
 from faker import Faker
 
 from apps.locations.models import Location
+from apps.users.models.profile import Profile
 
 
 User = get_user_model()
 faker = Faker(['en_US', 'uk_UA', 'ru_RU'])
 faker_ua = Faker('uk_UA')
+
 # fmt: off
 mobile_operators_ukraine = [
     '039', '067', '068', '096', '097', '098',  # Kyivstar
@@ -43,17 +45,28 @@ def get_phones(user_data: dict) -> list[str]:
 
 
 def create_user(user_data: dict) -> User:
+    user_olx_id = user_data['user_olx_id']
     locations = Location.objects.all()
     location = random.choice(locations)
     phone_numbers = get_phones(user_data)
     email = user_data.get('email', get_email())
+
+    profile = Profile.objects.filter(user_olx_id=user_olx_id).first()
+    if profile:
+        return profile.user
+
     user, _ = User.objects.get_or_create(
-        user_olx_id=user_data['user_olx_id'],
+        email=email,
         defaults={
-            'email': email,
             'username': user_data.get('username', faker.user_name()),
             'first_name': user_data.get('name', faker.first_name()),
             'last_name': user_data.get('last_name', faker.last_name()),
+        },
+    )
+
+    profile, _ = Profile.objects.update_or_create(
+        user=user,
+        defaults={
             'location': location,
             'phone_numbers': phone_numbers,
             'is_fake_user': True,
