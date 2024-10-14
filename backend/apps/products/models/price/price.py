@@ -14,7 +14,7 @@ ERROR_MIN_PRICE_MESSAGE = _(f'Must be greater than or equal to {MIN_PRICE}.')
 class Price(TimestampMixin, models.Model):
     amount = models.DecimalField(
         _('Amount'),
-        max_digits=10,
+        max_digits=13,
         decimal_places=2,
         validators=[MinValueValidator(MIN_PRICE, message=ERROR_MIN_PRICE_MESSAGE)],
     )
