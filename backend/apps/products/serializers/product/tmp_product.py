@@ -23,8 +23,8 @@ class TMPImageSerializer(serializers.Serializer):
 class TMPProductSerializer(serializers.Serializer):
     cat_id_olx = serializers.IntegerField(write_only=True)
     title = serializers.CharField()
-    price_uah = serializers.DecimalField(max_digits=10, decimal_places=2, write_only=True)
-    price_usd = serializers.DecimalField(max_digits=10, decimal_places=2, write_only=True)
+    price_uah = serializers.DecimalField(max_digits=13, decimal_places=2, write_only=True)
+    price_usd = serializers.DecimalField(max_digits=13, decimal_places=2, write_only=True)
     description = serializers.CharField(required=False)
     images = serializers.ListField(child=TMPImageSerializer(), write_only=True, required=False, allow_null=True)
     seller = serializers.JSONField(write_only=True)
