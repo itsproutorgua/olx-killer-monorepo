@@ -8,10 +8,13 @@ app_name = 'api_products'
 
 router = routers.DefaultRouter()
 router.register('categories', views.CategoryAPIViewSet, basename='category')
-router.register('products', views.ProductAPIViewSet, basename='product')
+router.register('products', views.ProductAPIViewSet, basename='products')
 
 urlpatterns = [
-    path('create-temp-product/', views.TMPProductCreateAPIView.as_view(), name='create_temp_product'),
+    path('products/filters/', views.ProductFilterViewSet.as_view({'get': 'list'}), name='product-filter'),
+    path('categories/<path:path>/', views.CategoryAPIViewSet.as_view({'get': 'retrieve'}), name='category-detail'),
+    path('currencies/', views.CurrencyListView.as_view(), name='currency-list'),
+    path('create-temp-product/', views.TMPProductCreateAPIView.as_view(), name='create-temp-product'),
 ]
 
 urlpatterns += router.urls
