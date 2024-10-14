@@ -15,7 +15,7 @@ class ProductVideoSerializer(serializers.ModelSerializer):
 
     @staticmethod
     def validate_video(value: UploadedFile) -> UploadedFile:
-        """ Validate the uploaded video file. """
+        """Validate the uploaded video file."""
         mime_type = value.content_type
         allowed_mime_types = ProductVideo.ALLOWED_MIME_TYPES
 
@@ -29,7 +29,7 @@ class ProductVideoSerializer(serializers.ModelSerializer):
         return value
 
     def validate(self, attrs: dict) -> dict:
-        """ Validate the attributes for the product video. """
+        """Validate the attributes for the product video."""
         product = attrs.get('product')
 
         if product is None:
@@ -49,7 +49,7 @@ class ProductVideoSerializer(serializers.ModelSerializer):
             raise ValidationError(_('Failed to create video: %s') % str(e))
 
     def update(self, instance: ProductVideo, validated_data: dict) -> ProductVideo:
-        """ Update the product video. """
+        """Update the product video."""
         instance.video = validated_data.get('video', instance.video)
 
         try:
