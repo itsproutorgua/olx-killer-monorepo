@@ -1,13 +1,14 @@
 from django.utils.translation import gettext_lazy as _
 from drf_spectacular.utils import extend_schema
 from drf_spectacular.utils import OpenApiExample
+from drf_spectacular.utils import OpenApiResponse
 from rest_framework import response
 from rest_framework import status
 from rest_framework import views
 from rest_framework.permissions import AllowAny
 
 from apps.api_tags import USER_TAG
-from apps.common import responses
+from apps.common import errors
 from apps.users.serializers import AuthSerializer
 
 
@@ -22,8 +23,8 @@ class UserRegistrationView(views.APIView):
         request=AuthSerializer,
         responses={
             status.HTTP_201_CREATED: AuthSerializer,
-            status.HTTP_400_BAD_REQUEST: responses.BAD_REQUEST,
-            status.HTTP_401_UNAUTHORIZED: responses.UNAUTHORIZED_ERROR,
+            status.HTTP_400_BAD_REQUEST: OpenApiResponse(description=errors.BAD_REQUEST),
+            status.HTTP_401_UNAUTHORIZED: OpenApiResponse(description=errors.UNAUTHORIZED_ERROR),
         },
         examples=[
             OpenApiExample(
