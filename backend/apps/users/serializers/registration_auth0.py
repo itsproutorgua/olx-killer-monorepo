@@ -27,7 +27,8 @@ class AuthSerializer(serializers.Serializer):
             picture=picture,
         )
 
-    def validate_auth0_token(self, auth_token, auth0_domain):
+    @staticmethod
+    def validate_auth0_token(auth_token, auth0_domain):
         jwks_url = f'https://{auth0_domain}/.well-known/jwks.json'
 
         try:
