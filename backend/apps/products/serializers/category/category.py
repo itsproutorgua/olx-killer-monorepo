@@ -8,13 +8,15 @@ from apps.products.serializers.category.parent_category import ParentSerializer
 
 
 class CategorySerializer(serializers.ModelSerializer):
+    img_url = serializers.ImageField(source='img', read_only=True)
+    icon_url = serializers.ImageField(source='icon', read_only=True)
     parent = serializers.SerializerMethodField()
     children = serializers.SerializerMethodField()
 
     class Meta:
         model = Category
-        fields = ('title', 'path', 'img', 'icon', 'views', 'parent', 'children')
-        read_only_fields = ('title', 'img', 'icon', 'views', 'parent', 'children')
+        fields = ('title', 'path', 'views', 'img_url', 'icon_url', 'parent', 'children')
+        read_only_fields = ('title', 'img_url', 'icon_url', 'views', 'parent', 'children')
 
     @extend_schema_field(ParentSerializer)
     def get_parent(self, category: Category) -> dict[str, any] | None:
