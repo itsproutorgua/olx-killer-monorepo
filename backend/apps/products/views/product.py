@@ -69,12 +69,13 @@ class ProductAPIViewSet(ViewSet):
                 'seller',
                 'category',
                 'category__parent',
+                'seller__profile',
                 'category__parent__parent',
                 'seller__profile__location',
                 'seller__profile__location__city',
                 'seller__profile__location__city__region',
             ).prefetch_related('product_images', 'prices__currency', 'category__children'),
-            slug=slug,
+            slug=str(slug).strip(),
         )
 
         session_key = f'viewed_product_{product.id}'
@@ -108,7 +109,7 @@ class ProductAPIViewSet(ViewSet):
         },
     )
     def update(self, request, slug=None):
-        product = get_object_or_404(Product, slug=slug)
+        product = get_object_or_404(Product, slug=str(slug).strip())
         serializer = self.serializer_class(product, data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -136,7 +137,7 @@ class ProductAPIViewSet(ViewSet):
         },
     )
     def partial_update(self, request, slug=None):
-        product = get_object_or_404(Product, slug=slug)
+        product = get_object_or_404(Product, slug=str(slug).strip())
         serializer = self.serializer_class(product, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
@@ -155,6 +156,6 @@ class ProductAPIViewSet(ViewSet):
         },
     )
     def destroy(self, request, slug=None):
-        product = get_object_or_404(Product, slug=slug)
+        product = get_object_or_404(Product, slug=str(slug).strip())
         product.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
