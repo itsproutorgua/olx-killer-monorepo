@@ -67,6 +67,7 @@ def create_user(user_data: dict) -> User:
     profile, _ = Profile.objects.update_or_create(
         user=user,
         defaults={
+            'user_olx_id': user_olx_id,
             'location': location,
             'phone_numbers': phone_numbers,
             'is_fake_user': True,
