@@ -96,14 +96,9 @@ class ProductFilterViewSet(mixins.ListModelMixin, GenericViewSet):
                         description=_('Sort products by price in descending order.'),
                     ),
                     OpenApiExample(
-                        name=_('Sort by updated date in ascending order'),
-                        value='updated_at:asc',
-                        description=_('Sort products by updated date in ascending order.'),
-                    ),
-                    OpenApiExample(
-                        name=_('Sort by updated date in descending order'),
-                        value='updated_at:desc',
-                        description=_('Sort products by updated date in descending order.'),
+                        name=_('Sort by created date in ascending order'),
+                        value='created_at:asc',
+                        description=_('Sort products by created date in ascending order.'),
                     ),
                 ],
                 required=False,
@@ -119,7 +114,7 @@ class ProductFilterViewSet(mixins.ListModelMixin, GenericViewSet):
     def list(self, request):
         queryset = self.queryset
 
-        category_path = request.query_params.get('category_path', None)
+        category_path = request.query_params.get('category_path', '').strip()
         price_min = request.query_params.get('price_min', None)
         price_max = request.query_params.get('price_max', None)
         currency_code = request.query_params.get('currency_code', self.default_currency)
@@ -127,7 +122,7 @@ class ProductFilterViewSet(mixins.ListModelMixin, GenericViewSet):
         sort_by = request.query_params.get('sort_by', None)
 
         # Filters
-        if category_path is None:
+        if not category_path:
             return Response({'error': errors.INVALID_CATEGORY_PATH}, status=status.HTTP_400_BAD_REQUEST)
 
         q1 = Q(category__path=category_path)
