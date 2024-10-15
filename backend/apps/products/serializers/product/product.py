@@ -1,15 +1,16 @@
 from django.core.exceptions import ValidationError
 from django.db import IntegrityError
 from django.utils.translation import gettext_lazy as _
+from drf_spectacular.utils import extend_schema_field
 from rest_framework import serializers
 
-from apps.locations.serializers.location import LocationSerializer
 from apps.products.models import Price
 from apps.products.models.product import Product
 from apps.products.serializers import CategorySerializer
 from apps.products.serializers.price.price import PriceSerializer
 from apps.products.serializers.product.product_image import ProductImageSerializer
 from apps.products.serializers.product.product_video import ProductVideoSerializer
+from apps.users.serializers.profile import ProfileSerializer
 
 
 class ProductSerializer(serializers.ModelSerializer):
@@ -17,7 +18,7 @@ class ProductSerializer(serializers.ModelSerializer):
     prices = PriceSerializer(many=True)
     images = ProductImageSerializer(many=True, source='product_images')
     video = ProductVideoSerializer(required=False)
-    location = LocationSerializer(source='seller.profile.location', read_only=True)
+    seller = serializers.SerializerMethodField()
 
     class Meta:
         model = Product
@@ -29,13 +30,16 @@ class ProductSerializer(serializers.ModelSerializer):
             'images',
             'video',
             'seller',
-            'location',
             'slug',
             'views',
             'created_at',
             'updated_at',
         ]
-        read_only_fields = ['created_at', 'updated_at', 'seller', 'location', 'slug', 'views']
+        read_only_fields = ['created_at', 'updated_at', 'seller', 'slug', 'views']
+
+    @extend_schema_field(ProfileSerializer)
+    def get_seller(self, obj: Product) -> ProfileSerializer:
+        return ProfileSerializer(obj.seller.profile).data
 
     def create(self, validated_data: dict) -> Product:
         title = validated_data.pop('title')
