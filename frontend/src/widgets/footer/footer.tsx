@@ -85,7 +85,7 @@ export const Footer = () => {
   ]
 
   return (
-    <footer className='rounded-t-md bg-primary pt-[71px] text-primary-foreground'>
+    <footer className='rounded-t-md bg-primary-900 pt-[71px] text-gray-50'>
       <div className='flex flex-col px-[10px] xl:container xl:flex-row'>
         <div className='pr-[74px] xl:w-1/2 xl:pr-[177px]'>
           <h2 className='text-4xl font-semibold xl:text-5xl'>OLX Killer</h2>
@@ -96,14 +96,14 @@ export const Footer = () => {
             <a
               href='#'
               aria-label='Instagram'
-              className='transition-colors duration-300 hover:text-accent'
+              className='transition-colors duration-300 hover:text-primary-200'
             >
               <InstagramIcon />
             </a>
             <a
               href='#'
               aria-label='Facebook'
-              className='transition-colors duration-300 hover:text-accent'
+              className='transition-colors duration-300 hover:text-primary-200'
             >
               <FacebookIcon />
             </a>
@@ -118,7 +118,7 @@ export const Footer = () => {
                   <li key={idx} className='leading-none'>
                     <a
                       href={item.link}
-                      className='relative inline-block duration-300 before:absolute before:bottom-[-5px] before:left-1/2 before:h-[2px] before:w-0 before:bg-secondary-500-foreground before:transition-all before:duration-300 before:ease-in-out hover:text-secondary-500-foreground hover:transition-colors hover:before:left-0 hover:before:w-full'
+                      className='relative inline-block duration-300 before:absolute before:bottom-[-5px] before:left-1/2 before:h-[2px] before:w-0 before:bg-primary-200 before:transition-all before:duration-300 before:ease-in-out hover:text-primary-200 hover:transition-colors hover:before:left-0 hover:before:w-full'
                     >
                       {item.label}
                     </a>
@@ -136,7 +136,7 @@ export const Footer = () => {
           <Button
             onClick={() => scrollTo({ top: 0, behavior: 'smooth' })}
             variant='outline'
-            className='h-[42px] bg-primary px-[45px] py-[13px]'
+            className='h-[42px] bg-primary px-[45px] hover:text-primary-200 hover:border-primary-200 py-[13px]'
           >
             {t('buttons.backToTop')}
           </Button>

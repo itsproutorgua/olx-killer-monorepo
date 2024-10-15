@@ -11,17 +11,17 @@ import {
 export const ProductPage = () => {
   return (
     <div className='container mt-[27px] md:mt-[38px]'>
-      <ProductDetails />
-      <div className='mt-20 hidden min-h-[277px] md:relative md:mt-[128px] md:block xl:min-h-[440px]'>
+      <ProductDetails className="mb-20 md:mb-32"/>
+      <div className='hidden min-h-[277px] md:relative mb-[53px] md:block xl:min-h-[440px]'>
         <ProductsBySeller />
       </div>
-      <div className='mt-[61px] md:hidden'>
+      <div className='mb-20 md:hidden'>
         <ProductsBySellerSlider />
       </div>
-      <div className='mt-20 hidden min-h-[277px] md:relative md:mt-[128px] md:block xl:min-h-[440px]'>
+      <div className='hidden min-h-[277px] md:relative mb-[53px] md:block xl:min-h-[440px]'>
         <SimilarProducts />
       </div>
-      <div className='mt-[80px] md:hidden'>
+      <div className='mb-20 md:hidden'>
         <SimilarProductsSlider />
       </div>
     </div>

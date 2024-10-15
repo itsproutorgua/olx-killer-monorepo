@@ -69,7 +69,7 @@ export const uk = {
     rights: 'Всі права захищені',
   },
   asideLinks: {
-    trackParcel: 'Відстежити посилку',
+    socialMedia: 'Соціальні мережі',
     helpCenter: 'Центр підтримки',
   },
   currency: 'грн',

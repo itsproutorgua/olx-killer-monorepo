@@ -33,52 +33,6 @@ html body[data-scroll-locked] {
 }
 
 @layer base {
-  :root {
-    --aside-nav-width: 310px;
-    --extra-padding: 370px;
-    --background: 0 0% 98%;
-    --foreground: 0 0% 20%;
-    --primary: 237 45% 29%;
-    --primary-foreground: 0 0% 98%;
-    --primary-gray: #a3a3a3;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 237 100% 81%;
-    --muted: 0 0% 85%; /* hsl(0 0% 85%) */
-    --muted-foreground: 0 0% 98%;
-    --accent: 237 70% 61%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 0 0% 85%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-    --radius: 50px;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --primary-gray: #a3a3a3;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border;
-  }
-
   body {
     @apply bg-background text-foreground;
   }
@@ -86,14 +40,14 @@ html body[data-scroll-locked] {
 
 @layer components {
   .btn-icon {
-    @apply text-primary-foreground transition-colors duration-300 hover:text-accent;
+    @apply text-primary-900 transition-colors duration-300 hover:text-primary-500;
   }
 
   .btn-primary {
-    @apply flex w-full items-center justify-center rounded-[60px] border border-primary bg-primary py-[13px] text-center text-base/none text-primary-foreground transition-colors duration-300 hover:border-accent hover:bg-accent hover:text-accent-foreground;
+    @apply flex w-full items-center justify-center rounded-[60px] border border-primary-900 bg-primary-900 py-[13px] text-center text-base/none text-gray-50 transition-colors duration-300 hover:border-primary-500 hover:bg-primary-500 disabled:border-gray-300 disabled:bg-gray-300;
   }
 
   .btn-secondary {
-    @apply flex w-full items-center justify-center rounded-[60px] border border-gray-200 bg-background py-[13px] text-center text-base/none text-foreground transition-colors duration-300;
+    @apply flex w-full items-center justify-center rounded-[60px] border border-gray-200 bg-background py-[13px] text-center text-base/none text-foreground transition-colors duration-300 hover:border-primary-500 hover:bg-primary-500 disabled:border-gray-300 disabled:bg-gray-300;
   }
 }

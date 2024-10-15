@@ -22,18 +22,19 @@ export const LangSwitcher = () => {
   }
   return (
     <Select value={value} onValueChange={handleChangeLanguage}>
-      <SelectTrigger className='w-[35px] border-0 bg-primary p-0 text-[13px] text-primary-foreground ring-0 ring-offset-0 transition-colors duration-300 hover:text-accent focus:ring-0 focus:ring-offset-0 data-[state=open]:text-accent'>
+      <SelectTrigger className='w-[35px] border-0 bg-primary-900 p-0 text-[13px] text-gray-50 ring-0 ring-offset-0 transition-colors duration-300 hover:text-primary-300 focus:ring-0 focus:ring-offset-0 data-[state=open]:text-primary-300'>
         <SelectValue>{value}</SelectValue>
       </SelectTrigger>
-      <SelectContent className='space-y-[5px] rounded-[11px] bg-background px-[21px] py-3 shadow-[1px_1px_5px_0_rgba(78,78,78,0.19)]'>
+
+      <SelectContent className='m-0 space-y-2 rounded-[11px] bg-background px-[21px] py-3 shadow-[1px_1px_5px_0_rgba(78,78,78,0.19)]'>
         <SelectItem
           value='EN'
-          className='cursor-pointer rounded-none text-[13px] font-medium transition-colors duration-300 focus:bg-background focus:text-accent data-[state=open]:text-accent'
+          className='cursor-pointer rounded-none p-0 text-[13px] font-medium transition-colors duration-300 focus:bg-primary-300 focus:text-primary-900 data-[state=open]:text-primary-900'
         >
           {LANGUAGES.EN[1]}
         </SelectItem>
         <SelectItem
-          className='cursor-pointer rounded-none text-[13px] font-medium transition-colors duration-300 focus:bg-background focus:text-accent data-[state=open]:text-accent'
+          className='cursor-pointer rounded-none p-0 text-[13px] font-medium transition-colors duration-300 focus:bg-primary-300 focus:text-primary-900 data-[state=open]:text-primary-900'
           value='UA'
         >
           {LANGUAGES.UA[1]}
