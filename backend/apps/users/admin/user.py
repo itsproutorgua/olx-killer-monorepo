@@ -18,6 +18,7 @@ class UserAdmin(BaseUserAdmin):
         'is_active',
         'date_joined',
     )
+    readonly_fields = ('last_login', 'date_joined')
     list_display_links = ('email',)
     show_full_result_count = False
 
