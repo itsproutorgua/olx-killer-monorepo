@@ -17,7 +17,7 @@ django.setup()
 
 
 class Command(BaseCommand):
-    help = 'Создание категорий OLX в базе данных'
+    help = 'Create regions and cities for OLX Clone in the database based on predefined data.'
 
     def handle(self, *args, **options):
         self.create_regions_and_cities()
