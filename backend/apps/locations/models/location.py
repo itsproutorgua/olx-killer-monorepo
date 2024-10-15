@@ -11,9 +11,14 @@ class Location(TimestampMixin, models.Model):
         ('village', _('Village')),
     ]
 
-    location_type = models.CharField(_('Location Type'), max_length=20, choices=LOCATION_TYPE_CHOICES)
-    city = models.ForeignKey('City', on_delete=models.CASCADE, null=True, blank=True)
-    village = models.ForeignKey('Village', on_delete=models.CASCADE, null=True, blank=True)
+    location_type = models.CharField(
+        _('Location Type'),
+        max_length=20,
+        choices=LOCATION_TYPE_CHOICES,
+        help_text=_('Type of location'),
+    )
+    city = models.ForeignKey('City', on_delete=models.CASCADE, null=True, blank=True, verbose_name=_('City'))
+    village = models.ForeignKey('Village', on_delete=models.CASCADE, null=True, blank=True, verbose_name=_('Village'))
     latitude = models.DecimalField(_('Latitude'), max_digits=9, decimal_places=6, blank=True, null=True)
     longitude = models.DecimalField(_('Longitude'), max_digits=9, decimal_places=6, blank=True, null=True)
 
