@@ -14,7 +14,7 @@ django.setup()
 
 
 class Command(BaseCommand):
-    help = 'Создание дефолтные валюты в базе данных'
+    help = 'Create default currencies in the database'
 
     def handle(self, *args, **options):
         self.create_default_currencies()
