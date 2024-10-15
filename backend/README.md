@@ -41,7 +41,7 @@
 
 ### Prerequisites
 
-Make sure you have Docker and Docker Compose installed on your machine.
+Make sure you have Docker and Docker Compose installed and upgrade on your machine.
 
 - [Docker Installation Guide](https://docs.docker.com/get-docker/)
 - [Docker Compose Installation Guide](https://docs.docker.com/compose/install/)
