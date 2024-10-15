@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-05 11:16+0300\n"
+"POT-Creation-Date: 2024-10-15 00:27+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,6 +20,71 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
+#: .\apps\common\errors.py:6
+msgid "Unauthorized"
+msgstr "Несанкционированный"
+
+#: .\apps\common\errors.py:7
+msgid "Access denied"
+msgstr "Доступ запрещен"
+
+#: .\apps\common\errors.py:8
+msgid "Validation errors"
+msgstr "Ошибки проверки"
+
+#: .\apps\common\errors.py:11
+msgid "Invalid category path"
+msgstr "Неверный path категории"
+
+#: .\apps\common\errors.py:12
+msgid "Category not found"
+msgstr "Категория не найдена"
+
+#: .\apps\common\errors.py:15
+msgid "No Product matches the given query."
+msgstr "Ни один продукт не соответствует данному запросу."
+
+#: .\apps\common\errors.py:16
+msgid "Invalid sort field."
+msgstr "Неверное поле sort."
+
+#: .\apps\common\errors.py:20
+#: .\apps\products\serializers\product\product_image.py:22
+#: .\apps\products\serializers\product\product_video.py:23
+#, python-format
+msgid "Invalid file type. Allowed types: %s"
+msgstr "Недопустимый тип файла. Разрешенные типы: %s"
+
+#: .\apps\common\errors.py:21
+msgid "Uploaded file is not a valid image."
+msgstr "Загруженный файл не является допустимым изображением."
+
+#: .\apps\common\errors.py:22
+#: .\apps\products\serializers\product\product_image.py:26
+#, python-format
+msgid "The image size cannot exceed %s MB."
+msgstr "Размер изображения не может превышать %s МБ."
+
+#: .\apps\common\errors.py:25
+#, python-format
+msgid "Invalid video type. Allowed types: %s"
+msgstr "Недопустимый тип видео. Разрешенные типы: %s"
+
+#: .\apps\common\errors.py:26
+#: .\apps\products\serializers\product\product_video.py:27
+#, python-format
+msgid "The video size cannot exceed %s MB."
+msgstr "Размер видео не может превышать %s МБ."
+
+#: .\apps\common\errors.py:27
+#, python-brace-format
+msgid "Each product can have only {settings.VIDEO_UPLOAD_LIMIT} video."
+msgstr "Каждый продукт может иметь только {settings.VIDEO_UPLOAD_LIMIT} видео."
+
+#: .\apps\common\errors.py:28
+msgid "Uploaded file is not a valid video."
+msgstr "Загруженный файл не является допустимым видео."
+
 #: .\apps\common\models.py:6
 msgid "Create date"
 msgstr "Дата создания"
@@ -28,81 +93,108 @@ msgstr "Дата создания"
 msgid "Update date"
 msgstr "Дата обновления"
 
-#: .\apps\common\responses.py:5
-msgid "Unauthorized"
-msgstr "Несанкционированный"
+#: .\apps\locations\admin\location.py:13 .\apps\locations\models\location.py:38
+#: .\apps\users\models\profile.py:23
+msgid "Location"
+msgstr "Местоположение"
 
-#: .\apps\common\responses.py:6
-msgid "Access denied"
-msgstr "Доступ запрещен"
+#: .\apps\locations\admin\location.py:22 .\apps\locations\models\region.py:9
+#: .\apps\locations\models\region.py:23
+msgid "Region"
+msgstr "Область"
 
-#: .\apps\common\responses.py:7
-msgid "Validation errors"
-msgstr "Ошибки проверки"
-
-#: .\apps\common\responses.py:8
-msgid "Invalid category ID"
-msgstr "Неверный идентификатор категории"
-
-#: .\apps\common\responses.py:9
-msgid "Category not found"
-msgstr "Категория не найдена"
-
-#: .\apps\common\responses.py:10
-msgid "Product not found"
-msgstr "Продукт не найден"
-
-#: .\apps\locations\apps.py:8
+#: .\apps\locations\apps.py:8 .\apps\locations\models\location.py:39
 msgid "Locations"
 msgstr "Геопозиции"
 
-#: .\apps\locations\models\city.py:9 .\apps\locations\models\city.py:26
+#: .\apps\locations\models\city.py:9 .\apps\locations\models\city.py:24
+#: .\apps\locations\models\location.py:10
 msgid "City"
 msgstr "Город"
 
-#: .\apps\locations\models\city.py:12
-msgid "Latitude"
-msgstr "Широта"
-
-#: .\apps\locations\models\city.py:13
-msgid "Longitude"
-msgstr "Долгота"
-
-#: .\apps\locations\models\city.py:27
+#: .\apps\locations\models\city.py:25
 msgid "Cities"
 msgstr "Города"
 
-#: .\apps\locations\models\region.py:9 .\apps\locations\models\region.py:23
-msgid "Region"
-msgstr "Область"
+#: .\apps\locations\models\location.py:11 .\apps\locations\models\village.py:23
+msgid "Village"
+msgstr "Село"
+
+#: .\apps\locations\models\location.py:14
+msgid "Location Type"
+msgstr "Тип местоположения"
+
+#: .\apps\locations\models\location.py:17
+msgid "Latitude"
+msgstr "Широта"
+
+#: .\apps\locations\models\location.py:18
+msgid "Longitude"
+msgstr "Долгота"
+
+#: .\apps\locations\models\location.py:25
+msgid "Unknown Location"
+msgstr "Неизвестное местоположение"
+
+#: .\apps\locations\models\location.py:29
+msgid "City must be provided for city location type."
+msgstr "Для типа местоположения 'город' необходимо указать город."
+
+#: .\apps\locations\models\location.py:31
+msgid "Village must be provided for village location type."
+msgstr "Для типа местоположения 'село' необходимо указать село."
+
+#: .\apps\locations\models\location.py:34
+msgid "Location cannot be both city and village at the same time."
+msgstr "Местоположение не может быть одновременно городом и селом."
 
 #: .\apps\locations\models\region.py:24
 msgid "Regions"
 msgstr "Области"
 
-#: .\apps\products\apps.py:8 .\apps\products\models\product.py:62
+#: .\apps\locations\models\village.py:9
+msgid "Village Name"
+msgstr "Название села"
+
+#: .\apps\locations\models\village.py:24
+msgid "Villages"
+msgstr "Села"
+
+#: .\apps\products\admin\filters\popular_category.py:10
+msgid "Popular Categories"
+msgstr "Популярные категории"
+
+#: .\apps\products\apps.py:8 .\apps\products\models\product.py:38
 msgid "Products"
 msgstr "Продукты"
 
-#: .\apps\products\models\category.py:9
+#: .\apps\products\models\category.py:16
 msgid "Category name"
 msgstr "Название категории"
 
-#: .\apps\products\models\category.py:17
+#: .\apps\products\models\category.py:24
 msgid "Parent category"
 msgstr "Родительская категория"
 
-#: .\apps\products\models\category.py:19
-#: .\apps\products\models\product_image.py:10
+#: .\apps\products\models\category.py:29
+#: .\apps\products\models\product_image.py:18
 #: .\apps\user_messages\models\message_image.py:10
 msgid "Image"
 msgstr "Изображение"
 
-#: .\apps\products\models\category.py:33 .\apps\products\models\product.py:43
+#: .\apps\products\models\category.py:30
+msgid "Icon"
+msgstr "Иконка"
+
+#: .\apps\products\models\category.py:34 .\apps\products\models\product.py:27
+msgid "Views"
+msgstr "Просмотры"
+
+#: .\apps\products\models\category.py:41 .\apps\products\models\product.py:25
 msgid "Category"
 msgstr "Категория"
 
-#: .\apps\products\models\category.py:34
+#: .\apps\products\models\category.py:42
 msgid "Categories"
 msgstr "Категории"
 
@@ -127,146 +219,268 @@ msgstr "Значение фильтра"
 msgid "Filter values"
 msgstr "Фильтр значений"
 
-#: .\apps\products\models\product.py:15
+#: .\apps\products\models\price\currency.py:8
+msgid "Currency code"
+msgstr "Код валюты"
+
+#: .\apps\products\models\price\currency.py:9
+msgid "Currency symbol"
+msgstr "Символ валюты"
+
+#: .\apps\products\models\price\currency.py:10
+msgid "Currency name"
+msgstr "Название валюты"
+
+#: .\apps\products\models\price\currency.py:17
+#: .\apps\products\models\price\price.py:21
+msgid "Currency"
+msgstr "Валюта"
+
+#: .\apps\products\models\price\currency.py:18
+msgid "Currencies"
+msgstr "Валюты"
+
+#: .\apps\products\models\price\price.py:11
 #, python-brace-format
 msgid "Must be greater than or equal to {MIN_PRICE}."
 msgstr "Должно быть больше или равно {MIN_PRICE}."
 
-#: .\apps\products\models\product.py:19
-msgid "Product name"
-msgstr "Название продукта"
+#: .\apps\products\models\price\price.py:16
+msgid "Amount"
+msgstr "Сумма"
 
-#: .\apps\products\models\product.py:21
-msgid "Price UAH"
-msgstr "Цена в грн."
-
-#: .\apps\products\models\product.py:27
-msgid "Price USD"
-msgstr "Цена в usd."
-
-#: .\apps\products\models\product.py:32
-msgid "Product description"
-msgstr "Описание продукта"
-
+#: .\apps\products\models\price\price.py:22
 #: .\apps\products\models\product.py:37
-msgid "Seller"
-msgstr "Продавец"
-
-#: .\apps\products\models\product.py:45
-msgid "Parameters"
-msgstr "Параметры"
-
-#: .\apps\products\models\product.py:61
 msgid "Product"
 msgstr "Продукт"
 
-#: .\apps\products\models\product_image.py:17
+#: .\apps\products\models\price\price.py:29
+msgid "Price"
+msgstr "Цена"
+
+#: .\apps\products\models\price\price.py:30
+msgid "Prices"
+msgstr "Цены"
+
+#: .\apps\products\models\product.py:13
+msgid "Product name"
+msgstr "Название продукта"
+
+#: .\apps\products\models\product.py:14
+msgid "Product description"
+msgstr "Описание продукта"
+
+#: .\apps\products\models\product.py:19
+msgid "Seller"
+msgstr "Продавец"
+
+#: .\apps\products\models\product.py:28
+msgid "Parameters"
+msgstr "Параметры"
+
+#: .\apps\products\models\product.py:30
+msgid "Product slug"
+msgstr "Слаг продукта"
+
+#: .\apps\products\models\product_image.py:22
+#, python-format
+msgid "Allowed image formats: %s"
+msgstr "Разрешенные форматы изображений: %s"
+
+#: .\apps\products\models\product_image.py:30
 msgid "Product Image"
 msgstr "Изображение продукта"
 
-#: .\apps\products\models\product_image.py:18
+#: .\apps\products\models\product_image.py:31
 msgid "Product Images"
 msgstr "Изображения продукта"
 
-#: .\apps\products\serializers\product.py:45
+#: .\apps\products\models\product_video.py:17
+msgid "Video"
+msgstr "Видео"
+
+#: .\apps\products\models\product_video.py:21
+#, python-format
+msgid "Allowed video formats: %s"
+msgstr "Разрешенные форматы видео: %s"
+
+#: .\apps\products\models\product_video.py:29
+#: .\apps\products\models\product_video.py:30
+msgid "Product Videos"
+msgstr "Видео продуктов"
+
+#: .\apps\products\serializers\price\price.py:38
+msgid "Invalid currency specified."
+msgstr "Указана неверная валюта."
+
+#: .\apps\products\serializers\price\price.py:40
+msgid "Failed to create price: {}"
+msgstr "Не удалось создать цену: {}"
+
+#: .\apps\products\serializers\price\price.py:56
+#: .\apps\products\serializers\product\product.py:97
+msgid "Failed to create product price: {}"
+msgstr "Не удалось создать цену продукта: {}"
+
+#: .\apps\products\serializers\product\product.py:51
 msgid "Database integrity error: {}"
 msgstr "Ошибка целостности базы данных: {}"
 
-#: .\apps\products\views\category.py:22
-msgid "List all categories"
-msgstr "Список всех категорий"
+#: .\apps\products\serializers\product\product.py:56
+msgid "Failed to create product prices: {}"
+msgstr "Не удалось создать цены на продукты: {}"
 
-#: .\apps\products\views\category.py:23
-msgid "Retrieve a list of all categories"
-msgstr "Получить список всех категорий"
+#: .\apps\products\serializers\product\product.py:61
+msgid "Failed to create product images: {}"
+msgstr "Не удалось создать изображения продукта: {}"
 
-#: .\apps\products\views\category.py:30
-msgid "Retrieve a category by ID"
-msgstr "Получить категорию по идентификатору"
+#: .\apps\products\serializers\product\product.py:91
+msgid "Price with currency {} does not exist."
+msgstr "Цена с валютой {} не существует."
 
-#: .\apps\products\views\category.py:31
-msgid "Retrieve a single category by ID"
-msgstr "Получить одну категорию по идентификатору"
+#: .\apps\products\serializers\product\product_image.py:34
+msgid "The product does not exist."
+msgstr "Товар не существует."
 
-#: .\apps\products\views\category.py:51
-msgid "List root categories"
-msgstr "Список основных категорий"
+#: .\apps\products\serializers\product\product_image.py:46
+msgid "Failed to create product image: {}"
+msgstr "Не удалось создать изображение продукта: {}"
+
+#: .\apps\products\serializers\product\product_video.py:36
+msgid "Product must be provided."
+msgstr "Продукт должен быть предоставлен."
+
+#: .\apps\products\serializers\product\product_video.py:39
+msgid "Each product can have only one video."
+msgstr "Каждый продукт может иметь только одно видео."
+
+#: .\apps\products\serializers\product\product_video.py:49
+#, python-format
+msgid "Failed to create video: %s"
+msgstr "Не удалось создать видео: %s"
+
+#: .\apps\products\serializers\product\product_video.py:58
+#, python-format
+msgid "Failed to update video: %s"
+msgstr "Не удалось обновить видео: %s"
+
+#: .\apps\products\views\category.py:34
+msgid "List categories in a tree structure"
+msgstr "Список категорий в древовидной структуре"
+
+#: .\apps\products\views\category.py:35
+msgid "Retrieve a hierarchical tree of categories."
+msgstr "Получить иерархическое дерево категорий."
 
 #: .\apps\products\views\category.py:52
-msgid "Retrieve a list of root categories (where parent is None)"
-msgstr "Получить список основных категорий (где родительская категория — None)"
+msgid "Retrieve a category by path"
+msgstr "Получить категорию по path"
 
-#: .\apps\products\views\category.py:64
-msgid "List child categories"
-msgstr "Список всех категорий"
+#: .\apps\products\views\category.py:53
+msgid "Retrieve a single category by path"
+msgstr "Получить одну категорию по path"
 
-#: .\apps\products\views\category.py:65
-msgid "Retrieve a list of child categories by parent ID"
-msgstr "Получить список дочерних категорий по родительскому идентификатору"
+#: .\apps\products\views\currency.py:12
+msgid "Retrieve a list of all currencies"
+msgstr "Получить список всех валют"
 
-#: .\apps\products\views\category.py:67
-msgid "ID of the parent category"
-msgstr "Идентификатор родительской категории"
-
-#: .\apps\products\views\category.py:76
-msgid "Invalid parent ID"
-msgstr "Неверный идентификатор родителя"
+#: .\apps\products\views\currency.py:13
+msgid ""
+"Returns a list of available currencies with their code, symbol, and name."
+msgstr "Возвращает список доступных валют с их кодом, символом и названием."
 
 #: .\apps\products\views\product.py:33
-msgid "List all products"
-msgstr "Список всех продуктов"
-
-#: .\apps\products\views\product.py:34
-msgid "Retrieve a list of all products"
-msgstr "Получить список всех продуктов"
-
-#: .\apps\products\views\product.py:47
 msgid "Create a product"
 msgstr "Создать продукт"
 
-#: .\apps\products\views\product.py:48
+#: .\apps\products\views\product.py:34
 msgid "Create a new product with the provided data"
 msgstr "Создайте новый продукт с предоставленными данными"
 
-#: .\apps\products\views\product.py:66
+#: .\apps\products\views\product.py:59
 msgid "Retrieve a product"
 msgstr "Получить продукт"
 
-#: .\apps\products\views\product.py:67
-msgid "Retrieve a single product by ID"
-msgstr "Получить один продукт по идентификатору"
+#: .\apps\products\views\product.py:60
+msgid "Retrieve a single product by slug"
+msgstr "Получить один продукт по slug"
 
-#: .\apps\products\views\product.py:77
+#: .\apps\products\views\product.py:92
 msgid "Update a product"
 msgstr "Обновить продукт"
 
-#: .\apps\products\views\product.py:78
+#: .\apps\products\views\product.py:93
 msgid "Update a product with the provided data"
 msgstr "Обновите продукт с предоставленными данными"
 
-#: .\apps\products\views\product.py:97
+#: .\apps\products\views\product.py:120
 msgid "Partial update a product"
 msgstr "Частичное обновление продукта"
 
-#: .\apps\products\views\product.py:98
+#: .\apps\products\views\product.py:121
 msgid "Partial update a product with the provided data"
 msgstr "Частичное обновление продукта с предоставленными данными"
 
-#: .\apps\products\views\product.py:117
+#: .\apps\products\views\product.py:148
 msgid "Delete a product"
 msgstr "Удалить продукт"
 
-#: .\apps\products\views\product.py:118
-msgid "Delete a product by ID"
-msgstr "Удалить продукт по идентификатору"
+#: .\apps\products\views\product.py:149
+msgid "Delete a product by slug"
+msgstr "Удалить продукт по slug"
 
-#: .\apps\products\views\product.py:132 .\apps\products\views\product.py:138
-msgid "Filter products by category ID"
-msgstr "Фильтровать продукты по идентификатору категории"
+#: .\apps\products\views\product_filters.py:53
+msgid "Filter products by various parameters"
+msgstr "Фильтровать товары по различным параметрам"
 
-#: .\apps\products\views\product.py:133
-msgid "Retrieve a list of products filtered by category"
-msgstr "Получить список продуктов, отсортированных по категории"
+#: .\apps\products\views\product_filters.py:54
+msgid "Retrieve a list of products filtered by multiple parameters"
+msgstr "Получить список продуктов, отфильтрованных по нескольким параметрам"
+
+#: .\apps\products\views\product_filters.py:59
+msgid "Filter products by category path"
+msgstr "Фильтровать продукты по category path"
+
+#: .\apps\products\views\product_filters.py:65
+msgid "Minimum price filter"
+msgstr "Фильтр минимальной цены"
+
+#: .\apps\products\views\product_filters.py:71
+msgid "Maximum price filter"
+msgstr "Фильтр максимальной цены"
+
+#: .\apps\products\views\product_filters.py:77
+#, python-brace-format
+msgid "Currency code for the price filter (Default: {default_currency})"
+msgstr "Код валюты для ценового фильтра (по умолчанию: {default_currency})"
+
+#: .\apps\products\views\product_filters.py:84
+msgid "Field to sort products by (e.g., {"
+msgstr "Поле для сортировки продуктов (например, {"
+
+#: .\apps\products\views\product_filters.py:89
+msgid "Sort by price in ascending order"
+msgstr "Сортировать по цене в порядке возрастания"
+
+#: .\apps\products\views\product_filters.py:91
+msgid "Sort products by price in ascending order."
+msgstr "Сортировать товары по цене в порядке возрастания."
+
+#: .\apps\products\views\product_filters.py:94
+msgid "Sort by price in descending order"
+msgstr "Сортировать по цене в порядке убывания"
+
+#: .\apps\products\views\product_filters.py:96
+msgid "Sort products by price in descending order."
+msgstr "Сортировать товары по цене в порядке убывания."
+
+#: .\apps\products\views\product_filters.py:99
+msgid "Sort by created date in ascending order"
+msgstr "Сортировать по дате создания в порядке возрастания"
+
+#: .\apps\products\views\product_filters.py:101
+msgid "Sort products by created date in ascending order."
+msgstr "Сортировать продукты по дате создания в порядке возрастания."
 
 #: .\apps\user_messages\apps.py:8
 msgid "User messages"
@@ -305,27 +519,11 @@ msgstr "Изображение сообщения"
 msgid "Message Images"
 msgstr "Изображения сообщений"
 
-#: .\apps\users\admin.py:25
-msgid "Personal info"
-msgstr "Личная информация"
-
-#: .\apps\users\admin.py:27
-msgid "Permissions"
-msgstr "Разрешения"
-
-#: .\apps\users\admin.py:39 .\apps\users\models.py:74
-msgid "Location"
-msgstr "Местоположение"
-
-#: .\apps\users\admin.py:40
-msgid "Important dates"
-msgstr "Важные даты"
-
-#: .\apps\users\admin.py:66
+#: .\apps\users\admin\user.py:29
 msgid "Passwords do not match."
 msgstr "Пароли не совпадают."
 
-#: .\apps\users\apps.py:8 .\apps\users\models.py:90
+#: .\apps\users\apps.py:8 .\apps\users\models\user.py:67
 msgid "Users"
 msgstr "Пользователи"
 
@@ -341,51 +539,83 @@ msgstr "Суперпользователь должен иметь is_staff=True
 msgid "Superuser must have is_superuser=True."
 msgstr "Суперпользователь должен иметь is_superuser=True."
 
-#: .\apps\users\models.py:24
+#: .\apps\users\models\profile.py:9 .\apps\users\models\user.py:66
+msgid "User"
+msgstr "Пользователь"
+
+#: .\apps\users\models\profile.py:11
+msgid "profile picture"
+msgstr "фотография профиля"
+
+#: .\apps\users\models\profile.py:15
+msgid "Upload a profile picture."
+msgstr "Загрузите фотографию профиля."
+
+#: .\apps\users\models\profile.py:24
+msgid "This field allows you to specify the user's city and region."
+msgstr "В этом поле можно указать город и регион пользователя."
+
+#: .\apps\users\models\profile.py:27
+msgid "Phone numbers"
+msgstr "Номера телефонов"
+
+#: .\apps\users\models\profile.py:27
+msgid "You can add multiple phone numbers."
+msgstr "Вы можете добавить несколько номеров телефонов."
+
+#: .\apps\users\models\profile.py:37
+msgid "Profile"
+msgstr "Профиль"
+
+#: .\apps\users\models\profile.py:38
+msgid "Profiles"
+msgstr "Профили"
+
+#: .\apps\users\models\user.py:23
 msgid "username"
 msgstr "имя пользователя"
 
-#: .\apps\users\models.py:26
+#: .\apps\users\models\user.py:25
 msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
 msgstr "Обязательно. Не более 150 символов. Только буквы, цифры и @/./+/-/_."
 
-#: .\apps\users\models.py:30
+#: .\apps\users\models\user.py:29
 msgid "first name"
 msgstr "имя"
 
-#: .\apps\users\models.py:32 .\apps\users\models.py:39
+#: .\apps\users\models\user.py:31 .\apps\users\models\user.py:38
 msgid "Required. 150 characters or fewer."
 msgstr "Обязательно. Не более 150 символов."
 
-#: .\apps\users\models.py:37
+#: .\apps\users\models\user.py:36
 msgid "last name"
 msgstr "фамилия"
 
-#: .\apps\users\models.py:43
+#: .\apps\users\models\user.py:42
 msgid "email address"
 msgstr "Адрес электронной почты"
 
-#: .\apps\users\models.py:45
+#: .\apps\users\models\user.py:44
 msgid "email confirm"
 msgstr "подтверждение по электронной почте"
 
-#: .\apps\users\models.py:47
+#: .\apps\users\models\user.py:46
 msgid "Indicates whether the user has verified their email address."
 msgstr "Указывает, подтвердил ли пользователь свой адрес электронной почты."
 
-#: .\apps\users\models.py:50
+#: .\apps\users\models\user.py:49
 msgid "staff status"
 msgstr "статус персонала"
 
-#: .\apps\users\models.py:52
+#: .\apps\users\models\user.py:51
 msgid "Designates whether the user can log into this admin site."
 msgstr "Определяет, может ли пользователь войти на этот сайт администратора."
 
-#: .\apps\users\models.py:55
+#: .\apps\users\models\user.py:54
 msgid "active"
 msgstr "активный"
 
-#: .\apps\users\models.py:58
+#: .\apps\users\models\user.py:57
 msgid ""
 "Designates whether this user should be treated as active. Unselect this "
 "instead of deleting accounts."
@@ -393,92 +623,110 @@ msgstr ""
 "Определяет, следует ли считать этого пользователя активным. Снимите этот "
 "флажок вместо удаления учетных записей."
 
-#: .\apps\users\models.py:62
-msgid "profile picture"
-msgstr "фотография профиля"
-
-#: .\apps\users\models.py:66
-msgid "Upload a profile picture."
-msgstr "Загрузите фотографию профиля."
-
-#: .\apps\users\models.py:75
-msgid "This field allows you to specify the user's city and region."
-msgstr "В этом поле можно указать город и регион пользователя."
-
-#: .\apps\users\models.py:78
-msgid "Phone numbers"
-msgstr "Номера телефонов"
-
-#: .\apps\users\models.py:78
-msgid "You can add multiple phone numbers."
-msgstr "Вы можете добавить несколько номеров телефонов."
-
-#: .\apps\users\models.py:80
+#: .\apps\users\models\user.py:60
 msgid "date joined"
 msgstr "дата присоединения"
 
-#: .\apps\users\models.py:82
-msgid "fake user"
-msgstr "не настоящий пользователь"
-
-#: .\apps\users\models.py:89
-msgid "User"
-msgstr "Пользователь"
-
-#: .\apps\users\serializers\registration_auth0.py:36
+#: .\apps\users\serializers\registration_auth0.py:37
 #, python-brace-format
 msgid "Failed to fetch JWKS: {e}"
 msgstr "Не удалось получить JWKS: {e}"
 
-#: .\apps\users\serializers\registration_auth0.py:52
+#: .\apps\users\serializers\registration_auth0.py:53
 msgid "Unable to find the appropriate key."
 msgstr "Не удалось найти подходящий ключ."
 
-#: .\apps\users\serializers\registration_auth0.py:58
+#: .\apps\users\serializers\registration_auth0.py:59
 msgid "Token has expired"
 msgstr "Срок действия токена истек"
 
-#: .\apps\users\serializers\registration_auth0.py:60
+#: .\apps\users\serializers\registration_auth0.py:61
 msgid "Invalid token audience"
 msgstr "Недействительный токен аудитории"
 
-#: .\apps\users\serializers\registration_auth0.py:62
+#: .\apps\users\serializers\registration_auth0.py:63
 msgid "Invalid token issuer"
 msgstr "Недействительный эмитент токена"
 
-#: .\apps\users\serializers\registration_auth0.py:64
+#: .\apps\users\serializers\registration_auth0.py:65
 msgid "Error decoding token"
 msgstr "Ошибка декодирования токена"
 
-#: .\apps\users\serializers\registration_auth0.py:66
+#: .\apps\users\serializers\registration_auth0.py:67
 msgid "Invalid token"
 msgstr "Недействительный токен"
 
-#: .\apps\users\views\registration_auth0.py:20
+#: .\apps\users\views\registration_auth0.py:21
 msgid "Register a new user"
 msgstr "Зарегистрировать нового пользователя"
 
-#: .\apps\users\views\registration_auth0.py:21
+#: .\apps\users\views\registration_auth0.py:22
 msgid "Register a new user using the provided Auth0 token."
 msgstr ""
 "Зарегистрируйте нового пользователя, используя предоставленный токен Auth0."
 
-#: .\apps\users\views\registration_auth0.py:30
+#: .\apps\users\views\registration_auth0.py:31
 msgid "User registration example response"
 msgstr "Пример ответа на регистрацию пользователя"
 
-#: .\apps\users\views\registration_auth0.py:31
+#: .\apps\users\views\registration_auth0.py:32
 msgid "Example of a successful response after user registration."
 msgstr "Пример успешного ответа после регистрации пользователя."
 
-#: .\settings\base.py:130
+#: .\settings\base.py:129
 msgid "Ukrainian"
 msgstr "украинский"
 
-#: .\settings\base.py:131
+#: .\settings\base.py:130
 msgid "English"
 msgstr "Английский"
 
-#: .\settings\base.py:132
+#: .\settings\base.py:131
 msgid "Russian"
 msgstr "Русский"
+
+#~ msgid "fake user"
+#~ msgstr "не настоящий пользователь"
+
+#~ msgid "Invalid parent ID"
+#~ msgstr "Неверный идентификатор родителя"
+
+#~ msgid "Product not found"
+#~ msgstr "Продукт не найден"
+
+#~ msgid "Price USD"
+#~ msgstr "Цена в usd."
+
+#~ msgid "List all categories"
+#~ msgstr "Список всех категорий"
+
+#~ msgid "List root categories"
+#~ msgstr "Список основных категорий"
+
+#~ msgid "Retrieve a list of root categories (where parent is None)"
+#~ msgstr ""
+#~ "Получить список основных категорий (где родительская категория — None)"
+
+#~ msgid "List child categories"
+#~ msgstr "Список дочерних категорий"
+
+#~ msgid "Retrieve a list of child categories by parent ID"
+#~ msgstr "Получить список дочерних категорий по родительскому идентификатору"
+
+#~ msgid "ID of the parent category"
+#~ msgstr "Идентификатор родительской категории"
+
+#~ msgid "List all products"
+#~ msgstr "Список всех продуктов"
+
+#~ msgid "Retrieve a list of all products"
+#~ msgstr "Получить список всех продуктов"
+
+#~ msgid "Personal info"
+#~ msgstr "Личная информация"
+
+#~ msgid "Permissions"
+#~ msgstr "Разрешения"
+
+#~ msgid "Important dates"
+#~ msgstr "Важные даты"
