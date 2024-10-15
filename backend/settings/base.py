@@ -20,6 +20,7 @@ from django.utils.translation import gettext_lazy as _
 env = environ.Env(
     DEBUG=(bool, False),
     SECRET_KEY=(str, None),
+    DATA_UPLOAD_MAX_MEMORY_SIZE=(int, 52428800)
 )
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
