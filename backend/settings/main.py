@@ -43,7 +43,6 @@ INSTALLED_APPS += [
     'rest_framework_simplejwt',
     'corsheaders',
     'rosetta',
-
     # Local apps
     'apps.users.apps.UsersConfig',
     'apps.products.apps.ProductsConfig',
