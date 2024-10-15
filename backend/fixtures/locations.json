@@ -1,0 +1,5475 @@
+[
+{
+    "model": "locations.location",
+    "pk": 1,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.110Z",
+        "updated_at": "2024-10-14T04:28:19.110Z",
+        "location_type": "city",
+        "city": 1,
+        "village": null,
+        "latitude": "49.078060",
+        "longitude": "27.683060"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 2,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.118Z",
+        "updated_at": "2024-10-14T04:28:19.118Z",
+        "location_type": "city",
+        "city": 2,
+        "village": null,
+        "latitude": "48.372780",
+        "longitude": "29.532500"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 3,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.126Z",
+        "updated_at": "2024-10-14T04:28:19.126Z",
+        "location_type": "city",
+        "city": 3,
+        "village": null,
+        "latitude": "49.237220",
+        "longitude": "28.467220"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 4,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.132Z",
+        "updated_at": "2024-10-14T04:28:19.132Z",
+        "location_type": "city",
+        "city": 4,
+        "village": null,
+        "latitude": "48.810280",
+        "longitude": "29.384170"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 5,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.140Z",
+        "updated_at": "2024-10-14T04:28:19.140Z",
+        "location_type": "city",
+        "city": 5,
+        "village": null,
+        "latitude": "49.091110",
+        "longitude": "28.348610"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 6,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.147Z",
+        "updated_at": "2024-10-14T04:28:19.147Z",
+        "location_type": "city",
+        "city": 6,
+        "village": null,
+        "latitude": "49.036940",
+        "longitude": "28.103610"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 7,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.153Z",
+        "updated_at": "2024-10-14T04:28:19.153Z",
+        "location_type": "city",
+        "city": 7,
+        "village": null,
+        "latitude": "49.105280",
+        "longitude": "29.208060"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 8,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.160Z",
+        "updated_at": "2024-10-14T04:28:19.160Z",
+        "location_type": "city",
+        "city": 8,
+        "village": null,
+        "latitude": "49.447220",
+        "longitude": "28.523060"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 9,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.167Z",
+        "updated_at": "2024-10-14T04:28:19.167Z",
+        "location_type": "city",
+        "city": 9,
+        "village": null,
+        "latitude": "49.716670",
+        "longitude": "28.833330"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 10,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.174Z",
+        "updated_at": "2024-10-14T04:28:19.174Z",
+        "location_type": "city",
+        "city": 10,
+        "village": null,
+        "latitude": "48.689720",
+        "longitude": "29.241670"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 11,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.180Z",
+        "updated_at": "2024-10-14T04:28:19.180Z",
+        "location_type": "city",
+        "city": 11,
+        "village": null,
+        "latitude": "49.216110",
+        "longitude": "29.056110"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 12,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.186Z",
+        "updated_at": "2024-10-14T04:28:19.186Z",
+        "location_type": "city",
+        "city": 12,
+        "village": null,
+        "latitude": "48.455000",
+        "longitude": "27.808060"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 13,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.193Z",
+        "updated_at": "2024-10-14T04:28:19.193Z",
+        "location_type": "city",
+        "city": 13,
+        "village": null,
+        "latitude": "48.979440",
+        "longitude": "28.843890"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 14,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.201Z",
+        "updated_at": "2024-10-14T04:28:19.201Z",
+        "location_type": "city",
+        "city": 14,
+        "village": null,
+        "latitude": "49.486940",
+        "longitude": "29.273330"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 15,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.206Z",
+        "updated_at": "2024-10-14T04:28:19.206Z",
+        "location_type": "city",
+        "city": 15,
+        "village": null,
+        "latitude": "48.674440",
+        "longitude": "28.849720"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 16,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.213Z",
+        "updated_at": "2024-10-14T04:28:19.213Z",
+        "location_type": "city",
+        "city": 16,
+        "village": null,
+        "latitude": "49.556940",
+        "longitude": "27.957220"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 17,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.220Z",
+        "updated_at": "2024-10-14T04:28:19.220Z",
+        "location_type": "city",
+        "city": 17,
+        "village": null,
+        "latitude": "48.755280",
+        "longitude": "28.078890"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 18,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.226Z",
+        "updated_at": "2024-10-14T04:28:19.226Z",
+        "location_type": "city",
+        "city": 18,
+        "village": null,
+        "latitude": "48.245000",
+        "longitude": "28.277780"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 19,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.235Z",
+        "updated_at": "2024-10-14T04:28:19.235Z",
+        "location_type": "city",
+        "city": 19,
+        "village": null,
+        "latitude": "50.357222",
+        "longitude": "25.112222"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 20,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.242Z",
+        "updated_at": "2024-10-14T04:28:19.242Z",
+        "location_type": "city",
+        "city": 20,
+        "village": null,
+        "latitude": "50.841389",
+        "longitude": "24.322222"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 21,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.248Z",
+        "updated_at": "2024-10-14T04:28:19.248Z",
+        "location_type": "city",
+        "city": 21,
+        "village": null,
+        "latitude": "50.499444",
+        "longitude": "24.765000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 22,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.254Z",
+        "updated_at": "2024-10-14T04:28:19.254Z",
+        "location_type": "city",
+        "city": 22,
+        "village": null,
+        "latitude": "51.620000",
+        "longitude": "24.965278"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 23,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.261Z",
+        "updated_at": "2024-10-14T04:28:19.261Z",
+        "location_type": "city",
+        "city": 23,
+        "village": null,
+        "latitude": "50.833056",
+        "longitude": "25.461389"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 24,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.267Z",
+        "updated_at": "2024-10-14T04:28:19.267Z",
+        "location_type": "city",
+        "city": 24,
+        "village": null,
+        "latitude": "51.219167",
+        "longitude": "24.687222"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 25,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.273Z",
+        "updated_at": "2024-10-14T04:28:19.273Z",
+        "location_type": "city",
+        "city": 25,
+        "village": null,
+        "latitude": "50.748889",
+        "longitude": "25.324444"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 26,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.280Z",
+        "updated_at": "2024-10-14T04:28:19.280Z",
+        "location_type": "city",
+        "city": 26,
+        "village": null,
+        "latitude": "51.223611",
+        "longitude": "24.032778"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 27,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.286Z",
+        "updated_at": "2024-10-14T04:28:19.286Z",
+        "location_type": "city",
+        "city": 27,
+        "village": null,
+        "latitude": "50.727222",
+        "longitude": "24.165000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 28,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.292Z",
+        "updated_at": "2024-10-14T04:28:19.292Z",
+        "location_type": "city",
+        "city": 28,
+        "village": null,
+        "latitude": "50.912778",
+        "longitude": "25.270000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 29,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.298Z",
+        "updated_at": "2024-10-14T04:28:19.298Z",
+        "location_type": "city",
+        "city": 29,
+        "village": null,
+        "latitude": "50.860000",
+        "longitude": "24.156944"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 30,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.307Z",
+        "updated_at": "2024-10-14T04:28:19.307Z",
+        "location_type": "city",
+        "city": 30,
+        "village": null,
+        "latitude": "47.659444",
+        "longitude": "33.716667"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 31,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.314Z",
+        "updated_at": "2024-10-14T04:28:19.314Z",
+        "location_type": "city",
+        "city": 31,
+        "village": null,
+        "latitude": "48.485278",
+        "longitude": "34.254444"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 32,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.321Z",
+        "updated_at": "2024-10-14T04:28:19.321Z",
+        "location_type": "city",
+        "city": 32,
+        "village": null,
+        "latitude": "48.642500",
+        "longitude": "34.340278"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 33,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.327Z",
+        "updated_at": "2024-10-14T04:28:19.327Z",
+        "location_type": "city",
+        "city": 33,
+        "village": null,
+        "latitude": "48.478056",
+        "longitude": "34.028056"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 34,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.334Z",
+        "updated_at": "2024-10-14T04:28:19.334Z",
+        "location_type": "city",
+        "city": 34,
+        "village": null,
+        "latitude": "48.466111",
+        "longitude": "35.025278"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 35,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.342Z",
+        "updated_at": "2024-10-14T04:28:19.342Z",
+        "location_type": "city",
+        "city": 35,
+        "village": null,
+        "latitude": "48.366389",
+        "longitude": "33.502500"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 36,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.347Z",
+        "updated_at": "2024-10-14T04:28:19.347Z",
+        "location_type": "city",
+        "city": 36,
+        "village": null,
+        "latitude": "47.566389",
+        "longitude": "33.646389"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 37,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.355Z",
+        "updated_at": "2024-10-14T04:28:19.355Z",
+        "location_type": "city",
+        "city": 37,
+        "village": null,
+        "latitude": "48.528889",
+        "longitude": "34.597222"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 38,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.362Z",
+        "updated_at": "2024-10-14T04:28:19.362Z",
+        "location_type": "city",
+        "city": 38,
+        "village": null,
+        "latitude": "47.908611",
+        "longitude": "33.348889"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 39,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.367Z",
+        "updated_at": "2024-10-14T04:28:19.367Z",
+        "location_type": "city",
+        "city": 39,
+        "village": null,
+        "latitude": "47.644722",
+        "longitude": "34.604167"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 40,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.374Z",
+        "updated_at": "2024-10-14T04:28:19.374Z",
+        "location_type": "city",
+        "city": 40,
+        "village": null,
+        "latitude": "47.577222",
+        "longitude": "34.357500"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 41,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.380Z",
+        "updated_at": "2024-10-14T04:28:19.380Z",
+        "location_type": "city",
+        "city": 41,
+        "village": null,
+        "latitude": "48.637778",
+        "longitude": "35.228889"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 42,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.387Z",
+        "updated_at": "2024-10-14T04:28:19.387Z",
+        "location_type": "city",
+        "city": 42,
+        "village": null,
+        "latitude": "48.520000",
+        "longitude": "35.870000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 43,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.394Z",
+        "updated_at": "2024-10-14T04:28:19.394Z",
+        "location_type": "city",
+        "city": 43,
+        "village": null,
+        "latitude": "49.014444",
+        "longitude": "35.365000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 44,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.401Z",
+        "updated_at": "2024-10-14T04:28:19.401Z",
+        "location_type": "city",
+        "city": 44,
+        "village": null,
+        "latitude": "48.347500",
+        "longitude": "36.401667"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 45,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.407Z",
+        "updated_at": "2024-10-14T04:28:19.407Z",
+        "location_type": "city",
+        "city": 45,
+        "village": null,
+        "latitude": "48.575000",
+        "longitude": "35.102222"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 46,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.412Z",
+        "updated_at": "2024-10-14T04:28:19.412Z",
+        "location_type": "city",
+        "city": 46,
+        "village": null,
+        "latitude": "48.413056",
+        "longitude": "33.702778"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 47,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.420Z",
+        "updated_at": "2024-10-14T04:28:19.420Z",
+        "location_type": "city",
+        "city": 47,
+        "village": null,
+        "latitude": "47.653333",
+        "longitude": "34.084167"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 48,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.427Z",
+        "updated_at": "2024-10-14T04:28:19.427Z",
+        "location_type": "city",
+        "city": 48,
+        "village": null,
+        "latitude": "48.317222",
+        "longitude": "35.511944"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 49,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.434Z",
+        "updated_at": "2024-10-14T04:28:19.434Z",
+        "location_type": "city",
+        "city": 49,
+        "village": null,
+        "latitude": "48.524444",
+        "longitude": "36.082500"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 50,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.444Z",
+        "updated_at": "2024-10-14T04:28:19.444Z",
+        "location_type": "city",
+        "city": 50,
+        "village": null,
+        "latitude": "48.020500",
+        "longitude": "37.652500"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 51,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.451Z",
+        "updated_at": "2024-10-14T04:28:19.451Z",
+        "location_type": "city",
+        "city": 51,
+        "village": null,
+        "latitude": "48.578800",
+        "longitude": "38.046300"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 52,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.458Z",
+        "updated_at": "2024-10-14T04:28:19.458Z",
+        "location_type": "city",
+        "city": 52,
+        "village": null,
+        "latitude": "48.334100",
+        "longitude": "37.710400"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 53,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.464Z",
+        "updated_at": "2024-10-14T04:28:19.464Z",
+        "location_type": "city",
+        "city": 53,
+        "village": null,
+        "latitude": "48.298500",
+        "longitude": "38.038200"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 54,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.471Z",
+        "updated_at": "2024-10-14T04:28:19.471Z",
+        "location_type": "city",
+        "city": 54,
+        "village": null,
+        "latitude": "48.317300",
+        "longitude": "38.386900"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 55,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.478Z",
+        "updated_at": "2024-10-14T04:28:19.478Z",
+        "location_type": "city",
+        "city": 55,
+        "village": null,
+        "latitude": "48.675800",
+        "longitude": "38.445300"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 56,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.484Z",
+        "updated_at": "2024-10-14T04:28:19.484Z",
+        "location_type": "city",
+        "city": 56,
+        "village": null,
+        "latitude": "48.389400",
+        "longitude": "37.523400"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 57,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.491Z",
+        "updated_at": "2024-10-14T04:28:19.491Z",
+        "location_type": "city",
+        "city": 57,
+        "village": null,
+        "latitude": "48.302100",
+        "longitude": "37.388400"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 58,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.498Z",
+        "updated_at": "2024-10-14T04:28:19.498Z",
+        "location_type": "city",
+        "city": 58,
+        "village": null,
+        "latitude": "48.120300",
+        "longitude": "37.539400"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 59,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.505Z",
+        "updated_at": "2024-10-14T04:28:19.505Z",
+        "location_type": "city",
+        "city": 59,
+        "village": null,
+        "latitude": "48.015900",
+        "longitude": "37.802900"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 60,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.512Z",
+        "updated_at": "2024-10-14T04:28:19.512Z",
+        "location_type": "city",
+        "city": 60,
+        "village": null,
+        "latitude": "48.687200",
+        "longitude": "37.177000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 61,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.519Z",
+        "updated_at": "2024-10-14T04:28:19.519Z",
+        "location_type": "city",
+        "city": 61,
+        "village": null,
+        "latitude": "48.028600",
+        "longitude": "38.474700"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 62,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.526Z",
+        "updated_at": "2024-10-14T04:28:19.526Z",
+        "location_type": "city",
+        "city": 62,
+        "village": null,
+        "latitude": "48.137700",
+        "longitude": "38.013500"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 63,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.532Z",
+        "updated_at": "2024-10-14T04:28:19.532Z",
+        "location_type": "city",
+        "city": 63,
+        "village": null,
+        "latitude": "48.383600",
+        "longitude": "38.535600"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 64,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.539Z",
+        "updated_at": "2024-10-14T04:28:19.539Z",
+        "location_type": "city",
+        "city": 64,
+        "village": null,
+        "latitude": "48.776000",
+        "longitude": "37.640100"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 65,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.546Z",
+        "updated_at": "2024-10-14T04:28:19.546Z",
+        "location_type": "city",
+        "city": 65,
+        "village": null,
+        "latitude": "48.707500",
+        "longitude": "37.589500"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 66,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.551Z",
+        "updated_at": "2024-10-14T04:28:19.551Z",
+        "location_type": "city",
+        "city": 66,
+        "village": null,
+        "latitude": "48.750700",
+        "longitude": "37.730000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 67,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.559Z",
+        "updated_at": "2024-10-14T04:28:19.559Z",
+        "location_type": "city",
+        "city": 67,
+        "village": null,
+        "latitude": "48.310300",
+        "longitude": "37.518600"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 68,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.567Z",
+        "updated_at": "2024-10-14T04:28:19.567Z",
+        "location_type": "city",
+        "city": 68,
+        "village": null,
+        "latitude": "48.026300",
+        "longitude": "37.963300"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 69,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.574Z",
+        "updated_at": "2024-10-14T04:28:19.574Z",
+        "location_type": "city",
+        "city": 69,
+        "village": null,
+        "latitude": "47.097100",
+        "longitude": "37.543500"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 70,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.580Z",
+        "updated_at": "2024-10-14T04:28:19.580Z",
+        "location_type": "city",
+        "city": 70,
+        "village": null,
+        "latitude": "48.469100",
+        "longitude": "37.686700"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 71,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.587Z",
+        "updated_at": "2024-10-14T04:28:19.587Z",
+        "location_type": "city",
+        "city": 71,
+        "village": null,
+        "latitude": "48.021100",
+        "longitude": "37.596500"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 72,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.593Z",
+        "updated_at": "2024-10-14T04:28:19.593Z",
+        "location_type": "city",
+        "city": 72,
+        "village": null,
+        "latitude": "48.872400",
+        "longitude": "37.617200"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 73,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.601Z",
+        "updated_at": "2024-10-14T04:28:19.601Z",
+        "location_type": "city",
+        "city": 73,
+        "village": null,
+        "latitude": "48.013300",
+        "longitude": "38.224100"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 74,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.607Z",
+        "updated_at": "2024-10-14T04:28:19.607Z",
+        "location_type": "city",
+        "city": 74,
+        "village": null,
+        "latitude": "48.193000",
+        "longitude": "38.038900"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 75,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.614Z",
+        "updated_at": "2024-10-14T04:28:19.614Z",
+        "location_type": "city",
+        "city": 75,
+        "village": null,
+        "latitude": "48.060600",
+        "longitude": "38.024900"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 76,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.619Z",
+        "updated_at": "2024-10-14T04:28:19.619Z",
+        "location_type": "city",
+        "city": 76,
+        "village": null,
+        "latitude": "48.102100",
+        "longitude": "38.111700"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 77,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.626Z",
+        "updated_at": "2024-10-14T04:28:19.626Z",
+        "location_type": "city",
+        "city": 77,
+        "village": null,
+        "latitude": "48.061400",
+        "longitude": "37.775100"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 78,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.636Z",
+        "updated_at": "2024-10-14T04:28:19.636Z",
+        "location_type": "city",
+        "city": 78,
+        "village": null,
+        "latitude": "50.250000",
+        "longitude": "28.662400"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 79,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.642Z",
+        "updated_at": "2024-10-14T04:28:19.642Z",
+        "location_type": "city",
+        "city": 79,
+        "village": null,
+        "latitude": "49.896900",
+        "longitude": "28.581900"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 80,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.649Z",
+        "updated_at": "2024-10-14T04:28:19.649Z",
+        "location_type": "city",
+        "city": 80,
+        "village": null,
+        "latitude": "50.982700",
+        "longitude": "28.593100"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 81,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.656Z",
+        "updated_at": "2024-10-14T04:28:19.656Z",
+        "location_type": "city",
+        "city": 81,
+        "village": null,
+        "latitude": "50.523400",
+        "longitude": "27.614000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 82,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.662Z",
+        "updated_at": "2024-10-14T04:28:19.662Z",
+        "location_type": "city",
+        "city": 82,
+        "village": null,
+        "latitude": "50.582000",
+        "longitude": "28.597700"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 83,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.668Z",
+        "updated_at": "2024-10-14T04:28:19.668Z",
+        "location_type": "city",
+        "city": 83,
+        "village": null,
+        "latitude": "51.140000",
+        "longitude": "28.792200"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 84,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.675Z",
+        "updated_at": "2024-10-14T04:28:19.675Z",
+        "location_type": "city",
+        "city": 84,
+        "village": null,
+        "latitude": "50.548300",
+        "longitude": "29.061600"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 85,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.681Z",
+        "updated_at": "2024-10-14T04:28:19.681Z",
+        "location_type": "city",
+        "city": 85,
+        "village": null,
+        "latitude": "50.398200",
+        "longitude": "28.878600"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 86,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.688Z",
+        "updated_at": "2024-10-14T04:28:19.688Z",
+        "location_type": "city",
+        "city": 86,
+        "village": null,
+        "latitude": "50.240600",
+        "longitude": "28.562800"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 87,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.693Z",
+        "updated_at": "2024-10-14T04:28:19.693Z",
+        "location_type": "city",
+        "city": 87,
+        "village": null,
+        "latitude": "50.525100",
+        "longitude": "28.418600"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 88,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.700Z",
+        "updated_at": "2024-10-14T04:28:19.700Z",
+        "location_type": "city",
+        "city": 88,
+        "village": null,
+        "latitude": "50.486100",
+        "longitude": "28.969300"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 89,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.707Z",
+        "updated_at": "2024-10-14T04:28:19.707Z",
+        "location_type": "city",
+        "city": 89,
+        "village": null,
+        "latitude": "50.942200",
+        "longitude": "28.365300"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 90,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.714Z",
+        "updated_at": "2024-10-14T04:28:19.714Z",
+        "location_type": "city",
+        "city": 90,
+        "village": null,
+        "latitude": "50.298900",
+        "longitude": "28.972700"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 91,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.720Z",
+        "updated_at": "2024-10-14T04:28:19.720Z",
+        "location_type": "city",
+        "city": 91,
+        "village": null,
+        "latitude": "50.535800",
+        "longitude": "28.428600"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 92,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.729Z",
+        "updated_at": "2024-10-14T04:28:19.729Z",
+        "location_type": "city",
+        "city": 92,
+        "village": null,
+        "latitude": "48.202500",
+        "longitude": "22.637500"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 93,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.736Z",
+        "updated_at": "2024-10-14T04:28:19.736Z",
+        "location_type": "city",
+        "city": 93,
+        "village": null,
+        "latitude": "48.149700",
+        "longitude": "23.025800"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 94,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.742Z",
+        "updated_at": "2024-10-14T04:28:19.742Z",
+        "location_type": "city",
+        "city": 94,
+        "village": null,
+        "latitude": "48.290000",
+        "longitude": "22.651000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 95,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.749Z",
+        "updated_at": "2024-10-14T04:28:19.749Z",
+        "location_type": "city",
+        "city": 95,
+        "village": null,
+        "latitude": "48.317200",
+        "longitude": "23.037500"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 96,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.755Z",
+        "updated_at": "2024-10-14T04:28:19.755Z",
+        "location_type": "city",
+        "city": 96,
+        "village": null,
+        "latitude": "48.449700",
+        "longitude": "22.713700"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 97,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.762Z",
+        "updated_at": "2024-10-14T04:28:19.762Z",
+        "location_type": "city",
+        "city": 97,
+        "village": null,
+        "latitude": "48.740300",
+        "longitude": "22.473300"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 98,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.768Z",
+        "updated_at": "2024-10-14T04:28:19.768Z",
+        "location_type": "city",
+        "city": 98,
+        "village": null,
+        "latitude": "48.050000",
+        "longitude": "24.200000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 99,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.776Z",
+        "updated_at": "2024-10-14T04:28:19.776Z",
+        "location_type": "city",
+        "city": 99,
+        "village": null,
+        "latitude": "48.547200",
+        "longitude": "22.986400"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 100,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.783Z",
+        "updated_at": "2024-10-14T04:28:19.783Z",
+        "location_type": "city",
+        "city": 100,
+        "village": null,
+        "latitude": "48.016100",
+        "longitude": "23.572000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 101,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.789Z",
+        "updated_at": "2024-10-14T04:28:19.789Z",
+        "location_type": "city",
+        "city": 101,
+        "village": null,
+        "latitude": "48.537400",
+        "longitude": "23.236100"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 102,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.795Z",
+        "updated_at": "2024-10-14T04:28:19.795Z",
+        "location_type": "city",
+        "city": 102,
+        "village": null,
+        "latitude": "48.258500",
+        "longitude": "22.424000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 103,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.801Z",
+        "updated_at": "2024-10-14T04:28:19.801Z",
+        "location_type": "city",
+        "city": 103,
+        "village": null,
+        "latitude": "48.331400",
+        "longitude": "22.467200"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 104,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.807Z",
+        "updated_at": "2024-10-14T04:28:19.807Z",
+        "location_type": "city",
+        "city": 104,
+        "village": null,
+        "latitude": "48.624000",
+        "longitude": "22.295000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 105,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.814Z",
+        "updated_at": "2024-10-14T04:28:19.814Z",
+        "location_type": "city",
+        "city": 105,
+        "village": null,
+        "latitude": "48.174200",
+        "longitude": "23.289700"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 106,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.821Z",
+        "updated_at": "2024-10-14T04:28:19.821Z",
+        "location_type": "city",
+        "city": 106,
+        "village": null,
+        "latitude": "48.430800",
+        "longitude": "22.212000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 107,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.830Z",
+        "updated_at": "2024-10-14T04:28:19.830Z",
+        "location_type": "city",
+        "city": 107,
+        "village": null,
+        "latitude": "46.759700",
+        "longitude": "36.784400"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 108,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.836Z",
+        "updated_at": "2024-10-14T04:28:19.836Z",
+        "location_type": "city",
+        "city": 108,
+        "village": null,
+        "latitude": "47.434200",
+        "longitude": "35.276500"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 109,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.844Z",
+        "updated_at": "2024-10-14T04:28:19.844Z",
+        "location_type": "city",
+        "city": 109,
+        "village": null,
+        "latitude": "47.944400",
+        "longitude": "35.433100"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 110,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.849Z",
+        "updated_at": "2024-10-14T04:28:19.849Z",
+        "location_type": "city",
+        "city": 110,
+        "village": null,
+        "latitude": "47.660400",
+        "longitude": "36.281700"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 111,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.856Z",
+        "updated_at": "2024-10-14T04:28:19.856Z",
+        "location_type": "city",
+        "city": 111,
+        "village": null,
+        "latitude": "47.382200",
+        "longitude": "34.986900"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 112,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.862Z",
+        "updated_at": "2024-10-14T04:28:19.862Z",
+        "location_type": "city",
+        "city": 112,
+        "village": null,
+        "latitude": "47.499000",
+        "longitude": "34.656100"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 113,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.869Z",
+        "updated_at": "2024-10-14T04:28:19.869Z",
+        "location_type": "city",
+        "city": 113,
+        "village": null,
+        "latitude": "47.837800",
+        "longitude": "35.138300"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 114,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.875Z",
+        "updated_at": "2024-10-14T04:28:19.875Z",
+        "location_type": "city",
+        "city": 114,
+        "village": null,
+        "latitude": "47.463000",
+        "longitude": "34.422800"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 115,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.882Z",
+        "updated_at": "2024-10-14T04:28:19.882Z",
+        "location_type": "city",
+        "city": 115,
+        "village": null,
+        "latitude": "46.840400",
+        "longitude": "35.359000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 116,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.888Z",
+        "updated_at": "2024-10-14T04:28:19.888Z",
+        "location_type": "city",
+        "city": 116,
+        "village": null,
+        "latitude": "47.204400",
+        "longitude": "35.596200"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 117,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.894Z",
+        "updated_at": "2024-10-14T04:28:19.894Z",
+        "location_type": "city",
+        "city": 117,
+        "village": null,
+        "latitude": "47.569400",
+        "longitude": "35.777800"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 118,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.902Z",
+        "updated_at": "2024-10-14T04:28:19.902Z",
+        "location_type": "city",
+        "city": 118,
+        "village": null,
+        "latitude": "47.475600",
+        "longitude": "36.276100"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 119,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.908Z",
+        "updated_at": "2024-10-14T04:28:19.908Z",
+        "location_type": "city",
+        "city": 119,
+        "village": null,
+        "latitude": "46.718900",
+        "longitude": "36.356700"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 120,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.914Z",
+        "updated_at": "2024-10-14T04:28:19.914Z",
+        "location_type": "city",
+        "city": 120,
+        "village": null,
+        "latitude": "47.249000",
+        "longitude": "35.703100"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 121,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.924Z",
+        "updated_at": "2024-10-14T04:28:19.924Z",
+        "location_type": "city",
+        "city": 121,
+        "village": null,
+        "latitude": "49.066900",
+        "longitude": "23.851400"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 122,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.930Z",
+        "updated_at": "2024-10-14T04:28:19.930Z",
+        "location_type": "city",
+        "city": 122,
+        "village": null,
+        "latitude": "49.070700",
+        "longitude": "23.863700"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 123,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.937Z",
+        "updated_at": "2024-10-14T04:28:19.937Z",
+        "location_type": "city",
+        "city": 123,
+        "village": null,
+        "latitude": "49.263100",
+        "longitude": "24.628800"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 124,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.942Z",
+        "updated_at": "2024-10-14T04:28:19.942Z",
+        "location_type": "city",
+        "city": 124,
+        "village": null,
+        "latitude": "49.139500",
+        "longitude": "24.731700"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 125,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.949Z",
+        "updated_at": "2024-10-14T04:28:19.949Z",
+        "location_type": "city",
+        "city": 125,
+        "village": null,
+        "latitude": "48.667500",
+        "longitude": "25.500300"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 126,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.955Z",
+        "updated_at": "2024-10-14T04:28:19.955Z",
+        "location_type": "city",
+        "city": 126,
+        "village": null,
+        "latitude": "48.980800",
+        "longitude": "24.002500"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 127,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.961Z",
+        "updated_at": "2024-10-14T04:28:19.961Z",
+        "location_type": "city",
+        "city": 127,
+        "village": null,
+        "latitude": "48.922800",
+        "longitude": "24.710600"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 128,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.967Z",
+        "updated_at": "2024-10-14T04:28:19.967Z",
+        "location_type": "city",
+        "city": 128,
+        "village": null,
+        "latitude": "49.044200",
+        "longitude": "24.359700"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 129,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.975Z",
+        "updated_at": "2024-10-14T04:28:19.975Z",
+        "location_type": "city",
+        "city": 129,
+        "village": null,
+        "latitude": "48.541700",
+        "longitude": "25.038700"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 130,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.982Z",
+        "updated_at": "2024-10-14T04:28:19.982Z",
+        "location_type": "city",
+        "city": 130,
+        "village": null,
+        "latitude": "48.314200",
+        "longitude": "25.095300"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 131,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.988Z",
+        "updated_at": "2024-10-14T04:28:19.988Z",
+        "location_type": "city",
+        "city": 131,
+        "village": null,
+        "latitude": "48.630300",
+        "longitude": "24.579200"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 132,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.995Z",
+        "updated_at": "2024-10-14T04:28:19.995Z",
+        "location_type": "city",
+        "city": 132,
+        "village": null,
+        "latitude": "49.412200",
+        "longitude": "24.610000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 133,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.001Z",
+        "updated_at": "2024-10-14T04:28:20.001Z",
+        "location_type": "city",
+        "city": 133,
+        "village": null,
+        "latitude": "48.451100",
+        "longitude": "25.571100"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 134,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.007Z",
+        "updated_at": "2024-10-14T04:28:20.007Z",
+        "location_type": "city",
+        "city": 134,
+        "village": null,
+        "latitude": "48.902000",
+        "longitude": "24.847200"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 135,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.014Z",
+        "updated_at": "2024-10-14T04:28:20.014Z",
+        "location_type": "city",
+        "city": 135,
+        "village": null,
+        "latitude": "48.855600",
+        "longitude": "24.995600"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 136,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.021Z",
+        "updated_at": "2024-10-14T04:28:20.021Z",
+        "location_type": "city",
+        "city": 136,
+        "village": null,
+        "latitude": "48.460400",
+        "longitude": "24.558500"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 137,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.031Z",
+        "updated_at": "2024-10-14T04:28:20.031Z",
+        "location_type": "city",
+        "city": 137,
+        "village": null,
+        "latitude": "50.218100",
+        "longitude": "30.281300"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 138,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.037Z",
+        "updated_at": "2024-10-14T04:28:20.037Z",
+        "location_type": "city",
+        "city": 138,
+        "village": null,
+        "latitude": "50.454200",
+        "longitude": "30.723500"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 139,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.044Z",
+        "updated_at": "2024-10-14T04:28:20.044Z",
+        "location_type": "city",
+        "city": 139,
+        "village": null,
+        "latitude": "50.514100",
+        "longitude": "30.218100"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 140,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.050Z",
+        "updated_at": "2024-10-14T04:28:20.050Z",
+        "location_type": "city",
+        "city": 140,
+        "village": null,
+        "latitude": "50.375000",
+        "longitude": "30.457200"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 141,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.057Z",
+        "updated_at": "2024-10-14T04:28:20.057Z",
+        "location_type": "city",
+        "city": 141,
+        "village": null,
+        "latitude": "50.554500",
+        "longitude": "30.666300"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 142,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.063Z",
+        "updated_at": "2024-10-14T04:28:20.063Z",
+        "location_type": "city",
+        "city": 142,
+        "village": null,
+        "latitude": "50.507500",
+        "longitude": "30.179000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 143,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.070Z",
+        "updated_at": "2024-10-14T04:28:20.070Z",
+        "location_type": "city",
+        "city": 143,
+        "village": null,
+        "latitude": "50.589000",
+        "longitude": "30.599300"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 144,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.079Z",
+        "updated_at": "2024-10-14T04:28:20.079Z",
+        "location_type": "city",
+        "city": 144,
+        "village": null,
+        "latitude": "50.534000",
+        "longitude": "30.236600"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 145,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.086Z",
+        "updated_at": "2024-10-14T04:28:20.086Z",
+        "location_type": "city",
+        "city": 145,
+        "village": null,
+        "latitude": "50.095700",
+        "longitude": "30.653500"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 146,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.093Z",
+        "updated_at": "2024-10-14T04:28:20.093Z",
+        "location_type": "city",
+        "city": 146,
+        "village": null,
+        "latitude": "49.707700",
+        "longitude": "30.893900"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 147,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.100Z",
+        "updated_at": "2024-10-14T04:28:20.100Z",
+        "location_type": "city",
+        "city": 147,
+        "village": null,
+        "latitude": "51.498000",
+        "longitude": "30.183000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 148,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.108Z",
+        "updated_at": "2024-10-14T04:28:20.108Z",
+        "location_type": "city",
+        "city": 148,
+        "village": null,
+        "latitude": "49.686400",
+        "longitude": "29.778600"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 149,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.114Z",
+        "updated_at": "2024-10-14T04:28:20.114Z",
+        "location_type": "city",
+        "city": 149,
+        "village": null,
+        "latitude": "50.048900",
+        "longitude": "29.893000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 150,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.122Z",
+        "updated_at": "2024-10-14T04:28:20.122Z",
+        "location_type": "city",
+        "city": 150,
+        "village": null,
+        "latitude": "50.454000",
+        "longitude": "30.679400"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 151,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.129Z",
+        "updated_at": "2024-10-14T04:28:20.129Z",
+        "location_type": "city",
+        "city": 151,
+        "village": null,
+        "latitude": "49.793900",
+        "longitude": "30.603100"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 152,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.135Z",
+        "updated_at": "2024-10-14T04:28:20.135Z",
+        "location_type": "city",
+        "city": 152,
+        "village": null,
+        "latitude": "49.643700",
+        "longitude": "30.891400"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 153,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.146Z",
+        "updated_at": "2024-10-14T04:28:20.146Z",
+        "location_type": "city",
+        "city": 153,
+        "village": null,
+        "latitude": "48.330000",
+        "longitude": "30.232200"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 154,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.152Z",
+        "updated_at": "2024-10-14T04:28:20.152Z",
+        "location_type": "city",
+        "city": 154,
+        "village": null,
+        "latitude": "48.057800",
+        "longitude": "32.158100"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 155,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.159Z",
+        "updated_at": "2024-10-14T04:28:20.159Z",
+        "location_type": "city",
+        "city": 155,
+        "village": null,
+        "latitude": "48.341100",
+        "longitude": "29.860600"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 156,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.166Z",
+        "updated_at": "2024-10-14T04:28:20.166Z",
+        "location_type": "city",
+        "city": 156,
+        "village": null,
+        "latitude": "48.110800",
+        "longitude": "32.764700"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 157,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.172Z",
+        "updated_at": "2024-10-14T04:28:20.173Z",
+        "location_type": "city",
+        "city": 157,
+        "village": null,
+        "latitude": "48.713700",
+        "longitude": "32.673300"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 158,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.179Z",
+        "updated_at": "2024-10-14T04:28:20.179Z",
+        "location_type": "city",
+        "city": 158,
+        "village": null,
+        "latitude": "48.510000",
+        "longitude": "32.266700"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 159,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.185Z",
+        "updated_at": "2024-10-14T04:28:20.185Z",
+        "location_type": "city",
+        "city": 159,
+        "village": null,
+        "latitude": "48.640800",
+        "longitude": "31.627200"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 160,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.193Z",
+        "updated_at": "2024-10-14T04:28:20.193Z",
+        "location_type": "city",
+        "city": 160,
+        "village": null,
+        "latitude": "48.780800",
+        "longitude": "31.641900"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 161,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.199Z",
+        "updated_at": "2024-10-14T04:28:20.199Z",
+        "location_type": "city",
+        "city": 161,
+        "village": null,
+        "latitude": "48.316000",
+        "longitude": "31.526400"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 162,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.205Z",
+        "updated_at": "2024-10-14T04:28:20.205Z",
+        "location_type": "city",
+        "city": 162,
+        "village": null,
+        "latitude": "48.668600",
+        "longitude": "33.107500"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 163,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.213Z",
+        "updated_at": "2024-10-14T04:28:20.213Z",
+        "location_type": "city",
+        "city": 163,
+        "village": null,
+        "latitude": "48.243300",
+        "longitude": "31.406100"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 164,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.219Z",
+        "updated_at": "2024-10-14T04:28:20.219Z",
+        "location_type": "city",
+        "city": 164,
+        "village": null,
+        "latitude": "49.052500",
+        "longitude": "33.205000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 165,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.230Z",
+        "updated_at": "2024-10-14T04:28:20.230Z",
+        "location_type": "city",
+        "city": 165,
+        "village": null,
+        "latitude": "48.521700",
+        "longitude": "38.579400"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 166,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.236Z",
+        "updated_at": "2024-10-14T04:28:20.236Z",
+        "location_type": "city",
+        "city": 166,
+        "village": null,
+        "latitude": "48.525000",
+        "longitude": "38.634400"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 167,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.242Z",
+        "updated_at": "2024-10-14T04:28:20.242Z",
+        "location_type": "city",
+        "city": 167,
+        "village": null,
+        "latitude": "48.468200",
+        "longitude": "38.817600"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 168,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.249Z",
+        "updated_at": "2024-10-14T04:28:20.249Z",
+        "location_type": "city",
+        "city": 168,
+        "village": null,
+        "latitude": "48.117100",
+        "longitude": "39.084900"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 169,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.256Z",
+        "updated_at": "2024-10-14T04:28:20.256Z",
+        "location_type": "city",
+        "city": 169,
+        "village": null,
+        "latitude": "48.479200",
+        "longitude": "38.789400"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 170,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.262Z",
+        "updated_at": "2024-10-14T04:28:20.262Z",
+        "location_type": "city",
+        "city": 170,
+        "village": null,
+        "latitude": "48.484700",
+        "longitude": "38.677800"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 171,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.269Z",
+        "updated_at": "2024-10-14T04:28:20.269Z",
+        "location_type": "city",
+        "city": 171,
+        "village": null,
+        "latitude": "48.071400",
+        "longitude": "39.798200"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 172,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.275Z",
+        "updated_at": "2024-10-14T04:28:20.276Z",
+        "location_type": "city",
+        "city": 172,
+        "village": null,
+        "latitude": "48.751900",
+        "longitude": "38.495000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 173,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.282Z",
+        "updated_at": "2024-10-14T04:28:20.282Z",
+        "location_type": "city",
+        "city": 173,
+        "village": null,
+        "latitude": "48.637500",
+        "longitude": "38.643300"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 174,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.288Z",
+        "updated_at": "2024-10-14T04:28:20.289Z",
+        "location_type": "city",
+        "city": 174,
+        "village": null,
+        "latitude": "48.058300",
+        "longitude": "39.658300"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 175,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.295Z",
+        "updated_at": "2024-10-14T04:28:20.295Z",
+        "location_type": "city",
+        "city": 175,
+        "village": null,
+        "latitude": "48.591100",
+        "longitude": "38.919700"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 176,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.302Z",
+        "updated_at": "2024-10-14T04:28:20.302Z",
+        "location_type": "city",
+        "city": 176,
+        "village": null,
+        "latitude": "48.692800",
+        "longitude": "38.519400"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 177,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.308Z",
+        "updated_at": "2024-10-14T04:28:20.308Z",
+        "location_type": "city",
+        "city": 177,
+        "village": null,
+        "latitude": "48.414500",
+        "longitude": "38.618500"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 178,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.315Z",
+        "updated_at": "2024-10-14T04:28:20.315Z",
+        "location_type": "city",
+        "city": 178,
+        "village": null,
+        "latitude": "48.596700",
+        "longitude": "38.582800"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 179,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.321Z",
+        "updated_at": "2024-10-14T04:28:20.321Z",
+        "location_type": "city",
+        "city": 179,
+        "village": null,
+        "latitude": "48.568000",
+        "longitude": "38.658700"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 180,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.329Z",
+        "updated_at": "2024-10-14T04:28:20.329Z",
+        "location_type": "city",
+        "city": 180,
+        "village": null,
+        "latitude": "48.438900",
+        "longitude": "38.717500"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 181,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.334Z",
+        "updated_at": "2024-10-14T04:28:20.334Z",
+        "location_type": "city",
+        "city": 181,
+        "village": null,
+        "latitude": "49.050000",
+        "longitude": "38.221100"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 182,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.340Z",
+        "updated_at": "2024-10-14T04:28:20.340Z",
+        "location_type": "city",
+        "city": 182,
+        "village": null,
+        "latitude": "48.889900",
+        "longitude": "38.431700"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 183,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.348Z",
+        "updated_at": "2024-10-14T04:28:20.348Z",
+        "location_type": "city",
+        "city": 183,
+        "village": null,
+        "latitude": "48.568500",
+        "longitude": "39.308600"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 184,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.354Z",
+        "updated_at": "2024-10-14T04:28:20.354Z",
+        "location_type": "city",
+        "city": 184,
+        "village": null,
+        "latitude": "48.401900",
+        "longitude": "39.210300"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 185,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.360Z",
+        "updated_at": "2024-10-14T04:28:20.360Z",
+        "location_type": "city",
+        "city": 185,
+        "village": null,
+        "latitude": "48.072500",
+        "longitude": "38.900000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 186,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.367Z",
+        "updated_at": "2024-10-14T04:28:20.367Z",
+        "location_type": "city",
+        "city": 186,
+        "village": null,
+        "latitude": "48.966700",
+        "longitude": "38.350000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 187,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.374Z",
+        "updated_at": "2024-10-14T04:28:20.374Z",
+        "location_type": "city",
+        "city": 187,
+        "village": null,
+        "latitude": "48.579800",
+        "longitude": "39.197600"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 188,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.380Z",
+        "updated_at": "2024-10-14T04:28:20.380Z",
+        "location_type": "city",
+        "city": 188,
+        "village": null,
+        "latitude": "48.344400",
+        "longitude": "39.658300"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 189,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.386Z",
+        "updated_at": "2024-10-14T04:28:20.386Z",
+        "location_type": "city",
+        "city": 189,
+        "village": null,
+        "latitude": "48.435600",
+        "longitude": "38.817200"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 190,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.393Z",
+        "updated_at": "2024-10-14T04:28:20.393Z",
+        "location_type": "city",
+        "city": 190,
+        "village": null,
+        "latitude": "48.300000",
+        "longitude": "38.878100"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 191,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.400Z",
+        "updated_at": "2024-10-14T04:28:20.400Z",
+        "location_type": "city",
+        "city": 191,
+        "village": null,
+        "latitude": "48.634300",
+        "longitude": "38.380000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 192,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.406Z",
+        "updated_at": "2024-10-14T04:28:20.406Z",
+        "location_type": "city",
+        "city": 192,
+        "village": null,
+        "latitude": "48.999700",
+        "longitude": "38.294700"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 193,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.413Z",
+        "updated_at": "2024-10-14T04:28:20.413Z",
+        "location_type": "city",
+        "city": 193,
+        "village": null,
+        "latitude": "48.071200",
+        "longitude": "39.342700"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 194,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.419Z",
+        "updated_at": "2024-10-14T04:28:20.419Z",
+        "location_type": "city",
+        "city": 194,
+        "village": null,
+        "latitude": "49.018700",
+        "longitude": "38.381700"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 195,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.426Z",
+        "updated_at": "2024-10-14T04:28:20.426Z",
+        "location_type": "city",
+        "city": 195,
+        "village": null,
+        "latitude": "49.409200",
+        "longitude": "38.161900"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 196,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.433Z",
+        "updated_at": "2024-10-14T04:28:20.433Z",
+        "location_type": "city",
+        "city": 196,
+        "village": null,
+        "latitude": "48.956500",
+        "longitude": "38.480300"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 197,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.440Z",
+        "updated_at": "2024-10-14T04:28:20.440Z",
+        "location_type": "city",
+        "city": 197,
+        "village": null,
+        "latitude": "48.299200",
+        "longitude": "39.749800"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 198,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.447Z",
+        "updated_at": "2024-10-14T04:28:20.447Z",
+        "location_type": "city",
+        "city": 198,
+        "village": null,
+        "latitude": "48.629800",
+        "longitude": "38.562000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 199,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.452Z",
+        "updated_at": "2024-10-14T04:28:20.452Z",
+        "location_type": "city",
+        "city": 199,
+        "village": null,
+        "latitude": "49.283300",
+        "longitude": "38.916700"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 200,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.459Z",
+        "updated_at": "2024-10-14T04:28:20.459Z",
+        "location_type": "city",
+        "city": 200,
+        "village": null,
+        "latitude": "48.353700",
+        "longitude": "39.721700"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 201,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.466Z",
+        "updated_at": "2024-10-14T04:28:20.466Z",
+        "location_type": "city",
+        "city": 201,
+        "village": null,
+        "latitude": "48.127200",
+        "longitude": "38.919200"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 202,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.471Z",
+        "updated_at": "2024-10-14T04:28:20.471Z",
+        "location_type": "city",
+        "city": 202,
+        "village": null,
+        "latitude": "48.738200",
+        "longitude": "39.230600"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 203,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.481Z",
+        "updated_at": "2024-10-14T04:28:20.481Z",
+        "location_type": "city",
+        "city": 203,
+        "village": null,
+        "latitude": "50.380000",
+        "longitude": "24.001700"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 204,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.488Z",
+        "updated_at": "2024-10-14T04:28:20.488Z",
+        "location_type": "city",
+        "city": 204,
+        "village": null,
+        "latitude": "49.635800",
+        "longitude": "24.293600"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 205,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.495Z",
+        "updated_at": "2024-10-14T04:28:20.495Z",
+        "location_type": "city",
+        "city": 205,
+        "village": null,
+        "latitude": "49.289200",
+        "longitude": "23.418900"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 206,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.502Z",
+        "updated_at": "2024-10-14T04:28:20.502Z",
+        "location_type": "city",
+        "city": 206,
+        "village": null,
+        "latitude": "50.078100",
+        "longitude": "25.154200"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 207,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.509Z",
+        "updated_at": "2024-10-14T04:28:20.509Z",
+        "location_type": "city",
+        "city": 207,
+        "village": null,
+        "latitude": "49.968300",
+        "longitude": "24.608300"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 208,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.515Z",
+        "updated_at": "2024-10-14T04:28:20.515Z",
+        "location_type": "city",
+        "city": 208,
+        "village": null,
+        "latitude": "50.240000",
+        "longitude": "24.139400"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 209,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.523Z",
+        "updated_at": "2024-10-14T04:28:20.523Z",
+        "location_type": "city",
+        "city": 209,
+        "village": null,
+        "latitude": "49.815600",
+        "longitude": "24.129700"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 210,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.529Z",
+        "updated_at": "2024-10-14T04:28:20.529Z",
+        "location_type": "city",
+        "city": 210,
+        "village": null,
+        "latitude": "49.824700",
+        "longitude": "24.516100"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 211,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.536Z",
+        "updated_at": "2024-10-14T04:28:20.536Z",
+        "location_type": "city",
+        "city": 211,
+        "village": null,
+        "latitude": "49.785400",
+        "longitude": "23.676400"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 212,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.542Z",
+        "updated_at": "2024-10-14T04:28:20.542Z",
+        "location_type": "city",
+        "city": 212,
+        "village": null,
+        "latitude": "49.570600",
+        "longitude": "22.789500"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 213,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.548Z",
+        "updated_at": "2024-10-14T04:28:20.548Z",
+        "location_type": "city",
+        "city": 213,
+        "village": null,
+        "latitude": "49.350000",
+        "longitude": "23.500000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 214,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.555Z",
+        "updated_at": "2024-10-14T04:28:20.555Z",
+        "location_type": "city",
+        "city": 214,
+        "village": null,
+        "latitude": "49.896100",
+        "longitude": "24.092500"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 215,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.561Z",
+        "updated_at": "2024-10-14T04:28:20.561Z",
+        "location_type": "city",
+        "city": 215,
+        "village": null,
+        "latitude": "49.385000",
+        "longitude": "24.144400"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 216,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.568Z",
+        "updated_at": "2024-10-14T04:28:20.568Z",
+        "location_type": "city",
+        "city": 216,
+        "village": null,
+        "latitude": "50.055000",
+        "longitude": "23.976000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 217,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.574Z",
+        "updated_at": "2024-10-14T04:28:20.574Z",
+        "location_type": "city",
+        "city": 217,
+        "village": null,
+        "latitude": "49.804400",
+        "longitude": "24.890300"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 218,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.581Z",
+        "updated_at": "2024-10-14T04:28:20.581Z",
+        "location_type": "city",
+        "city": 218,
+        "village": null,
+        "latitude": "50.105000",
+        "longitude": "24.337700"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 219,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.588Z",
+        "updated_at": "2024-10-14T04:28:20.588Z",
+        "location_type": "city",
+        "city": 219,
+        "village": null,
+        "latitude": "49.630600",
+        "longitude": "23.699700"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 220,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.595Z",
+        "updated_at": "2024-10-14T04:28:20.595Z",
+        "location_type": "city",
+        "city": 220,
+        "village": null,
+        "latitude": "49.842200",
+        "longitude": "24.031600"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 221,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.602Z",
+        "updated_at": "2024-10-14T04:28:20.602Z",
+        "location_type": "city",
+        "city": 221,
+        "village": null,
+        "latitude": "49.524700",
+        "longitude": "23.978900"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 222,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.607Z",
+        "updated_at": "2024-10-14T04:28:20.607Z",
+        "location_type": "city",
+        "city": 222,
+        "village": null,
+        "latitude": "49.154700",
+        "longitude": "23.868600"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 223,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.614Z",
+        "updated_at": "2024-10-14T04:28:20.614Z",
+        "location_type": "city",
+        "city": 223,
+        "village": null,
+        "latitude": "49.791700",
+        "longitude": "23.152500"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 224,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.620Z",
+        "updated_at": "2024-10-14T04:28:20.620Z",
+        "location_type": "city",
+        "city": 224,
+        "village": null,
+        "latitude": "49.560600",
+        "longitude": "23.304400"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 225,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.627Z",
+        "updated_at": "2024-10-14T04:28:20.627Z",
+        "location_type": "city",
+        "city": 225,
+        "village": null,
+        "latitude": "49.470300",
+        "longitude": "24.134700"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 226,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.633Z",
+        "updated_at": "2024-10-14T04:28:20.633Z",
+        "location_type": "city",
+        "city": 226,
+        "village": null,
+        "latitude": "49.933100",
+        "longitude": "23.571200"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 227,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.639Z",
+        "updated_at": "2024-10-14T04:28:20.639Z",
+        "location_type": "city",
+        "city": 227,
+        "village": null,
+        "latitude": "49.670600",
+        "longitude": "24.556700"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 228,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.646Z",
+        "updated_at": "2024-10-14T04:28:20.646Z",
+        "location_type": "city",
+        "city": 228,
+        "village": null,
+        "latitude": "49.720000",
+        "longitude": "23.895000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 229,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.652Z",
+        "updated_at": "2024-10-14T04:28:20.652Z",
+        "location_type": "city",
+        "city": 229,
+        "village": null,
+        "latitude": "50.224200",
+        "longitude": "23.624200"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 230,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.658Z",
+        "updated_at": "2024-10-14T04:28:20.658Z",
+        "location_type": "city",
+        "city": 230,
+        "village": null,
+        "latitude": "50.277000",
+        "longitude": "24.641700"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 231,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.665Z",
+        "updated_at": "2024-10-14T04:28:20.665Z",
+        "location_type": "city",
+        "city": 231,
+        "village": null,
+        "latitude": "49.653000",
+        "longitude": "23.487200"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 232,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.671Z",
+        "updated_at": "2024-10-14T04:28:20.671Z",
+        "location_type": "city",
+        "city": 232,
+        "village": null,
+        "latitude": "49.516700",
+        "longitude": "23.200000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 233,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.678Z",
+        "updated_at": "2024-10-14T04:28:20.678Z",
+        "location_type": "city",
+        "city": 233,
+        "village": null,
+        "latitude": "49.038900",
+        "longitude": "23.514000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 234,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.684Z",
+        "updated_at": "2024-10-14T04:28:20.684Z",
+        "location_type": "city",
+        "city": 234,
+        "village": null,
+        "latitude": "50.480000",
+        "longitude": "24.286100"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 235,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.690Z",
+        "updated_at": "2024-10-14T04:28:20.690Z",
+        "location_type": "city",
+        "city": 235,
+        "village": null,
+        "latitude": "49.788300",
+        "longitude": "24.061700"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 236,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.697Z",
+        "updated_at": "2024-10-14T04:28:20.697Z",
+        "location_type": "city",
+        "city": 236,
+        "village": null,
+        "latitude": "49.441400",
+        "longitude": "23.002300"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 237,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.704Z",
+        "updated_at": "2024-10-14T04:28:20.704Z",
+        "location_type": "city",
+        "city": 237,
+        "village": null,
+        "latitude": "49.296200",
+        "longitude": "23.553100"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 238,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.710Z",
+        "updated_at": "2024-10-14T04:28:20.710Z",
+        "location_type": "city",
+        "city": 238,
+        "village": null,
+        "latitude": "49.256200",
+        "longitude": "23.850300"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 239,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.716Z",
+        "updated_at": "2024-10-14T04:28:20.716Z",
+        "location_type": "city",
+        "city": 239,
+        "village": null,
+        "latitude": "49.992500",
+        "longitude": "23.616400"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 240,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.722Z",
+        "updated_at": "2024-10-14T04:28:20.722Z",
+        "location_type": "city",
+        "city": 240,
+        "village": null,
+        "latitude": "49.277800",
+        "longitude": "23.507800"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 241,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.729Z",
+        "updated_at": "2024-10-14T04:28:20.729Z",
+        "location_type": "city",
+        "city": 241,
+        "village": null,
+        "latitude": "49.157500",
+        "longitude": "23.022500"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 242,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.735Z",
+        "updated_at": "2024-10-14T04:28:20.735Z",
+        "location_type": "city",
+        "city": 242,
+        "village": null,
+        "latitude": "50.368200",
+        "longitude": "23.748900"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 243,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.741Z",
+        "updated_at": "2024-10-14T04:28:20.741Z",
+        "location_type": "city",
+        "city": 243,
+        "village": null,
+        "latitude": "49.535700",
+        "longitude": "22.854500"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 244,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.749Z",
+        "updated_at": "2024-10-14T04:28:20.749Z",
+        "location_type": "city",
+        "city": 244,
+        "village": null,
+        "latitude": "49.405900",
+        "longitude": "24.310400"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 245,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.755Z",
+        "updated_at": "2024-10-14T04:28:20.755Z",
+        "location_type": "city",
+        "city": 245,
+        "village": null,
+        "latitude": "50.386700",
+        "longitude": "24.229000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 246,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.762Z",
+        "updated_at": "2024-10-14T04:28:20.762Z",
+        "location_type": "city",
+        "city": 246,
+        "village": null,
+        "latitude": "49.939800",
+        "longitude": "23.385800"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 247,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.771Z",
+        "updated_at": "2024-10-14T04:28:20.771Z",
+        "location_type": "city",
+        "city": 247,
+        "village": null,
+        "latitude": "47.402800",
+        "longitude": "32.444200"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 248,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.777Z",
+        "updated_at": "2024-10-14T04:28:20.777Z",
+        "location_type": "city",
+        "city": 248,
+        "village": null,
+        "latitude": "47.572500",
+        "longitude": "31.311900"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 249,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.785Z",
+        "updated_at": "2024-10-14T04:28:20.785Z",
+        "location_type": "city",
+        "city": 249,
+        "village": null,
+        "latitude": "46.975300",
+        "longitude": "31.993700"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 250,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.790Z",
+        "updated_at": "2024-10-14T04:28:20.790Z",
+        "location_type": "city",
+        "city": 250,
+        "village": null,
+        "latitude": "47.293900",
+        "longitude": "31.788900"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 251,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.797Z",
+        "updated_at": "2024-10-14T04:28:20.797Z",
+        "location_type": "city",
+        "city": 251,
+        "village": null,
+        "latitude": "47.684000",
+        "longitude": "32.507800"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 252,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.804Z",
+        "updated_at": "2024-10-14T04:28:20.804Z",
+        "location_type": "city",
+        "city": 252,
+        "village": null,
+        "latitude": "46.618700",
+        "longitude": "31.539200"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 253,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.810Z",
+        "updated_at": "2024-10-14T04:28:20.810Z",
+        "location_type": "city",
+        "city": 253,
+        "village": null,
+        "latitude": "48.043900",
+        "longitude": "30.850000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 254,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.817Z",
+        "updated_at": "2024-10-14T04:28:20.817Z",
+        "location_type": "city",
+        "city": 254,
+        "village": null,
+        "latitude": "47.120800",
+        "longitude": "32.799700"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 255,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.823Z",
+        "updated_at": "2024-10-14T04:28:20.823Z",
+        "location_type": "city",
+        "city": 255,
+        "village": null,
+        "latitude": "47.821700",
+        "longitude": "31.175000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 256,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.833Z",
+        "updated_at": "2024-10-14T04:28:20.833Z",
+        "location_type": "city",
+        "city": 256,
+        "village": null,
+        "latitude": "47.722800",
+        "longitude": "29.987500"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 257,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.839Z",
+        "updated_at": "2024-10-14T04:28:20.839Z",
+        "location_type": "city",
+        "city": 257,
+        "village": null,
+        "latitude": "45.994400",
+        "longitude": "29.432200"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 258,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.846Z",
+        "updated_at": "2024-10-14T04:28:20.846Z",
+        "location_type": "city",
+        "city": 258,
+        "village": null,
+        "latitude": "47.940000",
+        "longitude": "29.621900"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 259,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.853Z",
+        "updated_at": "2024-10-14T04:28:20.853Z",
+        "location_type": "city",
+        "city": 259,
+        "village": null,
+        "latitude": "47.200600",
+        "longitude": "30.917200"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 260,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.860Z",
+        "updated_at": "2024-10-14T04:28:20.860Z",
+        "location_type": "city",
+        "city": 260,
+        "village": null,
+        "latitude": "46.192300",
+        "longitude": "30.333300"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 261,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.866Z",
+        "updated_at": "2024-10-14T04:28:20.866Z",
+        "location_type": "city",
+        "city": 261,
+        "village": null,
+        "latitude": "46.482600",
+        "longitude": "30.201400"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 262,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.872Z",
+        "updated_at": "2024-10-14T04:28:20.872Z",
+        "location_type": "city",
+        "city": 262,
+        "village": null,
+        "latitude": "45.667300",
+        "longitude": "28.612800"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 263,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.879Z",
+        "updated_at": "2024-10-14T04:28:20.879Z",
+        "location_type": "city",
+        "city": 263,
+        "village": null,
+        "latitude": "45.399200",
+        "longitude": "29.593700"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 264,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.885Z",
+        "updated_at": "2024-10-14T04:28:20.885Z",
+        "location_type": "city",
+        "city": 264,
+        "village": null,
+        "latitude": "45.351100",
+        "longitude": "28.844700"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 265,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.892Z",
+        "updated_at": "2024-10-14T04:28:20.892Z",
+        "location_type": "city",
+        "city": 265,
+        "village": null,
+        "latitude": "45.467700",
+        "longitude": "29.237800"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 266,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.898Z",
+        "updated_at": "2024-10-14T04:28:20.898Z",
+        "location_type": "city",
+        "city": 266,
+        "village": null,
+        "latitude": "48.093300",
+        "longitude": "29.125000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 267,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.906Z",
+        "updated_at": "2024-10-14T04:28:20.906Z",
+        "location_type": "city",
+        "city": 267,
+        "village": null,
+        "latitude": "46.485600",
+        "longitude": "30.743300"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 268,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.914Z",
+        "updated_at": "2024-10-14T04:28:20.914Z",
+        "location_type": "city",
+        "city": 268,
+        "village": null,
+        "latitude": "47.742000",
+        "longitude": "29.535000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 269,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.920Z",
+        "updated_at": "2024-10-14T04:28:20.920Z",
+        "location_type": "city",
+        "city": 269,
+        "village": null,
+        "latitude": "45.457500",
+        "longitude": "28.271100"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 270,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.929Z",
+        "updated_at": "2024-10-14T04:28:20.929Z",
+        "location_type": "city",
+        "city": 270,
+        "village": null,
+        "latitude": "46.852000",
+        "longitude": "30.074400"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 271,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.936Z",
+        "updated_at": "2024-10-14T04:28:20.936Z",
+        "location_type": "city",
+        "city": 271,
+        "village": null,
+        "latitude": "45.846900",
+        "longitude": "29.610600"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 272,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.943Z",
+        "updated_at": "2024-10-14T04:28:20.943Z",
+        "location_type": "city",
+        "city": 272,
+        "village": null,
+        "latitude": "46.503700",
+        "longitude": "30.324400"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 273,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.949Z",
+        "updated_at": "2024-10-14T04:28:20.949Z",
+        "location_type": "city",
+        "city": 273,
+        "village": null,
+        "latitude": "46.301700",
+        "longitude": "30.656900"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 274,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.956Z",
+        "updated_at": "2024-10-14T04:28:20.956Z",
+        "location_type": "city",
+        "city": 274,
+        "village": null,
+        "latitude": "46.623700",
+        "longitude": "31.101100"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 275,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.965Z",
+        "updated_at": "2024-10-14T04:28:20.965Z",
+        "location_type": "city",
+        "city": 275,
+        "village": null,
+        "latitude": "49.588300",
+        "longitude": "34.551000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 276,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.973Z",
+        "updated_at": "2024-10-14T04:28:20.973Z",
+        "location_type": "city",
+        "city": 276,
+        "village": null,
+        "latitude": "49.075200",
+        "longitude": "33.421000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 277,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.979Z",
+        "updated_at": "2024-10-14T04:28:20.979Z",
+        "location_type": "city",
+        "city": 277,
+        "village": null,
+        "latitude": "49.685400",
+        "longitude": "32.785700"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 278,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.986Z",
+        "updated_at": "2024-10-14T04:28:20.986Z",
+        "location_type": "city",
+        "city": 278,
+        "village": null,
+        "latitude": "49.979800",
+        "longitude": "33.375000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 279,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.993Z",
+        "updated_at": "2024-10-14T04:28:20.993Z",
+        "location_type": "city",
+        "city": 279,
+        "village": null,
+        "latitude": "50.229800",
+        "longitude": "33.548000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 280,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.999Z",
+        "updated_at": "2024-10-14T04:28:20.999Z",
+        "location_type": "city",
+        "city": 280,
+        "village": null,
+        "latitude": "49.711800",
+        "longitude": "33.587600"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 281,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.007Z",
+        "updated_at": "2024-10-14T04:28:21.007Z",
+        "location_type": "city",
+        "city": 281,
+        "village": null,
+        "latitude": "49.556700",
+        "longitude": "34.034100"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 282,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.014Z",
+        "updated_at": "2024-10-14T04:28:21.015Z",
+        "location_type": "city",
+        "city": 282,
+        "village": null,
+        "latitude": "49.512000",
+        "longitude": "35.193800"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 283,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.021Z",
+        "updated_at": "2024-10-14T04:28:21.021Z",
+        "location_type": "city",
+        "city": 283,
+        "village": null,
+        "latitude": "49.380200",
+        "longitude": "34.546400"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 284,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.028Z",
+        "updated_at": "2024-10-14T04:28:21.028Z",
+        "location_type": "city",
+        "city": 284,
+        "village": null,
+        "latitude": "49.640400",
+        "longitude": "34.704500"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 285,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.034Z",
+        "updated_at": "2024-10-14T04:28:21.034Z",
+        "location_type": "city",
+        "city": 285,
+        "village": null,
+        "latitude": "49.453800",
+        "longitude": "33.698000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 286,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.041Z",
+        "updated_at": "2024-10-14T04:28:21.041Z",
+        "location_type": "city",
+        "city": 286,
+        "village": null,
+        "latitude": "49.306400",
+        "longitude": "33.568000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 287,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.048Z",
+        "updated_at": "2024-10-14T04:28:21.048Z",
+        "location_type": "city",
+        "city": 287,
+        "village": null,
+        "latitude": "49.653900",
+        "longitude": "34.580800"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 288,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.054Z",
+        "updated_at": "2024-10-14T04:28:21.055Z",
+        "location_type": "city",
+        "city": 288,
+        "village": null,
+        "latitude": "49.554000",
+        "longitude": "34.837500"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 289,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.060Z",
+        "updated_at": "2024-10-14T04:28:21.060Z",
+        "location_type": "city",
+        "city": 289,
+        "village": null,
+        "latitude": "49.191100",
+        "longitude": "34.576500"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 290,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.068Z",
+        "updated_at": "2024-10-14T04:28:21.068Z",
+        "location_type": "city",
+        "city": 290,
+        "village": null,
+        "latitude": "49.499300",
+        "longitude": "34.407800"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 291,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.077Z",
+        "updated_at": "2024-10-14T04:28:21.077Z",
+        "location_type": "city",
+        "city": 291,
+        "village": null,
+        "latitude": "49.774200",
+        "longitude": "34.483100"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 292,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.084Z",
+        "updated_at": "2024-10-14T04:28:21.084Z",
+        "location_type": "city",
+        "city": 292,
+        "village": null,
+        "latitude": "49.517500",
+        "longitude": "34.220300"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 293,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.091Z",
+        "updated_at": "2024-10-14T04:28:21.091Z",
+        "location_type": "city",
+        "city": 293,
+        "village": null,
+        "latitude": "49.312800",
+        "longitude": "34.411700"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 294,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.102Z",
+        "updated_at": "2024-10-14T04:28:21.102Z",
+        "location_type": "city",
+        "city": 294,
+        "village": null,
+        "latitude": "51.000800",
+        "longitude": "26.750800"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 295,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.109Z",
+        "updated_at": "2024-10-14T04:28:21.109Z",
+        "location_type": "city",
+        "city": 295,
+        "village": null,
+        "latitude": "51.344400",
+        "longitude": "25.850800"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 296,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.116Z",
+        "updated_at": "2024-10-14T04:28:21.116Z",
+        "location_type": "city",
+        "city": 296,
+        "village": null,
+        "latitude": "50.393100",
+        "longitude": "25.735000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 297,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.122Z",
+        "updated_at": "2024-10-14T04:28:21.122Z",
+        "location_type": "city",
+        "city": 297,
+        "village": null,
+        "latitude": "51.574200",
+        "longitude": "26.565000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 298,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.128Z",
+        "updated_at": "2024-10-14T04:28:21.128Z",
+        "location_type": "city",
+        "city": 298,
+        "village": null,
+        "latitude": "50.509500",
+        "longitude": "26.259700"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 299,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.134Z",
+        "updated_at": "2024-10-14T04:28:21.134Z",
+        "location_type": "city",
+        "city": 299,
+        "village": null,
+        "latitude": "50.617200",
+        "longitude": "27.160800"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 300,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.140Z",
+        "updated_at": "2024-10-14T04:28:21.140Z",
+        "location_type": "city",
+        "city": 300,
+        "village": null,
+        "latitude": "50.883300",
+        "longitude": "26.443100"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 301,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.147Z",
+        "updated_at": "2024-10-14T04:28:21.147Z",
+        "location_type": "city",
+        "city": 301,
+        "village": null,
+        "latitude": "50.329200",
+        "longitude": "26.513900"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 302,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.152Z",
+        "updated_at": "2024-10-14T04:28:21.152Z",
+        "location_type": "city",
+        "city": 302,
+        "village": null,
+        "latitude": "50.128700",
+        "longitude": "25.264400"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 303,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.159Z",
+        "updated_at": "2024-10-14T04:28:21.159Z",
+        "location_type": "city",
+        "city": 303,
+        "village": null,
+        "latitude": "50.619800",
+        "longitude": "26.251500"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 304,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.166Z",
+        "updated_at": "2024-10-14T04:28:21.166Z",
+        "location_type": "city",
+        "city": 304,
+        "village": null,
+        "latitude": "51.327000",
+        "longitude": "26.633100"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 305,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.177Z",
+        "updated_at": "2024-10-14T04:28:21.177Z",
+        "location_type": "city",
+        "city": 305,
+        "village": null,
+        "latitude": "50.907100",
+        "longitude": "34.798300"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 306,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.183Z",
+        "updated_at": "2024-10-14T04:28:21.183Z",
+        "location_type": "city",
+        "city": 306,
+        "village": null,
+        "latitude": "50.586400",
+        "longitude": "34.867200"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 307,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.191Z",
+        "updated_at": "2024-10-14T04:28:21.191Z",
+        "location_type": "city",
+        "city": 307,
+        "village": null,
+        "latitude": "50.905000",
+        "longitude": "32.422300"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 308,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.198Z",
+        "updated_at": "2024-10-14T04:28:21.198Z",
+        "location_type": "city",
+        "city": 308,
+        "village": null,
+        "latitude": "51.308200",
+        "longitude": "34.246000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 309,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.203Z",
+        "updated_at": "2024-10-14T04:28:21.203Z",
+        "location_type": "city",
+        "city": 309,
+        "village": null,
+        "latitude": "50.727800",
+        "longitude": "33.583600"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 310,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.211Z",
+        "updated_at": "2024-10-14T04:28:21.211Z",
+        "location_type": "city",
+        "city": 310,
+        "village": null,
+        "latitude": "50.487200",
+        "longitude": "34.325800"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 311,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.217Z",
+        "updated_at": "2024-10-14T04:28:21.217Z",
+        "location_type": "city",
+        "city": 311,
+        "village": null,
+        "latitude": "50.771600",
+        "longitude": "34.374400"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 312,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.224Z",
+        "updated_at": "2024-10-14T04:28:21.224Z",
+        "location_type": "city",
+        "city": 312,
+        "village": null,
+        "latitude": "50.517300",
+        "longitude": "34.349800"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 313,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.230Z",
+        "updated_at": "2024-10-14T04:28:21.230Z",
+        "location_type": "city",
+        "city": 313,
+        "village": null,
+        "latitude": "51.212100",
+        "longitude": "33.395500"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 314,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.237Z",
+        "updated_at": "2024-10-14T04:28:21.237Z",
+        "location_type": "city",
+        "city": 314,
+        "village": null,
+        "latitude": "50.819500",
+        "longitude": "34.845300"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 315,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.243Z",
+        "updated_at": "2024-10-14T04:28:21.243Z",
+        "location_type": "city",
+        "city": 315,
+        "village": null,
+        "latitude": "50.749100",
+        "longitude": "33.598400"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 316,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.250Z",
+        "updated_at": "2024-10-14T04:28:21.250Z",
+        "location_type": "city",
+        "city": 316,
+        "village": null,
+        "latitude": "50.469000",
+        "longitude": "33.522700"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 317,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.256Z",
+        "updated_at": "2024-10-14T04:28:21.256Z",
+        "location_type": "city",
+        "city": 317,
+        "village": null,
+        "latitude": "50.696900",
+        "longitude": "34.843200"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 318,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.264Z",
+        "updated_at": "2024-10-14T04:28:21.264Z",
+        "location_type": "city",
+        "city": 318,
+        "village": null,
+        "latitude": "50.534200",
+        "longitude": "34.642800"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 319,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.270Z",
+        "updated_at": "2024-10-14T04:28:21.270Z",
+        "location_type": "city",
+        "city": 319,
+        "village": null,
+        "latitude": "50.473200",
+        "longitude": "34.558000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 320,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.280Z",
+        "updated_at": "2024-10-14T04:28:21.280Z",
+        "location_type": "city",
+        "city": 320,
+        "village": null,
+        "latitude": "49.446400",
+        "longitude": "24.943600"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 321,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.286Z",
+        "updated_at": "2024-10-14T04:28:21.286Z",
+        "location_type": "city",
+        "city": 321,
+        "village": null,
+        "latitude": "48.802200",
+        "longitude": "26.040000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 322,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.292Z",
+        "updated_at": "2024-10-14T04:28:21.292Z",
+        "location_type": "city",
+        "city": 322,
+        "village": null,
+        "latitude": "49.062800",
+        "longitude": "25.379500"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 323,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.299Z",
+        "updated_at": "2024-10-14T04:28:21.299Z",
+        "location_type": "city",
+        "city": 323,
+        "village": null,
+        "latitude": "48.650000",
+        "longitude": "25.736700"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 324,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.305Z",
+        "updated_at": "2024-10-14T04:28:21.305Z",
+        "location_type": "city",
+        "city": 324,
+        "village": null,
+        "latitude": "49.671500",
+        "longitude": "25.770800"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 325,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.311Z",
+        "updated_at": "2024-10-14T04:28:21.311Z",
+        "location_type": "city",
+        "city": 325,
+        "village": null,
+        "latitude": "49.661700",
+        "longitude": "25.145300"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 326,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.318Z",
+        "updated_at": "2024-10-14T04:28:21.318Z",
+        "location_type": "city",
+        "city": 326,
+        "village": null,
+        "latitude": "49.108100",
+        "longitude": "25.912800"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 327,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.325Z",
+        "updated_at": "2024-10-14T04:28:21.325Z",
+        "location_type": "city",
+        "city": 327,
+        "village": null,
+        "latitude": "50.108100",
+        "longitude": "25.727500"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 328,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.331Z",
+        "updated_at": "2024-10-14T04:28:21.331Z",
+        "location_type": "city",
+        "city": 328,
+        "village": null,
+        "latitude": "49.866700",
+        "longitude": "26.087200"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 329,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.338Z",
+        "updated_at": "2024-10-14T04:28:21.338Z",
+        "location_type": "city",
+        "city": 329,
+        "village": null,
+        "latitude": "49.088400",
+        "longitude": "25.166700"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 330,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.344Z",
+        "updated_at": "2024-10-14T04:28:21.344Z",
+        "location_type": "city",
+        "city": 330,
+        "village": null,
+        "latitude": "49.275000",
+        "longitude": "25.134200"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 331,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.352Z",
+        "updated_at": "2024-10-14T04:28:21.352Z",
+        "location_type": "city",
+        "city": 331,
+        "village": null,
+        "latitude": "50.006500",
+        "longitude": "25.510400"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 332,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.358Z",
+        "updated_at": "2024-10-14T04:28:21.358Z",
+        "location_type": "city",
+        "city": 332,
+        "village": null,
+        "latitude": "49.429000",
+        "longitude": "25.974400"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 333,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.364Z",
+        "updated_at": "2024-10-14T04:28:21.364Z",
+        "location_type": "city",
+        "city": 333,
+        "village": null,
+        "latitude": "49.300600",
+        "longitude": "25.699500"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 334,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.371Z",
+        "updated_at": "2024-10-14T04:28:21.371Z",
+        "location_type": "city",
+        "city": 334,
+        "village": null,
+        "latitude": "49.556000",
+        "longitude": "25.605600"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 335,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.377Z",
+        "updated_at": "2024-10-14T04:28:21.377Z",
+        "location_type": "city",
+        "city": 335,
+        "village": null,
+        "latitude": "49.209400",
+        "longitude": "25.917500"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 336,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.384Z",
+        "updated_at": "2024-10-14T04:28:21.384Z",
+        "location_type": "city",
+        "city": 336,
+        "village": null,
+        "latitude": "49.007000",
+        "longitude": "25.787500"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 337,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.391Z",
+        "updated_at": "2024-10-14T04:28:21.391Z",
+        "location_type": "city",
+        "city": 337,
+        "village": null,
+        "latitude": "50.114200",
+        "longitude": "26.113000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 338,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.400Z",
+        "updated_at": "2024-10-14T04:28:21.400Z",
+        "location_type": "city",
+        "city": 338,
+        "village": null,
+        "latitude": "49.459200",
+        "longitude": "36.852500"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 339,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.407Z",
+        "updated_at": "2024-10-14T04:28:21.407Z",
+        "location_type": "city",
+        "city": 339,
+        "village": null,
+        "latitude": "48.910000",
+        "longitude": "37.023100"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 340,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.413Z",
+        "updated_at": "2024-10-14T04:28:21.413Z",
+        "location_type": "city",
+        "city": 340,
+        "village": null,
+        "latitude": "50.161700",
+        "longitude": "35.525600"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 341,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.420Z",
+        "updated_at": "2024-10-14T04:28:21.420Z",
+        "location_type": "city",
+        "city": 341,
+        "village": null,
+        "latitude": "49.838200",
+        "longitude": "35.617200"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 342,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.426Z",
+        "updated_at": "2024-10-14T04:28:21.426Z",
+        "location_type": "city",
+        "city": 342,
+        "village": null,
+        "latitude": "50.287900",
+        "longitude": "36.943400"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 343,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.431Z",
+        "updated_at": "2024-10-14T04:28:21.431Z",
+        "location_type": "city",
+        "city": 343,
+        "village": null,
+        "latitude": "50.111500",
+        "longitude": "36.121700"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 344,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.438Z",
+        "updated_at": "2024-10-14T04:28:21.438Z",
+        "location_type": "city",
+        "city": 344,
+        "village": null,
+        "latitude": "49.687800",
+        "longitude": "36.353400"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 345,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.445Z",
+        "updated_at": "2024-10-14T04:28:21.445Z",
+        "location_type": "city",
+        "city": 345,
+        "village": null,
+        "latitude": "49.195900",
+        "longitude": "37.279700"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 346,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.451Z",
+        "updated_at": "2024-10-14T04:28:21.451Z",
+        "location_type": "city",
+        "city": 346,
+        "village": null,
+        "latitude": "49.371700",
+        "longitude": "35.456000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 347,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.458Z",
+        "updated_at": "2024-10-14T04:28:21.458Z",
+        "location_type": "city",
+        "city": 347,
+        "village": null,
+        "latitude": "49.706400",
+        "longitude": "37.600000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 348,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.463Z",
+        "updated_at": "2024-10-14T04:28:21.463Z",
+        "location_type": "city",
+        "city": 348,
+        "village": null,
+        "latitude": "48.889200",
+        "longitude": "36.316000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 349,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.470Z",
+        "updated_at": "2024-10-14T04:28:21.470Z",
+        "location_type": "city",
+        "city": 349,
+        "village": null,
+        "latitude": "49.948300",
+        "longitude": "35.929500"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 350,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.476Z",
+        "updated_at": "2024-10-14T04:28:21.476Z",
+        "location_type": "city",
+        "city": 350,
+        "village": null,
+        "latitude": "49.818600",
+        "longitude": "36.068300"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 351,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.484Z",
+        "updated_at": "2024-10-14T04:28:21.484Z",
+        "location_type": "city",
+        "city": 351,
+        "village": null,
+        "latitude": "49.386700",
+        "longitude": "36.213200"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 352,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.489Z",
+        "updated_at": "2024-10-14T04:28:21.489Z",
+        "location_type": "city",
+        "city": 352,
+        "village": null,
+        "latitude": "49.876700",
+        "longitude": "36.064500"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 353,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.496Z",
+        "updated_at": "2024-10-14T04:28:21.496Z",
+        "location_type": "city",
+        "city": 353,
+        "village": null,
+        "latitude": "50.002400",
+        "longitude": "36.229600"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 354,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.502Z",
+        "updated_at": "2024-10-14T04:28:21.502Z",
+        "location_type": "city",
+        "city": 354,
+        "village": null,
+        "latitude": "49.826500",
+        "longitude": "36.680500"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 355,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.511Z",
+        "updated_at": "2024-10-14T04:28:21.511Z",
+        "location_type": "city",
+        "city": 355,
+        "village": null,
+        "latitude": "46.841400",
+        "longitude": "33.429500"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 356,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.517Z",
+        "updated_at": "2024-10-14T04:28:21.517Z",
+        "location_type": "city",
+        "city": 356,
+        "village": null,
+        "latitude": "46.176000",
+        "longitude": "34.799000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 357,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.524Z",
+        "updated_at": "2024-10-14T04:28:21.524Z",
+        "location_type": "city",
+        "city": 357,
+        "village": null,
+        "latitude": "46.523000",
+        "longitude": "32.515800"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 358,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.531Z",
+        "updated_at": "2024-10-14T04:28:21.531Z",
+        "location_type": "city",
+        "city": 358,
+        "village": null,
+        "latitude": "46.797900",
+        "longitude": "33.475000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 359,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.537Z",
+        "updated_at": "2024-10-14T04:28:21.537Z",
+        "location_type": "city",
+        "city": 359,
+        "village": null,
+        "latitude": "46.751200",
+        "longitude": "33.360600"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 360,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.543Z",
+        "updated_at": "2024-10-14T04:28:21.543Z",
+        "location_type": "city",
+        "city": 360,
+        "village": null,
+        "latitude": "46.617400",
+        "longitude": "32.727400"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 361,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.550Z",
+        "updated_at": "2024-10-14T04:28:21.550Z",
+        "location_type": "city",
+        "city": 361,
+        "village": null,
+        "latitude": "46.117400",
+        "longitude": "32.918000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 362,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.557Z",
+        "updated_at": "2024-10-14T04:28:21.557Z",
+        "location_type": "city",
+        "city": 362,
+        "village": null,
+        "latitude": "46.753400",
+        "longitude": "33.420000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 363,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.563Z",
+        "updated_at": "2024-10-14T04:28:21.563Z",
+        "location_type": "city",
+        "city": 363,
+        "village": null,
+        "latitude": "46.640000",
+        "longitude": "32.614400"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 364,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.572Z",
+        "updated_at": "2024-10-14T04:28:21.572Z",
+        "location_type": "city",
+        "city": 364,
+        "village": null,
+        "latitude": "49.537800",
+        "longitude": "26.200600"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 365,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.578Z",
+        "updated_at": "2024-10-14T04:28:21.578Z",
+        "location_type": "city",
+        "city": 365,
+        "village": null,
+        "latitude": "49.166900",
+        "longitude": "26.581700"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 366,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.585Z",
+        "updated_at": "2024-10-14T04:28:21.585Z",
+        "location_type": "city",
+        "city": 366,
+        "village": null,
+        "latitude": "49.270400",
+        "longitude": "27.438100"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 367,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.591Z",
+        "updated_at": "2024-10-14T04:28:21.592Z",
+        "location_type": "city",
+        "city": 367,
+        "village": null,
+        "latitude": "48.889400",
+        "longitude": "26.856900"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 368,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.598Z",
+        "updated_at": "2024-10-14T04:28:21.598Z",
+        "location_type": "city",
+        "city": 368,
+        "village": null,
+        "latitude": "50.118900",
+        "longitude": "26.821400"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 369,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.604Z",
+        "updated_at": "2024-10-14T04:28:21.604Z",
+        "location_type": "city",
+        "city": 369,
+        "village": null,
+        "latitude": "48.680600",
+        "longitude": "26.580600"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 370,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.611Z",
+        "updated_at": "2024-10-14T04:28:21.611Z",
+        "location_type": "city",
+        "city": 370,
+        "village": null,
+        "latitude": "49.650800",
+        "longitude": "26.966700"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 371,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.618Z",
+        "updated_at": "2024-10-14T04:28:21.618Z",
+        "location_type": "city",
+        "city": 371,
+        "village": null,
+        "latitude": "50.330000",
+        "longitude": "26.640000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 372,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.624Z",
+        "updated_at": "2024-10-14T04:28:21.624Z",
+        "location_type": "city",
+        "city": 372,
+        "village": null,
+        "latitude": "50.125000",
+        "longitude": "27.507200"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 373,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.632Z",
+        "updated_at": "2024-10-14T04:28:21.632Z",
+        "location_type": "city",
+        "city": 373,
+        "village": null,
+        "latitude": "50.295000",
+        "longitude": "26.858900"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 374,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.637Z",
+        "updated_at": "2024-10-14T04:28:21.637Z",
+        "location_type": "city",
+        "city": 374,
+        "village": null,
+        "latitude": "49.753900",
+        "longitude": "27.220300"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 375,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.645Z",
+        "updated_at": "2024-10-14T04:28:21.645Z",
+        "location_type": "city",
+        "city": 375,
+        "village": null,
+        "latitude": "49.419500",
+        "longitude": "26.979500"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 376,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.650Z",
+        "updated_at": "2024-10-14T04:28:21.650Z",
+        "location_type": "city",
+        "city": 376,
+        "village": null,
+        "latitude": "50.178700",
+        "longitude": "27.060000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 377,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.660Z",
+        "updated_at": "2024-10-14T04:28:21.660Z",
+        "location_type": "city",
+        "city": 377,
+        "village": null,
+        "latitude": "49.011900",
+        "longitude": "31.071500"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 378,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.667Z",
+        "updated_at": "2024-10-14T04:28:21.667Z",
+        "location_type": "city",
+        "city": 378,
+        "village": null,
+        "latitude": "49.292500",
+        "longitude": "31.458000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 379,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.673Z",
+        "updated_at": "2024-10-14T04:28:21.673Z",
+        "location_type": "city",
+        "city": 379,
+        "village": null,
+        "latitude": "49.236000",
+        "longitude": "30.110000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 380,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.680Z",
+        "updated_at": "2024-10-14T04:28:21.680Z",
+        "location_type": "city",
+        "city": 380,
+        "village": null,
+        "latitude": "49.069800",
+        "longitude": "30.967300"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 381,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.685Z",
+        "updated_at": "2024-10-14T04:28:21.685Z",
+        "location_type": "city",
+        "city": 381,
+        "village": null,
+        "latitude": "49.668900",
+        "longitude": "32.047700"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 382,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.692Z",
+        "updated_at": "2024-10-14T04:28:21.692Z",
+        "location_type": "city",
+        "city": 382,
+        "village": null,
+        "latitude": "49.031200",
+        "longitude": "32.097600"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 383,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.698Z",
+        "updated_at": "2024-10-14T04:28:21.698Z",
+        "location_type": "city",
+        "city": 383,
+        "village": null,
+        "latitude": "49.744800",
+        "longitude": "31.455800"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 384,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.704Z",
+        "updated_at": "2024-10-14T04:28:21.704Z",
+        "location_type": "city",
+        "city": 384,
+        "village": null,
+        "latitude": "49.419500",
+        "longitude": "31.277200"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 385,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.711Z",
+        "updated_at": "2024-10-14T04:28:21.711Z",
+        "location_type": "city",
+        "city": 385,
+        "village": null,
+        "latitude": "48.990000",
+        "longitude": "31.277200"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 386,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.718Z",
+        "updated_at": "2024-10-14T04:28:21.718Z",
+        "location_type": "city",
+        "city": 386,
+        "village": null,
+        "latitude": "49.211500",
+        "longitude": "31.873200"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 387,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.724Z",
+        "updated_at": "2024-10-14T04:28:21.724Z",
+        "location_type": "city",
+        "city": 387,
+        "village": null,
+        "latitude": "48.886100",
+        "longitude": "30.702500"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 388,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.730Z",
+        "updated_at": "2024-10-14T04:28:21.730Z",
+        "location_type": "city",
+        "city": 388,
+        "village": null,
+        "latitude": "48.750000",
+        "longitude": "30.219400"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 389,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.737Z",
+        "updated_at": "2024-10-14T04:28:21.737Z",
+        "location_type": "city",
+        "city": 389,
+        "village": null,
+        "latitude": "48.814700",
+        "longitude": "29.968400"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 390,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.743Z",
+        "updated_at": "2024-10-14T04:28:21.743Z",
+        "location_type": "city",
+        "city": 390,
+        "village": null,
+        "latitude": "49.444400",
+        "longitude": "32.060800"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 391,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.749Z",
+        "updated_at": "2024-10-14T04:28:21.749Z",
+        "location_type": "city",
+        "city": 391,
+        "village": null,
+        "latitude": "49.077200",
+        "longitude": "32.649200"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 392,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.756Z",
+        "updated_at": "2024-10-14T04:28:21.756Z",
+        "location_type": "city",
+        "city": 392,
+        "village": null,
+        "latitude": "48.815300",
+        "longitude": "29.968400"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 393,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.766Z",
+        "updated_at": "2024-10-14T04:28:21.766Z",
+        "location_type": "city",
+        "city": 393,
+        "village": null,
+        "latitude": "48.375300",
+        "longitude": "25.497800"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 394,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.773Z",
+        "updated_at": "2024-10-14T04:28:21.773Z",
+        "location_type": "city",
+        "city": 394,
+        "village": null,
+        "latitude": "48.245300",
+        "longitude": "25.182200"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 395,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.778Z",
+        "updated_at": "2024-10-14T04:28:21.778Z",
+        "location_type": "city",
+        "city": 395,
+        "village": null,
+        "latitude": "48.146700",
+        "longitude": "26.258300"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 396,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.786Z",
+        "updated_at": "2024-10-14T04:28:21.786Z",
+        "location_type": "city",
+        "city": 396,
+        "village": null,
+        "latitude": "48.520300",
+        "longitude": "25.845000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 397,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.792Z",
+        "updated_at": "2024-10-14T04:28:21.792Z",
+        "location_type": "city",
+        "city": 397,
+        "village": null,
+        "latitude": "48.441100",
+        "longitude": "25.766900"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 398,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.798Z",
+        "updated_at": "2024-10-14T04:28:21.798Z",
+        "location_type": "city",
+        "city": 398,
+        "village": null,
+        "latitude": "48.582200",
+        "longitude": "27.436900"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 399,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.804Z",
+        "updated_at": "2024-10-14T04:28:21.804Z",
+        "location_type": "city",
+        "city": 399,
+        "village": null,
+        "latitude": "48.219200",
+        "longitude": "26.265300"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 400,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.810Z",
+        "updated_at": "2024-10-14T04:28:21.810Z",
+        "location_type": "city",
+        "city": 400,
+        "village": null,
+        "latitude": "48.453200",
+        "longitude": "27.416100"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 401,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.817Z",
+        "updated_at": "2024-10-14T04:28:21.817Z",
+        "location_type": "city",
+        "city": 401,
+        "village": null,
+        "latitude": "48.159700",
+        "longitude": "25.714400"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 402,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.823Z",
+        "updated_at": "2024-10-14T04:28:21.823Z",
+        "location_type": "city",
+        "city": 402,
+        "village": null,
+        "latitude": "48.509400",
+        "longitude": "26.491900"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 403,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.829Z",
+        "updated_at": "2024-10-14T04:28:21.829Z",
+        "location_type": "city",
+        "city": 403,
+        "village": null,
+        "latitude": "48.290800",
+        "longitude": "25.934400"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 404,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.838Z",
+        "updated_at": "2024-10-14T04:28:21.838Z",
+        "location_type": "city",
+        "city": 404,
+        "village": null,
+        "latitude": "51.338700",
+        "longitude": "32.877200"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 405,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.844Z",
+        "updated_at": "2024-10-14T04:28:21.844Z",
+        "location_type": "city",
+        "city": 405,
+        "village": null,
+        "latitude": "51.175600",
+        "longitude": "32.827200"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 406,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.851Z",
+        "updated_at": "2024-10-14T04:28:21.851Z",
+        "location_type": "city",
+        "city": 406,
+        "village": null,
+        "latitude": "50.750000",
+        "longitude": "31.386400"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 407,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.857Z",
+        "updated_at": "2024-10-14T04:28:21.857Z",
+        "location_type": "city",
+        "city": 407,
+        "village": null,
+        "latitude": "51.253100",
+        "longitude": "32.429200"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 408,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.864Z",
+        "updated_at": "2024-10-14T04:28:21.864Z",
+        "location_type": "city",
+        "city": 408,
+        "village": null,
+        "latitude": "51.893100",
+        "longitude": "31.594700"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 409,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.871Z",
+        "updated_at": "2024-10-14T04:28:21.871Z",
+        "location_type": "city",
+        "city": 409,
+        "village": null,
+        "latitude": "50.856100",
+        "longitude": "32.377200"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 410,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.877Z",
+        "updated_at": "2024-10-14T04:28:21.877Z",
+        "location_type": "city",
+        "city": 410,
+        "village": null,
+        "latitude": "51.773000",
+        "longitude": "32.273100"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 411,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.883Z",
+        "updated_at": "2024-10-14T04:28:21.883Z",
+        "location_type": "city",
+        "city": 411,
+        "village": null,
+        "latitude": "51.524200",
+        "longitude": "32.221100"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 412,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.889Z",
+        "updated_at": "2024-10-14T04:28:21.889Z",
+        "location_type": "city",
+        "city": 412,
+        "village": null,
+        "latitude": "51.042800",
+        "longitude": "31.873700"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 413,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.896Z",
+        "updated_at": "2024-10-14T04:28:21.896Z",
+        "location_type": "city",
+        "city": 413,
+        "village": null,
+        "latitude": "52.008700",
+        "longitude": "33.273600"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 414,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.902Z",
+        "updated_at": "2024-10-14T04:28:21.902Z",
+        "location_type": "city",
+        "city": 414,
+        "village": null,
+        "latitude": "50.930000",
+        "longitude": "31.580000"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 415,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.908Z",
+        "updated_at": "2024-10-14T04:28:21.908Z",
+        "location_type": "city",
+        "city": 415,
+        "village": null,
+        "latitude": "50.948700",
+        "longitude": "30.881100"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 416,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.914Z",
+        "updated_at": "2024-10-14T04:28:21.914Z",
+        "location_type": "city",
+        "city": 416,
+        "village": null,
+        "latitude": "50.589200",
+        "longitude": "32.385600"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 417,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.921Z",
+        "updated_at": "2024-10-14T04:28:21.921Z",
+        "location_type": "city",
+        "city": 417,
+        "village": null,
+        "latitude": "52.173000",
+        "longitude": "32.592200"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 418,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.927Z",
+        "updated_at": "2024-10-14T04:28:21.927Z",
+        "location_type": "city",
+        "city": 418,
+        "village": null,
+        "latitude": "51.820300",
+        "longitude": "31.950800"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 419,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.934Z",
+        "updated_at": "2024-10-14T04:28:21.934Z",
+        "location_type": "city",
+        "city": 419,
+        "village": null,
+        "latitude": "51.491100",
+        "longitude": "31.298700"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 420,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.943Z",
+        "updated_at": "2024-10-14T04:28:21.943Z",
+        "location_type": "city",
+        "city": 420,
+        "village": null,
+        "latitude": "50.450100",
+        "longitude": "30.523400"
+    }
+},
+{
+    "model": "locations.location",
+    "pk": 421,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.953Z",
+        "updated_at": "2024-10-14T04:28:21.953Z",
+        "location_type": "city",
+        "city": 421,
+        "village": null,
+        "latitude": "44.616700",
+        "longitude": "33.525800"
+    }
+}
+]

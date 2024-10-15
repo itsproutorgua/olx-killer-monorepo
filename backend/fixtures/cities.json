@@ -1,0 +1,5896 @@
+[
+{
+    "model": "locations.city",
+    "pk": 1,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.100Z",
+        "updated_at": "2024-10-14T04:28:19.100Z",
+        "name": "Бар",
+        "name_uk": "Бар",
+        "name_en": "Bar",
+        "name_ru": "Бар",
+        "region": 1,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 2,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.114Z",
+        "updated_at": "2024-10-14T04:28:19.114Z",
+        "name": "Бершадь",
+        "name_uk": "Бершадь",
+        "name_en": "Bershad",
+        "name_ru": "Бершадь",
+        "region": 1,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 3,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.123Z",
+        "updated_at": "2024-10-14T04:28:19.123Z",
+        "name": "Вінниця",
+        "name_uk": "Вінниця",
+        "name_en": "Vinnytsia",
+        "name_ru": "Винница",
+        "region": 1,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 4,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.129Z",
+        "updated_at": "2024-10-14T04:28:19.129Z",
+        "name": "Гайсин",
+        "name_uk": "Гайсин",
+        "name_en": "Haisyn",
+        "name_ru": "Гайсин",
+        "region": 1,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 5,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.136Z",
+        "updated_at": "2024-10-14T04:28:19.136Z",
+        "name": "Гнівань",
+        "name_uk": "Гнівань",
+        "name_en": "Hnivan",
+        "name_ru": "Гнивань",
+        "region": 1,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 6,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.144Z",
+        "updated_at": "2024-10-14T04:28:19.144Z",
+        "name": "Жмеринка",
+        "name_uk": "Жмеринка",
+        "name_en": "Zhmerynka",
+        "name_ru": "Жмеринка",
+        "region": 1,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 7,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.150Z",
+        "updated_at": "2024-10-14T04:28:19.150Z",
+        "name": "Іллінці",
+        "name_uk": "Іллінці",
+        "name_en": "Illintsi",
+        "name_ru": "Ильинцы",
+        "region": 1,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 8,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.157Z",
+        "updated_at": "2024-10-14T04:28:19.157Z",
+        "name": "Калинівка",
+        "name_uk": "Калинівка",
+        "name_en": "Kalynivka",
+        "name_ru": "Калиновка",
+        "region": 1,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 9,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.163Z",
+        "updated_at": "2024-10-14T04:28:19.163Z",
+        "name": "Козятин",
+        "name_uk": "Козятин",
+        "name_en": "Koziatyn",
+        "name_ru": "Казатин",
+        "region": 1,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 10,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.170Z",
+        "updated_at": "2024-10-14T04:28:19.170Z",
+        "name": "Ладижин",
+        "name_uk": "Ладижин",
+        "name_en": "Ladyzhyn",
+        "name_ru": "Ладыжин",
+        "region": 1,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 11,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.177Z",
+        "updated_at": "2024-10-14T04:28:19.177Z",
+        "name": "Липовець",
+        "name_uk": "Липовець",
+        "name_en": "Lypovets",
+        "name_ru": "Липовец",
+        "region": 1,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 12,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.183Z",
+        "updated_at": "2024-10-14T04:28:19.183Z",
+        "name": "Могилів",
+        "name_uk": "Могилів",
+        "name_en": "Mohyliv",
+        "name_ru": "Могилев",
+        "region": 1,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 13,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.190Z",
+        "updated_at": "2024-10-14T04:28:19.190Z",
+        "name": "Немирів",
+        "name_uk": "Немирів",
+        "name_en": "Nemyriv",
+        "name_ru": "Немиров",
+        "region": 1,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 14,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.197Z",
+        "updated_at": "2024-10-14T04:28:19.197Z",
+        "name": "Погребище",
+        "name_uk": "Погребище",
+        "name_en": "Pohrebyshche",
+        "name_ru": "Погребище",
+        "region": 1,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 15,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.204Z",
+        "updated_at": "2024-10-14T04:28:19.204Z",
+        "name": "Тульчин",
+        "name_uk": "Тульчин",
+        "name_en": "Tulchyn",
+        "name_ru": "Тульчин",
+        "region": 1,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 16,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.210Z",
+        "updated_at": "2024-10-14T04:28:19.210Z",
+        "name": "Хмільник",
+        "name_uk": "Хмільник",
+        "name_en": "Khmilnyk",
+        "name_ru": "Хмельник",
+        "region": 1,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 17,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.217Z",
+        "updated_at": "2024-10-14T04:28:19.217Z",
+        "name": "Шаргород",
+        "name_uk": "Шаргород",
+        "name_en": "Sharhorod",
+        "name_ru": "Шаргород",
+        "region": 1,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 18,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.222Z",
+        "updated_at": "2024-10-14T04:28:19.222Z",
+        "name": "Ямпіль",
+        "name_uk": "Ямпіль",
+        "name_en": "Yampil",
+        "name_ru": "Ямполь",
+        "region": 1,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 19,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.232Z",
+        "updated_at": "2024-10-14T04:28:19.232Z",
+        "name": "Берестечко",
+        "name_uk": "Берестечко",
+        "name_en": "Berestechko",
+        "name_ru": "Берестечко",
+        "region": 2,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 20,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.239Z",
+        "updated_at": "2024-10-14T04:28:19.239Z",
+        "name": "Володимир-Волинський",
+        "name_uk": "Володимир-Волинський",
+        "name_en": "Volodymyr-Volynskyi",
+        "name_ru": "Владимир-Волынский",
+        "region": 2,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 21,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.246Z",
+        "updated_at": "2024-10-14T04:28:19.246Z",
+        "name": "Горохів",
+        "name_uk": "Горохів",
+        "name_en": "Horokhiv",
+        "name_ru": "Горохов",
+        "region": 2,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 22,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.251Z",
+        "updated_at": "2024-10-14T04:28:19.251Z",
+        "name": "Камінь-Каширський",
+        "name_uk": "Камінь-Каширський",
+        "name_en": "Kamin-Kashyrskyi",
+        "name_ru": "Камень-Каширский",
+        "region": 2,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 23,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.258Z",
+        "updated_at": "2024-10-14T04:28:19.258Z",
+        "name": "Ківерці",
+        "name_uk": "Ківерці",
+        "name_en": "Kivertsi",
+        "name_ru": "Киверцы",
+        "region": 2,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 24,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.265Z",
+        "updated_at": "2024-10-14T04:28:19.265Z",
+        "name": "Ковель",
+        "name_uk": "Ковель",
+        "name_en": "Kovel",
+        "name_ru": "Ковель",
+        "region": 2,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 25,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.270Z",
+        "updated_at": "2024-10-14T04:28:19.270Z",
+        "name": "Луцьк",
+        "name_uk": "Луцьк",
+        "name_en": "Lutsk",
+        "name_ru": "Луцк",
+        "region": 2,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 26,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.277Z",
+        "updated_at": "2024-10-14T04:28:19.277Z",
+        "name": "Любомль",
+        "name_uk": "Любомль",
+        "name_en": "Liuboml",
+        "name_ru": "Любомль",
+        "region": 2,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 27,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.283Z",
+        "updated_at": "2024-10-14T04:28:19.283Z",
+        "name": "Нововолинськ",
+        "name_uk": "Нововолинськ",
+        "name_en": "Novovolynsk",
+        "name_ru": "Нововолынск",
+        "region": 2,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 28,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.289Z",
+        "updated_at": "2024-10-14T04:28:19.289Z",
+        "name": "Рожище",
+        "name_uk": "Рожище",
+        "name_en": "Rozhyshche",
+        "name_ru": "Рожище",
+        "region": 2,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 29,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.295Z",
+        "updated_at": "2024-10-14T04:28:19.295Z",
+        "name": "Устилуг",
+        "name_uk": "Устилуг",
+        "name_en": "Ustyluh",
+        "name_ru": "Устилуг",
+        "region": 2,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 30,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.303Z",
+        "updated_at": "2024-10-14T04:28:19.305Z",
+        "name": "Апостолове",
+        "name_uk": "Апостолове",
+        "name_en": "Apostolove",
+        "name_ru": "Апостолово",
+        "region": 3,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 31,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.310Z",
+        "updated_at": "2024-10-14T04:28:19.310Z",
+        "name": "Верхівцеве",
+        "name_uk": "Верхівцеве",
+        "name_en": "Verkhivtseve",
+        "name_ru": "Верховцево",
+        "region": 3,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 32,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.317Z",
+        "updated_at": "2024-10-14T04:28:19.317Z",
+        "name": "Верхньодніпровськ",
+        "name_uk": "Верхньодніпровськ",
+        "name_en": "Verkhnodniprovsk",
+        "name_ru": "Верхнеднепровск",
+        "region": 3,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 33,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.324Z",
+        "updated_at": "2024-10-14T04:28:19.324Z",
+        "name": "Вільногірськ",
+        "name_uk": "Вільногірськ",
+        "name_en": "Vilnohirsk",
+        "name_ru": "Вольногорск",
+        "region": 3,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 34,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.331Z",
+        "updated_at": "2024-10-14T04:28:19.331Z",
+        "name": "Дніпро",
+        "name_uk": "Дніпро",
+        "name_en": "Dnipro",
+        "name_ru": "Днепр",
+        "region": 3,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 35,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.338Z",
+        "updated_at": "2024-10-14T04:28:19.338Z",
+        "name": "Жовті Води",
+        "name_uk": "Жовті Води",
+        "name_en": "Zhovti Vody",
+        "name_ru": "Желтые Воды",
+        "region": 3,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 36,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.344Z",
+        "updated_at": "2024-10-14T04:28:19.344Z",
+        "name": "Зеленодольськ",
+        "name_uk": "Зеленодольськ",
+        "name_en": "Zelenodolsk",
+        "name_ru": "Зеленодольск",
+        "region": 3,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 37,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.351Z",
+        "updated_at": "2024-10-14T04:28:19.351Z",
+        "name": "Кам'янське",
+        "name_uk": "Кам'янське",
+        "name_en": "Kamianske",
+        "name_ru": "Каменское",
+        "region": 3,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 38,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.358Z",
+        "updated_at": "2024-10-14T04:28:19.358Z",
+        "name": "Кривий Ріг",
+        "name_uk": "Кривий Ріг",
+        "name_en": "Kryvyi Rih",
+        "name_ru": "Кривой Рог",
+        "region": 3,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 39,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.365Z",
+        "updated_at": "2024-10-14T04:28:19.365Z",
+        "name": "Марганець",
+        "name_uk": "Марганець",
+        "name_en": "Marhanets",
+        "name_ru": "Марганец",
+        "region": 3,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 40,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.370Z",
+        "updated_at": "2024-10-14T04:28:19.370Z",
+        "name": "Нікополь",
+        "name_uk": "Нікополь",
+        "name_en": "Nikopol",
+        "name_ru": "Никополь",
+        "region": 3,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 41,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.378Z",
+        "updated_at": "2024-10-14T04:28:19.378Z",
+        "name": "Новомосковськ",
+        "name_uk": "Новомосковськ",
+        "name_en": "Novomoskovsk",
+        "name_ru": "Новомосковск",
+        "region": 3,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 42,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.384Z",
+        "updated_at": "2024-10-14T04:28:19.384Z",
+        "name": "Павлоград",
+        "name_uk": "Павлоград",
+        "name_en": "Pavlohrad",
+        "name_ru": "Павлоград",
+        "region": 3,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 43,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.391Z",
+        "updated_at": "2024-10-14T04:28:19.391Z",
+        "name": "Перещепине",
+        "name_uk": "Перещепине",
+        "name_en": "Pereshchepyne",
+        "name_ru": "Перещепино",
+        "region": 3,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 44,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.397Z",
+        "updated_at": "2024-10-14T04:28:19.397Z",
+        "name": "Першотравенськ",
+        "name_uk": "Першотравенськ",
+        "name_en": "Pershotravensk",
+        "name_ru": "Першотравенск",
+        "region": 3,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 45,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.404Z",
+        "updated_at": "2024-10-14T04:28:19.404Z",
+        "name": "Підгородне",
+        "name_uk": "Підгородне",
+        "name_en": "Pidhorodne",
+        "name_ru": "Подгородное",
+        "region": 3,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 46,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.410Z",
+        "updated_at": "2024-10-14T04:28:19.410Z",
+        "name": "П'ятихатки",
+        "name_uk": "П'ятихатки",
+        "name_en": "Piatykhatky",
+        "name_ru": "Пятихатки",
+        "region": 3,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 47,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.416Z",
+        "updated_at": "2024-10-14T04:28:19.416Z",
+        "name": "Покров",
+        "name_uk": "Покров",
+        "name_en": "Pokrov",
+        "name_ru": "Покров",
+        "region": 3,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 48,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.424Z",
+        "updated_at": "2024-10-14T04:28:19.424Z",
+        "name": "Синельникове",
+        "name_uk": "Синельникове",
+        "name_en": "Synelnykove",
+        "name_ru": "Синельниково",
+        "region": 3,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 49,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.431Z",
+        "updated_at": "2024-10-14T04:28:19.431Z",
+        "name": "Тернівка",
+        "name_uk": "Тернівка",
+        "name_en": "Ternivka",
+        "name_ru": "Терновка",
+        "region": 3,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 50,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.440Z",
+        "updated_at": "2024-10-14T04:28:19.440Z",
+        "name": "Авдіївка",
+        "name_uk": "Авдіївка",
+        "name_en": "Avdiivka",
+        "name_ru": "Авдеевка",
+        "region": 4,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 51,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.448Z",
+        "updated_at": "2024-10-14T04:28:19.448Z",
+        "name": "Бахмут",
+        "name_uk": "Бахмут",
+        "name_en": "Bakhmut",
+        "name_ru": "Бахмут",
+        "region": 4,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 52,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.454Z",
+        "updated_at": "2024-10-14T04:28:19.454Z",
+        "name": "Вугледар",
+        "name_uk": "Вугледар",
+        "name_en": "Vuhledar",
+        "name_ru": "Угледар",
+        "region": 4,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 53,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.461Z",
+        "updated_at": "2024-10-14T04:28:19.461Z",
+        "name": "Горлівка",
+        "name_uk": "Горлівка",
+        "name_en": "Horlivka",
+        "name_ru": "Горловка",
+        "region": 4,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 54,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.467Z",
+        "updated_at": "2024-10-14T04:28:19.467Z",
+        "name": "Дебальцеве",
+        "name_uk": "Дебальцеве",
+        "name_en": "Debaltseve",
+        "name_ru": "Дебальцево",
+        "region": 4,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 55,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.474Z",
+        "updated_at": "2024-10-14T04:28:19.474Z",
+        "name": "Торецьк",
+        "name_uk": "Торецьк",
+        "name_en": "Toretsk",
+        "name_ru": "Торецк",
+        "region": 4,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 56,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.481Z",
+        "updated_at": "2024-10-14T04:28:19.481Z",
+        "name": "Мирноград",
+        "name_uk": "Мирноград",
+        "name_en": "Myrnohrad",
+        "name_ru": "Мирноград",
+        "region": 4,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 57,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.487Z",
+        "updated_at": "2024-10-14T04:28:19.487Z",
+        "name": "Добропілля",
+        "name_uk": "Добропілля",
+        "name_en": "Dobropillia",
+        "name_ru": "Доброполье",
+        "region": 4,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 58,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.495Z",
+        "updated_at": "2024-10-14T04:28:19.495Z",
+        "name": "Докучаєвськ",
+        "name_uk": "Докучаєвськ",
+        "name_en": "Dokuchaievsk",
+        "name_ru": "Докучаевск",
+        "region": 4,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 59,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.502Z",
+        "updated_at": "2024-10-14T04:28:19.502Z",
+        "name": "Донецьк",
+        "name_uk": "Донецьк",
+        "name_en": "Donetsk",
+        "name_ru": "Донецк",
+        "region": 4,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 60,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.507Z",
+        "updated_at": "2024-10-14T04:28:19.507Z",
+        "name": "Дружківка",
+        "name_uk": "Дружківка",
+        "name_en": "Druzhkivka",
+        "name_ru": "Дружковка",
+        "region": 4,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 61,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.516Z",
+        "updated_at": "2024-10-14T04:28:19.516Z",
+        "name": "Єнакієве",
+        "name_uk": "Єнакієве",
+        "name_en": "Yenakiieve",
+        "name_ru": "Енакиево",
+        "region": 4,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 62,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.523Z",
+        "updated_at": "2024-10-14T04:28:19.523Z",
+        "name": "Жданівка",
+        "name_uk": "Жданівка",
+        "name_en": "Zhdanivka",
+        "name_ru": "Ждановка",
+        "region": 4,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 63,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.529Z",
+        "updated_at": "2024-10-14T04:28:19.529Z",
+        "name": "Хрестівка",
+        "name_uk": "Хрестівка",
+        "name_en": "Khrestivka",
+        "name_ru": "Хрестовка",
+        "region": 4,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 64,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.536Z",
+        "updated_at": "2024-10-14T04:28:19.536Z",
+        "name": "Костянтинівка",
+        "name_uk": "Костянтинівка",
+        "name_en": "Kostiantynivka",
+        "name_ru": "Константиновка",
+        "region": 4,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 65,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.542Z",
+        "updated_at": "2024-10-14T04:28:19.542Z",
+        "name": "Краматорськ",
+        "name_uk": "Краматорськ",
+        "name_en": "Kramatorsk",
+        "name_ru": "Краматорск",
+        "region": 4,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 66,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.549Z",
+        "updated_at": "2024-10-14T04:28:19.549Z",
+        "name": "Лиман",
+        "name_uk": "Лиман",
+        "name_en": "Lyman",
+        "name_ru": "Лиман",
+        "region": 4,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 67,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.556Z",
+        "updated_at": "2024-10-14T04:28:19.556Z",
+        "name": "Покровськ",
+        "name_uk": "Покровськ",
+        "name_en": "Pokrovsk",
+        "name_ru": "Покровск",
+        "region": 4,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 68,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.562Z",
+        "updated_at": "2024-10-14T04:28:19.562Z",
+        "name": "Макіївка",
+        "name_uk": "Макіївка",
+        "name_en": "Makiivka",
+        "name_ru": "Макеевка",
+        "region": 4,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 69,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.570Z",
+        "updated_at": "2024-10-14T04:28:19.570Z",
+        "name": "Маріуполь",
+        "name_uk": "Маріуполь",
+        "name_en": "Mariupol",
+        "name_ru": "Мариуполь",
+        "region": 4,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 70,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.577Z",
+        "updated_at": "2024-10-14T04:28:19.577Z",
+        "name": "Новогродівка",
+        "name_uk": "Новогродівка",
+        "name_en": "Novohrodivka",
+        "name_ru": "Новогродовка",
+        "region": 4,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 71,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.584Z",
+        "updated_at": "2024-10-14T04:28:19.584Z",
+        "name": "Селидове",
+        "name_uk": "Селидове",
+        "name_en": "Selydove",
+        "name_ru": "Селидово",
+        "region": 4,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 72,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.590Z",
+        "updated_at": "2024-10-14T04:28:19.590Z",
+        "name": "Слов'янськ",
+        "name_uk": "Слов'янськ",
+        "name_en": "Sloviansk",
+        "name_ru": "Славянск",
+        "region": 4,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 73,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.597Z",
+        "updated_at": "2024-10-14T04:28:19.597Z",
+        "name": "Сніжне",
+        "name_uk": "Сніжне",
+        "name_en": "Snizhne",
+        "name_ru": "Снежное",
+        "region": 4,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 74,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.604Z",
+        "updated_at": "2024-10-14T04:28:19.604Z",
+        "name": "Чистякове",
+        "name_uk": "Чистякове",
+        "name_en": "Chystiakove",
+        "name_ru": "Чистяково",
+        "region": 4,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 75,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.610Z",
+        "updated_at": "2024-10-14T04:28:19.610Z",
+        "name": "Харцизьк",
+        "name_uk": "Харцизьк",
+        "name_en": "Khartsyzk",
+        "name_ru": "Харцызск",
+        "region": 4,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 76,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.617Z",
+        "updated_at": "2024-10-14T04:28:19.617Z",
+        "name": "Шахтарськ",
+        "name_uk": "Шахтарськ",
+        "name_en": "Shakhtarsk",
+        "name_ru": "Шахтерск",
+        "region": 4,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 77,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.623Z",
+        "updated_at": "2024-10-14T04:28:19.623Z",
+        "name": "Ясинувата",
+        "name_uk": "Ясинувата",
+        "name_en": "Yasynuvata",
+        "name_ru": "Ясиноватая",
+        "region": 4,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 78,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.633Z",
+        "updated_at": "2024-10-14T04:28:19.633Z",
+        "name": "Житомир",
+        "name_uk": "Житомир",
+        "name_en": "Zhytomyr",
+        "name_ru": "Житомир",
+        "region": 5,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 79,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.640Z",
+        "updated_at": "2024-10-14T04:28:19.640Z",
+        "name": "Бердичів",
+        "name_uk": "Бердичів",
+        "name_en": "Berdiansk",
+        "name_ru": "Бердичев",
+        "region": 5,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 80,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.646Z",
+        "updated_at": "2024-10-14T04:28:19.646Z",
+        "name": "Коростень",
+        "name_uk": "Коростень",
+        "name_en": "Korosten",
+        "name_ru": "Коростень",
+        "region": 5,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 81,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.653Z",
+        "updated_at": "2024-10-14T04:28:19.653Z",
+        "name": "Новоград-Волинський",
+        "name_uk": "Новоград-Волинський",
+        "name_en": "Novograd-Volynskyi",
+        "name_ru": "Новоград-Волынский",
+        "region": 5,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 82,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.659Z",
+        "updated_at": "2024-10-14T04:28:19.659Z",
+        "name": "Малин",
+        "name_uk": "Малин",
+        "name_en": "Malyn",
+        "name_ru": "Малин",
+        "region": 5,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 83,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.666Z",
+        "updated_at": "2024-10-14T04:28:19.666Z",
+        "name": "Овруч",
+        "name_uk": "Овруч",
+        "name_en": "Ovruch",
+        "name_ru": "Овруч",
+        "region": 5,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 84,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.672Z",
+        "updated_at": "2024-10-14T04:28:19.672Z",
+        "name": "Радомишль",
+        "name_uk": "Радомишль",
+        "name_en": "Radomyshl",
+        "name_ru": "Радомышль",
+        "region": 5,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 85,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.678Z",
+        "updated_at": "2024-10-14T04:28:19.678Z",
+        "name": "Чуднів",
+        "name_uk": "Чуднів",
+        "name_en": "Chudniv",
+        "name_ru": "Чуднов",
+        "region": 5,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 86,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.684Z",
+        "updated_at": "2024-10-14T04:28:19.684Z",
+        "name": "Андрушівка",
+        "name_uk": "Андрушівка",
+        "name_en": "Andrushivka",
+        "name_ru": "Андрушевка",
+        "region": 5,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 87,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.690Z",
+        "updated_at": "2024-10-14T04:28:19.690Z",
+        "name": "Пулин",
+        "name_uk": "Пулин",
+        "name_en": "Pulin",
+        "name_ru": "Пулин",
+        "region": 5,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 88,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.698Z",
+        "updated_at": "2024-10-14T04:28:19.698Z",
+        "name": "Баранівка",
+        "name_uk": "Баранівка",
+        "name_en": "Baranivka",
+        "name_ru": "Барановка",
+        "region": 5,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 89,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.704Z",
+        "updated_at": "2024-10-14T04:28:19.704Z",
+        "name": "Лугини",
+        "name_uk": "Лугини",
+        "name_en": "Luhyny",
+        "name_ru": "Лугины",
+        "region": 5,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 90,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.710Z",
+        "updated_at": "2024-10-14T04:28:19.710Z",
+        "name": "Романів",
+        "name_uk": "Романів",
+        "name_en": "Romanyv",
+        "name_ru": "Романов",
+        "region": 5,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 91,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.717Z",
+        "updated_at": "2024-10-14T04:28:19.717Z",
+        "name": "Черняхів",
+        "name_uk": "Черняхів",
+        "name_en": "Chernyakhiv",
+        "name_ru": "Чернягов",
+        "region": 5,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 92,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.726Z",
+        "updated_at": "2024-10-14T04:28:19.726Z",
+        "name": "Берегове",
+        "name_uk": "Берегове",
+        "name_en": "Berehove",
+        "name_ru": "Берегово",
+        "region": 6,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 93,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.733Z",
+        "updated_at": "2024-10-14T04:28:19.733Z",
+        "name": "Виноградів",
+        "name_uk": "Виноградів",
+        "name_en": "Vynohradiv",
+        "name_ru": "Виноградов",
+        "region": 6,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 94,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.739Z",
+        "updated_at": "2024-10-14T04:28:19.739Z",
+        "name": "Дийда",
+        "name_uk": "Дийда",
+        "name_en": "Diyda",
+        "name_ru": "Дийда",
+        "region": 6,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 95,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.746Z",
+        "updated_at": "2024-10-14T04:28:19.746Z",
+        "name": "Іршава",
+        "name_uk": "Іршава",
+        "name_en": "Irshava",
+        "name_ru": "Иршава",
+        "region": 6,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 96,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.752Z",
+        "updated_at": "2024-10-14T04:28:19.752Z",
+        "name": "Мукачево",
+        "name_uk": "Мукачево",
+        "name_en": "Mukachevo",
+        "name_ru": "Мукачево",
+        "region": 6,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 97,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.758Z",
+        "updated_at": "2024-10-14T04:28:19.758Z",
+        "name": "Перечин",
+        "name_uk": "Перечин",
+        "name_en": "Perechyn",
+        "name_ru": "Перечин",
+        "region": 6,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 98,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.765Z",
+        "updated_at": "2024-10-14T04:28:19.765Z",
+        "name": "Рахів",
+        "name_uk": "Рахів",
+        "name_en": "Rakhiv",
+        "name_ru": "Рахов",
+        "region": 6,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 99,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.773Z",
+        "updated_at": "2024-10-14T04:28:19.773Z",
+        "name": "Свалява",
+        "name_uk": "Свалява",
+        "name_en": "Svalyava",
+        "name_ru": "Свалява",
+        "region": 6,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 100,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.780Z",
+        "updated_at": "2024-10-14T04:28:19.780Z",
+        "name": "Тячів",
+        "name_uk": "Тячів",
+        "name_en": "Tyachiv",
+        "name_ru": "Тячев",
+        "region": 6,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 101,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.786Z",
+        "updated_at": "2024-10-14T04:28:19.786Z",
+        "name": "Міжгір'я",
+        "name_uk": "Міжгір'я",
+        "name_en": "Mizhhirya",
+        "name_ru": "Мижгирья",
+        "region": 6,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 102,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.792Z",
+        "updated_at": "2024-10-14T04:28:19.792Z",
+        "name": "Порошково",
+        "name_uk": "Порошково",
+        "name_en": "Poroshkovo",
+        "name_ru": "Порошково",
+        "region": 6,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 103,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.798Z",
+        "updated_at": "2024-10-14T04:28:19.798Z",
+        "name": "Солотвино",
+        "name_uk": "Солотвино",
+        "name_en": "Solotvyno",
+        "name_ru": "Солотвино",
+        "region": 6,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 104,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.804Z",
+        "updated_at": "2024-10-14T04:28:19.804Z",
+        "name": "Ужгород",
+        "name_uk": "Ужгород",
+        "name_en": "Uzhhorod",
+        "name_ru": "Ужгород",
+        "region": 6,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 105,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.811Z",
+        "updated_at": "2024-10-14T04:28:19.811Z",
+        "name": "Хуст",
+        "name_uk": "Хуст",
+        "name_en": "Khust",
+        "name_ru": "Хуст",
+        "region": 6,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 106,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.817Z",
+        "updated_at": "2024-10-14T04:28:19.817Z",
+        "name": "Чоп",
+        "name_uk": "Чоп",
+        "name_en": "Chop",
+        "name_ru": "Чоп",
+        "region": 6,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 107,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.827Z",
+        "updated_at": "2024-10-14T04:28:19.827Z",
+        "name": "Бердянськ",
+        "name_uk": "Бердянськ",
+        "name_en": "Berdyansk",
+        "name_ru": "Бердянск",
+        "region": 7,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 108,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.833Z",
+        "updated_at": "2024-10-14T04:28:19.833Z",
+        "name": "Василівка",
+        "name_uk": "Василівка",
+        "name_en": "Vasylivka",
+        "name_ru": "Васильевка",
+        "region": 7,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 109,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.839Z",
+        "updated_at": "2024-10-14T04:28:19.839Z",
+        "name": "Вільнянськ",
+        "name_uk": "Вільнянськ",
+        "name_en": "Vilniansk",
+        "name_ru": "Вильнянск",
+        "region": 7,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 110,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.846Z",
+        "updated_at": "2024-10-14T04:28:19.846Z",
+        "name": "Гуляйполе",
+        "name_uk": "Гуляйполе",
+        "name_en": "Hulyaipole",
+        "name_ru": "Гуляйполе",
+        "region": 7,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 111,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.853Z",
+        "updated_at": "2024-10-14T04:28:19.853Z",
+        "name": "Дніпрорудне",
+        "name_uk": "Дніпрорудне",
+        "name_en": "Dniprovydene",
+        "name_ru": "Днепрорудное",
+        "region": 7,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 112,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.859Z",
+        "updated_at": "2024-10-14T04:28:19.859Z",
+        "name": "Енергодар",
+        "name_uk": "Енергодар",
+        "name_en": "Enerhodar",
+        "name_ru": "Энергодар",
+        "region": 7,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 113,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.866Z",
+        "updated_at": "2024-10-14T04:28:19.866Z",
+        "name": "Запоріжжя",
+        "name_uk": "Запоріжжя",
+        "name_en": "Zaporizhzhia",
+        "name_ru": "Запорожье",
+        "region": 7,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 114,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.872Z",
+        "updated_at": "2024-10-14T04:28:19.872Z",
+        "name": "Кам'янка-Дніпровська",
+        "name_uk": "Кам'янка-Дніпровська",
+        "name_en": "Kamianka-Dniprovskaya",
+        "name_ru": "Каменка-Днепровская",
+        "region": 7,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 115,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.879Z",
+        "updated_at": "2024-10-14T04:28:19.879Z",
+        "name": "Мелітополь",
+        "name_uk": "Мелітополь",
+        "name_en": "Melitopol",
+        "name_ru": "Мелитополь",
+        "region": 7,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 116,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.885Z",
+        "updated_at": "2024-10-14T04:28:19.885Z",
+        "name": "Молочанськ",
+        "name_uk": "Молочанськ",
+        "name_en": "Molochansk",
+        "name_ru": "Молочанск",
+        "region": 7,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 117,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.892Z",
+        "updated_at": "2024-10-14T04:28:19.892Z",
+        "name": "Оріхів",
+        "name_uk": "Оріхів",
+        "name_en": "Orikhiv",
+        "name_ru": "Орехов",
+        "region": 7,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 118,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.899Z",
+        "updated_at": "2024-10-14T04:28:19.899Z",
+        "name": "Пологи",
+        "name_uk": "Пологи",
+        "name_en": "Pology",
+        "name_ru": "Пологи",
+        "region": 7,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 119,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.905Z",
+        "updated_at": "2024-10-14T04:28:19.905Z",
+        "name": "Приморськ",
+        "name_uk": "Приморськ",
+        "name_en": "Prymorśk",
+        "name_ru": "Приморск",
+        "region": 7,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 120,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.911Z",
+        "updated_at": "2024-10-14T04:28:19.911Z",
+        "name": "Токмак",
+        "name_uk": "Токмак",
+        "name_en": "Tokmak",
+        "name_ru": "Токмак",
+        "region": 7,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 121,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.921Z",
+        "updated_at": "2024-10-14T04:28:19.921Z",
+        "name": "Олехів",
+        "name_uk": "Олехів",
+        "name_en": "Olekhiv",
+        "name_ru": "Олехов",
+        "region": 8,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 122,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.927Z",
+        "updated_at": "2024-10-14T04:28:19.927Z",
+        "name": "Болехів",
+        "name_uk": "Болехів",
+        "name_en": "Bolekhiv",
+        "name_ru": "Болехов",
+        "region": 8,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 123,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.933Z",
+        "updated_at": "2024-10-14T04:28:19.933Z",
+        "name": "Бурштин",
+        "name_uk": "Бурштин",
+        "name_en": "Burshtyn",
+        "name_ru": "Бурштин",
+        "region": 8,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 124,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.940Z",
+        "updated_at": "2024-10-14T04:28:19.940Z",
+        "name": "Галич",
+        "name_uk": "Галич",
+        "name_en": "Halych",
+        "name_ru": "Галич",
+        "region": 8,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 125,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.947Z",
+        "updated_at": "2024-10-14T04:28:19.947Z",
+        "name": "Городенка",
+        "name_uk": "Городенка",
+        "name_en": "Horodenka",
+        "name_ru": "Городенка",
+        "region": 8,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 126,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.952Z",
+        "updated_at": "2024-10-14T04:28:19.952Z",
+        "name": "Долина",
+        "name_uk": "Долина",
+        "name_en": "Dolina",
+        "name_ru": "Долина",
+        "region": 8,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 127,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.958Z",
+        "updated_at": "2024-10-14T04:28:19.958Z",
+        "name": "Івано-Франківськ",
+        "name_uk": "Івано-Франківськ",
+        "name_en": "Ivano-Frankivsk",
+        "name_ru": "Ивано-Франковск",
+        "region": 8,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 128,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.965Z",
+        "updated_at": "2024-10-14T04:28:19.965Z",
+        "name": "Калуш",
+        "name_uk": "Калуш",
+        "name_en": "Kalush",
+        "name_ru": "Калуш",
+        "region": 8,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 129,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.972Z",
+        "updated_at": "2024-10-14T04:28:19.972Z",
+        "name": "Коломия",
+        "name_uk": "Коломия",
+        "name_en": "Kolomyia",
+        "name_ru": "Коломыя",
+        "region": 8,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 130,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.978Z",
+        "updated_at": "2024-10-14T04:28:19.978Z",
+        "name": "Косів",
+        "name_uk": "Косів",
+        "name_en": "Kosiv",
+        "name_ru": "Косов",
+        "region": 8,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 131,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.985Z",
+        "updated_at": "2024-10-14T04:28:19.985Z",
+        "name": "Надвірна",
+        "name_uk": "Надвірна",
+        "name_en": "Nadvirna",
+        "name_ru": "Надворная",
+        "region": 8,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 132,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.991Z",
+        "updated_at": "2024-10-14T04:28:19.991Z",
+        "name": "Рогатин",
+        "name_uk": "Рогатин",
+        "name_en": "Rohatyn",
+        "name_ru": "Рогатин",
+        "region": 8,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 133,
+    "fields": {
+        "created_at": "2024-10-14T04:28:19.998Z",
+        "updated_at": "2024-10-14T04:28:19.998Z",
+        "name": "Снятин",
+        "name_uk": "Снятин",
+        "name_en": "Snyatyn",
+        "name_ru": "Снятын",
+        "region": 8,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 134,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.004Z",
+        "updated_at": "2024-10-14T04:28:20.004Z",
+        "name": "Тисмениця",
+        "name_uk": "Тисмениця",
+        "name_en": "Tysmenytsia",
+        "name_ru": "Тысменица",
+        "region": 8,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 135,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.011Z",
+        "updated_at": "2024-10-14T04:28:20.011Z",
+        "name": "Тлумач",
+        "name_uk": "Тлумач",
+        "name_en": "Tlumach",
+        "name_ru": "Тлумач",
+        "region": 8,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 136,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.017Z",
+        "updated_at": "2024-10-14T04:28:20.017Z",
+        "name": "Яремче",
+        "name_uk": "Яремче",
+        "name_en": "Yaremche",
+        "name_ru": "Яремче",
+        "region": 8,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 137,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.028Z",
+        "updated_at": "2024-10-14T04:28:20.028Z",
+        "name": "Боярка",
+        "name_uk": "Боярка",
+        "name_en": "Boyarka",
+        "name_ru": "Боярка",
+        "region": 9,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 138,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.034Z",
+        "updated_at": "2024-10-14T04:28:20.034Z",
+        "name": "Бровари",
+        "name_uk": "Бровари",
+        "name_en": "Brovari",
+        "name_ru": "Бровары",
+        "region": 9,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 139,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.040Z",
+        "updated_at": "2024-10-14T04:28:20.040Z",
+        "name": "Буча",
+        "name_uk": "Буча",
+        "name_en": "Bucha",
+        "name_ru": "Буча",
+        "region": 9,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 140,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.047Z",
+        "updated_at": "2024-10-14T04:28:20.047Z",
+        "name": "Вишневе",
+        "name_uk": "Вишневе",
+        "name_en": "Vyshneve",
+        "name_ru": "Вишневое",
+        "region": 9,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 141,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.053Z",
+        "updated_at": "2024-10-14T04:28:20.053Z",
+        "name": "Вишгород",
+        "name_uk": "Вишгород",
+        "name_en": "Vyshhorod",
+        "name_ru": "Вышгород",
+        "region": 9,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 142,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.060Z",
+        "updated_at": "2024-10-14T04:28:20.060Z",
+        "name": "Гостомель",
+        "name_uk": "Гостомель",
+        "name_en": "Hostomel",
+        "name_ru": "Гостомель",
+        "region": 9,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 143,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.067Z",
+        "updated_at": "2024-10-14T04:28:20.067Z",
+        "name": "Димер",
+        "name_uk": "Димер",
+        "name_en": "Dimer",
+        "name_ru": "Димер",
+        "region": 9,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 144,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.074Z",
+        "updated_at": "2024-10-14T04:28:20.074Z",
+        "name": "Ірпінь",
+        "name_uk": "Ірпінь",
+        "name_en": "Irpin",
+        "name_ru": "Ирпень",
+        "region": 9,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 145,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.082Z",
+        "updated_at": "2024-10-14T04:28:20.082Z",
+        "name": "Обухів",
+        "name_uk": "Обухів",
+        "name_en": "Obukhiv",
+        "name_ru": "Обухов",
+        "region": 9,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 146,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.090Z",
+        "updated_at": "2024-10-14T04:28:20.090Z",
+        "name": "Переяслав",
+        "name_uk": "Переяслав",
+        "name_en": "Pereiaslav",
+        "name_ru": "Переяслав",
+        "region": 9,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 147,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.097Z",
+        "updated_at": "2024-10-14T04:28:20.097Z",
+        "name": "Славутич",
+        "name_uk": "Славутич",
+        "name_en": "Slavutych",
+        "name_ru": "Славутич",
+        "region": 9,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 148,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.103Z",
+        "updated_at": "2024-10-14T04:28:20.103Z",
+        "name": "Тараща",
+        "name_uk": "Тараща",
+        "name_en": "Tarashcha",
+        "name_ru": "Тараща",
+        "region": 9,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 149,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.111Z",
+        "updated_at": "2024-10-14T04:28:20.111Z",
+        "name": "Фастів",
+        "name_uk": "Фастів",
+        "name_en": "Fastiv",
+        "name_ru": "Фастов",
+        "region": 9,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 150,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.119Z",
+        "updated_at": "2024-10-14T04:28:20.119Z",
+        "name": "Яготин",
+        "name_uk": "Яготин",
+        "name_en": "Yahotyn",
+        "name_ru": "Яготин",
+        "region": 9,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 151,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.125Z",
+        "updated_at": "2024-10-14T04:28:20.125Z",
+        "name": "Кагарлик",
+        "name_uk": "Кагарлик",
+        "name_en": "Kaharlyk",
+        "name_ru": "Кагарлык",
+        "region": 9,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 152,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.131Z",
+        "updated_at": "2024-10-14T04:28:20.131Z",
+        "name": "Ржищів",
+        "name_uk": "Ржищів",
+        "name_en": "Rzhyschiv",
+        "name_ru": "Ржищев",
+        "region": 9,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 153,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.142Z",
+        "updated_at": "2024-10-14T04:28:20.142Z",
+        "name": "Благовіщенське",
+        "name_uk": "Благовіщенське",
+        "name_en": "Blahovishchenske",
+        "name_ru": "Благовещенское",
+        "region": 10,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 154,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.149Z",
+        "updated_at": "2024-10-14T04:28:20.149Z",
+        "name": "Бобринець",
+        "name_uk": "Бобринець",
+        "name_en": "Bobrynets",
+        "name_ru": "Бобринец",
+        "region": 10,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 155,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.155Z",
+        "updated_at": "2024-10-14T04:28:20.155Z",
+        "name": "Гайворон",
+        "name_uk": "Гайворон",
+        "name_en": "Haivoron",
+        "name_ru": "Гайворон",
+        "region": 10,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 156,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.162Z",
+        "updated_at": "2024-10-14T04:28:20.162Z",
+        "name": "Долинська",
+        "name_uk": "Долинська",
+        "name_en": "Dolynska",
+        "name_ru": "Долинская",
+        "region": 10,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 157,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.169Z",
+        "updated_at": "2024-10-14T04:28:20.169Z",
+        "name": "Знам'янка",
+        "name_uk": "Знам'янка",
+        "name_en": "Znamyanka",
+        "name_ru": "Знаменка",
+        "region": 10,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 158,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.176Z",
+        "updated_at": "2024-10-14T04:28:20.176Z",
+        "name": "Кропивницький",
+        "name_uk": "Кропивницький",
+        "name_en": "Kropyvnytskyi",
+        "name_ru": "Кропивницкий",
+        "region": 10,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 159,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.182Z",
+        "updated_at": "2024-10-14T04:28:20.182Z",
+        "name": "Мала Виска",
+        "name_uk": "Мала Виска",
+        "name_en": "Mala Vyska",
+        "name_ru": "Мала Выска",
+        "region": 10,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 160,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.189Z",
+        "updated_at": "2024-10-14T04:28:20.189Z",
+        "name": "Новомиргород",
+        "name_uk": "Новомиргород",
+        "name_en": "Novomyrhorod",
+        "name_ru": "Новомиргород",
+        "region": 10,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 161,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.196Z",
+        "updated_at": "2024-10-14T04:28:20.196Z",
+        "name": "Новоукраїнка",
+        "name_uk": "Новоукраїнка",
+        "name_en": "Novoukrainka",
+        "name_ru": "Новоукраинка",
+        "region": 10,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 162,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.202Z",
+        "updated_at": "2024-10-14T04:28:20.202Z",
+        "name": "Олександрія",
+        "name_uk": "Олександрія",
+        "name_en": "Oleksandriia",
+        "name_ru": "Александрия",
+        "region": 10,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 163,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.209Z",
+        "updated_at": "2024-10-14T04:28:20.209Z",
+        "name": "Помічна",
+        "name_uk": "Помічна",
+        "name_en": "Pomychnia",
+        "name_ru": "Помощная",
+        "region": 10,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 164,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.216Z",
+        "updated_at": "2024-10-14T04:28:20.216Z",
+        "name": "Світловодськ",
+        "name_uk": "Світловодськ",
+        "name_en": "Svitlovodsk",
+        "name_ru": "Светловодск",
+        "region": 10,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 165,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.226Z",
+        "updated_at": "2024-10-14T04:28:20.226Z",
+        "name": "Мазна",
+        "name_uk": "Мазна",
+        "name_en": "Mazna",
+        "name_ru": "Мазна",
+        "region": 11,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 166,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.233Z",
+        "updated_at": "2024-10-14T04:28:20.233Z",
+        "name": "Алмазна",
+        "name_uk": "Алмазна",
+        "name_en": "Almazna",
+        "name_ru": "Алмазная",
+        "region": 11,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 167,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.239Z",
+        "updated_at": "2024-10-14T04:28:20.239Z",
+        "name": "Алчевськ",
+        "name_uk": "Алчевськ",
+        "name_en": "Alchevsk",
+        "name_ru": "Алчевск",
+        "region": 11,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 168,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.246Z",
+        "updated_at": "2024-10-14T04:28:20.246Z",
+        "name": "Антрацит",
+        "name_uk": "Антрацит",
+        "name_en": "Antratsyt",
+        "name_ru": "Антрацит",
+        "region": 11,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 169,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.252Z",
+        "updated_at": "2024-10-14T04:28:20.252Z",
+        "name": "Боково-Хрустальне",
+        "name_uk": "Боково-Хрустальне",
+        "name_en": "Bokovo-Khrustalne",
+        "name_ru": "Боково-Хрустальное",
+        "region": 11,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 170,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.258Z",
+        "updated_at": "2024-10-14T04:28:20.258Z",
+        "name": "Брянка",
+        "name_uk": "Брянка",
+        "name_en": "Brianka",
+        "name_ru": "Брянка",
+        "region": 11,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 171,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.265Z",
+        "updated_at": "2024-10-14T04:28:20.265Z",
+        "name": "Вознесенівка",
+        "name_uk": "Вознесенівка",
+        "name_en": "Voznesenivka",
+        "name_ru": "Вознесеновка",
+        "region": 11,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 172,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.272Z",
+        "updated_at": "2024-10-14T04:28:20.272Z",
+        "name": "Гірське",
+        "name_uk": "Гірське",
+        "name_en": "Hirske",
+        "name_ru": "Горское",
+        "region": 11,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 173,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.278Z",
+        "updated_at": "2024-10-14T04:28:20.278Z",
+        "name": "Голубівка",
+        "name_uk": "Голубівка",
+        "name_en": "Holubivka",
+        "name_ru": "Голубовка",
+        "region": 11,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 174,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.284Z",
+        "updated_at": "2024-10-14T04:28:20.284Z",
+        "name": "Довжанськ",
+        "name_uk": "Довжанськ",
+        "name_en": "Dovzhansk",
+        "name_ru": "Довжанск",
+        "region": 11,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 175,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.292Z",
+        "updated_at": "2024-10-14T04:28:20.292Z",
+        "name": "Зимогір'я",
+        "name_uk": "Зимогір'я",
+        "name_en": "Zymohirya",
+        "name_ru": "Зимогирья",
+        "region": 11,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 176,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.298Z",
+        "updated_at": "2024-10-14T04:28:20.298Z",
+        "name": "Золоте",
+        "name_uk": "Золоте",
+        "name_en": "Zolote",
+        "name_ru": "Золотое",
+        "region": 11,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 177,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.305Z",
+        "updated_at": "2024-10-14T04:28:20.305Z",
+        "name": "Зоринськ",
+        "name_uk": "Зоринськ",
+        "name_en": "Zorynsk",
+        "name_ru": "Зоринск",
+        "region": 11,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 178,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.312Z",
+        "updated_at": "2024-10-14T04:28:20.312Z",
+        "name": "Ірміно",
+        "name_uk": "Ірміно",
+        "name_en": "Irmino",
+        "name_ru": "Ирмино",
+        "region": 11,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 179,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.319Z",
+        "updated_at": "2024-10-14T04:28:20.319Z",
+        "name": "Кадіївка",
+        "name_uk": "Кадіївка",
+        "name_en": "Kadiivka",
+        "name_ru": "Кадиевка",
+        "region": 11,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 180,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.325Z",
+        "updated_at": "2024-10-14T04:28:20.325Z",
+        "name": "Кипуче",
+        "name_uk": "Кипуче",
+        "name_en": "Kypuche",
+        "name_ru": "Кипуче",
+        "region": 11,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 181,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.331Z",
+        "updated_at": "2024-10-14T04:28:20.332Z",
+        "name": "Кремінна",
+        "name_uk": "Кремінна",
+        "name_en": "Kreminna",
+        "name_ru": "Кременная",
+        "region": 11,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 182,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.338Z",
+        "updated_at": "2024-10-14T04:28:20.338Z",
+        "name": "Лисичанськ",
+        "name_uk": "Лисичанськ",
+        "name_en": "Lysychansk",
+        "name_ru": "Лисичанск",
+        "region": 11,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 183,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.345Z",
+        "updated_at": "2024-10-14T04:28:20.345Z",
+        "name": "Луганськ",
+        "name_uk": "Луганськ",
+        "name_en": "Luhansk",
+        "name_ru": "Луганск",
+        "region": 11,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 184,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.351Z",
+        "updated_at": "2024-10-14T04:28:20.351Z",
+        "name": "Лутугине",
+        "name_uk": "Лутугине",
+        "name_en": "Lutuhyne",
+        "name_ru": "Лутугино",
+        "region": 11,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 185,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.358Z",
+        "updated_at": "2024-10-14T04:28:20.358Z",
+        "name": "Міусинськ",
+        "name_uk": "Міусинськ",
+        "name_en": "Miusynsk",
+        "name_ru": "Миусинск",
+        "region": 11,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 186,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.364Z",
+        "updated_at": "2024-10-14T04:28:20.364Z",
+        "name": "Новодружеськ",
+        "name_uk": "Новодружеськ",
+        "name_en": "Novodruzhesk",
+        "name_ru": "Новодружеск",
+        "region": 11,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 187,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.370Z",
+        "updated_at": "2024-10-14T04:28:20.370Z",
+        "name": "Олександрівськ",
+        "name_uk": "Олександрівськ",
+        "name_en": "Oleksandrivsk",
+        "name_ru": "Александровск",
+        "region": 11,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 188,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.377Z",
+        "updated_at": "2024-10-14T04:28:20.377Z",
+        "name": "Отаманівка",
+        "name_uk": "Отаманівка",
+        "name_en": "Otamanivka",
+        "name_ru": "Отамановка",
+        "region": 11,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 189,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.384Z",
+        "updated_at": "2024-10-14T04:28:20.384Z",
+        "name": "Перевальськ",
+        "name_uk": "Перевальськ",
+        "name_en": "Perevalsk",
+        "name_ru": "Перевальск",
+        "region": 11,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 190,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.390Z",
+        "updated_at": "2024-10-14T04:28:20.390Z",
+        "name": "Петрово-Красносілля",
+        "name_uk": "Петрово-Красносілля",
+        "name_en": "Petrovo-Krasnosillya",
+        "name_ru": "Петрово-Красносилле",
+        "region": 11,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 191,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.396Z",
+        "updated_at": "2024-10-14T04:28:20.396Z",
+        "name": "Попасна",
+        "name_uk": "Попасна",
+        "name_en": "Popasna",
+        "name_ru": "Попасная",
+        "region": 11,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 192,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.403Z",
+        "updated_at": "2024-10-14T04:28:20.403Z",
+        "name": "Привілля",
+        "name_uk": "Привілля",
+        "name_en": "Pryvillya",
+        "name_ru": "Привиллия",
+        "region": 11,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 193,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.411Z",
+        "updated_at": "2024-10-14T04:28:20.411Z",
+        "name": "Ровеньки",
+        "name_uk": "Ровеньки",
+        "name_en": "Rovenky",
+        "name_ru": "Ровеньки",
+        "region": 11,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 194,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.417Z",
+        "updated_at": "2024-10-14T04:28:20.417Z",
+        "name": "Рубіжне",
+        "name_uk": "Рубіжне",
+        "name_en": "Rubizhne",
+        "name_ru": "Рубежное",
+        "region": 11,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 195,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.422Z",
+        "updated_at": "2024-10-14T04:28:20.422Z",
+        "name": "Сватове",
+        "name_uk": "Сватове",
+        "name_en": "Svatove",
+        "name_ru": "Сватово",
+        "region": 11,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 196,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.430Z",
+        "updated_at": "2024-10-14T04:28:20.430Z",
+        "name": "Сіверськодонецьк",
+        "name_uk": "Сіверськодонецьк",
+        "name_en": "Severodonetsk",
+        "name_ru": "Северодонецк",
+        "region": 11,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 197,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.436Z",
+        "updated_at": "2024-10-14T04:28:20.436Z",
+        "name": "Сорокине",
+        "name_uk": "Сорокине",
+        "name_en": "Sorokyne",
+        "name_ru": "Сорокино",
+        "region": 11,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 198,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.444Z",
+        "updated_at": "2024-10-14T04:28:20.444Z",
+        "name": "Сокологірськ",
+        "name_uk": "Сокологірськ",
+        "name_en": "Sokolohirsk",
+        "name_ru": "Сокологорск",
+        "region": 11,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 199,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.449Z",
+        "updated_at": "2024-10-14T04:28:20.449Z",
+        "name": "Старобільськ",
+        "name_uk": "Старобільськ",
+        "name_en": "Starobilsk",
+        "name_ru": "Старобельск",
+        "region": 11,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 200,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.456Z",
+        "updated_at": "2024-10-14T04:28:20.456Z",
+        "name": "Суходільськ",
+        "name_uk": "Суходільськ",
+        "name_en": "Sukhodilsk",
+        "name_ru": "Суходолск",
+        "region": 11,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 201,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.463Z",
+        "updated_at": "2024-10-14T04:28:20.463Z",
+        "name": "Хрустальний",
+        "name_uk": "Хрустальний",
+        "name_en": "Khrustalnyi",
+        "name_ru": "Хрустальный",
+        "region": 11,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 202,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.469Z",
+        "updated_at": "2024-10-14T04:28:20.469Z",
+        "name": "Щастя",
+        "name_uk": "Щастя",
+        "name_en": "Shchastia",
+        "name_ru": "Счастье",
+        "region": 11,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 203,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.479Z",
+        "updated_at": "2024-10-14T04:28:20.479Z",
+        "name": "Белз",
+        "name_uk": "Белз",
+        "name_en": "Belz",
+        "name_ru": "Белз",
+        "region": 12,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 204,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.485Z",
+        "updated_at": "2024-10-14T04:28:20.485Z",
+        "name": "Бібрка",
+        "name_uk": "Бібрка",
+        "name_en": "Bibrka",
+        "name_ru": "Бибрка",
+        "region": 12,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 205,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.492Z",
+        "updated_at": "2024-10-14T04:28:20.492Z",
+        "name": "Борислав",
+        "name_uk": "Борислав",
+        "name_en": "Boryslav",
+        "name_ru": "Борислав",
+        "region": 12,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 206,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.498Z",
+        "updated_at": "2024-10-14T04:28:20.498Z",
+        "name": "Броди",
+        "name_uk": "Броди",
+        "name_en": "Brody",
+        "name_ru": "Броды",
+        "region": 12,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 207,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.506Z",
+        "updated_at": "2024-10-14T04:28:20.506Z",
+        "name": "Буськ",
+        "name_uk": "Буськ",
+        "name_en": "Busk",
+        "name_ru": "Буск",
+        "region": 12,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 208,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.512Z",
+        "updated_at": "2024-10-14T04:28:20.512Z",
+        "name": "Великі Мости",
+        "name_uk": "Великі Мости",
+        "name_en": "Velyki Mosty",
+        "name_ru": "Великие Мосты",
+        "region": 12,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 209,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.519Z",
+        "updated_at": "2024-10-14T04:28:20.519Z",
+        "name": "Винники",
+        "name_uk": "Винники",
+        "name_en": "Vynnyky",
+        "name_ru": "Винники",
+        "region": 12,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 210,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.526Z",
+        "updated_at": "2024-10-14T04:28:20.526Z",
+        "name": "Глиняни",
+        "name_uk": "Глиняни",
+        "name_en": "Hlyniany",
+        "name_ru": "Глиняны",
+        "region": 12,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 211,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.532Z",
+        "updated_at": "2024-10-14T04:28:20.532Z",
+        "name": "Городок",
+        "name_uk": "Городок",
+        "name_en": "Horodok",
+        "name_ru": "Городок",
+        "region": 12,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 212,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.539Z",
+        "updated_at": "2024-10-14T04:28:20.539Z",
+        "name": "Добромиль",
+        "name_uk": "Добромиль",
+        "name_en": "Dobromyl",
+        "name_ru": "Добромиль",
+        "region": 12,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 213,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.545Z",
+        "updated_at": "2024-10-14T04:28:20.545Z",
+        "name": "Дрогобич",
+        "name_uk": "Дрогобич",
+        "name_en": "Drohobych",
+        "name_ru": "Дрогобыч",
+        "region": 12,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 214,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.551Z",
+        "updated_at": "2024-10-14T04:28:20.551Z",
+        "name": "Дубляни",
+        "name_uk": "Дубляни",
+        "name_en": "Dublyany",
+        "name_ru": "Дубляны",
+        "region": 12,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 215,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.558Z",
+        "updated_at": "2024-10-14T04:28:20.558Z",
+        "name": "Жидачів",
+        "name_uk": "Жидачів",
+        "name_en": "Zhydachiv",
+        "name_ru": "Жидачев",
+        "region": 12,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 216,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.564Z",
+        "updated_at": "2024-10-14T04:28:20.564Z",
+        "name": "Жовква",
+        "name_uk": "Жовква",
+        "name_en": "Zhovkva",
+        "name_ru": "Жолква",
+        "region": 12,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 217,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.571Z",
+        "updated_at": "2024-10-14T04:28:20.571Z",
+        "name": "Золочів",
+        "name_uk": "Золочів",
+        "name_en": "Zolochiv",
+        "name_ru": "Золочев",
+        "region": 12,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 218,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.577Z",
+        "updated_at": "2024-10-14T04:28:20.577Z",
+        "name": "Кам'янка-Бузька",
+        "name_uk": "Кам'янка-Бузька",
+        "name_en": "Kamianka-Buzka",
+        "name_ru": "Каменка-Бузька",
+        "region": 12,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 219,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.585Z",
+        "updated_at": "2024-10-14T04:28:20.585Z",
+        "name": "Комарно",
+        "name_uk": "Комарно",
+        "name_en": "Komarno",
+        "name_ru": "Комарно",
+        "region": 12,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 220,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.591Z",
+        "updated_at": "2024-10-14T04:28:20.591Z",
+        "name": "Львів",
+        "name_uk": "Львів",
+        "name_en": "Lviv",
+        "name_ru": "Львов",
+        "region": 12,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 221,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.598Z",
+        "updated_at": "2024-10-14T04:28:20.598Z",
+        "name": "Миколаїв",
+        "name_uk": "Миколаїв",
+        "name_en": "Mykolaiv",
+        "name_ru": "Николаев",
+        "region": 12,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 222,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.604Z",
+        "updated_at": "2024-10-14T04:28:20.604Z",
+        "name": "Моршин",
+        "name_uk": "Моршин",
+        "name_en": "Morshyn",
+        "name_ru": "Моршин",
+        "region": 12,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 223,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.611Z",
+        "updated_at": "2024-10-14T04:28:20.611Z",
+        "name": "Мостиська",
+        "name_uk": "Мостиська",
+        "name_en": "Mostyska",
+        "name_ru": "Мостиска",
+        "region": 12,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 224,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.617Z",
+        "updated_at": "2024-10-14T04:28:20.617Z",
+        "name": "Новий Калинів",
+        "name_uk": "Новий Калинів",
+        "name_en": "Novyi Kalyniv",
+        "name_ru": "Новый Калинов",
+        "region": 12,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 225,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.623Z",
+        "updated_at": "2024-10-14T04:28:20.623Z",
+        "name": "Новий Розділ",
+        "name_uk": "Новий Розділ",
+        "name_en": "Novyi Rozdil",
+        "name_ru": "Новый Раздел",
+        "region": 12,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 226,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.630Z",
+        "updated_at": "2024-10-14T04:28:20.630Z",
+        "name": "Новояворівськ",
+        "name_uk": "Новояворівськ",
+        "name_en": "Novoyavorivsk",
+        "name_ru": "Новояворовск",
+        "region": 12,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 227,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.636Z",
+        "updated_at": "2024-10-14T04:28:20.636Z",
+        "name": "Перемишляни",
+        "name_uk": "Перемишляни",
+        "name_en": "Peremyshlyany",
+        "name_ru": "Перемышляны",
+        "region": 12,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 228,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.643Z",
+        "updated_at": "2024-10-14T04:28:20.643Z",
+        "name": "Пустомити",
+        "name_uk": "Пустомити",
+        "name_en": "Pustomyty",
+        "name_ru": "Пустомиты",
+        "region": 12,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 229,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.648Z",
+        "updated_at": "2024-10-14T04:28:20.648Z",
+        "name": "Рава-Руська",
+        "name_uk": "Рава-Руська",
+        "name_en": "Rava-Ruska",
+        "name_ru": "Рава-Русская",
+        "region": 12,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 230,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.655Z",
+        "updated_at": "2024-10-14T04:28:20.655Z",
+        "name": "Радехів",
+        "name_uk": "Радехів",
+        "name_en": "Radekhiv",
+        "name_ru": "Радехов",
+        "region": 12,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 231,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.661Z",
+        "updated_at": "2024-10-14T04:28:20.661Z",
+        "name": "Рудки",
+        "name_uk": "Рудки",
+        "name_en": "Rudky",
+        "name_ru": "Рудки",
+        "region": 12,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 232,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.668Z",
+        "updated_at": "2024-10-14T04:28:20.668Z",
+        "name": "Самбір",
+        "name_uk": "Самбір",
+        "name_en": "Sambir",
+        "name_ru": "Самбор",
+        "region": 12,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 233,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.674Z",
+        "updated_at": "2024-10-14T04:28:20.674Z",
+        "name": "Сколе",
+        "name_uk": "Сколе",
+        "name_en": "Skole",
+        "name_ru": "Сколе",
+        "region": 12,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 234,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.681Z",
+        "updated_at": "2024-10-14T04:28:20.681Z",
+        "name": "Сокаль",
+        "name_uk": "Сокаль",
+        "name_en": "Sokal",
+        "name_ru": "Сокаль",
+        "region": 12,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 235,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.687Z",
+        "updated_at": "2024-10-14T04:28:20.687Z",
+        "name": "Соснівка",
+        "name_uk": "Соснівка",
+        "name_en": "Sosnivka",
+        "name_ru": "Сосновка",
+        "region": 12,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 236,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.693Z",
+        "updated_at": "2024-10-14T04:28:20.693Z",
+        "name": "Старий Самбір",
+        "name_uk": "Старий Самбір",
+        "name_en": "Staryi Sambir",
+        "name_ru": "Старый Самбор",
+        "region": 12,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 237,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.700Z",
+        "updated_at": "2024-10-14T04:28:20.700Z",
+        "name": "Стебник",
+        "name_uk": "Стебник",
+        "name_en": "Stebnyk",
+        "name_ru": "Стебник",
+        "region": 12,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 238,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.707Z",
+        "updated_at": "2024-10-14T04:28:20.707Z",
+        "name": "Стрий",
+        "name_uk": "Стрий",
+        "name_en": "Stryi",
+        "name_ru": "Стрый",
+        "region": 12,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 239,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.713Z",
+        "updated_at": "2024-10-14T04:28:20.713Z",
+        "name": "Судова Вишня",
+        "name_uk": "Судова Вишня",
+        "name_en": "Sudova Vyshnia",
+        "name_ru": "Судовая Вишня",
+        "region": 12,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 240,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.720Z",
+        "updated_at": "2024-10-14T04:28:20.720Z",
+        "name": "Трускавець",
+        "name_uk": "Трускавець",
+        "name_en": "Truskavets",
+        "name_ru": "Трускавец",
+        "region": 12,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 241,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.726Z",
+        "updated_at": "2024-10-14T04:28:20.726Z",
+        "name": "Турка",
+        "name_uk": "Турка",
+        "name_en": "Turka",
+        "name_ru": "Турка",
+        "region": 12,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 242,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.732Z",
+        "updated_at": "2024-10-14T04:28:20.732Z",
+        "name": "Угнів",
+        "name_uk": "Угнів",
+        "name_en": "Uhniv",
+        "name_ru": "Угнов",
+        "region": 12,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 243,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.739Z",
+        "updated_at": "2024-10-14T04:28:20.739Z",
+        "name": "Хирів",
+        "name_uk": "Хирів",
+        "name_en": "Khyryv",
+        "name_ru": "Хыров",
+        "region": 12,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 244,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.745Z",
+        "updated_at": "2024-10-14T04:28:20.745Z",
+        "name": "Ходорів",
+        "name_uk": "Ходорів",
+        "name_en": "Khodoriv",
+        "name_ru": "Ходоров",
+        "region": 12,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 245,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.752Z",
+        "updated_at": "2024-10-14T04:28:20.752Z",
+        "name": "Червоноград",
+        "name_uk": "Червоноград",
+        "name_en": "Chervonohrad",
+        "name_ru": "Червоноград",
+        "region": 12,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 246,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.758Z",
+        "updated_at": "2024-10-14T04:28:20.758Z",
+        "name": "Яворів",
+        "name_uk": "Яворів",
+        "name_en": "Yavoriv",
+        "name_ru": "Яворов",
+        "region": 12,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 247,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.768Z",
+        "updated_at": "2024-10-14T04:28:20.768Z",
+        "name": "Баштанка",
+        "name_uk": "Баштанка",
+        "name_en": "BASHTANKA",
+        "name_ru": "Баштанка",
+        "region": 13,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 248,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.775Z",
+        "updated_at": "2024-10-14T04:28:20.775Z",
+        "name": "Вознесенськ",
+        "name_uk": "Вознесенськ",
+        "name_en": "Voznesensk",
+        "name_ru": "Вознесенск",
+        "region": 13,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 249,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.781Z",
+        "updated_at": "2024-10-14T04:28:20.781Z",
+        "name": "Миколаїв",
+        "name_uk": "Миколаїв",
+        "name_en": "Mykolaiv",
+        "name_ru": "Николаев",
+        "region": 13,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 250,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.788Z",
+        "updated_at": "2024-10-14T04:28:20.788Z",
+        "name": "Нова Одеса",
+        "name_uk": "Нова Одеса",
+        "name_en": "Nova Odesa",
+        "name_ru": "Новая Одесса",
+        "region": 13,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 251,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.794Z",
+        "updated_at": "2024-10-14T04:28:20.794Z",
+        "name": "Новий Буг",
+        "name_uk": "Новий Буг",
+        "name_en": "Novyi Buh",
+        "name_ru": "Новый Буг",
+        "region": 13,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 252,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.800Z",
+        "updated_at": "2024-10-14T04:28:20.800Z",
+        "name": "Очаків",
+        "name_uk": "Очаків",
+        "name_en": "Ochakiv",
+        "name_ru": "Очаков",
+        "region": 13,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 253,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.806Z",
+        "updated_at": "2024-10-14T04:28:20.806Z",
+        "name": "Первомайськ",
+        "name_uk": "Первомайськ",
+        "name_en": "Pervomaisk",
+        "name_ru": "Первомайск",
+        "region": 13,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 254,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.813Z",
+        "updated_at": "2024-10-14T04:28:20.813Z",
+        "name": "Снігурівка",
+        "name_uk": "Снігурівка",
+        "name_en": "Snihurivka",
+        "name_ru": "Снегуревка",
+        "region": 13,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 255,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.820Z",
+        "updated_at": "2024-10-14T04:28:20.820Z",
+        "name": "Южноукраїнськ",
+        "name_uk": "Южноукраїнськ",
+        "name_en": "Yuzhnoukrainsk",
+        "name_ru": "Южноукраинск",
+        "region": 13,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 256,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.829Z",
+        "updated_at": "2024-10-14T04:28:20.829Z",
+        "name": "Ананьїв",
+        "name_uk": "Ананьїв",
+        "name_en": "Ananiiv",
+        "name_ru": "Ананьев",
+        "region": 14,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 257,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.836Z",
+        "updated_at": "2024-10-14T04:28:20.836Z",
+        "name": "Арциз",
+        "name_uk": "Арциз",
+        "name_en": "Artsyz",
+        "name_ru": "Арциз",
+        "region": 14,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 258,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.844Z",
+        "updated_at": "2024-10-14T04:28:20.844Z",
+        "name": "Балта",
+        "name_uk": "Балта",
+        "name_en": "Balta",
+        "name_ru": "Балта",
+        "region": 14,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 259,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.849Z",
+        "updated_at": "2024-10-14T04:28:20.849Z",
+        "name": "Березівка",
+        "name_uk": "Березівка",
+        "name_en": "Berezivka",
+        "name_ru": "Березовка",
+        "region": 14,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 260,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.855Z",
+        "updated_at": "2024-10-14T04:28:20.855Z",
+        "name": "Білгород-Дністровський",
+        "name_uk": "Білгород-Дністровський",
+        "name_en": "Bilhorod-Dnistrovskyi",
+        "name_ru": "Белгород-Днестровский",
+        "region": 14,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 261,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.863Z",
+        "updated_at": "2024-10-14T04:28:20.863Z",
+        "name": "Біляївка",
+        "name_uk": "Біляївка",
+        "name_en": "Bilyaivka",
+        "name_ru": "Биляевка",
+        "region": 14,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 262,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.869Z",
+        "updated_at": "2024-10-14T04:28:20.869Z",
+        "name": "Болград",
+        "name_uk": "Болград",
+        "name_en": "Bolhrad",
+        "name_ru": "Болград",
+        "region": 14,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 263,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.876Z",
+        "updated_at": "2024-10-14T04:28:20.876Z",
+        "name": "Вилкове",
+        "name_uk": "Вилкове",
+        "name_en": "Vylkove",
+        "name_ru": "Вилково",
+        "region": 14,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 264,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.882Z",
+        "updated_at": "2024-10-14T04:28:20.882Z",
+        "name": "Ізмаїл",
+        "name_uk": "Ізмаїл",
+        "name_en": "Izmail",
+        "name_ru": "Измаил",
+        "region": 14,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 265,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.889Z",
+        "updated_at": "2024-10-14T04:28:20.889Z",
+        "name": "Кілія",
+        "name_uk": "Кілія",
+        "name_en": "Kiliya",
+        "name_ru": "Килия",
+        "region": 14,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 266,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.895Z",
+        "updated_at": "2024-10-14T04:28:20.895Z",
+        "name": "Кодима",
+        "name_uk": "Кодима",
+        "name_en": "Kodima",
+        "name_ru": "Кодима",
+        "region": 14,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 267,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.902Z",
+        "updated_at": "2024-10-14T04:28:20.902Z",
+        "name": "Одеса",
+        "name_uk": "Одеса",
+        "name_en": "Odesa",
+        "name_ru": "Одесса",
+        "region": 14,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 268,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.910Z",
+        "updated_at": "2024-10-14T04:28:20.910Z",
+        "name": "Подільськ",
+        "name_uk": "Подільськ",
+        "name_en": "Podyilsk",
+        "name_ru": "Подольск",
+        "region": 14,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 269,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.917Z",
+        "updated_at": "2024-10-14T04:28:20.917Z",
+        "name": "Рені",
+        "name_uk": "Рені",
+        "name_en": "Reni",
+        "name_ru": "Рени",
+        "region": 14,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 270,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.924Z",
+        "updated_at": "2024-10-14T04:28:20.925Z",
+        "name": "Роздільна",
+        "name_uk": "Роздільна",
+        "name_en": "Rozdilna",
+        "name_ru": "Раздельная",
+        "region": 14,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 271,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.933Z",
+        "updated_at": "2024-10-14T04:28:20.933Z",
+        "name": "Татарбунари",
+        "name_uk": "Татарбунари",
+        "name_en": "Tatarbunary",
+        "name_ru": "Татарбунары",
+        "region": 14,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 272,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.940Z",
+        "updated_at": "2024-10-14T04:28:20.940Z",
+        "name": "Теплодар",
+        "name_uk": "Теплодар",
+        "name_en": "Teplodar",
+        "name_ru": "Теплодар",
+        "region": 14,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 273,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.946Z",
+        "updated_at": "2024-10-14T04:28:20.946Z",
+        "name": "Чорноморськ",
+        "name_uk": "Чорноморськ",
+        "name_en": "Chornomorsk",
+        "name_ru": "Черноморск",
+        "region": 14,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 274,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.953Z",
+        "updated_at": "2024-10-14T04:28:20.953Z",
+        "name": "Южне",
+        "name_uk": "Южне",
+        "name_en": "Yuzhne",
+        "name_ru": "Южное",
+        "region": 14,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 275,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.962Z",
+        "updated_at": "2024-10-14T04:28:20.962Z",
+        "name": "Полтава",
+        "name_uk": "Полтава",
+        "name_en": "Poltava",
+        "name_ru": "Полтава",
+        "region": 15,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 276,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.969Z",
+        "updated_at": "2024-10-14T04:28:20.969Z",
+        "name": "Кременчук",
+        "name_uk": "Кременчук",
+        "name_en": "Kremenchuk",
+        "name_ru": "Кременчук",
+        "region": 15,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 277,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.976Z",
+        "updated_at": "2024-10-14T04:28:20.976Z",
+        "name": "Лубни",
+        "name_uk": "Лубни",
+        "name_en": "Lubny",
+        "name_ru": "Лубны",
+        "region": 15,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 278,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.982Z",
+        "updated_at": "2024-10-14T04:28:20.982Z",
+        "name": "Миргород",
+        "name_uk": "Миргород",
+        "name_en": "Myrhorod",
+        "name_ru": "Миргород",
+        "region": 15,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 279,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.989Z",
+        "updated_at": "2024-10-14T04:28:20.989Z",
+        "name": "Гадяч",
+        "name_uk": "Гадяч",
+        "name_en": "Hadiach",
+        "name_ru": "Гадяч",
+        "region": 15,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 280,
+    "fields": {
+        "created_at": "2024-10-14T04:28:20.996Z",
+        "updated_at": "2024-10-14T04:28:20.996Z",
+        "name": "Пирятин",
+        "name_uk": "Пирятин",
+        "name_en": "Pyriatyn",
+        "name_ru": "Пирятин",
+        "region": 15,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 281,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.004Z",
+        "updated_at": "2024-10-14T04:28:21.004Z",
+        "name": "Зіньків",
+        "name_uk": "Зіньків",
+        "name_en": "Zinkiv",
+        "name_ru": "Зиньков",
+        "region": 15,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 282,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.011Z",
+        "updated_at": "2024-10-14T04:28:21.011Z",
+        "name": "Карлівка",
+        "name_uk": "Карлівка",
+        "name_en": "Karlivka",
+        "name_ru": "Карловка",
+        "region": 15,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 283,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.018Z",
+        "updated_at": "2024-10-14T04:28:21.018Z",
+        "name": "Кобеляки",
+        "name_uk": "Кобеляки",
+        "name_en": "Kobelyaky",
+        "name_ru": "Кобеляки",
+        "region": 15,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 284,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.025Z",
+        "updated_at": "2024-10-14T04:28:21.025Z",
+        "name": "Чутове",
+        "name_uk": "Чутове",
+        "name_en": "Chutove",
+        "name_ru": "Чутово",
+        "region": 15,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 285,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.031Z",
+        "updated_at": "2024-10-14T04:28:21.032Z",
+        "name": "Хорол",
+        "name_uk": "Хорол",
+        "name_en": "Khorol",
+        "name_ru": "Хорол",
+        "region": 15,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 286,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.038Z",
+        "updated_at": "2024-10-14T04:28:21.038Z",
+        "name": "Глобине",
+        "name_uk": "Глобине",
+        "name_en": "Hlobyn",
+        "name_ru": "Глобино",
+        "region": 15,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 287,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.044Z",
+        "updated_at": "2024-10-14T04:28:21.044Z",
+        "name": "Диканька",
+        "name_uk": "Диканька",
+        "name_en": "Dikanka",
+        "name_ru": "Диканька",
+        "region": 15,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 288,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.051Z",
+        "updated_at": "2024-10-14T04:28:21.051Z",
+        "name": "Щербані",
+        "name_uk": "Щербані",
+        "name_en": "Shcherbany",
+        "name_ru": "Щербани",
+        "region": 15,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 289,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.058Z",
+        "updated_at": "2024-10-14T04:28:21.058Z",
+        "name": "Ланні",
+        "name_uk": "Ланні",
+        "name_en": "Lanni",
+        "name_ru": "Ланны",
+        "region": 15,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 290,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.065Z",
+        "updated_at": "2024-10-14T04:28:21.065Z",
+        "name": "Нові Санжари",
+        "name_uk": "Нові Санжари",
+        "name_en": "Novi Sanzhary",
+        "name_ru": "Новые Санжары",
+        "region": 15,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 291,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.073Z",
+        "updated_at": "2024-10-14T04:28:21.073Z",
+        "name": "Семенівка",
+        "name_uk": "Семенівка",
+        "name_en": "Semenyivka",
+        "name_ru": "Семеновка",
+        "region": 15,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 292,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.081Z",
+        "updated_at": "2024-10-14T04:28:21.082Z",
+        "name": "Червонозаводське",
+        "name_uk": "Червонозаводське",
+        "name_en": "Chervonozavodske",
+        "name_ru": "Червонозаводское",
+        "region": 15,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 293,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.087Z",
+        "updated_at": "2024-10-14T04:28:21.087Z",
+        "name": "Тараща",
+        "name_uk": "Тараща",
+        "name_en": "Tarashcha",
+        "name_ru": "Тараща",
+        "region": 15,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 294,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.097Z",
+        "updated_at": "2024-10-14T04:28:21.097Z",
+        "name": "Березне",
+        "name_uk": "Березне",
+        "name_en": "Berezne",
+        "name_ru": "Березное",
+        "region": 16,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 295,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.105Z",
+        "updated_at": "2024-10-14T04:28:21.105Z",
+        "name": "Вараш",
+        "name_uk": "Вараш",
+        "name_en": "Varash",
+        "name_ru": "Вараш",
+        "region": 16,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 296,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.113Z",
+        "updated_at": "2024-10-14T04:28:21.113Z",
+        "name": "Дубно",
+        "name_uk": "Дубно",
+        "name_en": "Dubno",
+        "name_ru": "Дубно",
+        "region": 16,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 297,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.119Z",
+        "updated_at": "2024-10-14T04:28:21.119Z",
+        "name": "Дубровиця",
+        "name_uk": "Дубровиця",
+        "name_en": "Dubrovitsa",
+        "name_ru": "Дубровица",
+        "region": 16,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 298,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.125Z",
+        "updated_at": "2024-10-14T04:28:21.125Z",
+        "name": "Здолбунів",
+        "name_uk": "Здолбунів",
+        "name_en": "Zdolbuniv",
+        "name_ru": "Здолбунов",
+        "region": 16,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 299,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.131Z",
+        "updated_at": "2024-10-14T04:28:21.131Z",
+        "name": "Корець",
+        "name_uk": "Корець",
+        "name_en": "Korets",
+        "name_ru": "Корец",
+        "region": 16,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 300,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.137Z",
+        "updated_at": "2024-10-14T04:28:21.137Z",
+        "name": "Костопіль",
+        "name_uk": "Костопіль",
+        "name_en": "Kostopil",
+        "name_ru": "Костополь",
+        "region": 16,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 301,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.143Z",
+        "updated_at": "2024-10-14T04:28:21.143Z",
+        "name": "Острог",
+        "name_uk": "Острог",
+        "name_en": "Ostroh",
+        "name_ru": "Острог",
+        "region": 16,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 302,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.150Z",
+        "updated_at": "2024-10-14T04:28:21.150Z",
+        "name": "Радивилів",
+        "name_uk": "Радивилів",
+        "name_en": "Radyvyliv",
+        "name_ru": "Радивилов",
+        "region": 16,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 303,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.155Z",
+        "updated_at": "2024-10-14T04:28:21.155Z",
+        "name": "Рівне",
+        "name_uk": "Рівне",
+        "name_en": "Rivne",
+        "name_ru": "Ровно",
+        "region": 16,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 304,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.162Z",
+        "updated_at": "2024-10-14T04:28:21.162Z",
+        "name": "Сарни",
+        "name_uk": "Сарни",
+        "name_en": "Sarny",
+        "name_ru": "Сарны",
+        "region": 16,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 305,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.172Z",
+        "updated_at": "2024-10-14T04:28:21.172Z",
+        "name": "Суми",
+        "name_uk": "Суми",
+        "name_en": "Sumy",
+        "name_ru": "Сумы",
+        "region": 17,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 306,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.180Z",
+        "updated_at": "2024-10-14T04:28:21.180Z",
+        "name": "Охтирка",
+        "name_uk": "Охтирка",
+        "name_en": "Okhtyrka",
+        "name_ru": "Охтырка",
+        "region": 17,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 307,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.188Z",
+        "updated_at": "2024-10-14T04:28:21.188Z",
+        "name": "Конотоп",
+        "name_uk": "Конотоп",
+        "name_en": "Konotop",
+        "name_ru": "Конотоп",
+        "region": 17,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 308,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.194Z",
+        "updated_at": "2024-10-14T04:28:21.194Z",
+        "name": "Шостка",
+        "name_uk": "Шостка",
+        "name_en": "Shostka",
+        "name_ru": "Шостка",
+        "region": 17,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 309,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.201Z",
+        "updated_at": "2024-10-14T04:28:21.201Z",
+        "name": "Ромни",
+        "name_uk": "Ромни",
+        "name_en": "Romny",
+        "name_ru": "Ромны",
+        "region": 17,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 310,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.207Z",
+        "updated_at": "2024-10-14T04:28:21.207Z",
+        "name": "Середина-Буда",
+        "name_uk": "Середина-Буда",
+        "name_en": "Seredyne-Buda",
+        "name_ru": "Середина-Буда",
+        "region": 17,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 311,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.214Z",
+        "updated_at": "2024-10-14T04:28:21.214Z",
+        "name": "Тростянець",
+        "name_uk": "Тростянець",
+        "name_en": "Trostianets",
+        "name_ru": "Тростянец",
+        "region": 17,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 312,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.221Z",
+        "updated_at": "2024-10-14T04:28:21.221Z",
+        "name": "Лебедин",
+        "name_uk": "Лебедин",
+        "name_en": "Lebedyn",
+        "name_ru": "Лебедин",
+        "region": 17,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 313,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.226Z",
+        "updated_at": "2024-10-14T04:28:21.226Z",
+        "name": "Кролевець",
+        "name_uk": "Кролевець",
+        "name_en": "Krolevets",
+        "name_ru": "Кролевец",
+        "region": 17,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 314,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.233Z",
+        "updated_at": "2024-10-14T04:28:21.233Z",
+        "name": "Білопілля",
+        "name_uk": "Білопілля",
+        "name_en": "Bilopillya",
+        "name_ru": "Белополье",
+        "region": 17,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 315,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.240Z",
+        "updated_at": "2024-10-14T04:28:21.240Z",
+        "name": "Глухів",
+        "name_uk": "Глухів",
+        "name_en": "Hlukhiv",
+        "name_ru": "Глухов",
+        "region": 17,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 316,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.247Z",
+        "updated_at": "2024-10-14T04:28:21.247Z",
+        "name": "Недригайлів",
+        "name_uk": "Недригайлів",
+        "name_en": "Nedryhailiv",
+        "name_ru": "Недригайлов",
+        "region": 17,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 317,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.253Z",
+        "updated_at": "2024-10-14T04:28:21.253Z",
+        "name": "Ворожба",
+        "name_uk": "Ворожба",
+        "name_en": "Vorożba",
+        "name_ru": "Ворожба",
+        "region": 17,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 318,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.260Z",
+        "updated_at": "2024-10-14T04:28:21.260Z",
+        "name": "Путивль",
+        "name_uk": "Путивль",
+        "name_en": "Putivl",
+        "name_ru": "Путивль",
+        "region": 17,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 319,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.267Z",
+        "updated_at": "2024-10-14T04:28:21.267Z",
+        "name": "Ямпіль",
+        "name_uk": "Ямпіль",
+        "name_en": "Yampil",
+        "name_ru": "Ямполь",
+        "region": 17,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 320,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.276Z",
+        "updated_at": "2024-10-14T04:28:21.276Z",
+        "name": "Бережани",
+        "name_uk": "Бережани",
+        "name_en": "Berezany",
+        "name_ru": "Бережаны",
+        "region": 18,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 321,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.283Z",
+        "updated_at": "2024-10-14T04:28:21.283Z",
+        "name": "Борщів",
+        "name_uk": "Борщів",
+        "name_en": "Borshchiv",
+        "name_ru": "Борщев",
+        "region": 18,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 322,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.289Z",
+        "updated_at": "2024-10-14T04:28:21.289Z",
+        "name": "Бучач",
+        "name_uk": "Бучач",
+        "name_en": "Buchach",
+        "name_ru": "Бучач",
+        "region": 18,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 323,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.295Z",
+        "updated_at": "2024-10-14T04:28:21.295Z",
+        "name": "Заліщики",
+        "name_uk": "Заліщики",
+        "name_en": "Zalishchyky",
+        "name_ru": "Залещики",
+        "region": 18,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 324,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.302Z",
+        "updated_at": "2024-10-14T04:28:21.302Z",
+        "name": "Збараж",
+        "name_uk": "Збараж",
+        "name_en": "Zbarazh",
+        "name_ru": "Збараж",
+        "region": 18,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 325,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.308Z",
+        "updated_at": "2024-10-14T04:28:21.308Z",
+        "name": "Зборів",
+        "name_uk": "Зборів",
+        "name_en": "Zboriv",
+        "name_ru": "Зборов",
+        "region": 18,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 326,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.314Z",
+        "updated_at": "2024-10-14T04:28:21.314Z",
+        "name": "Копичинці",
+        "name_uk": "Копичинці",
+        "name_en": "Kopychyntsi",
+        "name_ru": "Копычинцы",
+        "region": 18,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 327,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.321Z",
+        "updated_at": "2024-10-14T04:28:21.321Z",
+        "name": "Кременець",
+        "name_uk": "Кременець",
+        "name_en": "Kremenets",
+        "name_ru": "Кременец",
+        "region": 18,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 328,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.328Z",
+        "updated_at": "2024-10-14T04:28:21.328Z",
+        "name": "Ланівці",
+        "name_uk": "Ланівці",
+        "name_en": "Lanivtsi",
+        "name_ru": "Ланивцы",
+        "region": 18,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 329,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.334Z",
+        "updated_at": "2024-10-14T04:28:21.334Z",
+        "name": "Монастириська",
+        "name_uk": "Монастириська",
+        "name_en": "Monastyryshche",
+        "name_ru": "Монастырщина",
+        "region": 18,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 330,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.341Z",
+        "updated_at": "2024-10-14T04:28:21.341Z",
+        "name": "Підгайці",
+        "name_uk": "Підгайці",
+        "name_en": "Pidhaitsi",
+        "name_ru": "Подгайцы",
+        "region": 18,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 331,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.348Z",
+        "updated_at": "2024-10-14T04:28:21.349Z",
+        "name": "Почаїв",
+        "name_uk": "Почаїв",
+        "name_en": "Pochayiv",
+        "name_ru": "Почаев",
+        "region": 18,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 332,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.354Z",
+        "updated_at": "2024-10-14T04:28:21.354Z",
+        "name": "Скалат",
+        "name_uk": "Скалат",
+        "name_en": "Skalat",
+        "name_ru": "Скалат",
+        "region": 18,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 333,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.361Z",
+        "updated_at": "2024-10-14T04:28:21.361Z",
+        "name": "Теребовля",
+        "name_uk": "Теребовля",
+        "name_en": "Terebovlia",
+        "name_ru": "Теребовля",
+        "region": 18,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 334,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.368Z",
+        "updated_at": "2024-10-14T04:28:21.368Z",
+        "name": "Тернопіль",
+        "name_uk": "Тернопіль",
+        "name_en": "Ternopil",
+        "name_ru": "Тернополь",
+        "region": 18,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 335,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.375Z",
+        "updated_at": "2024-10-14T04:28:21.375Z",
+        "name": "Хоростків",
+        "name_uk": "Хоростків",
+        "name_en": "Khorostkiv",
+        "name_ru": "Хоростков",
+        "region": 18,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 336,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.381Z",
+        "updated_at": "2024-10-14T04:28:21.381Z",
+        "name": "Чортків",
+        "name_uk": "Чортків",
+        "name_en": "Chortkiv",
+        "name_ru": "Чортков",
+        "region": 18,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 337,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.388Z",
+        "updated_at": "2024-10-14T04:28:21.388Z",
+        "name": "Шумськ",
+        "name_uk": "Шумськ",
+        "name_en": "Shumsk",
+        "name_ru": "Шумск",
+        "region": 18,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 338,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.397Z",
+        "updated_at": "2024-10-14T04:28:21.397Z",
+        "name": "Балаклія",
+        "name_uk": "Балаклія",
+        "name_en": "Balakliya",
+        "name_ru": "Балаклея",
+        "region": 19,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 339,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.404Z",
+        "updated_at": "2024-10-14T04:28:21.404Z",
+        "name": "Барвінкове",
+        "name_uk": "Барвінкове",
+        "name_en": "Barvinkove",
+        "name_ru": "Барвенково",
+        "region": 19,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 340,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.409Z",
+        "updated_at": "2024-10-14T04:28:21.409Z",
+        "name": "Богодухів",
+        "name_uk": "Богодухів",
+        "name_en": "Bohodukhiv",
+        "name_ru": "Богодухов",
+        "region": 19,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 341,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.416Z",
+        "updated_at": "2024-10-14T04:28:21.416Z",
+        "name": "Валки",
+        "name_uk": "Валки",
+        "name_en": "Valky",
+        "name_ru": "Валки",
+        "region": 19,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 342,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.422Z",
+        "updated_at": "2024-10-14T04:28:21.422Z",
+        "name": "Вовчанськ",
+        "name_uk": "Вовчанськ",
+        "name_en": "Vovchansk",
+        "name_ru": "Вовчанск",
+        "region": 19,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 343,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.428Z",
+        "updated_at": "2024-10-14T04:28:21.428Z",
+        "name": "Дергачі",
+        "name_uk": "Дергачі",
+        "name_en": "Derhachi",
+        "name_ru": "Дергачи",
+        "region": 19,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 344,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.435Z",
+        "updated_at": "2024-10-14T04:28:21.435Z",
+        "name": "Зміїв",
+        "name_uk": "Зміїв",
+        "name_en": "Zmiiv",
+        "name_ru": "Змиев",
+        "region": 19,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 345,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.442Z",
+        "updated_at": "2024-10-14T04:28:21.442Z",
+        "name": "Ізюм",
+        "name_uk": "Ізюм",
+        "name_en": "Izyum",
+        "name_ru": "Изюм",
+        "region": 19,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 346,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.448Z",
+        "updated_at": "2024-10-14T04:28:21.448Z",
+        "name": "Красноград",
+        "name_uk": "Красноград",
+        "name_en": "Krasnohrad",
+        "name_ru": "Красноград",
+        "region": 19,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 347,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.455Z",
+        "updated_at": "2024-10-14T04:28:21.455Z",
+        "name": "Куп'янськ",
+        "name_uk": "Куп'янськ",
+        "name_en": "Kupiansk",
+        "name_ru": "Купянск",
+        "region": 19,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 348,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.461Z",
+        "updated_at": "2024-10-14T04:28:21.461Z",
+        "name": "Лозова",
+        "name_uk": "Лозова",
+        "name_en": "Lozova",
+        "name_ru": "Лозовая",
+        "region": 19,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 349,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.467Z",
+        "updated_at": "2024-10-14T04:28:21.467Z",
+        "name": "Люботин",
+        "name_uk": "Люботин",
+        "name_en": "Lyubotyn",
+        "name_ru": "Люботин",
+        "region": 19,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 350,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.473Z",
+        "updated_at": "2024-10-14T04:28:21.473Z",
+        "name": "Мерефа",
+        "name_uk": "Мерефа",
+        "name_en": "Merafa",
+        "name_ru": "Мерефа",
+        "region": 19,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 351,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.480Z",
+        "updated_at": "2024-10-14T04:28:21.480Z",
+        "name": "Первомайський",
+        "name_uk": "Первомайський",
+        "name_en": "Pervomaiskyi",
+        "name_ru": "Первомайский",
+        "region": 19,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 352,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.486Z",
+        "updated_at": "2024-10-14T04:28:21.486Z",
+        "name": "Південне",
+        "name_uk": "Південне",
+        "name_en": "Pivdenne",
+        "name_ru": "Южное",
+        "region": 19,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 353,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.492Z",
+        "updated_at": "2024-10-14T04:28:21.492Z",
+        "name": "Харків",
+        "name_uk": "Харків",
+        "name_en": "Kharkiv",
+        "name_ru": "Харьков",
+        "region": 19,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 354,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.499Z",
+        "updated_at": "2024-10-14T04:28:21.499Z",
+        "name": "Чугуїв",
+        "name_uk": "Чугуїв",
+        "name_en": "Chuhuiv",
+        "name_ru": "Чугуев",
+        "region": 19,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 355,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.508Z",
+        "updated_at": "2024-10-14T04:28:21.508Z",
+        "name": "Берислав",
+        "name_uk": "Берислав",
+        "name_en": "Berislav",
+        "name_ru": "Берислав",
+        "region": 20,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 356,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.514Z",
+        "updated_at": "2024-10-14T04:28:21.514Z",
+        "name": "Генічеськ",
+        "name_uk": "Генічеськ",
+        "name_en": "Henichesk",
+        "name_ru": "Геническ",
+        "region": 20,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 357,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.521Z",
+        "updated_at": "2024-10-14T04:28:21.521Z",
+        "name": "Гола Пристань",
+        "name_uk": "Гола Пристань",
+        "name_en": "Hola Prystan",
+        "name_ru": "Голая Пристань",
+        "region": 20,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 358,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.528Z",
+        "updated_at": "2024-10-14T04:28:21.528Z",
+        "name": "Каховка",
+        "name_uk": "Каховка",
+        "name_en": "Kakhovka",
+        "name_ru": "Каховка",
+        "region": 20,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 359,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.534Z",
+        "updated_at": "2024-10-14T04:28:21.534Z",
+        "name": "Нова Каховка",
+        "name_uk": "Нова Каховка",
+        "name_en": "Nova Kakhovka",
+        "name_ru": "Новая Каховка",
+        "region": 20,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 360,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.540Z",
+        "updated_at": "2024-10-14T04:28:21.540Z",
+        "name": "Олешки",
+        "name_uk": "Олешки",
+        "name_en": "Oleshky",
+        "name_ru": "Олешки",
+        "region": 20,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 361,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.546Z",
+        "updated_at": "2024-10-14T04:28:21.546Z",
+        "name": "Скадовськ",
+        "name_uk": "Скадовськ",
+        "name_en": "Skadovsk",
+        "name_ru": "Скадовск",
+        "region": 20,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 362,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.554Z",
+        "updated_at": "2024-10-14T04:28:21.554Z",
+        "name": "Таврійськ",
+        "name_uk": "Таврійськ",
+        "name_en": "Tavriysk",
+        "name_ru": "Таврийск",
+        "region": 20,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 363,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.559Z",
+        "updated_at": "2024-10-14T04:28:21.559Z",
+        "name": "Херсон",
+        "name_uk": "Херсон",
+        "name_en": "Kherson",
+        "name_ru": "Херсон",
+        "region": 20,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 364,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.569Z",
+        "updated_at": "2024-10-14T04:28:21.569Z",
+        "name": "Волочиськ",
+        "name_uk": "Волочиськ",
+        "name_en": "Volochysk",
+        "name_ru": "Волочиск",
+        "region": 21,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 365,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.575Z",
+        "updated_at": "2024-10-14T04:28:21.575Z",
+        "name": "Городок",
+        "name_uk": "Городок",
+        "name_en": "Horodok",
+        "name_ru": "Городок",
+        "region": 21,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 366,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.582Z",
+        "updated_at": "2024-10-14T04:28:21.582Z",
+        "name": "Деражня",
+        "name_uk": "Деражня",
+        "name_en": "Derazhnya",
+        "name_ru": "Деражня",
+        "region": 21,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 367,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.589Z",
+        "updated_at": "2024-10-14T04:28:21.589Z",
+        "name": "Дунаївці",
+        "name_uk": "Дунаївці",
+        "name_en": "Dunaivtsi",
+        "name_ru": "Дунаевцы",
+        "region": 21,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 368,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.595Z",
+        "updated_at": "2024-10-14T04:28:21.595Z",
+        "name": "Ізяслав",
+        "name_uk": "Ізяслав",
+        "name_en": "Iziaslav",
+        "name_ru": "Изясллав",
+        "region": 21,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 369,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.601Z",
+        "updated_at": "2024-10-14T04:28:21.602Z",
+        "name": "Кам'янець-Подільський",
+        "name_uk": "Кам'янець-Подільський",
+        "name_en": "Kamianets-Podilskyi",
+        "name_ru": "Каменец-Подольский",
+        "region": 21,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 370,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.608Z",
+        "updated_at": "2024-10-14T04:28:21.608Z",
+        "name": "Красилів",
+        "name_uk": "Красилів",
+        "name_en": "Krasyliv",
+        "name_ru": "Красилов",
+        "region": 21,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 371,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.615Z",
+        "updated_at": "2024-10-14T04:28:21.615Z",
+        "name": "Нетішин",
+        "name_uk": "Нетішин",
+        "name_en": "Netishyn",
+        "name_ru": "Нетишин",
+        "region": 21,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 372,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.622Z",
+        "updated_at": "2024-10-14T04:28:21.622Z",
+        "name": "Полонне",
+        "name_uk": "Полонне",
+        "name_en": "Polonne",
+        "name_ru": "Полонное",
+        "region": 21,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 373,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.628Z",
+        "updated_at": "2024-10-14T04:28:21.628Z",
+        "name": "Славута",
+        "name_uk": "Славута",
+        "name_en": "Slavuta",
+        "name_ru": "Славута",
+        "region": 21,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 374,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.635Z",
+        "updated_at": "2024-10-14T04:28:21.635Z",
+        "name": "Старокостянтинів",
+        "name_uk": "Старокостянтинів",
+        "name_en": "Starkostiantyniv",
+        "name_ru": "Староконстантинов",
+        "region": 21,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 375,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.641Z",
+        "updated_at": "2024-10-14T04:28:21.641Z",
+        "name": "Хмельницький",
+        "name_uk": "Хмельницький",
+        "name_en": "Khmelnytskyi",
+        "name_ru": "Хмельницкий",
+        "region": 21,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 376,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.648Z",
+        "updated_at": "2024-10-14T04:28:21.648Z",
+        "name": "Шепетівка",
+        "name_uk": "Шепетівка",
+        "name_en": "Shepetivka",
+        "name_ru": "Шепетовка",
+        "region": 21,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 377,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.658Z",
+        "updated_at": "2024-10-14T04:28:21.658Z",
+        "name": "Ватутіне",
+        "name_uk": "Ватутіне",
+        "name_en": "Vatutine",
+        "name_ru": "Ватутин",
+        "region": 22,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 378,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.663Z",
+        "updated_at": "2024-10-14T04:28:21.663Z",
+        "name": "Городище",
+        "name_uk": "Городище",
+        "name_en": "Horodyshche",
+        "name_ru": "Городище",
+        "region": 22,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 379,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.670Z",
+        "updated_at": "2024-10-14T04:28:21.670Z",
+        "name": "Жашків",
+        "name_uk": "Жашків",
+        "name_en": "Zhashkiv",
+        "name_ru": "Жашков",
+        "region": 22,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 380,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.676Z",
+        "updated_at": "2024-10-14T04:28:21.676Z",
+        "name": "Звенигородка",
+        "name_uk": "Звенигородка",
+        "name_en": "Zvenyhorodka",
+        "name_ru": "Звенигородка",
+        "region": 22,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 381,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.682Z",
+        "updated_at": "2024-10-14T04:28:21.682Z",
+        "name": "Золотоноша",
+        "name_uk": "Золотоноша",
+        "name_en": "Zolotonosha",
+        "name_ru": "Золотоноша",
+        "region": 22,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 382,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.689Z",
+        "updated_at": "2024-10-14T04:28:21.689Z",
+        "name": "Кам'янка",
+        "name_uk": "Кам'янка",
+        "name_en": "Kamyanka",
+        "name_ru": "Камень",
+        "region": 22,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 383,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.695Z",
+        "updated_at": "2024-10-14T04:28:21.695Z",
+        "name": "Канів",
+        "name_uk": "Канів",
+        "name_en": "Kaniv",
+        "name_ru": "Канев",
+        "region": 22,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 384,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.702Z",
+        "updated_at": "2024-10-14T04:28:21.702Z",
+        "name": "Корсунь-Шевченківський",
+        "name_uk": "Корсунь-Шевченківський",
+        "name_en": "Korsun-Shevchenkivskyi",
+        "name_ru": "Корсунь-Шевченковский",
+        "region": 22,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 385,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.707Z",
+        "updated_at": "2024-10-14T04:28:21.707Z",
+        "name": "Монастирище",
+        "name_uk": "Монастирище",
+        "name_en": "Monastyrishche",
+        "name_ru": "Монастырщина",
+        "region": 22,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 386,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.714Z",
+        "updated_at": "2024-10-14T04:28:21.714Z",
+        "name": "Сміла",
+        "name_uk": "Сміла",
+        "name_en": "Smila",
+        "name_ru": "Смела",
+        "region": 22,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 387,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.721Z",
+        "updated_at": "2024-10-14T04:28:21.721Z",
+        "name": "Тальне",
+        "name_uk": "Тальне",
+        "name_en": "Talne",
+        "name_ru": "Тальное",
+        "region": 22,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 388,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.727Z",
+        "updated_at": "2024-10-14T04:28:21.727Z",
+        "name": "Умань",
+        "name_uk": "Умань",
+        "name_en": "Uman",
+        "name_ru": "Умань",
+        "region": 22,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 389,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.734Z",
+        "updated_at": "2024-10-14T04:28:21.734Z",
+        "name": "Христинівка",
+        "name_uk": "Христинівка",
+        "name_en": "Khrystynivka",
+        "name_ru": "Христиновка",
+        "region": 22,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 390,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.739Z",
+        "updated_at": "2024-10-14T04:28:21.739Z",
+        "name": "Черкаси",
+        "name_uk": "Черкаси",
+        "name_en": "Cherkasy",
+        "name_ru": "Черкассы",
+        "region": 22,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 391,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.746Z",
+        "updated_at": "2024-10-14T04:28:21.746Z",
+        "name": "Чигирин",
+        "name_uk": "Чигирин",
+        "name_en": "Chyhyryn",
+        "name_ru": "Чигирин",
+        "region": 22,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 392,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.753Z",
+        "updated_at": "2024-10-14T04:28:21.753Z",
+        "name": "Шпола",
+        "name_uk": "Шпола",
+        "name_en": "Shpola",
+        "name_ru": "Шпола",
+        "region": 22,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 393,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.762Z",
+        "updated_at": "2024-10-14T04:28:21.762Z",
+        "name": "Вашківці",
+        "name_uk": "Вашківці",
+        "name_en": "Vashkivtsi",
+        "name_ru": "Вашковцы",
+        "region": 23,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 394,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.769Z",
+        "updated_at": "2024-10-14T04:28:21.769Z",
+        "name": "Вижниця",
+        "name_uk": "Вижниця",
+        "name_en": "Vyzhnytsia",
+        "name_ru": "Вижница",
+        "region": 23,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 395,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.776Z",
+        "updated_at": "2024-10-14T04:28:21.776Z",
+        "name": "Герца",
+        "name_uk": "Герца",
+        "name_en": "Hertsa",
+        "name_ru": "Герца",
+        "region": 23,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 396,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.782Z",
+        "updated_at": "2024-10-14T04:28:21.782Z",
+        "name": "Заставна",
+        "name_uk": "Заставна",
+        "name_en": "Zastavna",
+        "name_ru": "Заставна",
+        "region": 23,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 397,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.789Z",
+        "updated_at": "2024-10-14T04:28:21.789Z",
+        "name": "Кіцмань",
+        "name_uk": "Кіцмань",
+        "name_en": "Kitsman",
+        "name_ru": "Кицмань",
+        "region": 23,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 398,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.794Z",
+        "updated_at": "2024-10-14T04:28:21.794Z",
+        "name": "Новодністровськ",
+        "name_uk": "Новодністровськ",
+        "name_en": "Novodnistrovsk",
+        "name_ru": "Новоднестровск",
+        "region": 23,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 399,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.801Z",
+        "updated_at": "2024-10-14T04:28:21.801Z",
+        "name": "Новоселиця",
+        "name_uk": "Новоселиця",
+        "name_en": "Novoselitsa",
+        "name_ru": "Новоселица",
+        "region": 23,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 400,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.807Z",
+        "updated_at": "2024-10-14T04:28:21.807Z",
+        "name": "Сокиряни",
+        "name_uk": "Сокиряни",
+        "name_en": "Sokyryany",
+        "name_ru": "Сокиряны",
+        "region": 23,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 401,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.813Z",
+        "updated_at": "2024-10-14T04:28:21.813Z",
+        "name": "Сторожинець",
+        "name_uk": "Сторожинець",
+        "name_en": "Storozhynets",
+        "name_ru": "Сторожинец",
+        "region": 23,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 402,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.820Z",
+        "updated_at": "2024-10-14T04:28:21.820Z",
+        "name": "Хотин",
+        "name_uk": "Хотин",
+        "name_en": "Khotyn",
+        "name_ru": "Хотин",
+        "region": 23,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 403,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.826Z",
+        "updated_at": "2024-10-14T04:28:21.826Z",
+        "name": "Чернівці",
+        "name_uk": "Чернівці",
+        "name_en": "Chernivtsi",
+        "name_ru": "Черновцы",
+        "region": 23,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 404,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.835Z",
+        "updated_at": "2024-10-14T04:28:21.835Z",
+        "name": "Батурин",
+        "name_uk": "Батурин",
+        "name_en": "Baturyn",
+        "name_ru": "Батурин",
+        "region": 24,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 405,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.841Z",
+        "updated_at": "2024-10-14T04:28:21.841Z",
+        "name": "Бахмач",
+        "name_uk": "Бахмач",
+        "name_en": "Bakhmach",
+        "name_ru": "Бахмач",
+        "region": 24,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 406,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.848Z",
+        "updated_at": "2024-10-14T04:28:21.848Z",
+        "name": "Бобровиця",
+        "name_uk": "Бобровиця",
+        "name_en": "Bobrovytsia",
+        "name_ru": "Бобровица",
+        "region": 24,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 407,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.854Z",
+        "updated_at": "2024-10-14T04:28:21.854Z",
+        "name": "Борзна",
+        "name_uk": "Борзна",
+        "name_en": "Borzna",
+        "name_ru": "Борзна",
+        "region": 24,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 408,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.861Z",
+        "updated_at": "2024-10-14T04:28:21.861Z",
+        "name": "Городня",
+        "name_uk": "Городня",
+        "name_en": "Horodnia",
+        "name_ru": "Городня",
+        "region": 24,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 409,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.868Z",
+        "updated_at": "2024-10-14T04:28:21.868Z",
+        "name": "Ічня",
+        "name_uk": "Ічня",
+        "name_en": "Ichniya",
+        "name_ru": "Ичня",
+        "region": 24,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 410,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.873Z",
+        "updated_at": "2024-10-14T04:28:21.873Z",
+        "name": "Корюківка",
+        "name_uk": "Корюківка",
+        "name_en": "Koryukivka",
+        "name_ru": "Корюковка",
+        "region": 24,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 411,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.880Z",
+        "updated_at": "2024-10-14T04:28:21.880Z",
+        "name": "Мена",
+        "name_uk": "Мена",
+        "name_en": "Mena",
+        "name_ru": "Мена",
+        "region": 24,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 412,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.886Z",
+        "updated_at": "2024-10-14T04:28:21.886Z",
+        "name": "Ніжин",
+        "name_uk": "Ніжин",
+        "name_en": "Nizhyn",
+        "name_ru": "Нежин",
+        "region": 24,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 413,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.892Z",
+        "updated_at": "2024-10-14T04:28:21.892Z",
+        "name": "Новгород-Сіверський",
+        "name_uk": "Новгород-Сіверський",
+        "name_en": "Novhorod-Siverskyi",
+        "name_ru": "Новгород-Северский",
+        "region": 24,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 414,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.899Z",
+        "updated_at": "2024-10-14T04:28:21.899Z",
+        "name": "Носівка",
+        "name_uk": "Носівка",
+        "name_en": "Nosivka",
+        "name_ru": "Носовка",
+        "region": 24,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 415,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.906Z",
+        "updated_at": "2024-10-14T04:28:21.906Z",
+        "name": "Остер",
+        "name_uk": "Остер",
+        "name_en": "Oster",
+        "name_ru": "Остр",
+        "region": 24,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 416,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.912Z",
+        "updated_at": "2024-10-14T04:28:21.912Z",
+        "name": "Прилуки",
+        "name_uk": "Прилуки",
+        "name_en": "Pryluky",
+        "name_ru": "Прилуки",
+        "region": 24,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 417,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.918Z",
+        "updated_at": "2024-10-14T04:28:21.918Z",
+        "name": "Семенівка",
+        "name_uk": "Семенівка",
+        "name_en": "Semenivka",
+        "name_ru": "Семеновка",
+        "region": 24,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 418,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.924Z",
+        "updated_at": "2024-10-14T04:28:21.924Z",
+        "name": "Сновськ",
+        "name_uk": "Сновськ",
+        "name_en": "Snovsk",
+        "name_ru": "Сновск",
+        "region": 24,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 419,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.930Z",
+        "updated_at": "2024-10-14T04:28:21.930Z",
+        "name": "Чернігів",
+        "name_uk": "Чернігів",
+        "name_en": "Chernihiv",
+        "name_ru": "Чернигов",
+        "region": 24,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 420,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.940Z",
+        "updated_at": "2024-10-14T04:28:21.940Z",
+        "name": "Київ",
+        "name_uk": "Київ",
+        "name_en": "Kyiv",
+        "name_ru": "Киев",
+        "region": 25,
+        "slug": null
+    }
+},
+{
+    "model": "locations.city",
+    "pk": 421,
+    "fields": {
+        "created_at": "2024-10-14T04:28:21.950Z",
+        "updated_at": "2024-10-14T04:28:21.950Z",
+        "name": "Севастополь",
+        "name_uk": "Севастополь",
+        "name_en": "Sevastopol",
+        "name_ru": "Севастополь",
+        "region": 26,
+        "slug": null
+    }
+}
+]
