@@ -46,7 +46,7 @@ class TMPProductSerializer(serializers.Serializer):
         ]
 
     def create(self, validated_data):
-        created = None
+        created = False
 
         if validated_data.get('secret_key') is None:
             raise serializers.ValidationError('Получишь по рукам!!!')
