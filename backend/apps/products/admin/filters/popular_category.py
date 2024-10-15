@@ -7,6 +7,8 @@ from apps.products.models import Category
 
 class PopularCategoryFilter(admin.SimpleListFilter):
     POPULAR_CATEGORY_THRESHOLD = 100
+    LIMIT = 21
+
     title = _('Popular Categories')
     parameter_name = 'popular_category'
 
@@ -14,8 +16,9 @@ class PopularCategoryFilter(admin.SimpleListFilter):
         popular_categories = (
             Category.objects.annotate(count_products=Count('products'))
             .filter(count_products__gte=self.POPULAR_CATEGORY_THRESHOLD)
-            .order_by('-count_products')
+            .order_by('-count_products')[: self.LIMIT]
         )
+
         return [(cat.id, cat.title) for cat in popular_categories]
 
     def queryset(self, request, queryset):
