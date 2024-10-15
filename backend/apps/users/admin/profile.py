@@ -10,7 +10,8 @@ class ProfileAdmin(admin.ModelAdmin):
         'id',
         'user__email',
     )
-    readonly_fields = ('created_at', 'updated_at')
+    search_fields = ('user__email',)
+    readonly_fields = ('user', 'user_olx_id', 'is_fake_user', 'created_at', 'updated_at')
     autocomplete_fields = ('location',)
 
     def get_queryset(self, request):
