@@ -1,6 +1,7 @@
 from django.utils.translation import gettext_lazy as _
 from drf_spectacular.utils import extend_schema
 from rest_framework import generics
+from rest_framework.permissions import AllowAny
 
 from apps.api_tags import CURRENCY
 from apps.products.models import Currency
@@ -16,3 +17,4 @@ from apps.products.serializers.price import CurrencySerializer
 class CurrencyListView(generics.ListAPIView):
     queryset = Currency.objects.all().order_by('id')
     serializer_class = CurrencySerializer
+    permission_classes = [AllowAny]
