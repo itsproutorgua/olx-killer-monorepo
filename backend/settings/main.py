@@ -6,6 +6,34 @@ from corsheaders.defaults import default_methods
 from settings.base import *
 
 
+DATA_UPLOAD_MAX_MEMORY_SIZE = env('DATA_UPLOAD_MAX_MEMORY_SIZE')
+DYNAMIC_THROTTLE_RATE = env('DYNAMIC_THROTTLE_RATE', default='7/second')
+
+VIDEO_UPLOAD_LIMIT = env('VIDEO_UPLOAD_LIMIT')
+MAX_IMAGE_FILE_SIZE_MB = env('MAX_IMAGE_FILE_SIZE_MB')
+MAX_VIDEO_FILE_SIZE_MB = env('MAX_VIDEO_FILE_SIZE_MB')
+
+ALLOWED_IMAGE_MIME_TYPES = ['image/jpeg', 'image/png', 'image/gif', 'image/webp']
+ALLOWED_VIDEO_MIME_TYPES = [
+    'video/mp4',
+    'video/x-m4v',
+    'video/quicktime',
+    'video/x-msvideo',
+    'video/x-ms-wmv',
+    'video/wmv',
+    'video/x-flv',
+    'video/flv',
+    'video/x-matroska',
+    'video/mkv',
+    'video/webm',
+    'video/ogg',
+]
+
+DEFAULT_CURRENCIES = [
+    {'code': 'UAH', 'symbol': '₴', 'name': 'Ukrainian Hryvnia'},  # Don't change the sequence!
+    {'code': 'USD', 'symbol': '$', 'name': 'United States Dollar'},
+]
+
 INSTALLED_APPS += [
     # Third-party apps
     'django_extensions',
@@ -15,11 +43,13 @@ INSTALLED_APPS += [
     'rest_framework_simplejwt',
     'corsheaders',
     'rosetta',
+
     # Local apps
     'apps.users.apps.UsersConfig',
     'apps.products.apps.ProductsConfig',
     'apps.user_messages.apps.UserMessagesConfig',
     'apps.locations.apps.LocationsConfig',
+    'apps.common',
 ]
 
 MIDDLEWARE += [
@@ -42,7 +72,10 @@ REST_FRAMEWORK = {
     'DEFAULT_VERSION': 'v1',
     'ALLOWED_VERSIONS': ('v1',),
     'DEFAULT_THROTTLE_CLASSES': ('rest_framework.throttling.UserRateThrottle',),
-    'DEFAULT_THROTTLE_RATES': {'user': '1000/day'},
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': '200/day',
+        'user': '1000/day',
+    },
 }
 
 # Auth0
@@ -80,7 +113,6 @@ CORS_ALLOW_HEADERS = [
     *default_headers,
 ]
 CORS_ALLOWED_ORIGINS = env('CORS_ALLOWED_ORIGINS', default='http://localhost:8000').split()
-
 CSRF_TRUSTED_ORIGINS = env('CSRF_TRUSTED_ORIGINS', default='http://localhost:8000').split()
 
 # SIMPLE_JWT
@@ -127,7 +159,35 @@ SERVER_EMAIL = env('SERVER_EMAIL', default=DEFAULT_FROM_EMAIL)
 
 FRONTEND_HOST = env('FRONTEND_HOST', default='http://localhost:8000/')
 
+SUPER_LOGIN = env('SUPER_LOGIN')
+SUPER_PASSWORD = env('SUPER_PASSWORD')
+
 AUTH_USER_MODEL = 'users.User'
+
+# Redis
+REDIS_URL = os.getenv('REDIS_URL', 'redis://localhost:6379/')
+REDIS_CACHE_URL = f'{REDIS_URL}/1'
+
+# Celery
+CELERY_TIMEZONE = TIME_ZONE
+CELERY_TASK_TRACK_STARTED = True
+CELERY_BROKER_URL = REDIS_URL
+CELERY_RESULT_BACKEND = None
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_ACCEPT_CONTENT = ['json']
+
+#  CACHES
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': REDIS_CACHE_URL,
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        },
+        'TIMEOUT': 300,
+    }
+}
 
 if DEBUG:
     INSTALLED_APPS += [
@@ -140,4 +200,7 @@ if DEBUG:
 
     INTERNAL_IPS = [
         '127.0.0.1',
+        'localhost',
+        '0.0.0.0',
+        '172.17.0.1',
     ]
