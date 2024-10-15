@@ -26,7 +26,7 @@ class Profile(TimestampMixin, models.Model):
     phone_numbers = models.JSONField(
         _('Phone numbers'), default=list, blank=True, null=True, help_text=_('You can add multiple phone numbers.')
     )
-    is_fake_user = models.BooleanField(_('fake user'), default=False)
+    is_fake_user = models.BooleanField('fake user', default=False)
     user_olx_id = models.IntegerField('USER OLX ID', blank=True, null=True)
 
     def __str__(self):
