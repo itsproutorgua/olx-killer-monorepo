@@ -1,5 +1,5 @@
 //types for categories and subcategories
-export interface Category {
+export interface CategoryResponse {
   title: string
   path: string
   icon: string | null

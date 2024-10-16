@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 import { ChevronRight } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
@@ -11,34 +10,33 @@ import {
 } from '@/shared/ui/shadcn-ui/menubar.tsx'
 import { Separator } from '@/shared/ui/shadcn-ui/separator'
 import { FacebookIconOutline, InstagramIconOutline } from '@/shared/ui'
-import { Category } from '@/entities/category/model/product.types.ts'
-import { categoryApi } from "@/entities/category"
+import { categoryApi } from "@/entities/category";
+import { useQuery } from "@tanstack/react-query";
+import { QUERY_KEYS } from "@/shared/constants";
+import {CategoryResponse } from "@/entities/category/model/category.types.ts";
 
 export const AsideNav = () => {
-  const { t, i18n } = useTranslation() // Get the i18n instance
-  const [categories, setCategories] = useState<Category[]>([])
+  const { t, i18n } = useTranslation();
 
-  const mainUrl = 'http://olx.erpsolutions.com.ua:8000/'
+  const mainUrl = 'http://olx.erpsolutions.com.ua:8000/';
 
-  // Fetch categories whenever the language changes
-  useEffect(() => {
-    const fetchCategories = async () => {
-      try {
-        const data = await categoryApi.findAll(1) // Pass current language
-        setCategories(data)
-      } catch (error) {
-        console.error('Error fetching categories:', error)
-      }
-    }
+  const { isLoading, isError, data: categories, error } = useQuery<CategoryResponse[]>({
+    queryKey: [QUERY_KEYS.CATEGORIES, i18n.language],
+    queryFn: () => categoryApi.findAll(1),
+    retry: 1,
+    refetchOnWindowFocus: false,
+  });
 
-    fetchCategories()
-  }, [i18n.language]) // Dependency array includes i18n.language
+  // Handle loading and error states
+  if (isLoading) return <p>Loading categories...</p>;
+  if (isError) return <p>Error: {error.message}</p>;
 
+  // Render the categories
   return (
     <aside className='w-[310px]'>
       <Menubar className='h-auto rounded-none border-0 p-0'>
         <ul className='space-y-2.5'>
-          {categories.map((cat) => (
+          {categories?.map((cat) => (
             <li key={cat.path}>
               <MenubarMenu key={cat.path}>
                 <MenubarTrigger className='flex w-full cursor-pointer items-center justify-between gap-3 rounded-[81px] border-0 py-0.5 pl-1 pr-0 text-base/4 font-normal transition-colors duration-300 hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground data-[state=open]:bg-primary data-[state=open]:text-primary-foreground'>
@@ -108,5 +106,5 @@ export const AsideNav = () => {
         </div>
       </div>
     </aside>
-  )
-}
+  );
+};
