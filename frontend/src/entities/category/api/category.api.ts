@@ -1,15 +1,20 @@
 import { instanceBase } from '@/shared/api'
 
 class CategoryApi {
-  private BASE_URL = '/categories'
+  private BASE_URL = '/categories/'
 
-  async getCategories() {
-    const response = await instanceBase.get(`${this.BASE_URL}`)
+  async findAll(page: number) {
+    const params = new URLSearchParams()
+    params.set('page', page.toString())
+
+    const url = `${this.BASE_URL}` + `?` + `${params.toString()}`
+    const response = await instanceBase.get(url)
     return response.data
   }
 
-  async getCategoryById(id: number) {
-    const response = await instanceBase.get(`${this.BASE_URL}/${id}`)
+  async findById(id: number) {
+    const url = `${this.BASE_URL}` + `${id}`
+    const response = await instanceBase.get(url)
     return response.data
   }
 }
