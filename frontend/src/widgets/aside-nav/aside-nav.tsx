@@ -33,13 +33,13 @@ export const AsideNav = () => {
 
   // Render the categories
   return (
-    <aside className='w-[310px]'>
+    <aside className='w-[305px] pl-[26px] pr-4'>
       <Menubar className='h-auto rounded-none border-0 p-0'>
-        <ul className='space-y-2.5'>
+        <ul className='space-y-2.5 max-w-[263px]'>
           {categories?.map((cat) => (
             <li key={cat.path}>
               <MenubarMenu key={cat.path}>
-                <MenubarTrigger className='flex w-full cursor-pointer items-center justify-between gap-3 rounded-[81px] border-0 py-0.5 pl-1 pr-0 text-base/4 font-normal transition-colors duration-300 hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground data-[state=open]:bg-primary data-[state=open]:text-primary-foreground'>
+                <MenubarTrigger className='flex w-full cursor-pointer items-center justify-between gap-3 rounded-[81px] border-0 py-0 pl-0 pr-0 text-base/4 font-normal transition-colors duration-300 hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground data-[state=open]:bg-primary data-[state=open]:text-primary-foreground'>
                   {cat.icon ? (
                     <img
                       src={mainUrl + cat.icon}
@@ -47,7 +47,7 @@ export const AsideNav = () => {
                       className='w-6 h-6'
                     />
                   ) : null}
-                  <p className='flex-1 text-start'>{cat.title}</p>
+                  <p className='flex-1 text-start text-ellipsis whitespace-nowrap overflow-hidden'>{cat.title}</p>
                   <ChevronRight />
                 </MenubarTrigger>
                 <MenubarContent
