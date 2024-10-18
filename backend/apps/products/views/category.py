@@ -1,6 +1,8 @@
+from django.conf import settings
 from django.core.cache import cache
 from django.db.models import F
 from django.shortcuts import get_object_or_404
+from django.utils.translation import get_language
 from django.utils.translation import gettext_lazy as _
 from drf_spectacular.utils import extend_schema
 from drf_spectacular.utils import OpenApiResponse
@@ -38,12 +40,13 @@ class CategoryAPIViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, Gener
         },
     )
     def list(self, request, *args, **kwargs):
-        cache_key = 'category_tree'
+        language = get_language()
+        cache_key = f'category_tree_{language}'
         category_tree = cache.get(cache_key)
 
         if not category_tree:
             category_tree = Category.get_categories_tree()
-            cache.set(cache_key, category_tree, timeout=900)
+            cache.set(cache_key, category_tree, timeout=settings.CATEGORY_TREE_CACHE_TIMEOUT)
 
         return Response(category_tree, status=status.HTTP_200_OK)
 
