@@ -1,6 +1,8 @@
 from pathlib import Path
 
+from django.conf import settings
 from django.db import models
+from django.utils.translation import get_language
 from django.utils.translation import gettext_lazy as _
 from slugify import slugify
 
@@ -34,21 +36,28 @@ class Category(TimestampMixin, models.Model):
         verbose_name_plural = _('Categories')
         unique_together = (('title', 'parent', 'cat_id_olx'),)
 
-    @classmethod
-    def get_categories_tree(cls):
-        category_fields = ['id', 'title', 'path', 'icon', 'img', 'parent_id']
-        categories = Category.objects.select_related('parent').prefetch_related('children').only(*category_fields)
+    @staticmethod
+    def get_categories_tree():
+        language_code = get_language() or settings.MODELTRANSLATION_DEFAULT_LANGUAGE
+        title_field = f'title_{language_code}'
+
+        category_fields = ['pk', title_field, 'path', 'icon', 'img', 'parent_id']
+        categories = Category.objects.values(*category_fields).order_by('views')
+
+        def format_media_url(field):
+            return f'/media/{field}' if field else None
 
         categories_dict = {}
+
         for category in categories:
-            category_data = {field: getattr(category, field) for field in category_fields}
-            category_data.pop('id')
-            category_data['children'] = []
-
-            category_data['img'] = category.img.url if category.img else None
-            category_data['icon'] = category.icon.url if category.icon else None
-
-            categories_dict[category.id] = category_data
+            categories_dict[category['pk']] = {
+                'title': category[title_field],
+                'path': category['path'],
+                'icon': format_media_url(category['icon']),
+                'img': format_media_url(category['img']),
+                'parent_id': category['parent_id'],
+                'children': [],
+            }
 
         for cat_id, values in categories_dict.items():
             parent_id = values['parent_id']
