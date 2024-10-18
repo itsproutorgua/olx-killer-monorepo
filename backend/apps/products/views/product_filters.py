@@ -100,6 +100,11 @@ class ProductFilterViewSet(mixins.ListModelMixin, GenericViewSet):
                         value='created_at:asc',
                         description=_('Sort products by created date in ascending order.'),
                     ),
+                    OpenApiExample(
+                        name=_('Sort by created date in descending order'),
+                        value='created_at:desc',
+                        description=_('Sort products by created date in descending order.'),
+                    ),
                 ],
                 required=False,
             ),
