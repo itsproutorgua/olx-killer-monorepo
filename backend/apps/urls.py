@@ -38,7 +38,7 @@ api = [
 ]
 
 urlpatterns = i18n_patterns(
-    path('admin/', admin.site.urls),
+    path('olx-killer-admin/', admin.site.urls),
     # Rosetta
     re_path('rosetta/', include('rosetta.urls')),
     # API
