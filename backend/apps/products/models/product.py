@@ -27,7 +27,7 @@ class Product(TimestampMixin, models.Model):
     views = models.IntegerField(_('Views'), default=0)
     params = models.JSONField(_('Parameters'), default=dict, blank=True, null=True)
     prod_olx_id = models.IntegerField('Product OLX ID', blank=True, null=True)
-    slug = models.SlugField(_('Product slug'), max_length=255, unique=True)
+    slug = models.SlugField(max_length=255, unique=True)
 
     def __str__(self):
         return self.title
