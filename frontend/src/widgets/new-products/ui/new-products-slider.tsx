@@ -46,7 +46,7 @@ export const NewProductsSlider = () => {
 
   return (
     <Carousel
-      className='mb-6 mt-[19px]'
+      className='mb-6 mt-[32px]'
       setApi={setApi}
       opts={{
         align: 'start',
@@ -79,8 +79,8 @@ export const NewProductsSlider = () => {
               key={index}
               onClick={() => api?.scrollTo(index)}
               className={cn(
-                'size-2 rounded-full transition-colors duration-300 hover:bg-primary',
-                isActive ? 'bg-primary' : 'bg-border',
+                'size-2 rounded-full transition-colors duration-300 hover:bg-primary-600',
+                isActive ? 'bg-primary-900' : 'bg-gray-200',
               )}
             />
           )

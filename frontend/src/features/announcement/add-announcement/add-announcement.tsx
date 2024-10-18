@@ -9,9 +9,9 @@ export const AddAnnouncement = () => {
       <h2 className='w-[189px] text-[24px]/[28.6px] font-medium'>
         {t('titles.announcementTitle')}
       </h2>
-      <button className='flex items-center gap-6 rounded-[60px] bg-primary py-[5px] pl-[37px] pr-[5px] text-base/4 text-primary-foreground transition-colors duration-300 hover:bg-accent'>
+      <button className='flex items-center gap-6 rounded-[60px] bg-primary-900 py-[5px] pl-[37px] pr-[5px] text-base/4 text-gray-50 transition-colors duration-300 hover:bg-primary-500'>
         <span>{t('buttons.addAdvert')}</span>
-        <span className='flex size-[43px] items-center justify-center rounded-full bg-background text-foreground'>
+        <span className='flex size-[43px] items-center justify-center rounded-full bg-gray-50 text-foreground'>
           <PenIcon />
         </span>
       </button>

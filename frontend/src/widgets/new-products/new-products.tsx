@@ -10,7 +10,7 @@ export const NewProducts: React.FC = () => {
   return (
     <div className='mt-[50px] flex w-[1058px] overflow-hidden'>
       <ScrollableProductList
-        title={t('titles.productsBySeller')}
+        title={t('titles.newProductsTitle')}
         products={NEW_PRODUCTS}
         scrollStep={3} // Number of items to scroll
         className='max-w-[1150px] overflow-x-auto xl:w-[calc(100vw-var(--aside-nav-width)-var(--extra-padding))] xl:min-w-[1030px]'

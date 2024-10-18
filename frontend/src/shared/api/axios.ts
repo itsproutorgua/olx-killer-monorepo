@@ -1,9 +1,10 @@
 import axios from 'axios'
 import i18n from 'i18next'
 import { getContentType } from '@/shared/api/api.helpers.ts'
+import {APP_VARIABLES} from "@/shared/constants/app.const.ts";
 
 const axiosOptions = {
-  baseURL: import.meta.env.VITE_BASE_URL, // This would be http://olx.erpsolutions.com.ua:8000/en/api/v1/ initially
+  baseURL: APP_VARIABLES.BASE_URL, // This would be http://olx.erpsolutions.com.ua:8000/en/api/v1/ initially
   headers: getContentType(),
   withCredentials: false,
 }

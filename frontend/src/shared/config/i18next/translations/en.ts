@@ -17,7 +17,7 @@ export const en = {
   },
   titles: {
     announcementTitle: 'Add your own announcement',
-    newProductsTitle: 'New Products',
+    newProductsTitle: 'New announcements',
     popularCategoriesTitle: 'Popular categories',
     sellPromoTitle: 'Do you want to sell on our platform?',
     bestDealsTitle: 'Best deals',
@@ -74,5 +74,11 @@ export const en = {
   currency: 'UAH',
   crumbs: {
     home: 'Home page',
+  },
+  bottomBar: {
+    catalog: 'Catalog',
+    cart: 'Cart',
+    account: 'Account',
+    favorites: 'Favorites',
   },
 }
