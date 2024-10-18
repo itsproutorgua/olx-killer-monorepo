@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-15 00:27+0300\n"
+"POT-Creation-Date: 2024-10-18 02:10+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -91,7 +91,7 @@ msgstr "Create date"
 msgid "Update date"
 msgstr "Update date"
 
-#: .\apps\locations\admin\location.py:13 .\apps\locations\models\location.py:38
+#: .\apps\locations\admin\location.py:13 .\apps\locations\models\location.py:43
 #: .\apps\users\models\profile.py:23
 msgid "Location"
 msgstr "Location"
@@ -101,12 +101,13 @@ msgstr "Location"
 msgid "Region"
 msgstr "Region"
 
-#: .\apps\locations\apps.py:8 .\apps\locations\models\location.py:39
+#: .\apps\locations\apps.py:8 .\apps\locations\models\location.py:44
 msgid "Locations"
 msgstr "Locations"
 
 #: .\apps\locations\models\city.py:9 .\apps\locations\models\city.py:24
 #: .\apps\locations\models\location.py:10
+#: .\apps\locations\models\location.py:20
 msgid "City"
 msgstr "City"
 
@@ -114,35 +115,40 @@ msgstr "City"
 msgid "Cities"
 msgstr "Cities"
 
-#: .\apps\locations\models\location.py:11 .\apps\locations\models\village.py:23
+#: .\apps\locations\models\location.py:11
+#: .\apps\locations\models\location.py:21 .\apps\locations\models\village.py:23
 msgid "Village"
 msgstr "Village"
 
-#: .\apps\locations\models\location.py:14
+#: .\apps\locations\models\location.py:15
 msgid "Location Type"
 msgstr "Location Type"
 
-#: .\apps\locations\models\location.py:17
+#: .\apps\locations\models\location.py:18
+msgid "Type of location"
+msgstr "Type of location"
+
+#: .\apps\locations\models\location.py:22
 msgid "Latitude"
 msgstr "Latitude"
 
-#: .\apps\locations\models\location.py:18
+#: .\apps\locations\models\location.py:23
 msgid "Longitude"
 msgstr "Longitude"
 
-#: .\apps\locations\models\location.py:25
+#: .\apps\locations\models\location.py:30
 msgid "Unknown Location"
 msgstr "Unknown Location"
 
-#: .\apps\locations\models\location.py:29
+#: .\apps\locations\models\location.py:34
 msgid "City must be provided for city location type."
 msgstr "City must be provided for city location type."
 
-#: .\apps\locations\models\location.py:31
+#: .\apps\locations\models\location.py:36
 msgid "Village must be provided for village location type."
 msgstr "Village must be provided for village location type."
 
-#: .\apps\locations\models\location.py:34
+#: .\apps\locations\models\location.py:39
 msgid "Location cannot be both city and village at the same time."
 msgstr "Location cannot be both city and village at the same time."
 
@@ -158,7 +164,11 @@ msgstr "Village Name"
 msgid "Villages"
 msgstr "Villages"
 
-#: .\apps\products\admin\filters\popular_category.py:10
+#: .\apps\products\admin\category.py:33
+msgid "Number of Products"
+msgstr "Number of Products"
+
+#: .\apps\products\admin\filters\popular_category.py:12
 msgid "Popular Categories"
 msgstr "Popular Categories"
 
@@ -166,33 +176,33 @@ msgstr "Popular Categories"
 msgid "Products"
 msgstr "Products"
 
-#: .\apps\products\models\category.py:16
+#: .\apps\products\models\category.py:14
 msgid "Category name"
 msgstr "Category name"
 
-#: .\apps\products\models\category.py:24
+#: .\apps\products\models\category.py:21
 msgid "Parent category"
 msgstr "Parent category"
 
-#: .\apps\products\models\category.py:29
+#: .\apps\products\models\category.py:23
 #: .\apps\products\models\product_image.py:18
 #: .\apps\user_messages\models\message_image.py:10
 msgid "Image"
 msgstr "Image"
 
-#: .\apps\products\models\category.py:30
+#: .\apps\products\models\category.py:24
 msgid "Icon"
 msgstr "Icon"
 
-#: .\apps\products\models\category.py:34 .\apps\products\models\product.py:27
+#: .\apps\products\models\category.py:28 .\apps\products\models\product.py:27
 msgid "Views"
 msgstr "Views"
 
-#: .\apps\products\models\category.py:41 .\apps\products\models\product.py:25
+#: .\apps\products\models\category.py:35 .\apps\products\models\product.py:25
 msgid "Category"
 msgstr "Category"
 
-#: .\apps\products\models\category.py:42
+#: .\apps\products\models\category.py:36
 msgid "Categories"
 msgstr "Categories"
 
@@ -276,10 +286,6 @@ msgstr "Seller"
 msgid "Parameters"
 msgstr "Parameters"
 
-#: .\apps\products\models\product.py:30
-msgid "Product slug"
-msgstr "Product slug"
-
 #: .\apps\products\models\product_image.py:22
 #, python-format
 msgid "Allowed image formats: %s"
@@ -316,23 +322,23 @@ msgid "Failed to create price: {}"
 msgstr "Failed to create price: {}"
 
 #: .\apps\products\serializers\price\price.py:56
-#: .\apps\products\serializers\product\product.py:97
+#: .\apps\products\serializers\product\product.py:101
 msgid "Failed to create product price: {}"
 msgstr "Failed to create product price: {}"
 
-#: .\apps\products\serializers\product\product.py:51
+#: .\apps\products\serializers\product\product.py:55
 msgid "Database integrity error: {}"
 msgstr "Database integrity error: {}"
 
-#: .\apps\products\serializers\product\product.py:56
+#: .\apps\products\serializers\product\product.py:60
 msgid "Failed to create product prices: {}"
 msgstr "Failed to create product prices: {}"
 
-#: .\apps\products\serializers\product\product.py:61
+#: .\apps\products\serializers\product\product.py:65
 msgid "Failed to create product images: {}"
 msgstr "Failed to create product images: {}"
 
-#: .\apps\products\serializers\product\product.py:91
+#: .\apps\products\serializers\product\product.py:95
 msgid "Price with currency {} does not exist."
 msgstr "Price with currency {} does not exist."
 
@@ -362,27 +368,27 @@ msgstr "Failed to create video: %s"
 msgid "Failed to update video: %s"
 msgstr "Failed to update video: %s"
 
-#: .\apps\products\views\category.py:34
+#: .\apps\products\views\category.py:35
 msgid "List categories in a tree structure"
 msgstr "List categories in a tree structure"
 
-#: .\apps\products\views\category.py:35
+#: .\apps\products\views\category.py:36
 msgid "Retrieve a hierarchical tree of categories."
 msgstr "Retrieve a hierarchical tree of categories."
 
-#: .\apps\products\views\category.py:52
+#: .\apps\products\views\category.py:56
 msgid "Retrieve a category by path"
 msgstr "Retrieve a category by path"
 
-#: .\apps\products\views\category.py:53
+#: .\apps\products\views\category.py:57
 msgid "Retrieve a single category by path"
 msgstr "Retrieve a single category by path"
 
-#: .\apps\products\views\currency.py:12
+#: .\apps\products\views\currency.py:13
 msgid "Retrieve a list of all currencies"
 msgstr "Retrieve a list of all currencies"
 
-#: .\apps\products\views\currency.py:13
+#: .\apps\products\views\currency.py:14
 msgid ""
 "Returns a list of available currencies with their code, symbol, and name."
 msgstr ""
@@ -404,27 +410,27 @@ msgstr "Retrieve a product"
 msgid "Retrieve a single product by slug"
 msgstr "Retrieve a single product by slug"
 
-#: .\apps\products\views\product.py:92
+#: .\apps\products\views\product.py:93
 msgid "Update a product"
 msgstr "Update a product"
 
-#: .\apps\products\views\product.py:93
+#: .\apps\products\views\product.py:94
 msgid "Update a product with the provided data"
 msgstr "Update a product with the provided data"
 
-#: .\apps\products\views\product.py:120
+#: .\apps\products\views\product.py:121
 msgid "Partial update a product"
 msgstr "Partial update a product"
 
-#: .\apps\products\views\product.py:121
+#: .\apps\products\views\product.py:122
 msgid "Partial update a product with the provided data"
 msgstr "Partial update a product with the provided data"
 
-#: .\apps\products\views\product.py:148
+#: .\apps\products\views\product.py:149
 msgid "Delete a product"
 msgstr "Delete a product"
 
-#: .\apps\products\views\product.py:149
+#: .\apps\products\views\product.py:150
 msgid "Delete a product by slug"
 msgstr "Delete a product by slug"
 
@@ -481,6 +487,14 @@ msgstr "Sort by created date in ascending order"
 msgid "Sort products by created date in ascending order."
 msgstr "Sort products by created date in ascending order."
 
+#: .\apps\products\views\product_filters.py:104
+msgid "Sort by created date in descending order"
+msgstr "Sort by created date in descending order"
+
+#: .\apps\products\views\product_filters.py:106
+msgid "Sort products by created date in descending order."
+msgstr "Sort products by created date in descending order."
+
 #: .\apps\user_messages\apps.py:8
 msgid "User messages"
 msgstr "User messages"
@@ -518,7 +532,31 @@ msgstr "Message Image"
 msgid "Message Images"
 msgstr "Message Images"
 
-#: .\apps\users\admin\user.py:29
+#: .\apps\users\admin\profile.py:20
+msgid "User Email"
+msgstr "User Email"
+
+#: .\apps\users\admin\user.py:17
+msgid "Personal info"
+msgstr "Personal info"
+
+#: .\apps\users\admin\user.py:19
+msgid "Permissions"
+msgstr "Permissions"
+
+#: .\apps\users\admin\user.py:30
+msgid "Important dates"
+msgstr "Important dates"
+
+#: .\apps\users\admin\user.py:57
+msgid "Profile link"
+msgstr "Profile link"
+
+#: .\apps\users\admin\user.py:60
+msgid "View Profile"
+msgstr "View Profile"
+
+#: .\apps\users\admin\user.py:71
 msgid "Passwords do not match."
 msgstr "Passwords do not match."
 
@@ -671,20 +709,14 @@ msgstr "User registration example response"
 msgid "Example of a successful response after user registration."
 msgstr "Example of a successful response after user registration."
 
-#: .\settings\base.py:129
+#: .\settings\base.py:134
 msgid "Ukrainian"
 msgstr "Ukrainian"
 
-#: .\settings\base.py:130
+#: .\settings\base.py:135
 msgid "English"
 msgstr "English"
 
-#: .\settings\base.py:131
+#: .\settings\base.py:136
 msgid "Russian"
 msgstr "Russian"
-
-#~ msgid "Sort by updated date in descending order"
-#~ msgstr "Sort by updated date in descending order"
-
-#~ msgid "Sort products by updated date in descending order."
-#~ msgstr "Sort products by updated date in descending order."

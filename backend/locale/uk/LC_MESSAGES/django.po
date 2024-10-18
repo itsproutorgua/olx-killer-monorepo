@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-15 00:27+0300\n"
+"POT-Creation-Date: 2024-10-18 02:10+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,10 +34,8 @@ msgid "Validation errors"
 msgstr "Помилки перевірки"
 
 #: .\apps\common\errors.py:11
-#, fuzzy
-#| msgid "Invalid category ID"
 msgid "Invalid category path"
-msgstr "Недійсний ідентифікатор категорії"
+msgstr "Недійсний шлях категорії"
 
 #: .\apps\common\errors.py:12
 msgid "Category not found"
@@ -45,50 +43,48 @@ msgstr "Категорія не знайдена"
 
 #: .\apps\common\errors.py:15
 msgid "No Product matches the given query."
-msgstr ""
+msgstr "Жоден продукт не відповідає даному запиту."
 
 #: .\apps\common\errors.py:16
-#, fuzzy
-#| msgid "Invalid token"
 msgid "Invalid sort field."
-msgstr "Недійсний маркер"
+msgstr "Недійсне поле сортування."
 
 #: .\apps\common\errors.py:20
 #: .\apps\products\serializers\product\product_image.py:22
 #: .\apps\products\serializers\product\product_video.py:23
 #, python-format
 msgid "Invalid file type. Allowed types: %s"
-msgstr ""
+msgstr "Недійсний тип файлу. Дозволені типи: %s"
 
 #: .\apps\common\errors.py:21
 msgid "Uploaded file is not a valid image."
-msgstr ""
+msgstr "Завантажений файл не є дійсним зображенням."
 
 #: .\apps\common\errors.py:22
 #: .\apps\products\serializers\product\product_image.py:26
 #, python-format
 msgid "The image size cannot exceed %s MB."
-msgstr ""
+msgstr "Розмір зображення не може перевищувати %s Мб."
 
 #: .\apps\common\errors.py:25
 #, python-format
 msgid "Invalid video type. Allowed types: %s"
-msgstr ""
+msgstr "Недійсний тип відео. Дозволені типи: %s"
 
 #: .\apps\common\errors.py:26
 #: .\apps\products\serializers\product\product_video.py:27
 #, python-format
 msgid "The video size cannot exceed %s MB."
-msgstr ""
+msgstr "Розмір відео не може перевищувати %s Мб."
 
 #: .\apps\common\errors.py:27
 #, python-brace-format
 msgid "Each product can have only {settings.VIDEO_UPLOAD_LIMIT} video."
-msgstr ""
+msgstr "Кожен продукт може мати лише {settings.VIDEO_UPLOAD_LIMIT} відео."
 
 #: .\apps\common\errors.py:28
 msgid "Uploaded file is not a valid video."
-msgstr ""
+msgstr "Завантажений файл не є дійсним відеофайлом."
 
 #: .\apps\common\models.py:6
 msgid "Create date"
@@ -98,7 +94,7 @@ msgstr "Створення дати"
 msgid "Update date"
 msgstr "Дата оновлення"
 
-#: .\apps\locations\admin\location.py:13 .\apps\locations\models\location.py:38
+#: .\apps\locations\admin\location.py:13 .\apps\locations\models\location.py:43
 #: .\apps\users\models\profile.py:23
 msgid "Location"
 msgstr "Розташування"
@@ -108,12 +104,13 @@ msgstr "Розташування"
 msgid "Region"
 msgstr "Область"
 
-#: .\apps\locations\apps.py:8 .\apps\locations\models\location.py:39
+#: .\apps\locations\apps.py:8 .\apps\locations\models\location.py:44
 msgid "Locations"
 msgstr "Розташування"
 
 #: .\apps\locations\models\city.py:9 .\apps\locations\models\city.py:24
 #: .\apps\locations\models\location.py:10
+#: .\apps\locations\models\location.py:20
 msgid "City"
 msgstr "Місто"
 
@@ -121,41 +118,42 @@ msgstr "Місто"
 msgid "Cities"
 msgstr "Міста"
 
-#: .\apps\locations\models\location.py:11 .\apps\locations\models\village.py:23
+#: .\apps\locations\models\location.py:11
+#: .\apps\locations\models\location.py:21 .\apps\locations\models\village.py:23
 msgid "Village"
-msgstr ""
+msgstr "Село"
 
-#: .\apps\locations\models\location.py:14
-#, fuzzy
-#| msgid "Location"
+#: .\apps\locations\models\location.py:15
 msgid "Location Type"
 msgstr "Розташування"
 
-#: .\apps\locations\models\location.py:17
+#: .\apps\locations\models\location.py:18
+msgid "Type of location"
+msgstr "Тип місцезнаходження"
+
+#: .\apps\locations\models\location.py:22
 msgid "Latitude"
 msgstr "Широта"
 
-#: .\apps\locations\models\location.py:18
+#: .\apps\locations\models\location.py:23
 msgid "Longitude"
 msgstr "Довгота"
 
-#: .\apps\locations\models\location.py:25
-#, fuzzy
-#| msgid "Location"
+#: .\apps\locations\models\location.py:30
 msgid "Unknown Location"
-msgstr "Розташування"
-
-#: .\apps\locations\models\location.py:29
-msgid "City must be provided for city location type."
-msgstr ""
-
-#: .\apps\locations\models\location.py:31
-msgid "Village must be provided for village location type."
-msgstr ""
+msgstr "Невідоме місцезнаходження"
 
 #: .\apps\locations\models\location.py:34
+msgid "City must be provided for city location type."
+msgstr "Для типу розташування міста необхідно вказати місто."
+
+#: .\apps\locations\models\location.py:36
+msgid "Village must be provided for village location type."
+msgstr "Для типу розташування села необхідно вказати село."
+
+#: .\apps\locations\models\location.py:39
 msgid "Location cannot be both city and village at the same time."
-msgstr ""
+msgstr "Локація не може бути одночасно містом і селом."
 
 #: .\apps\locations\models\region.py:24
 msgid "Regions"
@@ -163,49 +161,51 @@ msgstr "Області"
 
 #: .\apps\locations\models\village.py:9
 msgid "Village Name"
-msgstr ""
+msgstr "Назва села"
 
 #: .\apps\locations\models\village.py:24
 msgid "Villages"
-msgstr ""
+msgstr "Села"
 
-#: .\apps\products\admin\filters\popular_category.py:10
-#, fuzzy
-#| msgid "Categories"
+#: .\apps\products\admin\category.py:33
+msgid "Number of Products"
+msgstr "Кількість продуктів"
+
+#: .\apps\products\admin\filters\popular_category.py:12
 msgid "Popular Categories"
-msgstr "Категорії"
+msgstr "Популярні категорії"
 
 #: .\apps\products\apps.py:8 .\apps\products\models\product.py:38
 msgid "Products"
 msgstr "Продукти"
 
-#: .\apps\products\models\category.py:16
+#: .\apps\products\models\category.py:14
 msgid "Category name"
 msgstr "Назва категорії"
 
-#: .\apps\products\models\category.py:24
+#: .\apps\products\models\category.py:21
 msgid "Parent category"
 msgstr "Батьківська категорія"
 
-#: .\apps\products\models\category.py:29
+#: .\apps\products\models\category.py:23
 #: .\apps\products\models\product_image.py:18
 #: .\apps\user_messages\models\message_image.py:10
 msgid "Image"
 msgstr "Зображення"
 
-#: .\apps\products\models\category.py:30
+#: .\apps\products\models\category.py:24
 msgid "Icon"
-msgstr ""
+msgstr "Іконка"
 
-#: .\apps\products\models\category.py:34 .\apps\products\models\product.py:27
+#: .\apps\products\models\category.py:28 .\apps\products\models\product.py:27
 msgid "Views"
-msgstr ""
+msgstr "Перегляди"
 
-#: .\apps\products\models\category.py:41 .\apps\products\models\product.py:25
+#: .\apps\products\models\category.py:35 .\apps\products\models\product.py:25
 msgid "Category"
 msgstr "Категорія"
 
-#: .\apps\products\models\category.py:42
+#: .\apps\products\models\category.py:36
 msgid "Categories"
 msgstr "Категорії"
 
@@ -232,26 +232,24 @@ msgstr "Значення фільтра"
 
 #: .\apps\products\models\price\currency.py:8
 msgid "Currency code"
-msgstr ""
+msgstr "Код валюти"
 
 #: .\apps\products\models\price\currency.py:9
 msgid "Currency symbol"
-msgstr ""
+msgstr "Символ валюти"
 
 #: .\apps\products\models\price\currency.py:10
-#, fuzzy
-#| msgid "Category name"
 msgid "Currency name"
-msgstr "Назва категорії"
+msgstr "Назва валюти"
 
 #: .\apps\products\models\price\currency.py:17
 #: .\apps\products\models\price\price.py:21
 msgid "Currency"
-msgstr ""
+msgstr "Валюта"
 
 #: .\apps\products\models\price\currency.py:18
 msgid "Currencies"
-msgstr ""
+msgstr "Валюти"
 
 #: .\apps\products\models\price\price.py:11
 #, python-brace-format
@@ -260,7 +258,7 @@ msgstr "Має бути більше або дорівнювати {MIN_PRICE}."
 
 #: .\apps\products\models\price\price.py:16
 msgid "Amount"
-msgstr ""
+msgstr "Сума"
 
 #: .\apps\products\models\price\price.py:22
 #: .\apps\products\models\product.py:37
@@ -268,16 +266,12 @@ msgid "Product"
 msgstr "Продукт"
 
 #: .\apps\products\models\price\price.py:29
-#, fuzzy
-#| msgid "Price UAH"
 msgid "Price"
-msgstr "Ціна в грн."
+msgstr "Ціна"
 
 #: .\apps\products\models\price\price.py:30
-#, fuzzy
-#| msgid "Price UAH"
 msgid "Prices"
-msgstr "Ціна в грн."
+msgstr "Ціни"
 
 #: .\apps\products\models\product.py:13
 msgid "Product name"
@@ -295,16 +289,10 @@ msgstr "Продавець"
 msgid "Parameters"
 msgstr "Параметри"
 
-#: .\apps\products\models\product.py:30
-#, fuzzy
-#| msgid "Products"
-msgid "Product slug"
-msgstr "Продукти"
-
 #: .\apps\products\models\product_image.py:22
 #, python-format
 msgid "Allowed image formats: %s"
-msgstr ""
+msgstr "Дозволені формати зображень: %s"
 
 #: .\apps\products\models\product_image.py:30
 msgid "Product Image"
@@ -316,117 +304,98 @@ msgstr "Зображення продукту"
 
 #: .\apps\products\models\product_video.py:17
 msgid "Video"
-msgstr ""
+msgstr "Відео"
 
 #: .\apps\products\models\product_video.py:21
 #, python-format
 msgid "Allowed video formats: %s"
-msgstr ""
+msgstr "Дозволені формати відео: %s"
 
 #: .\apps\products\models\product_video.py:29
 #: .\apps\products\models\product_video.py:30
-#, fuzzy
-#| msgid "Products"
 msgid "Product Videos"
-msgstr "Продукти"
+msgstr "Відео продукту"
 
 #: .\apps\products\serializers\price\price.py:38
 msgid "Invalid currency specified."
-msgstr ""
+msgstr "Вказана недійсна валюта."
 
 #: .\apps\products\serializers\price\price.py:40
-#, fuzzy
-#| msgid "Failed to fetch JWKS: {e}"
 msgid "Failed to create price: {}"
-msgstr "Не вдалося отримати JWKS: {e}"
+msgstr "Не вдалося створити ціну: {}"
 
 #: .\apps\products\serializers\price\price.py:56
-#: .\apps\products\serializers\product\product.py:97
-#, fuzzy
-#| msgid "Failed to fetch JWKS: {e}"
+#: .\apps\products\serializers\product\product.py:101
 msgid "Failed to create product price: {}"
-msgstr "Не вдалося отримати JWKS: {e}"
+msgstr "Не вдалося створити ціну продукту: {}"
 
-#: .\apps\products\serializers\product\product.py:51
+#: .\apps\products\serializers\product\product.py:55
 msgid "Database integrity error: {}"
 msgstr "Помилка цілісності бази даних: {}"
 
-#: .\apps\products\serializers\product\product.py:56
-#, fuzzy
-#| msgid "Failed to fetch JWKS: {e}"
+#: .\apps\products\serializers\product\product.py:60
 msgid "Failed to create product prices: {}"
-msgstr "Не вдалося отримати JWKS: {e}"
+msgstr "Не вдалося створити ціни на продукти: {}"
 
-#: .\apps\products\serializers\product\product.py:61
-#, fuzzy
-#| msgid "Failed to fetch JWKS: {e}"
+#: .\apps\products\serializers\product\product.py:65
 msgid "Failed to create product images: {}"
-msgstr "Не вдалося отримати JWKS: {e}"
+msgstr "Не вдалося створити зображення продуктів: {}"
 
-#: .\apps\products\serializers\product\product.py:91
+#: .\apps\products\serializers\product\product.py:95
 msgid "Price with currency {} does not exist."
-msgstr ""
+msgstr "Ціна з валютою {} не існує."
 
 #: .\apps\products\serializers\product\product_image.py:34
 msgid "The product does not exist."
-msgstr ""
+msgstr "Товар не існує."
 
 #: .\apps\products\serializers\product\product_image.py:46
-#, fuzzy
-#| msgid "Failed to fetch JWKS: {e}"
 msgid "Failed to create product image: {}"
-msgstr "Не вдалося отримати JWKS: {e}"
+msgstr "Не вдалося створити зображення продукту: {}"
 
 #: .\apps\products\serializers\product\product_video.py:36
 msgid "Product must be provided."
-msgstr ""
+msgstr "Продукт повинен бути наданий."
 
 #: .\apps\products\serializers\product\product_video.py:39
 msgid "Each product can have only one video."
-msgstr ""
+msgstr "Кожен продукт може мати лише одне відео."
 
 #: .\apps\products\serializers\product\product_video.py:49
 #, python-format
 msgid "Failed to create video: %s"
-msgstr ""
+msgstr "Не вдалося створити відео: %s"
 
 #: .\apps\products\serializers\product\product_video.py:58
 #, python-format
 msgid "Failed to update video: %s"
-msgstr ""
-
-#: .\apps\products\views\category.py:34
-msgid "List categories in a tree structure"
-msgstr ""
+msgstr "Не вдалося оновити відео: %s"
 
 #: .\apps\products\views\category.py:35
-#, fuzzy
-#| msgid "Retrieve a list of all categories"
+msgid "List categories in a tree structure"
+msgstr "Список категорій у структурі дерева"
+
+#: .\apps\products\views\category.py:36
 msgid "Retrieve a hierarchical tree of categories."
-msgstr "Отримати список усіх категорій"
+msgstr "Отримати ієрархічне дерево категорій."
 
-#: .\apps\products\views\category.py:52
-#, fuzzy
-#| msgid "Retrieve a category by ID"
+#: .\apps\products\views\category.py:56
 msgid "Retrieve a category by path"
-msgstr "Отримати категорію за ідентифікатором"
+msgstr "Отримати категорію за path"
 
-#: .\apps\products\views\category.py:53
-#, fuzzy
-#| msgid "Retrieve a single category by ID"
+#: .\apps\products\views\category.py:57
 msgid "Retrieve a single category by path"
-msgstr "Отримати одну категорію за ідентифікатором"
-
-#: .\apps\products\views\currency.py:12
-#, fuzzy
-#| msgid "Retrieve a list of all categories"
-msgid "Retrieve a list of all currencies"
-msgstr "Отримати список усіх категорій"
+msgstr "Отримати одну категорію за path"
 
 #: .\apps\products\views\currency.py:13
+msgid "Retrieve a list of all currencies"
+msgstr "Отримати список усіх валют"
+
+#: .\apps\products\views\currency.py:14
 msgid ""
 "Returns a list of available currencies with their code, symbol, and name."
 msgstr ""
+"Повертає список доступних валют із їхніми кодами, символами та назвами."
 
 #: .\apps\products\views\product.py:33
 msgid "Create a product"
@@ -441,97 +410,93 @@ msgid "Retrieve a product"
 msgstr "Отримати товар"
 
 #: .\apps\products\views\product.py:60
-#, fuzzy
-#| msgid "Retrieve a single product by ID"
 msgid "Retrieve a single product by slug"
-msgstr "Отримати один продукт за ідентифікатором"
+msgstr "Отримайте один продукт за допомогою slug"
 
-#: .\apps\products\views\product.py:92
+#: .\apps\products\views\product.py:93
 msgid "Update a product"
 msgstr "Оновити продукт"
 
-#: .\apps\products\views\product.py:93
+#: .\apps\products\views\product.py:94
 msgid "Update a product with the provided data"
 msgstr "Оновіть продукт за допомогою наданих даних"
 
-#: .\apps\products\views\product.py:120
+#: .\apps\products\views\product.py:121
 msgid "Partial update a product"
 msgstr "Часткове оновлення продукту"
 
-#: .\apps\products\views\product.py:121
+#: .\apps\products\views\product.py:122
 msgid "Partial update a product with the provided data"
 msgstr "Часткове оновлення продукту за допомогою наданих даних"
 
-#: .\apps\products\views\product.py:148
+#: .\apps\products\views\product.py:149
 msgid "Delete a product"
 msgstr "Видалити товар"
 
-#: .\apps\products\views\product.py:149
-#, fuzzy
-#| msgid "Delete a product by ID"
+#: .\apps\products\views\product.py:150
 msgid "Delete a product by slug"
-msgstr "Видалення товару за ID"
+msgstr "Видалення товару за slug"
 
 #: .\apps\products\views\product_filters.py:53
-#, fuzzy
-#| msgid "Filter products by category ID"
 msgid "Filter products by various parameters"
-msgstr "Фільтрувати продукти за ідентифікатором категорії"
+msgstr "Фільтрувати товари за різними параметрами"
 
 #: .\apps\products\views\product_filters.py:54
-#, fuzzy
-#| msgid "Retrieve a list of products filtered by category"
 msgid "Retrieve a list of products filtered by multiple parameters"
-msgstr "Отримати список продуктів, відфільтрованих за категоріями"
+msgstr "Отримати список продуктів, відфільтрованих за кількома параметрами"
 
 #: .\apps\products\views\product_filters.py:59
-#, fuzzy
-#| msgid "Filter products by category ID"
 msgid "Filter products by category path"
-msgstr "Фільтрувати продукти за ідентифікатором категорії"
+msgstr "Фільтруйте продукти за path категорії"
 
 #: .\apps\products\views\product_filters.py:65
 msgid "Minimum price filter"
-msgstr ""
+msgstr "Фільтр мінімальної ціни"
 
 #: .\apps\products\views\product_filters.py:71
 msgid "Maximum price filter"
-msgstr ""
+msgstr "Фільтр максимальної ціни"
 
 #: .\apps\products\views\product_filters.py:77
 #, python-brace-format
 msgid "Currency code for the price filter (Default: {default_currency})"
-msgstr ""
+msgstr "Код валюти для фільтра ціни (за умовчанням: {default_currency})"
 
 #: .\apps\products\views\product_filters.py:84
-#, fuzzy
-#| msgid "Filter products by category ID"
 msgid "Field to sort products by (e.g., {"
-msgstr "Фільтрувати продукти за ідентифікатором категорії"
+msgstr "Поле для сортування продуктів (наприклад, {"
 
 #: .\apps\products\views\product_filters.py:89
 msgid "Sort by price in ascending order"
-msgstr ""
+msgstr "Сортувати за ціною в порядку зростання"
 
 #: .\apps\products\views\product_filters.py:91
 msgid "Sort products by price in ascending order."
-msgstr ""
+msgstr "Сортуйте товари за ціною в порядку зростання."
 
 #: .\apps\products\views\product_filters.py:94
 msgid "Sort by price in descending order"
-msgstr ""
+msgstr "Сортувати за ціною в порядку спадання"
 
 #: .\apps\products\views\product_filters.py:96
 msgid "Sort products by price in descending order."
-msgstr ""
+msgstr "Сортуйте товари за ціною в порядку спадання."
 
 #: .\apps\products\views\product_filters.py:99
 msgid "Sort by created date in ascending order"
-msgstr ""
+msgstr "Сортувати за датою створення в порядку зростання"
 
 #: .\apps\products\views\product_filters.py:101
 msgid "Sort products by created date in ascending order."
-msgstr ""
+msgstr "Сортуйте товари за датою створення в порядку зростання."
+
+#: .\apps\products\views\product_filters.py:104
+msgid "Sort by created date in descending order"
+msgstr "Сортувати за датою створення в порядку спадання"
+
+#: .\apps\products\views\product_filters.py:106
+msgid "Sort products by created date in descending order."
+msgstr "Сортуйте товари за датою створення в порядку спадання."
 
 #: .\apps\user_messages\apps.py:8
 msgid "User messages"
@@ -570,7 +535,31 @@ msgstr "Зображення повідомлення"
 msgid "Message Images"
 msgstr "Зображення повідомлень"
 
-#: .\apps\users\admin\user.py:29
+#: .\apps\users\admin\profile.py:20
+msgid "User Email"
+msgstr "Електронна пошта користувача"
+
+#: .\apps\users\admin\user.py:17
+msgid "Personal info"
+msgstr "Особиста інформація"
+
+#: .\apps\users\admin\user.py:19
+msgid "Permissions"
+msgstr "Дозволи"
+
+#: .\apps\users\admin\user.py:30
+msgid "Important dates"
+msgstr "Важливі дати"
+
+#: .\apps\users\admin\user.py:57
+msgid "Profile link"
+msgstr "Посилання на профіль"
+
+#: .\apps\users\admin\user.py:60
+msgid "View Profile"
+msgstr "Переглянути профіль"
+
+#: .\apps\users\admin\user.py:71
 msgid "Passwords do not match."
 msgstr "Паролі не збігаються."
 
@@ -616,11 +605,11 @@ msgstr "Ви можете додати кілька телефонних ном�
 
 #: .\apps\users\models\profile.py:37
 msgid "Profile"
-msgstr ""
+msgstr "Профіль"
 
 #: .\apps\users\models\profile.py:38
 msgid "Profiles"
-msgstr ""
+msgstr "Профілі"
 
 #: .\apps\users\models\user.py:23
 msgid "username"
@@ -723,59 +712,14 @@ msgstr "Приклад відповіді щодо реєстрації кори
 msgid "Example of a successful response after user registration."
 msgstr "Приклад успішної відповіді після реєстрації користувача."
 
-#: .\settings\base.py:129
+#: .\settings\base.py:134
 msgid "Ukrainian"
-msgstr "українська"
+msgstr "Українська"
 
-#: .\settings\base.py:130
+#: .\settings\base.py:135
 msgid "English"
 msgstr "англійська"
 
-#: .\settings\base.py:131
+#: .\settings\base.py:136
 msgid "Russian"
 msgstr "російська"
-
-#~ msgid "fake user"
-#~ msgstr "не справжній користувач"
-
-#~ msgid "Invalid parent ID"
-#~ msgstr "Недійсний ідентифікатор батьківської категорії"
-
-#~ msgid "Product not found"
-#~ msgstr "Товар не знайдено"
-
-#~ msgid "Price USD"
-#~ msgstr "Ціна в usd."
-
-#~ msgid "List all categories"
-#~ msgstr "Список усіх категорій"
-
-#~ msgid "List root categories"
-#~ msgstr "Список основних категорій"
-
-#~ msgid "Retrieve a list of root categories (where parent is None)"
-#~ msgstr "Отримати список основних категорій (де батьківський — Немає)"
-
-#~ msgid "List child categories"
-#~ msgstr "Список дочірніх категорій"
-
-#~ msgid "Retrieve a list of child categories by parent ID"
-#~ msgstr "Отримати список дочірніх категорій за батьківським ідентифікатором"
-
-#~ msgid "ID of the parent category"
-#~ msgstr "ID батьківської категорії"
-
-#~ msgid "List all products"
-#~ msgstr "Список усіх продуктів"
-
-#~ msgid "Retrieve a list of all products"
-#~ msgstr "Отримати список усіх продуктів"
-
-#~ msgid "Personal info"
-#~ msgstr "Особиста інформація"
-
-#~ msgid "Permissions"
-#~ msgstr "Дозволи"
-
-#~ msgid "Important dates"
-#~ msgstr "Важливі дати"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-15 00:27+0300\n"
+"POT-Creation-Date: 2024-10-18 02:10+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -93,7 +93,7 @@ msgstr "Дата создания"
 msgid "Update date"
 msgstr "Дата обновления"
 
-#: .\apps\locations\admin\location.py:13 .\apps\locations\models\location.py:38
+#: .\apps\locations\admin\location.py:13 .\apps\locations\models\location.py:43
 #: .\apps\users\models\profile.py:23
 msgid "Location"
 msgstr "Местоположение"
@@ -103,12 +103,13 @@ msgstr "Местоположение"
 msgid "Region"
 msgstr "Область"
 
-#: .\apps\locations\apps.py:8 .\apps\locations\models\location.py:39
+#: .\apps\locations\apps.py:8 .\apps\locations\models\location.py:44
 msgid "Locations"
 msgstr "Геопозиции"
 
 #: .\apps\locations\models\city.py:9 .\apps\locations\models\city.py:24
 #: .\apps\locations\models\location.py:10
+#: .\apps\locations\models\location.py:20
 msgid "City"
 msgstr "Город"
 
@@ -116,35 +117,40 @@ msgstr "Город"
 msgid "Cities"
 msgstr "Города"
 
-#: .\apps\locations\models\location.py:11 .\apps\locations\models\village.py:23
+#: .\apps\locations\models\location.py:11
+#: .\apps\locations\models\location.py:21 .\apps\locations\models\village.py:23
 msgid "Village"
 msgstr "Село"
 
-#: .\apps\locations\models\location.py:14
+#: .\apps\locations\models\location.py:15
 msgid "Location Type"
 msgstr "Тип местоположения"
 
-#: .\apps\locations\models\location.py:17
+#: .\apps\locations\models\location.py:18
+msgid "Type of location"
+msgstr "Тип местоположения"
+
+#: .\apps\locations\models\location.py:22
 msgid "Latitude"
 msgstr "Широта"
 
-#: .\apps\locations\models\location.py:18
+#: .\apps\locations\models\location.py:23
 msgid "Longitude"
 msgstr "Долгота"
 
-#: .\apps\locations\models\location.py:25
+#: .\apps\locations\models\location.py:30
 msgid "Unknown Location"
 msgstr "Неизвестное местоположение"
 
-#: .\apps\locations\models\location.py:29
+#: .\apps\locations\models\location.py:34
 msgid "City must be provided for city location type."
 msgstr "Для типа местоположения 'город' необходимо указать город."
 
-#: .\apps\locations\models\location.py:31
+#: .\apps\locations\models\location.py:36
 msgid "Village must be provided for village location type."
 msgstr "Для типа местоположения 'село' необходимо указать село."
 
-#: .\apps\locations\models\location.py:34
+#: .\apps\locations\models\location.py:39
 msgid "Location cannot be both city and village at the same time."
 msgstr "Местоположение не может быть одновременно городом и селом."
 
@@ -160,7 +166,11 @@ msgstr "Название села"
 msgid "Villages"
 msgstr "Села"
 
-#: .\apps\products\admin\filters\popular_category.py:10
+#: .\apps\products\admin\category.py:33
+msgid "Number of Products"
+msgstr "Количество продуктов"
+
+#: .\apps\products\admin\filters\popular_category.py:12
 msgid "Popular Categories"
 msgstr "Популярные категории"
 
@@ -168,33 +178,33 @@ msgstr "Популярные категории"
 msgid "Products"
 msgstr "Продукты"
 
-#: .\apps\products\models\category.py:16
+#: .\apps\products\models\category.py:14
 msgid "Category name"
 msgstr "Название категории"
 
-#: .\apps\products\models\category.py:24
+#: .\apps\products\models\category.py:21
 msgid "Parent category"
 msgstr "Родительская категория"
 
-#: .\apps\products\models\category.py:29
+#: .\apps\products\models\category.py:23
 #: .\apps\products\models\product_image.py:18
 #: .\apps\user_messages\models\message_image.py:10
 msgid "Image"
 msgstr "Изображение"
 
-#: .\apps\products\models\category.py:30
+#: .\apps\products\models\category.py:24
 msgid "Icon"
 msgstr "Иконка"
 
-#: .\apps\products\models\category.py:34 .\apps\products\models\product.py:27
+#: .\apps\products\models\category.py:28 .\apps\products\models\product.py:27
 msgid "Views"
 msgstr "Просмотры"
 
-#: .\apps\products\models\category.py:41 .\apps\products\models\product.py:25
+#: .\apps\products\models\category.py:35 .\apps\products\models\product.py:25
 msgid "Category"
 msgstr "Категория"
 
-#: .\apps\products\models\category.py:42
+#: .\apps\products\models\category.py:36
 msgid "Categories"
 msgstr "Категории"
 
@@ -278,10 +288,6 @@ msgstr "Продавец"
 msgid "Parameters"
 msgstr "Параметры"
 
-#: .\apps\products\models\product.py:30
-msgid "Product slug"
-msgstr "Слаг продукта"
-
 #: .\apps\products\models\product_image.py:22
 #, python-format
 msgid "Allowed image formats: %s"
@@ -318,23 +324,23 @@ msgid "Failed to create price: {}"
 msgstr "Не удалось создать цену: {}"
 
 #: .\apps\products\serializers\price\price.py:56
-#: .\apps\products\serializers\product\product.py:97
+#: .\apps\products\serializers\product\product.py:101
 msgid "Failed to create product price: {}"
 msgstr "Не удалось создать цену продукта: {}"
 
-#: .\apps\products\serializers\product\product.py:51
+#: .\apps\products\serializers\product\product.py:55
 msgid "Database integrity error: {}"
 msgstr "Ошибка целостности базы данных: {}"
 
-#: .\apps\products\serializers\product\product.py:56
+#: .\apps\products\serializers\product\product.py:60
 msgid "Failed to create product prices: {}"
 msgstr "Не удалось создать цены на продукты: {}"
 
-#: .\apps\products\serializers\product\product.py:61
+#: .\apps\products\serializers\product\product.py:65
 msgid "Failed to create product images: {}"
 msgstr "Не удалось создать изображения продукта: {}"
 
-#: .\apps\products\serializers\product\product.py:91
+#: .\apps\products\serializers\product\product.py:95
 msgid "Price with currency {} does not exist."
 msgstr "Цена с валютой {} не существует."
 
@@ -364,27 +370,27 @@ msgstr "Не удалось создать видео: %s"
 msgid "Failed to update video: %s"
 msgstr "Не удалось обновить видео: %s"
 
-#: .\apps\products\views\category.py:34
+#: .\apps\products\views\category.py:35
 msgid "List categories in a tree structure"
 msgstr "Список категорий в древовидной структуре"
 
-#: .\apps\products\views\category.py:35
+#: .\apps\products\views\category.py:36
 msgid "Retrieve a hierarchical tree of categories."
 msgstr "Получить иерархическое дерево категорий."
 
-#: .\apps\products\views\category.py:52
+#: .\apps\products\views\category.py:56
 msgid "Retrieve a category by path"
 msgstr "Получить категорию по path"
 
-#: .\apps\products\views\category.py:53
+#: .\apps\products\views\category.py:57
 msgid "Retrieve a single category by path"
 msgstr "Получить одну категорию по path"
 
-#: .\apps\products\views\currency.py:12
+#: .\apps\products\views\currency.py:13
 msgid "Retrieve a list of all currencies"
 msgstr "Получить список всех валют"
 
-#: .\apps\products\views\currency.py:13
+#: .\apps\products\views\currency.py:14
 msgid ""
 "Returns a list of available currencies with their code, symbol, and name."
 msgstr "Возвращает список доступных валют с их кодом, символом и названием."
@@ -405,27 +411,27 @@ msgstr "Получить продукт"
 msgid "Retrieve a single product by slug"
 msgstr "Получить один продукт по slug"
 
-#: .\apps\products\views\product.py:92
+#: .\apps\products\views\product.py:93
 msgid "Update a product"
 msgstr "Обновить продукт"
 
-#: .\apps\products\views\product.py:93
+#: .\apps\products\views\product.py:94
 msgid "Update a product with the provided data"
 msgstr "Обновите продукт с предоставленными данными"
 
-#: .\apps\products\views\product.py:120
+#: .\apps\products\views\product.py:121
 msgid "Partial update a product"
 msgstr "Частичное обновление продукта"
 
-#: .\apps\products\views\product.py:121
+#: .\apps\products\views\product.py:122
 msgid "Partial update a product with the provided data"
 msgstr "Частичное обновление продукта с предоставленными данными"
 
-#: .\apps\products\views\product.py:148
+#: .\apps\products\views\product.py:149
 msgid "Delete a product"
 msgstr "Удалить продукт"
 
-#: .\apps\products\views\product.py:149
+#: .\apps\products\views\product.py:150
 msgid "Delete a product by slug"
 msgstr "Удалить продукт по slug"
 
@@ -482,6 +488,14 @@ msgstr "Сортировать по дате создания в порядке 
 msgid "Sort products by created date in ascending order."
 msgstr "Сортировать продукты по дате создания в порядке возрастания."
 
+#: .\apps\products\views\product_filters.py:104
+msgid "Sort by created date in descending order"
+msgstr "Сортировать по дате создания в порядке убывания"
+
+#: .\apps\products\views\product_filters.py:106
+msgid "Sort products by created date in descending order."
+msgstr "Сортировать продукты по дате создания в порядке убывания."
+
 #: .\apps\user_messages\apps.py:8
 msgid "User messages"
 msgstr "Сообщения пользователя"
@@ -519,7 +533,31 @@ msgstr "Изображение сообщения"
 msgid "Message Images"
 msgstr "Изображения сообщений"
 
-#: .\apps\users\admin\user.py:29
+#: .\apps\users\admin\profile.py:20
+msgid "User Email"
+msgstr "Электронная почта пользователя"
+
+#: .\apps\users\admin\user.py:17
+msgid "Personal info"
+msgstr "Личная информация"
+
+#: .\apps\users\admin\user.py:19
+msgid "Permissions"
+msgstr "Разрешения"
+
+#: .\apps\users\admin\user.py:30
+msgid "Important dates"
+msgstr "Важные даты"
+
+#: .\apps\users\admin\user.py:57
+msgid "Profile link"
+msgstr "Ссылка на профиль"
+
+#: .\apps\users\admin\user.py:60
+msgid "View Profile"
+msgstr "Просмотреть профиль"
+
+#: .\apps\users\admin\user.py:71
 msgid "Passwords do not match."
 msgstr "Пароли не совпадают."
 
@@ -673,60 +711,14 @@ msgstr "Пример ответа на регистрацию пользоват
 msgid "Example of a successful response after user registration."
 msgstr "Пример успешного ответа после регистрации пользователя."
 
-#: .\settings\base.py:129
+#: .\settings\base.py:134
 msgid "Ukrainian"
 msgstr "украинский"
 
-#: .\settings\base.py:130
+#: .\settings\base.py:135
 msgid "English"
 msgstr "Английский"
 
-#: .\settings\base.py:131
+#: .\settings\base.py:136
 msgid "Russian"
 msgstr "Русский"
-
-#~ msgid "fake user"
-#~ msgstr "не настоящий пользователь"
-
-#~ msgid "Invalid parent ID"
-#~ msgstr "Неверный идентификатор родителя"
-
-#~ msgid "Product not found"
-#~ msgstr "Продукт не найден"
-
-#~ msgid "Price USD"
-#~ msgstr "Цена в usd."
-
-#~ msgid "List all categories"
-#~ msgstr "Список всех категорий"
-
-#~ msgid "List root categories"
-#~ msgstr "Список основных категорий"
-
-#~ msgid "Retrieve a list of root categories (where parent is None)"
-#~ msgstr ""
-#~ "Получить список основных категорий (где родительская категория — None)"
-
-#~ msgid "List child categories"
-#~ msgstr "Список дочерних категорий"
-
-#~ msgid "Retrieve a list of child categories by parent ID"
-#~ msgstr "Получить список дочерних категорий по родительскому идентификатору"
-
-#~ msgid "ID of the parent category"
-#~ msgstr "Идентификатор родительской категории"
-
-#~ msgid "List all products"
-#~ msgstr "Список всех продуктов"
-
-#~ msgid "Retrieve a list of all products"
-#~ msgstr "Получить список всех продуктов"
-
-#~ msgid "Personal info"
-#~ msgstr "Личная информация"
-
-#~ msgid "Permissions"
-#~ msgstr "Разрешения"
-
-#~ msgid "Important dates"
-#~ msgstr "Важные даты"
