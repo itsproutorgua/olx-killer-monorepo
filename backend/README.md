@@ -2,6 +2,7 @@
 [![Django Rest Framework](https://img.shields.io/badge/-Django%20Rest%20Framework-%2300B96F?style=for-the-badge&logo=django&logoColor=white&labelColor=0a0a0a)](https://www.django-rest-framework.org/)
 [![JWT Authentication](https://img.shields.io/badge/-JWT%20Authentication-%23FFB300?style=for-the-badge&logo=json-web-tokens&logoColor=white&labelColor=0a0a0a)](https://jwt.io/)
 [![PostgreSQL](https://img.shields.io/badge/-PostgreSQL-%23316192?style=for-the-badge&logo=postgresql&logoColor=white&labelColor=0a0a0a)](https://www.postgresql.org/)
+[![Redis](https://img.shields.io/badge/-Redis-%3DE345?style=for-the-badge&logo=redis&logoColor=white&labelColor=black)](https://pypi.org/project/django-redis/)
 [![Docker](https://img.shields.io/badge/-Docker-%232496ED?style=for-the-badge&logo=docker&logoColor=white&labelColor=0a0a0a)](https://www.docker.com/)
 [![Swagger](https://img.shields.io/badge/-Swagger-%2385EA2D?style=for-the-badge&logo=swagger&logoColor=white&labelColor=0a0a0a)](https://swagger.io/)
 [![pre-commit](https://img.shields.io/badge/-pre--commit-yellow?style=for-the-badge&logo=pre-commit&logoColor=white&labelColor=0a0a0a)](https://pre-commit.com/)
@@ -27,6 +28,7 @@
 ## Database:
 
 - **PostgreSQL**: Relational database management system for storing and managing data.
+- **Redis**: In-memory data structure store, used as a database, cache, and message broker.
 
 ## Development Tools:
 
@@ -91,6 +93,6 @@ Make sure you have Docker and Docker Compose installed and upgrade on your machi
    
 
 ### URLS:
-   - [admin-site](http://localhost:8000/ru/admin/)
+   - [admin-site](http://localhost:8000/uk/olx-killer-admin/)
    - [rosetta](http://localhost:8000/rosetta/)
    - [swagger](http://localhost:8000/api/v1/swagger/)
