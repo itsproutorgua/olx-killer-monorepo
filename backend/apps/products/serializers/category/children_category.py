@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.utils.translation import get_language
 from rest_framework import serializers
 
@@ -12,6 +13,6 @@ class CategoryChildrenSerializer(serializers.ModelSerializer):
     def to_representation(self, instance: Category) -> dict:
         """Translate the 'title' into the language used"""
         representation = super().to_representation(instance)
-        language_code = get_language() or 'en'
+        language_code = get_language() or settings.MODELTRANSLATION_DEFAULT_LANGUAGE
         representation['title'] = getattr(instance, f'title_{language_code}', instance.title)
         return representation
