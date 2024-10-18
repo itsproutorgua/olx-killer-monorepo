@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.db.models import Count
+from django.utils.translation import gettext_lazy as _
 from modeltranslation.admin import TranslationAdmin
 
 from apps.products.admin.filters import PopularCategoryFilter
@@ -21,7 +22,6 @@ class CategoryAdmin(TranslationAdmin):
     autocomplete_fields = ['parent']
     search_fields = ('title', 'parent__title')
     list_filter = (PopularCategoryFilter,)
-
     show_full_result_count = False
 
     def get_queryset(self, request):
@@ -29,6 +29,6 @@ class CategoryAdmin(TranslationAdmin):
         queryset = queryset.annotate(product_count=Count('products'))
         return queryset.select_related('parent').prefetch_related('products').order_by('-product_count')
 
-    @admin.display(description='Количество продуктов', ordering='product_count')
+    @admin.display(description=_('Number of Products'), ordering='product_count')
     def product_count(self, obj):
         return obj.product_count
