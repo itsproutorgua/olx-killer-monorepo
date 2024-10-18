@@ -9,6 +9,8 @@ from settings.base import *
 DATA_UPLOAD_MAX_MEMORY_SIZE = env('DATA_UPLOAD_MAX_MEMORY_SIZE')
 DYNAMIC_THROTTLE_RATE = env('DYNAMIC_THROTTLE_RATE', default='7/second')
 
+CATEGORY_TREE_CACHE_TIMEOUT = env('CATEGORY_TREE_CACHE_TIMEOUT')
+
 VIDEO_UPLOAD_LIMIT = env('VIDEO_UPLOAD_LIMIT')
 MAX_IMAGE_FILE_SIZE_MB = env('MAX_IMAGE_FILE_SIZE_MB')
 MAX_VIDEO_FILE_SIZE_MB = env('MAX_VIDEO_FILE_SIZE_MB')
@@ -49,10 +51,6 @@ INSTALLED_APPS += [
     'apps.user_messages.apps.UserMessagesConfig',
     'apps.locations.apps.LocationsConfig',
     'apps.common',
-]
-
-MIDDLEWARE += [
-    'corsheaders.middleware.CorsMiddleware',
 ]
 
 # DRF
