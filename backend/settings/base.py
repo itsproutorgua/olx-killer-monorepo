@@ -24,6 +24,8 @@ env = environ.Env(
     VIDEO_UPLOAD_LIMIT=(int, 1),
     MAX_IMAGE_FILE_SIZE_MB=(int, 5),
     MAX_VIDEO_FILE_SIZE_MB=(int, 50),
+    CORS_ALLOW_CREDENTIALS=(bool, False),
+    CATEGORY_TREE_CACHE_TIMEOUT=(int, 300),
 )
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -56,7 +58,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    # 'apps.middleware.DisableClientSideCachingMiddleware',  # custom middleware
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',  # translation
