@@ -1,2 +1,5 @@
 export { HeartIcon } from './heart'
 export { UserRoundedIcon } from './user-rounded'
+export { CartIcon } from './cart-icon'
+export { CirclePlusIcon } from './circle-plus'
+export { BottomBarMenu } from './bottom-bar-menu'

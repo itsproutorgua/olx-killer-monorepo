@@ -86,6 +86,7 @@ export const ScrollableProductList: React.FC<ScrollableProductListProps> = ({
                 height='44'
                 viewBox='0 0 44 44'
                 fill='none'
+                className={isLeftDisabled ? 'stroke-[#A3A3A3]' : 'transition-colors fill-gray-50 duration-300 stroke-[#292C6D] hover:fill-primary-900 hover:stroke-gray-50'}
                 xmlns='http://www.w3.org/2000/svg'
               >
                 <circle
@@ -97,7 +98,6 @@ export const ScrollableProductList: React.FC<ScrollableProductListProps> = ({
                 />
                 <path
                   d='M24.75 16.5L19.25 22L24.75 27.5'
-                  stroke={isLeftDisabled ? '#A3A3A3' : '#292C6D'}
                   strokeWidth='1.5'
                   strokeLinecap='round'
                   strokeLinejoin='round'
@@ -114,6 +114,7 @@ export const ScrollableProductList: React.FC<ScrollableProductListProps> = ({
                 height='44'
                 viewBox='0 0 44 44'
                 fill='none'
+                className={isRightDisabled ? 'stroke-[#A3A3A3]' : 'transition-colors duration-300 fill-gray-50 stroke-[#292C6D] hover:fill-primary-900 hover:stroke-gray-50'}
                 xmlns='http://www.w3.org/2000/svg'
               >
                 <circle
@@ -125,7 +126,6 @@ export const ScrollableProductList: React.FC<ScrollableProductListProps> = ({
                 />
                 <path
                   d='M19.25 16.5L24.75 22L19.25 27.5'
-                  stroke={isRightDisabled ? '#A3A3A3' : '#292C6D'}
                   strokeWidth='1.5'
                   strokeLinecap='round'
                   strokeLinejoin='round'

@@ -18,7 +18,7 @@ export const uk = {
   },
   titles: {
     announcementTitle: 'Додайте своє оголошення',
-    newProductsTitle: 'Нові Товари',
+    newProductsTitle: 'Нові оголошення',
     popularCategoriesTitle: 'Популярні категорії',
     sellPromoTitle: 'Хочете продавати на платформі?',
     bestDealsTitle: 'Найкращі пропозиції',
@@ -75,5 +75,11 @@ export const uk = {
   currency: 'грн',
   crumbs: {
     home: 'Головна сторінка',
+  },
+  bottomBar: {
+    catalog: 'Каталог',
+    cart: 'Кошик',
+    account: 'Аккаунт',
+    favorites: 'Обрані',
   },
 }

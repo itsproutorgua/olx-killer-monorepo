@@ -88,6 +88,9 @@ const config = {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
       },
+      boxShadow: {
+        'custom-purple': '0 4px 12px 0 rgba(97, 62, 234, 0.5)',
+      },
     },
   },
   plugins: [
