@@ -3,7 +3,7 @@ export interface CategoryResponse {
   title: string
   path: string
   icon: string | null
-  img: string
+  img?: string
   children: Subcategory[]
 }
 
