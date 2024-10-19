@@ -22,8 +22,6 @@ export const PopularCategories = () => {
 
   const { t, i18n } = useTranslation()
 
-  const mainUrl = 'https://olx.erpsolutions.com.ua:8000/'
-
   const {
     isLoading,
     isError,
@@ -67,7 +65,7 @@ export const PopularCategories = () => {
                   >
                     <div className='size-[172px] rounded-full xl:size-[150px]'>
                       <img
-                        src={mainUrl + cat.img}
+                        src={cat.img}
                         alt={cat.title}
                         className='rounded-full'
                       />
@@ -90,7 +88,7 @@ export const PopularCategories = () => {
                     >
                       <div className='size-[172px] rounded-full xl:size-[150px]'>
                         <img
-                          src={mainUrl + cat.img}
+                          src={cat.img}
                           alt={cat.title}
                           className='rounded-full'
                         />
