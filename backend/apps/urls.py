@@ -22,6 +22,7 @@ from django.contrib import admin
 from django.urls import include
 from django.urls import path
 from django.urls import re_path
+from django.views.static import serve
 from drf_spectacular.views import SpectacularAPIView
 from drf_spectacular.views import SpectacularRedocView
 from drf_spectacular.views import SpectacularSwaggerView
@@ -43,6 +44,8 @@ urlpatterns = i18n_patterns(
     re_path('rosetta/', include('rosetta.urls')),
     # API
     path('api/v1/', include(api)),
+    # Robots
+    re_path(r'^robots\.txt$', serve, {'path': 'robots.txt', 'document_root': settings.BASE_DIR}),
 )
 
 if settings.DEBUG:
