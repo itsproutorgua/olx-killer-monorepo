@@ -56,6 +56,8 @@ loguru = "^0.7.2"
 redis = "^5.1.1"
 django-redis = "^5.4.0"
 celery = {extras = ["redis"], version = "^5.4.0"}
+boto3 = "^1.35.43"
+django-storages = "^1.14.4"
 
 [tool.poetry.dependencies.djangorestframework-simplejwt]
 extras = ["crypto", ]
