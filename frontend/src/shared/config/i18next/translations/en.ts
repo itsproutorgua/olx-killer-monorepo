@@ -3,10 +3,13 @@ export const en = {
     searchPlaceholder: "I'm looking for...",
   },
   buttons: {
+    next: 'Next',
+    previous: 'Prev',
     searchButton: 'Find',
     addAdvert: 'To add an advert',
     showAllCategories: 'Show all categories',
     showLess: 'Show less',
+    showMoreAnnouncements: 'Show more announcements',
     loadMore: 'Load more',
     buy: 'Buy',
     registerAsSeller: 'Register as a seller',
@@ -23,6 +26,7 @@ export const en = {
     bestDealsTitle: 'Best deals',
     productsBySeller: 'Other announcements by this seller',
     similarProducts: 'Similar products to your request',
+    announcementsAll: 'All announcements',
   },
   footerContent: {
     footerMessage:

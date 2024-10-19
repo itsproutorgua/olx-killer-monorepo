@@ -3,7 +3,7 @@ class PublicPages {
   LOGIN = '/login'
   REGISTER = '/register'
   PROFILE = '/profile'
-  PRODUCT = '/product'
+  PRODUCTS = '/products'
   CATALOG = '/catalog'
 }
 

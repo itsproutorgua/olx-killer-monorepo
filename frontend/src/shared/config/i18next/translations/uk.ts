@@ -4,10 +4,13 @@ export const uk = {
   },
 
   buttons: {
+    next: 'Наступна',
+    previous: 'Попередня',
     searchButton: 'Знайти',
     addAdvert: "Додати об'яву",
     showAllCategories: 'Показати всі категорії',
     showLess: 'Показати менше',
+    showMoreAnnouncements: 'Показати більше оголошень',
     loadMore: 'Завантажити більше',
     buy: 'Купити',
     registerAsSeller: 'Зареєструйтесь як продавець',
@@ -24,6 +27,7 @@ export const uk = {
     bestDealsTitle: 'Найкращі пропозиції',
     productsBySeller: 'Інші оголошення продавця',
     similarProducts: 'Схожі товари за вашим запитом',
+    announcementsAll: 'Всі оголошення',
   },
   footerContent: {
     footerMessage:

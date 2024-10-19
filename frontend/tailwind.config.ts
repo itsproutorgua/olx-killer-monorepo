@@ -23,6 +23,7 @@ const config = {
       current: 'currentColor',
       background: '#F9FAFB',
       foreground: '#111827',
+      border: '#E5E7EB',
       primary: {
         50: '#EEF4FF',
         100: '#E0EAFF',
@@ -94,19 +95,19 @@ const config = {
     },
   },
   plugins: [
-    function({ addUtilities }) {
+    function ({ addUtilities }) {
       const newUtilities = {
         '.scrollbar-hide': {
-          '-ms-overflow-style': 'none', /* IE and Edge */
-          'scrollbar-width': 'none', /* Firefox */
+          '-ms-overflow-style': 'none' /* IE and Edge */,
+          'scrollbar-width': 'none' /* Firefox */,
         },
         '.scrollbar-hide::-webkit-scrollbar': {
-          display: 'none', /* Chrome, Safari, Opera */
+          display: 'none' /* Chrome, Safari, Opera */,
         },
-      };
+      }
 
-      addUtilities(newUtilities, ['responsive', 'hover']);
-    }
+      addUtilities(newUtilities, ['responsive', 'hover'])
+    },
   ],
 } satisfies Config
 

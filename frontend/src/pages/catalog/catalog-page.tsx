@@ -1,41 +1,70 @@
-import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { useQuery } from '@tanstack/react-query'
+import { use } from 'i18next'
+import { useTranslation } from 'react-i18next'
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
 
-import { CategoryCollapsible } from '@/widgets/category-collapsible'
-import { CategorySlider } from '@/widgets/category-slider'
+import {
+  CategoryNavbar,
+  CategoryNavbarSkeleton,
+} from '@/widgets/category-navbar'
 import { FiltersButton } from '@/widgets/filters-button'
+import { PageToolbar } from '@/widgets/page-toolbar'
+import { formatPriceString } from '@/widgets/product-card'
+import { ProductGrid } from '@/widgets/product-grid'
 import { SortButton } from '@/widgets/sort-button'
 import { FiltersBar } from '@/features/filter-bar'
 import { PagePagination } from '@/features/page-pagination'
+import { categoryApi, type Category } from '@/entities/category'
 import { Breadcrumbs, HeartIcon, PageHeading, SectionTitle } from '@/shared/ui'
-
-const CRUMBS = [{ text: 'Women’s clothing' }]
+import { PageHeadingSkeleton } from '@/shared/ui/skeletons/page-heading-skeleton'
+import { QUERY_KEYS } from '@/shared/constants'
+import type { Crumb } from '@/shared/library/types/types'
+import { generateCrumbs } from '@/shared/library/utils/generate-crumbs'
 
 export const CatalogPage = () => {
+  const { i18n } = useTranslation()
+  const location = useLocation()
+  const navigate = useNavigate()
+  const path = location.pathname.replace('/catalog', '')
+  const [crumbs, setCrumbs] = useState<Crumb[]>([{ text: '...' }])
+
+  const { isLoading, isError, data } = useQuery<Category>({
+    queryKey: [QUERY_KEYS.CATEGORY, path, i18n.language],
+    queryFn: () => categoryApi.findByPath(path),
+  })
+
+  if (location.pathname === '/catalog') navigate('/')
+
+  useEffect(() => {
+    if (data) {
+      generateCrumbs(data, setCrumbs)
+    }
+  }, [data])
+
   return (
     <div className='pb-32 pt-[27px] xl:pb-[53px] xl:pt-[38px]'>
       <div className='container'>
-        <Breadcrumbs crumbs={CRUMBS} />
-        <PageHeading title='Women’s clothing' />
-        <CategoryCollapsible />
-        <CategorySlider />
-      </div>
+        <Breadcrumbs crumbs={crumbs} />
 
-      <div className='container md:hidden'>
-        <div className='mb-[53px] grid grid-cols-2 gap-3'>
-          <FiltersButton />
-          <SortButton />
-        </div>
-      </div>
+        {isLoading && (
+          <>
+            <PageHeadingSkeleton />
+            <CategoryNavbarSkeleton />
+          </>
+        )}
 
-      <div className='container hidden xl:block'>
-        <div className='flex items-center justify-between border-t border-gray-200 py-[18px]'>
-          <p className='text-base/5 font-medium'>Found 3568 announcements</p>
-          <SortButton />
-        </div>
+        {!isLoading && data && (
+          <>
+            <PageHeading title={data.title} />
+            <CategoryNavbar data={data.children} />
+            <ProductGrid path={data.path} />
+          </>
+        )}
       </div>
 
       {/* Mobile screen */}
-      <section className='xl:hidden'>
+      {/* <section className='xl:hidden'>
         <div className='container'>
           <SectionTitle title='All announcements' />
           <ul className='mb-[67px] grid grid-cols-2 gap-x-2.5 gap-y-10'>
@@ -58,14 +87,14 @@ export const CatalogPage = () => {
             ))}
           </ul>
 
-          <button className='w-full rounded-full border border-border py-[13px] text-center text-[13px]/[15.73px] font-medium'>
+          <button className='border-border w-full rounded-full border py-[13px] text-center text-[13px]/[15.73px] font-medium'>
             Show more announcements
           </button>
         </div>
-      </section>
+      </section> */}
 
       {/* Desktop screen */}
-      <div className='container hidden xl:block'>
+      {/* <div className='container hidden xl:block'>
         <div className='flex border-t border-gray-200'>
           <div className='w-[305px]'>
             <FiltersBar />
@@ -99,7 +128,7 @@ export const CatalogPage = () => {
             <PagePagination />
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }
