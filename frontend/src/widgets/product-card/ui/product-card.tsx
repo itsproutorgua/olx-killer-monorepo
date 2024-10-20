@@ -31,8 +31,7 @@ export const ProductCard = ({
       </p>
       <p className='flex items-center justify-between'>
         <span className='text-base/none text-foreground xl:text-2xl/none'>
-          222
-          {/*{generatePriceString(product.prices)}*/}
+          {generatePriceString(product.prices)}
         </span>
         <AddToFavorite className='hidden xl:flex' />
       </p>
