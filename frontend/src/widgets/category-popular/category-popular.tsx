@@ -44,8 +44,8 @@ export const PopularCategories = () => {
         <Collapsible open={isOpen} onOpenChange={setIsOpen}>
           <div>
             {isLoading && (
-              <ul className='grid grid-cols-2 gap-x-2.5 gap-y-[45px] xl:grid-cols-7 xl:gap-x-[38px]'>
-                {Array.from({ length: 14 }).map((_, index) => (
+              <ul className='grid grid-cols-2 gap-x-2.5 gap-y-[45px] pb-[83px] xl:grid-cols-7 xl:gap-x-[38px] xl:pb-0'>
+                {Array.from({ length: isDesktop ? 14 : 6 }).map((_, index) => (
                   <li key={index}>
                     <PopularCategoryLoader />
                   </li>
@@ -63,7 +63,7 @@ export const PopularCategories = () => {
                     reloadDocument
                     className='space-y-[15px]'
                   >
-                    <div className='size-[172px] rounded-full xl:size-[150px]'>
+                    <div className='size-[150px] rounded-full'>
                       <img
                         src={cat.img}
                         alt={cat.title}
