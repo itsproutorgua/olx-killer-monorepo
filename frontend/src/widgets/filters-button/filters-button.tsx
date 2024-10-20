@@ -1,4 +1,3 @@
-import { cn } from '@/lib/utils'
 import { useTranslation } from 'react-i18next'
 
 import { FiltersBar } from '@/features/filter-bar'
@@ -12,6 +11,7 @@ import {
   SheetTrigger,
 } from '@/shared/ui/shadcn-ui/sheet'
 import { ChevronLeftIcon } from '@/shared/ui'
+import { cn } from '@/shared/library/utils'
 
 export const FiltersButton = ({ className }: { className?: string }) => {
   const { t } = useTranslation()

@@ -4,7 +4,8 @@ import { AddToFavorite } from '@/features/add-to-favorite'
 import type { Product } from '@/entities/product'
 import { PUBLIC_PAGES } from '@/shared/constants'
 import { cn } from '@/shared/library/utils'
-import { generatePriceString } from '../lib'
+
+//import { generatePriceString } from '../lib'
 
 export const ProductCard = ({
   product,
@@ -18,7 +19,7 @@ export const ProductCard = ({
       to={`${PUBLIC_PAGES.PRODUCTS}/${product.slug}`}
       className={cn(className)}
     >
-      <div className='relative mb-[15px] h-[120px] w-full overflow-hidden rounded-[15px] bg-gray-300 xl:h-[213px]'>
+      <div className='relative mb-[15px] h-[120px] w-full overflow-hidden rounded-[15px] bg-gray-300 xl:h-[213px] xl:min-w-[305px]'>
         <img
           src={product.images[0].image}
           alt={product.title}
@@ -31,7 +32,8 @@ export const ProductCard = ({
       </p>
       <p className='flex items-center justify-between'>
         <span className='text-base/none text-foreground xl:text-2xl/none'>
-          {generatePriceString(product.prices)}
+          222
+          {/*{generatePriceString(product.prices)}*/}
         </span>
         <AddToFavorite className='hidden xl:flex' />
       </p>

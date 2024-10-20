@@ -1,4 +1,4 @@
-import { cn } from '@/lib/utils'
+import { cn } from '@/shared/library/utils'
 
 export const SectionTitle = ({
   title,

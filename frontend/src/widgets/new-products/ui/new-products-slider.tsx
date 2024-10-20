@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
-import { cn } from '@/shared/library/utils'
+import { useQuery } from '@tanstack/react-query'
 import { useTranslation } from 'react-i18next'
 
 import { ProductCard } from '@/widgets/product-card'
-import { NEW_PRODUCTS } from '@/entities/product'
+import { Product, productApi, type ProductResponse } from '@/entities/product'
 import {
   Carousel,
   CarouselContent,
@@ -11,15 +11,25 @@ import {
   type CarouselApi,
 } from '@/shared/ui/shadcn-ui/carousel.tsx'
 import { SectionTitle } from '@/shared/ui'
+import { QUERY_KEYS } from '@/shared/constants'
+import { cn } from '@/shared/library/utils'
+
+const path = 'elektronika/telefony-i-aksesuary/mobilnye-telefony-smartfony'
 
 export const NewProductsSlider = () => {
   const [api, setApi] = useState<CarouselApi>(),
     [current, setCurrent] = useState(0),
     [count, setCount] = useState(0)
+
+  const { t } = useTranslation()
+
+  const { isLoading, data, isError } = useQuery<ProductResponse>({
+    queryKey: [QUERY_KEYS.PRODUCTS, path],
+    queryFn: () => productApi.findByFilters({ path, limit: 28 }),
+  })
+
   useEffect(() => {
-    if (!api) {
-      return
-    }
+    if (!api) return
 
     setCount(api.scrollSnapList().length)
     setCurrent(api.selectedScrollSnap() + 1)
@@ -29,20 +39,26 @@ export const NewProductsSlider = () => {
     })
   }, [api])
 
-  // Pairing the card for slider realization
-  const chunkArray = (array: typeof NEW_PRODUCTS, size: number) => {
-    return array.reduce(
-      (result, item, index) => {
-        if (item && index % size === 0) {
-          result.push(array.slice(index, index + size))
-        }
-        return result
-      },
-      [] as (typeof NEW_PRODUCTS)[],
-    )
+  // Ensure the data is available and chunk it into pairs for the slider
+  const chunkArray = (array: Product[], size: number) => {
+    return array.reduce((result, item, index) => {
+      if (item && index % size === 0) {
+        result.push(array.slice(index, index + size))
+      }
+      return result
+    }, [] as Product[][])
   }
-  const dealPairs = chunkArray(NEW_PRODUCTS, 2)
-  const { t } = useTranslation()
+
+  // Handle loading, error, and empty states
+  if (isLoading) {
+    return <div>{t('loading')}</div>
+  }
+
+  if (isError || !data?.results.length) {
+    return <div>{t('errors.noProducts')}</div>
+  }
+
+  const dealPairs = chunkArray(data.results.slice(0, 8), 2)
 
   return (
     <Carousel
@@ -59,10 +75,9 @@ export const NewProductsSlider = () => {
           <CarouselItem key={index} className='flex gap-[10px]'>
             {pair.map(deal => (
               <ProductCard
-                key={deal.id}
-                image={deal.image}
-                description={deal.description}
-                price={deal.price}
+                product={deal}
+                key={deal.slug}
+                className='w-[172px]'
               />
             ))}
           </CarouselItem>

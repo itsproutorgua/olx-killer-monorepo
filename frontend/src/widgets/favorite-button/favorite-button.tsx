@@ -1,8 +1,7 @@
-import { cn } from '@/lib/utils'
-
 import { HeartIcon } from '@/shared/ui/icons'
+import { cn } from '@/shared/library/utils'
 
-export const FavoriteButton = ({ className }: { className: string }) => {
+export const FavoriteButton = ({ className }: { className?: string }) => {
   return (
     <button
       className={cn(

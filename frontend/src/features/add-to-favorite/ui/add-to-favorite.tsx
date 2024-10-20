@@ -1,6 +1,5 @@
-import { cn } from '@/lib/utils'
-
 import { HeartIcon } from '@/shared/ui/icons'
+import { cn } from '@/shared/library/utils'
 
 export const AddToFavorite = ({ className }: { className?: string }) => {
   return (

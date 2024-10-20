@@ -1,4 +1,3 @@
-import { cn } from '@/lib/utils'
 import { useQuery } from '@tanstack/react-query'
 import { useTranslation } from 'react-i18next'
 
@@ -9,6 +8,7 @@ import { PagePagination } from '@/features/page-pagination'
 import { productApi, type ProductResponse } from '@/entities/product'
 import { SectionTitle } from '@/shared/ui'
 import { QUERY_KEYS } from '@/shared/constants'
+import { cn } from '@/shared/library/utils'
 
 export const ProductGrid = ({ path }: { path: string }) => {
   const { t } = useTranslation()
@@ -27,13 +27,13 @@ export const ProductGrid = ({ path }: { path: string }) => {
               title={t('titles.announcementsAll')}
               className='xl:hidden'
             />
-            <div className='flex xl:border-t xl:border-border'>
+            <div className='xl:border-border flex xl:border-t'>
               <aside className='hidden xl:block xl:w-[305px]'>
                 <FiltersBar />
               </aside>
 
               <div className='flex-1 space-y-5'>
-                <div className='xl:border-b xl:border-l xl:border-border xl:pb-[60px] xl:pl-5 xl:pt-[18px]'>
+                <div className='xl:border-border xl:border-b xl:border-l xl:pb-[60px] xl:pl-5 xl:pt-[18px]'>
                   <SectionTitle
                     title={t('titles.announcementsAll')}
                     className='hidden xl:block'
