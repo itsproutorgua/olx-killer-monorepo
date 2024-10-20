@@ -186,6 +186,38 @@ CACHES = {
     }
 }
 
+# AWS S3
+AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID', default=None)
+AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY', default=None)
+AWS_STORAGE_BUCKET_NAME = env('AWS_STORAGE_BUCKET_NAME', default=None)
+AWS_S3_REGION_NAME = env('AWS_S3_REGION_NAME', default='us-east-1')
+AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+AWS_DEFAULT_ACL = 'public-read'
+# Для хранения медиафайлов
+DEFAULT_FILE_STORAGE = 'storages.backends.s3.S3Boto3Storage'
+
+# # SSL
+# # для работы с HTTPS
+# SECURE_SSL_REDIRECT = True
+#
+# # Настройки HSTS (HTTP Strict Transport Security)
+# SECURE_HSTS_SECONDS = 3600
+# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+# SECURE_HSTS_PRELOAD = True
+#
+# # Защита cookies с помощью HTTPS
+# SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
+#
+# # Политика X-Content-Type-Options
+# SECURE_CONTENT_TYPE_NOSNIFF = True
+#
+# # Дополнительная защита от XSS-атак
+# SECURE_BROWSER_XSS_FILTER = True
+#
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+# ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'
+
 if DEBUG:
     INSTALLED_APPS += [
         'debug_toolbar',
