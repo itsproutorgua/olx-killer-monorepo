@@ -39,18 +39,15 @@ export const BestDeals = () => {
     <section className='container flex flex-col pt-[91px] xl:pt-[100px]'>
       <SectionTitle title={t('titles.bestDealsTitle')} />
       <Collapsible open={isOpen} onOpenChange={setIsOpen}>
-        {isLoading && isDesktop && (
+        {isLoading && (
           <div className='grid grid-cols-2 gap-x-[10px] gap-y-[40px] self-center md:grid-cols-3 xl:grid-cols-4 xl:gap-x-5 xl:gap-y-[60px]'>
-            {Array.from({ length: 8 }).map((_, index) => (
-              <ProductCardLoader key={index} />
-            ))}
-          </div>
-        )}
-        {isLoading && !isDesktop && (
-          <div className='grid grid-cols-2 gap-x-[10px] gap-y-[40px] self-center md:grid-cols-3 xl:grid-cols-4 xl:gap-x-5 xl:gap-y-[60px]'>
-            {Array.from({ length: 8 }).map((_, index) => (
-              <ProductCardLoaderSmall key={index} />
-            ))}
+            {Array.from({ length: 8 }).map((_, index) =>
+              isDesktop ? (
+                <ProductCardLoader key={index} />
+              ) : (
+                <ProductCardLoaderSmall key={index} />
+              ),
+            )}
           </div>
         )}
         <div className='grid grid-cols-2 gap-x-[10px] gap-y-[40px] self-center md:grid-cols-3 xl:grid-cols-4 xl:gap-x-5 xl:gap-y-[60px]'>
