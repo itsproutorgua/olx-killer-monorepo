@@ -4,8 +4,7 @@ import { AddToFavorite } from '@/features/add-to-favorite'
 import type { Product } from '@/entities/product'
 import { PUBLIC_PAGES } from '@/shared/constants'
 import { cn } from '@/shared/library/utils'
-
-//import { generatePriceString } from '../lib'
+import { generatePriceString } from '../library'
 
 export const ProductCard = ({
   product,
