@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { cn } from '@/shared/library/utils'
+import { useQuery } from '@tanstack/react-query'
 import { useTranslation } from 'react-i18next'
 
 import { ProductCard } from '@/widgets/product-card'
-import { NEW_PRODUCTS } from '@/entities/product'
+import { Product, productApi, type ProductResponse } from '@/entities/product'
 import {
   Carousel,
   CarouselContent,
@@ -11,22 +11,30 @@ import {
   type CarouselApi,
 } from '@/shared/ui/shadcn-ui/carousel.tsx'
 import { SectionTitle } from '@/shared/ui'
+import ProductCardLoaderSmall from '@/shared/ui/loaders/product-card-small.loader.tsx'
+import { QUERY_KEYS } from '@/shared/constants'
+import { cn } from '@/shared/library/utils'
 
 interface ProductSliderProps {
   titleKey: string // Translation key for the title
-  products: typeof NEW_PRODUCTS // Products array
+  path: string // Products array
   chunkSize?: number // Default chunk size for pairing
 }
 
 export const ProductSlider: React.FC<ProductSliderProps> = ({
   titleKey,
-  products,
+  path,
   chunkSize = 2,
 }) => {
   const [api, setApi] = useState<CarouselApi>(),
     [current, setCurrent] = useState(0),
     [count, setCount] = useState(0)
   const { t } = useTranslation()
+
+  const { isLoading, data, isError } = useQuery<ProductResponse>({
+    queryKey: [QUERY_KEYS.PRODUCTS, path],
+    queryFn: () => productApi.findByFilters({ path, limit: 28 }),
+  })
 
   useEffect(() => {
     if (!api) return
@@ -39,20 +47,18 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({
     })
   }, [api])
 
-  // Pairing the card for slider realization
-  const chunkArray = (array: typeof NEW_PRODUCTS, size: number) => {
-    return array.reduce(
-      (result, item, index) => {
-        if (item && index % size === 0) {
-          result.push(array.slice(index, index + size))
-        }
-        return result
-      },
-      [] as (typeof NEW_PRODUCTS)[],
-    )
+  const chunkArray = (array: Product[], size: number) => {
+    return array.reduce((result, item, index) => {
+      if (item && index % size === 0) {
+        result.push(array.slice(index, index + size))
+      }
+      return result
+    }, [] as Product[][])
   }
 
-  const dealPairs = chunkArray(products, chunkSize)
+  if (isError) {
+    return <div>{t('errors.noProducts')}</div>
+  }
 
   return (
     <Carousel
@@ -64,21 +70,32 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({
       }}
     >
       <SectionTitle title={t(titleKey)} />
-      <CarouselContent>
-        {dealPairs.map((pair, index) => (
-          <CarouselItem key={index} className='flex gap-[10px]'>
-            {pair.map(deal => (
-              <ProductCard
-                key={deal.id}
-                image={deal.image}
-                description={deal.description}
-                price={deal.price}
-              />
-            ))}
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-
+      {isLoading && (
+        <CarouselContent>
+          {Array.from({ length: 2 }).map((_, index) => (
+            <CarouselItem key={index} className='flex gap-[10px]'>
+              <ProductCardLoaderSmall key={index} />
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+      )}
+      {data && (
+        <CarouselContent>
+          {chunkArray(data.results.slice(0, 8), chunkSize).map(
+            (pair, index) => (
+              <CarouselItem key={index} className='flex gap-[10px]'>
+                {pair.map(deal => (
+                  <ProductCard
+                    product={deal}
+                    key={deal.slug}
+                    className='w-[172px]'
+                  />
+                ))}
+              </CarouselItem>
+            ),
+          )}
+        </CarouselContent>
+      )}
       {/* DOTS */}
       <div className='absolute bottom-[-24px] left-1/2 flex -translate-x-1/2 items-center gap-1'>
         {Array.from({ length: count }).map((_, index) => {
@@ -89,8 +106,8 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({
               key={index}
               onClick={() => api?.scrollTo(index)}
               className={cn(
-                'size-2 rounded-full transition-colors duration-300 hover:bg-primary',
-                isActive ? 'bg-primary' : 'bg-border',
+                'hover:bg-primary size-2 rounded-full transition-colors duration-300',
+                isActive ? 'bg-primary-900' : 'bg-gray-200',
               )}
             />
           )

@@ -13,6 +13,7 @@ import {
   CollapsibleTrigger,
 } from '@/shared/ui/shadcn-ui/collapsible.tsx'
 import { SectionTitle } from '@/shared/ui'
+import ProductCardLoaderSmall from '@/shared/ui/loaders/product-card-small.loader.tsx'
 import ProductCardLoader from '@/shared/ui/loaders/product-card.loader.tsx'
 import { QUERY_KEYS } from '@/shared/constants'
 import { useMediaQuery } from '@/shared/library/hooks'
@@ -40,9 +41,13 @@ export const BestDeals = () => {
       <Collapsible open={isOpen} onOpenChange={setIsOpen}>
         {isLoading && (
           <div className='grid grid-cols-2 gap-x-[10px] gap-y-[40px] self-center md:grid-cols-3 xl:grid-cols-4 xl:gap-x-5 xl:gap-y-[60px]'>
-            {Array.from({ length: 8 }).map((_, index) => (
-              <ProductCardLoader key={index} />
-            ))}
+            {Array.from({ length: 8 }).map((_, index) =>
+              isDesktop ? (
+                <ProductCardLoader key={index} />
+              ) : (
+                <ProductCardLoaderSmall key={index} />
+              ),
+            )}
           </div>
         )}
         <div className='grid grid-cols-2 gap-x-[10px] gap-y-[40px] self-center md:grid-cols-3 xl:grid-cols-4 xl:gap-x-5 xl:gap-y-[60px]'>
