@@ -3,7 +3,6 @@ import { CategoryNavbarDesktop } from './cat-navbar-desktop'
 import { CategoryNavbarMobile } from './cat-navbar-mobile'
 
 export const CategoryNavbar = ({ data }: { data: CategoryChild[] }) => {
-  console.log(data)
   return (
     <>
       {data.length > 0 && (
