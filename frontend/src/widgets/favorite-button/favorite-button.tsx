@@ -1,16 +1,15 @@
 import { HeartIcon } from '@/shared/ui/icons'
-import React from "react";
+import { cn } from '@/shared/library/utils'
 
-interface Props {
-  className?: string
-}
-
-export const FavoriteButton: React.FC<Props> = ({ className }) => {
+export const FavoriteButton = ({ className }: { className?: string }) => {
   return (
-    <div className={className}>
-      <button className="group flex size-11 items-center justify-center text-gray-50 transition-colors duration-300">
-        <HeartIcon className="h-6 w-6 fill-primary-900 transition-colors duration-300 group-hover:fill-primary-50"/>
-      </button>
-    </div>
+    <button
+      className={cn(
+        'group flex size-11 items-center justify-center text-gray-50 transition-colors duration-300',
+        className,
+      )}
+    >
+      <HeartIcon className='h-6 w-6 fill-primary-900 transition-colors duration-300 group-hover:fill-primary-50' />
+    </button>
   )
 }

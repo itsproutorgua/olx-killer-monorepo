@@ -71,7 +71,7 @@ export const AsideNav = () => {
                 >
                   {cat.children.slice(0, 6).map(sub => (
                     <div key={sub.path} className='max-w-[155px] space-y-5'>
-                      <Link to={`/${sub.path}`}>
+                      <Link to={`/catalog/${sub.path}`}>
                         <h4 className='overflow-hidden text-ellipsis whitespace-nowrap text-base/[19.36px] font-semibold hover:overflow-visible hover:text-primary-600'>
                           {sub.title}
                         </h4>
@@ -80,7 +80,7 @@ export const AsideNav = () => {
                       <ul className='space-y-2.5'>
                         {sub.children.slice(0, 5).map(item => (
                           <li key={item.path}>
-                            <Link to={`/${item.path}`}>
+                            <Link to={`/catalog/${item.path}`}>
                               <MenubarItem className='max-w-[155px] cursor-pointer bg-none p-0 text-base/[19.36px] font-normal transition-colors duration-300 focus:text-primary-600'>
                                 <p className='flex-1 overflow-hidden text-ellipsis whitespace-nowrap text-start hover:overflow-visible hover:whitespace-nowrap'>
                                   {item.title}

@@ -1,8 +1,8 @@
 import * as React from 'react'
-import { cn } from '@/shared/library/utils'
 import { ChevronLeft, ChevronRight, MoreHorizontal } from 'lucide-react'
 
 import { ButtonProps, buttonVariants } from '@/shared/ui/shadcn-ui/button'
+import { cn } from '@/shared/library/utils'
 
 const Pagination = ({ className, ...props }: React.ComponentProps<'nav'>) => (
   <nav
@@ -60,6 +60,7 @@ const PaginationLink = ({
 PaginationLink.displayName = 'PaginationLink'
 
 const PaginationPrevious = ({
+  children,
   className,
   ...props
 }: React.ComponentProps<typeof PaginationLink>) => (
@@ -70,12 +71,13 @@ const PaginationPrevious = ({
     {...props}
   >
     <ChevronLeft className='h-4 w-4' />
-    <span>Previous</span>
+    {children ? children : <span>Previous</span>}
   </PaginationLink>
 )
 PaginationPrevious.displayName = 'PaginationPrevious'
 
 const PaginationNext = ({
+  children,
   className,
   ...props
 }: React.ComponentProps<typeof PaginationLink>) => (
@@ -85,7 +87,8 @@ const PaginationNext = ({
     className={cn('gap-1 pr-2.5', className)}
     {...props}
   >
-    <span>Next</span>
+    {children ? children : <span>Next</span>}
+
     <ChevronRight className='h-4 w-4' />
   </PaginationLink>
 )

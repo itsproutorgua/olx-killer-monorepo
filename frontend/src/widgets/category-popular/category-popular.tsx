@@ -59,7 +59,7 @@ export const PopularCategories = () => {
                   className='cursor-pointer transition duration-300 hover:scale-105'
                 >
                   <Link
-                    to={`/${cat.path}`}
+                    to={`/catalog/${cat.path}`}
                     reloadDocument
                     className='space-y-[15px]'
                   >

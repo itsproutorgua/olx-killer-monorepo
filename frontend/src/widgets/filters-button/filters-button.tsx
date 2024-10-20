@@ -11,13 +11,19 @@ import {
   SheetTrigger,
 } from '@/shared/ui/shadcn-ui/sheet'
 import { ChevronLeftIcon } from '@/shared/ui'
+import { cn } from '@/shared/library/utils'
 
-export const FiltersButton = () => {
+export const FiltersButton = ({ className }: { className?: string }) => {
   const { t } = useTranslation()
 
   return (
     <Sheet>
-      <SheetTrigger className='rounded-lg bg-primary px-[14px] py-2.5 text-[13px]/6 text-gray-50'>
+      <SheetTrigger
+        className={cn(
+          'rounded-lg bg-primary-900 px-[14px] py-2.5 text-[13px]/6 text-gray-50',
+          className,
+        )}
+      >
         {t('buttons.filters')}
       </SheetTrigger>
 

@@ -21,14 +21,14 @@ export const router = createBrowserRouter([
         element: <ProfilePage />,
       },
       {
-        path: PUBLIC_PAGES.CATALOG,
+        path: `${PUBLIC_PAGES.CATALOG}/*`,
         element: <CatalogPage />,
-        children: [
-          {
-            path: 'category',
-            element: <CatalogPage />,
-          },
-        ],
+        // children: [
+        //   {
+        //     path: ':path',
+        //     element: <CatalogPage />,
+        //   },
+        // ],
       },
       {
         path: PUBLIC_PAGES.PRODUCT,
