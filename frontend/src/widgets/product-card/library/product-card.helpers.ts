@@ -4,7 +4,6 @@ import type { ProductPrice } from '@/entities/product'
 
 export const generatePriceString = (prices: ProductPrice[]) => {
   const lang = i18n.language
-  console.log(lang)
 
   switch (lang) {
     case 'uk':

@@ -3,10 +3,15 @@ import { CategoryNavbarDesktop } from './cat-navbar-desktop'
 import { CategoryNavbarMobile } from './cat-navbar-mobile'
 
 export const CategoryNavbar = ({ data }: { data: CategoryChild[] }) => {
+  console.log(data)
   return (
-    <div className='pb-5 xl:pb-7'>
-      <CategoryNavbarMobile data={data} />
-      <CategoryNavbarDesktop data={data} />
-    </div>
+    <>
+      {data.length > 0 && (
+        <div className='pb-5 xl:pb-7'>
+          <CategoryNavbarMobile data={data} />
+          <CategoryNavbarDesktop data={data} />
+        </div>
+      )}
+    </>
   )
 }
