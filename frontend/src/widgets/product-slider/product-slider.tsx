@@ -19,12 +19,14 @@ interface ProductSliderProps {
   titleKey: string // Translation key for the title
   path: string // Products array
   chunkSize?: number // Default chunk size for pairing
+  className?: string
 }
 
 export const ProductSlider: React.FC<ProductSliderProps> = ({
   titleKey,
   path,
-  chunkSize = 2,
+  chunkSize = 2, // Default chunk size is set to 2
+  className,
 }) => {
   const [api, setApi] = useState<CarouselApi>(),
     [current, setCurrent] = useState(0),
@@ -47,13 +49,14 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({
     })
   }, [api])
 
-  const chunkArray = (array: Product[], size: number) => {
-    return array.reduce((result, item, index) => {
-      if (item && index % size === 0) {
+  // Helper to chunk array into groups of a certain size
+  const chunkArray = (array: Product[], size: number): Product[][] => {
+    return array.reduce((result: Product[][], _, index) => {
+      if (index % size === 0) {
         result.push(array.slice(index, index + size))
       }
       return result
-    }, [] as Product[][])
+    }, [])
   }
 
   if (isError) {
@@ -61,58 +64,63 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({
   }
 
   return (
-    <Carousel
-      className='mb-6'
-      setApi={setApi}
-      opts={{
-        align: 'start',
-        loop: true,
-      }}
-    >
-      <SectionTitle title={t(titleKey)} />
-      {isLoading && (
-        <CarouselContent>
-          {Array.from({ length: 2 }).map((_, index) => (
-            <CarouselItem key={index} className='flex gap-[10px]'>
-              <ProductCardLoaderSmall key={index} />
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-      )}
-      {data && (
-        <CarouselContent>
-          {chunkArray(data.results.slice(0, 8), chunkSize).map(
-            (pair, index) => (
+    <div className={className}>
+      <Carousel
+        className='mb-6'
+        setApi={setApi}
+        opts={{
+          align: 'start',
+          loop: true,
+        }}
+      >
+        <SectionTitle title={t(titleKey)} />
+        {/* Skeleton Loader: Display two skeletons per CarouselItem when loading */}
+        {isLoading && (
+          <CarouselContent>
+            {Array.from({ length: 4 }).map((_, index) => (
               <CarouselItem key={index} className='flex gap-[10px]'>
-                {pair.map(deal => (
-                  <ProductCard
-                    product={deal}
-                    key={deal.slug}
-                    className='w-[172px]'
-                  />
-                ))}
+                <ProductCardLoaderSmall key={`${index}-1`} />
+                <ProductCardLoaderSmall key={`${index}-2`} />
               </CarouselItem>
-            ),
-          )}
-        </CarouselContent>
-      )}
-      {/* DOTS */}
-      <div className='absolute bottom-[-24px] left-1/2 flex -translate-x-1/2 items-center gap-1'>
-        {Array.from({ length: count }).map((_, index) => {
-          const isActive = index === current - 1
+            ))}
+          </CarouselContent>
+        )}
+        {/* Actual Data */}
+        {data && (
+          <CarouselContent>
+            {chunkArray(data.results.slice(0, 8), chunkSize).map(
+              (pair: Product[], index: number) => (
+                <CarouselItem key={index} className='flex gap-[10px]'>
+                  {pair.map((deal: Product) => (
+                    <ProductCard
+                      product={deal}
+                      key={deal.slug}
+                      className='w-[172px]'
+                    />
+                  ))}
+                </CarouselItem>
+              ),
+            )}
+          </CarouselContent>
+        )}
+        {/* DOTS */}
+        <div className='absolute bottom-[-24px] left-1/2 flex -translate-x-1/2 items-center gap-1'>
+          {Array.from({ length: count }).map((_, index: number) => {
+            const isActive = index === current - 1
 
-          return (
-            <button
-              key={index}
-              onClick={() => api?.scrollTo(index)}
-              className={cn(
-                'hover:bg-primary size-2 rounded-full transition-colors duration-300',
-                isActive ? 'bg-primary-900' : 'bg-gray-200',
-              )}
-            />
-          )
-        })}
-      </div>
-    </Carousel>
+            return (
+              <button
+                key={index}
+                onClick={() => api?.scrollTo(index)}
+                className={cn(
+                  'hover:bg-primary size-2 rounded-full transition-colors duration-300',
+                  isActive ? 'bg-primary-900' : 'bg-gray-200',
+                )}
+              />
+            )
+          })}
+        </div>
+      </Carousel>
+    </div>
   )
 }
