@@ -17,13 +17,13 @@ django.setup()
 
 
 class Command(BaseCommand):
-    help = 'Create regions and cities for OLX Clone in the database based on predefined data.'
+    help = 'Create locations (regions and cities) for OLX Clone in the database based on predefined data.'
 
     def handle(self, *args, **options):
-        self.create_regions_and_cities()
+        self.create_locations()
 
     @staticmethod
-    def create_regions_and_cities():
+    def create_locations():
         for id_region, region_data in regions.items():
             name, slug = region_data['region'], region_data['slug']
             region_languages = region_data.get('languages')
@@ -55,4 +55,4 @@ class Command(BaseCommand):
                     location_type=location_type, city=city, latitude=latitude, longitude=longitude
                 )
 
-        logger.info('Finished creating regions and cities')
+        logger.info('Finished creating locations (regions and cities)')
