@@ -82,8 +82,8 @@ export const uk = {
   },
   bottomBar: {
     catalog: 'Каталог',
-    cart: 'Кошик',
-    account: 'Аккаунт',
+    chat: 'Повідомлення',
+    account: 'Профіль',
     favorites: 'Обрані',
   },
 }

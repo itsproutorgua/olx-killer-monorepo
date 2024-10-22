@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { cn } from '@/shared/library/utils'
 
 import { PRODUCT_PHOTO } from '@/widgets/product-details/mock/product-images.mock.ts'
 import {
@@ -11,6 +10,7 @@ import {
   type CarouselApi,
 } from '@/shared/ui/shadcn-ui/carousel.tsx'
 import { Picture } from '@/shared/ui'
+import { cn } from '@/shared/library/utils'
 
 export const ProductCarousel = () => {
   const [api, setApi] = useState<CarouselApi>()
@@ -64,7 +64,7 @@ export const ProductCarousel = () => {
           <CarouselPrevious
             variant={null}
             size={null}
-            className='static h-6 w-6 transform-none'
+            className='static h-6 w-6 transform-none text-gray-900 hover:text-primary-500 active:text-primary-600'
           >
             <svg
               width='25'
@@ -75,7 +75,7 @@ export const ProductCarousel = () => {
             >
               <path
                 d='M9.65625 11.7187C9.5 11.875 9.5 12.0937 9.65625 12.25L14.2187 16.875C14.375 17.0312 14.625 17.0312 14.75 16.875L15.375 16.25C15.5313 16.125 15.5313 15.875 15.375 15.7187L11.6875 12L15.375 8.25C15.5313 8.09375 15.5313 7.875 15.375 7.71875L14.75 7.09375C14.625 6.9375 14.375 6.9375 14.2187 7.09375L9.65625 11.7187Z'
-                fill='#333333'
+                fill='currentColor'
               />
             </svg>
           </CarouselPrevious>
@@ -105,7 +105,7 @@ export const ProductCarousel = () => {
           <CarouselNext
             variant={null}
             size={null}
-            className='static h-6 w-6 transform-none text-primary-foreground'
+            className='static h-6 w-6 transform-none text-gray-900 hover:text-primary-500 active:text-primary-600'
           >
             <svg
               width='25'
@@ -116,7 +116,7 @@ export const ProductCarousel = () => {
             >
               <path
                 d='M15.3438 12.2813C15.5 12.125 15.5 11.9063 15.3438 11.75L10.7813 7.125C10.625 6.96875 10.375 6.96875 10.25 7.125L9.625 7.75C9.46875 7.875 9.46875 8.125 9.625 8.28125L13.3125 12L9.625 15.75C9.46875 15.9063 9.46875 16.125 9.625 16.2813L10.25 16.9063C10.375 17.0625 10.625 17.0625 10.7813 16.9063L15.3438 12.2813Z'
-                fill='#333333'
+                fill='currentColor'
               />
             </svg>
           </CarouselNext>

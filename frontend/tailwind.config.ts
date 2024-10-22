@@ -4,6 +4,9 @@ const config = {
   darkMode: ['class'],
   content: ['./index.html', './src/**/*.{ts,tsx}'],
   prefix: '',
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
   theme: {
     screens: {
       xs: '375px',

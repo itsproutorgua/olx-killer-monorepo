@@ -6,10 +6,12 @@ import { Link } from 'react-router-dom'
 
 import {
   BottomBarMenu,
-  CartIcon,
   CirclePlusIcon,
   UserRoundedIcon,
 } from '@/shared/ui/icons'
+import { ChatIcon } from '@/shared/ui/icons/chat-icon.tsx'
+
+const SCROLL_THRESHOLD = 5 // Threshold to ignore small scroll movements
 
 const BottomBar = () => {
   const { t } = useTranslation()
@@ -19,12 +21,34 @@ const BottomBar = () => {
 
   const handleScroll = () => {
     const currentScrollY = window.scrollY
+    const windowHeight = window.innerHeight
+    const documentHeight = document.body.scrollHeight
 
-    if (currentScrollY > lastScrollY) {
+    // If the user is near the top, ensure the bottom bar is visible
+    if (currentScrollY <= SCROLL_THRESHOLD) {
+      setIsVisible(true)
+      setLastScrollY(currentScrollY)
+      return
+    }
+
+    // If the user is at the bottom of the page, hide the bottom bar
+    if (windowHeight + currentScrollY >= documentHeight - SCROLL_THRESHOLD) {
       setIsVisible(false)
     } else {
-      setIsVisible(true)
+      // Handle scroll direction, but ignore small scroll fluctuations
+      if (Math.abs(currentScrollY - lastScrollY) < SCROLL_THRESHOLD) {
+        return
+      }
+
+      if (currentScrollY > lastScrollY) {
+        // Scrolling down
+        setIsVisible(false)
+      } else {
+        // Scrolling up
+        setIsVisible(true)
+      }
     }
+
     setLastScrollY(currentScrollY)
   }
 
@@ -65,9 +89,9 @@ const BottomBar = () => {
         </div>
 
         <div className='flex w-[35%] flex-row justify-between gap-2'>
-          <Link to='/cart' className='flex w-[70px] flex-col items-center'>
-            <CartIcon className='h-[30px] w-6' />
-            <span className='text-[13px]'>{t('bottomBar.cart')}</span>
+          <Link to='/chat' className='flex w-[70px] flex-col items-center'>
+            <ChatIcon className='h-[30px h-[30px] stroke-1' />
+            <span className='text-[13px]'>{t('bottomBar.chat')}</span>
           </Link>
 
           <Link to='/account' className='flex w-[70px] flex-col items-center'>

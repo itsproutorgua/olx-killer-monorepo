@@ -25,13 +25,13 @@ export const LoginCard: React.FC<Props> = ({ className }) => {
           </div>
           <div className='flex flex-row gap-[14px]'>
             <Button
-              className='h-[42px] px-[45px] py-[13px] transition-colors duration-300'
+              className='h-[42px] rounded-[60px] bg-primary-900 px-[45px] py-[13px] text-gray-50 transition-colors duration-300 hover:bg-primary-500 active:bg-primary-600 active:duration-0'
               onClick={() => loginWithRedirect()}
             >
               Log in
             </Button>
             <button
-              className='whitespace-nowrap text-xs transition-colors duration-300 hover:text-accent'
+              className='hover:text-accent whitespace-nowrap text-xs transition-colors duration-300'
               onClick={() => loginWithRedirect()}
             >
               Create an account

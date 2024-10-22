@@ -9,7 +9,7 @@ export const AddToFavorite = ({ className }: { className?: string }) => {
         className,
       )}
     >
-      <HeartIcon className='h-6 w-6 fill-transparent transition-colors duration-300 group-hover:fill-primary-900' />
+      <HeartIcon className='h-6 w-6 fill-transparent transition-colors duration-300 group-hover:fill-primary-900 group-active:fill-primary-600 group-active:stroke-primary-600 group-active:duration-0' />
     </button>
   )
 }

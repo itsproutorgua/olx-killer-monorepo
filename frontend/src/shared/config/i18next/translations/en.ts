@@ -81,7 +81,7 @@ export const en = {
   },
   bottomBar: {
     catalog: 'Catalog',
-    cart: 'Cart',
+    chat: 'Messages',
     account: 'Account',
     favorites: 'Favorites',
   },

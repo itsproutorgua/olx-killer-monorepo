@@ -1,11 +1,11 @@
 import React from 'react'
 import sellerLogo from '@/shared/assets/images/seller/seller_logo.png'
 
-import { FavoriteButton } from '@/widgets/favorite-button'
 import { LoginCard } from '@/widgets/login-card/login-card.tsx'
 import { ContactSellerCard } from '@/widgets/product-details/ui/contact-seller-card.tsx'
 import { ProductLocation } from '@/widgets/product-details/ui/product-location.tsx'
 import { ProductSeller } from '@/widgets/product-details/ui/product-seller.tsx'
+import { AddToFavorite } from '@/features/add-to-favorite'
 import { ShowNumber, WriteSeller } from '@/features/product'
 import { Separator } from '@/shared/ui/shadcn-ui/separator.tsx'
 import { FlagIcon } from '@/shared/ui'
@@ -68,14 +68,14 @@ export const ProductInfo: React.FC<Props> = ({ className }) => {
         <p className='text-[28px] font-medium leading-[1.22] md:text-[32px]'>
           {announcement.price} UAH
         </p>
-        <FavoriteButton className='scale-150 text-xl text-primary md:hidden' />
+        <AddToFavorite className='text-xl text-primary-900 md:hidden' />
       </div>
       <div className='mt-[32px] flex w-full flex-col items-center gap-[10px] md:mt-[34px] md:flex-row md:gap-[45px]'>
         <div className='flex w-full flex-col gap-[10px] md:flex-row md:gap-4'>
           <WriteSeller />
           <ShowNumber />
         </div>
-        <FavoriteButton className='hidden scale-150 text-xl text-primary md:block' />
+        <AddToFavorite className='hidden text-xl text-primary-900 md:block' />
       </div>
       <div className='mt-[54px] hidden max-h-[200px] flex-row gap-5 md:flex'>
         <ProductSeller announcement={announcement} className='basis-1/2' />
@@ -92,7 +92,7 @@ export const ProductInfo: React.FC<Props> = ({ className }) => {
       <div className='text-primary-gray mt-[11px] hidden flex-row items-center justify-between text-xs md:flex'>
         <p>ID: {announcement.id}</p>
         <p>Views: {announcement.views}</p>
-        <button className='text-[#c80000] transition-colors duration-300 hover:text-destructive'>
+        <button className='hover:text-destructive text-[#c80000] transition-colors duration-300'>
           <FlagIcon className='mr-1 inline-block' />
           <span>Report</span>
         </button>

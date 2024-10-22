@@ -1,5 +1,5 @@
 export { HeartIcon } from './heart'
 export { UserRoundedIcon } from './user-rounded'
-export { CartIcon } from './cart-icon'
+export { ChatIcon } from './chat-icon.tsx'
 export { CirclePlusIcon } from './circle-plus'
 export { BottomBarMenu } from './bottom-bar-menu'
