@@ -16,7 +16,7 @@ export const PromoSection: React.FC = () => {
         </h2>
         <Button
           size='lg'
-          className='h-[53px] rounded-[60px] p-[5px] pl-[37px] leading-none bg-primary-900 text-gray-50 transition-colors duration-300 hover:bg-primary-500'
+          className='h-[53px] rounded-[60px] bg-primary-900 p-[5px] pl-[37px] leading-none text-gray-50 transition-colors duration-300 hover:bg-primary-500 active:bg-primary-600 active:text-gray-50 active:duration-0'
         >
           {t('buttons.registerAsSeller')}
           <span className='ml-6 flex size-[43px] items-center justify-center rounded-full bg-gray-50 text-primary-900'>

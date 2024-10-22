@@ -66,7 +66,7 @@ export const BestDeals = () => {
               ))}
           </div>
         </CollapsibleContent>
-        <CollapsibleTrigger className='border-border mt-[40px] w-full rounded-[60px] border py-[13px] text-center text-[13px]/[13px] transition-colors duration-300 hover:bg-primary-500 hover:text-gray-50 xl:text-base/4'>
+        <CollapsibleTrigger className='mt-[40px] w-full rounded-[60px] border border-border py-[13px] text-center text-[13px]/[13px] transition-colors duration-300 hover:bg-primary-500 hover:text-gray-50 active:bg-primary-900 active:text-gray-50 active:duration-0 xl:text-base/4'>
           {isOpen ? t('buttons.showLess') : t('buttons.loadMore')}
         </CollapsibleTrigger>
       </Collapsible>

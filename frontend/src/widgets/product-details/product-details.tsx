@@ -28,25 +28,36 @@ export const ProductDetails: React.FC<Props> = ({ className }) => {
         <p className='text-[13px]'>Women's T-Shirts</p>
       </div>
       <Breadcrumb className='hidden md:block'>
-        <BreadcrumbList className='gap-5 text-[16px] text-foreground'>
+        <BreadcrumbList className='gap-5 text-[16px] text-gray-900'>
           <BreadcrumbItem>
-            <BreadcrumbLink href='/'>
+            <BreadcrumbLink
+              href='/'
+              className='hover:text-primary-500 active:text-primary-600'
+            >
               <HomeIconBreadcrumb className='h-6 w-6' />
             </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbLink href='/category'>Women’s clothing</BreadcrumbLink>
+            <BreadcrumbLink
+              href='/category'
+              className='hover:text-primary-500 active:text-primary-600'
+            >
+              Women’s clothing
+            </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbLink href='/sub-category'>
+            <BreadcrumbLink
+              href='/sub-category'
+              className='hover:text-primary-500 active:text-primary-600'
+            >
               Women's T-Shirts
             </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbPage className='text-primary-gray'>
+            <BreadcrumbPage className='text-gray-400'>
               Basic Comfort Women's T-Shirt
             </BreadcrumbPage>
           </BreadcrumbItem>

@@ -70,7 +70,7 @@ export const PopularCategories = () => {
                         className='rounded-full'
                       />
                     </div>
-                    <h3 className='line-clamp-1 text-center text-base/[20.8px] hover:overflow-visible'>
+                    <h3 className='line-clamp-1 w-[150px] text-center text-base/[20.8px] hover:overflow-visible'>
                       {cat.title}
                     </h3>
                   </Link>
@@ -103,7 +103,7 @@ export const PopularCategories = () => {
           </div>
 
           {categories && categories.length > (isDesktop ? 14 : 6) && (
-            <CollapsibleTrigger className='border-border mt-[42px] w-full rounded-[60px] border py-[13px] text-center text-[13px]/[13px] transition-colors duration-300 hover:bg-primary-500 hover:text-gray-50 xl:text-base/4'>
+            <CollapsibleTrigger className='mt-[42px] w-full rounded-[60px] border border-border py-[13px] text-center text-[13px]/[13px] transition-colors duration-300 hover:bg-primary-500 hover:text-gray-50 active:bg-primary-900 active:text-gray-50 active:duration-0 xl:text-base/4'>
               {isOpen
                 ? `${t('buttons.showLess')}`
                 : `${t('buttons.showAllCategories')}`}
