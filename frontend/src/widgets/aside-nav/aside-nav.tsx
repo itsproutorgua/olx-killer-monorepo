@@ -6,6 +6,11 @@ import { Link } from 'react-router-dom'
 import { categoryApi } from '@/entities/category'
 import { CategoryResponse } from '@/entities/category/model/category.types.ts'
 import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from '@/shared/ui/shadcn-ui/hover-card.tsx'
+import {
   Menubar,
   MenubarContent,
   MenubarItem,
@@ -16,6 +21,8 @@ import { Separator } from '@/shared/ui/shadcn-ui/separator'
 import { FacebookIconOutline, InstagramIconOutline } from '@/shared/ui'
 import AsideCategoryLoader from '@/shared/ui/loaders/aside-category.loader.tsx'
 import { QUERY_KEYS } from '@/shared/constants'
+
+const TITLE_LENGTH_THRESHOLD = 20 // Set a threshold for truncation (number of characters)
 
 export const AsideNav = () => {
   const { t, i18n } = useTranslation()
@@ -59,7 +66,7 @@ export const AsideNav = () => {
                       className='h-6 w-6 transition duration-300 ease-in-out focus:brightness-0 focus:invert focus:filter group-hover:brightness-0 group-hover:invert group-hover:filter group-data-[state=open]:brightness-0 group-data-[state=open]:invert group-data-[state=open]:filter'
                     />
                   ) : null}
-                  <p className='flex-1 overflow-hidden text-ellipsis whitespace-nowrap text-start hover:overflow-visible'>
+                  <p className='flex-1 overflow-hidden text-ellipsis whitespace-nowrap text-start'>
                     {cat.title}
                   </p>
                   <ChevronRight />
@@ -72,24 +79,58 @@ export const AsideNav = () => {
                   {cat.children.slice(0, 6).map(sub => (
                     <div key={sub.path} className='max-w-[155px] space-y-5'>
                       <Link to={`/catalog/${sub.path}`}>
-                        <h4 className='overflow-hidden text-ellipsis whitespace-nowrap text-base/[19.36px] font-semibold hover:overflow-visible hover:text-primary-600'>
-                          {sub.title}
-                        </h4>
+                        <HoverCard openDelay={500} closeDelay={0}>
+                          <HoverCardTrigger asChild>
+                            <h4 className='overflow-hidden text-ellipsis whitespace-nowrap text-base/[19.36px] font-semibold hover:text-primary-600'>
+                              {sub.title}
+                            </h4>
+                          </HoverCardTrigger>
+                          {/* Only render HoverCardContent if title length exceeds threshold */}
+                          {sub.title.length > TITLE_LENGTH_THRESHOLD && (
+                            <HoverCardContent
+                              side='top'
+                              className='w-fit bg-gray-50'
+                            >
+                              {sub.title}
+                            </HoverCardContent>
+                          )}
+                        </HoverCard>
                       </Link>
-
                       <ul className='space-y-2.5'>
                         {sub.children.slice(0, 5).map(item => (
                           <li key={item.path}>
                             <Link to={`/catalog/${item.path}`}>
-                              <MenubarItem className='max-w-[155px] cursor-pointer bg-none p-0 text-base/[19.36px] font-normal transition-colors duration-300 focus:text-primary-600'>
-                                <p className='flex-1 overflow-hidden text-ellipsis whitespace-nowrap text-start hover:overflow-visible hover:whitespace-nowrap'>
-                                  {item.title}
-                                </p>
+                              <MenubarItem className='max-w-[155px] cursor-pointer bg-none p-0 text-base/[19.36px] font-normal transition-colors duration-300'>
+                                <HoverCard openDelay={500} closeDelay={0}>
+                                  <HoverCardTrigger asChild>
+                                    <p className='overflow-hidden text-ellipsis whitespace-nowrap hover:text-primary-600'>
+                                      {item.title}
+                                    </p>
+                                  </HoverCardTrigger>
+                                  {/* Only render HoverCardContent if title length exceeds threshold */}
+                                  {item.title.length >
+                                    TITLE_LENGTH_THRESHOLD && (
+                                    <HoverCardContent
+                                      side='top'
+                                      className='w-fit bg-gray-50 hover:text-primary-600'
+                                    >
+                                      {item.title}
+                                    </HoverCardContent>
+                                  )}
+                                </HoverCard>
                               </MenubarItem>
                             </Link>
                           </li>
                         ))}
                       </ul>
+                      <div>
+                        <Link
+                          to={`/catalog/${sub.path}`}
+                          className='rounded-[7px] bg-primary-900 px-[5px] py-[1px] text-xs text-gray-50 transition-colors duration-300 hover:bg-primary-600'
+                        >
+                          Show all
+                        </Link>
+                      </div>
                     </div>
                   ))}
                 </MenubarContent>
