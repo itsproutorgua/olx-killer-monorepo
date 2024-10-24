@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import {
   Select,
@@ -9,15 +10,16 @@ import {
 } from '@/shared/ui/shadcn-ui/select'
 import { CheckedIcon } from '@/shared/ui'
 
-const SORT: Record<string, string> = {
-  cheap: 'From cheap to expensive',
-  expensive: 'From expensive to cheap',
-  new: 'Novelties',
-  rating: 'Behind the rating',
-}
-
 export const SortButton = () => {
+  const { t } = useTranslation()
   const [value, setValue] = useState('rating')
+
+  const SORT: Record<string, string> = {
+    cheap: t('sort.priceCheap'),
+    expensive: t('sort.priceExpensive'),
+    new: t('sort.novelties'),
+    rating: t('sort.rating'),
+  }
 
   return (
     <Select value={value} onValueChange={setValue}>
@@ -27,7 +29,7 @@ export const SortButton = () => {
 
       <SelectContent
         sideOffset={13}
-        className='border-border rounded-lg border bg-background p-0 py-1 shadow-none'
+        className='rounded-lg border border-border bg-background p-0 py-1 shadow-none'
       >
         {Object.entries(SORT).map(([key, value]) => (
           <SelectItem

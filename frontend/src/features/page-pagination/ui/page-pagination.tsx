@@ -1,87 +1,89 @@
+import { useEffect, useState } from 'react'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
+import ReactPaginate from 'react-paginate'
+import { animateScroll as scroll } from 'react-scroll'
 
-import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from '@/shared/ui/shadcn-ui/pagination'
+import { useQueryParams } from '@/shared/library/hooks'
 
-export const PagePagination = () => {
+export const PagePagination = ({
+  count,
+  limit,
+}: {
+  count: number
+  limit: number
+}) => {
+  const pageCount = Math.ceil(count / limit)
   const { t } = useTranslation()
+  const { getQueryParamByKey, setQueryParam } = useQueryParams()
+  const [page, setPage] = useState(1)
+
+  const handleScroll = () => {
+    scroll.scrollToTop({
+      duration: 500,
+      delay: 0,
+      smooth: 'easeInOut',
+    })
+  }
+
+  const handlePageClick = (data: { selected: number }) => {
+    setQueryParam('page', (data.selected + 1).toString())
+    handleScroll()
+  }
+
+  const handleDirectionClick = (direction: 'prev' | 'next') => {
+    switch (direction) {
+      case 'prev':
+        setQueryParam('page', (page - 1).toString())
+        break
+      case 'next':
+        setQueryParam('page', (page + 1).toString())
+        break
+      default:
+        return
+    }
+    handleScroll()
+  }
+
+  useEffect(() => {
+    if (getQueryParamByKey('page')) {
+      setPage(Number(getQueryParamByKey('page')))
+    }
+  }, [getQueryParamByKey])
 
   return (
-    <div className='hidden xl:block'>
-      <Pagination className='relative text-sm font-medium'>
-        <PaginationContent className='gap-0.5'>
-          <PaginationItem className='absolute left-0 top-1/2 -translate-y-1/2 font-semibold'>
-            <PaginationPrevious href='#' className='gap-2'>
-              {t('buttons.previous')}
-            </PaginationPrevious>
-          </PaginationItem>
-
-          <PaginationItem className=''>
-            <PaginationLink
-              href='#'
-              className='bg-purple-light text-purple-dark hover:bg-purple-light hover:text-purple-dark rounded-full'
-            >
-              1
-            </PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink
-              href='#'
-              className='hover:bg-purple-light hover:text-purple-dark rounded-full bg-transparent text-foreground'
-            >
-              2
-            </PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink
-              href='#'
-              className='hover:bg-purple-light hover:text-purple-dark rounded-full bg-transparent text-foreground'
-            >
-              3
-            </PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationEllipsis />
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink
-              href='#'
-              className='hover:bg-purple-light hover:text-purple-dark rounded-full bg-transparent text-foreground'
-            >
-              7
-            </PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink
-              href='#'
-              className='hover:bg-purple-light hover:text-purple-dark rounded-full bg-transparent text-foreground'
-            >
-              8
-            </PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink
-              href='#'
-              className='hover:bg-purple-light hover:text-purple-dark rounded-full bg-transparent text-foreground'
-            >
-              9
-            </PaginationLink>
-          </PaginationItem>
-
-          <PaginationItem className='absolute right-0 top-1/2 -translate-y-1/2 font-semibold'>
-            <PaginationNext href='#' className='gap-2'>
-              {t('buttons.next')}
-            </PaginationNext>
-          </PaginationItem>
-        </PaginationContent>
-      </Pagination>
+    <div className='hidden xl:flex xl:items-center xl:justify-between'>
+      <button
+        onClick={() => handleDirectionClick('prev')}
+        disabled={page === 1}
+        className='pagination-btn'
+      >
+        <ChevronLeft className='size-11 stroke-[1.5px]' />
+        {t('buttons.previous')}
+      </button>
+      <ReactPaginate
+        breakLabel='...'
+        nextLabel={null}
+        previousLabel={null}
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={3}
+        marginPagesDisplayed={2}
+        pageCount={pageCount}
+        renderOnZeroPageCount={null}
+        className='pagination-list'
+        breakLinkClassName='pagination-dots'
+        pageLinkClassName='pagination-item'
+        activeLinkClassName='pagination-active'
+        forcePage={page - 1}
+      />
+      <button
+        onClick={() => handleDirectionClick('next')}
+        disabled={page === pageCount}
+        className='pagination-btn'
+      >
+        {t('buttons.next')}
+        <ChevronRight className='size-11 stroke-[1.5px]' />
+      </button>
     </div>
   )
 }

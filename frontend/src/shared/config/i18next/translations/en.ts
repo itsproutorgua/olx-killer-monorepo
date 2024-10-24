@@ -4,11 +4,12 @@ export const en = {
   },
   buttons: {
     next: 'Next',
-    previous: 'Prev',
+    previous: 'Previous',
     searchButton: 'Find',
     addAdvert: 'To add an advert',
     showAllCategories: 'Show all categories',
     showLess: 'Show less',
+    showMore: 'Show more',
     showMoreAnnouncements: 'Show more announcements',
     loadMore: 'Load more',
     buy: 'Buy',
@@ -17,6 +18,12 @@ export const en = {
     writeSeller: 'Write to the seller',
     showNumber: 'Show number',
     filters: 'Filters',
+  },
+  sort: {
+    rating: 'Behind the rating',
+    priceExpensive: 'From cheap to expensive',
+    priceCheap: 'From expensive to cheap',
+    novelties: 'Novelties',
   },
   titles: {
     announcementTitle: 'Add your own announcement',
@@ -84,5 +91,9 @@ export const en = {
     cart: 'Cart',
     account: 'Account',
     favorites: 'Favorites',
+  },
+  words: {
+    found: 'Found',
+    announcements: 'announcements',
   },
 }
