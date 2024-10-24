@@ -10,6 +10,7 @@ export const uk = {
     addAdvert: "Додати об'яву",
     showAllCategories: 'Показати всі категорії',
     showLess: 'Показати менше',
+    showMore: 'Показати більше',
     showMoreAnnouncements: 'Показати більше оголошень',
     loadMore: 'Завантажити більше',
     buy: 'Купити',
@@ -18,6 +19,12 @@ export const uk = {
     writeSeller: 'Написати продавцю',
     showNumber: 'Показати номер',
     filters: 'Фільтри',
+  },
+  sort: {
+    rating: 'За рейтингом',
+    priceExpensive: 'Від дешевих до дорогих',
+    priceCheap: 'Від дорогих до дешевих',
+    novelties: 'Новинки',
   },
   titles: {
     announcementTitle: 'Додайте своє оголошення',
@@ -85,5 +92,9 @@ export const uk = {
     chat: 'Повідомлення',
     account: 'Профіль',
     favorites: 'Обрані',
+  },
+  words: {
+    found: 'Знайдено',
+    announcements: 'оголошень',
   },
 }

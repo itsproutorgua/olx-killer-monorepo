@@ -50,4 +50,24 @@ html body[data-scroll-locked] {
   .btn-secondary {
     @apply flex h-[42px] w-full items-center justify-center rounded-[60px] border border-gray-200 bg-background text-center text-[13px]/[15.73px] text-foreground transition-colors duration-300 hover:border-primary-500 hover:bg-primary-500 hover:text-gray-50 disabled:border-gray-300 disabled:bg-gray-300 xl:text-base/none;
   }
+
+  .pagination-list {
+    @apply flex items-center gap-0.5;
+  }
+
+  .pagination-item {
+    @apply flex size-10 items-center justify-center rounded-full bg-background text-sm/[20px] font-medium text-foreground transition-colors duration-300 hover:bg-primary-200;
+  }
+
+  .pagination-dots {
+    @apply flex size-10 items-center justify-center rounded-full text-sm/[20px] font-medium text-foreground;
+  }
+
+  .pagination-active {
+    @apply bg-foreground text-background hover:bg-foreground;
+  }
+
+  .pagination-btn {
+    @apply flex items-center gap-2 text-sm/[20px] font-semibold text-primary-900 transition-colors duration-300 hover:text-primary-600 disabled:cursor-not-allowed disabled:text-gray-400;
+  }
 }

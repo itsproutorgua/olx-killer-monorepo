@@ -15,11 +15,16 @@ import { QUERY_KEYS } from '@/shared/constants'
 import type { Crumb } from '@/shared/library/types/types'
 import { generateCrumbs } from '@/shared/library/utils/generate-crumbs'
 
+const formatPath = (pathname: string) => {
+  const path = pathname.replace('/catalog', '')
+  return path.split('?')[0]
+}
+
 export const CatalogPage = () => {
   const { i18n } = useTranslation()
   const location = useLocation()
   const navigate = useNavigate()
-  const path = location.pathname.replace('/catalog', '')
+  const path = formatPath(location.pathname)
   const [crumbs, setCrumbs] = useState<Crumb[]>([{ text: '...' }])
 
   const { isLoading, data } = useQuery<Category>({

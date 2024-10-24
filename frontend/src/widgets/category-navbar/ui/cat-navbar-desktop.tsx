@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import type { CategoryChild } from '@/entities/category'
 import {
@@ -10,6 +11,7 @@ import { PUBLIC_PAGES } from '@/shared/constants'
 import { CategoryNavbarItem } from './cat-navbar-item'
 
 export const CategoryNavbarDesktop = ({ data }: { data: CategoryChild[] }) => {
+  const { t } = useTranslation()
   const [isOpen, setIsOpen] = useState(false)
 
   return (
@@ -48,7 +50,7 @@ export const CategoryNavbarDesktop = ({ data }: { data: CategoryChild[] }) => {
 
       {data.length > 7 && (
         <CollapsibleTrigger className='btn-secondary'>
-          {isOpen ? 'Hide' : 'Show more'}
+          {isOpen ? t('buttons.showLess') : t('buttons.showMore')}
         </CollapsibleTrigger>
       )}
     </Collapsible>
