@@ -1,6 +1,6 @@
 import { instanceBase } from '@/shared/api'
 import { APP_VARIABLES } from '@/shared/constants/app.const'
-import type { ProductResponse, Sort } from '../model'
+import type { Product, ProductResponse, Sort } from '../model'
 
 class ProductApi {
   private BASE_URL = '/products'
@@ -35,6 +35,12 @@ class ProductApi {
     const url = `${this.BASE_URL}/filters/?${params.toString()}`
 
     const response = await instanceBase.get<ProductResponse>(url)
+    return response.data
+  }
+
+  async findBySlug({ slug }: { slug: string }) {
+    const url = `${this.BASE_URL}${slug}`
+    const response = await instanceBase.get<Product>(url)
     return response.data
   }
 }
