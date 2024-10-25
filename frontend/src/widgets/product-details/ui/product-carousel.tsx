@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
-import { PRODUCT_PHOTO } from '@/widgets/product-details/mock/product-images.mock.ts'
+import { Product } from '@/entities/product'
 import {
   Carousel,
   CarouselContent,
@@ -9,14 +9,21 @@ import {
   CarouselPrevious,
   type CarouselApi,
 } from '@/shared/ui/shadcn-ui/carousel.tsx'
-import { Picture } from '@/shared/ui'
 import { cn } from '@/shared/library/utils'
 
-export const ProductCarousel = () => {
+interface Props {
+  product: Product
+  className?: string
+}
+
+export const ProductCarousel: React.FC<Props> = ({ product }) => {
   const [api, setApi] = useState<CarouselApi>()
   const [current, setCurrent] = useState(0)
   const [thumbsStartIndex, setThumbsStartIndex] = useState(0)
   const THUMBS_TO_SHOW = 5 // Number of thumbnails to display
+
+  const images =
+    product.images && product.images.length > 0 ? product.images : null
 
   useEffect(() => {
     if (!api) {
@@ -47,16 +54,24 @@ export const ProductCarousel = () => {
         }}
       >
         <CarouselContent>
-          {PRODUCT_PHOTO.map(item => (
-            <CarouselItem key={item.id}>
-              <Picture
-                src={item.src}
-                srcset={item.srcset}
-                alt={item.alt}
-                styles='max-w-full max-h-[613px] rounded-[15px]'
-              />
-            </CarouselItem>
-          ))}
+          {images
+            ? images.map((image, index) => (
+                <CarouselItem key={index}>
+                  <div className='flex h-[392px] w-[355px] items-center justify-center rounded-[15px] bg-gray-100 xl:h-[613px] xl:w-[629px]'>
+                    <img
+                      src={image.image}
+                      alt={product.title || `Product image ${index + 1}`}
+                      className='max-h-full max-w-full object-contain'
+                    />
+                  </div>
+                </CarouselItem>
+              ))
+            : // If there are no images, render a placeholder gray background
+              Array.from({ length: 3 }).map((_, index) => (
+                <CarouselItem key={index}>
+                  <div className='h-[613px] w-full rounded-[15px] bg-gray-50'></div>
+                </CarouselItem>
+              ))}
         </CarouselContent>
 
         {/* Thumbnail Preview with Arrows */}
@@ -80,27 +95,36 @@ export const ProductCarousel = () => {
             </svg>
           </CarouselPrevious>
           <div className='flex max-w-2xl gap-[10px] overflow-hidden'>
-            {PRODUCT_PHOTO.slice(
-              thumbsStartIndex,
-              thumbsStartIndex + THUMBS_TO_SHOW,
-            ).map((item, index) => (
-              <button
-                key={index}
-                onClick={() => api?.scrollTo(thumbsStartIndex + index)}
-                className={cn(
-                  'cursor-pointer',
-                  thumbsStartIndex + index === current - 1
-                    ? 'opacity-100'
-                    : 'opacity-30',
-                )}
-              >
-                <img
-                  src={item.src}
-                  alt={item.alt}
-                  className='max-h-[48px] max-w-[48px] rounded md:max-h-[88px] md:max-w-[88px]'
-                />
-              </button>
-            ))}
+            {images
+              ? images
+                  .slice(thumbsStartIndex, thumbsStartIndex + THUMBS_TO_SHOW)
+                  .map((image, index) => (
+                    <button
+                      key={index}
+                      onClick={() => api?.scrollTo(thumbsStartIndex + index)}
+                      className={cn(
+                        'cursor-pointer',
+                        thumbsStartIndex + index === current - 1
+                          ? 'opacity-100'
+                          : 'opacity-30',
+                      )}
+                    >
+                      <div className='flex h-[48px] w-[48px] items-center justify-center rounded bg-gray-100 md:h-[88px] md:w-[88px]'>
+                        <img
+                          src={image.image}
+                          alt={product.title || `Thumbnail ${index + 1}`}
+                          className='max-h-full max-w-full rounded object-contain'
+                        />
+                      </div>
+                    </button>
+                  ))
+              : // If no images, render placeholder thumbnails
+                Array.from({ length: THUMBS_TO_SHOW }).map((_, index) => (
+                  <div
+                    key={index}
+                    className='max-h-[48px] max-w-[48px] rounded bg-gray-50 md:max-h-[88px] md:max-w-[88px]'
+                  ></div>
+                ))}
           </div>
           <CarouselNext
             variant={null}
