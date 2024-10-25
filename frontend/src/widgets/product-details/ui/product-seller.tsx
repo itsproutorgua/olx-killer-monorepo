@@ -29,11 +29,14 @@ export const ProductSeller: React.FC<SellerProps> = ({
         </h3>
         <div className='flex flex-row justify-between gap-4'>
           <div className='h-[51px] w-[51px]'>
-            <img src={announcement.sellerLogo} alt='Seller Logo' />
+            <img
+              src={announcement.sellerLogo}
+              alt={`Logo of ${product?.seller?.first_name ?? 'Product Name'}`}
+            />
           </div>
           <div className='flex flex-col gap-3'>
             <h4 className='text-xl leading-none'>
-              {product.seller.first_name}
+              {product?.seller?.first_name ?? 'Default Name'}
             </h4>
             <p className='text-primary-gray text-xs leading-none'>
               {t('words.onOKA')}

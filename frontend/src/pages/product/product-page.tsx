@@ -32,7 +32,6 @@ export const ProductPage = () => {
     isLoading,
     data: product,
     isError,
-    error,
   } = useQuery<Product>({
     queryKey: [QUERY_KEYS.PRODUCT, slug, i18n.language],
     queryFn: () => productApi.findBySlug({ slug }),
@@ -46,7 +45,7 @@ export const ProductPage = () => {
   }, [product])
 
   if (isError) {
-    return <div>Error: {error?.message}</div>
+    return <div>Error: An unknown error occurred</div>
   }
 
   return (

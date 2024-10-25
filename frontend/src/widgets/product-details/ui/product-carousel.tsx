@@ -69,7 +69,9 @@ export const ProductCarousel: React.FC<Props> = ({ product }) => {
             : // If there are no images, render a placeholder gray background
               Array.from({ length: 3 }).map((_, index) => (
                 <CarouselItem key={index}>
-                  <div className='h-[613px] w-full rounded-[15px] bg-gray-50'></div>
+                  <div className='flex h-[613px] w-full items-center justify-center rounded-[15px] bg-gray-50'>
+                    <span>No Image Available</span>
+                  </div>
                 </CarouselItem>
               ))}
         </CarouselContent>
