@@ -8,6 +8,7 @@ export const en = {
     searchButton: 'Find',
     addAdvert: 'To add an advert',
     showAllCategories: 'Show all categories',
+    hideCategories: 'Hide categories',
     showLess: 'Show less',
     showMore: 'Show more',
     showMoreAnnouncements: 'Show more announcements',
@@ -95,5 +96,7 @@ export const en = {
   words: {
     found: 'Found',
     announcements: 'announcements',
+    open: 'Open',
+    moreCategories: 'more categories',
   },
 }

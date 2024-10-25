@@ -7,11 +7,12 @@ import {
   CategoryNavbar,
   CategoryNavbarSkeleton,
 } from '@/widgets/category-navbar'
-import { ProductGrid } from '@/widgets/product-grid'
+import { ProductGrid, ProductGridMobile } from '@/widgets/product-grid'
 import { categoryApi, type Category } from '@/entities/category'
 import { Breadcrumbs, PageHeading } from '@/shared/ui'
 import { PageHeadingSkeleton } from '@/shared/ui/skeletons/page-heading-skeleton'
 import { QUERY_KEYS } from '@/shared/constants'
+import { useMediaQuery } from '@/shared/library/hooks'
 import type { Crumb } from '@/shared/library/types/types'
 import { generateCrumbs } from '@/shared/library/utils/generate-crumbs'
 
@@ -26,6 +27,7 @@ export const CatalogPage = () => {
   const navigate = useNavigate()
   const path = formatPath(location.pathname)
   const [crumbs, setCrumbs] = useState<Crumb[]>([{ text: '...' }])
+  const isMobile = useMediaQuery('(max-width: 767px)')
 
   const { isLoading, data } = useQuery<Category>({
     queryKey: [QUERY_KEYS.CATEGORY, path, i18n.language],
@@ -56,7 +58,12 @@ export const CatalogPage = () => {
           <>
             <PageHeading title={data.title} />
             <CategoryNavbar data={data.children} />
-            <ProductGrid path={data.path} />
+
+            {isMobile ? (
+              <ProductGridMobile path={data.path} />
+            ) : (
+              <ProductGrid path={data.path} />
+            )}
           </>
         )}
       </div>
