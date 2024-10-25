@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import type { CategoryChild } from '@/entities/category'
 import {
@@ -11,6 +12,7 @@ import { CategoryNavbarItem } from './cat-navbar-item'
 
 export const CategoryNavbarMobile = ({ data }: { data: CategoryChild[] }) => {
   const [isOpen, setIsOpen] = useState(false)
+  const { t } = useTranslation()
 
   return (
     <Collapsible
@@ -55,8 +57,8 @@ export const CategoryNavbarMobile = ({ data }: { data: CategoryChild[] }) => {
       {data.length > 6 && (
         <CollapsibleTrigger className='btn-secondary'>
           {isOpen
-            ? 'Hide categories'
-            : `Open ${data.length - 6} more categories`}
+            ? t('buttons.hideCategories')
+            : `${t('words.open')} ${data.length - 6} ${t('words.moreCategories')}`}
         </CollapsibleTrigger>
       )}
     </Collapsible>

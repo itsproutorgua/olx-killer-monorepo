@@ -11,6 +11,7 @@ export const uk = {
     showAllCategories: 'Показати всі категорії',
     showLess: 'Показати менше',
     showMore: 'Показати більше',
+    hideCategories: 'Приховати категорії',
     showMoreAnnouncements: 'Показати більше оголошень',
     loadMore: 'Завантажити більше',
     buy: 'Купити',
@@ -96,5 +97,7 @@ export const uk = {
   words: {
     found: 'Знайдено',
     announcements: 'оголошень',
+    open: 'Відкрити',
+    moreCategories: 'більше категорій',
   },
 }
