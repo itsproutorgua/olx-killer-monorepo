@@ -118,4 +118,10 @@ export const uk = {
     createAccount: 'Створити профіль',
     contactSeller: "Зв'язатись з продавцем",
   },
+  filters: {
+    subcategory: 'Підкатегорія',
+    price: 'Ціна',
+    size: 'Розмір',
+    colors: 'Кольори',
+  },
 }

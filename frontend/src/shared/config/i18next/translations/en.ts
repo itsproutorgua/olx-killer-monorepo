@@ -118,4 +118,10 @@ export const en = {
     createAccount: 'Create an account',
     contactSeller: 'CONTACT THE SELLER',
   },
+  filters: {
+    subcategory: 'Subcategory',
+    price: 'Price',
+    size: 'Size',
+    colors: 'Colors',
+  },
 }
