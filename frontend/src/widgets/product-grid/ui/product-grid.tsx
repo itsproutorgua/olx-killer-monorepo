@@ -1,9 +1,9 @@
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import { useTranslation } from 'react-i18next'
 
+import { FiltersBar } from '@/widgets/filters-bar'
 import { PageToolbar } from '@/widgets/page-toolbar'
 import { ProductCard } from '@/widgets/product-card'
-import { FiltersBar } from '@/features/filter-bar'
 import { PagePagination } from '@/features/page-pagination'
 import { productApi, type ProductResponse } from '@/entities/product'
 import { SectionTitle } from '@/shared/ui'

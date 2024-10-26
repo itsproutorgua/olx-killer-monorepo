@@ -27,6 +27,8 @@ const config = {
       background: '#F9FAFB',
       foreground: '#111827',
       border: '#E5E7EB',
+      black: '#000',
+      white: '#fff',
       primary: {
         50: '#EEF4FF',
         100: '#E0EAFF',

@@ -19,6 +19,8 @@ export const en = {
     writeSeller: 'Write to the seller',
     showNumber: 'Show number',
     filters: 'Filters',
+    back: 'Back',
+    show: 'Show',
   },
   sort: {
     rating: 'Behind the rating',

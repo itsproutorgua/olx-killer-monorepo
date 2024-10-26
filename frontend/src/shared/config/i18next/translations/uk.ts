@@ -20,6 +20,8 @@ export const uk = {
     writeSeller: 'Написати продавцю',
     showNumber: 'Показати номер',
     filters: 'Фільтри',
+    back: 'Назад',
+    show: 'Показати',
   },
   sort: {
     rating: 'За рейтингом',

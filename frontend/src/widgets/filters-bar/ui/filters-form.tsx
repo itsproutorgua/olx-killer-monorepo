@@ -13,7 +13,7 @@ import { COLOR_STYLES } from '@/shared/constants'
 import { cn } from '@/shared/library/utils'
 import { FILTERS } from '../mock'
 
-export const FiltersDesktop = () => {
+export const FiltersForm = () => {
   const [value, setValue] = useState<string[]>([
     'Subcategory',
     'Price',
