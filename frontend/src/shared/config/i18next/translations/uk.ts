@@ -20,6 +20,8 @@ export const uk = {
     writeSeller: 'Написати продавцю',
     showNumber: 'Показати номер',
     filters: 'Фільтри',
+    back: 'Назад',
+    show: 'Показати',
   },
   sort: {
     rating: 'За рейтингом',
@@ -117,5 +119,11 @@ export const uk = {
     log_in: 'Увійти',
     createAccount: 'Створити профіль',
     contactSeller: "Зв'язатись з продавцем",
+  },
+  filters: {
+    subcategory: 'Підкатегорія',
+    price: 'Ціна',
+    size: 'Розмір',
+    colors: 'Кольори',
   },
 }

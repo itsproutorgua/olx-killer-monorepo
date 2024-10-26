@@ -1,6 +1,6 @@
 type FilterType = 'Checkbox' | 'Slider'
 
-interface Filter {
+export interface Filter {
   type: FilterType
   name: string
   label: string

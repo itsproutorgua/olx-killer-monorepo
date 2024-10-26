@@ -19,6 +19,8 @@ export const en = {
     writeSeller: 'Write to the seller',
     showNumber: 'Show number',
     filters: 'Filters',
+    back: 'Back',
+    show: 'Show',
   },
   sort: {
     rating: 'Behind the rating',
@@ -117,5 +119,11 @@ export const en = {
     log_in: 'Log in',
     createAccount: 'Create an account',
     contactSeller: 'CONTACT THE SELLER',
+  },
+  filters: {
+    subcategory: 'Subcategory',
+    price: 'Price',
+    size: 'Size',
+    colors: 'Colors',
   },
 }
