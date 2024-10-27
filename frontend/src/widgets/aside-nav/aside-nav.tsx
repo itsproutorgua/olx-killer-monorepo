@@ -81,7 +81,7 @@ export const AsideNav = () => {
                       <Link to={`/catalog/${sub.path}`}>
                         <HoverCard openDelay={500} closeDelay={0}>
                           <HoverCardTrigger asChild>
-                            <h4 className='overflow-hidden text-ellipsis whitespace-nowrap text-base/[19.36px] font-semibold hover:text-primary-600'>
+                            <h4 className='overflow-hidden text-ellipsis whitespace-nowrap text-base/[19.36px] font-semibold capitalize hover:text-primary-600'>
                               {sub.title}
                             </h4>
                           </HoverCardTrigger>
