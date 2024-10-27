@@ -22,7 +22,7 @@ import { FacebookIconOutline, InstagramIconOutline } from '@/shared/ui'
 import AsideCategoryLoader from '@/shared/ui/loaders/aside-category.loader.tsx'
 import { QUERY_KEYS } from '@/shared/constants'
 
-const TITLE_LENGTH_THRESHOLD = 20 // Set a threshold for truncation (number of characters)
+const TITLE_LENGTH_THRESHOLD = 17 // Set a threshold for truncation (number of characters)
 
 export const AsideNav = () => {
   const { t, i18n } = useTranslation()
