@@ -22,7 +22,7 @@ import { FacebookIconOutline, InstagramIconOutline } from '@/shared/ui'
 import AsideCategoryLoader from '@/shared/ui/loaders/aside-category.loader.tsx'
 import { QUERY_KEYS } from '@/shared/constants'
 
-const TITLE_LENGTH_THRESHOLD = 20 // Set a threshold for truncation (number of characters)
+const TITLE_LENGTH_THRESHOLD = 17 // Set a threshold for truncation (number of characters)
 
 export const AsideNav = () => {
   const { t, i18n } = useTranslation()
@@ -81,7 +81,7 @@ export const AsideNav = () => {
                       <Link to={`/catalog/${sub.path}`}>
                         <HoverCard openDelay={500} closeDelay={0}>
                           <HoverCardTrigger asChild>
-                            <h4 className='overflow-hidden text-ellipsis whitespace-nowrap text-base/[19.36px] font-semibold hover:text-primary-600'>
+                            <h4 className='overflow-hidden text-ellipsis whitespace-nowrap text-base/[19.36px] font-semibold capitalize hover:text-primary-600'>
                               {sub.title}
                             </h4>
                           </HoverCardTrigger>
