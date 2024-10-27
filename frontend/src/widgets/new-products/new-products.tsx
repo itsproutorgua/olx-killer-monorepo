@@ -1,9 +1,8 @@
-import React from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { ScrollableProductList } from '@/widgets/scrollable-product-list/scrollable-product-list.tsx'
 
-export const NewProducts: React.FC = () => {
+export const NewProducts = () => {
   const { t } = useTranslation()
 
   return (
@@ -14,6 +13,7 @@ export const NewProducts: React.FC = () => {
         scrollStep={3} // Number of items to scroll
         className='max-w-[1150px] overflow-x-auto xl:w-[calc(100vw-var(--aside-nav-width)-var(--extra-padding))] xl:min-w-[1030px]'
         titleWidth='958px'
+        onProductClick={() => {}}
       />
     </div>
   )

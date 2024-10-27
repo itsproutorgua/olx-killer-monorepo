@@ -128,7 +128,7 @@ export const AsideNav = () => {
                           to={`/catalog/${sub.path}`}
                           className='rounded-[7px] bg-primary-900 px-[5px] py-[1px] text-xs text-gray-50 transition-colors duration-300 hover:bg-primary-600'
                         >
-                          Show all
+                          {t('words.showAll')}
                         </Link>
                       </div>
                     </div>
