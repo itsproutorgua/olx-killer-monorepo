@@ -81,8 +81,8 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({
           <CarouselContent>
             {Array.from({ length: 4 }).map((_, index) => (
               <CarouselItem key={index} className='flex gap-[10px]'>
-                <ProductCardLoaderSmall key={`${index}-1`} />
-                <ProductCardLoaderSmall key={`${index}-2`} />
+                <ProductCardLoaderSmall key={`${index}-loader-1`} />
+                <ProductCardLoaderSmall key={`${index}-loader-2`} />
               </CarouselItem>
             ))}
           </CarouselContent>
@@ -95,14 +95,11 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({
                 <CarouselItem key={index} className='flex gap-[10px]'>
                   {pair.map((deal: Product) => (
                     <div
+                      key={deal.slug}
                       onClick={() => onProductClick(`/${deal.slug}`)}
                       className='w-[173px]'
                     >
-                      <ProductCard
-                        product={deal}
-                        key={deal.slug}
-                        className='w-[172px]'
-                      />
+                      <ProductCard product={deal} className='w-[172px]' />
                     </div>
                   ))}
                 </CarouselItem>
