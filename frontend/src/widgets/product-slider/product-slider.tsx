@@ -20,6 +20,7 @@ interface ProductSliderProps {
   path: string // Products array
   chunkSize?: number // Default chunk size for pairing
   className?: string
+  onProductClick: (slug: string) => void
 }
 
 export const ProductSlider: React.FC<ProductSliderProps> = ({
@@ -27,6 +28,7 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({
   path,
   chunkSize = 2, // Default chunk size is set to 2
   className,
+  onProductClick,
 }) => {
   const [api, setApi] = useState<CarouselApi>(),
     [current, setCurrent] = useState(0),
@@ -92,11 +94,16 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({
               (pair: Product[], index: number) => (
                 <CarouselItem key={index} className='flex gap-[10px]'>
                   {pair.map((deal: Product) => (
-                    <ProductCard
-                      product={deal}
-                      key={deal.slug}
-                      className='w-[172px]'
-                    />
+                    <div
+                      onClick={() => onProductClick(`/${deal.slug}`)}
+                      className='w-[173px]'
+                    >
+                      <ProductCard
+                        product={deal}
+                        key={deal.slug}
+                        className='w-[172px]'
+                      />
+                    </div>
                   ))}
                 </CarouselItem>
               ),

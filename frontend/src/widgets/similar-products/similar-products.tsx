@@ -3,7 +3,13 @@ import { useTranslation } from 'react-i18next'
 
 import { ScrollableProductList } from '@/widgets/scrollable-product-list/scrollable-product-list.tsx'
 
-export const SimilarProducts: React.FC = () => {
+export interface SimilarProductProps {
+  onProductClick: (slug: string) => void
+}
+
+export const SimilarProducts: React.FC<SimilarProductProps> = ({
+  onProductClick,
+}) => {
   const { t } = useTranslation()
 
   return (
@@ -12,6 +18,7 @@ export const SimilarProducts: React.FC = () => {
       path='elektronika/telefony-i-aksesuary/mobilnye-telefony-smartfony'
       scrollStep={3} // Number of items to scroll
       className='absolute flex w-[107%] overflow-hidden'
+      onProductClick={onProductClick}
     />
   )
 }

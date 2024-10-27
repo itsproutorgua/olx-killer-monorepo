@@ -17,6 +17,7 @@ interface ScrollableProductListProps {
   title: string
   path: string
   scrollStep?: number
+  onProductClick: (slug: string) => void
 }
 
 export const ScrollableProductList: React.FC<ScrollableProductListProps> = ({
@@ -25,6 +26,7 @@ export const ScrollableProductList: React.FC<ScrollableProductListProps> = ({
   scrollStep = 3, // Default scroll step of 3 items
   className,
   titleWidth = '1280px',
+  onProductClick,
 }) => {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const [isLeftDisabled, setIsLeftDisabled] = useState(true)
@@ -164,7 +166,10 @@ export const ScrollableProductList: React.FC<ScrollableProductListProps> = ({
           onScroll={handleScroll}
         >
           {data?.results.slice(0, 10).map((product: Product) => (
-            <div key={product.slug}>
+            <div
+              key={product.slug}
+              onClick={() => onProductClick(`/${product.slug}`)}
+            >
               <ProductCard product={product} />
             </div>
           ))}

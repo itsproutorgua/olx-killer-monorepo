@@ -25,7 +25,7 @@ const formatPath = (pathname: string) => {
 
 export const ProductPage = () => {
   const { i18n } = useTranslation()
-  const slug = formatPath(location.pathname)
+  const [slug, setSlug] = useState(formatPath(location.pathname))
   const [crumbs, setCrumbs] = useState<Crumb[]>([{ text: '...' }])
 
   const {
@@ -37,6 +37,15 @@ export const ProductPage = () => {
     queryFn: () => productApi.findBySlug({ slug }),
     enabled: !!slug,
   })
+
+  const handleProductClick = (newSlug: string) => {
+    setSlug(newSlug)
+  }
+
+  useEffect(() => {
+    // Scroll to top on mount or when slug changes
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }, [slug])
 
   useEffect(() => {
     if (product) {
@@ -59,19 +68,19 @@ export const ProductPage = () => {
       )}
 
       <div className='mb-[53px] hidden min-h-[277px] md:relative md:block xl:min-h-[440px]'>
-        <ProductsBySeller />
+        <ProductsBySeller onProductClick={handleProductClick} />
       </div>
 
       <div className='mb-20 md:hidden'>
-        <ProductsBySellerSlider />
+        <ProductsBySellerSlider onProductClick={handleProductClick} />
       </div>
 
       <div className='mb-[53px] hidden min-h-[277px] md:relative md:block xl:min-h-[440px]'>
-        <SimilarProducts />
+        <SimilarProducts onProductClick={handleProductClick} />
       </div>
 
       <div className='mb-20 md:hidden'>
-        <SimilarProductsSlider />
+        <SimilarProductsSlider onProductClick={handleProductClick} />
       </div>
     </div>
   )

@@ -1,11 +1,17 @@
-import { ProductSlider } from '@/widgets/product-slider/product-slider.tsx'
+import React from 'react'
 
-export const SimilarProductsSlider = () => {
+import { ProductSlider } from '@/widgets/product-slider/product-slider.tsx'
+import { SimilarProductProps } from '@/widgets/similar-products/similar-products.tsx'
+
+export const SimilarProductsSlider: React.FC<SimilarProductProps> = ({
+  onProductClick,
+}) => {
   return (
     <ProductSlider
       titleKey='titles.similarProducts'
       path='elektronika/telefony-i-aksesuary/mobilnye-telefony-smartfony'
       chunkSize={2} // Set the chunk size as needed
+      onProductClick={onProductClick}
     />
   )
 }

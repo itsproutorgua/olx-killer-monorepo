@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import sellerLogo from '@/shared/assets/images/seller/seller_logo.png'
 import i18n from 'i18next'
 import { useTranslation } from 'react-i18next'
@@ -23,6 +23,16 @@ interface Props {
 
 export const ProductInfo: React.FC<Props> = ({ className, product }) => {
   const { t } = useTranslation()
+  const [showFullDescription, setShowFullDescription] = useState(false)
+
+  const maxClampLength = 200
+  useEffect(() => {
+    setShowFullDescription(false)
+  }, [product])
+
+  const toggleDescription = () => {
+    setShowFullDescription(!showFullDescription)
+  }
 
   const announcement = {
     id: '858057687',
@@ -68,7 +78,7 @@ export const ProductInfo: React.FC<Props> = ({ className, product }) => {
           rating={announcement.sellerRating}
           reviews={announcement.reviews}
         />
-        <p className='mt-2 text-[13px] leading-5 md:mt-[14px]'>
+        <p className='mt-2 line-clamp-3 text-[13px] leading-5 md:mt-[14px]'>
           {product.description}
         </p>
       </div>
@@ -98,7 +108,24 @@ export const ProductInfo: React.FC<Props> = ({ className, product }) => {
       </div>
       <div className='mt-[54px] hidden leading-none md:block'>
         <h3 className='font-semibold uppercase'>{t('words.description')}</h3>
-        <p className='mt-[14px] leading-5'>{product.description}</p>
+        <p className='mt-[14px] leading-5'>
+          <p className='mt-2 leading-5 md:mt-[14px]'>
+            {showFullDescription
+              ? product.description
+              : product.description.slice(0, maxClampLength) +
+                (product.description.length > maxClampLength ? '...' : '')}
+          </p>
+          {product.description.length > maxClampLength && (
+            <button
+              onClick={toggleDescription}
+              className='mt-2 text-sm text-gray-600 hover:underline'
+            >
+              {showFullDescription
+                ? t('buttons.showLess')
+                : t('buttons.showMore')}
+            </button>
+          )}
+        </p>
         <Separator className='border-primary-gray mt-[11px]' />
       </div>
       <div className='text-primary-gray mt-[11px] hidden flex-row items-center justify-between text-xs md:flex'>
