@@ -13,7 +13,7 @@ class ProfileAdmin(admin.ModelAdmin):
     autocomplete_fields = ('location',)
 
     def get_queryset(self, request):
-        return super().get_queryset(request).select_related('user').order_by('-updated_at')
+        return super().get_queryset(request).select_related('user').order_by('-created_at')
 
     def has_add_permission(self, request):
         return False
