@@ -2,47 +2,53 @@
 
 set -e
 
-mkdir -p /code/setup
+sleep 10
 
-if [ ! -f /code/setup/db_initialized ]; then
+if ! python manage.py showmigrations | grep '\[X\]'; then
     python manage.py makemigrations
     python manage.py migrate
-
-    touch /code/setup/db_initialized
 fi
 
-if ! python manage.py shell -c "from django.contrib.auth import get_user_model; get_user_model().objects.filter(is_superuser=True).exists()"; then
-    python manage.py create_default_superuser
+echo "Checking for locations..."
+if ! python manage.py shell -c "from apps.locations.models import Location; \
+print(Location.objects.exists())" | grep -q True; then
+    echo "Creating locations..."
+    python manage.py create_regions_and_cities
+else
+    echo "Locations already exist."
 fi
 
-if ! python manage.py shell -c "from apps.locations.models import Location; Location.objects.exists()"; then
-    python manage.py create_locations
-fi
-
-if ! python manage.py shell -c "from apps.products.models import Currency; Currency.objects.exists()"; then
+echo "Checking for currency..."
+if ! python manage.py shell -c "from apps.products.models import Currency; \
+print(Currency.objects.exists())" | grep -q True; then
+    echo "Creating currency..."
     python manage.py create_currency
+else
+    echo "Currency already exists."
 fi
 
-if ! python manage.py shell -c "from apps.products.models import Category; Category.objects.exists()"; then
+echo "Checking for categories..."
+if ! python manage.py shell -c "from apps.products.models import Category; \
+print(Category.objects.exists())" | grep -q True; then
+    echo "Creating OLX categories..."
     python manage.py create_olx_categories
-fi
-
-if [ ! -f /code/setup/fixtures_loaded ]; then
+    echo "Creating fixtures..."
     python manage.py load_fixtures
-
-    touch /code/setup/fixtures_loaded
+else
+    echo "Categories already exist."
+    echo "Fixtures already exist."
 fi
 
-if [ ! -f /code/setup/static_collected ]; then
-    python manage.py collectstatic --no-input --clear
-
-    touch /code/setup/static_collected
+echo "Checking for superuser..."
+if ! python manage.py shell -c "from django.contrib.auth import get_user_model; \
+print(get_user_model().objects.filter(is_superuser=True).exists())" | grep -q True; then
+    echo "Creating default superuser..."
+    python manage.py create_default_superuser
+else
+    echo "Superuser already exists."
 fi
 
-if [ ! -f /code/setup/messages_compiled ]; then
-    django-admin compilemessages
+django-admin compilemessages
+python manage.py collectstatic --no-input --clear
 
-    touch /code/setup/messages_compiled
-fi
-
-python manage.py runserver 0.0.0.0:8000
+exec gunicorn -c gunicorn_config.py apps.wsgi:application
