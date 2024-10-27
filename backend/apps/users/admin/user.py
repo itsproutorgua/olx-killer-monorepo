@@ -44,7 +44,7 @@ class UserAdmin(BaseUserAdmin):
     show_full_result_count = False
 
     def get_queryset(self, request):
-        return super().get_queryset(request).select_related('profile').order_by('-updated_at')
+        return super().get_queryset(request).select_related('profile').order_by('-date_joined')
 
     @admin.display(description=_('Profile link'))
     def profile_link(self, obj):
