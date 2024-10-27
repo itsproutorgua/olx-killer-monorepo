@@ -7,6 +7,7 @@ from apps.locations.models import Village
 @admin.register(Village)
 class VillageAdmin(admin.ModelAdmin):
     list_display = ('name', 'region')
+    readonly_fields = ('created_at', 'updated_at')
     search_fields = ['name']
     show_full_result_count = False
 
