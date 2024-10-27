@@ -25,7 +25,9 @@ const formatPath = (pathname: string) => {
 
 export const ProductPage = () => {
   const { i18n } = useTranslation()
-  const [slug, setSlug] = useState(formatPath(location.pathname))
+  const [slug, setSlug] = useState(
+    location ? formatPath(location.pathname) : '',
+  )
   const [crumbs, setCrumbs] = useState<Crumb[]>([{ text: '...' }])
 
   const {

@@ -119,6 +119,7 @@ export const en = {
     log_in: 'Log in',
     createAccount: 'Create an account',
     contactSeller: 'CONTACT THE SELLER',
+    showAll: 'Show all',
   },
   filters: {
     subcategory: 'Subcategory',

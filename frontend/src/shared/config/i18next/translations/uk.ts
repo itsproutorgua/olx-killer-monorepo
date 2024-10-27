@@ -119,6 +119,7 @@ export const uk = {
     log_in: 'Увійти',
     createAccount: 'Створити профіль',
     contactSeller: "Зв'язатись з продавцем",
+    showAll: 'Показати всі',
   },
   filters: {
     subcategory: 'Підкатегорія',

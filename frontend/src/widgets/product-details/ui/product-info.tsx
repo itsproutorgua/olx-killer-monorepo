@@ -108,24 +108,22 @@ export const ProductInfo: React.FC<Props> = ({ className, product }) => {
       </div>
       <div className='mt-[54px] hidden leading-none md:block'>
         <h3 className='font-semibold uppercase'>{t('words.description')}</h3>
-        <p className='mt-[14px] leading-5'>
-          <p className='mt-2 leading-5 md:mt-[14px]'>
-            {showFullDescription
-              ? product.description
-              : product.description.slice(0, maxClampLength) +
-                (product.description.length > maxClampLength ? '...' : '')}
-          </p>
-          {product.description.length > maxClampLength && (
-            <button
-              onClick={toggleDescription}
-              className='mt-2 text-sm text-gray-600 hover:underline'
-            >
-              {showFullDescription
-                ? t('buttons.showLess')
-                : t('buttons.showMore')}
-            </button>
-          )}
+        <p className='mt-2 leading-5 md:mt-[14px]'>
+          {showFullDescription
+            ? product.description
+            : product.description.slice(0, maxClampLength) +
+              (product.description.length > maxClampLength ? '...' : '')}
         </p>
+        {product.description.length > maxClampLength && (
+          <button
+            onClick={toggleDescription}
+            className='mt-2 text-sm text-gray-600 hover:underline'
+          >
+            {showFullDescription
+              ? t('buttons.showLess')
+              : t('buttons.showMore')}
+          </button>
+        )}
         <Separator className='border-primary-gray mt-[11px]' />
       </div>
       <div className='text-primary-gray mt-[11px] hidden flex-row items-center justify-between text-xs md:flex'>
