@@ -23,6 +23,7 @@ import AsideCategoryLoader from '@/shared/ui/loaders/aside-category.loader.tsx'
 import { QUERY_KEYS } from '@/shared/constants'
 
 const TITLE_LENGTH_THRESHOLD = 17 // Set a threshold for truncation (number of characters)
+const SUBTITLE_LENGTH_THRESHOLD = 15
 
 export const AsideNav = () => {
   const { t, i18n } = useTranslation()
@@ -86,7 +87,7 @@ export const AsideNav = () => {
                             </h4>
                           </HoverCardTrigger>
                           {/* Only render HoverCardContent if title length exceeds threshold */}
-                          {sub.title.length > TITLE_LENGTH_THRESHOLD && (
+                          {sub.title.length > SUBTITLE_LENGTH_THRESHOLD && (
                             <HoverCardContent
                               side='top'
                               className='w-fit bg-gray-50'

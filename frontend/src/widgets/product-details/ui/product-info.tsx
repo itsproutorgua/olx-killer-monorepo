@@ -26,6 +26,7 @@ export const ProductInfo: React.FC<Props> = ({ className, product }) => {
   const [showFullDescription, setShowFullDescription] = useState(false)
 
   const maxClampLength = 200
+  const maxClampLengthSmall = 130
   useEffect(() => {
     setShowFullDescription(false)
   }, [product])
@@ -78,9 +79,22 @@ export const ProductInfo: React.FC<Props> = ({ className, product }) => {
           rating={announcement.sellerRating}
           reviews={announcement.reviews}
         />
-        <p className='mt-2 line-clamp-3 text-[13px] leading-5 md:mt-[14px]'>
-          {product.description}
+        <p className='mt-2 text-[13px] leading-5 md:mt-[14px]'>
+          {showFullDescription
+            ? product.description
+            : product.description.slice(0, maxClampLengthSmall) +
+              (product.description.length > maxClampLengthSmall ? '...' : '')}
         </p>
+        {product.description.length > maxClampLength && (
+          <button
+            onClick={toggleDescription}
+            className='mt-2 text-sm text-gray-600 hover:underline'
+          >
+            {showFullDescription
+              ? t('buttons.showLess')
+              : t('buttons.showMore')}
+          </button>
+        )}
       </div>
       <div className='mt-[34px] flex items-center justify-between'>
         <p className='text-[28px] font-medium leading-[1.22] md:text-[32px]'>

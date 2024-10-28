@@ -9,6 +9,12 @@ import {
   CarouselPrevious,
   type CarouselApi,
 } from '@/shared/ui/shadcn-ui/carousel.tsx'
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from '@/shared/ui/shadcn-ui/dialog.tsx'
 import { cn } from '@/shared/library/utils'
 
 interface Props {
@@ -17,37 +23,44 @@ interface Props {
 }
 
 export const ProductCarousel: React.FC<Props> = ({ product }) => {
-  const [api, setApi] = useState<CarouselApi>()
+  const [mainCarouselApi, setMainCarouselApi] = useState<CarouselApi>()
   const [current, setCurrent] = useState(0)
+  const [currentIndex, setCurrentIndex] = useState(0) // Track current index for modal
   const [thumbsStartIndex, setThumbsStartIndex] = useState(0)
-  const THUMBS_TO_SHOW = 5 // Number of thumbnails to display
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const THUMBS_TO_SHOW = 5
 
   const images =
     product.images && product.images.length > 0 ? product.images : null
 
   useEffect(() => {
-    if (!api) {
+    if (!mainCarouselApi) {
       return
     }
-    setCurrent(api.selectedScrollSnap() + 1)
 
-    api.on('select', () => {
-      const selectedSnap = api.selectedScrollSnap()
+    setCurrent(mainCarouselApi.selectedScrollSnap() + 1)
+    setCurrentIndex(mainCarouselApi.selectedScrollSnap()) // Initialize the current index
+
+    mainCarouselApi.on('select', () => {
+      const selectedSnap = mainCarouselApi.selectedScrollSnap()
       setCurrent(selectedSnap + 1)
+      setCurrentIndex(selectedSnap) // Update the current index for the modal
 
-      // Adjust the thumbnail window based on the selected slide
+      // Adjust thumbnail window based on the selected slide
       if (selectedSnap >= thumbsStartIndex + THUMBS_TO_SHOW) {
         setThumbsStartIndex(selectedSnap - THUMBS_TO_SHOW + 1)
       } else if (selectedSnap < thumbsStartIndex) {
         setThumbsStartIndex(0)
       }
     })
-  }, [api, thumbsStartIndex])
+  }, [mainCarouselApi, thumbsStartIndex])
+
+  const handleImageClick = () => setIsModalOpen(true)
 
   return (
     <div className='relative'>
       <Carousel
-        setApi={setApi}
+        setApi={setMainCarouselApi}
         opts={{
           align: 'start',
           loop: true,
@@ -57,7 +70,10 @@ export const ProductCarousel: React.FC<Props> = ({ product }) => {
           {images
             ? images.map((image, index) => (
                 <CarouselItem key={index}>
-                  <div className='flex h-[392px] w-[355px] items-center justify-center rounded-[15px] bg-gray-100 xl:h-[613px] xl:w-[629px]'>
+                  <div
+                    onClick={handleImageClick}
+                    className='flex h-[238px] w-[355px] cursor-pointer items-center justify-center rounded-[15px] bg-gray-100 xl:h-[613px] xl:w-[629px]'
+                  >
                     <img
                       src={image.image}
                       alt={product.title || `Product image ${index + 1}`}
@@ -66,8 +82,7 @@ export const ProductCarousel: React.FC<Props> = ({ product }) => {
                   </div>
                 </CarouselItem>
               ))
-            : // If there are no images, render a placeholder gray background
-              Array.from({ length: 3 }).map((_, index) => (
+            : Array.from({ length: 3 }).map((_, index) => (
                 <CarouselItem key={index}>
                   <div className='flex h-[613px] w-full items-center justify-center rounded-[15px] bg-gray-50'>
                     <span>No Image Available</span>
@@ -103,7 +118,9 @@ export const ProductCarousel: React.FC<Props> = ({ product }) => {
                   .map((image, index) => (
                     <button
                       key={index}
-                      onClick={() => api?.scrollTo(thumbsStartIndex + index)}
+                      onClick={() =>
+                        mainCarouselApi?.scrollTo(thumbsStartIndex + index)
+                      }
                       className={cn(
                         'cursor-pointer',
                         thumbsStartIndex + index === current - 1
@@ -120,8 +137,7 @@ export const ProductCarousel: React.FC<Props> = ({ product }) => {
                       </div>
                     </button>
                   ))
-              : // If no images, render placeholder thumbnails
-                Array.from({ length: THUMBS_TO_SHOW }).map((_, index) => (
+              : Array.from({ length: THUMBS_TO_SHOW }).map((_, index) => (
                   <div
                     key={index}
                     className='max-h-[48px] max-w-[48px] rounded bg-gray-50 md:max-h-[88px] md:max-w-[88px]'
@@ -148,6 +164,50 @@ export const ProductCarousel: React.FC<Props> = ({ product }) => {
           </CarouselNext>
         </div>
       </Carousel>
+
+      {/* Fullscreen Dialog Modal */}
+      <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+        <DialogContent className='rounded-[16px]' aria-describedby={undefined}>
+          <DialogHeader>
+            <DialogTitle>{product.title}</DialogTitle>
+          </DialogHeader>
+          <p id='dialog-description' className='sr-only'>
+            View images of {product.title}. Use arrow keys to navigate through
+            the images.
+          </p>
+          <Carousel
+            opts={{
+              align: 'start',
+              loop: true,
+              startIndex: currentIndex,
+            }}
+          >
+            <CarouselContent>
+              {images?.map((image, index) => (
+                <CarouselItem key={index}>
+                  <div className='flex h-[85vh] w-full items-center justify-center'>
+                    <img
+                      src={image.image}
+                      alt={`Product image ${index + 1}`}
+                      className='max-h-full max-w-full object-contain'
+                    />
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious
+              variant={null}
+              size={null}
+              className='absolute left-4 top-1/2 -translate-y-1/2 transform rounded-full bg-gray-900/30 p-2 text-white hover:bg-gray-900/50 active:bg-gray-900/70'
+            />
+            <CarouselNext
+              variant={null}
+              size={null}
+              className='absolute right-4 top-1/2 -translate-y-1/2 transform rounded-full bg-gray-900/30 p-2 text-white hover:bg-gray-900/50 active:bg-gray-900/70'
+            />
+          </Carousel>
+        </DialogContent>
+      </Dialog>
     </div>
   )
 }
