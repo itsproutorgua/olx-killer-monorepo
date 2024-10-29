@@ -1,12 +1,18 @@
 [![Python](https://img.shields.io/badge/-Python-%233776AB?style=for-the-badge&logo=python&logoColor=white&labelColor=0a0a0a)](https://www.python.org/)
 [![Django Rest Framework](https://img.shields.io/badge/-Django%20Rest%20Framework-%2300B96F?style=for-the-badge&logo=django&logoColor=white&labelColor=0a0a0a)](https://www.django-rest-framework.org/)
+[![Jazzmin](https://img.shields.io/badge/-Jazzmin-%2343B02A?style=for-the-badge&logo=django&logoColor=white&labelColor=0a0a0a)](https://django-jazzmin.readthedocs.io/)
+[![Django Storages](https://img.shields.io/badge/-Django%20Storages-%230F9B9A?style=for-the-badge&logo=django&logoColor=white&labelColor=0a0a0a)](https://django-storages.readthedocs.io/en/latest/)
+[![Django Simple History](https://img.shields.io/badge/-Django%20Simple%20History-%23FF4C4C?style=for-the-badge&logo=django&logoColor=white&labelColor=0a0a0a)](https://django-simple-history.readthedocs.io/en/latest/)
 [![JWT Authentication](https://img.shields.io/badge/-JWT%20Authentication-%23FFB300?style=for-the-badge&logo=json-web-tokens&logoColor=white&labelColor=0a0a0a)](https://jwt.io/)
+[![Swagger](https://img.shields.io/badge/-Swagger-%2385EA2D?style=for-the-badge&logo=swagger&logoColor=white&labelColor=0a0a0a)](https://swagger.io/)
 [![PostgreSQL](https://img.shields.io/badge/-PostgreSQL-%23316192?style=for-the-badge&logo=postgresql&logoColor=white&labelColor=0a0a0a)](https://www.postgresql.org/)
 [![Redis](https://img.shields.io/badge/-Redis-%3DE345?style=for-the-badge&logo=redis&logoColor=white&labelColor=black)](https://pypi.org/project/django-redis/)
+[![Celery](https://img.shields.io/badge/Celery-37814A?style=for-the-badge&logo=celery&logoColor=white&labelColor=0a0a0a)](https://docs.celeryproject.org/en/stable/)
 [![Docker](https://img.shields.io/badge/-Docker-%232496ED?style=for-the-badge&logo=docker&logoColor=white&labelColor=0a0a0a)](https://www.docker.com/)
-[![Swagger](https://img.shields.io/badge/-Swagger-%2385EA2D?style=for-the-badge&logo=swagger&logoColor=white&labelColor=0a0a0a)](https://swagger.io/)
+[![AWS-S3](https://img.shields.io/badge/AWS-S3-569A31?style=for-the-badge&logo=AWS&logoColor=white&labelColor=0a0a0a)](https://aws.amazon.com/s3/)
 [![pre-commit](https://img.shields.io/badge/-pre--commit-yellow?style=for-the-badge&logo=pre-commit&logoColor=white&labelColor=0a0a0a)](https://pre-commit.com/)
-[![isort](https://img.shields.io/badge/isort-enabled-brightgreen?style=for-the-badge&logo=isort&logoColor=white&labelColor=0a0a0a)](https://pycqa.github.io/isort/)
+[![isort](https://img.shields.io/badge/isort-C86118?style=for-the-badge&logo=python&logoColor=white&labelColor=black)](https://pycqa.github.io/isort/)
+[![boto3](https://img.shields.io/badge/boto3-569A31?style=for-the-badge&logo=AWS&logoColor=white&labelColor=0a0a0a)](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html)
 
 # OLX Killer App
 
@@ -23,7 +29,9 @@
 - **django-cors-headers**: CORS handling.
 - **django-environ**: Environment variable management.
 - **django-modeltranslation**: Multilingual support for models.
+- **django-jazzmin**: Modern and customizable Django admin interface.
 - **gunicorn**: WSGI server for deployment.
+- **Celery**: Task queue for asynchronous processing.
 
 ## Database:
 
@@ -38,6 +46,15 @@
 - **flake8**: Linter for checking code quality and style.
 - **django-extensions**: Additional features and tools for Django.
 - **django-debug-toolbar**: Debugging and profiling tool for Django applications.
+
+## Dependencies
+
+- Django 5.x
+- Django REST Framework 3.x
+- Celery 5.x
+- Redis 5.x
+- PostgreSQL 12+
+- boto3 1.x
 
 ## Start Docker:
 
@@ -79,6 +96,10 @@ Make sure you have Docker and Docker Compose installed and upgrade on your machi
    ```bash
    docker-compose up
    ```
+   ### If you need rebuild the image built
+   ```bash
+   docker-compose up --build
+   ```
    ### Stop Docker Compose
    ```bash
    docker-compose down
@@ -88,11 +109,9 @@ Make sure you have Docker and Docker Compose installed and upgrade on your machi
    ```bash
    docker-compose down -v
    ```
-   
-
-   
 
 ### URLS:
-   - [admin-site](http://localhost:8000/uk/olx-killer-admin/)
-   - [rosetta](http://localhost:8000/rosetta/)
-   - [swagger](http://localhost:8000/api/v1/swagger/)
+
+- [admin-site](http://localhost:8000/uk/olx-killer-admin/)
+- [rosetta](http://localhost:8000/rosetta/)
+- [swagger](http://localhost:8000/api/v1/swagger/)
