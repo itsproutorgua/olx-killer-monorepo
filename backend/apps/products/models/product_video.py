@@ -6,9 +6,10 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 from apps.common import errors
+from apps.common.models import HistoricalModel
 
 
-class ProductVideo(models.Model):
+class ProductVideo(HistoricalModel, models.Model):
     MAX_FILE_SIZE_MB = settings.MAX_VIDEO_FILE_SIZE_MB
     ALLOWED_MIME_TYPES = settings.ALLOWED_VIDEO_MIME_TYPES
 
@@ -31,11 +32,19 @@ class ProductVideo(models.Model):
 
     def clean(self):
         super().clean()
+
+        if self.pk is not None:
+            existing_video = ProductVideo.objects.get(pk=self.pk).video
+
+            if self.video.name == existing_video.name:
+                return
+
         if self.video:
             try:
                 mime_type, encoding = mimetypes.guess_type(self.video.name)
                 if mime_type not in self.ALLOWED_MIME_TYPES:
                     raise ValidationError(errors.INVALID_VIDEO_TYPE)
+
             except Exception:
                 raise ValidationError(errors.INVALID_VIDEO)
 

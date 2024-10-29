@@ -7,9 +7,10 @@ from django.utils.translation import gettext_lazy as _
 from PIL import Image as PILImage
 
 from apps.common import errors
+from apps.common.models import HistoricalModel
 
 
-class ProductImage(models.Model):
+class ProductImage(HistoricalModel, models.Model):
     MAX_FILE_SIZE_MB = settings.MAX_IMAGE_FILE_SIZE_MB
     ALLOWED_MIME_TYPES = settings.ALLOWED_IMAGE_MIME_TYPES
 
@@ -32,13 +33,21 @@ class ProductImage(models.Model):
 
     def clean(self):
         super().clean()
+        if self.pk is not None:
+            existing_image = ProductImage.objects.get(pk=self.pk).image
+
+            if self.image == existing_image:
+                return
+
         if self.image:
             try:
-                with PILImage.open(self.image.file) as img:
-                    mime_type, encoding = mimetypes.guess_type(self.image.name)
-                    if mime_type not in self.ALLOWED_MIME_TYPES:
-                        raise ValidationError(errors.INVALID_IMAGE_TYPE)
+                mime_type, encoding = mimetypes.guess_type(self.image.name)
+                if mime_type not in self.ALLOWED_MIME_TYPES:
+                    raise ValidationError(errors.INVALID_IMAGE_TYPE)
+
+                with PILImage.open(self.image) as img:
                     img.verify()
+
             except Exception:
                 raise ValidationError(errors.INVALID_IMAGE)
 
