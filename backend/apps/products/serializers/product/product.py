@@ -30,6 +30,7 @@ class ProductSerializer(serializers.ModelSerializer):
             'images',
             'video',
             'seller',
+            'status',
             'slug',
             'views',
             'created_at',
