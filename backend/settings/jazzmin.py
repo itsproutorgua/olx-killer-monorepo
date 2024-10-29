@@ -1,3 +1,5 @@
+from django.utils.translation import gettext_lazy as _
+
 # JAZZMIN
 JAZZMIN_SETTINGS = {
     'site_header': 'OLX Killer',
@@ -30,25 +32,25 @@ JAZZMIN_SETTINGS = {
     'topmenu_links': [
         {'name': 'Home', 'url': 'admin:index', 'permissions': ['auth.view_user']},
         {
-            'name': 'Users',
+            'name': _('Users'),
             'model': 'user.User',
             'url': 'admin:users_user_changelist',
             'permissions': ['auth.view_user'],
         },
         {
-            'name': 'Category',
+            'name': _('Category'),
             'model': 'product.Category',
             'url': 'admin:products_category_changelist',
             'permissions': ['auth.view_user'],
         },
         {
-            'name': 'Products',
+            'name': _('Products'),
             'model': 'product.Product',
             'url': 'admin:products_product_changelist',
             'permissions': ['auth.view_user'],
         },
         {
-            'name': 'Location',
+            'name': _('Location'),
             'model': 'location.Location',
             'url': 'admin:locations_location_changelist',
             'permissions': ['auth.view_user'],
