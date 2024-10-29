@@ -2,13 +2,14 @@ from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+from apps.common.models import HistoricalModel
 from apps.common.models import TimestampMixin
 
 
 User = get_user_model()
 
 
-class Message(TimestampMixin, models.Model):
+class Message(TimestampMixin, HistoricalModel, models.Model):
     subject = models.CharField(_("Message subject"), max_length=255, blank=True, null=True)
     body = models.TextField(_("Message"))
     is_read = models.BooleanField(_("Is the message read"), default=False)
