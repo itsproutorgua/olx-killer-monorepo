@@ -7,7 +7,7 @@ import { APP_VARIABLES } from '@/shared/constants/app.const.ts'
 const axiosOptions = {
   baseURL: APP_VARIABLES.BASE_URL, // This would be http://olx.erpsolutions.com.ua:8000/en/api/v1/ initially
   headers: getContentType(),
-  withCredentials: false,
+  withCredentials: true,
 }
 
 export const instanceBase = axios.create(axiosOptions)
