@@ -15754,8 +15754,8 @@
     "model": "products.category",
     "pk": 830,
     "fields": {
-        "created_at": "2024-10-14T04:28:15.000Z",
-        "updated_at": "2024-10-14T04:28:15.000Z",
+        "created_at": "2024-10-14T04:28:15Z",
+        "updated_at": "2024-10-14T04:28:15Z",
         "title": "Гризуни",
         "title_uk": "Гризуни",
         "title_en": "Rodents",
@@ -33595,8 +33595,8 @@
     "model": "products.category",
     "pk": 1769,
     "fields": {
-        "created_at": "2024-10-14T04:28:19.000Z",
-        "updated_at": "2024-10-14T04:28:19.000Z",
+        "created_at": "2024-10-14T04:28:19Z",
+        "updated_at": "2024-10-14T04:28:19Z",
         "title": "Комбінезони з шортами",
         "title_uk": "Комбінезони з шортами",
         "title_en": "Overalls with shorts",
