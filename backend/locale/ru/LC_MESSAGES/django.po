@@ -105,7 +105,7 @@ msgstr "Область"
 
 #: .\apps\locations\apps.py:8 .\apps\locations\models\location.py:37
 msgid "Locations"
-msgstr "Геопозиции"
+msgstr "Местоположения"
 
 #: .\apps\locations\models\city.py:9 .\apps\locations\models\city.py:24
 #: .\apps\locations\models\location.py:10
