@@ -4,6 +4,9 @@ const config = {
   darkMode: ['class'],
   content: ['./index.html', './src/**/*.{ts,tsx}'],
   prefix: '',
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
   theme: {
     screens: {
       xs: '375px',
@@ -23,6 +26,9 @@ const config = {
       current: 'currentColor',
       background: '#F9FAFB',
       foreground: '#111827',
+      border: '#E5E7EB',
+      black: '#000',
+      white: '#fff',
       primary: {
         50: '#EEF4FF',
         100: '#E0EAFF',
@@ -88,22 +94,25 @@ const config = {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
       },
+      boxShadow: {
+        'custom-purple': '0 4px 12px 0 rgba(97, 62, 234, 0.5)',
+      },
     },
   },
   plugins: [
-    function({ addUtilities }) {
+    function ({ addUtilities }) {
       const newUtilities = {
         '.scrollbar-hide': {
-          '-ms-overflow-style': 'none', /* IE and Edge */
-          'scrollbar-width': 'none', /* Firefox */
+          '-ms-overflow-style': 'none' /* IE and Edge */,
+          'scrollbar-width': 'none' /* Firefox */,
         },
         '.scrollbar-hide::-webkit-scrollbar': {
-          display: 'none', /* Chrome, Safari, Opera */
+          display: 'none' /* Chrome, Safari, Opera */,
         },
-      };
+      }
 
-      addUtilities(newUtilities, ['responsive', 'hover']);
-    }
+      addUtilities(newUtilities, ['responsive', 'hover'])
+    },
   ],
 } satisfies Config
 

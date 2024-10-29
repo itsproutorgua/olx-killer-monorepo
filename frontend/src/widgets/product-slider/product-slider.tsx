@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { cn } from '@/shared/library/utils'
+import { useQuery } from '@tanstack/react-query'
 import { useTranslation } from 'react-i18next'
 
 import { ProductCard } from '@/widgets/product-card'
-import { NEW_PRODUCTS } from '@/entities/product'
+import { Product, productApi, type ProductResponse } from '@/entities/product'
 import {
   Carousel,
   CarouselContent,
@@ -11,22 +11,34 @@ import {
   type CarouselApi,
 } from '@/shared/ui/shadcn-ui/carousel.tsx'
 import { SectionTitle } from '@/shared/ui'
+import ProductCardLoaderSmall from '@/shared/ui/loaders/product-card-small.loader.tsx'
+import { QUERY_KEYS } from '@/shared/constants'
+import { cn } from '@/shared/library/utils'
 
 interface ProductSliderProps {
   titleKey: string // Translation key for the title
-  products: typeof NEW_PRODUCTS // Products array
+  path: string // Products array
   chunkSize?: number // Default chunk size for pairing
+  className?: string
+  onProductClick: (slug: string) => void
 }
 
 export const ProductSlider: React.FC<ProductSliderProps> = ({
   titleKey,
-  products,
-  chunkSize = 2,
+  path,
+  chunkSize = 2, // Default chunk size is set to 2
+  className,
+  onProductClick,
 }) => {
   const [api, setApi] = useState<CarouselApi>(),
     [current, setCurrent] = useState(0),
     [count, setCount] = useState(0)
   const { t } = useTranslation()
+
+  const { isLoading, data, isError } = useQuery<ProductResponse>({
+    queryKey: [QUERY_KEYS.PRODUCTS, path],
+    queryFn: () => productApi.findByFilters({ path, limit: 28 }),
+  })
 
   useEffect(() => {
     if (!api) return
@@ -39,63 +51,80 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({
     })
   }, [api])
 
-  // Pairing the card for slider realization
-  const chunkArray = (array: typeof NEW_PRODUCTS, size: number) => {
-    return array.reduce(
-      (result, item, index) => {
-        if (item && index % size === 0) {
-          result.push(array.slice(index, index + size))
-        }
-        return result
-      },
-      [] as (typeof NEW_PRODUCTS)[],
-    )
+  // Helper to chunk array into groups of a certain size
+  const chunkArray = (array: Product[], size: number): Product[][] => {
+    return array.reduce((result: Product[][], _, index) => {
+      if (index % size === 0) {
+        result.push(array.slice(index, index + size))
+      }
+      return result
+    }, [])
   }
 
-  const dealPairs = chunkArray(products, chunkSize)
+  if (isError) {
+    return <div>{t('errors.noProducts')}</div>
+  }
 
   return (
-    <Carousel
-      className='mb-6'
-      setApi={setApi}
-      opts={{
-        align: 'start',
-        loop: true,
-      }}
-    >
-      <SectionTitle title={t(titleKey)} />
-      <CarouselContent>
-        {dealPairs.map((pair, index) => (
-          <CarouselItem key={index} className='flex gap-[10px]'>
-            {pair.map(deal => (
-              <ProductCard
-                key={deal.id}
-                image={deal.image}
-                description={deal.description}
-                price={deal.price}
-              />
+    <div className={className}>
+      <Carousel
+        className='mb-6'
+        setApi={setApi}
+        opts={{
+          align: 'start',
+          loop: true,
+        }}
+      >
+        <SectionTitle title={t(titleKey)} />
+        {/* Skeleton Loader: Display two skeletons per CarouselItem when loading */}
+        {isLoading && (
+          <CarouselContent>
+            {Array.from({ length: 4 }).map((_, index) => (
+              <CarouselItem key={index} className='flex gap-[10px]'>
+                <ProductCardLoaderSmall key={`${index}-loader-1`} />
+                <ProductCardLoaderSmall key={`${index}-loader-2`} />
+              </CarouselItem>
             ))}
-          </CarouselItem>
-        ))}
-      </CarouselContent>
+          </CarouselContent>
+        )}
+        {/* Actual Data */}
+        {data && (
+          <CarouselContent>
+            {chunkArray(data.results.slice(0, 8), chunkSize).map(
+              (pair: Product[], index: number) => (
+                <CarouselItem key={index} className='flex gap-[10px]'>
+                  {pair.map((deal: Product) => (
+                    <div
+                      key={deal.slug}
+                      onClick={() => onProductClick(`/${deal.slug}`)}
+                      className='w-[173px]'
+                    >
+                      <ProductCard product={deal} className='w-[172px]' />
+                    </div>
+                  ))}
+                </CarouselItem>
+              ),
+            )}
+          </CarouselContent>
+        )}
+        {/* DOTS */}
+        <div className='absolute bottom-[-24px] left-1/2 flex -translate-x-1/2 items-center gap-1'>
+          {Array.from({ length: count }).map((_, index: number) => {
+            const isActive = index === current - 1
 
-      {/* DOTS */}
-      <div className='absolute bottom-[-24px] left-1/2 flex -translate-x-1/2 items-center gap-1'>
-        {Array.from({ length: count }).map((_, index) => {
-          const isActive = index === current - 1
-
-          return (
-            <button
-              key={index}
-              onClick={() => api?.scrollTo(index)}
-              className={cn(
-                'size-2 rounded-full transition-colors duration-300 hover:bg-primary',
-                isActive ? 'bg-primary' : 'bg-border',
-              )}
-            />
-          )
-        })}
-      </div>
-    </Carousel>
+            return (
+              <button
+                key={index}
+                onClick={() => api?.scrollTo(index)}
+                className={cn(
+                  'size-2 rounded-full transition-colors duration-300 hover:bg-primary-500 active:fill-primary-500 active:duration-0',
+                  isActive ? 'bg-primary-900' : 'bg-gray-200',
+                )}
+              />
+            )
+          })}
+        </div>
+      </Carousel>
+    </div>
   )
 }

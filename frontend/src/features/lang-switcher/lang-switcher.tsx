@@ -29,12 +29,12 @@ export const LangSwitcher = () => {
       <SelectContent className='m-0 space-y-2 rounded-[11px] bg-background px-[21px] py-3 shadow-[1px_1px_5px_0_rgba(78,78,78,0.19)]'>
         <SelectItem
           value='EN'
-          className='cursor-pointer rounded-none p-0 text-[13px] font-medium transition-colors duration-300 focus:bg-primary-300 focus:text-primary-900 data-[state=open]:text-primary-900'
+          className='cursor-pointer rounded-xl px-1 py-0 text-[13px] font-medium transition-colors duration-300 focus:bg-primary-300 focus:text-primary-900 data-[state=open]:text-primary-900'
         >
           {LANGUAGES.EN[1]}
         </SelectItem>
         <SelectItem
-          className='cursor-pointer rounded-none p-0 text-[13px] font-medium transition-colors duration-300 focus:bg-primary-300 focus:text-primary-900 data-[state=open]:text-primary-900'
+          className='cursor-pointer rounded-xl px-1 py-0 text-[13px] font-medium transition-colors duration-300 focus:bg-primary-300 focus:text-primary-900 data-[state=open]:text-primary-900'
           value='UA'
         >
           {LANGUAGES.UA[1]}

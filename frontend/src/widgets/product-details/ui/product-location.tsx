@@ -1,35 +1,56 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from '@/shared/ui/shadcn-ui/hover-card.tsx'
 import { ArrowIcon, LocationIcon } from '@/shared/ui'
 
 interface Props {
   className?: string
   location: {
-    place: string
+    name: string
     region: string
-    fullLocation: string
+    location_type: string
   }
 }
 
 export const ProductLocation: React.FC<Props> = ({ location, className }) => {
+  const { t } = useTranslation()
   return (
     <div className={className}>
       <div className='flex h-full flex-col gap-6 rounded-[15px] border border-border px-[34px] py-6'>
-        <h3 className='font-semibold leading-none'>LOCATION</h3>
+        <h3 className='font-semibold uppercase leading-none'>
+          {t('words.location')}
+        </h3>
         <div className='flex flex-row justify-between gap-4'>
           <div className='h-[24px] w-[24px]'>
             <LocationIcon className='text-primary' />
           </div>
           <div className='flex flex-col gap-3'>
-            <h4 className='text-xl leading-none'>{location.place}</h4>
+            <HoverCard openDelay={500} closeDelay={0}>
+              <HoverCardTrigger asChild>
+                <h4 className='line-clamp-1 text-xl leading-none'>
+                  {location.name}
+                </h4>
+              </HoverCardTrigger>
+              {/* Only render HoverCardContent if title length exceeds threshold */}
+              {location.name.length > 9 && (
+                <HoverCardContent side='top' className='w-fit bg-gray-50'>
+                  {location.name}
+                </HoverCardContent>
+              )}
+            </HoverCard>
             <p className='text-primary-gray text-xs leading-none'>
               {location.region}
             </p>
             <p className='text-primary-gray text-xs leading-none'>
-              {location.fullLocation}
+              {location.location_type.toUpperCase()}
             </p>
             <button className='mt-2 flex flex-row items-center gap-[9px] text-xs'>
-              View on map <ArrowIcon className='w-6 font-bold' />
+              {t('words.viewOnMap')} <ArrowIcon className='w-6 font-bold' />
             </button>
           </div>
         </div>

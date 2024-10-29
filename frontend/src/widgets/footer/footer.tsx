@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next'
 
 import { Button } from '@/shared/ui/shadcn-ui/button.tsx'
 import { Separator } from '@/shared/ui/shadcn-ui/separator.tsx'
-import { FacebookIcon, InstagramIcon } from '@/shared/ui'
+import { FacebookIcon, InstagramIcon, Logo } from '@/shared/ui'
 
 export const Footer = () => {
   const { t } = useTranslation()
@@ -85,11 +85,11 @@ export const Footer = () => {
   ]
 
   return (
-    <footer className='rounded-t-md bg-primary-900 pt-[71px] text-gray-50'>
+    <footer className='rounded-t-md bg-primary-900 pt-[41px] text-gray-50 xl:pt-[71px]'>
       <div className='flex flex-col px-[10px] xl:container xl:flex-row'>
         <div className='pr-[74px] xl:w-1/2 xl:pr-[177px]'>
-          <h2 className='text-4xl font-semibold xl:text-5xl'>OLX Killer</h2>
-          <p className='max-w-[454px] pt-[15px] text-sm text-muted-foreground xl:text-base'>
+          <Logo className='block' />
+          <p className='text-muted-foreground max-w-[454px] pt-[15px] text-sm xl:text-base'>
             {t('footerContent.footerMessage')}
           </p>
           <div className='-ml-[10px] mt-10 hidden gap-[10px] xl:flex'>
@@ -130,13 +130,13 @@ export const Footer = () => {
         </div>
       </div>
       <div className='px-[10px] pt-[60px] xl:container xl:pt-[119px]'>
-        <Separator className='bg-muted' />
+        <Separator className='bg-gray-50' />
         <div className='flex flex-col-reverse items-center justify-between gap-[30px] pb-[18px] pt-[60px] xl:flex-row xl:py-5'>
           <p>2024 OLX KILLER. {t('footerContent.rights')}</p>
           <Button
             onClick={() => scrollTo({ top: 0, behavior: 'smooth' })}
             variant='outline'
-            className='h-[42px] bg-primary px-[45px] hover:text-primary-200 hover:border-primary-200 py-[13px]'
+            className='bg-primary h-[42px] rounded-[60px] px-[45px] py-[13px] text-sm hover:border-primary-500 hover:bg-primary-500 hover:text-gray-50 active:border-primary-600 active:bg-primary-600 active:duration-0'
           >
             {t('buttons.backToTop')}
           </Button>
