@@ -5,13 +5,14 @@ from django.core.exceptions import ValidationError
 from django.urls import reverse
 from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
+from simple_history.admin import SimpleHistoryAdmin
 
 
 User = get_user_model()
 
 
 @admin.register(User)
-class UserAdmin(BaseUserAdmin):
+class UserAdmin(SimpleHistoryAdmin, BaseUserAdmin):
     fieldsets = (
         (None, {"fields": ('profile_link', "username", "password")}),
         (_("Personal info"), {"fields": ("first_name", "last_name", "email")}),
@@ -45,6 +46,10 @@ class UserAdmin(BaseUserAdmin):
 
     def get_queryset(self, request):
         return super().get_queryset(request).select_related('profile').order_by('-date_joined')
+
+    def get_history_queryset(self, request, history_manager, pk_name: str, object_id):
+        qs = super().get_history_queryset(request, history_manager, pk_name, object_id)
+        return qs.prefetch_related('history_user')
 
     @admin.display(description=_('Profile link'))
     def profile_link(self, obj):

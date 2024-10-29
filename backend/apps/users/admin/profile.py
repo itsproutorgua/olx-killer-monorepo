@@ -1,11 +1,12 @@
 from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
+from simple_history.admin import SimpleHistoryAdmin
 
 from apps.users.models import Profile
 
 
 @admin.register(Profile)
-class ProfileAdmin(admin.ModelAdmin):
+class ProfileAdmin(SimpleHistoryAdmin):
     list_display = ('user_email', 'created_at', 'updated_at')
     list_display_links = ('user_email',)
     search_fields = ('user__email',)

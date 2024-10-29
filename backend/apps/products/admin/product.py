@@ -1,6 +1,8 @@
 from django.contrib import admin
 from django.db.models import Q
 from django.utils.translation import get_language
+from django.utils.translation import gettext_lazy as _
+from simple_history.admin import SimpleHistoryAdmin
 
 from apps.products.admin.filters import PopularCategoryFilter
 from apps.products.admin.inlines import PriceInline
@@ -10,16 +12,38 @@ from apps.products.models.product import Product
 
 
 @admin.register(Product)
-class ProductAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'seller', 'category', 'views')
+class ProductAdmin(SimpleHistoryAdmin):
+    list_display = ('title', 'seller', 'category', 'views')
     readonly_fields = ('id', 'created_at', 'updated_at', 'seller', 'slug', 'prod_olx_id', 'views')
-    list_display_links = ('id', 'title')
+    list_display_links = ('title',)
     autocomplete_fields = ['category']
     search_fields = ('title',)
     ordering = ('-views',)
     list_filter = (PopularCategoryFilter,)
     inlines = [PriceInline, ProductImageInline, ProductVideoInline]
     show_full_result_count = False
+
+    fieldsets = (
+        (
+            _('General'),
+            {
+                'fields': (
+                    'title',
+                    'status',
+                    'description',
+                    'category',
+                    'params',
+                    'seller',
+                    'views',
+                    'id',
+                    'slug',
+                    'created_at',
+                    'updated_at',
+                    'prod_olx_id',
+                )
+            },
+        ),
+    )
 
     def get_queryset(self, request):
         queryset = super().get_queryset(request)
