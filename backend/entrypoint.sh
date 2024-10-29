@@ -34,6 +34,8 @@ print(Category.objects.exists())" | grep -q True; then
     python manage.py create_olx_categories
     echo "Creating fixtures..."
     python manage.py load_fixtures
+    echo "Filling in the history..."
+    python manage.py populate_history --auto
 else
     echo "Categories already exist."
     echo "Fixtures already exist."
