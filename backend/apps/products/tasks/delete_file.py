@@ -1,22 +1,22 @@
-import os
-
+import boto3
+from botocore.exceptions import ClientError
 from celery.exceptions import MaxRetriesExceededError
+from django.conf import settings
 
 from apps.celery import app
 from apps.log_config import logger
 
 
 @app.task(name='delete_product_file', bind=True, max_retries=3, default_retry_delay=30)
-def delete_product_file(self, file_path: str) -> None:
-    """Task to delete a file with the possibility of retrying"""
+def delete_product_file(self, file_key: str) -> None:
+    """Task to delete a file from S3 with the possibility of retrying"""
+    bucket_name = settings.AWS_STORAGE_BUCKET_NAME
+    s3_client = boto3.client('s3')
     try:
-        if os.path.exists(file_path):
-            os.remove(file_path)
-            logger.debug(f'File successfully deleted:{file_path}')
-        else:
-            logger.warning(f'File not found: {file_path}')
-    except Exception as e:
-        logger.warning(f'Error deleting file{file_path}: {str(e)}. Trying to repeat...')
+        s3_client.delete_object(Bucket=bucket_name, Key=file_key)
+        logger.debug(f'File successfully deleted from S3: {file_key}')
+    except ClientError as e:
+        logger.warning(f'Error deleting file from S3 {file_key}: {str(e)}. Trying to repeat...')
         raise self.retry(exc=e)
 
 
