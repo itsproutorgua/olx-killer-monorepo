@@ -17,11 +17,13 @@ Including another URLconf
 
 from django.conf import settings
 from django.conf.urls.i18n import i18n_patterns
+from django.conf.urls.i18n import set_language
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include
 from django.urls import path
 from django.urls import re_path
+from django.views.generic import RedirectView
 from django.views.static import serve
 from drf_spectacular.views import SpectacularAPIView
 from drf_spectacular.views import SpectacularRedocView
@@ -46,6 +48,10 @@ urlpatterns = i18n_patterns(
     path('api/v1/', include(api)),
     # Robots
     re_path(r'^robots\.txt$', serve, {'path': 'robots.txt', 'document_root': settings.BASE_DIR}),
+    # Favicon
+    path('favicon.ico', RedirectView.as_view(url=settings.STATIC_URL + 'favicon.ico', permanent=True)),
+    # language jazzmin
+    path('i18n/setlang/', set_language, name='set_language'),
 )
 
 if settings.DEBUG:
