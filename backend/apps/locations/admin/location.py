@@ -11,21 +11,13 @@ class LocationAdmin(admin.ModelAdmin):
     search_fields = ['city__name', 'village__name']
     show_full_result_count = False
 
-    @admin.display(description=_('Location'))
+    @admin.display(description=_('Location'), ordering='location_name')
     def get_location_name(self, obj):
-        """Return the name of the city or village based on location_type."""
-        if obj.location_type == 'city':
-            return obj.city.name if obj.city else '-'
-        elif obj.location_type == 'village':
-            return obj.village.name if obj.village else '-'
-        return '-'
+        return obj.location_name
 
-    @admin.display(description=_('Region'), ordering='city__region__name')
+    @admin.display(description=_('Region'), ordering='region_name')
     def get_region(self, obj):
-        """Return the region associated with the location."""
-        if obj.location_type == 'city':
-            return obj.city.region
-        return obj.village.region
+        return obj.region_name
 
     def get_queryset(self, request):
         queryset = super().get_queryset(request)
