@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-18 02:10+0300\n"
+"POT-Creation-Date: 2024-10-29 19:48+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -86,25 +86,25 @@ msgstr "Кожен продукт може мати лише {settings.VIDEO_UPL
 msgid "Uploaded file is not a valid video."
 msgstr "Завантажений файл не є дійсним відеофайлом."
 
-#: .\apps\common\models.py:6
+#: .\apps\common\models\time_stamp.py:6
 msgid "Create date"
 msgstr "Створення дати"
 
-#: .\apps\common\models.py:7
+#: .\apps\common\models\time_stamp.py:7
 msgid "Update date"
 msgstr "Дата оновлення"
 
-#: .\apps\locations\admin\location.py:13 .\apps\locations\models\location.py:43
-#: .\apps\users\models\profile.py:23
+#: .\apps\locations\admin\location.py:14 .\apps\locations\models\location.py:36
+#: .\apps\users\models\profile.py:24 .\settings\jazzmin.py:53
 msgid "Location"
 msgstr "Розташування"
 
-#: .\apps\locations\admin\location.py:22 .\apps\locations\models\region.py:9
+#: .\apps\locations\admin\location.py:18 .\apps\locations\models\region.py:9
 #: .\apps\locations\models\region.py:23
 msgid "Region"
 msgstr "Область"
 
-#: .\apps\locations\apps.py:8 .\apps\locations\models\location.py:44
+#: .\apps\locations\apps.py:8 .\apps\locations\models\location.py:37
 msgid "Locations"
 msgstr "Розташування"
 
@@ -139,19 +139,27 @@ msgstr "Широта"
 msgid "Longitude"
 msgstr "Довгота"
 
-#: .\apps\locations\models\location.py:30
+#: .\apps\locations\models\location.py:24
+msgid "Location name"
+msgstr "Назва локації"
+
+#: .\apps\locations\models\location.py:25
+msgid "Region name"
+msgstr "Назва області"
+
+#: .\apps\locations\models\location.py:32
 msgid "Unknown Location"
 msgstr "Невідоме місцезнаходження"
 
-#: .\apps\locations\models\location.py:34
+#: .\apps\locations\models\location.py:43
 msgid "City must be provided for city location type."
 msgstr "Для типу розташування міста необхідно вказати місто."
 
-#: .\apps\locations\models\location.py:36
+#: .\apps\locations\models\location.py:45
 msgid "Village must be provided for village location type."
 msgstr "Для типу розташування села необхідно вказати село."
 
-#: .\apps\locations\models\location.py:39
+#: .\apps\locations\models\location.py:48
 msgid "Location cannot be both city and village at the same time."
 msgstr "Локація не може бути одночасно містом і селом."
 
@@ -175,7 +183,12 @@ msgstr "Кількість продуктів"
 msgid "Popular Categories"
 msgstr "Популярні категорії"
 
-#: .\apps\products\apps.py:8 .\apps\products\models\product.py:38
+#: .\apps\products\admin\product.py:28
+msgid "General"
+msgstr "Основний"
+
+#: .\apps\products\apps.py:8 .\apps\products\models\product.py:50
+#: .\settings\jazzmin.py:47
 msgid "Products"
 msgstr "Продукти"
 
@@ -188,7 +201,7 @@ msgid "Parent category"
 msgstr "Батьківська категорія"
 
 #: .\apps\products\models\category.py:23
-#: .\apps\products\models\product_image.py:18
+#: .\apps\products\models\product_image.py:19
 #: .\apps\user_messages\models\message_image.py:10
 msgid "Image"
 msgstr "Зображення"
@@ -197,11 +210,12 @@ msgstr "Зображення"
 msgid "Icon"
 msgstr "Іконка"
 
-#: .\apps\products\models\category.py:28 .\apps\products\models\product.py:27
+#: .\apps\products\models\category.py:28 .\apps\products\models\product.py:39
 msgid "Views"
 msgstr "Перегляди"
 
-#: .\apps\products\models\category.py:35 .\apps\products\models\product.py:25
+#: .\apps\products\models\category.py:35 .\apps\products\models\product.py:30
+#: .\settings\jazzmin.py:41
 msgid "Category"
 msgstr "Категорія"
 
@@ -230,24 +244,24 @@ msgstr "Значення фільтра"
 msgid "Filter values"
 msgstr "Значення фільтра"
 
-#: .\apps\products\models\price\currency.py:8
+#: .\apps\products\models\price\currency.py:9
 msgid "Currency code"
 msgstr "Код валюти"
 
-#: .\apps\products\models\price\currency.py:9
+#: .\apps\products\models\price\currency.py:10
 msgid "Currency symbol"
 msgstr "Символ валюти"
 
-#: .\apps\products\models\price\currency.py:10
+#: .\apps\products\models\price\currency.py:11
 msgid "Currency name"
 msgstr "Назва валюти"
 
-#: .\apps\products\models\price\currency.py:17
+#: .\apps\products\models\price\currency.py:18
 #: .\apps\products\models\price\price.py:21
 msgid "Currency"
 msgstr "Валюта"
 
-#: .\apps\products\models\price\currency.py:18
+#: .\apps\products\models\price\currency.py:19
 msgid "Currencies"
 msgstr "Валюти"
 
@@ -261,7 +275,7 @@ msgid "Amount"
 msgstr "Сума"
 
 #: .\apps\products\models\price\price.py:22
-#: .\apps\products\models\product.py:37
+#: .\apps\products\models\product.py:49
 msgid "Product"
 msgstr "Продукт"
 
@@ -273,46 +287,62 @@ msgstr "Ціна"
 msgid "Prices"
 msgstr "Ціни"
 
-#: .\apps\products\models\product.py:13
+#: .\apps\products\models\product.py:15
+msgid "New"
+msgstr "Новий"
+
+#: .\apps\products\models\product.py:16
+msgid "Old"
+msgstr "Вживаний"
+
+#: .\apps\products\models\product.py:18
 msgid "Product name"
 msgstr "Назва продукту"
 
-#: .\apps\products\models\product.py:14
+#: .\apps\products\models\product.py:19
 msgid "Product description"
 msgstr "Опис товару"
 
-#: .\apps\products\models\product.py:19
+#: .\apps\products\models\product.py:24
 msgid "Seller"
 msgstr "Продавець"
 
-#: .\apps\products\models\product.py:28
+#: .\apps\products\models\product.py:33
+msgid "Status"
+msgstr "Стан продукту"
+
+#: .\apps\products\models\product.py:37
+msgid "Product status"
+msgstr "Стан продукту"
+
+#: .\apps\products\models\product.py:40
 msgid "Parameters"
 msgstr "Параметри"
 
-#: .\apps\products\models\product_image.py:22
+#: .\apps\products\models\product_image.py:23
 #, python-format
 msgid "Allowed image formats: %s"
 msgstr "Дозволені формати зображень: %s"
 
-#: .\apps\products\models\product_image.py:30
+#: .\apps\products\models\product_image.py:31
 msgid "Product Image"
 msgstr "Зображення продукту"
 
-#: .\apps\products\models\product_image.py:31
+#: .\apps\products\models\product_image.py:32
 msgid "Product Images"
 msgstr "Зображення продукту"
 
-#: .\apps\products\models\product_video.py:17
+#: .\apps\products\models\product_video.py:18
 msgid "Video"
 msgstr "Відео"
 
-#: .\apps\products\models\product_video.py:21
+#: .\apps\products\models\product_video.py:22
 #, python-format
 msgid "Allowed video formats: %s"
 msgstr "Дозволені формати відео: %s"
 
-#: .\apps\products\models\product_video.py:29
 #: .\apps\products\models\product_video.py:30
+#: .\apps\products\models\product_video.py:31
 msgid "Product Videos"
 msgstr "Відео продукту"
 
@@ -325,23 +355,23 @@ msgid "Failed to create price: {}"
 msgstr "Не вдалося створити ціну: {}"
 
 #: .\apps\products\serializers\price\price.py:56
-#: .\apps\products\serializers\product\product.py:101
+#: .\apps\products\serializers\product\product.py:102
 msgid "Failed to create product price: {}"
 msgstr "Не вдалося створити ціну продукту: {}"
 
-#: .\apps\products\serializers\product\product.py:55
+#: .\apps\products\serializers\product\product.py:56
 msgid "Database integrity error: {}"
 msgstr "Помилка цілісності бази даних: {}"
 
-#: .\apps\products\serializers\product\product.py:60
+#: .\apps\products\serializers\product\product.py:61
 msgid "Failed to create product prices: {}"
 msgstr "Не вдалося створити ціни на продукти: {}"
 
-#: .\apps\products\serializers\product\product.py:65
+#: .\apps\products\serializers\product\product.py:66
 msgid "Failed to create product images: {}"
 msgstr "Не вдалося створити зображення продуктів: {}"
 
-#: .\apps\products\serializers\product\product.py:95
+#: .\apps\products\serializers\product\product.py:96
 msgid "Price with currency {} does not exist."
 msgstr "Ціна з валютою {} не існує."
 
@@ -371,19 +401,19 @@ msgstr "Не вдалося створити відео: %s"
 msgid "Failed to update video: %s"
 msgstr "Не вдалося оновити відео: %s"
 
-#: .\apps\products\views\category.py:35
+#: .\apps\products\views\category.py:36
 msgid "List categories in a tree structure"
 msgstr "Список категорій у структурі дерева"
 
-#: .\apps\products\views\category.py:36
+#: .\apps\products\views\category.py:37
 msgid "Retrieve a hierarchical tree of categories."
 msgstr "Отримати ієрархічне дерево категорій."
 
-#: .\apps\products\views\category.py:56
+#: .\apps\products\views\category.py:55
 msgid "Retrieve a category by path"
 msgstr "Отримати категорію за path"
 
-#: .\apps\products\views\category.py:57
+#: .\apps\products\views\category.py:56
 msgid "Retrieve a single category by path"
 msgstr "Отримати одну категорію за path"
 
@@ -502,28 +532,28 @@ msgstr "Сортуйте товари за датою створення в по
 msgid "User messages"
 msgstr "Повідомлення користувача"
 
-#: .\apps\user_messages\models\message.py:12
+#: .\apps\user_messages\models\message.py:13
 msgid "Message subject"
 msgstr "Тема повідомлення"
 
-#: .\apps\user_messages\models\message.py:13
-#: .\apps\user_messages\models\message.py:46
+#: .\apps\user_messages\models\message.py:14
+#: .\apps\user_messages\models\message.py:47
 msgid "Message"
 msgstr "повідомлення"
 
-#: .\apps\user_messages\models\message.py:14
+#: .\apps\user_messages\models\message.py:15
 msgid "Is the message read"
 msgstr "Чи прочитано повідомлення"
 
-#: .\apps\user_messages\models\message.py:19
+#: .\apps\user_messages\models\message.py:20
 msgid "The sender of the message"
 msgstr "Відправник повідомлення"
 
-#: .\apps\user_messages\models\message.py:25
+#: .\apps\user_messages\models\message.py:26
 msgid "The recipient of the message"
 msgstr "Одержувач повідомлення"
 
-#: .\apps\user_messages\models\message.py:47
+#: .\apps\user_messages\models\message.py:48
 msgid "Messages"
 msgstr "Повідомлення"
 
@@ -535,35 +565,36 @@ msgstr "Зображення повідомлення"
 msgid "Message Images"
 msgstr "Зображення повідомлень"
 
-#: .\apps\users\admin\profile.py:20
+#: .\apps\users\admin\profile.py:22
 msgid "User Email"
 msgstr "Електронна пошта користувача"
 
-#: .\apps\users\admin\user.py:17
+#: .\apps\users\admin\user.py:18
 msgid "Personal info"
 msgstr "Особиста інформація"
 
-#: .\apps\users\admin\user.py:19
+#: .\apps\users\admin\user.py:20
 msgid "Permissions"
 msgstr "Дозволи"
 
-#: .\apps\users\admin\user.py:30
+#: .\apps\users\admin\user.py:31
 msgid "Important dates"
 msgstr "Важливі дати"
 
-#: .\apps\users\admin\user.py:57
+#: .\apps\users\admin\user.py:54
 msgid "Profile link"
 msgstr "Посилання на профіль"
 
-#: .\apps\users\admin\user.py:60
+#: .\apps\users\admin\user.py:57
 msgid "View Profile"
 msgstr "Переглянути профіль"
 
-#: .\apps\users\admin\user.py:71
+#: .\apps\users\admin\user.py:68
 msgid "Passwords do not match."
 msgstr "Паролі не збігаються."
 
-#: .\apps\users\apps.py:8 .\apps\users\models\user.py:67
+#: .\apps\users\apps.py:8 .\apps\users\models\user.py:64
+#: .\settings\jazzmin.py:35
 msgid "Users"
 msgstr "Користувачі"
 
@@ -579,83 +610,83 @@ msgstr "Суперкористувач повинен мати is_staff=True."
 msgid "Superuser must have is_superuser=True."
 msgstr "Суперкористувач повинен мати is_superuser=True."
 
-#: .\apps\users\models\profile.py:9 .\apps\users\models\user.py:66
+#: .\apps\users\models\profile.py:10 .\apps\users\models\user.py:63
 msgid "User"
 msgstr "Користувач"
 
-#: .\apps\users\models\profile.py:11
+#: .\apps\users\models\profile.py:12
 msgid "profile picture"
 msgstr "зображення профілю"
 
-#: .\apps\users\models\profile.py:15
+#: .\apps\users\models\profile.py:16
 msgid "Upload a profile picture."
 msgstr "Завантажте зображення профілю."
 
-#: .\apps\users\models\profile.py:24
+#: .\apps\users\models\profile.py:25
 msgid "This field allows you to specify the user's city and region."
 msgstr "У цьому полі можна вказати місто та регіон користувача."
 
-#: .\apps\users\models\profile.py:27
+#: .\apps\users\models\profile.py:28
 msgid "Phone numbers"
 msgstr "Номери телефонів"
 
-#: .\apps\users\models\profile.py:27
+#: .\apps\users\models\profile.py:28
 msgid "You can add multiple phone numbers."
 msgstr "Ви можете додати кілька телефонних номерів."
 
-#: .\apps\users\models\profile.py:37
+#: .\apps\users\models\profile.py:38
 msgid "Profile"
 msgstr "Профіль"
 
-#: .\apps\users\models\profile.py:38
+#: .\apps\users\models\profile.py:39
 msgid "Profiles"
 msgstr "Профілі"
 
-#: .\apps\users\models\user.py:23
+#: .\apps\users\models\user.py:20
 msgid "username"
-msgstr "ім'я користувача"
+msgstr "Псевдонім"
 
-#: .\apps\users\models\user.py:25
+#: .\apps\users\models\user.py:22
 msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
 msgstr "Обов'язковий. 150 символів або менше. Лише літери, цифри та @/./+/-/_."
 
-#: .\apps\users\models\user.py:29
+#: .\apps\users\models\user.py:26
 msgid "first name"
 msgstr "ім'я"
 
-#: .\apps\users\models\user.py:31 .\apps\users\models\user.py:38
+#: .\apps\users\models\user.py:28 .\apps\users\models\user.py:35
 msgid "Required. 150 characters or fewer."
 msgstr "Обов'язковий. 150 символів або менше."
 
-#: .\apps\users\models\user.py:36
+#: .\apps\users\models\user.py:33
 msgid "last name"
 msgstr "прізвище"
 
-#: .\apps\users\models\user.py:42
+#: .\apps\users\models\user.py:39
 msgid "email address"
 msgstr "адреса електронної пошти"
 
-#: .\apps\users\models\user.py:44
+#: .\apps\users\models\user.py:41
 msgid "email confirm"
 msgstr "підтвердження електронної пошти"
 
-#: .\apps\users\models\user.py:46
+#: .\apps\users\models\user.py:43
 msgid "Indicates whether the user has verified their email address."
 msgstr "Вказує, чи підтвердив користувач свою електронну адресу."
 
-#: .\apps\users\models\user.py:49
+#: .\apps\users\models\user.py:46
 msgid "staff status"
 msgstr "статус персоналу"
 
-#: .\apps\users\models\user.py:51
+#: .\apps\users\models\user.py:48
 msgid "Designates whether the user can log into this admin site."
 msgstr "Визначає, чи може користувач увійти на цей сайт адміністратора."
 
-#: .\apps\users\models\user.py:54
+#: .\apps\users\models\user.py:51
 msgid "active"
 msgstr "активний"
 
-#: .\apps\users\models\user.py:57
+#: .\apps\users\models\user.py:54
 msgid ""
 "Designates whether this user should be treated as active. Unselect this "
 "instead of deleting accounts."
@@ -663,7 +694,7 @@ msgstr ""
 "Визначає, чи слід розглядати цього користувача як активного. Зніміть цей "
 "прапорець замість того, щоб видаляти облікові записи."
 
-#: .\apps\users\models\user.py:60
+#: .\apps\users\models\user.py:57
 msgid "date joined"
 msgstr "дата приєднання"
 
@@ -712,14 +743,14 @@ msgstr "Приклад відповіді щодо реєстрації кори
 msgid "Example of a successful response after user registration."
 msgstr "Приклад успішної відповіді після реєстрації користувача."
 
-#: .\settings\base.py:134
+#: .\settings\base.py:137
 msgid "Ukrainian"
 msgstr "Українська"
 
-#: .\settings\base.py:135
+#: .\settings\base.py:138
 msgid "English"
 msgstr "англійська"
 
-#: .\settings\base.py:136
+#: .\settings\base.py:139
 msgid "Russian"
 msgstr "російська"

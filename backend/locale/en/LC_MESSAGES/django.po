@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-18 02:10+0300\n"
+"POT-Creation-Date: 2024-10-29 19:48+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -83,25 +83,25 @@ msgstr "Each product can have only {settings.VIDEO_UPLOAD_LIMIT} video."
 msgid "Uploaded file is not a valid video."
 msgstr "Uploaded file is not a valid video."
 
-#: .\apps\common\models.py:6
+#: .\apps\common\models\time_stamp.py:6
 msgid "Create date"
 msgstr "Create date"
 
-#: .\apps\common\models.py:7
+#: .\apps\common\models\time_stamp.py:7
 msgid "Update date"
 msgstr "Update date"
 
-#: .\apps\locations\admin\location.py:13 .\apps\locations\models\location.py:43
-#: .\apps\users\models\profile.py:23
+#: .\apps\locations\admin\location.py:14 .\apps\locations\models\location.py:36
+#: .\apps\users\models\profile.py:24 .\settings\jazzmin.py:53
 msgid "Location"
 msgstr "Location"
 
-#: .\apps\locations\admin\location.py:22 .\apps\locations\models\region.py:9
+#: .\apps\locations\admin\location.py:18 .\apps\locations\models\region.py:9
 #: .\apps\locations\models\region.py:23
 msgid "Region"
 msgstr "Region"
 
-#: .\apps\locations\apps.py:8 .\apps\locations\models\location.py:44
+#: .\apps\locations\apps.py:8 .\apps\locations\models\location.py:37
 msgid "Locations"
 msgstr "Locations"
 
@@ -136,19 +136,27 @@ msgstr "Latitude"
 msgid "Longitude"
 msgstr "Longitude"
 
-#: .\apps\locations\models\location.py:30
+#: .\apps\locations\models\location.py:24
+msgid "Location name"
+msgstr "Location name"
+
+#: .\apps\locations\models\location.py:25
+msgid "Region name"
+msgstr "Region name"
+
+#: .\apps\locations\models\location.py:32
 msgid "Unknown Location"
 msgstr "Unknown Location"
 
-#: .\apps\locations\models\location.py:34
+#: .\apps\locations\models\location.py:43
 msgid "City must be provided for city location type."
 msgstr "City must be provided for city location type."
 
-#: .\apps\locations\models\location.py:36
+#: .\apps\locations\models\location.py:45
 msgid "Village must be provided for village location type."
 msgstr "Village must be provided for village location type."
 
-#: .\apps\locations\models\location.py:39
+#: .\apps\locations\models\location.py:48
 msgid "Location cannot be both city and village at the same time."
 msgstr "Location cannot be both city and village at the same time."
 
@@ -172,7 +180,12 @@ msgstr "Number of Products"
 msgid "Popular Categories"
 msgstr "Popular Categories"
 
-#: .\apps\products\apps.py:8 .\apps\products\models\product.py:38
+#: .\apps\products\admin\product.py:28
+msgid "General"
+msgstr ""
+
+#: .\apps\products\apps.py:8 .\apps\products\models\product.py:50
+#: .\settings\jazzmin.py:47
 msgid "Products"
 msgstr "Products"
 
@@ -185,7 +198,7 @@ msgid "Parent category"
 msgstr "Parent category"
 
 #: .\apps\products\models\category.py:23
-#: .\apps\products\models\product_image.py:18
+#: .\apps\products\models\product_image.py:19
 #: .\apps\user_messages\models\message_image.py:10
 msgid "Image"
 msgstr "Image"
@@ -194,11 +207,12 @@ msgstr "Image"
 msgid "Icon"
 msgstr "Icon"
 
-#: .\apps\products\models\category.py:28 .\apps\products\models\product.py:27
+#: .\apps\products\models\category.py:28 .\apps\products\models\product.py:39
 msgid "Views"
 msgstr "Views"
 
-#: .\apps\products\models\category.py:35 .\apps\products\models\product.py:25
+#: .\apps\products\models\category.py:35 .\apps\products\models\product.py:30
+#: .\settings\jazzmin.py:41
 msgid "Category"
 msgstr "Category"
 
@@ -227,24 +241,24 @@ msgstr "Filter value"
 msgid "Filter values"
 msgstr "Filter values"
 
-#: .\apps\products\models\price\currency.py:8
+#: .\apps\products\models\price\currency.py:9
 msgid "Currency code"
 msgstr "Currency code"
 
-#: .\apps\products\models\price\currency.py:9
+#: .\apps\products\models\price\currency.py:10
 msgid "Currency symbol"
 msgstr "Currency symbol"
 
-#: .\apps\products\models\price\currency.py:10
+#: .\apps\products\models\price\currency.py:11
 msgid "Currency name"
 msgstr "Currency name"
 
-#: .\apps\products\models\price\currency.py:17
+#: .\apps\products\models\price\currency.py:18
 #: .\apps\products\models\price\price.py:21
 msgid "Currency"
 msgstr "Currency"
 
-#: .\apps\products\models\price\currency.py:18
+#: .\apps\products\models\price\currency.py:19
 msgid "Currencies"
 msgstr "Currencies"
 
@@ -258,7 +272,7 @@ msgid "Amount"
 msgstr "Amount"
 
 #: .\apps\products\models\price\price.py:22
-#: .\apps\products\models\product.py:37
+#: .\apps\products\models\product.py:49
 msgid "Product"
 msgstr "Product"
 
@@ -270,46 +284,62 @@ msgstr "Price"
 msgid "Prices"
 msgstr "Price"
 
-#: .\apps\products\models\product.py:13
+#: .\apps\products\models\product.py:15
+msgid "New"
+msgstr ""
+
+#: .\apps\products\models\product.py:16
+msgid "Old"
+msgstr ""
+
+#: .\apps\products\models\product.py:18
 msgid "Product name"
 msgstr "Product name"
 
-#: .\apps\products\models\product.py:14
+#: .\apps\products\models\product.py:19
 msgid "Product description"
 msgstr "Product description"
 
-#: .\apps\products\models\product.py:19
+#: .\apps\products\models\product.py:24
 msgid "Seller"
 msgstr "Seller"
 
-#: .\apps\products\models\product.py:28
+#: .\apps\products\models\product.py:33
+msgid "Status"
+msgstr ""
+
+#: .\apps\products\models\product.py:37
+msgid "Product status"
+msgstr "Product status"
+
+#: .\apps\products\models\product.py:40
 msgid "Parameters"
 msgstr "Parameters"
 
-#: .\apps\products\models\product_image.py:22
+#: .\apps\products\models\product_image.py:23
 #, python-format
 msgid "Allowed image formats: %s"
 msgstr "Allowed image formats: %s"
 
-#: .\apps\products\models\product_image.py:30
+#: .\apps\products\models\product_image.py:31
 msgid "Product Image"
 msgstr "Product Image"
 
-#: .\apps\products\models\product_image.py:31
+#: .\apps\products\models\product_image.py:32
 msgid "Product Images"
 msgstr "Product Images"
 
-#: .\apps\products\models\product_video.py:17
+#: .\apps\products\models\product_video.py:18
 msgid "Video"
 msgstr "Video"
 
-#: .\apps\products\models\product_video.py:21
+#: .\apps\products\models\product_video.py:22
 #, python-format
 msgid "Allowed video formats: %s"
 msgstr "Allowed video formats: %s"
 
-#: .\apps\products\models\product_video.py:29
 #: .\apps\products\models\product_video.py:30
+#: .\apps\products\models\product_video.py:31
 msgid "Product Videos"
 msgstr "Product Videos"
 
@@ -322,23 +352,23 @@ msgid "Failed to create price: {}"
 msgstr "Failed to create price: {}"
 
 #: .\apps\products\serializers\price\price.py:56
-#: .\apps\products\serializers\product\product.py:101
+#: .\apps\products\serializers\product\product.py:102
 msgid "Failed to create product price: {}"
 msgstr "Failed to create product price: {}"
 
-#: .\apps\products\serializers\product\product.py:55
+#: .\apps\products\serializers\product\product.py:56
 msgid "Database integrity error: {}"
 msgstr "Database integrity error: {}"
 
-#: .\apps\products\serializers\product\product.py:60
+#: .\apps\products\serializers\product\product.py:61
 msgid "Failed to create product prices: {}"
 msgstr "Failed to create product prices: {}"
 
-#: .\apps\products\serializers\product\product.py:65
+#: .\apps\products\serializers\product\product.py:66
 msgid "Failed to create product images: {}"
 msgstr "Failed to create product images: {}"
 
-#: .\apps\products\serializers\product\product.py:95
+#: .\apps\products\serializers\product\product.py:96
 msgid "Price with currency {} does not exist."
 msgstr "Price with currency {} does not exist."
 
@@ -368,19 +398,19 @@ msgstr "Failed to create video: %s"
 msgid "Failed to update video: %s"
 msgstr "Failed to update video: %s"
 
-#: .\apps\products\views\category.py:35
+#: .\apps\products\views\category.py:36
 msgid "List categories in a tree structure"
 msgstr "List categories in a tree structure"
 
-#: .\apps\products\views\category.py:36
+#: .\apps\products\views\category.py:37
 msgid "Retrieve a hierarchical tree of categories."
 msgstr "Retrieve a hierarchical tree of categories."
 
-#: .\apps\products\views\category.py:56
+#: .\apps\products\views\category.py:55
 msgid "Retrieve a category by path"
 msgstr "Retrieve a category by path"
 
-#: .\apps\products\views\category.py:57
+#: .\apps\products\views\category.py:56
 msgid "Retrieve a single category by path"
 msgstr "Retrieve a single category by path"
 
@@ -499,28 +529,28 @@ msgstr "Sort products by created date in descending order."
 msgid "User messages"
 msgstr "User messages"
 
-#: .\apps\user_messages\models\message.py:12
+#: .\apps\user_messages\models\message.py:13
 msgid "Message subject"
 msgstr "Message subject"
 
-#: .\apps\user_messages\models\message.py:13
-#: .\apps\user_messages\models\message.py:46
+#: .\apps\user_messages\models\message.py:14
+#: .\apps\user_messages\models\message.py:47
 msgid "Message"
 msgstr "Message"
 
-#: .\apps\user_messages\models\message.py:14
+#: .\apps\user_messages\models\message.py:15
 msgid "Is the message read"
 msgstr "Is the message read"
 
-#: .\apps\user_messages\models\message.py:19
+#: .\apps\user_messages\models\message.py:20
 msgid "The sender of the message"
 msgstr "The sender of the message"
 
-#: .\apps\user_messages\models\message.py:25
+#: .\apps\user_messages\models\message.py:26
 msgid "The recipient of the message"
 msgstr "The recipient of the message"
 
-#: .\apps\user_messages\models\message.py:47
+#: .\apps\user_messages\models\message.py:48
 msgid "Messages"
 msgstr "Messages"
 
@@ -532,35 +562,36 @@ msgstr "Message Image"
 msgid "Message Images"
 msgstr "Message Images"
 
-#: .\apps\users\admin\profile.py:20
+#: .\apps\users\admin\profile.py:22
 msgid "User Email"
 msgstr "User Email"
 
-#: .\apps\users\admin\user.py:17
+#: .\apps\users\admin\user.py:18
 msgid "Personal info"
 msgstr "Personal info"
 
-#: .\apps\users\admin\user.py:19
+#: .\apps\users\admin\user.py:20
 msgid "Permissions"
 msgstr "Permissions"
 
-#: .\apps\users\admin\user.py:30
+#: .\apps\users\admin\user.py:31
 msgid "Important dates"
 msgstr "Important dates"
 
-#: .\apps\users\admin\user.py:57
+#: .\apps\users\admin\user.py:54
 msgid "Profile link"
 msgstr "Profile link"
 
-#: .\apps\users\admin\user.py:60
+#: .\apps\users\admin\user.py:57
 msgid "View Profile"
 msgstr "View Profile"
 
-#: .\apps\users\admin\user.py:71
+#: .\apps\users\admin\user.py:68
 msgid "Passwords do not match."
 msgstr "Passwords do not match."
 
-#: .\apps\users\apps.py:8 .\apps\users\models\user.py:67
+#: .\apps\users\apps.py:8 .\apps\users\models\user.py:64
+#: .\settings\jazzmin.py:35
 msgid "Users"
 msgstr "Users"
 
@@ -576,83 +607,83 @@ msgstr "Superuser must have is_staff=True."
 msgid "Superuser must have is_superuser=True."
 msgstr "Superuser must have is_superuser=True."
 
-#: .\apps\users\models\profile.py:9 .\apps\users\models\user.py:66
+#: .\apps\users\models\profile.py:10 .\apps\users\models\user.py:63
 msgid "User"
 msgstr "User"
 
-#: .\apps\users\models\profile.py:11
+#: .\apps\users\models\profile.py:12
 msgid "profile picture"
 msgstr "profile picture"
 
-#: .\apps\users\models\profile.py:15
+#: .\apps\users\models\profile.py:16
 msgid "Upload a profile picture."
 msgstr "Upload a profile picture."
 
-#: .\apps\users\models\profile.py:24
+#: .\apps\users\models\profile.py:25
 msgid "This field allows you to specify the user's city and region."
 msgstr "This field allows you to specify the user's city and region."
 
-#: .\apps\users\models\profile.py:27
+#: .\apps\users\models\profile.py:28
 msgid "Phone numbers"
 msgstr "Phone numbers"
 
-#: .\apps\users\models\profile.py:27
+#: .\apps\users\models\profile.py:28
 msgid "You can add multiple phone numbers."
 msgstr "You can add multiple phone numbers."
 
-#: .\apps\users\models\profile.py:37
+#: .\apps\users\models\profile.py:38
 msgid "Profile"
 msgstr "Profile"
 
-#: .\apps\users\models\profile.py:38
+#: .\apps\users\models\profile.py:39
 msgid "Profiles"
 msgstr "Profiles"
 
-#: .\apps\users\models\user.py:23
+#: .\apps\users\models\user.py:20
 msgid "username"
 msgstr "username"
 
-#: .\apps\users\models\user.py:25
+#: .\apps\users\models\user.py:22
 msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
 msgstr "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
 
-#: .\apps\users\models\user.py:29
+#: .\apps\users\models\user.py:26
 msgid "first name"
 msgstr "first name"
 
-#: .\apps\users\models\user.py:31 .\apps\users\models\user.py:38
+#: .\apps\users\models\user.py:28 .\apps\users\models\user.py:35
 msgid "Required. 150 characters or fewer."
 msgstr "Required. 150 characters or fewer."
 
-#: .\apps\users\models\user.py:36
+#: .\apps\users\models\user.py:33
 msgid "last name"
 msgstr "last name"
 
-#: .\apps\users\models\user.py:42
+#: .\apps\users\models\user.py:39
 msgid "email address"
 msgstr "email address"
 
-#: .\apps\users\models\user.py:44
+#: .\apps\users\models\user.py:41
 msgid "email confirm"
 msgstr "email confirm"
 
-#: .\apps\users\models\user.py:46
+#: .\apps\users\models\user.py:43
 msgid "Indicates whether the user has verified their email address."
 msgstr "Indicates whether the user has verified their email address."
 
-#: .\apps\users\models\user.py:49
+#: .\apps\users\models\user.py:46
 msgid "staff status"
 msgstr "staff status"
 
-#: .\apps\users\models\user.py:51
+#: .\apps\users\models\user.py:48
 msgid "Designates whether the user can log into this admin site."
 msgstr "Designates whether the user can log into this admin site."
 
-#: .\apps\users\models\user.py:54
+#: .\apps\users\models\user.py:51
 msgid "active"
 msgstr "active"
 
-#: .\apps\users\models\user.py:57
+#: .\apps\users\models\user.py:54
 msgid ""
 "Designates whether this user should be treated as active. Unselect this "
 "instead of deleting accounts."
@@ -660,7 +691,7 @@ msgstr ""
 "Designates whether this user should be treated as active. Unselect this "
 "instead of deleting accounts."
 
-#: .\apps\users\models\user.py:60
+#: .\apps\users\models\user.py:57
 msgid "date joined"
 msgstr "date joined"
 
@@ -709,14 +740,22 @@ msgstr "User registration example response"
 msgid "Example of a successful response after user registration."
 msgstr "Example of a successful response after user registration."
 
-#: .\settings\base.py:134
+#: .\settings\base.py:137
 msgid "Ukrainian"
 msgstr "Ukrainian"
 
-#: .\settings\base.py:135
+#: .\settings\base.py:138
 msgid "English"
 msgstr "English"
 
-#: .\settings\base.py:136
+#: .\settings\base.py:139
 msgid "Russian"
 msgstr "Russian"
+
+#: .\templates\admin\base_site.html:5
+msgid "Django site admin"
+msgstr ""
+
+#: .\templates\admin\base_site.html:8
+msgid "Django administration"
+msgstr ""
