@@ -38,7 +38,7 @@ JAZZMIN_SETTINGS = {
             'permissions': ['auth.view_user'],
         },
         {
-            'name': _('Category'),
+            'name': _('Categories'),
             'model': 'product.Category',
             'url': 'admin:products_category_changelist',
             'permissions': ['auth.view_user'],
@@ -50,7 +50,7 @@ JAZZMIN_SETTINGS = {
             'permissions': ['auth.view_user'],
         },
         {
-            'name': _('Location'),
+            'name': _('Locations'),
             'model': 'location.Location',
             'url': 'admin:locations_location_changelist',
             'permissions': ['auth.view_user'],
