@@ -72,6 +72,7 @@ export const ProductCarousel: React.FC<Props> = ({ product }) => {
                 <CarouselItem key={index}>
                   <div
                     onClick={handleImageClick}
+                    onTouchStart={handleImageClick}
                     className='flex h-[238px] w-[355px] cursor-pointer items-center justify-center rounded-[15px] bg-gray-100 xl:h-[613px] xl:w-[629px]'
                   >
                     <img
