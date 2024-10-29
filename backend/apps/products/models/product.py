@@ -3,13 +3,18 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from slugify import slugify
 
+from apps.common.models import HistoricalModel
 from apps.common.models import TimestampMixin
 
 
 User = get_user_model()
 
 
-class Product(TimestampMixin, models.Model):
+class Product(TimestampMixin, HistoricalModel, models.Model):
+    STATUS_TYPE_CHOICES = [
+        ('new', _('New')),
+        ('old', _('Old')),
+    ]
     title = models.CharField(_('Product name'), max_length=255)
     description = models.TextField(verbose_name=_('Product description'), blank=True, null=True)
     seller = models.ForeignKey(
@@ -24,9 +29,16 @@ class Product(TimestampMixin, models.Model):
         related_name='products',
         verbose_name=_('Category'),
     )
+    status = models.CharField(
+        _('Status'),
+        max_length=20,
+        choices=STATUS_TYPE_CHOICES,
+        default=STATUS_TYPE_CHOICES[1][1],
+        help_text=_('Product status'),
+    )
     views = models.IntegerField(_('Views'), default=0)
     params = models.JSONField(_('Parameters'), default=dict, blank=True, null=True)
-    prod_olx_id = models.IntegerField('Product OLX ID', blank=True, null=True)
+    prod_olx_id = models.IntegerField('Product OLX ID', blank=True, null=True, editable=False)
     slug = models.SlugField(max_length=255, unique=True)
 
     def __str__(self):
