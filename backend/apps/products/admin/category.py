@@ -2,15 +2,16 @@ from django.contrib import admin
 from django.db.models import Count
 from django.utils.translation import gettext_lazy as _
 from modeltranslation.admin import TranslationAdmin
+from simple_history.admin import SimpleHistoryAdmin
 
 from apps.products.admin.filters import PopularCategoryFilter
 from apps.products.models import Category
 
 
 @admin.register(Category)
-class CategoryAdmin(TranslationAdmin):
-    list_display = ('id', 'title', 'parent', 'views', 'product_count', 'updated_at', 'created_at')
-    list_display_links = ('id', 'title')
+class CategoryAdmin(SimpleHistoryAdmin, TranslationAdmin):
+    list_display = ('title', 'parent', 'views', 'product_count', 'updated_at', 'created_at')
+    list_display_links = ('title',)
     readonly_fields = (
         'views',
         'slug',
