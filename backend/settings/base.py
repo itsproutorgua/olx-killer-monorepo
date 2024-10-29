@@ -49,6 +49,7 @@ ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', 'localhost 127.0.0.1 [::1]').s
 INSTALLED_APPS = [
     # Django core apps
     'modeltranslation',  # translation
+    'jazzmin',  # admin panel
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -59,6 +60,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # staticfiles without Nginx
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',  # translation
@@ -143,20 +145,16 @@ MODELTRANSLATION_DEFAULT_LANGUAGE = 'uk'
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
-
-# local
-# MEDIA_URL = '/media/'
-# MEDIA_ROOT = BASE_DIR / 'media'
+STATIC_ROOT = (BASE_DIR / 'staticfiles').as_posix()
+STATICFILES_DIRS = [BASE_DIR / 'static']
 
 # AWS S3
-MEDIA_URL = f'https://{env('AWS_STORAGE_BUCKET_NAME', default=None)}.s3.amazonaws.com/media/'
-
+AWS_LOCATION = 'media'
+MEDIA_URL = f'https://{env('AWS_STORAGE_BUCKET_NAME', default=None)}.s3.amazonaws.com/{AWS_LOCATION}/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+WHITENOISE_KEEP_ONLY_HASHED_FILES = True  # staticfiles without Nginx
