@@ -1,5 +1,3 @@
-import os
-
 from django.db.models.signals import post_delete
 from django.dispatch import receiver
 
@@ -13,20 +11,20 @@ from apps.products.tasks import delete_product_file
 def delete_image_file(sender, instance, **kwargs):
     """Removes the image file from the server when ProductImage is deleted using Celery task."""
     if instance.image:
-        file_path = instance.image.path
-        if os.path.exists(file_path) and 'examples' not in file_path:
+        file_path = str(instance.image)
+        if 'examples' not in file_path:
             delete_product_file.delay(file_path)
+            instance.image.delete(save=False)
 
 
 @receiver(post_delete, sender=Product)
 def delete_product_images(sender, instance, **kwargs):
     """Removes image files from the server when a Product is deleted."""
     images = instance.product_images.all()
-    print(images)
     for image in images:
         if image.image:
-            file_path = image.image.path
-            if os.path.exists(file_path) and 'examples' not in file_path:
+            file_path = str(instance.image)
+            if 'examples' not in file_path:
                 delete_product_file.delay(file_path)
         image.delete()
 
