@@ -1,5 +1,3 @@
-from pathlib import Path
-
 from django.conf import settings
 from django.db import models
 from django.utils.translation import get_language
@@ -82,12 +80,12 @@ class Category(TimestampMixin, HistoricalModel, models.Model):
             translate_and_set_fields(self, field_name_prefix='title', field_to_translate='title')
 
         if self.parent is None and not self.img:
-            img_key = str(Path(f'media/categories/images/{self.slug}.png'))
+            img_key = f'{settings.AWS_LOCATION}/categories/images/{self.slug}.png'
             if file_exists_on_s3(img_key):
                 self.img = img_key
 
         if self.parent is None and not self.icon:
-            icon_key = str(Path(f'media/categories/icons/{self.slug}.svg'))
+            icon_key = f'{settings.AWS_LOCATION}/categories/icons/{self.slug}.svg'
             if file_exists_on_s3(icon_key):
                 self.icon = icon_key
 
