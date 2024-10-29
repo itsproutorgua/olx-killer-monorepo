@@ -14,10 +14,10 @@ django.setup()
 
 FIXTURE_MAP = [
     {'model': 'products.Category', 'path': 'fixtures/categories.json'},
-    {'model': 'locations.Location', 'path': 'fixtures/locations.json'},
-    {'model': 'locations.City', 'path': 'fixtures/cities.json'},
     {'model': 'locations.Region', 'path': 'fixtures/regions.json'},
+    {'model': 'locations.City', 'path': 'fixtures/cities.json'},
     # {'model': 'locations.Village', 'path': 'fixtures/villages.json'},
+    {'model': 'locations.Location', 'path': 'fixtures/locations.json'},
     {'model': 'users.User', 'path': 'fixtures/users.json'},
     {'model': 'users.Profile', 'path': 'fixtures/profiles.json'},
     {'model': 'products.Currency', 'path': 'fixtures/currencies.json'},
