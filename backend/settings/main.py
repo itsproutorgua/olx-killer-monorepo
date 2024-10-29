@@ -4,7 +4,14 @@ from corsheaders.defaults import default_headers
 from corsheaders.defaults import default_methods
 
 from settings.base import *
+from settings.jazzmin import *
+from settings.logging import *
 
+
+DEVELOPMENT_ENVIRONMENT = 'development'
+PRODUCTION_ENVIRONMENT = 'production'
+
+ENVIRONMENT = env('ENVIRONMENT', default=DEVELOPMENT_ENVIRONMENT)
 
 DATA_UPLOAD_MAX_MEMORY_SIZE = env('DATA_UPLOAD_MAX_MEMORY_SIZE')
 DYNAMIC_THROTTLE_RATE = env('DYNAMIC_THROTTLE_RATE', default='7/second')
@@ -45,12 +52,17 @@ INSTALLED_APPS += [
     'rest_framework_simplejwt',
     'corsheaders',
     'rosetta',
+    'simple_history',
     # Local apps
     'apps.users.apps.UsersConfig',
     'apps.products.apps.ProductsConfig',
     'apps.user_messages.apps.UserMessagesConfig',
     'apps.locations.apps.LocationsConfig',
     'apps.common',
+]
+
+MIDDLEWARE += [
+    'simple_history.middleware.HistoryRequestMiddleware',
 ]
 
 # DRF
@@ -112,6 +124,16 @@ CORS_ALLOW_HEADERS = [
 CORS_ALLOWED_ORIGINS = env('CORS_ALLOWED_ORIGINS', default='http://localhost:8000').split()
 CSRF_TRUSTED_ORIGINS = env('CSRF_TRUSTED_ORIGINS', default='http://localhost:8000').split()
 
+# COOKIE
+if ENVIRONMENT == DEVELOPMENT_ENVIRONMENT:
+    SESSION_COOKIE_DOMAIN = None
+    CSRF_COOKIE_DOMAIN = None
+else:
+    SESSION_COOKIE_DOMAIN = env('SESSION_COOKIE_DOMAIN')
+    CSRF_COOKIE_DOMAIN = env('CSRF_COOKIE_DOMAIN')
+
+X_FRAME_OPTIONS = 'http://localhost:8000/'
+
 # SIMPLE_JWT
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=31),
@@ -138,11 +160,6 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
-
-DEVELOPMENT_ENVIRONMENT = 'development'
-PRODUCTION_ENVIRONMENT = 'production'
-
-ENVIRONMENT = env('ENVIRONMENT', default=DEVELOPMENT_ENVIRONMENT)
 
 if ENVIRONMENT == DEVELOPMENT_ENVIRONMENT:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
@@ -192,31 +209,25 @@ AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY', default=None)
 AWS_STORAGE_BUCKET_NAME = env('AWS_STORAGE_BUCKET_NAME', default=None)
 AWS_S3_REGION_NAME = env('AWS_S3_REGION_NAME', default='us-east-1')
 AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
-AWS_DEFAULT_ACL = 'public-read'
+
+# Настройка хранилищ
+STORAGES = {
+    'default': {
+        'BACKEND': 'storages.backends.s3boto3.S3Boto3Storage',
+        'OPTIONS': {
+            'access_key': AWS_ACCESS_KEY_ID,
+            'secret_key': AWS_SECRET_ACCESS_KEY,
+            'bucket_name': AWS_STORAGE_BUCKET_NAME,
+            'custom_domain': AWS_S3_CUSTOM_DOMAIN,
+        },
+    },
+    'staticfiles': {
+        'BACKEND': 'django.contrib.staticfiles.storage.StaticFilesStorage',
+    },
+}
+
 # Для хранения медиафайлов
 DEFAULT_FILE_STORAGE = 'storages.backends.s3.S3Boto3Storage'
-
-# # SSL
-# # для работы с HTTPS
-# SECURE_SSL_REDIRECT = True
-#
-# # Настройки HSTS (HTTP Strict Transport Security)
-# SECURE_HSTS_SECONDS = 3600
-# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-# SECURE_HSTS_PRELOAD = True
-#
-# # Защита cookies с помощью HTTPS
-# SESSION_COOKIE_SECURE = True
-# CSRF_COOKIE_SECURE = True
-#
-# # Политика X-Content-Type-Options
-# SECURE_CONTENT_TYPE_NOSNIFF = True
-#
-# # Дополнительная защита от XSS-атак
-# SECURE_BROWSER_XSS_FILTER = True
-#
-# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-# ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'
 
 if DEBUG:
     INSTALLED_APPS += [
