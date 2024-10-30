@@ -138,7 +138,7 @@ LANGUAGES = [
     ('en', _('English')),
     ('ru', _('Russian')),
 ]
-
+MODELTRANSLATION_LANGUAGES = ('en', 'uk', 'ru')
 MODELTRANSLATION_DEFAULT_LANGUAGE = 'uk'
 
 # Static files (CSS, JavaScript, Images)
