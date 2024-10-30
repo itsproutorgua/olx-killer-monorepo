@@ -12,7 +12,7 @@ export const ContactSellerCard: React.FC<SellerProps> = ({
   const { t } = useTranslation()
   return (
     <div className={className}>
-      <div className='flex h-full flex-col rounded-[15px] border border-border px-6 py-[34px] pr-11'>
+      <div className='flex h-full flex-col rounded-[15px] border border-border py-[34px] pl-[34px] pr-12'>
         <h3 className='font-semibold uppercase leading-none'>
           {t('words.contactSeller')}
         </h3>

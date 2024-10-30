@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query'
 import { useTranslation } from 'react-i18next'
 
 import { ProductCard } from '@/widgets/product-card'
+import { chunkArray } from '@/widgets/product-slider/model/product-slider-helper.ts'
 import { Product, productApi, type ProductResponse } from '@/entities/product'
 import {
   Carousel,
@@ -30,15 +31,31 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({
   className,
   onProductClick,
 }) => {
-  const [api, setApi] = useState<CarouselApi>(),
-    [current, setCurrent] = useState(0),
-    [count, setCount] = useState(0)
   const { t } = useTranslation()
+  const [api, setApi] = useState<CarouselApi>()
+  const [current, setCurrent] = useState(0)
+  const [count, setCount] = useState(0)
+  const [dynamicChunkSize, setDynamicChunkSize] = useState(chunkSize) // Track dynamic chunk size
 
   const { isLoading, data, isError } = useQuery<ProductResponse>({
     queryKey: [QUERY_KEYS.PRODUCTS, path],
     queryFn: () => productApi.findByFilters({ path, limit: 28 }),
   })
+
+  // Handle screen size changes
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setDynamicChunkSize(3)
+      } else {
+        setDynamicChunkSize(2)
+      }
+    }
+
+    handleResize() // Call once on mount
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   useEffect(() => {
     if (!api) return
@@ -50,16 +67,6 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({
       setCurrent(api.selectedScrollSnap() + 1)
     })
   }, [api])
-
-  // Helper to chunk array into groups of a certain size
-  const chunkArray = (array: Product[], size: number): Product[][] => {
-    return array.reduce((result: Product[][], _, index) => {
-      if (index % size === 0) {
-        result.push(array.slice(index, index + size))
-      }
-      return result
-    }, [])
-  }
 
   if (isError) {
     return <div>{t('errors.noProducts')}</div>
@@ -90,7 +97,7 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({
         {/* Actual Data */}
         {data && (
           <CarouselContent>
-            {chunkArray(data.results.slice(0, 8), chunkSize).map(
+            {chunkArray(data.results.slice(0, 8), dynamicChunkSize).map(
               (pair: Product[], index: number) => (
                 <CarouselItem key={index} className='flex gap-[10px]'>
                   {pair.map((deal: Product) => (

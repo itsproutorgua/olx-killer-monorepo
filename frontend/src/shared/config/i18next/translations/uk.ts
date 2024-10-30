@@ -116,7 +116,7 @@ export const uk = {
     viewOnMap: 'Показати на карті',
     loginMessage: "Увійдіть або створіть профіль для зв'язку з продавцем.",
     yourAccount: 'Профіль',
-    log_in: 'Увійти',
+    log_in: 'Авторизуватись',
     createAccount: 'Створити профіль',
     contactSeller: "Зв'язатись з продавцем",
     showAll: 'Показати всі',

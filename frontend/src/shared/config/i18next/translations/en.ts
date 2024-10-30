@@ -116,7 +116,7 @@ export const en = {
     loginMessage:
       'Log in to your profile or create a new one to contact this seller.',
     yourAccount: 'Your Account',
-    log_in: 'Log in',
+    log_in: 'Authorize',
     createAccount: 'Create an account',
     contactSeller: 'CONTACT THE SELLER',
     showAll: 'Show all',
