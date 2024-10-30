@@ -9,7 +9,7 @@ from apps.products.utils import translate_and_set_fields
 from apps.products.utils.check_file_exists import file_exists_on_s3
 
 
-class Category(TimestampMixin,  models.Model):
+class Category(TimestampMixin, models.Model):
     title = models.CharField(_('Category name'), max_length=100)
     parent = models.ForeignKey(
         'self',

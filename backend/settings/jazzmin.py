@@ -1,5 +1,6 @@
 from django.utils.translation import gettext_lazy as _
 
+
 # JAZZMIN
 JAZZMIN_SETTINGS = {
     'site_header': 'OLX Killer',
