@@ -10,7 +10,7 @@ from apps.products.utils.check_file_exists import file_exists_on_s3
 
 
 class Category(TimestampMixin, models.Model):
-    title = models.CharField(_('Category name'), max_length=100)
+    title = models.CharField(_('Category name'), max_length=255)
     parent = models.ForeignKey(
         'self',
         on_delete=models.CASCADE,
@@ -22,7 +22,7 @@ class Category(TimestampMixin, models.Model):
     img = models.ImageField(_('Image'), upload_to='categories/images', blank=True, null=True)
     icon = models.ImageField(_('Icon'), upload_to='categories/icons', blank=True, null=True)
     cat_id_olx = models.IntegerField('Category ID OLX', blank=True, null=True, editable=False)
-    slug = models.SlugField(max_length=110)
+    slug = models.SlugField(max_length=255)
     path = models.CharField(max_length=255, blank=True, unique=True)
     views = models.IntegerField(_('Views'), default=0)
 
