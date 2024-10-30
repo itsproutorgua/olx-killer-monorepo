@@ -78,9 +78,9 @@ class ProductSerializer(serializers.ModelSerializer):
         video_data = validated_data.pop('video', None)
         prices_data = validated_data.pop('prices', None)
 
-        instance.title = validated_data.get('title', instance.title)
-        instance.category = validated_data.get('category', instance.category)
-        instance.description = validated_data.get('description', instance.description)
+        for attr, value in validated_data.items():
+            setattr(instance, attr, value)
+
         instance.save()
 
         if prices_data is not None:
