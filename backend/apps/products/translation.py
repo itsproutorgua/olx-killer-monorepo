@@ -10,4 +10,5 @@ class CategoryTranslationOptions(TranslationOptions):
     fields = ('title',)
     historical = True
 
+
 simple_history.register(Category, inherit=True)

@@ -4,8 +4,9 @@ from django.core.validators import MinValueValidator
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from apps.common.models import TimestampMixin
 from apps.common.models import HistoricalModel
+from apps.common.models import TimestampMixin
+
 
 MIN_PRICE = Decimal(0.0)
 ERROR_MIN_PRICE_MESSAGE = _(f'Must be greater than or equal to {MIN_PRICE}.')
