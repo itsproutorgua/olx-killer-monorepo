@@ -44,8 +44,8 @@ export const PopularCategories = () => {
         <Collapsible open={isOpen} onOpenChange={setIsOpen}>
           <div>
             {isLoading && (
-              <ul className='grid grid-cols-2 gap-x-2.5 gap-y-[45px] pb-[83px] xl:grid-cols-7 xl:gap-x-[38px] xl:pb-0'>
-                {Array.from({ length: isDesktop ? 14 : 6 }).map((_, index) => (
+              <ul className='mb-[85px] grid grid-cols-2 gap-x-2.5 gap-y-[45px] xl:grid-cols-7 xl:gap-x-[38px] xl:pb-0'>
+                {Array.from({ length: isDesktop ? 7 : 6 }).map((_, index) => (
                   <li key={index}>
                     <PopularCategoryLoader />
                   </li>
@@ -53,7 +53,7 @@ export const PopularCategories = () => {
               </ul>
             )}
             <ul className='grid grid-cols-2 gap-x-2.5 gap-y-[45px] xl:grid-cols-7 xl:gap-x-[38px]'>
-              {categories?.slice(0, isDesktop ? 13 : 6).map(cat => (
+              {categories?.slice(0, isDesktop ? 7 : 6).map(cat => (
                 <li
                   key={cat.path}
                   className='cursor-pointer transition duration-300 hover:scale-105'
@@ -63,11 +63,11 @@ export const PopularCategories = () => {
                     reloadDocument
                     className='space-y-[15px]'
                   >
-                    <div className='size-[150px] rounded-full'>
+                    <div className='size-[150px] rounded-[30px]'>
                       <img
                         src={cat.img}
                         alt={cat.title}
-                        className='rounded-full'
+                        className='rounded-[30px]'
                       />
                     </div>
                     <h3 className='line-clamp-1 w-[150px] text-center text-base/[20.8px] hover:overflow-visible'>
@@ -80,17 +80,17 @@ export const PopularCategories = () => {
             <CollapsibleContent>
               <ul className='mt-[45px] grid grid-cols-2 gap-x-2.5 gap-y-8 xl:grid-cols-7 xl:gap-x-[38px]'>
                 {categories
-                  ?.slice(isDesktop ? 13 : 6, categories.length)
+                  ?.slice(isDesktop ? 7 : 6, categories.length)
                   .map(cat => (
                     <li
                       key={cat.path}
                       className='cursor-pointer space-y-[15px] transition duration-300 hover:scale-105'
                     >
-                      <div className='size-[172px] rounded-full xl:size-[150px]'>
+                      <div className='size-[172px] rounded-[30px] xl:size-[150px]'>
                         <img
                           src={cat.img}
                           alt={cat.title}
-                          className='rounded-full'
+                          className='rounded-[30px]'
                         />
                       </div>
                       <h3 className='line-clamp-1 text-center text-base/[20.8px]'>
@@ -102,7 +102,7 @@ export const PopularCategories = () => {
             </CollapsibleContent>
           </div>
 
-          {categories && categories.length > (isDesktop ? 14 : 6) && (
+          {categories && categories.length > (isDesktop ? 7 : 6) && (
             <CollapsibleTrigger className='mt-[42px] w-full rounded-[60px] border border-border py-[13px] text-center text-[13px]/[13px] transition-colors duration-300 hover:bg-primary-500 hover:text-gray-50 active:bg-primary-900 active:text-gray-50 active:duration-0 xl:text-base/4'>
               {isOpen
                 ? `${t('buttons.showLess')}`

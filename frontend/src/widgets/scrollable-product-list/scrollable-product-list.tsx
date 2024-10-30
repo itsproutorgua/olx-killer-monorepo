@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { useQuery } from '@tanstack/react-query'
+import { keepPreviousData, useQuery } from '@tanstack/react-query'
 
 import { ProductCard } from '@/widgets/product-card'
 import {
@@ -35,6 +35,7 @@ export const ScrollableProductList: React.FC<ScrollableProductListProps> = ({
   const { isLoading, data, isError } = useQuery<ProductResponse>({
     queryKey: [QUERY_KEYS.PRODUCTS, path],
     queryFn: () => productApi.findByFilters({ path, limit: 18 }),
+    placeholderData: keepPreviousData,
   })
 
   useEffect(() => {

@@ -86,7 +86,7 @@ export const Footer = () => {
 
   return (
     <footer className='rounded-t-md bg-primary-900 pt-[41px] text-gray-50 xl:pt-[71px]'>
-      <div className='flex flex-col px-[10px] xl:container xl:flex-row'>
+      <div className='flex flex-col px-[20px] xl:container xl:flex-row'>
         <div className='pr-[74px] xl:w-1/2 xl:pr-[177px]'>
           <Logo className='block' />
           <p className='text-muted-foreground max-w-[454px] pt-[15px] text-sm xl:text-base'>
