@@ -1,3 +1,4 @@
+import simple_history
 from modeltranslation.translator import register
 from modeltranslation.translator import TranslationOptions
 
@@ -13,3 +14,7 @@ class RegionTranslationOptions(TranslationOptions):
 @register(City)
 class CityTranslationOptions(TranslationOptions):
     fields = ('name',)
+
+
+simple_history.register(Region, inherit=True)
+simple_history.register(City, inherit=True)
