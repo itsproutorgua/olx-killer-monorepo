@@ -68,7 +68,7 @@ const BottomBar = () => {
       )}
     >
       {/* Bottom Menu Bar */}
-      <div className='relative flex h-[75px] items-center justify-between rounded-t-[30px] bg-[#2c2a84] px-[5px] text-gray-50'>
+      <div className='relative flex h-[75px] items-center justify-between rounded-t-[30px] bg-[#2c2a84] px-[8px] text-gray-50'>
         <div className='flex w-[35%] flex-row justify-between gap-2'>
           <Link to='/catalog' className='flex w-[70px] flex-col items-center'>
             <BottomBarMenu />
@@ -83,7 +83,7 @@ const BottomBar = () => {
 
         {/* Center Floating Action Button */}
         <div className='absolute left-1/2 top-[-24px] -translate-x-1/2 transform rounded-full bg-gray-50 p-[5px] shadow-custom-purple'>
-          <button className='bg-white flex h-12 w-12 items-center justify-center rounded-full text-[#2c2a84]'>
+          <button className='flex h-12 w-12 items-center justify-center rounded-full bg-white text-[#2c2a84]'>
             <CirclePlusIcon />
           </button>
         </div>
