@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useQuery } from '@tanstack/react-query'
+import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import { useTranslation } from 'react-i18next'
 
 import {
@@ -37,6 +37,7 @@ export const ProductPage = () => {
   } = useQuery<Product>({
     queryKey: [QUERY_KEYS.PRODUCT, slug, i18n.language],
     queryFn: () => productApi.findBySlug({ slug }),
+    placeholderData: keepPreviousData,
     enabled: !!slug,
   })
 
