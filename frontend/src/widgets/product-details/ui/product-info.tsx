@@ -14,6 +14,7 @@ import { Product } from '@/entities/product'
 import { formatDate } from '@/entities/product/model/product-date.helper.ts'
 import { Separator } from '@/shared/ui/shadcn-ui/separator.tsx'
 import { FlagIcon } from '@/shared/ui'
+import { ArrowDownSmall } from '@/shared/ui/icons/arrow-down-small.tsx'
 import { Rating } from '@/shared/ui/rating-with-stars.tsx'
 
 interface Props {
@@ -88,11 +89,18 @@ export const ProductInfo: React.FC<Props> = ({ className, product }) => {
         {product.description.length > maxClampLength && (
           <button
             onClick={toggleDescription}
-            className='mt-2 text-sm text-gray-600 hover:underline'
+            className='mt-2 flex items-center text-sm font-semibold text-gray-700 hover:underline'
           >
-            {showFullDescription
-              ? t('buttons.showLess')
-              : t('buttons.showMore')}
+            {showFullDescription ? (
+              <>
+                {t('buttons.showLess')}{' '}
+                <ArrowDownSmall className='rotate-180' />
+              </>
+            ) : (
+              <>
+                {t('buttons.showMore')} <ArrowDownSmall />
+              </>
+            )}
           </button>
         )}
       </div>
@@ -131,11 +139,18 @@ export const ProductInfo: React.FC<Props> = ({ className, product }) => {
         {product.description.length > maxClampLength && (
           <button
             onClick={toggleDescription}
-            className='mt-2 text-sm text-gray-600 hover:underline'
+            className='dgap-2 mt-2 flex items-center text-sm font-semibold text-gray-700 hover:underline'
           >
-            {showFullDescription
-              ? t('buttons.showLess')
-              : t('buttons.showMore')}
+            {showFullDescription ? (
+              <>
+                {t('buttons.showLess')}{' '}
+                <ArrowDownSmall className='rotate-180' />
+              </>
+            ) : (
+              <>
+                {t('buttons.showMore')} <ArrowDownSmall />
+              </>
+            )}
           </button>
         )}
         <Separator className='border-primary-gray mt-[11px]' />
