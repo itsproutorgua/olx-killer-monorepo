@@ -45,6 +45,7 @@ class ProductFilterViewSet(mixins.ListModelMixin, GenericViewSet):
             'prices__currency',
             'category__children',
         )
+        .filter(active=True)
         .order_by(f'-{allowed_sort_fields[-1]}')
     )
 
