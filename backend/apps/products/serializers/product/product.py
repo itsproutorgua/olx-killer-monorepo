@@ -19,6 +19,7 @@ class ProductSerializer(serializers.ModelSerializer):
     images = ProductImageSerializer(many=True, source='product_images')
     video = ProductVideoSerializer(required=False)
     seller = serializers.SerializerMethodField()
+    status = serializers.SerializerMethodField()
 
     class Meta:
         model = Product
@@ -31,6 +32,7 @@ class ProductSerializer(serializers.ModelSerializer):
             'video',
             'seller',
             'status',
+            'active',
             'slug',
             'views',
             'created_at',
@@ -41,6 +43,10 @@ class ProductSerializer(serializers.ModelSerializer):
     @extend_schema_field(ProfileSerializer)
     def get_seller(self, obj: Product) -> ProfileSerializer:
         return ProfileSerializer(obj.seller.profile).data
+
+    @staticmethod
+    def get_status(obj: Product) -> str:
+        return obj.get_status_display()
 
     def create(self, validated_data: dict) -> Product:
         title = validated_data.pop('title')
