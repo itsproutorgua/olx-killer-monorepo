@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-29 19:48+0200\n"
+"POT-Creation-Date: 2024-11-07 01:51+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -94,23 +94,24 @@ msgstr "Створення дати"
 msgid "Update date"
 msgstr "Дата оновлення"
 
-#: .\apps\locations\admin\location.py:14 .\apps\locations\models\location.py:36
-#: .\apps\users\models\profile.py:24 .\settings\jazzmin.py:53
+#: .\apps\locations\admin\location.py:15 .\apps\locations\models\location.py:37
+#: .\apps\users\models\profile.py:24
 msgid "Location"
 msgstr "Розташування"
 
-#: .\apps\locations\admin\location.py:18 .\apps\locations\models\region.py:9
+#: .\apps\locations\admin\location.py:19 .\apps\locations\models\region.py:9
 #: .\apps\locations\models\region.py:23
 msgid "Region"
 msgstr "Область"
 
-#: .\apps\locations\apps.py:8 .\apps\locations\models\location.py:37
+#: .\apps\locations\apps.py:8 .\apps\locations\models\location.py:38
+#: .\settings\jazzmin.py:54
 msgid "Locations"
 msgstr "Розташування"
 
 #: .\apps\locations\models\city.py:9 .\apps\locations\models\city.py:24
-#: .\apps\locations\models\location.py:10
-#: .\apps\locations\models\location.py:20
+#: .\apps\locations\models\location.py:11
+#: .\apps\locations\models\location.py:21
 msgid "City"
 msgstr "Місто"
 
@@ -118,48 +119,48 @@ msgstr "Місто"
 msgid "Cities"
 msgstr "Міста"
 
-#: .\apps\locations\models\location.py:11
-#: .\apps\locations\models\location.py:21 .\apps\locations\models\village.py:23
+#: .\apps\locations\models\location.py:12
+#: .\apps\locations\models\location.py:22 .\apps\locations\models\village.py:23
 msgid "Village"
 msgstr "Село"
 
-#: .\apps\locations\models\location.py:15
+#: .\apps\locations\models\location.py:16
 msgid "Location Type"
 msgstr "Розташування"
 
-#: .\apps\locations\models\location.py:18
+#: .\apps\locations\models\location.py:19
 msgid "Type of location"
 msgstr "Тип місцезнаходження"
 
-#: .\apps\locations\models\location.py:22
+#: .\apps\locations\models\location.py:23
 msgid "Latitude"
 msgstr "Широта"
 
-#: .\apps\locations\models\location.py:23
+#: .\apps\locations\models\location.py:24
 msgid "Longitude"
 msgstr "Довгота"
 
-#: .\apps\locations\models\location.py:24
+#: .\apps\locations\models\location.py:25
 msgid "Location name"
 msgstr "Назва локації"
 
-#: .\apps\locations\models\location.py:25
+#: .\apps\locations\models\location.py:26
 msgid "Region name"
 msgstr "Назва області"
 
-#: .\apps\locations\models\location.py:32
+#: .\apps\locations\models\location.py:33
 msgid "Unknown Location"
 msgstr "Невідоме місцезнаходження"
 
-#: .\apps\locations\models\location.py:43
+#: .\apps\locations\models\location.py:44
 msgid "City must be provided for city location type."
 msgstr "Для типу розташування міста необхідно вказати місто."
 
-#: .\apps\locations\models\location.py:45
+#: .\apps\locations\models\location.py:46
 msgid "Village must be provided for village location type."
 msgstr "Для типу розташування села необхідно вказати село."
 
-#: .\apps\locations\models\location.py:48
+#: .\apps\locations\models\location.py:49
 msgid "Location cannot be both city and village at the same time."
 msgstr "Локація не може бути одночасно містом і селом."
 
@@ -187,39 +188,38 @@ msgstr "Популярні категорії"
 msgid "General"
 msgstr "Основний"
 
-#: .\apps\products\apps.py:8 .\apps\products\models\product.py:50
-#: .\settings\jazzmin.py:47
+#: .\apps\products\apps.py:8 .\apps\products\models\product.py:58
+#: .\settings\jazzmin.py:48
 msgid "Products"
 msgstr "Продукти"
 
-#: .\apps\products\models\category.py:14
+#: .\apps\products\models\category.py:13
 msgid "Category name"
 msgstr "Назва категорії"
 
-#: .\apps\products\models\category.py:21
+#: .\apps\products\models\category.py:20
 msgid "Parent category"
 msgstr "Батьківська категорія"
 
-#: .\apps\products\models\category.py:23
+#: .\apps\products\models\category.py:22
 #: .\apps\products\models\product_image.py:19
 #: .\apps\user_messages\models\message_image.py:10
 msgid "Image"
 msgstr "Зображення"
 
-#: .\apps\products\models\category.py:24
+#: .\apps\products\models\category.py:23
 msgid "Icon"
 msgstr "Іконка"
 
-#: .\apps\products\models\category.py:28 .\apps\products\models\product.py:39
+#: .\apps\products\models\category.py:27 .\apps\products\models\product.py:47
 msgid "Views"
 msgstr "Перегляди"
 
-#: .\apps\products\models\category.py:35 .\apps\products\models\product.py:30
-#: .\settings\jazzmin.py:41
+#: .\apps\products\models\category.py:34 .\apps\products\models\product.py:30
 msgid "Category"
 msgstr "Категорія"
 
-#: .\apps\products\models\category.py:36
+#: .\apps\products\models\category.py:35 .\settings\jazzmin.py:42
 msgid "Categories"
 msgstr "Категорії"
 
@@ -257,7 +257,7 @@ msgid "Currency name"
 msgstr "Назва валюти"
 
 #: .\apps\products\models\price\currency.py:18
-#: .\apps\products\models\price\price.py:21
+#: .\apps\products\models\price\price.py:22
 msgid "Currency"
 msgstr "Валюта"
 
@@ -265,25 +265,25 @@ msgstr "Валюта"
 msgid "Currencies"
 msgstr "Валюти"
 
-#: .\apps\products\models\price\price.py:11
+#: .\apps\products\models\price\price.py:12
 #, python-brace-format
 msgid "Must be greater than or equal to {MIN_PRICE}."
 msgstr "Має бути більше або дорівнювати {MIN_PRICE}."
 
-#: .\apps\products\models\price\price.py:16
+#: .\apps\products\models\price\price.py:17
 msgid "Amount"
 msgstr "Сума"
 
-#: .\apps\products\models\price\price.py:22
-#: .\apps\products\models\product.py:49
+#: .\apps\products\models\price\price.py:23
+#: .\apps\products\models\product.py:57
 msgid "Product"
 msgstr "Продукт"
 
-#: .\apps\products\models\price\price.py:29
+#: .\apps\products\models\price\price.py:30
 msgid "Price"
 msgstr "Ціна"
 
-#: .\apps\products\models\price\price.py:30
+#: .\apps\products\models\price\price.py:31
 msgid "Prices"
 msgstr "Ціни"
 
@@ -316,6 +316,18 @@ msgid "Product status"
 msgstr "Стан продукту"
 
 #: .\apps\products\models\product.py:40
+msgid "Active"
+msgstr "активний"
+
+#: .\apps\products\models\product.py:43
+msgid ""
+"Indicates whether the listing is currently active.Set to False when the item "
+"is sold or the listing is no longer relevant."
+msgstr ""
+"Вказує, чи є оголошення активним. Встановіть значення False, коли товар "
+"продано або оголошення більше не актуальне."
+
+#: .\apps\products\models\product.py:48
 msgid "Parameters"
 msgstr "Параметри"
 
@@ -355,23 +367,23 @@ msgid "Failed to create price: {}"
 msgstr "Не вдалося створити ціну: {}"
 
 #: .\apps\products\serializers\price\price.py:56
-#: .\apps\products\serializers\product\product.py:102
+#: .\apps\products\serializers\product\product.py:108
 msgid "Failed to create product price: {}"
 msgstr "Не вдалося створити ціну продукту: {}"
 
-#: .\apps\products\serializers\product\product.py:56
+#: .\apps\products\serializers\product\product.py:62
 msgid "Database integrity error: {}"
 msgstr "Помилка цілісності бази даних: {}"
 
-#: .\apps\products\serializers\product\product.py:61
+#: .\apps\products\serializers\product\product.py:67
 msgid "Failed to create product prices: {}"
 msgstr "Не вдалося створити ціни на продукти: {}"
 
-#: .\apps\products\serializers\product\product.py:66
+#: .\apps\products\serializers\product\product.py:72
 msgid "Failed to create product images: {}"
 msgstr "Не вдалося створити зображення продуктів: {}"
 
-#: .\apps\products\serializers\product\product.py:96
+#: .\apps\products\serializers\product\product.py:102
 msgid "Price with currency {} does not exist."
 msgstr "Ціна з валютою {} не існує."
 
@@ -467,64 +479,64 @@ msgstr "Видалити товар"
 msgid "Delete a product by slug"
 msgstr "Видалення товару за slug"
 
-#: .\apps\products\views\product_filters.py:53
+#: .\apps\products\views\product_filters.py:54
 msgid "Filter products by various parameters"
 msgstr "Фільтрувати товари за різними параметрами"
 
-#: .\apps\products\views\product_filters.py:54
+#: .\apps\products\views\product_filters.py:55
 msgid "Retrieve a list of products filtered by multiple parameters"
 msgstr "Отримати список продуктів, відфільтрованих за кількома параметрами"
 
-#: .\apps\products\views\product_filters.py:59
+#: .\apps\products\views\product_filters.py:60
 msgid "Filter products by category path"
 msgstr "Фільтруйте продукти за path категорії"
 
-#: .\apps\products\views\product_filters.py:65
+#: .\apps\products\views\product_filters.py:66
 msgid "Minimum price filter"
 msgstr "Фільтр мінімальної ціни"
 
-#: .\apps\products\views\product_filters.py:71
+#: .\apps\products\views\product_filters.py:72
 msgid "Maximum price filter"
 msgstr "Фільтр максимальної ціни"
 
-#: .\apps\products\views\product_filters.py:77
+#: .\apps\products\views\product_filters.py:78
 #, python-brace-format
 msgid "Currency code for the price filter (Default: {default_currency})"
 msgstr "Код валюти для фільтра ціни (за умовчанням: {default_currency})"
 
-#: .\apps\products\views\product_filters.py:84
+#: .\apps\products\views\product_filters.py:85
 msgid "Field to sort products by (e.g., {"
 msgstr "Поле для сортування продуктів (наприклад, {"
 
-#: .\apps\products\views\product_filters.py:89
+#: .\apps\products\views\product_filters.py:90
 msgid "Sort by price in ascending order"
 msgstr "Сортувати за ціною в порядку зростання"
 
-#: .\apps\products\views\product_filters.py:91
+#: .\apps\products\views\product_filters.py:92
 msgid "Sort products by price in ascending order."
 msgstr "Сортуйте товари за ціною в порядку зростання."
 
-#: .\apps\products\views\product_filters.py:94
+#: .\apps\products\views\product_filters.py:95
 msgid "Sort by price in descending order"
 msgstr "Сортувати за ціною в порядку спадання"
 
-#: .\apps\products\views\product_filters.py:96
+#: .\apps\products\views\product_filters.py:97
 msgid "Sort products by price in descending order."
 msgstr "Сортуйте товари за ціною в порядку спадання."
 
-#: .\apps\products\views\product_filters.py:99
+#: .\apps\products\views\product_filters.py:100
 msgid "Sort by created date in ascending order"
 msgstr "Сортувати за датою створення в порядку зростання"
 
-#: .\apps\products\views\product_filters.py:101
+#: .\apps\products\views\product_filters.py:102
 msgid "Sort products by created date in ascending order."
 msgstr "Сортуйте товари за датою створення в порядку зростання."
 
-#: .\apps\products\views\product_filters.py:104
+#: .\apps\products\views\product_filters.py:105
 msgid "Sort by created date in descending order"
 msgstr "Сортувати за датою створення в порядку спадання"
 
-#: .\apps\products\views\product_filters.py:106
+#: .\apps\products\views\product_filters.py:107
 msgid "Sort products by created date in descending order."
 msgstr "Сортуйте товари за датою створення в порядку спадання."
 
@@ -594,7 +606,7 @@ msgid "Passwords do not match."
 msgstr "Паролі не збігаються."
 
 #: .\apps\users\apps.py:8 .\apps\users\models\user.py:64
-#: .\settings\jazzmin.py:35
+#: .\settings\jazzmin.py:36
 msgid "Users"
 msgstr "Користувачі"
 
