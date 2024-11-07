@@ -8,6 +8,7 @@ repos:
         types: [ python ]
         pass_filenames: true
         args: [ '--settings-file', 'backend/.isort.cfg' ]
+        exclude: '/migrations/'
 
       - id: black
         name: black
