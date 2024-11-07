@@ -33,8 +33,16 @@ class Product(TimestampMixin, HistoricalModel, models.Model):
         _('Status'),
         max_length=20,
         choices=STATUS_TYPE_CHOICES,
-        default=STATUS_TYPE_CHOICES[1][1],
+        default=STATUS_TYPE_CHOICES[1][0],
         help_text=_('Product status'),
+    )
+    active = models.BooleanField(
+        _('Active'),
+        default=True,
+        help_text=_(
+            'Indicates whether the listing is currently active.'
+            'Set to False when the item is sold or the listing is no longer relevant.'
+        ),
     )
     views = models.IntegerField(_('Views'), default=0)
     params = models.JSONField(_('Parameters'), default=dict, blank=True, null=True)
