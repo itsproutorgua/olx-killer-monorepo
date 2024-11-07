@@ -1,5 +1,4 @@
 from django.conf import settings
-from django.db.models import Count
 from django.utils.translation import get_language
 from drf_spectacular.utils import extend_schema_field
 from rest_framework import serializers
@@ -30,7 +29,7 @@ class CategorySerializer(serializers.ModelSerializer):
     @extend_schema_field(CategoryChildrenSerializer)
     def get_children(self, category: Category) -> list[dict[str | int, any]] | None:
         """Get child categories using Category ChildrenSerializer."""
-        children = category.children.annotate(product_count=Count('products'))
+        children = category.children.all()
         return CategoryChildrenSerializer(children, many=True).data
 
     def to_representation(self, instance: Category) -> dict:
