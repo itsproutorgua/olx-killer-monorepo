@@ -1,6 +1,8 @@
 from django.conf import settings
 from django.core.cache import cache
+from django.db.models import Count
 from django.db.models import F
+from django.db.models import Prefetch
 from django.shortcuts import get_object_or_404
 from django.utils.translation import get_language
 from django.utils.translation import gettext_lazy as _
@@ -60,7 +62,12 @@ class CategoryAPIViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, Gener
         },
     )
     def retrieve(self, request, path=None):
-        category = get_object_or_404(Category, path=path.strip('/'))
+        category = get_object_or_404(
+            Category.objects.prefetch_related(
+                Prefetch('children', queryset=Category.objects.annotate(product_count=Count('products')))
+            ),
+            path=path.strip('/'),
+        )
         Category.objects.filter(id=category.id).update(views=F('views') + 1)
         serializer = self.serializer_class(category)
         return Response(serializer.data, status=status.HTTP_200_OK)
