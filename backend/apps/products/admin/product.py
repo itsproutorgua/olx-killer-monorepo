@@ -18,7 +18,7 @@ class ProductAdmin(SimpleHistoryAdmin):
     list_display_links = ('title',)
     autocomplete_fields = ['category']
     search_fields = ('title',)
-    ordering = ('-views',)
+    ordering = ('-created_at',)
     list_filter = (PopularCategoryFilter,)
     inlines = [PriceInline, ProductImageInline, ProductVideoInline]
     show_full_result_count = False
@@ -59,6 +59,6 @@ class ProductAdmin(SimpleHistoryAdmin):
 
             search_term = search_term.strip()
             q1 = Q(**{f'category__{title_field}__icontains': search_term})
-            queryset = Product.objects.filter(q1).order_by('updated_at')
+            queryset = Product.objects.filter(q1)
 
         return queryset, use_distinct
