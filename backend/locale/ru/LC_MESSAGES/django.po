@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-07 01:51+0200\n"
+"POT-Creation-Date: 2024-11-08 15:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -179,7 +179,7 @@ msgstr "Села"
 msgid "Number of Products"
 msgstr "Количество продуктов"
 
-#: .\apps\products\admin\filters\popular_category.py:12
+#: .\apps\products\admin\filters\popular_category.py:29
 msgid "Popular Categories"
 msgstr "Популярные категории"
 
@@ -412,19 +412,19 @@ msgstr "Не удалось создать видео: %s"
 msgid "Failed to update video: %s"
 msgstr "Не удалось обновить видео: %s"
 
-#: .\apps\products\views\category.py:36
+#: .\apps\products\views\category.py:38
 msgid "List categories in a tree structure"
 msgstr "Список категорий в древовидной структуре"
 
-#: .\apps\products\views\category.py:37
+#: .\apps\products\views\category.py:39
 msgid "Retrieve a hierarchical tree of categories."
 msgstr "Получить иерархическое дерево категорий."
 
-#: .\apps\products\views\category.py:55
+#: .\apps\products\views\category.py:57
 msgid "Retrieve a category by path"
 msgstr "Получить категорию по path"
 
-#: .\apps\products\views\category.py:56
+#: .\apps\products\views\category.py:58
 msgid "Retrieve a single category by path"
 msgstr "Получить одну категорию по path"
 
@@ -537,6 +537,18 @@ msgstr "Сортировать по дате создания в порядке 
 #: .\apps\products\views\product_filters.py:107
 msgid "Sort products by created date in descending order."
 msgstr "Сортировать продукты по дате создания в порядке убывания."
+
+#: .\apps\products\views\products_latest.py:18
+msgid "List of latest products"
+msgstr "Список недавно добавленных продуктов"
+
+#: .\apps\products\views\products_latest.py:19
+msgid "Retrieve a list of the latest products with an option to limit the number of results (10 to 50)."
+msgstr "Получить список недавно добавленных продуктов с возможностью ограничения количества результатов (от 10 до 50)."
+
+#: .\apps\products\views\products_latest.py:27
+msgid "The maximum number of products to retrieve, between 10 and 50. Default is 10."
+msgstr "Максимальное количество извлекаемых продуктов: от 10 до 50. Значение по умолчанию — 10."
 
 #: .\apps\user_messages\apps.py:8
 msgid "User messages"
@@ -743,8 +755,7 @@ msgstr "Зарегистрировать нового пользователя"
 
 #: .\apps\users\views\registration_auth0.py:22
 msgid "Register a new user using the provided Auth0 token."
-msgstr ""
-"Зарегистрируйте нового пользователя, используя предоставленный токен Auth0."
+msgstr "Зарегистрируйте нового пользователя, используя предоставленный токен Auth0."
 
 #: .\apps\users\views\registration_auth0.py:31
 msgid "User registration example response"

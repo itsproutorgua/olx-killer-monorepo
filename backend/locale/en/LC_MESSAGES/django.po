@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-07 01:51+0200\n"
+"POT-Creation-Date: 2024-11-08 15:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -177,13 +177,13 @@ msgstr "Villages"
 msgid "Number of Products"
 msgstr "Number of Products"
 
-#: .\apps\products\admin\filters\popular_category.py:12
+#: .\apps\products\admin\filters\popular_category.py:29
 msgid "Popular Categories"
 msgstr "Popular Categories"
 
 #: .\apps\products\admin\product.py:28
 msgid "General"
-msgstr ""
+msgstr "General"
 
 #: .\apps\products\apps.py:8 .\apps\products\models\product.py:58
 #: .\settings\jazzmin.py:48
@@ -321,6 +321,9 @@ msgid ""
 "Indicates whether the listing is currently active.Set to False when the item "
 "is sold or the listing is no longer relevant."
 msgstr ""
+"Indicates whether the listing is currently active.Set to False when the item "
+"is sold or the listing is no longer relevant."
+
 
 #: .\apps\products\models\product.py:48
 msgid "Parameters"
@@ -408,19 +411,19 @@ msgstr "Failed to create video: %s"
 msgid "Failed to update video: %s"
 msgstr "Failed to update video: %s"
 
-#: .\apps\products\views\category.py:36
+#: .\apps\products\views\category.py:38
 msgid "List categories in a tree structure"
 msgstr "List categories in a tree structure"
 
-#: .\apps\products\views\category.py:37
+#: .\apps\products\views\category.py:39
 msgid "Retrieve a hierarchical tree of categories."
 msgstr "Retrieve a hierarchical tree of categories."
 
-#: .\apps\products\views\category.py:55
+#: .\apps\products\views\category.py:57
 msgid "Retrieve a category by path"
 msgstr "Retrieve a category by path"
 
-#: .\apps\products\views\category.py:56
+#: .\apps\products\views\category.py:58
 msgid "Retrieve a single category by path"
 msgstr "Retrieve a single category by path"
 
@@ -534,6 +537,24 @@ msgstr "Sort by created date in descending order"
 #: .\apps\products\views\product_filters.py:107
 msgid "Sort products by created date in descending order."
 msgstr "Sort products by created date in descending order."
+
+#: .\apps\products\views\products_latest.py:18
+msgid "List of latest products"
+msgstr "List of latest products"
+
+#: .\apps\products\views\products_latest.py:19
+msgid ""
+"Retrieve a list of the latest products with an option to limit the number of "
+"results (10 to 50)."
+msgstr ""
+"Retrieve a list of the latest products with an option to limit the number of "
+"results (10 to 50)."
+
+#: .\apps\products\views\products_latest.py:27
+msgid ""
+"The maximum number of products to retrieve, between 10 and 50. Default is 10."
+msgstr ""
+"The maximum number of products to retrieve, between 10 and 50. Default is 10."
 
 #: .\apps\user_messages\apps.py:8
 msgid "User messages"

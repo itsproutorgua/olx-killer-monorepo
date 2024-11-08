@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-07 01:51+0200\n"
+"POT-Creation-Date: 2024-11-08 15:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -180,7 +180,7 @@ msgstr "Села"
 msgid "Number of Products"
 msgstr "Кількість продуктів"
 
-#: .\apps\products\admin\filters\popular_category.py:12
+#: .\apps\products\admin\filters\popular_category.py:29
 msgid "Popular Categories"
 msgstr "Популярні категорії"
 
@@ -413,19 +413,19 @@ msgstr "Не вдалося створити відео: %s"
 msgid "Failed to update video: %s"
 msgstr "Не вдалося оновити відео: %s"
 
-#: .\apps\products\views\category.py:36
+#: .\apps\products\views\category.py:38
 msgid "List categories in a tree structure"
 msgstr "Список категорій у структурі дерева"
 
-#: .\apps\products\views\category.py:37
+#: .\apps\products\views\category.py:39
 msgid "Retrieve a hierarchical tree of categories."
 msgstr "Отримати ієрархічне дерево категорій."
 
-#: .\apps\products\views\category.py:55
+#: .\apps\products\views\category.py:57
 msgid "Retrieve a category by path"
 msgstr "Отримати категорію за path"
 
-#: .\apps\products\views\category.py:56
+#: .\apps\products\views\category.py:58
 msgid "Retrieve a single category by path"
 msgstr "Отримати одну категорію за path"
 
@@ -434,10 +434,8 @@ msgid "Retrieve a list of all currencies"
 msgstr "Отримати список усіх валют"
 
 #: .\apps\products\views\currency.py:14
-msgid ""
-"Returns a list of available currencies with their code, symbol, and name."
-msgstr ""
-"Повертає список доступних валют із їхніми кодами, символами та назвами."
+msgid "Returns a list of available currencies with their code, symbol, and name."
+msgstr "Повертає список доступних валют із їхніми кодами, символами та назвами."
 
 #: .\apps\products\views\product.py:33
 msgid "Create a product"
@@ -539,6 +537,18 @@ msgstr "Сортувати за датою створення в порядку 
 #: .\apps\products\views\product_filters.py:107
 msgid "Sort products by created date in descending order."
 msgstr "Сортуйте товари за датою створення в порядку спадання."
+
+#: .\apps\products\views\products_latest.py:18
+msgid "List of latest products"
+msgstr "Список нещодавно доданих продуктів"
+
+#: .\apps\products\views\products_latest.py:19
+msgid "Retrieve a list of the latest products with an option to limit the number of results (10 to 50)."
+msgstr "Отримати список нещодавно доданих продуктів із можливістю обмеження кількості результатів (від 10 до 50)."
+
+#: .\apps\products\views\products_latest.py:27
+msgid "The maximum number of products to retrieve, between 10 and 50. Default is 10."
+msgstr "Максимальна кількість продуктів, що витягуються: від 10 до 50. Значення за замовчуванням — 10."
 
 #: .\apps\user_messages\apps.py:8
 msgid "User messages"
