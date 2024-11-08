@@ -12,6 +12,7 @@ router.register('products', views.ProductAPIViewSet, basename='products')
 
 urlpatterns = [
     path('products/filters/', views.ProductFilterViewSet.as_view({'get': 'list'}), name='product-filter'),
+    path('products/latest/', views.LatestProductListView.as_view(), name='latest-products'),
     path('categories/<path:path>/', views.CategoryAPIViewSet.as_view({'get': 'retrieve'}), name='category-detail'),
     path('currencies/', views.CurrencyListView.as_view(), name='currency-list'),
     path('create-temp-product/', views.TMPProductCreateAPIView.as_view(), name='create-temp-product'),
