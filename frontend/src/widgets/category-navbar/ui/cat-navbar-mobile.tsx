@@ -56,9 +56,7 @@ export const CategoryNavbarMobile = ({ data }: { data: CategoryChild[] }) => {
       {/* text-[13px]/[15.73px] */}
       {data.length > 6 && (
         <CollapsibleTrigger className='btn-secondary'>
-          {isOpen
-            ? t('buttons.hideCategories')
-            : `${t('words.open')} ${data.length - 6} ${t('words.moreCategories')}`}
+          {isOpen ? t('buttons.showLess') : t('buttons.showMore')}
         </CollapsibleTrigger>
       )}
     </Collapsible>

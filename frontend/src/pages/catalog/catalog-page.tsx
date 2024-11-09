@@ -3,14 +3,10 @@ import { useQuery } from '@tanstack/react-query'
 import { useTranslation } from 'react-i18next'
 import { useLocation, useNavigate } from 'react-router-dom'
 
-import {
-  CategoryNavbar,
-  CategoryNavbarSkeleton,
-} from '@/widgets/category-navbar'
+import { CategoryNavbar } from '@/widgets/category-navbar'
 import { ProductGrid, ProductGridMobile } from '@/widgets/product-grid'
 import { categoryApi, type Category } from '@/entities/category'
-import { Breadcrumbs, PageHeading } from '@/shared/ui'
-import { PageHeadingSkeleton } from '@/shared/ui/skeletons/page-heading-skeleton'
+import { Breadcrumbs, PageHeading, PageLoader } from '@/shared/ui'
 import { QUERY_KEYS } from '@/shared/constants'
 import { useMediaQuery } from '@/shared/library/hooks'
 import type { Crumb } from '@/shared/library/types/types'
@@ -43,16 +39,11 @@ export const CatalogPage = () => {
   }, [data])
 
   return (
-    <div className='pb-32 pt-[27px] xl:pb-[53px] xl:pt-[38px]'>
+    <div className='min-h-screen pb-32 pt-[27px] xl:pb-[53px] xl:pt-[38px]'>
       <div className='container'>
         <Breadcrumbs crumbs={crumbs} />
 
-        {isLoading && (
-          <>
-            <PageHeadingSkeleton />
-            <CategoryNavbarSkeleton />
-          </>
-        )}
+        {isLoading && <PageLoader />}
 
         {!isLoading && data && (
           <>

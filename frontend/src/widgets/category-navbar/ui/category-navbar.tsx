@@ -6,7 +6,7 @@ export const CategoryNavbar = ({ data }: { data: CategoryChild[] }) => {
   return (
     <>
       {data.length > 0 && (
-        <div className='pb-5 xl:pb-7'>
+        <div className='pb-5 xl:pb-0'>
           <CategoryNavbarMobile data={data} />
           <CategoryNavbarDesktop data={data} />
         </div>

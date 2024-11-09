@@ -43,11 +43,11 @@ export const FiltersSheet = ({ className }: { className?: string }) => {
 
           <FiltersBar />
         </div>
-        <div className='absolute bottom-0 left-0 w-full px-2.5 pb-2.5'>
+        {/* <div className='absolute bottom-0 left-0 w-full px-2.5 pb-2.5'>
           <SheetClose className={cn('btn-primary')}>
             {t('buttons.back')}
           </SheetClose>
-        </div>
+        </div> */}
       </SheetContent>
     </Sheet>
   )

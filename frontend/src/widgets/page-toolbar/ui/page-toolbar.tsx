@@ -9,11 +9,11 @@ export const PageToolbar = ({ count }: { count: number }) => {
   const { t } = useTranslation()
 
   return (
-    <div className='pb-[53px]'>
+    <div className='pb-[53px] xl:pb-0'>
       {isMobile ? (
         <PageToolbarMobile />
       ) : (
-        <div className='flex items-center justify-between border-b border-border py-[18px]'>
+        <div className='flex items-center justify-between py-[18px]'>
           <p className='text-base/5 font-medium'>
             {`${t('words.found')} ${count} ${t('words.announcements')}`}
           </p>
