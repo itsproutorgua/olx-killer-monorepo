@@ -26,7 +26,7 @@ const config = {
       current: 'currentColor',
       background: '#F9FAFB',
       foreground: '#111827',
-      border: '#E5E7EB',
+      border: '#E5E7EB', // gray-200
       black: '#000',
       white: '#fff',
       primary: {

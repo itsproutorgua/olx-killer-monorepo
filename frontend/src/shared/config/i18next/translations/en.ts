@@ -96,6 +96,7 @@ export const en = {
     favorites: 'Favorites',
   },
   words: {
+    all: 'All',
     found: 'Found',
     announcements: 'announcements',
     open: 'Open',
@@ -126,5 +127,19 @@ export const en = {
     price: 'Price',
     size: 'Size',
     colors: 'Colors',
+  },
+  colors: {
+    beige: 'Beige',
+    blue: 'Blue',
+    burgundy: 'Burgundy',
+    white: 'White',
+    yellow: 'Yellow',
+    green: 'Green',
+    brown: 'Brown',
+    orange: 'Orange',
+    pink: 'Pink',
+    violet: 'Violet',
+    red: 'Red',
+    black: 'Black',
   },
 }

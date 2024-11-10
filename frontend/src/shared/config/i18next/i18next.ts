@@ -1,9 +1,10 @@
-import { LANGUAGES } from '@/shared/config/i18next/constants.ts'
-import { en } from '@/shared/config/i18next/translations/en.ts'
-import { uk } from '@/shared/config/i18next/translations/uk.ts'
 import i18n from 'i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
 import { initReactI18next } from 'react-i18next'
+
+import { LANGUAGES } from '@/shared/config/i18next/constants.ts'
+import { en } from '@/shared/config/i18next/translations/en.ts'
+import { uk } from '@/shared/config/i18next/translations/uk.ts'
 
 // the translations
 // (tip move them in a JSON file and import them,
@@ -29,3 +30,5 @@ i18n
       escapeValue: false, // react already safes from xss
     },
   })
+
+export default i18n

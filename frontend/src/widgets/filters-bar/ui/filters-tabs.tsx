@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import {
   Tabs,
@@ -10,10 +11,10 @@ import { ChevronRightIcon } from '@/shared/ui'
 import { cn } from '@/shared/library/utils'
 import { FILTERS } from '../mock'
 import { FiltersTabsContent } from './filters-tabs-content'
-import { FiltersTabsFooter } from './filters-tabs-footer'
 import { FiltersTabsHeader } from './filters-tabs-header'
 
 export const FiltersTabs = () => {
+  const { t } = useTranslation()
   const [value, setValue] = useState('')
 
   return (
@@ -28,7 +29,9 @@ export const FiltersTabs = () => {
             {filter.label}
 
             <span className='flex items-center gap-2'>
-              <span className='text-sm font-normal text-gray-400'>All</span>
+              <span className='text-sm font-normal text-gray-400'>
+                {t('words.all')}
+              </span>
               <ChevronRightIcon />
             </span>
           </TabsTrigger>
@@ -46,7 +49,6 @@ export const FiltersTabs = () => {
           <div className='grid h-screen grid-rows-[auto_1fr_auto]'>
             <FiltersTabsHeader label={filter.label} setValue={setValue} />
             <FiltersTabsContent filter={filter} />
-            <FiltersTabsFooter setValue={setValue} />
           </div>
         </TabsContent>
       ))}

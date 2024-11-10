@@ -20,11 +20,13 @@ export const CategoryNavbarSkeleton = () => {
 
       {/* Desktop screen */}
       <div className='hidden xl:block'>
-        <ul className='grid grid-cols-7 gap-[38px]'>
-          {Array.from({ length: 7 }).map((_, idx) => (
-            <li key={idx} className='space-y-4'>
-              <Skeleton className='size-[150px] rounded-full' />
-              <Skeleton className='h-5' />
+        <ul className='grid grid-cols-4 gap-x-12 gap-y-2.5 overflow-hidden border-b border-border pb-5'>
+          {Array.from({ length: 8 }).map((_, idx) => (
+            <li
+              key={idx}
+              className='relative after:absolute after:-right-6 after:top-0 after:h-40 after:w-px after:bg-border [&nth-child(4n)]:after:hidden'
+            >
+              <Skeleton className='h-5 w-1/2' />
             </li>
           ))}
         </ul>

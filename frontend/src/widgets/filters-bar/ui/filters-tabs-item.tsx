@@ -7,7 +7,7 @@ export const FiltersTabsItem = ({
   item,
 }: {
   name: string
-  item: { label: string; hex?: string }
+  item: { name?: string; label: string; hex?: string }
 }) => {
   return (
     <div className='flex items-center gap-2'>
@@ -18,7 +18,7 @@ export const FiltersTabsItem = ({
             <span
               className={cn(
                 'inline-block size-4 rounded-full border',
-                item.hex && COLOR_STYLES[item.label],
+                item.hex && COLOR_STYLES[item.name!],
               )}
             />
             <span>{item.label}</span>
