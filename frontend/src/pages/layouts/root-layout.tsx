@@ -2,17 +2,19 @@ import { Outlet } from 'react-router-dom'
 
 import { Footer } from '@/widgets/footer'
 import { Header } from '@/widgets/header'
-import BottomBar from "@/widgets/mobile-bottom-bar/bottom-bar.tsx";
+import BottomBar from '@/widgets/mobile-bottom-bar/bottom-bar.tsx'
 
 export const RootLayout = () => {
   return (
     <div className='grid min-h-screen grid-rows-[_auto_1fr_auto]'>
-      <BottomBar />
       <Header />
       <main>
         <Outlet />
       </main>
-      <Footer />
+      <div>
+        <Footer />
+        <BottomBar />
+      </div>
     </div>
   )
 }

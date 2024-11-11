@@ -49,12 +49,12 @@ export const FiltersForm = () => {
                         htmlFor={item.label}
                         className='text-sm font-medium'
                       >
-                        {filter.label === 'Colors' ? (
+                        {filter.name === 'Colors' ? (
                           <span className='flex items-center gap-2'>
                             <span
                               className={cn(
                                 'inline-block size-4 rounded-full border',
-                                item.hex && COLOR_STYLES[item.label],
+                                item.hex && COLOR_STYLES[item.name!],
                               )}
                             />
                             <span>{item.label}</span>
