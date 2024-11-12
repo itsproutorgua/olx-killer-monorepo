@@ -1,1 +1,1 @@
-from apps.users.utils.register_user import register_user
+from apps.users.utils.authentication_auth0 import get_or_create_user_from_auth0
