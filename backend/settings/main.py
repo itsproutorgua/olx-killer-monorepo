@@ -22,6 +22,8 @@ VIDEO_UPLOAD_LIMIT = env('VIDEO_UPLOAD_LIMIT')
 MAX_IMAGE_FILE_SIZE_MB = env('MAX_IMAGE_FILE_SIZE_MB')
 MAX_VIDEO_FILE_SIZE_MB = env('MAX_VIDEO_FILE_SIZE_MB')
 
+FRONTEND_HOST = env('FRONTEND_HOST', default='http://localhost:5173')
+
 ALLOWED_IMAGE_MIME_TYPES = ['image/jpeg', 'image/png', 'image/gif', 'image/webp']
 ALLOWED_VIDEO_MIME_TYPES = [
     'video/mp4',
@@ -63,6 +65,7 @@ INSTALLED_APPS += [
 
 MIDDLEWARE += [
     'simple_history.middleware.HistoryRequestMiddleware',
+    'csp.middleware.CSPMiddleware',
 ]
 
 # DRF
@@ -114,7 +117,6 @@ SPECTACULAR_SETTINGS = {
 # https://pypi.org/project/django-cors-headers/
 
 CORS_ALLOW_CREDENTIALS = env('CORS_ALLOW_CREDENTIALS', default=False)
-
 CORS_ALLOW_METHODS = [
     *default_methods,
 ]
@@ -129,8 +131,41 @@ if ENVIRONMENT != DEVELOPMENT_ENVIRONMENT:
     SESSION_COOKIE_DOMAIN = env('SESSION_COOKIE_DOMAIN')
     CSRF_COOKIE_DOMAIN = env('CSRF_COOKIE_DOMAIN')
     SESSION_COOKIE_SAMESITE = env('SESSION_COOKIE_SAMESITE')
+    # SECURE
+    SECURE_COOKIES = True
+    SECURE_SSL_REDIRECT = True
+    SECURE_HSTS_SECONDS = 3600
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+else:
+    SECURE_COOKIES = False
+    SECURE_SSL_REDIRECT = False
+    SECURE_HSTS_SECONDS = 0
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = False
+    SECURE_HSTS_PRELOAD = False
 
-X_FRAME_OPTIONS = 'http://localhost:8000/'
+# CSP
+CSP_DEFAULT_SRC = ["'self'"]
+CSP_SCRIPT_SRC = [
+    "'self'",
+    "'unsafe-inline'", # необходимо для работы Swagger и Redoc
+    'cdnjs.cloudflare.com',
+    'unpkg.com',
+]
+CSP_STYLE_SRC = [
+    "'self'",
+    "'unsafe-inline'",
+    'cdnjs.cloudflare.com',
+    'fonts.googleapis.com',
+    'unpkg.com',
+]
+CSP_FONT_SRC = [
+    "'self'",
+    'fonts.gstatic.com',
+]
+CSP_WORKER_SRC = ["'self'", "blob:"]
+CSP_IMG_SRC = ["'self'", 'data:']
+CSP_FRAME_ANCESTORS = ("'self'", FRONTEND_HOST)
 
 # SIMPLE_JWT
 SIMPLE_JWT = {
@@ -168,8 +203,6 @@ else:
 # Emails
 DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL')
 SERVER_EMAIL = env('SERVER_EMAIL', default=DEFAULT_FROM_EMAIL)
-
-FRONTEND_HOST = env('FRONTEND_HOST', default='http://localhost:8000/')
 
 SUPER_LOGIN = env('SUPER_LOGIN')
 SUPER_PASSWORD = env('SUPER_PASSWORD')
