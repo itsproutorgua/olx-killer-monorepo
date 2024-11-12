@@ -26,6 +26,11 @@ env = environ.Env(
     MAX_VIDEO_FILE_SIZE_MB=(int, 50),
     CORS_ALLOW_CREDENTIALS=(bool, False),
     CATEGORY_TREE_CACHE_TIMEOUT=(int, 300),
+    SECURE_COOKIES=(bool, False),
+    SECURE_SSL_REDIRECT=(bool, False),
+    SECURE_HSTS_SECONDS=(int, 0),
+    SECURE_HSTS_INCLUDE_SUBDOMAINS=(bool, False),
+    SECURE_HSTS_PRELOAD=(bool, False),
 )
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
