@@ -164,7 +164,9 @@ CSP_FONT_SRC = [
     'fonts.gstatic.com',
 ]
 CSP_WORKER_SRC = ["'self'", "blob:"]
-CSP_IMG_SRC = ["'self'", 'data:']
+CSP_IMG_SRC = ["'self'", 'data:', 'https://*.s3.amazonaws.com']
+CSP_MEDIA_SRC = ["'self'", "https://*.s3.amazonaws.com"]
+CSP_CONNECT_SRC = ["'self'", "https://*.s3.amazonaws.com", FRONTEND_HOST]
 CSP_FRAME_ANCESTORS = ("'self'", FRONTEND_HOST)
 
 # SIMPLE_JWT
