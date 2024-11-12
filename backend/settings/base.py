@@ -31,6 +31,8 @@ env = environ.Env(
     SECURE_HSTS_SECONDS=(int, 0),
     SECURE_HSTS_INCLUDE_SUBDOMAINS=(bool, False),
     SECURE_HSTS_PRELOAD=(bool, False),
+    SESSION_COOKIE_SECURE=(bool, False),
+    CSRF_COOKIE_SECURE=(bool, False),
 )
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
