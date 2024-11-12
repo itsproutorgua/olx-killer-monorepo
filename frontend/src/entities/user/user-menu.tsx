@@ -13,9 +13,58 @@ import {
 import { UserButton } from './ui'
 
 export const UserMenu = () => {
-  const { isAuthenticated, user, loginWithRedirect, logout, isLoading, error } =
-    useAuth0()
+  const {
+    isAuthenticated,
+    user,
+    loginWithRedirect,
+    logout,
+    isLoading,
+    error,
+    getAccessTokenSilently,
+  } = useAuth0()
   const [isOpen, setIsOpen] = useState(false)
+  const [registrationStatus, setRegistrationStatus] = useState<string | null>(
+    null,
+  )
+
+  const domain = 'dev-oiwvoe5rjc073q1x.eu.auth0.com'
+
+  const handleRegisterUser = async () => {
+    try {
+      const accessToken = await getAccessTokenSilently({
+        authorizationParams: {
+          audience: `https://${domain}/api/v2/`,
+          scope: 'read:current_user',
+        },
+      })
+      console.log(accessToken)
+      const response = await fetch(
+        'https://api.house-community.site/uk/api/v1/registration/',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            auth_token: accessToken,
+          }),
+        },
+      )
+
+      if (response.ok) {
+        const data = await response.json()
+        console.log('Registration successful:', data)
+        setRegistrationStatus('Registration successful')
+      } else {
+        const errorData = await response.json()
+        console.error('Registration failed:', errorData)
+        setRegistrationStatus('Registration failed')
+      }
+    } catch (err) {
+      console.error('Error fetching access token or registering user:', err)
+      setRegistrationStatus('Registration error')
+    }
+  }
 
   return (
     <DropdownMenu>
@@ -54,6 +103,11 @@ export const UserMenu = () => {
             <DropdownMenuItem>
               <span>{user?.email}</span>
             </DropdownMenuItem>
+            <DropdownMenuItem>
+              <span>
+                E-mail: {user?.email_verified ? 'Verified' : 'Not Verified'}
+              </span>
+            </DropdownMenuItem>
             <DropdownMenuItem
               onClick={() => logout()}
               className='cursor-pointer'
@@ -61,10 +115,23 @@ export const UserMenu = () => {
               <LogOutIcon className='mr-2 h-4 w-4' />
               Log Out
             </DropdownMenuItem>
+            <DropdownMenuItem
+              onClick={handleRegisterUser}
+              className='cursor-pointer'
+            >
+              Register User
+            </DropdownMenuItem>
           </>
         ) : (
           <DropdownMenuItem
-            onClick={() => loginWithRedirect()}
+            onClick={() =>
+              loginWithRedirect({
+                authorizationParams: {
+                  audience: `https://${domain}/api/v2/`,
+                  scope: 'read:current_user',
+                },
+              })
+            }
             className='cursor-pointer'
           >
             Please Log In{' '}
@@ -74,6 +141,11 @@ export const UserMenu = () => {
           </DropdownMenuItem>
         )}
       </DropdownMenuContent>
+      {registrationStatus && (
+        <div className='mt-2 text-center text-gray-50'>
+          <span>{registrationStatus}</span>
+        </div>
+      )}
     </DropdownMenu>
   )
 }
