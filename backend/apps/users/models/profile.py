@@ -24,6 +24,13 @@ class Profile(TimestampMixin, HistoricalModel, models.Model):
         verbose_name=_('Location'),
         help_text=_('This field allows you to specify the user\'s city and region.'),
     )
+    auth_providers = models.JSONField(
+        _('Authentication Providers'),
+        blank=True,
+        null=True,
+        default=dict,
+        help_text=_('Specifies the authentication providers linked to the user account.'),
+    )
     phone_numbers = models.JSONField(
         _('Phone numbers'), default=list, blank=True, null=True, help_text=_('You can add multiple phone numbers.')
     )
@@ -37,3 +44,7 @@ class Profile(TimestampMixin, HistoricalModel, models.Model):
         db_table = 'user_profile'
         verbose_name = _('Profile')
         verbose_name_plural = _('Profiles')
+
+    def add_provider(self, provider_name: str, provider_id: str) -> None:
+        self.auth_providers[provider_name] = provider_id
+        self.save()
