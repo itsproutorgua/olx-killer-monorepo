@@ -144,6 +144,10 @@ else:
     SECURE_HSTS_INCLUDE_SUBDOMAINS = env('SECURE_HSTS_INCLUDE_SUBDOMAINS', default=False)
     SECURE_HSTS_PRELOAD = env('SECURE_HSTS_PRELOAD', default=False)
 
+# SSL
+SESSION_COOKIE_SECURE = env('SESSION_COOKIE_SECURE', default=False)
+CSRF_COOKIE_SECURE = env('CSRF_COOKIE_SECURE', default=False)
+
 # CSP
 CSP_DEFAULT_SRC = ["'self'"]
 CSP_SCRIPT_SRC = [
@@ -163,10 +167,10 @@ CSP_FONT_SRC = [
     "'self'",
     'fonts.gstatic.com',
 ]
-CSP_WORKER_SRC = ["'self'", "blob:"]
+CSP_WORKER_SRC = ["'self'", 'blob:']
 CSP_IMG_SRC = ["'self'", 'data:', 'https://*.s3.amazonaws.com']
-CSP_MEDIA_SRC = ["'self'", "https://*.s3.amazonaws.com"]
-CSP_CONNECT_SRC = ["'self'", "https://*.s3.amazonaws.com", FRONTEND_HOST]
+CSP_MEDIA_SRC = ["'self'", 'https://*.s3.amazonaws.com']
+CSP_CONNECT_SRC = ["'self'", 'https://*.s3.amazonaws.com', FRONTEND_HOST]
 CSP_FRAME_ANCESTORS = ("'self'", FRONTEND_HOST)
 
 # SIMPLE_JWT
