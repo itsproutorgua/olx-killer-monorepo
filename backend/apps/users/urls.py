@@ -6,5 +6,5 @@ from apps.users import views
 app_name = 'api_users'
 
 urlpatterns = [
-    path('registration/', views.UserRegistrationView.as_view(), name='registration'),
+    path('auth0-user/', views.Auth0UserView.as_view(), name='auth0-user'),
 ]
