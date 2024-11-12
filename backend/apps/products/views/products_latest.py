@@ -4,6 +4,7 @@ from drf_spectacular.utils import OpenApiParameter
 from drf_spectacular.utils import OpenApiResponse
 from rest_framework import status
 from rest_framework.generics import ListAPIView
+from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 
 from apps.api_tags import PRODUCT_TAG
@@ -41,6 +42,7 @@ class LatestProductListView(ListAPIView):
         .filter(active=True)
         .order_by('-created_at')
     )
+    permission_classes = (AllowAny,)
 
     def list(self, request, *args, **kwargs):
         limit = int(request.query_params.get('limit', 10))
