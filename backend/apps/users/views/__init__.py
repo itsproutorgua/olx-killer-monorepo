@@ -1,1 +1,1 @@
-from apps.users.views.registration_auth0 import UserRegistrationView
+from apps.users.views.auth0 import Auth0UserView
