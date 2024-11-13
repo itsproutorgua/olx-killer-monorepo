@@ -14,28 +14,28 @@ User = get_user_model()
 @admin.register(User)
 class UserAdmin(SimpleHistoryAdmin, BaseUserAdmin):
     fieldsets = (
-        (None, {"fields": ('profile_link', "username", "password")}),
-        (_("Personal info"), {"fields": ("first_name", "last_name", "email")}),
+        (None, {'fields': ('profile_link', 'username', 'password', 'is_email_verified')}),
+        (_('Personal info'), {'fields': ('first_name', 'last_name', 'email')}),
         (
-            _("Permissions"),
+            _('Permissions'),
             {
-                "fields": (
-                    "is_active",
-                    "is_staff",
-                    "is_superuser",
-                    "groups",
-                    "user_permissions",
+                'fields': (
+                    'is_active',
+                    'is_staff',
+                    'is_superuser',
+                    'groups',
+                    'user_permissions',
                 ),
             },
         ),
-        (_("Important dates"), {"fields": ("last_login", "date_joined")}),
+        (_('Important dates'), {'fields': ('last_login', 'date_joined')}),
     )
     add_fieldsets = (
         (
             None,
             {
-                "classes": ("wide",),
-                "fields": ("username", "usable_password", "password1", "password2"),
+                'classes': ('wide',),
+                'fields': ('username', 'usable_password', 'password1', 'password2'),
             },
         ),
     )
@@ -56,7 +56,7 @@ class UserAdmin(SimpleHistoryAdmin, BaseUserAdmin):
         if hasattr(obj, 'profile'):
             profile_link_text = _('View Profile')
             profile_url = reverse('admin:users_profile_change', args=[obj.profile.id])
-            profile_link_html = f'<a href="{profile_url}">{profile_link_text}</a>'
+            profile_link_html = f"<a href='{profile_url}'>{profile_link_text}</a>"
             return format_html(profile_link_html)
         return '-'
 
