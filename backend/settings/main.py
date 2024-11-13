@@ -126,8 +126,9 @@ CORS_ALLOW_HEADERS = [
 CORS_ALLOWED_ORIGINS = env('CORS_ALLOWED_ORIGINS', default='http://localhost:8000').split()
 CSRF_TRUSTED_ORIGINS = env('CSRF_TRUSTED_ORIGINS', default='http://localhost:8000').split()
 
-# COOKIE
+
 if ENVIRONMENT != DEVELOPMENT_ENVIRONMENT:
+    # COOKIE
     SESSION_COOKIE_DOMAIN = env('SESSION_COOKIE_DOMAIN')
     CSRF_COOKIE_DOMAIN = env('CSRF_COOKIE_DOMAIN')
     SESSION_COOKIE_SAMESITE = env('SESSION_COOKIE_SAMESITE')
@@ -152,7 +153,7 @@ else:
 CSP_DEFAULT_SRC = ["'self'"]
 CSP_SCRIPT_SRC = [
     "'self'",
-    "'unsafe-inline'",  # необходимо для работы Swagger и Redoc
+    "'unsafe-inline'",
     'cdnjs.cloudflare.com',
     'unpkg.com',
 ]
