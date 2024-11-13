@@ -1,5 +1,5 @@
 from django.contrib.auth import get_user_model
-from django.utils import timezone
+from django.utils.timezone import now
 from django.utils.translation import gettext_lazy as _
 from rest_framework.exceptions import AuthenticationFailed
 from rest_framework_simplejwt.tokens import RefreshToken
@@ -38,7 +38,7 @@ def get_or_create_user_from_auth0(auth0_response: dict):
         user.picture = picture
 
     user.is_email_verified = email_verified
-    user.last_login = timezone.now()
+    user.last_login = now()
     user.save()
 
     tokens = get_jwt_tokens(user)
