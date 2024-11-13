@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import { Spinner } from '@chakra-ui/spinner'
 import { LogInIcon, LogOutIcon } from 'lucide-react'
@@ -20,51 +20,48 @@ export const UserMenu = () => {
     logout,
     isLoading,
     error,
-    getAccessTokenSilently,
+    getIdTokenClaims,
   } = useAuth0()
   const [isOpen, setIsOpen] = useState(false)
   const [registrationStatus, setRegistrationStatus] = useState<string | null>(
     null,
   )
 
-  const domain = 'dev-oiwvoe5rjc073q1x.eu.auth0.com'
+  useEffect(() => {
+    const registerUser = async () => {
+      try {
+        const token = await getIdTokenClaims()
 
-  const handleRegisterUser = async () => {
-    try {
-      const accessToken = await getAccessTokenSilently({
-        authorizationParams: {
-          audience: `https://${domain}/api/v2/`,
-          scope: 'read:current_user',
-        },
-      })
-      console.log(accessToken)
-      const response = await fetch(
-        'https://api.house-community.site/uk/api/v1/registration/',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            auth_token: accessToken,
-          }),
-        },
-      )
+        if (token) {
+          const response = await fetch(
+            'https://api.house-community.site/uk/api/v1/users/authentication/',
+            {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                id_token: token.__raw,
+              }),
+            },
+          )
 
-      if (response.ok) {
-        const data = await response.json()
-        console.log('Registration successful:', data)
-        setRegistrationStatus('Registration successful')
-      } else {
-        const errorData = await response.json()
-        console.error('Registration failed:', errorData)
-        setRegistrationStatus('Registration failed')
+          if (response.ok) {
+            setRegistrationStatus('Registration successful')
+          } else {
+            setRegistrationStatus('Registration failed')
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching access token or registering user:', error)
+        setRegistrationStatus('Registration error')
       }
-    } catch (err) {
-      console.error('Error fetching access token or registering user:', err)
-      setRegistrationStatus('Registration error')
     }
-  }
+
+    if (isAuthenticated && !registrationStatus) {
+      registerUser()
+    }
+  }, [getIdTokenClaims, isAuthenticated, registrationStatus])
 
   return (
     <DropdownMenu>
@@ -115,23 +112,18 @@ export const UserMenu = () => {
               <LogOutIcon className='mr-2 h-4 w-4' />
               Log Out
             </DropdownMenuItem>
-            <DropdownMenuItem
-              onClick={handleRegisterUser}
-              className='cursor-pointer'
-            >
-              Register User
-            </DropdownMenuItem>
+
+            {registrationStatus && (
+              <DropdownMenuItem>
+                <div className='text-center'>
+                  <span>{registrationStatus}</span>
+                </div>
+              </DropdownMenuItem>
+            )}
           </>
         ) : (
           <DropdownMenuItem
-            onClick={() =>
-              loginWithRedirect({
-                authorizationParams: {
-                  audience: `https://${domain}/api/v2/`,
-                  scope: 'read:current_user',
-                },
-              })
-            }
+            onClick={() => loginWithRedirect()}
             className='cursor-pointer'
           >
             Please Log In{' '}
@@ -141,11 +133,6 @@ export const UserMenu = () => {
           </DropdownMenuItem>
         )}
       </DropdownMenuContent>
-      {registrationStatus && (
-        <div className='mt-2 text-center text-gray-50'>
-          <span>{registrationStatus}</span>
-        </div>
-      )}
     </DropdownMenu>
   )
 }
