@@ -11,7 +11,7 @@ from rest_framework.permissions import AllowAny
 
 from apps.api_tags import USER_TAG
 from apps.common import errors
-from apps.users.serializers import Auth0Serializer
+from apps.users.serializers import UserAuthTokenSerializer
 from apps.users.utils import get_or_create_user_from_auth0
 
 
@@ -19,18 +19,18 @@ MESSAGE_SUCCESS_AUTHENTICATION = _('User authenticated successfully.')
 MESSAGE_SUCCESS_REGISTRATION = _('New user registered successfully.')
 
 
-class Auth0UserView(views.APIView):
+class UserAuthenticationView(views.APIView):
     permission_classes = [AllowAny]
-    serializer_class = Auth0Serializer
+    serializer_class = UserAuthTokenSerializer
 
     @extend_schema(
         tags=[USER_TAG],
         summary=_('Authenticate or register a new user'),
         description=_('Authenticate or register a new user using the provided Auth0 token.'),
-        request=Auth0Serializer,
+        request=UserAuthTokenSerializer,
         responses={
-            status.HTTP_201_CREATED: Auth0Serializer,
-            status.HTTP_200_OK: Auth0Serializer,
+            status.HTTP_201_CREATED: UserAuthTokenSerializer,
+            status.HTTP_200_OK: UserAuthTokenSerializer,
             status.HTTP_400_BAD_REQUEST: OpenApiResponse(description=errors.BAD_REQUEST),
             status.HTTP_401_UNAUTHORIZED: OpenApiResponse(description=errors.UNAUTHORIZED_ERROR),
         },

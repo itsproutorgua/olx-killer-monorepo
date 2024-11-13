@@ -1,1 +1,1 @@
-from apps.users.serializers.authentication_auth0 import Auth0Serializer
+from apps.users.serializers.authentication_auth0 import UserAuthTokenSerializer

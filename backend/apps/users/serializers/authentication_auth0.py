@@ -6,7 +6,7 @@ from rest_framework import serializers
 from rest_framework.exceptions import AuthenticationFailed
 
 
-class Auth0Serializer(serializers.Serializer):
+class UserAuthTokenSerializer(serializers.Serializer):
     id_token = serializers.CharField()
 
     def validate_id_token(self, id_token: str) -> dict[str, any]:
