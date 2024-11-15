@@ -1,8 +1,8 @@
 from django.contrib.auth import get_user_model
+from django.db import transaction
 from django.utils.timezone import now
 from django.utils.translation import gettext_lazy as _
 from rest_framework.exceptions import AuthenticationFailed
-from rest_framework_simplejwt.tokens import RefreshToken
 
 from apps.log_config import logger
 
@@ -22,7 +22,7 @@ def get_or_create_user_from_auth0(auth0_response: dict):
     if not email_verified:
         raise AuthenticationFailed(_('Email verified is required!'))
     if not sub:
-        raise AuthenticationFailed(_('Provider sub field is missing or empty.'))
+        logger.error(_('Provider sub field is missing or empty.'))
 
     try:
         provider_name, provider_id = sub.split('|', 1)
@@ -30,24 +30,24 @@ def get_or_create_user_from_auth0(auth0_response: dict):
         logger.error(f"Invalid 'sub' format received: {sub}. Unable to split provider and user ID.")
         provider_name, provider_id = 'unknown', sub
 
-    user, created = User.objects.get_or_create(email=email)
-    user.profile.add_provider(provider_name, provider_id)
-
-    if created:
-        user.username = get_user_name(username)
-        user.picture = picture
-
-    user.is_email_verified = email_verified
-    user.last_login = now()
-    user.save()
-
-    tokens = get_jwt_tokens(user)
+    with transaction.atomic():
+        user, created = User.objects.update_or_create(
+            email=email,
+            defaults={
+                'username': get_user_name(username),
+                'picture': picture,
+                'is_email_verified': email_verified,
+                'last_login': now(),
+            },
+        )
+        user.profile.add_provider(provider_name, provider_id)
+        user.save()
 
     return {
         'created': created,
         'email': user.email,
         'username': user.username,
-        'tokens': tokens,
+        'last_login': user.last_login,
     }
 
 
@@ -55,12 +55,3 @@ def get_user_name(username: str) -> str:
     if '@' in username:
         return username.split('@')[0]
     return username
-
-
-def get_jwt_tokens(user):
-    refresh = RefreshToken.for_user(user)
-
-    return {
-        'refresh': str(refresh),
-        'access': str(refresh.access_token),
-    }
