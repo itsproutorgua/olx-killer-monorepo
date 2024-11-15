@@ -1,4 +1,3 @@
-from django.conf import settings
 from django.http import JsonResponse
 from django.utils.translation import gettext_lazy as _
 from drf_spectacular.utils import extend_schema
@@ -10,7 +9,6 @@ from rest_framework import views
 from rest_framework.permissions import AllowAny
 
 from apps.api_tags import USER_TAG
-from apps.common import errors
 from apps.users.serializers import UserAuthTokenSerializer
 from apps.users.utils import get_or_create_user_from_auth0
 
@@ -31,21 +29,53 @@ class UserAuthenticationView(views.APIView):
         responses={
             status.HTTP_201_CREATED: UserAuthTokenSerializer,
             status.HTTP_200_OK: UserAuthTokenSerializer,
-            status.HTTP_400_BAD_REQUEST: OpenApiResponse(description=errors.BAD_REQUEST),
-            status.HTTP_401_UNAUTHORIZED: OpenApiResponse(description=errors.UNAUTHORIZED_ERROR),
+            status.HTTP_400_BAD_REQUEST: OpenApiResponse(
+                description=_(
+                    'Bad Request: Invalid token or other validation error. Example errors: '
+                    'Failed to fetch JWKS, Invalid token type, Invalid audience.'
+                )
+            ),
+            status.HTTP_401_UNAUTHORIZED: OpenApiResponse(
+                description=_(
+                    'Unauthorized: Authentication failed due to invalid or expired token. Example errors: '
+                    'Token has expired, Invalid token issuer.'
+                )
+            ),
         },
         examples=[
             OpenApiExample(
-                name=_('User authentication or registration example response'),
-                description=_('Example of a successful response after user authentication or registration.'),
+                name=_('User authentication example response'),
+                description=_('Example of a successful response after user authentication.'),
                 value={
-                    'message': f'{MESSAGE_SUCCESS_AUTHENTICATION} | {MESSAGE_SUCCESS_REGISTRATION}',
+                    'message': f'{MESSAGE_SUCCESS_AUTHENTICATION}',
                     'email': 'example@example-email.com',
                     'username': 'example-username',
-                    'tokens': {'refresh': 'string', 'access': 'string'},
+                    'last_login': '2024-11-15T14:30:00+03:00',
                 },
                 response_only=True,
-            )
+                status_codes=[status.HTTP_200_OK],
+            ),
+            OpenApiExample(
+                name=_('User registration example response'),
+                description=_('Example of a successful response after user registration.'),
+                value={
+                    'message': f'{MESSAGE_SUCCESS_REGISTRATION}',
+                    'email': 'example@example-email.com',
+                    'username': 'example-username',
+                    'last_login': '2024-11-15T14:30:00+03:00',
+                },
+                response_only=True,
+                status_codes=[status.HTTP_201_CREATED],
+            ),
+            OpenApiExample(
+                name=_('Error response example'),
+                description=_('Example of an error response when authentication fails.'),
+                value={
+                    'error': _('Invalid token'),
+                },
+                response_only=True,
+                status_codes=[status.HTTP_400_BAD_REQUEST],
+            ),
         ],
     )
     def post(self, request):
@@ -54,7 +84,6 @@ class UserAuthenticationView(views.APIView):
 
         auth0_response = serializer.validated_data['id_token']
         data = get_or_create_user_from_auth0(auth0_response)
-        tokens = data.pop('tokens')
         created = data.pop('created')
 
         if 'error' in data:
@@ -62,19 +91,4 @@ class UserAuthenticationView(views.APIView):
 
         data['message'] = MESSAGE_SUCCESS_REGISTRATION if created else MESSAGE_SUCCESS_AUTHENTICATION
 
-        response_data = JsonResponse(data, status=status.HTTP_201_CREATED if created else status.HTTP_200_OK)
-
-        return self.set_tokens_in_cookie(response_data, tokens)
-
-    @staticmethod
-    def set_tokens_in_cookie(response_data: JsonResponse, tokens: dict) -> JsonResponse:
-        """
-        Sets tokens in cookies with the HttpOnly and Secure flag.
-        """
-        response_data.set_cookie(
-            'access_token', tokens['access'], httponly=True, secure=settings.SECURE_COOKIES, samesite='Strict'
-        )
-        response_data.set_cookie(
-            'refresh_token', tokens['refresh'], httponly=True, secure=settings.SECURE_COOKIES, samesite='Strict'
-        )
-        return response_data
+        return JsonResponse(data, status=status.HTTP_201_CREATED if created else status.HTTP_200_OK)
