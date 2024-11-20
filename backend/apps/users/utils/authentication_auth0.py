@@ -13,14 +13,12 @@ User = get_user_model()
 def get_or_create_user_from_auth0(auth0_response: dict):
     email = auth0_response.get('email')
     username = auth0_response.get('nickname')
-    email_verified = auth0_response.get('email_verified')
+    email_verified = auth0_response.get('email_verified', False)
     picture = auth0_response.get('picture')
     sub = auth0_response.get('sub')
 
     if not email:
         raise AuthenticationFailed(_('Email address is required.'))
-    if not email_verified:
-        raise AuthenticationFailed(_('Email verified is required!'))
     if not sub:
         logger.error(_('Provider sub field is missing or empty.'))
 
