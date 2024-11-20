@@ -13,6 +13,7 @@ class Profile(TimestampMixin, HistoricalModel, models.Model):
         upload_to='user_pictures/',
         blank=True,
         null=True,
+        max_length=255,
         help_text=_('Upload a profile picture.'),
     )
     location = models.ForeignKey(
