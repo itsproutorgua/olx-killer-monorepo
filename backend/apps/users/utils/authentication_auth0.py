@@ -33,11 +33,11 @@ def get_or_create_user_from_auth0(auth0_response: dict):
             email=email,
             defaults={
                 'username': get_user_name(username),
-                'picture': picture,
                 'is_email_verified': email_verified,
                 'last_login': now(),
             },
         )
+        user.profile.picture = picture
         user.profile.add_provider(provider_name, provider_id)
         user.save()
 
