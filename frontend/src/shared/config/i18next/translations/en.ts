@@ -90,6 +90,7 @@ export const en = {
     home: 'Home page',
   },
   bottomBar: {
+    home: 'Home',
     catalog: 'Catalog',
     chat: 'Messages',
     account: 'Account',
@@ -97,6 +98,7 @@ export const en = {
   },
   words: {
     all: 'All',
+    categories: 'Categories',
     found: 'Found',
     announcements: 'announcements',
     open: 'Open',

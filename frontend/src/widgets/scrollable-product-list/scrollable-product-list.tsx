@@ -8,6 +8,8 @@ import {
   type ProductResponse,
 } from '@/entities/product'
 import { SectionTitle } from '@/shared/ui'
+import { ScrollableListArrowLeft } from '@/shared/ui/icons/scrollableListArrowLeft.tsx'
+import { ScrollableListArrowRight } from '@/shared/ui/icons/scrollableListArrowRight.tsx'
 import ProductCardLoader from '@/shared/ui/loaders/product-card.loader.tsx'
 import { QUERY_KEYS } from '@/shared/constants'
 
@@ -91,64 +93,28 @@ export const ScrollableProductList: React.FC<ScrollableProductListProps> = ({
               disabled={isLeftDisabled}
               className={isLeftDisabled ? 'cursor-not-allowed opacity-50' : ''}
             >
-              <svg
-                width='44'
-                height='44'
-                viewBox='0 0 44 44'
-                fill='none'
+              <ScrollableListArrowLeft
+                stroke={isLeftDisabled ? '#A3A3A3' : '#292C6D'}
                 className={
                   isLeftDisabled
                     ? 'stroke-[#A3A3A3]'
                     : 'fill-gray-50 stroke-[#292C6D] transition-colors duration-300 hover:fill-primary-900 hover:stroke-gray-50'
                 }
-                xmlns='http://www.w3.org/2000/svg'
-              >
-                <circle
-                  cx='22.0003'
-                  cy='22'
-                  r='18.3333'
-                  stroke={isLeftDisabled ? '#A3A3A3' : '#292C6D'}
-                  strokeWidth='1.5'
-                />
-                <path
-                  d='M24.75 16.5L19.25 22L24.75 27.5'
-                  strokeWidth='1.5'
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                />
-              </svg>
+              />
             </button>
             <button
               onClick={() => scrollByItems('right')}
               disabled={isRightDisabled}
               className={isRightDisabled ? 'cursor-not-allowed opacity-50' : ''}
             >
-              <svg
-                width='44'
-                height='44'
-                viewBox='0 0 44 44'
-                fill='none'
+              <ScrollableListArrowRight
+                stroke={isRightDisabled ? '#A3A3A3' : '#292C6D'}
                 className={
                   isRightDisabled
                     ? 'stroke-[#A3A3A3]'
                     : 'fill-gray-50 stroke-[#292C6D] transition-colors duration-300 hover:fill-primary-900 hover:stroke-gray-50'
                 }
-                xmlns='http://www.w3.org/2000/svg'
-              >
-                <circle
-                  cx='22.0003'
-                  cy='22'
-                  r='18.3333'
-                  stroke={isRightDisabled ? '#A3A3A3' : '#292C6D'}
-                  strokeWidth='1.5'
-                />
-                <path
-                  d='M19.25 16.5L24.75 22L19.25 27.5'
-                  strokeWidth='1.5'
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                />
-              </svg>
+              />
             </button>
           </div>
         </div>

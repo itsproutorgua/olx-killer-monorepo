@@ -1,6 +1,6 @@
 import type { SVGProps } from 'react'
 
-export function BottomBarMenu(props: SVGProps<SVGSVGElement>) {
+export function CatalogMenu(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       width='30'

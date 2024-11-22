@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { ChevronRight } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import { categoryApi } from '@/entities/category'
 import { CategoryResponse } from '@/entities/category/model/category.types.ts'
@@ -25,8 +25,9 @@ import { QUERY_KEYS } from '@/shared/constants'
 const TITLE_LENGTH_THRESHOLD = 17 // Set a threshold for truncation (number of characters)
 const SUBTITLE_LENGTH_THRESHOLD = 15
 
-export const AsideNav = () => {
+export const AsideNav = ({ onCloseMenu }: { onCloseMenu?: () => void }) => {
   const { t, i18n } = useTranslation()
+  const navigate = useNavigate()
 
   const {
     isLoading,
@@ -42,7 +43,11 @@ export const AsideNav = () => {
 
   if (isError) return <p>Error: {error.message}</p>
 
-  // Render the categories
+  const handleCategoryClick = (path: string) => {
+    navigate(`/catalog/${path}`)
+    onCloseMenu && onCloseMenu()
+  }
+
   return (
     <aside className='w-[305px] pl-[18px] pr-2'>
       <Menubar className='h-auto rounded-none border-0 p-0'>
@@ -59,7 +64,12 @@ export const AsideNav = () => {
           {categories?.map(cat => (
             <li key={cat.path}>
               <MenubarMenu key={cat.path}>
-                <MenubarTrigger className='group flex w-full cursor-pointer items-center justify-between gap-3 rounded-[81px] border-0 py-0 pl-2 pr-2 text-base/4 font-normal transition-colors duration-300 hover:bg-primary-900 hover:text-gray-50 data-[state=open]:bg-primary-900 data-[state=open]:text-gray-50'>
+                <MenubarTrigger
+                  onClick={() => {
+                    onCloseMenu && handleCategoryClick(cat.path)
+                  }}
+                  className='group flex w-full cursor-pointer items-center justify-between gap-3 rounded-[81px] border-0 py-0 pl-2 pr-2 text-base/4 font-normal transition-colors duration-300 hover:bg-primary-900 hover:text-gray-50 data-[state=open]:bg-primary-900 data-[state=open]:text-gray-50'
+                >
                   {cat.icon ? (
                     <img
                       src={cat.icon}
@@ -75,7 +85,7 @@ export const AsideNav = () => {
                 <MenubarContent
                   side='right'
                   sideOffset={15}
-                  className='grid max-w-[900px] grid-cols-3 gap-[50px] rounded-[15px] border-none bg-background px-[75px] py-12 text-foreground shadow-[1px_1px_5px_0_rgba(78,78,78,0.19)]'
+                  className='hidden max-w-[900px] grid-cols-3 gap-[50px] rounded-[15px] border-none bg-background px-[75px] py-12 text-foreground shadow-[1px_1px_5px_0_rgba(78,78,78,0.19)] xl:grid'
                 >
                   {cat.children.slice(0, 6).map(sub => (
                     <div key={sub.path} className='max-w-[155px] space-y-5'>
@@ -90,7 +100,7 @@ export const AsideNav = () => {
                           {sub.title.length > SUBTITLE_LENGTH_THRESHOLD && (
                             <HoverCardContent
                               side='top'
-                              className='w-fit bg-gray-50'
+                              className='w-fit bg-gray-50 capitalize'
                             >
                               {sub.title}
                             </HoverCardContent>

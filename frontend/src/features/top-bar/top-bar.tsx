@@ -1,28 +1,38 @@
 import { useEffect, useRef, useState } from 'react'
+import { Cross2Icon } from '@radix-ui/react-icons'
 import { useTranslation } from 'react-i18next'
 
+import { AsideNav } from '@/widgets/aside-nav'
 import { NavToolbar } from '@/widgets/header/ui'
 import { LangSwitcher } from '@/features/lang-switcher'
 import { Logo, SearchIcon } from '@/shared/ui'
-import { BottomBarMenu } from '@/shared/ui/icons'
+import { CatalogMenu } from '@/shared/ui/icons'
 import { SearchIconRounded } from '@/shared/ui/icons/searchIconRounded.tsx'
 
 export const TopBar = () => {
   const { t } = useTranslation()
   const [isExpanded, setIsExpanded] = useState(false)
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const searchRef = useRef<HTMLDivElement>(null)
+  const sidebarRef = useRef<HTMLDivElement>(null)
+
   const handleToggleSearch = () => {
     setIsExpanded(prev => !prev)
   }
 
   const handleClickOutside = (e: MouseEvent) => {
-    if (searchRef.current && !searchRef.current.contains(e.target as Node)) {
+    if (
+      searchRef.current &&
+      !searchRef.current.contains(e.target as Node) &&
+      sidebarRef.current &&
+      !sidebarRef.current.contains(e.target as Node)
+    ) {
       setIsExpanded(false)
     }
   }
 
   useEffect(() => {
-    if (isExpanded) {
+    if (isExpanded || isSidebarOpen) {
       document.addEventListener('mousedown', handleClickOutside)
     } else {
       document.removeEventListener('mousedown', handleClickOutside)
@@ -30,18 +40,23 @@ export const TopBar = () => {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside)
     }
-  }, [isExpanded])
+  }, [isExpanded, isSidebarOpen])
 
   return (
-    <div className='flex w-full items-center justify-between'>
-      <BottomBarMenu className='mr-5 h-10 w-10 shrink-0 md:hidden' />
+    <div className='relative flex w-full items-center justify-between'>
+      <CatalogMenu
+        onClick={() => setIsSidebarOpen(true)}
+        className='mr-5 h-10 w-10 shrink-0 cursor-pointer md:hidden'
+      />
       <Logo
         className={`flex items-center justify-center transition-all duration-300 ${
           !isExpanded ? 'opacity-100' : 'w-0 opacity-0'
         } md:px-0 md:opacity-100`}
       />
+
+      {/* Search Section */}
       <div className={`flex items-center gap-5 ${isExpanded && 'w-full'}`}>
-        <div className='relative w-full xl:w-[616px]'>
+        <div className='relative w-full xl:w-[616px]' ref={searchRef}>
           <div
             className={`flex items-center transition-all ${
               isExpanded
@@ -61,10 +76,7 @@ export const TopBar = () => {
             <SearchIcon className='absolute left-[17.49px] md:top-1/2 md:-translate-y-1/2 xl:left-[22.49px]' />
           </div>
         </div>
-        <button
-          onClick={handleToggleSearch}
-          className='z-10 ml-auto md:hidden' // Added z-10 for higher z-index
-        >
+        <button onClick={handleToggleSearch} className='z-10 ml-auto md:hidden'>
           <SearchIconRounded />
         </button>
 
@@ -72,7 +84,31 @@ export const TopBar = () => {
           <LangSwitcher />
         </div>
       </div>
+
       <NavToolbar />
+
+      {/* Sidebar */}
+      <div
+        ref={sidebarRef}
+        className={`fixed ${isSidebarOpen ? 'left-0' : 'left-[-300px]'} top-0 z-20 h-full w-[300px] bg-gray-50 shadow-lg transition-all duration-200 ease-in-out`}
+      >
+        <div className='flex justify-between py-4 pl-[27px] pr-5'>
+          <h3 className='text-[26px] font-medium'>{t('words.categories')}</h3>
+          <LangSwitcher />
+          <button onClick={() => setIsSidebarOpen(false)}>
+            <Cross2Icon className='h-6 w-6 transition-colors duration-300 hover:text-primary-500 active:text-primary-500' />
+          </button>
+        </div>
+        <AsideNav onCloseMenu={() => setIsSidebarOpen(false)} />
+      </div>
+
+      {/* Backdrop */}
+      {isSidebarOpen && (
+        <div
+          className='fixed inset-0 z-10 bg-black bg-opacity-50 transition-colors duration-300'
+          onClick={() => setIsSidebarOpen(false)}
+        />
+      )}
     </div>
   )
 }
