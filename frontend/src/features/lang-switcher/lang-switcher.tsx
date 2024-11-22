@@ -22,7 +22,7 @@ export const LangSwitcher = () => {
   }
   return (
     <Select value={value} onValueChange={handleChangeLanguage}>
-      <SelectTrigger className='w-[35px] border-0 bg-primary-900 p-0 text-[13px] text-gray-50 ring-0 ring-offset-0 transition-colors duration-300 hover:text-primary-300 focus:ring-0 focus:ring-offset-0 data-[state=open]:text-primary-300'>
+      <SelectTrigger className='w-12 p-1 text-[13px] text-primary-500 ring-0 ring-offset-0 transition-colors duration-300 hover:text-primary-300 focus:ring-0 focus:ring-offset-0 data-[state=open]:text-primary-300 xl:w-[35px] xl:border-0 xl:bg-primary-900 xl:p-0 xl:text-gray-50'>
         <SelectValue>{value}</SelectValue>
       </SelectTrigger>
 

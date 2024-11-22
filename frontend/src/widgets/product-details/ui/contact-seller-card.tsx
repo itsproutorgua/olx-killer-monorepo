@@ -16,9 +16,9 @@ export const ContactSellerCard: React.FC<SellerProps> = ({
         <h3 className='font-semibold uppercase leading-none'>
           {t('words.contactSeller')}
         </h3>
-        <div className='mt-[10px] flex flex-col items-start justify-between gap-[22px] md:mt-7 md:flex-row md:items-center'>
+        <div className='mt-[10px] flex flex-col items-start justify-between gap-[22px] md:mt-7 md:flex-row md:items-center md:gap-1 xl:gap-[22px]'>
           <div className='flex flex-row items-center gap-[17px]'>
-            <div className='h-[76px] w-[76px]'>
+            <div className='h-[76px] w-[76px] md:h-14 md:w-14 xl:h-[76px] xl:w-[76px]'>
               <img src={announcement.sellerLogo} alt='Seller Logo' />
             </div>
             <div className='flex flex-col gap-3'>

@@ -4,11 +4,8 @@ import { Heart } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
-import {
-  BottomBarMenu,
-  CirclePlusIcon,
-  UserRoundedIcon,
-} from '@/shared/ui/icons'
+import { CirclePlusIcon, UserRoundedIcon } from '@/shared/ui/icons'
+import { BottomBarHome } from '@/shared/ui/icons/bottom-bar-home.tsx'
 import { ChatIcon } from '@/shared/ui/icons/chat-icon.tsx'
 
 const SCROLL_THRESHOLD = 5 // Threshold to ignore small scroll movements
@@ -70,9 +67,9 @@ const BottomBar = () => {
       {/* Bottom Menu Bar */}
       <div className='relative flex h-[75px] items-center justify-between rounded-t-[30px] bg-[#2c2a84] px-[8px] text-gray-50'>
         <div className='flex w-[35%] flex-row justify-between gap-2'>
-          <Link to='/catalog' className='flex w-[70px] flex-col items-center'>
-            <BottomBarMenu />
-            <span className='text-[13px]'>{t('bottomBar.catalog')}</span>
+          <Link to='/' className='flex w-[70px] flex-col items-center'>
+            <BottomBarHome />
+            <span className='text-[13px]'>{t('bottomBar.home')}</span>
           </Link>
 
           <Link to='/favorites' className='flex w-[70px] flex-col items-center'>

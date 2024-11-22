@@ -91,6 +91,7 @@ export const uk = {
     home: 'Головна сторінка',
   },
   bottomBar: {
+    home: 'Головна',
     catalog: 'Каталог',
     chat: 'Повідомлення',
     account: 'Профіль',
@@ -98,6 +99,7 @@ export const uk = {
   },
   words: {
     all: 'Усі',
+    categories: 'Категорії',
     found: 'Знайдено',
     announcements: 'оголошення',
     open: 'Відкрити',
