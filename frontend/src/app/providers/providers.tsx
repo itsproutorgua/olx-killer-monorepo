@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Auth0Provider } from '@auth0/auth0-react'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { Toaster } from 'react-hot-toast'
 
-export const Providers = ({ children }: { children: React.ReactNode }) => {
-  const [client] = useState(new QueryClient())
+import { queryClient } from '@/shared/api'
 
+export const Providers = ({ children }: { children: React.ReactNode }) => {
   return (
     <Auth0Provider
       domain='dev-oiwvoe5rjc073q1x.eu.auth0.com'
@@ -15,7 +15,7 @@ export const Providers = ({ children }: { children: React.ReactNode }) => {
         redirect_uri: window.location.origin,
       }}
     >
-      <QueryClientProvider client={client}>
+      <QueryClientProvider client={queryClient}>
         {children}
         <Toaster />
         <ReactQueryDevtools initialIsOpen={false} />

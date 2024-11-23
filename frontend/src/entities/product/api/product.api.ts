@@ -1,27 +1,34 @@
+import { keepPreviousData, queryOptions } from '@tanstack/react-query'
+
 import { instanceBase } from '@/shared/api'
 import { APP_VARIABLES } from '@/shared/constants/app.const'
 import type { Product, ProductResponse, Sort } from '../model'
 
+export interface FilterParams {
+  path: string
+  currency_code?: string
+  page?: number
+  limit?: number
+  price_max?: number
+  price_min?: number
+  sort?: Sort
+}
+
 class ProductApi {
   private BASE_URL = '/products'
 
-  async findByFilters({
-    path,
-    currency_code,
-    page = 1,
-    limit = APP_VARIABLES.LIMIT,
-    price_max,
-    price_min,
-    sort,
-  }: {
-    path: string
-    currency_code?: string
-    page?: number
-    limit?: number
-    price_max?: number
-    price_min?: number
-    sort?: Sort
-  }) {
+  async findByFilters(
+    {
+      path,
+      currency_code,
+      page = 1,
+      limit = APP_VARIABLES.LIMIT,
+      price_max,
+      price_min,
+      sort,
+    }: FilterParams,
+    { signal }: { signal: AbortSignal },
+  ) {
     const params = new URLSearchParams()
     params.set('category_path', path.toString())
     params.set('page', page.toString())
@@ -30,11 +37,13 @@ class ProductApi {
     if (currency_code) params.set('currency_code', currency_code.toString())
     if (price_max) params.set('price_max', price_max.toString())
     if (price_min) params.set('price_min', price_min.toString())
-    if (sort) params.set('sort_by', sort.toString())
+    if (sort && sort !== 'rating') params.set('sort_by', sort.toString())
 
     const url = `${this.BASE_URL}/filters/?${params.toString()}`
 
-    const response = await instanceBase.get<ProductResponse>(url)
+    const response = await instanceBase.get<ProductResponse>(url, {
+      signal,
+    })
     return response.data
   }
 
@@ -42,6 +51,37 @@ class ProductApi {
     const url = `${this.BASE_URL}${slug}`
     const response = await instanceBase.get<Product>(url)
     return response.data
+  }
+
+  findByFiltersQueryOptions({
+    path,
+    currency_code,
+    page = 1,
+    limit = APP_VARIABLES.LIMIT,
+    price_max,
+    price_min,
+    sort,
+  }: FilterParams) {
+    return queryOptions<ProductResponse>({
+      queryKey: [
+        'posts',
+        'many',
+        path,
+        currency_code,
+        page,
+        limit,
+        price_max,
+        price_min,
+        sort,
+      ],
+      queryFn: meta =>
+        this.findByFilters(
+          { path, currency_code, page, limit, price_max, price_min, sort },
+          meta,
+        ),
+      placeholderData: keepPreviousData,
+      enabled: !!path,
+    })
   }
 }
 
