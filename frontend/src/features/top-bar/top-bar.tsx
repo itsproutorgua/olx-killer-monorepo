@@ -90,7 +90,7 @@ export const TopBar = () => {
       {/* Sidebar */}
       <div
         ref={sidebarRef}
-        className={`fixed ${isSidebarOpen ? 'left-0' : 'left-[-300px]'} top-0 z-20 h-full w-[300px] bg-gray-50 shadow-lg transition-all duration-200 ease-in-out`}
+        className={`fixed ${isSidebarOpen ? 'left-0' : '-left-full'} top-0 z-20 h-full w-[300px] bg-gray-50 shadow-lg backdrop-blur transition-all duration-500 ease-in-out`}
       >
         <div className='flex justify-between py-4 pl-[27px] pr-5'>
           <h3 className='text-[26px] font-medium'>{t('words.categories')}</h3>
@@ -103,12 +103,10 @@ export const TopBar = () => {
       </div>
 
       {/* Backdrop */}
-      {isSidebarOpen && (
-        <div
-          className='fixed inset-0 z-10 bg-black bg-opacity-50 transition-colors duration-300'
-          onClick={() => setIsSidebarOpen(false)}
-        />
-      )}
+      <div
+        className={`fixed ${isSidebarOpen ? 'left-0 opacity-60' : '-left-full opacity-0'} top-0 z-10 h-full w-full bg-black transition-opacity duration-700 ease-in-out`}
+        onClick={() => setIsSidebarOpen(false)}
+      />
     </div>
   )
 }
