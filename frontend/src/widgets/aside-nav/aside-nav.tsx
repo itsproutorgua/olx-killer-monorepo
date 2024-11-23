@@ -77,7 +77,7 @@ export const AsideNav = ({ onCloseMenu }: { onCloseMenu?: () => void }) => {
                       className='h-6 w-6 transition duration-300 ease-in-out focus:brightness-0 focus:invert focus:filter group-hover:brightness-0 group-hover:invert group-hover:filter group-data-[state=open]:brightness-0 group-data-[state=open]:invert group-data-[state=open]:filter'
                     />
                   ) : null}
-                  <p className='flex-1 overflow-hidden text-ellipsis whitespace-nowrap text-start'>
+                  <p className='flex-1 truncate text-start text-base'>
                     {cat.title}
                   </p>
                   <ChevronRight />
