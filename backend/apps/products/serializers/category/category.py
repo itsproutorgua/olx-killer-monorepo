@@ -31,7 +31,7 @@ class CategorySerializer(serializers.ModelSerializer):
     @extend_schema_field(CategoryChildrenSerializer)
     def get_children(self, category: Category) -> list[dict[str | int, any]] | None:
         """
-        Retrieves child categories with a count of total products, including descendants.
+        Retrieves child categories with an additional cumulative count of products.
         Dependencies:
         - django-mptt: For handling hierarchical data models and methods like
           `add_related_count`.
@@ -41,7 +41,7 @@ class CategorySerializer(serializers.ModelSerializer):
                 category.children.all(),
                 Product,
                 'category',
-                'total_products',
+                'products_cumulative_count',
                 cumulative=True,
             )
             return CategoryChildrenSerializer(annotated_categories, many=True).data

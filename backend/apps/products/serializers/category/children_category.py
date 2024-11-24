@@ -6,11 +6,11 @@ from apps.products.models import Category
 
 
 class CategoryChildrenSerializer(serializers.ModelSerializer):
-    total_products = serializers.IntegerField(read_only=True)
+    products_cumulative_count = serializers.IntegerField(read_only=True)
 
     class Meta:
         model = Category
-        fields = ('title', 'path', 'views', 'total_products')
+        fields = ('title', 'path', 'views', 'products_cumulative_count')
 
     def to_representation(self, instance: Category) -> dict:
         """Translate the 'title' into the language used"""
