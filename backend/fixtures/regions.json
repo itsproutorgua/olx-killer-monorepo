@@ -3,11 +3,11 @@
     "model": "locations.region",
     "pk": 1,
     "fields": {
-        "created_at": "2024-10-14T04:28:19.087Z",
-        "updated_at": "2024-10-14T04:28:19.087Z",
+        "created_at": "2024-11-21T15:32:25.309Z",
+        "updated_at": "2024-11-21T15:32:25.309Z",
         "name": "Вінницька область",
-        "name_uk": "Вінницька область",
         "name_en": "Vinnytsia Oblast",
+        "name_uk": "Вінницька область",
         "name_ru": "Винницкая область",
         "slug": "vinnytska-oblast"
     }
@@ -16,11 +16,11 @@
     "model": "locations.region",
     "pk": 2,
     "fields": {
-        "created_at": "2024-10-14T04:28:19.229Z",
-        "updated_at": "2024-10-14T04:28:19.229Z",
+        "created_at": "2024-11-21T15:32:25.500Z",
+        "updated_at": "2024-11-21T15:32:25.500Z",
         "name": "Волинська область",
-        "name_uk": "Волинська область",
         "name_en": "Volyn Oblast",
+        "name_uk": "Волинська область",
         "name_ru": "Волынская область",
         "slug": "volynska-oblast"
     }
@@ -29,11 +29,11 @@
     "model": "locations.region",
     "pk": 3,
     "fields": {
-        "created_at": "2024-10-14T04:28:19.301Z",
-        "updated_at": "2024-10-14T04:28:19.301Z",
+        "created_at": "2024-11-21T15:32:25.601Z",
+        "updated_at": "2024-11-21T15:32:25.601Z",
         "name": "Дніпропетровська область",
-        "name_uk": "Дніпропетровська область",
         "name_en": "Dnipropetrovsk Oblast",
+        "name_uk": "Дніпропетровська область",
         "name_ru": "Днепропетровская область",
         "slug": "dnipropetrovska-oblast"
     }
@@ -42,11 +42,11 @@
     "model": "locations.region",
     "pk": 4,
     "fields": {
-        "created_at": "2024-10-14T04:28:19.437Z",
-        "updated_at": "2024-10-14T04:28:19.437Z",
+        "created_at": "2024-11-21T15:32:25.772Z",
+        "updated_at": "2024-11-21T15:32:25.772Z",
         "name": "Донецька область",
-        "name_uk": "Донецька область",
         "name_en": "Donetsk Oblast",
+        "name_uk": "Донецька область",
         "name_ru": "Донецкая область",
         "slug": "donetska-oblast"
     }
@@ -55,11 +55,11 @@
     "model": "locations.region",
     "pk": 5,
     "fields": {
-        "created_at": "2024-10-14T04:28:19.630Z",
-        "updated_at": "2024-10-14T04:28:19.630Z",
+        "created_at": "2024-11-21T15:32:26.016Z",
+        "updated_at": "2024-11-21T15:32:26.016Z",
         "name": "Житомирська область",
-        "name_uk": "Житомирська область",
         "name_en": "Zhytomyr Oblast",
+        "name_uk": "Житомирська область",
         "name_ru": "Житомирская область",
         "slug": "zhytomyrska-oblast"
     }
@@ -68,11 +68,11 @@
     "model": "locations.region",
     "pk": 6,
     "fields": {
-        "created_at": "2024-10-14T04:28:19.723Z",
-        "updated_at": "2024-10-14T04:28:19.723Z",
+        "created_at": "2024-11-21T15:32:26.147Z",
+        "updated_at": "2024-11-21T15:32:26.147Z",
         "name": "Закарпатська область",
-        "name_uk": "Закарпатська область",
         "name_en": "Transcarpathian Oblast",
+        "name_uk": "Закарпатська область",
         "name_ru": "Закарпатская область",
         "slug": "zakarpatska-oblast"
     }
@@ -81,11 +81,11 @@
     "model": "locations.region",
     "pk": 7,
     "fields": {
-        "created_at": "2024-10-14T04:28:19.824Z",
-        "updated_at": "2024-10-14T04:28:19.824Z",
+        "created_at": "2024-11-21T15:32:26.323Z",
+        "updated_at": "2024-11-21T15:32:26.323Z",
         "name": "Запорізька область",
-        "name_uk": "Запорізька область",
         "name_en": "Zaporizhzhia Oblast",
+        "name_uk": "Запорізька область",
         "name_ru": "Запорожская область",
         "slug": "zaporizka-oblast"
     }
@@ -94,11 +94,11 @@
     "model": "locations.region",
     "pk": 8,
     "fields": {
-        "created_at": "2024-10-14T04:28:19.917Z",
-        "updated_at": "2024-10-14T04:28:19.917Z",
+        "created_at": "2024-11-21T15:32:26.449Z",
+        "updated_at": "2024-11-21T15:32:26.449Z",
         "name": "Івано-Франківська область",
-        "name_uk": "Івано-Франківська область",
         "name_en": "Ivano-Frankivsk Oblast",
+        "name_uk": "Івано-Франківська область",
         "name_ru": "Ивано-Франковская область",
         "slug": "ivano-frankivska-oblast"
     }
@@ -107,11 +107,11 @@
     "model": "locations.region",
     "pk": 9,
     "fields": {
-        "created_at": "2024-10-14T04:28:20.024Z",
-        "updated_at": "2024-10-14T04:28:20.024Z",
+        "created_at": "2024-11-21T15:32:26.581Z",
+        "updated_at": "2024-11-21T15:32:26.581Z",
         "name": "Київська область",
-        "name_uk": "Київська область",
         "name_en": "Kyiv Oblast",
+        "name_uk": "Київська область",
         "name_ru": "Киевская область",
         "slug": "kyivska-oblast"
     }
@@ -120,11 +120,11 @@
     "model": "locations.region",
     "pk": 10,
     "fields": {
-        "created_at": "2024-10-14T04:28:20.138Z",
-        "updated_at": "2024-10-14T04:28:20.138Z",
+        "created_at": "2024-11-21T15:32:26.714Z",
+        "updated_at": "2024-11-21T15:32:26.714Z",
         "name": "Кіровоградська область",
-        "name_uk": "Кіровоградська область",
         "name_en": "Kirovohrad Oblast",
+        "name_uk": "Кіровоградська область",
         "name_ru": "Кировоградская область",
         "slug": "kirovohradska-oblast"
     }
@@ -133,11 +133,11 @@
     "model": "locations.region",
     "pk": 11,
     "fields": {
-        "created_at": "2024-10-14T04:28:20.222Z",
-        "updated_at": "2024-10-14T04:28:20.222Z",
+        "created_at": "2024-11-21T15:32:26.815Z",
+        "updated_at": "2024-11-21T15:32:26.815Z",
         "name": "Луганська область",
-        "name_uk": "Луганська область",
         "name_en": "Luhansk Oblast",
+        "name_uk": "Луганська область",
         "name_ru": "Луганская область",
         "slug": "luhanska-oblast"
     }
@@ -146,11 +146,11 @@
     "model": "locations.region",
     "pk": 12,
     "fields": {
-        "created_at": "2024-10-14T04:28:20.476Z",
-        "updated_at": "2024-10-14T04:28:20.476Z",
+        "created_at": "2024-11-21T15:32:27.130Z",
+        "updated_at": "2024-11-21T15:32:27.130Z",
         "name": "Львівська область",
-        "name_uk": "Львівська область",
         "name_en": "Lviv Oblast",
+        "name_uk": "Львівська область",
         "name_ru": "Львовская область",
         "slug": "lvivska-oblast"
     }
@@ -159,11 +159,11 @@
     "model": "locations.region",
     "pk": 13,
     "fields": {
-        "created_at": "2024-10-14T04:28:20.765Z",
-        "updated_at": "2024-10-14T04:28:20.765Z",
+        "created_at": "2024-11-21T15:32:27.536Z",
+        "updated_at": "2024-11-21T15:32:27.536Z",
         "name": "Миколаївська область",
-        "name_uk": "Миколаївська область",
         "name_en": "Mykolaiv Oblast",
+        "name_uk": "Миколаївська область",
         "name_ru": "Николаевская область",
         "slug": "mykolaivska-oblast"
     }
@@ -172,11 +172,11 @@
     "model": "locations.region",
     "pk": 14,
     "fields": {
-        "created_at": "2024-10-14T04:28:20.826Z",
-        "updated_at": "2024-10-14T04:28:20.826Z",
+        "created_at": "2024-11-21T15:32:27.633Z",
+        "updated_at": "2024-11-21T15:32:27.633Z",
         "name": "Одеська область",
-        "name_uk": "Одеська область",
         "name_en": "Odesa Oblast",
+        "name_uk": "Одеська область",
         "name_ru": "Одесская область",
         "slug": "odeska-oblast"
     }
@@ -185,11 +185,11 @@
     "model": "locations.region",
     "pk": 15,
     "fields": {
-        "created_at": "2024-10-14T04:28:20.960Z",
-        "updated_at": "2024-10-14T04:28:20.960Z",
+        "created_at": "2024-11-21T15:32:27.821Z",
+        "updated_at": "2024-11-21T15:32:27.821Z",
         "name": "Полтавська область",
-        "name_uk": "Полтавська область",
         "name_en": "Poltava Oblast",
+        "name_uk": "Полтавська область",
         "name_ru": "Полтавская область",
         "slug": "poltavska-oblast"
     }
@@ -198,11 +198,11 @@
     "model": "locations.region",
     "pk": 16,
     "fields": {
-        "created_at": "2024-10-14T04:28:21.094Z",
-        "updated_at": "2024-10-14T04:28:21.094Z",
+        "created_at": "2024-11-21T15:32:28.015Z",
+        "updated_at": "2024-11-21T15:32:28.015Z",
         "name": "Рівненська область",
-        "name_uk": "Рівненська область",
         "name_en": "Rivne Oblast",
+        "name_uk": "Рівненська область",
         "name_ru": "Ровенская область",
         "slug": "rivnenska-oblast"
     }
@@ -211,11 +211,11 @@
     "model": "locations.region",
     "pk": 17,
     "fields": {
-        "created_at": "2024-10-14T04:28:21.169Z",
-        "updated_at": "2024-10-14T04:28:21.169Z",
+        "created_at": "2024-11-21T15:32:28.119Z",
+        "updated_at": "2024-11-21T15:32:28.119Z",
         "name": "Сумська область",
-        "name_uk": "Сумська область",
         "name_en": "Sumy Oblast",
+        "name_uk": "Сумська область",
         "name_ru": "Сумская область",
         "slug": "sumska-oblast"
     }
@@ -224,11 +224,11 @@
     "model": "locations.region",
     "pk": 18,
     "fields": {
-        "created_at": "2024-10-14T04:28:21.273Z",
-        "updated_at": "2024-10-14T04:28:21.273Z",
+        "created_at": "2024-11-21T15:32:28.262Z",
+        "updated_at": "2024-11-21T15:32:28.262Z",
         "name": "Тернопільська область",
-        "name_uk": "Тернопільська область",
         "name_en": "Ternopil Oblast",
+        "name_uk": "Тернопільська область",
         "name_ru": "Тернопольская область",
         "slug": "ternopilska-oblast"
     }
@@ -237,11 +237,11 @@
     "model": "locations.region",
     "pk": 19,
     "fields": {
-        "created_at": "2024-10-14T04:28:21.395Z",
-        "updated_at": "2024-10-14T04:28:21.395Z",
+        "created_at": "2024-11-21T15:32:28.424Z",
+        "updated_at": "2024-11-21T15:32:28.424Z",
         "name": "Харківська область",
-        "name_uk": "Харківська область",
         "name_en": "Kharkiv Oblast",
+        "name_uk": "Харківська область",
         "name_ru": "Харьковская область",
         "slug": "kharkivska-oblast"
     }
@@ -250,11 +250,11 @@
     "model": "locations.region",
     "pk": 20,
     "fields": {
-        "created_at": "2024-10-14T04:28:21.505Z",
-        "updated_at": "2024-10-14T04:28:21.505Z",
+        "created_at": "2024-11-21T15:32:28.570Z",
+        "updated_at": "2024-11-21T15:32:28.570Z",
         "name": "Херсонська область",
-        "name_uk": "Херсонська область",
         "name_en": "Kherson Oblast",
+        "name_uk": "Херсонська область",
         "name_ru": "Херсонская область",
         "slug": "khersonska-oblast"
     }
@@ -263,11 +263,11 @@
     "model": "locations.region",
     "pk": 21,
     "fields": {
-        "created_at": "2024-10-14T04:28:21.567Z",
-        "updated_at": "2024-10-14T04:28:21.567Z",
+        "created_at": "2024-11-21T15:32:28.645Z",
+        "updated_at": "2024-11-21T15:32:28.645Z",
         "name": "Хмельницька область",
-        "name_uk": "Хмельницька область",
         "name_en": "Khmelnytskyi Oblast",
+        "name_uk": "Хмельницька область",
         "name_ru": "Хмельницкая область",
         "slug": "khmelnytska-oblast"
     }
@@ -276,11 +276,11 @@
     "model": "locations.region",
     "pk": 22,
     "fields": {
-        "created_at": "2024-10-14T04:28:21.654Z",
-        "updated_at": "2024-10-14T04:28:21.654Z",
+        "created_at": "2024-11-21T15:32:28.758Z",
+        "updated_at": "2024-11-21T15:32:28.758Z",
         "name": "Черкаська область",
-        "name_uk": "Черкаська область",
         "name_en": "Cherkasy Oblast",
+        "name_uk": "Черкаська область",
         "name_ru": "Черкасская область",
         "slug": "cherkaska-oblast"
     }
@@ -289,11 +289,11 @@
     "model": "locations.region",
     "pk": 23,
     "fields": {
-        "created_at": "2024-10-14T04:28:21.760Z",
-        "updated_at": "2024-10-14T04:28:21.760Z",
+        "created_at": "2024-11-21T15:32:28.896Z",
+        "updated_at": "2024-11-21T15:32:28.896Z",
         "name": "Чернівецька область",
-        "name_uk": "Чернівецька область",
         "name_en": "Chernivtsi Oblast",
+        "name_uk": "Чернівецька область",
         "name_ru": "Черновицкая область",
         "slug": "chernivetska-oblast"
     }
@@ -302,11 +302,11 @@
     "model": "locations.region",
     "pk": 24,
     "fields": {
-        "created_at": "2024-10-14T04:28:21.832Z",
-        "updated_at": "2024-10-14T04:28:21.832Z",
+        "created_at": "2024-11-21T15:32:28.996Z",
+        "updated_at": "2024-11-21T15:32:28.996Z",
         "name": "Чернігівська область",
-        "name_uk": "Чернігівська область",
         "name_en": "Chernihiv Oblast",
+        "name_uk": "Чернігівська область",
         "name_ru": "Черниговская область",
         "slug": "chernihivska-oblast"
     }
@@ -315,11 +315,11 @@
     "model": "locations.region",
     "pk": 25,
     "fields": {
-        "created_at": "2024-10-14T04:28:21.937Z",
-        "updated_at": "2024-10-14T04:28:21.937Z",
+        "created_at": "2024-11-21T15:32:29.143Z",
+        "updated_at": "2024-11-21T15:32:29.143Z",
         "name": "Місто Київ",
-        "name_uk": "Місто Київ",
         "name_en": "Kyiv City",
+        "name_uk": "Місто Київ",
         "name_ru": "Город Киев",
         "slug": "kyiv-city"
     }
@@ -328,11 +328,11 @@
     "model": "locations.region",
     "pk": 26,
     "fields": {
-        "created_at": "2024-10-14T04:28:21.946Z",
-        "updated_at": "2024-10-14T04:28:21.946Z",
+        "created_at": "2024-11-21T15:32:29.156Z",
+        "updated_at": "2024-11-21T15:32:29.156Z",
         "name": "Місто Севастополь",
-        "name_uk": "Місто Севастополь",
         "name_en": "Sevastopol City",
+        "name_uk": "Місто Севастополь",
         "name_ru": "Город Севастополь",
         "slug": "sevastopol-city"
     }
