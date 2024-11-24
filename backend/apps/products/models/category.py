@@ -2,6 +2,8 @@ from django.conf import settings
 from django.db import models
 from django.utils.translation import get_language
 from django.utils.translation import gettext_lazy as _
+from mptt.models import MPTTModel
+from mptt.models import TreeForeignKey
 from slugify import slugify
 
 from apps.common.models import TimestampMixin
@@ -9,9 +11,9 @@ from apps.products.utils import translate_and_set_fields
 from apps.products.utils.check_file_exists import file_exists_on_s3
 
 
-class Category(TimestampMixin, models.Model):
+class Category(TimestampMixin, MPTTModel):
     title = models.CharField(_('Category name'), max_length=255)
-    parent = models.ForeignKey(
+    parent = TreeForeignKey(
         'self',
         on_delete=models.CASCADE,
         null=True,

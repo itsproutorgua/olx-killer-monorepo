@@ -10,7 +10,7 @@ from apps.products.models import Category
 
 @admin.register(Category)
 class CategoryAdmin(TranslationAdmin, SimpleHistoryAdmin):
-    list_display = ('title', 'parent', 'views', 'product_count', 'updated_at', 'created_at')
+    list_display = ('title', 'parent', 'views', 'products_count', 'updated_at', 'created_at')
     list_display_links = ('title',)
     readonly_fields = (
         'views',
@@ -27,9 +27,9 @@ class CategoryAdmin(TranslationAdmin, SimpleHistoryAdmin):
 
     def get_queryset(self, request):
         queryset = super().get_queryset(request)
-        queryset = queryset.annotate(product_count=Count('products'))
-        return queryset.select_related('parent').prefetch_related('products').order_by('-product_count')
+        queryset = queryset.annotate(products_count=Count('products'))
+        return queryset.select_related('parent').prefetch_related('products').order_by('-products_count')
 
-    @admin.display(description=_('Number of Products'), ordering='product_count')
-    def product_count(self, obj):
-        return obj.product_count
+    @admin.display(description=_('Number of Products'), ordering='products_count')
+    def products_count(self, obj):
+        return obj.products_count
