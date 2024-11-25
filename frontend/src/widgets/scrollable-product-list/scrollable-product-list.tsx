@@ -36,7 +36,7 @@ export const ScrollableProductList: React.FC<ScrollableProductListProps> = ({
 
   const { isLoading, data, isError } = useQuery<ProductResponse>({
     queryKey: [QUERY_KEYS.PRODUCTS, path],
-    queryFn: () => productApi.findByFilters({ path, limit: 18 }),
+    queryFn: meta => productApi.findByFilters({ path, limit: 18 }, meta),
     placeholderData: keepPreviousData,
   })
 

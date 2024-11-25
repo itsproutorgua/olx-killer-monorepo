@@ -19,12 +19,15 @@ export const ProductGridMobile = ({ path }: { path: string }) => {
 
   const { isLoading, data } = useQuery<ProductResponse>({
     queryKey: [QUERY_KEYS.PRODUCTS, path, page],
-    queryFn: () =>
-      productApi.findByFilters({
-        path,
-        limit: APP_VARIABLES.LIMIT_MOBILE,
-        page,
-      }),
+    queryFn: meta =>
+      productApi.findByFilters(
+        {
+          path,
+          limit: APP_VARIABLES.LIMIT_MOBILE,
+          page,
+        },
+        meta,
+      ),
     enabled: !!path,
   })
 

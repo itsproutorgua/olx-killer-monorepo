@@ -1,7 +1,19 @@
 import type { Category } from '@/entities/category'
 import type { Seller } from '@/entities/seller'
 
-export type Sort = 'price:asc' | 'price:dsc' | 'crated_at:asc' | 'crated_at:dsc'
+export const SortEnum: Record<string, Sort> = {
+  PRICE_ASC: 'price:asc',
+  PRICE_DESC: 'price:desc',
+  CREATED_AT_DESC: 'created_at:desc',
+  RATING: 'rating',
+}
+
+export type Sort =
+  | 'price:asc'
+  | 'price:desc'
+  | 'created_at:asc'
+  | 'created_at:desc'
+  | 'rating'
 
 export interface ProductCurrency {
   id: number

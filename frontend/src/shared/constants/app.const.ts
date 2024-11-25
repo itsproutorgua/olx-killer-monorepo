@@ -7,8 +7,8 @@ export const APP_VARIABLES = {
 } as const
 
 export const SORT_VARIABLES: Record<string, Sort> = {
-  created_dsc: 'crated_at:dsc',
-  create_asc: 'crated_at:asc',
-  price_asc: 'price:asc',
-  price_dsc: 'price:dsc',
+  PRICE_ASC: 'price:asc',
+  PRICE_DESC: 'price:desc',
+  CREATED_AT_DESC: 'created_at:desc',
+  RATING: 'rating',
 }

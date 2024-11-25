@@ -28,7 +28,7 @@ export const BestDeals = () => {
 
   const { isLoading, data, isError } = useQuery<ProductResponse>({
     queryKey: [QUERY_KEYS.PRODUCTS, path],
-    queryFn: () => productApi.findByFilters({ path, limit: 28 }),
+    queryFn: meta => productApi.findByFilters({ path, limit: 28 }, meta),
   })
 
   if (isError) {
