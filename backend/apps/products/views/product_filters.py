@@ -27,7 +27,7 @@ class ProductFilterViewSet(mixins.ListModelMixin, GenericViewSet):
     serializer_class = ProductSerializer
     pagination_class = ProductPagination
     permission_classes = (AllowAny,)
-    allowed_sort_fields = ['price', 'title', 'created_at']
+    allowed_sort_fields = ['price', 'title', 'status', 'created_at']
     default_currency = settings.DEFAULT_CURRENCIES[0]['code']
     queryset = (
         Product.objects.select_related(
@@ -105,6 +105,20 @@ class ProductFilterViewSet(mixins.ListModelMixin, GenericViewSet):
                         name=_('Sort by created date in descending order'),
                         value='created_at:desc',
                         description=_('Sort products by created date in descending order.'),
+                    ),
+                    OpenApiExample(
+                        name=_('Sort by product status in ascending order'),
+                        value='status:asc',
+                        description=_(
+                            'Sort products by status in ascending order(e.g., "new" products appear before "old" ones)'
+                        ),
+                    ),
+                    OpenApiExample(
+                        name=_('Sort by product status in descending order'),
+                        value='status:desc',
+                        description=_(
+                            'Sort products by status in descending order(e.g., "old" products appear before "new" ones)'
+                        ),
                     ),
                 ],
                 required=False,
