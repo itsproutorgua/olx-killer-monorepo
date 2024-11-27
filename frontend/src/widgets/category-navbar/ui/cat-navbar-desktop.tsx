@@ -14,7 +14,7 @@ export const CategoryNavbarDesktop = ({ data }: { data: CategoryChild[] }) => {
             to={cat.path}
             className='line-clamp-1 text-sm font-medium transition-colors duration-300 hover:text-primary-600'
           >
-            {cat.title} ({cat.product_count})
+            {cat.title} ({cat.products_cumulative_count})
           </Link>
         </li>
       ))}

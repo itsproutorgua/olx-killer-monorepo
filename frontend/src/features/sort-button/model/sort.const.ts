@@ -19,9 +19,8 @@ export const SORT_OPTIONS: Record<string, SortOption> = {
   //   value: '',
   //   key: 'USED',
   // },
-  // RATING: {
-  //   label: i18n.t('sort.rating'),
-  //   value: '',
-  //   key: 'RATING',
-  // },
+  'status:desc': {
+    label: i18n.t('sort.rating'),
+    value: 'status:desc',
+  },
 }

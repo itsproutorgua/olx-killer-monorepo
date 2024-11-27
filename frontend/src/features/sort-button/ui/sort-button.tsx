@@ -13,7 +13,7 @@ import { SORT_OPTIONS, type SortValue } from '../model'
 
 export const SortButton = () => {
   const [searchParams, setSearchParams] = useSearchParams()
-  const [value, setValue] = useState(SORT_OPTIONS['created_at:desc'].value)
+  const [value, setValue] = useState(SORT_OPTIONS['status:desc'].value)
 
   const onValueChange = (value: SortValue) => {
     setValue(value)
