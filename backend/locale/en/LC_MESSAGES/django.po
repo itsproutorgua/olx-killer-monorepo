@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-08 15:18+0200\n"
+"POT-Creation-Date: 2024-11-27 19:07+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -91,8 +91,43 @@ msgstr "Create date"
 msgid "Update date"
 msgstr "Update date"
 
+#: .\apps\common\utils\validate_auth0_token.py:13
+#, python-brace-format
+msgid "Failed to fetch JWKS: {e}"
+msgstr "Failed to fetch JWKS: {e}"
+
+#: .\apps\common\utils\validate_auth0_token.py:18
+#: .\apps\common\utils\validate_auth0_token.py:53
+#: .\apps\users\views\auth0.py:74
+msgid "Invalid token"
+msgstr "Invalid token"
+
+#: .\apps\common\utils\validate_auth0_token.py:36
+msgid "Unable to find the appropriate key."
+msgstr "Unable to find the appropriate key."
+
+#: .\apps\common\utils\validate_auth0_token.py:41
+msgid "Invalid token type: Expected id_token, received access_token"
+msgstr "Invalid token type: Expected id_token, received access_token"
+
+#: .\apps\common\utils\validate_auth0_token.py:45
+msgid "Token has expired"
+msgstr "Token has expired"
+
+#: .\apps\common\utils\validate_auth0_token.py:47
+msgid "Invalid token audience"
+msgstr "Invalid token audience"
+
+#: .\apps\common\utils\validate_auth0_token.py:49
+msgid "Invalid token issuer"
+msgstr "Invalid token issuer"
+
+#: .\apps\common\utils\validate_auth0_token.py:51
+msgid "Error decoding token"
+msgstr "Error decoding token"
+
 #: .\apps\locations\admin\location.py:15 .\apps\locations\models\location.py:37
-#: .\apps\users\models\profile.py:24
+#: .\apps\users\models\profile.py:25
 msgid "Location"
 msgstr "Location"
 
@@ -190,33 +225,33 @@ msgstr "General"
 msgid "Products"
 msgstr "Products"
 
-#: .\apps\products\models\category.py:13
+#: .\apps\products\models\category.py:15
 msgid "Category name"
 msgstr "Category name"
 
-#: .\apps\products\models\category.py:20
+#: .\apps\products\models\category.py:22
 msgid "Parent category"
 msgstr "Parent category"
 
-#: .\apps\products\models\category.py:22
+#: .\apps\products\models\category.py:24
 #: .\apps\products\models\product_image.py:19
 #: .\apps\user_messages\models\message_image.py:10
 msgid "Image"
 msgstr "Image"
 
-#: .\apps\products\models\category.py:23
+#: .\apps\products\models\category.py:25
 msgid "Icon"
 msgstr "Icon"
 
-#: .\apps\products\models\category.py:27 .\apps\products\models\product.py:47
+#: .\apps\products\models\category.py:29 .\apps\products\models\product.py:47
 msgid "Views"
 msgstr "Views"
 
-#: .\apps\products\models\category.py:34 .\apps\products\models\product.py:30
+#: .\apps\products\models\category.py:36 .\apps\products\models\product.py:30
 msgid "Category"
 msgstr "Category"
 
-#: .\apps\products\models\category.py:35 .\settings\jazzmin.py:42
+#: .\apps\products\models\category.py:37 .\settings\jazzmin.py:42
 msgid "Categories"
 msgstr "Categories"
 
@@ -324,7 +359,6 @@ msgstr ""
 "Indicates whether the listing is currently active.Set to False when the item "
 "is sold or the listing is no longer relevant."
 
-
 #: .\apps\products\models\product.py:48
 msgid "Parameters"
 msgstr "Parameters"
@@ -411,19 +445,19 @@ msgstr "Failed to create video: %s"
 msgid "Failed to update video: %s"
 msgstr "Failed to update video: %s"
 
-#: .\apps\products\views\category.py:38
+#: .\apps\products\views\category.py:36
 msgid "List categories in a tree structure"
 msgstr "List categories in a tree structure"
 
-#: .\apps\products\views\category.py:39
+#: .\apps\products\views\category.py:37
 msgid "Retrieve a hierarchical tree of categories."
 msgstr "Retrieve a hierarchical tree of categories."
 
-#: .\apps\products\views\category.py:57
+#: .\apps\products\views\category.py:55
 msgid "Retrieve a category by path"
 msgstr "Retrieve a category by path"
 
-#: .\apps\products\views\category.py:58
+#: .\apps\products\views\category.py:56
 msgid "Retrieve a single category by path"
 msgstr "Retrieve a single category by path"
 
@@ -477,72 +511,96 @@ msgstr "Delete a product"
 msgid "Delete a product by slug"
 msgstr "Delete a product by slug"
 
-#: .\apps\products\views\product_filters.py:54
+#: .\apps\products\views\product_filters.py:60
 msgid "Filter products by various parameters"
 msgstr "Filter products by various parameters"
 
-#: .\apps\products\views\product_filters.py:55
+#: .\apps\products\views\product_filters.py:61
 msgid "Retrieve a list of products filtered by multiple parameters"
 msgstr "Retrieve a list of products filtered by multiple parameters"
 
-#: .\apps\products\views\product_filters.py:60
+#: .\apps\products\views\product_filters.py:66
 msgid "Filter products by category path"
 msgstr "Filter products by category path"
 
-#: .\apps\products\views\product_filters.py:66
+#: .\apps\products\views\product_filters.py:72
 msgid "Minimum price filter"
 msgstr "Minimum price filter"
 
-#: .\apps\products\views\product_filters.py:72
+#: .\apps\products\views\product_filters.py:78
 msgid "Maximum price filter"
 msgstr "Maximum price filter"
 
-#: .\apps\products\views\product_filters.py:78
+#: .\apps\products\views\product_filters.py:84
 #, python-brace-format
 msgid "Currency code for the price filter (Default: {default_currency})"
 msgstr "Currency code for the price filter (Default: {default_currency})"
 
-#: .\apps\products\views\product_filters.py:85
+#: .\apps\products\views\product_filters.py:91
 msgid "Field to sort products by (e.g., {"
 msgstr "Field to sort products by (e.g., {"
 
-#: .\apps\products\views\product_filters.py:90
+#: .\apps\products\views\product_filters.py:96
 msgid "Sort by price in ascending order"
 msgstr "Sort by price in ascending order"
 
-#: .\apps\products\views\product_filters.py:92
+#: .\apps\products\views\product_filters.py:98
 msgid "Sort products by price in ascending order."
 msgstr "Sort products by price in ascending order."
 
-#: .\apps\products\views\product_filters.py:95
+#: .\apps\products\views\product_filters.py:101
 msgid "Sort by price in descending order"
 msgstr "Sort by price in descending order"
 
-#: .\apps\products\views\product_filters.py:97
+#: .\apps\products\views\product_filters.py:103
 msgid "Sort products by price in descending order."
 msgstr "Sort products by price in descending order."
 
-#: .\apps\products\views\product_filters.py:100
+#: .\apps\products\views\product_filters.py:106
 msgid "Sort by created date in ascending order"
 msgstr "Sort by created date in ascending order"
 
-#: .\apps\products\views\product_filters.py:102
+#: .\apps\products\views\product_filters.py:108
 msgid "Sort products by created date in ascending order."
 msgstr "Sort products by created date in ascending order."
 
-#: .\apps\products\views\product_filters.py:105
+#: .\apps\products\views\product_filters.py:111
 msgid "Sort by created date in descending order"
 msgstr "Sort by created date in descending order"
 
-#: .\apps\products\views\product_filters.py:107
+#: .\apps\products\views\product_filters.py:113
 msgid "Sort products by created date in descending order."
 msgstr "Sort products by created date in descending order."
 
-#: .\apps\products\views\products_latest.py:18
+#: .\apps\products\views\product_filters.py:116
+msgid "Sort by product status in ascending order"
+msgstr "Sort by product status in ascending order"
+
+#: .\apps\products\views\product_filters.py:119
+msgid ""
+"Sort products by status in ascending order(e.g., \"new\" products appear "
+"before \"old\" ones)"
+msgstr ""
+"Sort products by status in ascending order(e.g., \"new\" products appear "
+"before \"old\" ones)"
+
+#: .\apps\products\views\product_filters.py:123
+msgid "Sort by product status in descending order"
+msgstr "Sort by product status in descending order"
+
+#: .\apps\products\views\product_filters.py:126
+msgid ""
+"Sort products by status in descending order(e.g., \"old\" products appear "
+"before \"new\" ones)"
+msgstr ""
+"Sort products by status in descending order(e.g., \"old\" products appear "
+"before \"new\" ones)"
+
+#: .\apps\products\views\products_latest.py:19
 msgid "List of latest products"
 msgstr "List of latest products"
 
-#: .\apps\products\views\products_latest.py:19
+#: .\apps\products\views\products_latest.py:20
 msgid ""
 "Retrieve a list of the latest products with an option to limit the number of "
 "results (10 to 50)."
@@ -550,7 +608,7 @@ msgstr ""
 "Retrieve a list of the latest products with an option to limit the number of "
 "results (10 to 50)."
 
-#: .\apps\products\views\products_latest.py:27
+#: .\apps\products\views\products_latest.py:28
 msgid ""
 "The maximum number of products to retrieve, between 10 and 50. Default is 10."
 msgstr ""
@@ -646,27 +704,35 @@ msgstr "User"
 msgid "profile picture"
 msgstr "profile picture"
 
-#: .\apps\users\models\profile.py:16
+#: .\apps\users\models\profile.py:17
 msgid "Upload a profile picture."
 msgstr "Upload a profile picture."
 
-#: .\apps\users\models\profile.py:25
+#: .\apps\users\models\profile.py:26
 msgid "This field allows you to specify the user's city and region."
 msgstr "This field allows you to specify the user's city and region."
 
-#: .\apps\users\models\profile.py:28
+#: .\apps\users\models\profile.py:29
+msgid "Authentication Providers"
+msgstr "Authentication Providers"
+
+#: .\apps\users\models\profile.py:33
+msgid "Specifies the authentication providers linked to the user account."
+msgstr "Specifies the authentication providers linked to the user account."
+
+#: .\apps\users\models\profile.py:36
 msgid "Phone numbers"
 msgstr "Phone numbers"
 
-#: .\apps\users\models\profile.py:28
+#: .\apps\users\models\profile.py:36
 msgid "You can add multiple phone numbers."
 msgstr "You can add multiple phone numbers."
 
-#: .\apps\users\models\profile.py:38
+#: .\apps\users\models\profile.py:46
 msgid "Profile"
 msgstr "Profile"
 
-#: .\apps\users\models\profile.py:39
+#: .\apps\users\models\profile.py:47
 msgid "Profiles"
 msgstr "Profiles"
 
@@ -726,59 +792,78 @@ msgstr ""
 msgid "date joined"
 msgstr "date joined"
 
-#: .\apps\users\serializers\registration_auth0.py:37
-#, python-brace-format
-msgid "Failed to fetch JWKS: {e}"
-msgstr "Failed to fetch JWKS: {e}"
+#: .\apps\users\utils\authentication_auth0.py:21
+msgid "Email address is required."
+msgstr "Email address is required."
 
-#: .\apps\users\serializers\registration_auth0.py:53
-msgid "Unable to find the appropriate key."
-msgstr "Unable to find the appropriate key."
+#: .\apps\users\utils\authentication_auth0.py:23
+msgid "Provider sub field is missing or empty."
+msgstr "Provider sub field is missing or empty."
 
-#: .\apps\users\serializers\registration_auth0.py:59
-msgid "Token has expired"
-msgstr "Token has expired"
+#: .\apps\users\views\auth0.py:16
+msgid "User authenticated successfully."
+msgstr "User authenticated successfully."
 
-#: .\apps\users\serializers\registration_auth0.py:61
-msgid "Invalid token audience"
-msgstr "Invalid token audience"
+#: .\apps\users\views\auth0.py:17
+msgid "New user registered successfully."
+msgstr "New user registered successfully."
 
-#: .\apps\users\serializers\registration_auth0.py:63
-msgid "Invalid token issuer"
-msgstr "Invalid token issuer"
+#: .\apps\users\views\auth0.py:26
+msgid "Authenticate or register a new user"
+msgstr "Authenticate or register a new user"
 
-#: .\apps\users\serializers\registration_auth0.py:65
-msgid "Error decoding token"
-msgstr "Error decoding token"
+#: .\apps\users\views\auth0.py:27
+msgid "Authenticate or register a new user using the provided Auth0 token."
+msgstr "Authenticate or register a new user using the provided Auth0 token."
 
-#: .\apps\users\serializers\registration_auth0.py:67
-msgid "Invalid token"
-msgstr "Invalid token"
+#: .\apps\users\views\auth0.py:34
+msgid ""
+"Bad Request: Invalid token or other validation error. Example errors: Failed "
+"to fetch JWKS, Invalid token type, Invalid audience."
+msgstr ""
+"Bad Request: Invalid token or other validation error. Example errors: Failed "
+"to fetch JWKS, Invalid token type, Invalid audience."
 
-#: .\apps\users\views\registration_auth0.py:21
-msgid "Register a new user"
-msgstr "Register a new user"
+#: .\apps\users\views\auth0.py:40
+msgid ""
+"Unauthorized: Authentication failed due to invalid or expired token. Example "
+"errors: Token has expired, Invalid token issuer."
+msgstr ""
+"Unauthorized: Authentication failed due to invalid or expired token. Example "
+"errors: Token has expired, Invalid token issuer."
 
-#: .\apps\users\views\registration_auth0.py:22
-msgid "Register a new user using the provided Auth0 token."
-msgstr "Register a new user using the provided Auth0 token."
+#: .\apps\users\views\auth0.py:47
+msgid "User authentication example response"
+msgstr "User authentication example response"
 
-#: .\apps\users\views\registration_auth0.py:31
+#: .\apps\users\views\auth0.py:48
+msgid "Example of a successful response after user authentication."
+msgstr "Example of a successful response after user authentication."
+
+#: .\apps\users\views\auth0.py:59
 msgid "User registration example response"
 msgstr "User registration example response"
 
-#: .\apps\users\views\registration_auth0.py:32
+#: .\apps\users\views\auth0.py:60
 msgid "Example of a successful response after user registration."
 msgstr "Example of a successful response after user registration."
 
-#: .\settings\base.py:137
+#: .\apps\users\views\auth0.py:71
+msgid "Error response example"
+msgstr "Error response example"
+
+#: .\apps\users\views\auth0.py:72
+msgid "Example of an error response when authentication fails."
+msgstr "Example of an error response when authentication fails."
+
+#: .\settings\base.py:144
 msgid "Ukrainian"
 msgstr "Ukrainian"
 
-#: .\settings\base.py:138
+#: .\settings\base.py:145
 msgid "English"
 msgstr "English"
 
-#: .\settings\base.py:139
+#: .\settings\base.py:146
 msgid "Russian"
 msgstr "Russian"

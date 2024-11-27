@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-08 15:18+0200\n"
+"POT-Creation-Date: 2024-11-27 19:07+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -93,8 +93,43 @@ msgstr "Дата создания"
 msgid "Update date"
 msgstr "Дата обновления"
 
+#: .\apps\common\utils\validate_auth0_token.py:13
+#, python-brace-format
+msgid "Failed to fetch JWKS: {e}"
+msgstr "Не удалось получить JWKS: {e}"
+
+#: .\apps\common\utils\validate_auth0_token.py:18
+#: .\apps\common\utils\validate_auth0_token.py:53
+#: .\apps\users\views\auth0.py:74
+msgid "Invalid token"
+msgstr "Недействительный токен"
+
+#: .\apps\common\utils\validate_auth0_token.py:36
+msgid "Unable to find the appropriate key."
+msgstr "Не удалось найти подходящий ключ."
+
+#: .\apps\common\utils\validate_auth0_token.py:41
+msgid "Invalid token type: Expected id_token, received access_token"
+msgstr "Неверный тип токена: ожидался id_token, получен access_token"
+
+#: .\apps\common\utils\validate_auth0_token.py:45
+msgid "Token has expired"
+msgstr "Срок действия токена истек"
+
+#: .\apps\common\utils\validate_auth0_token.py:47
+msgid "Invalid token audience"
+msgstr "Недействительный токен аудитории"
+
+#: .\apps\common\utils\validate_auth0_token.py:49
+msgid "Invalid token issuer"
+msgstr "Недействительный эмитент токена"
+
+#: .\apps\common\utils\validate_auth0_token.py:51
+msgid "Error decoding token"
+msgstr "Ошибка декодирования токена"
+
 #: .\apps\locations\admin\location.py:15 .\apps\locations\models\location.py:37
-#: .\apps\users\models\profile.py:24
+#: .\apps\users\models\profile.py:25
 msgid "Location"
 msgstr "Местоположение"
 
@@ -192,33 +227,33 @@ msgstr "Основной"
 msgid "Products"
 msgstr "Продукты"
 
-#: .\apps\products\models\category.py:13
+#: .\apps\products\models\category.py:15
 msgid "Category name"
 msgstr "Название категории"
 
-#: .\apps\products\models\category.py:20
+#: .\apps\products\models\category.py:22
 msgid "Parent category"
 msgstr "Родительская категория"
 
-#: .\apps\products\models\category.py:22
+#: .\apps\products\models\category.py:24
 #: .\apps\products\models\product_image.py:19
 #: .\apps\user_messages\models\message_image.py:10
 msgid "Image"
 msgstr "Изображение"
 
-#: .\apps\products\models\category.py:23
+#: .\apps\products\models\category.py:25
 msgid "Icon"
 msgstr "Иконка"
 
-#: .\apps\products\models\category.py:27 .\apps\products\models\product.py:47
+#: .\apps\products\models\category.py:29 .\apps\products\models\product.py:47
 msgid "Views"
 msgstr "Просмотры"
 
-#: .\apps\products\models\category.py:34 .\apps\products\models\product.py:30
+#: .\apps\products\models\category.py:36 .\apps\products\models\product.py:30
 msgid "Category"
 msgstr "Категория"
 
-#: .\apps\products\models\category.py:35 .\settings\jazzmin.py:42
+#: .\apps\products\models\category.py:37 .\settings\jazzmin.py:42
 msgid "Categories"
 msgstr "Категории"
 
@@ -412,19 +447,19 @@ msgstr "Не удалось создать видео: %s"
 msgid "Failed to update video: %s"
 msgstr "Не удалось обновить видео: %s"
 
-#: .\apps\products\views\category.py:38
+#: .\apps\products\views\category.py:36
 msgid "List categories in a tree structure"
 msgstr "Список категорий в древовидной структуре"
 
-#: .\apps\products\views\category.py:39
+#: .\apps\products\views\category.py:37
 msgid "Retrieve a hierarchical tree of categories."
 msgstr "Получить иерархическое дерево категорий."
 
-#: .\apps\products\views\category.py:57
+#: .\apps\products\views\category.py:55
 msgid "Retrieve a category by path"
 msgstr "Получить категорию по path"
 
-#: .\apps\products\views\category.py:58
+#: .\apps\products\views\category.py:56
 msgid "Retrieve a single category by path"
 msgstr "Получить одну категорию по path"
 
@@ -477,78 +512,109 @@ msgstr "Удалить продукт"
 msgid "Delete a product by slug"
 msgstr "Удалить продукт по slug"
 
-#: .\apps\products\views\product_filters.py:54
+#: .\apps\products\views\product_filters.py:60
 msgid "Filter products by various parameters"
 msgstr "Фильтровать товары по различным параметрам"
 
-#: .\apps\products\views\product_filters.py:55
+#: .\apps\products\views\product_filters.py:61
 msgid "Retrieve a list of products filtered by multiple parameters"
 msgstr "Получить список продуктов, отфильтрованных по нескольким параметрам"
 
-#: .\apps\products\views\product_filters.py:60
+#: .\apps\products\views\product_filters.py:66
 msgid "Filter products by category path"
 msgstr "Фильтровать продукты по category path"
 
-#: .\apps\products\views\product_filters.py:66
+#: .\apps\products\views\product_filters.py:72
 msgid "Minimum price filter"
 msgstr "Фильтр минимальной цены"
 
-#: .\apps\products\views\product_filters.py:72
+#: .\apps\products\views\product_filters.py:78
 msgid "Maximum price filter"
 msgstr "Фильтр максимальной цены"
 
-#: .\apps\products\views\product_filters.py:78
+#: .\apps\products\views\product_filters.py:84
 #, python-brace-format
 msgid "Currency code for the price filter (Default: {default_currency})"
 msgstr "Код валюты для ценового фильтра (по умолчанию: {default_currency})"
 
-#: .\apps\products\views\product_filters.py:85
+#: .\apps\products\views\product_filters.py:91
 msgid "Field to sort products by (e.g., {"
 msgstr "Поле для сортировки продуктов (например, {"
 
-#: .\apps\products\views\product_filters.py:90
+#: .\apps\products\views\product_filters.py:96
 msgid "Sort by price in ascending order"
 msgstr "Сортировать по цене в порядке возрастания"
 
-#: .\apps\products\views\product_filters.py:92
+#: .\apps\products\views\product_filters.py:98
 msgid "Sort products by price in ascending order."
 msgstr "Сортировать товары по цене в порядке возрастания."
 
-#: .\apps\products\views\product_filters.py:95
+#: .\apps\products\views\product_filters.py:101
 msgid "Sort by price in descending order"
 msgstr "Сортировать по цене в порядке убывания"
 
-#: .\apps\products\views\product_filters.py:97
+#: .\apps\products\views\product_filters.py:103
 msgid "Sort products by price in descending order."
 msgstr "Сортировать товары по цене в порядке убывания."
 
-#: .\apps\products\views\product_filters.py:100
+#: .\apps\products\views\product_filters.py:106
 msgid "Sort by created date in ascending order"
 msgstr "Сортировать по дате создания в порядке возрастания"
 
-#: .\apps\products\views\product_filters.py:102
+#: .\apps\products\views\product_filters.py:108
 msgid "Sort products by created date in ascending order."
 msgstr "Сортировать продукты по дате создания в порядке возрастания."
 
-#: .\apps\products\views\product_filters.py:105
+#: .\apps\products\views\product_filters.py:111
 msgid "Sort by created date in descending order"
 msgstr "Сортировать по дате создания в порядке убывания"
 
-#: .\apps\products\views\product_filters.py:107
+#: .\apps\products\views\product_filters.py:113
 msgid "Sort products by created date in descending order."
 msgstr "Сортировать продукты по дате создания в порядке убывания."
 
-#: .\apps\products\views\products_latest.py:18
+#: .\apps\products\views\product_filters.py:116
+msgid "Sort by product status in ascending order"
+msgstr "Сортировать по статусу продукта в порядке возрастания"
+
+#: .\apps\products\views\product_filters.py:119
+msgid ""
+"Sort products by status in ascending order(e.g., \"new\" products appear "
+"before \"old\" ones)"
+msgstr ""
+"Сортировать продукты по статусу в порядке возрастания(например, \"новые\" продукты появляются "
+"перед \"бэушные\")"
+
+#: .\apps\products\views\product_filters.py:123
+msgid "Sort by product status in descending order"
+msgstr "Сортировать по статусу продукта в порядке убывания"
+
+#: .\apps\products\views\product_filters.py:126
+msgid ""
+"Sort products by status in descending order(e.g., \"old\" products appear "
+"before \"new\" ones)"
+msgstr ""
+"Сортировать продукты по статусу в порядке убывания(например, \"бэушные\" продукты отображаются "
+"перед \"новыми\")"
+
+#: .\apps\products\views\products_latest.py:19
 msgid "List of latest products"
 msgstr "Список недавно добавленных продуктов"
 
-#: .\apps\products\views\products_latest.py:19
-msgid "Retrieve a list of the latest products with an option to limit the number of results (10 to 50)."
-msgstr "Получить список недавно добавленных продуктов с возможностью ограничения количества результатов (от 10 до 50)."
+#: .\apps\products\views\products_latest.py:20
+msgid ""
+"Retrieve a list of the latest products with an option to limit the number of "
+"results (10 to 50)."
+msgstr ""
+"Получить список недавно добавленных продуктов с возможностью ограничения "
+"количества результатов (от 10 до 50)."
 
-#: .\apps\products\views\products_latest.py:27
-msgid "The maximum number of products to retrieve, between 10 and 50. Default is 10."
-msgstr "Максимальное количество извлекаемых продуктов: от 10 до 50. Значение по умолчанию — 10."
+#: .\apps\products\views\products_latest.py:28
+msgid ""
+"The maximum number of products to retrieve, between 10 and 50. Default is 10."
+msgstr ""
+"Максимальное количество извлекаемых продуктов: от 10 до 50. Значение по "
+"умолчанию — 10."
 
 #: .\apps\user_messages\apps.py:8
 msgid "User messages"
@@ -640,27 +706,35 @@ msgstr "Пользователь"
 msgid "profile picture"
 msgstr "фотография профиля"
 
-#: .\apps\users\models\profile.py:16
+#: .\apps\users\models\profile.py:17
 msgid "Upload a profile picture."
 msgstr "Загрузите фотографию профиля."
 
-#: .\apps\users\models\profile.py:25
+#: .\apps\users\models\profile.py:26
 msgid "This field allows you to specify the user's city and region."
 msgstr "В этом поле можно указать город и регион пользователя."
 
-#: .\apps\users\models\profile.py:28
+#: .\apps\users\models\profile.py:29
+msgid "Authentication Providers"
+msgstr "Поставщики аутентификации"
+
+#: .\apps\users\models\profile.py:33
+msgid "Specifies the authentication providers linked to the user account."
+msgstr "Указывает поставщиков аутентификации, связанных с учетной записью пользователя."
+
+#: .\apps\users\models\profile.py:36
 msgid "Phone numbers"
 msgstr "Номера телефонов"
 
-#: .\apps\users\models\profile.py:28
+#: .\apps\users\models\profile.py:36
 msgid "You can add multiple phone numbers."
 msgstr "Вы можете добавить несколько номеров телефонов."
 
-#: .\apps\users\models\profile.py:38
+#: .\apps\users\models\profile.py:46
 msgid "Profile"
 msgstr "Профиль"
 
-#: .\apps\users\models\profile.py:39
+#: .\apps\users\models\profile.py:47
 msgid "Profiles"
 msgstr "Профили"
 
@@ -720,59 +794,78 @@ msgstr ""
 msgid "date joined"
 msgstr "дата присоединения"
 
-#: .\apps\users\serializers\registration_auth0.py:37
-#, python-brace-format
-msgid "Failed to fetch JWKS: {e}"
-msgstr "Не удалось получить JWKS: {e}"
+#: .\apps\users\utils\authentication_auth0.py:21
+msgid "Email address is required."
+msgstr "Требуется адрес электронной почты."
 
-#: .\apps\users\serializers\registration_auth0.py:53
-msgid "Unable to find the appropriate key."
-msgstr "Не удалось найти подходящий ключ."
+#: .\apps\users\utils\authentication_auth0.py:23
+msgid "Provider sub field is missing or empty."
+msgstr "Подполе поставщика отсутствует или пусто."
 
-#: .\apps\users\serializers\registration_auth0.py:59
-msgid "Token has expired"
-msgstr "Срок действия токена истек"
+#: .\apps\users\views\auth0.py:16
+msgid "User authenticated successfully."
+msgstr "Пользователь успешно аутентифицирован."
 
-#: .\apps\users\serializers\registration_auth0.py:61
-msgid "Invalid token audience"
-msgstr "Недействительный токен аудитории"
+#: .\apps\users\views\auth0.py:17
+msgid "New user registered successfully."
+msgstr "Новый пользователь успешно зарегистрирован."
 
-#: .\apps\users\serializers\registration_auth0.py:63
-msgid "Invalid token issuer"
-msgstr "Недействительный эмитент токена"
+#: .\apps\users\views\auth0.py:26
+msgid "Authenticate or register a new user"
+msgstr "Аутентифицировать или зарегистрировать нового пользователя"
 
-#: .\apps\users\serializers\registration_auth0.py:65
-msgid "Error decoding token"
-msgstr "Ошибка декодирования токена"
+#: .\apps\users\views\auth0.py:27
+msgid "Authenticate or register a new user using the provided Auth0 token."
+msgstr "Выполните аутентификацию или зарегистрируйте нового пользователя, используя предоставленный токен Auth0."
 
-#: .\apps\users\serializers\registration_auth0.py:67
-msgid "Invalid token"
-msgstr "Недействительный токен"
+#: .\apps\users\views\auth0.py:34
+msgid ""
+"Bad Request: Invalid token or other validation error. Example errors: Failed "
+"to fetch JWKS, Invalid token type, Invalid audience."
+msgstr ""
+"Неверный запрос: недействительный токен или другая ошибка проверки. Примеры ошибок: Не удалось "
+"извлечь JWKS, недействительный тип токена, недействительная аудитория."
 
-#: .\apps\users\views\registration_auth0.py:21
-msgid "Register a new user"
-msgstr "Зарегистрировать нового пользователя"
+#: .\apps\users\views\auth0.py:40
+msgid ""
+"Unauthorized: Authentication failed due to invalid or expired token. Example "
+"errors: Token has expired, Invalid token issuer."
+msgstr ""
+"Неавторизованный: Аутентификация не удалась из-за недействительного или просроченного токена. Пример "
+"ошибки: Токен просрочен, Недействительный эмитент токена."
 
-#: .\apps\users\views\registration_auth0.py:22
-msgid "Register a new user using the provided Auth0 token."
-msgstr "Зарегистрируйте нового пользователя, используя предоставленный токен Auth0."
+#: .\apps\users\views\auth0.py:47
+msgid "User authentication example response"
+msgstr "Пример ответа аутентификации пользователя"
 
-#: .\apps\users\views\registration_auth0.py:31
+#: .\apps\users\views\auth0.py:48
+msgid "Example of a successful response after user authentication."
+msgstr "Пример успешного ответа после аутентификации пользователя."
+
+#: .\apps\users\views\auth0.py:59
 msgid "User registration example response"
 msgstr "Пример ответа на регистрацию пользователя"
 
-#: .\apps\users\views\registration_auth0.py:32
+#: .\apps\users\views\auth0.py:60
 msgid "Example of a successful response after user registration."
 msgstr "Пример успешного ответа после регистрации пользователя."
 
-#: .\settings\base.py:137
+#: .\apps\users\views\auth0.py:71
+msgid "Error response example"
+msgstr "Пример ответа об ошибке"
+
+#: .\apps\users\views\auth0.py:72
+msgid "Example of an error response when authentication fails."
+msgstr "Пример ответа об ошибке при неудачной аутентификации."
+
+#: .\settings\base.py:144
 msgid "Ukrainian"
 msgstr "украинский"
 
-#: .\settings\base.py:138
+#: .\settings\base.py:145
 msgid "English"
 msgstr "Английский"
 
-#: .\settings\base.py:139
+#: .\settings\base.py:146
 msgid "Russian"
 msgstr "Русский"
