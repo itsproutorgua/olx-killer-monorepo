@@ -14,11 +14,6 @@ export const SORT_OPTIONS: Record<string, SortOption> = {
     label: i18n.t('sort.novelties'),
     value: 'created_at:desc',
   },
-  // USED: {
-  //   label: i18n.t('sort.used'),
-  //   value: '',
-  //   key: 'USED',
-  // },
   'status:desc': {
     label: i18n.t('sort.rating'),
     value: 'status:desc',
