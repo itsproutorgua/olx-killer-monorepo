@@ -30,3 +30,6 @@ class Price(TimestampMixin, HistoricalModel, models.Model):
         verbose_name = _('Price')
         verbose_name_plural = _('Prices')
         unique_together = ('product', 'currency')
+        indexes = [
+            models.Index(fields=['amount']),
+        ]

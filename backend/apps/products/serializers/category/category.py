@@ -24,30 +24,33 @@ class CategorySerializer(serializers.ModelSerializer):
     @extend_schema_field(ParentSerializer)
     def get_parent(self, category: Category) -> dict[str, any] | None:
         """Get parent categories using ParentSerializer."""
-        if category.parent:
-            return ParentSerializer(category.parent).data
+        if parent := category.parent:
+            return ParentSerializer(parent).data
         return None
 
     @extend_schema_field(CategoryChildrenSerializer)
-    def get_children(self, category: Category) -> list[dict[str | int, any]] | None:
+    def get_children(self, category: Category) -> list[dict[str | int, any]] | list:
         """
         Retrieves child categories with an additional cumulative count of products.
         Dependencies:
         - django-mptt: For handling hierarchical data models and methods like
           `add_related_count`.
         """
-        try:
-            annotated_categories = Category.objects.add_related_count(
-                category.children.all(),
-                Product,
-                'category',
-                'products_cumulative_count',
-                cumulative=True,
-            )
-            return CategoryChildrenSerializer(annotated_categories, many=True).data
-        except AttributeError as e:
-            logger.error(e)
-            return CategoryChildrenSerializer(category.children.all(), many=True).data
+        if children := category.children.all():
+            try:
+                annotated_categories = Category.objects.add_related_count(
+                    children,
+                    Product,
+                    'category',
+                    'products_cumulative_count',
+                    cumulative=True,
+                )
+                return CategoryChildrenSerializer(annotated_categories, many=True).data
+            except AttributeError as e:
+                logger.error(e)
+                return CategoryChildrenSerializer(children, many=True).data
+
+        return CategoryChildrenSerializer([], many=True).data
 
     def to_representation(self, instance: Category) -> dict:
         """Translate the 'title' into the language used"""
