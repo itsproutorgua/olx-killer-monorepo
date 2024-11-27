@@ -24,8 +24,8 @@ class CategorySerializer(serializers.ModelSerializer):
     @extend_schema_field(ParentSerializer)
     def get_parent(self, category: Category) -> dict[str, any] | None:
         """Get parent categories using ParentSerializer."""
-        if category.parent:
-            return ParentSerializer(category.parent).data
+        if parent := category.parent:
+            return ParentSerializer(parent).data
         return None
 
     @extend_schema_field(CategoryChildrenSerializer)
@@ -37,7 +37,7 @@ class CategorySerializer(serializers.ModelSerializer):
           `add_related_count`.
         """
         try:
-            annotated_categories = Category.objects.add_related_count(
+            annotated_categories = Category.objects.prefetch_related('children').add_related_count(
                 category.children.all(),
                 Product,
                 'category',
