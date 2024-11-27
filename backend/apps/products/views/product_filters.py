@@ -1,8 +1,12 @@
 from django.conf import settings
+from django.db.models import DecimalField
 from django.db.models import F
 from django.db.models import OuterRef
 from django.db.models import Q
+from django.db.models import QuerySet
 from django.db.models import Subquery
+from django.db.models import Value
+from django.db.models.functions import Coalesce
 from django.utils.translation import gettext_lazy as _
 from drf_spectacular.utils import extend_schema
 from drf_spectacular.utils import OpenApiExample
@@ -10,6 +14,7 @@ from drf_spectacular.utils import OpenApiParameter
 from drf_spectacular.utils import OpenApiResponse
 from rest_framework import mixins
 from rest_framework import status
+from rest_framework.exceptions import ValidationError
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
@@ -35,6 +40,7 @@ class ProductFilterViewSet(mixins.ListModelMixin, GenericViewSet):
             'category',
             'category__parent',
             'category__parent__parent',
+            'category__parent__parent__parent',
             'seller__profile__location__city',
             'seller__profile__location__city__region',
         )
@@ -157,26 +163,7 @@ class ProductFilterViewSet(mixins.ListModelMixin, GenericViewSet):
             queryset = queryset.filter(prices__amount__lte=price_max, prices__currency__code=currency_code).distinct()
 
         # Sorted
-        if sort_by:
-            try:
-                field, order = sort_by.split(':')
-                if field not in self.allowed_sort_fields or order not in ['asc', 'desc']:
-                    raise ValueError
-
-                order = f'{('', '-')[order == 'desc']}'
-
-                if field == 'price':
-                    price_subquery = Price.objects.filter(
-                        product=OuterRef('pk'), currency__code=currency_code
-                    ).order_by('amount')
-
-                    queryset = queryset.annotate(price_in_currency=Subquery(price_subquery.values('amount')[:1]))
-                    queryset = queryset.order_by(f'{order}price_in_currency')
-                else:
-                    queryset = queryset.order_by(f'{order}{field}')
-
-            except ValueError:
-                return Response({'error': errors.INVALID_SORT_FIELD}, status=status.HTTP_400_BAD_REQUEST)
+        queryset = self.sorted_queryset(sort_by, queryset, currency_code=currency_code)
 
         # Update Category Views
         Category.objects.filter(path=category_path).update(views=F('views') + 1)
@@ -189,3 +176,52 @@ class ProductFilterViewSet(mixins.ListModelMixin, GenericViewSet):
 
         serializer = self.serializer_class(queryset, many=True)
         return Response(serializer.data)
+
+    def sorted_queryset(self, sort_by: str, queryset: QuerySet, **kwargs) -> QuerySet:
+        """
+           Sorts the provided queryset based on the specified field and order.
+
+           - Supported sort fields are dynamically determined by `allowed_sort_fields`.
+           - Sort order: 'asc' (ascending) or 'desc' (descending).
+           - Special handling for `price`:
+               - Sorts by price in the specified currency.
+               - Falls back to `0` if no price in the given currency exists.
+
+           Args:
+               sort_by (str): The field and order to sort by, formatted as 'field:order'.
+               queryset (QuerySet): The initial queryset to be sorted.
+               **kwargs: Additional arguments, such as `currency_code`.
+
+           Returns:
+               QuerySet: The sorted queryset.
+
+           Raises:
+               ValidationError: If the sort field or order is invalid.
+       """
+        if sort_by:
+            field, order = sort_by.split(':')
+            if field not in self.allowed_sort_fields or order not in ['asc', 'desc']:
+                raise ValidationError(errors.INVALID_SORT_FIELD, status.HTTP_400_BAD_REQUEST)
+
+            order = f'{('', '-')[order == 'desc']}'
+
+            if field == 'price':
+                currency_code = kwargs.get('currency_code')
+                price_subquery = Price.objects.filter(
+                    product=OuterRef('pk'),
+                    currency__code=currency_code,
+                ).order_by('amount')
+
+                queryset = queryset.annotate(
+                    price_in_currency=Coalesce(
+                        Subquery(price_subquery.values('amount')[:1]),
+                        Value(0),
+                        output_field=DecimalField(),
+                    )
+                )
+
+                queryset = queryset.order_by(f'{order}price_in_currency')
+            else:
+                queryset = queryset.order_by(f'{order}{field}')
+
+        return queryset
