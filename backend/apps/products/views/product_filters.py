@@ -179,25 +179,25 @@ class ProductFilterViewSet(mixins.ListModelMixin, GenericViewSet):
 
     def sorted_queryset(self, sort_by: str, queryset: QuerySet, **kwargs) -> QuerySet:
         """
-           Sorts the provided queryset based on the specified field and order.
+        Sorts the provided queryset based on the specified field and order.
 
-           - Supported sort fields are dynamically determined by `allowed_sort_fields`.
-           - Sort order: 'asc' (ascending) or 'desc' (descending).
-           - Special handling for `price`:
-               - Sorts by price in the specified currency.
-               - Falls back to `0` if no price in the given currency exists.
+        - Supported sort fields are dynamically determined by `allowed_sort_fields`.
+        - Sort order: 'asc' (ascending) or 'desc' (descending).
+        - Special handling for `price`:
+            - Sorts by price in the specified currency.
+            - Falls back to `0` if no price in the given currency exists.
 
-           Args:
-               sort_by (str): The field and order to sort by, formatted as 'field:order'.
-               queryset (QuerySet): The initial queryset to be sorted.
-               **kwargs: Additional arguments, such as `currency_code`.
+        Args:
+            sort_by (str): The field and order to sort by, formatted as 'field:order'.
+            queryset (QuerySet): The initial queryset to be sorted.
+            **kwargs: Additional arguments, such as `currency_code`.
 
-           Returns:
-               QuerySet: The sorted queryset.
+        Returns:
+            QuerySet: The sorted queryset.
 
-           Raises:
-               ValidationError: If the sort field or order is invalid.
-       """
+        Raises:
+            ValidationError: If the sort field or order is invalid.
+        """
         if sort_by:
             field, order = sort_by.split(':')
             if field not in self.allowed_sort_fields or order not in ['asc', 'desc']:
