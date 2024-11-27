@@ -23,10 +23,11 @@ export const en = {
     show: 'Show',
   },
   sort: {
-    rating: 'Behind the rating',
     priceExpensive: 'From cheap to expensive',
     priceCheap: 'From expensive to cheap',
-    novelties: 'Novelties',
+    novelties: 'New products',
+    inUse: 'Goods that were in use',
+    rating: 'Behind the rating',
   },
   titles: {
     announcementTitle: 'Add your own announcement',

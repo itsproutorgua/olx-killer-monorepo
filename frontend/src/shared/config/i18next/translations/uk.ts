@@ -24,10 +24,11 @@ export const uk = {
     show: 'Показати',
   },
   sort: {
-    rating: 'За рейтингом',
     priceExpensive: 'Від дешевих до дорогих',
     priceCheap: 'Від дорогих до дешевих',
-    novelties: 'Новинки',
+    novelties: 'Нові оголошення',
+    used: 'Товари, які були у використанні',
+    rating: 'За рейтингом',
   },
   titles: {
     announcementTitle: 'Додайте своє оголошення',
