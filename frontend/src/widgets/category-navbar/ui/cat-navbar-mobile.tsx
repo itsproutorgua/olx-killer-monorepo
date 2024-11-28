@@ -53,7 +53,6 @@ export const CategoryNavbarMobile = ({ data }: { data: CategoryChild[] }) => {
           </ul>
         </CollapsibleContent>
       </div>
-      {/* text-[13px]/[15.73px] */}
       {data.length > 6 && (
         <CollapsibleTrigger className='btn-secondary'>
           {isOpen ? t('buttons.showLess') : t('buttons.showMore')}

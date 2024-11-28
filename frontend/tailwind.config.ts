@@ -24,7 +24,7 @@ const config = {
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
-      background: '#F9FAFB',
+      background: '#F9FAFB', // gray-50
       foreground: '#111827',
       border: '#E5E7EB', // gray-200
       black: '#000',

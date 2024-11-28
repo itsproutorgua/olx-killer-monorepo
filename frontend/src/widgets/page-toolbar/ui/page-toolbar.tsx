@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
 
-import { SortButton } from '@/widgets/sort-button'
+import { SortButton } from '@/features/sort-button'
 import { useMediaQuery } from '@/shared/library/hooks'
 import { PageToolbarMobile } from './page-toolbar-mobile'
 

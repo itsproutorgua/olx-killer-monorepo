@@ -1,8 +1,9 @@
 import { keepPreviousData, queryOptions } from '@tanstack/react-query'
 
+import { type SortValue } from '@/features/sort-button'
 import { instanceBase } from '@/shared/api'
 import { APP_VARIABLES } from '@/shared/constants/app.const'
-import type { Product, ProductResponse, Sort } from '../model'
+import type { Product, ProductResponse } from '../model'
 
 export interface FilterParams {
   path: string
@@ -11,7 +12,7 @@ export interface FilterParams {
   limit?: number
   price_max?: number
   price_min?: number
-  sort?: Sort
+  sort?: SortValue
 }
 
 class ProductApi {
@@ -37,7 +38,7 @@ class ProductApi {
     if (currency_code) params.set('currency_code', currency_code.toString())
     if (price_max) params.set('price_max', price_max.toString())
     if (price_min) params.set('price_min', price_min.toString())
-    if (sort && sort !== 'rating') params.set('sort_by', sort.toString())
+    if (sort && sort !== 'status:desc') params.set('sort_by', sort.toString())
 
     const url = `${this.BASE_URL}/filters/?${params.toString()}`
 

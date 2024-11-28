@@ -14,7 +14,7 @@ export interface CategoryChild {
   title: string
   path: string
   views: number
-  product_count: number
+  products_cumulative_count: number
   icon?: string | null
   img?: string | null
 }
