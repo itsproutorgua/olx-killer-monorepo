@@ -1,21 +1,15 @@
 import { useState } from 'react'
-import { useQuery } from '@tanstack/react-query'
 import { useTranslation } from 'react-i18next'
 
-import {
-  productApi,
-  type Product,
-  type ProductResponse,
-} from '@/entities/product'
+import { useProducts } from '@/widgets/product-grid/library'
+import { type Product } from '@/entities/product'
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
 } from '@/shared/ui/shadcn-ui/collapsible.tsx'
 import { SectionTitle } from '@/shared/ui'
-import ProductCardLoaderSmall from '@/shared/ui/loaders/product-card-small.loader.tsx'
-import ProductCardLoader from '@/shared/ui/loaders/product-card.loader.tsx'
-import { QUERY_KEYS } from '@/shared/constants'
+import { BestDealsSkeleton } from '@/shared/ui/skeletons'
 import { useMediaQuery } from '@/shared/library/hooks'
 import { ProductCard } from '../product-card'
 
@@ -25,31 +19,23 @@ export const BestDeals = () => {
   const [isOpen, setIsOpen] = useState(false)
   const isDesktop = useMediaQuery('(min-width: 1440px)')
   const { t } = useTranslation()
+  const limit = 28
+  const sort = 'price:asc'
 
-  const { isLoading, data, isError } = useQuery<ProductResponse>({
-    queryKey: [QUERY_KEYS.PRODUCTS, path],
-    queryFn: meta => productApi.findByFilters({ path, limit: 28 }, meta),
-  })
-
-  if (isError) {
-    return <div>Error during loading</div>
-  }
+  const { data, cursor } = useProducts(
+    {
+      path,
+      limit,
+      sort,
+    },
+    { Skeleton: <BestDealsSkeleton /> },
+  )
 
   return (
     <section className='container flex flex-col pt-[91px] xl:pt-[100px]'>
       <SectionTitle title={t('titles.bestDealsTitle')} />
       <Collapsible open={isOpen} onOpenChange={setIsOpen}>
-        {isLoading && (
-          <div className='grid grid-cols-2 gap-x-[10px] gap-y-[40px] self-center md:grid-cols-3 xl:grid-cols-4 xl:gap-x-5 xl:gap-y-[60px]'>
-            {Array.from({ length: 8 }).map((_, index) =>
-              isDesktop ? (
-                <ProductCardLoader key={index} />
-              ) : (
-                <ProductCardLoaderSmall key={index} />
-              ),
-            )}
-          </div>
-        )}
+        {cursor}
         <div className='grid grid-cols-2 gap-x-[10px] gap-y-[40px] self-center md:grid-cols-3 xl:grid-cols-4 xl:gap-x-5 xl:gap-y-[60px]'>
           {data?.results
             .slice(0, 8)

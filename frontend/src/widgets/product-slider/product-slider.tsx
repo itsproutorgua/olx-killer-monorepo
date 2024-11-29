@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { useQuery } from '@tanstack/react-query'
 import { useTranslation } from 'react-i18next'
 
 import { ProductCard } from '@/widgets/product-card'
+import { useProducts } from '@/widgets/product-grid/library'
 import { chunkArray } from '@/widgets/product-slider/model/product-slider-helper.ts'
-import { Product, productApi, type ProductResponse } from '@/entities/product'
+import { Product, type Sort } from '@/entities/product'
 import {
   Carousel,
   CarouselContent,
@@ -12,8 +12,7 @@ import {
   type CarouselApi,
 } from '@/shared/ui/shadcn-ui/carousel.tsx'
 import { SectionTitle } from '@/shared/ui'
-import ProductCardLoaderSmall from '@/shared/ui/loaders/product-card-small.loader.tsx'
-import { QUERY_KEYS } from '@/shared/constants'
+import { ProductSliderSkeleton } from '@/shared/ui/skeletons'
 import { cn } from '@/shared/library/utils'
 
 interface ProductSliderProps {
@@ -21,12 +20,16 @@ interface ProductSliderProps {
   path: string // Products array
   chunkSize?: number // Default chunk size for pairing
   className?: string
+  limit: number
+  sort?: Sort
   onProductClick: (slug: string) => void
 }
 
 export const ProductSlider: React.FC<ProductSliderProps> = ({
   titleKey,
   path,
+  limit,
+  sort,
   chunkSize = 2, // Default chunk size is set to 2
   className,
   onProductClick,
@@ -37,10 +40,14 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({
   const [count, setCount] = useState(0)
   const [dynamicChunkSize, setDynamicChunkSize] = useState(chunkSize) // Track dynamic chunk size
 
-  const { isLoading, data, isError } = useQuery<ProductResponse>({
-    queryKey: [QUERY_KEYS.PRODUCTS, path],
-    queryFn: meta => productApi.findByFilters({ path, limit: 28 }, meta),
-  })
+  const { data, cursor } = useProducts(
+    {
+      path,
+      limit,
+      sort,
+    },
+    { Skeleton: <ProductSliderSkeleton /> },
+  )
 
   // Handle screen size changes
   useEffect(() => {
@@ -68,10 +75,6 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({
     })
   }, [api])
 
-  if (isError) {
-    return <div>{t('errors.noProducts')}</div>
-  }
-
   return (
     <div className={className}>
       <Carousel
@@ -84,20 +87,11 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({
       >
         <SectionTitle title={t(titleKey)} />
         {/* Skeleton Loader: Display two skeletons per CarouselItem when loading */}
-        {isLoading && (
-          <CarouselContent>
-            {Array.from({ length: 4 }).map((_, index) => (
-              <CarouselItem key={index} className='flex gap-[10px]'>
-                <ProductCardLoaderSmall key={`${index}-loader-1`} />
-                <ProductCardLoaderSmall key={`${index}-loader-2`} />
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-        )}
+        {cursor}
         {/* Actual Data */}
         {data && (
           <CarouselContent>
-            {chunkArray(data.results.slice(0, 8), dynamicChunkSize).map(
+            {chunkArray(data.results, dynamicChunkSize).map(
               (pair: Product[], index: number) => (
                 <CarouselItem key={index} className='flex gap-[10px]'>
                   {pair.map((deal: Product) => (

@@ -29,26 +29,25 @@ export const ProductLocation: React.FC<Props> = ({ location, className }) => {
           <div className='h-[24px] w-[24px]'>
             <LocationIcon className='text-primary' />
           </div>
-          <div className='flex flex-col gap-3'>
-            <HoverCard openDelay={500} closeDelay={0}>
-              <HoverCardTrigger asChild>
-                <h4 className='line-clamp-1 text-xl leading-none'>
-                  {location.name}
-                </h4>
-              </HoverCardTrigger>
-              {/* Only render HoverCardContent if title length exceeds threshold */}
-              {location.name.length > 9 && (
-                <HoverCardContent side='top' className='w-fit bg-gray-50'>
-                  {location.name}
-                </HoverCardContent>
-              )}
-            </HoverCard>
-            <p className='text-primary-gray text-xs leading-none'>
-              {location.region}
-            </p>
-            <p className='text-primary-gray text-xs leading-none'>
-              {location.location_type.toUpperCase()}
-            </p>
+          <div className='flex h-[104px] flex-col justify-between'>
+            <div className='flex flex-col gap-3'>
+              <HoverCard openDelay={500} closeDelay={0}>
+                <HoverCardTrigger asChild>
+                  <h4 className='line-clamp-1 text-xl leading-none'>
+                    {location.name}
+                  </h4>
+                </HoverCardTrigger>
+                {/* Only render HoverCardContent if title length exceeds threshold */}
+                {location.name.length > 9 && (
+                  <HoverCardContent side='top' className='w-fit bg-gray-50'>
+                    {location.name}
+                  </HoverCardContent>
+                )}
+              </HoverCard>
+              <p className='text-primary-gray text-xs leading-none'>
+                {location.region}
+              </p>
+            </div>
             <button className='mt-2 flex flex-row items-center gap-[9px] text-xs'>
               {t('words.viewOnMap')} <ArrowIcon className='w-6 font-bold' />
             </button>

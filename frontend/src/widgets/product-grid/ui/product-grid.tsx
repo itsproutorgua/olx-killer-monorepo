@@ -20,12 +20,15 @@ export const ProductGrid = ({ path }: { path: string }) => {
     ? Number(getQueryParamByKey('page'))
     : 1
 
-  const { data, cursor } = useProducts({
-    path,
-    page,
-    limit,
-    sort,
-  })
+  const { data, cursor } = useProducts(
+    {
+      path,
+      page,
+      limit,
+      sort,
+    },
+    {},
+  )
 
   return (
     <>
