@@ -10,6 +10,7 @@ export const SimilarProductsSlider: React.FC<SimilarProductProps> = ({
     <ProductSlider
       titleKey='titles.similarProducts'
       path='elektronika/telefony-i-aksesuary/mobilnye-telefony-smartfony'
+      limit={10}
       chunkSize={2} // Set the chunk size as needed
       onProductClick={onProductClick}
     />

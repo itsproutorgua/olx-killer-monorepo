@@ -9,7 +9,7 @@ import { ContactSellerCard } from '@/widgets/product-details/ui/contact-seller-c
 import { ProductLocation } from '@/widgets/product-details/ui/product-location.tsx'
 import { ProductSeller } from '@/widgets/product-details/ui/product-seller.tsx'
 import { AddToFavorite } from '@/features/add-to-favorite'
-import { ShowNumber, WriteSeller } from '@/features/product'
+import { WriteSeller } from '@/features/product'
 import { Product } from '@/entities/product'
 import { formatDate } from '@/entities/product/model/product-date.helper.ts'
 import { Separator } from '@/shared/ui/shadcn-ui/separator.tsx'
@@ -110,12 +110,11 @@ export const ProductInfo: React.FC<Props> = ({ className, product }) => {
         </p>
         <AddToFavorite className='text-xl text-primary-900 md:hidden' />
       </div>
-      <div className='mt-[32px] flex w-full flex-col items-center gap-[10px] md:mt-[34px] md:flex-row md:gap-[45px]'>
-        <div className='flex w-full flex-col gap-[10px] md:flex-row md:gap-4'>
-          <WriteSeller />
-          <ShowNumber />
+      <div className='mt-[32px] flex flex-col items-center gap-[10px] md:mt-[34px] md:flex-row md:gap-[45px]'>
+        <div className='flex w-full flex-col items-center gap-[10px] md:w-[291px] md:flex-row md:gap-[19px]'>
+          <WriteSeller className='w-full md:w-[238px]' />
+          <AddToFavorite className='hidden h-[34px] w-[34px] text-xl text-primary-900 md:flex md:items-center md:justify-center' />
         </div>
-        <AddToFavorite className='hidden text-xl text-primary-900 md:block' />
       </div>
       <div className='mt-[54px] hidden max-h-[200px] flex-row gap-5 md:flex'>
         <ProductSeller

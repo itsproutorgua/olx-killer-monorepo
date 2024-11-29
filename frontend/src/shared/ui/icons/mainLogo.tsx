@@ -4,7 +4,7 @@ export function MainLogo(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       width='97'
-      height='36'
+      height='35'
       viewBox='0 0 97 36'
       fill='none'
       xmlns='http://www.w3.org/2000/svg'

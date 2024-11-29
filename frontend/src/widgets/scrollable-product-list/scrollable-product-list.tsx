@@ -1,23 +1,20 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { keepPreviousData, useQuery } from '@tanstack/react-query'
 
 import { ProductCard } from '@/widgets/product-card'
-import {
-  productApi,
-  type Product,
-  type ProductResponse,
-} from '@/entities/product'
+import { useProducts } from '@/widgets/product-grid/library'
+import { type Product, type Sort } from '@/entities/product'
 import { SectionTitle } from '@/shared/ui'
 import { ScrollableListArrowLeft } from '@/shared/ui/icons/scrollableListArrowLeft.tsx'
 import { ScrollableListArrowRight } from '@/shared/ui/icons/scrollableListArrowRight.tsx'
-import ProductCardLoader from '@/shared/ui/loaders/product-card.loader.tsx'
-import { QUERY_KEYS } from '@/shared/constants'
+import { ScrollableProductsSkeleton } from '@/shared/ui/skeletons'
 
 interface ScrollableProductListProps {
   className?: string
   titleWidth?: string
   title: string
   path: string
+  limit: number
+  sort?: Sort
   scrollStep?: number
   onProductClick: (slug: string) => void
 }
@@ -25,6 +22,8 @@ interface ScrollableProductListProps {
 export const ScrollableProductList: React.FC<ScrollableProductListProps> = ({
   title,
   path,
+  limit,
+  sort,
   scrollStep = 3, // Default scroll step of 3 items
   className,
   titleWidth = '1280px',
@@ -34,11 +33,14 @@ export const ScrollableProductList: React.FC<ScrollableProductListProps> = ({
   const [isLeftDisabled, setIsLeftDisabled] = useState(true)
   const [isRightDisabled, setIsRightDisabled] = useState(false)
 
-  const { isLoading, data, isError } = useQuery<ProductResponse>({
-    queryKey: [QUERY_KEYS.PRODUCTS, path],
-    queryFn: meta => productApi.findByFilters({ path, limit: 18 }, meta),
-    placeholderData: keepPreviousData,
-  })
+  const { data, cursor } = useProducts(
+    {
+      path,
+      limit,
+      sort,
+    },
+    { Skeleton: <ScrollableProductsSkeleton /> },
+  )
 
   useEffect(() => {
     // Disable buttons based on the scroll position
@@ -56,7 +58,7 @@ export const ScrollableProductList: React.FC<ScrollableProductListProps> = ({
     window.addEventListener('resize', checkScrollPosition)
 
     return () => window.removeEventListener('resize', checkScrollPosition)
-  }, [isLoading])
+  }, [cursor])
 
   const scrollByItems = (direction: 'left' | 'right') => {
     if (scrollContainerRef.current) {
@@ -73,10 +75,6 @@ export const ScrollableProductList: React.FC<ScrollableProductListProps> = ({
     const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current!
     setIsLeftDisabled(scrollLeft === 0)
     setIsRightDisabled(scrollLeft + clientWidth >= scrollWidth)
-  }
-
-  if (isError) {
-    return <div>No products available</div>
   }
 
   return (
@@ -118,15 +116,7 @@ export const ScrollableProductList: React.FC<ScrollableProductListProps> = ({
             </button>
           </div>
         </div>
-        {isLoading && (
-          <div className='flex gap-[7px] overflow-x-auto pb-[50px] pr-4 scrollbar-hide xl:gap-5'>
-            {Array.from({ length: 10 }).map((_, index) => (
-              <div key={index}>
-                <ProductCardLoader />
-              </div>
-            ))}
-          </div>
-        )}
+        {cursor}
         <div
           className='flex gap-[7px] overflow-x-auto pb-[50px] pr-4 scrollbar-hide xl:gap-5'
           ref={scrollContainerRef}

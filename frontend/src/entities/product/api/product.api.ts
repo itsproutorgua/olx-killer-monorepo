@@ -1,6 +1,8 @@
 import { keepPreviousData, queryOptions } from '@tanstack/react-query'
+import i18n from 'i18next'
 
 import { instanceBase } from '@/shared/api'
+import { QUERY_KEYS } from '@/shared/constants'
 import { APP_VARIABLES } from '@/shared/constants/app.const'
 import type { Product, ProductResponse, Sort } from '../model'
 
@@ -81,6 +83,13 @@ class ProductApi {
         ),
       placeholderData: keepPreviousData,
       enabled: !!path,
+    })
+  }
+
+  findBySlugQueryOptions({ slug }: { slug: string }) {
+    return queryOptions<Product>({
+      queryKey: [QUERY_KEYS.PRODUCT, slug, i18n.language],
+      queryFn: () => productApi.findBySlug({ slug }),
     })
   }
 }

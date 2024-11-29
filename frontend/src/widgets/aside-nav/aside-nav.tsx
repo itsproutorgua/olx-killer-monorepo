@@ -1,10 +1,8 @@
-import { useQuery } from '@tanstack/react-query'
 import { ChevronRight } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { Link, useNavigate } from 'react-router-dom'
 
-import { categoryApi } from '@/entities/category'
-import { CategoryResponse } from '@/entities/category/model/category.types.ts'
+import { useCategories } from '@/entities/category/library/hooks/use-categories.tsx'
 import {
   HoverCard,
   HoverCardContent,
@@ -19,29 +17,20 @@ import {
 } from '@/shared/ui/shadcn-ui/menubar.tsx'
 import { Separator } from '@/shared/ui/shadcn-ui/separator'
 import { FacebookIconOutline, InstagramIconOutline } from '@/shared/ui'
-import AsideCategoryLoader from '@/shared/ui/loaders/aside-category.loader.tsx'
-import { QUERY_KEYS } from '@/shared/constants'
+import { AsideCategorySkeleton } from '@/shared/ui/skeletons'
+import { capitalizeFirstWord } from '@/shared/library/utils/capitalize-first-word.ts'
 
 const TITLE_LENGTH_THRESHOLD = 17 // Set a threshold for truncation (number of characters)
 const SUBTITLE_LENGTH_THRESHOLD = 15
 
 export const AsideNav = ({ onCloseMenu }: { onCloseMenu?: () => void }) => {
-  const { t, i18n } = useTranslation()
+  const { t } = useTranslation()
   const navigate = useNavigate()
 
-  const {
-    isLoading,
-    isError,
-    data: categories,
-    error,
-  } = useQuery<CategoryResponse[]>({
-    queryKey: [QUERY_KEYS.CATEGORIES, i18n.language],
-    queryFn: () => categoryApi.findAll(1),
-    retry: 1,
-    refetchOnWindowFocus: false,
+  const { categories, cursor } = useCategories({
+    page: 1,
+    Skeleton: <AsideCategorySkeleton />,
   })
-
-  if (isError) return <p>Error: {error.message}</p>
 
   const handleCategoryClick = (path: string) => {
     navigate(`/catalog/${path}`)
@@ -51,15 +40,7 @@ export const AsideNav = ({ onCloseMenu }: { onCloseMenu?: () => void }) => {
   return (
     <aside className='w-[305px] pl-[18px] pr-2'>
       <Menubar className='h-auto rounded-none border-0 p-0'>
-        {isLoading && (
-          <ul className='max-w-[263px] space-y-2.5'>
-            {Array.from({ length: 13 }).map((_, index) => (
-              <li key={index}>
-                <AsideCategoryLoader /> {/* Render 13 loaders */}
-              </li>
-            ))}
-          </ul>
-        )}
+        {cursor}
         <ul className='max-w-[276px] space-y-2.5'>
           {categories?.map(cat => (
             <li key={cat.path}>
@@ -115,7 +96,7 @@ export const AsideNav = ({ onCloseMenu }: { onCloseMenu?: () => void }) => {
                                 <HoverCard openDelay={500} closeDelay={0}>
                                   <HoverCardTrigger asChild>
                                     <p className='overflow-hidden text-ellipsis whitespace-nowrap hover:text-primary-600'>
-                                      {item.title}
+                                      {capitalizeFirstWord(item.title)}
                                     </p>
                                   </HoverCardTrigger>
                                   {/* Only render HoverCardContent if title length exceeds threshold */}
@@ -125,7 +106,7 @@ export const AsideNav = ({ onCloseMenu }: { onCloseMenu?: () => void }) => {
                                       side='top'
                                       className='w-fit bg-gray-50 hover:text-primary-600'
                                     >
-                                      {item.title}
+                                      {capitalizeFirstWord(item.title)}
                                     </HoverCardContent>
                                   )}
                                 </HoverCard>

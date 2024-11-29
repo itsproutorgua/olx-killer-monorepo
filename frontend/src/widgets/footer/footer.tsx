@@ -88,7 +88,7 @@ export const Footer = () => {
     <footer className='rounded-t-md bg-primary-900 pt-[41px] text-gray-50 xl:pt-[71px]'>
       <div className='flex flex-col px-[20px] xl:container xl:flex-row'>
         <div className='pr-[74px] xl:w-1/2 xl:pr-[177px]'>
-          <Logo className='block' />
+          <Logo className='block h-[56px] w-[156px]' />
           <p className='text-muted-foreground max-w-[454px] pt-[15px] text-sm xl:text-base'>
             {t('footerContent.footerMessage')}
           </p>
@@ -136,7 +136,7 @@ export const Footer = () => {
           <Button
             onClick={() => scrollTo({ top: 0, behavior: 'smooth' })}
             variant='outline'
-            className='bg-primary h-[42px] rounded-[60px] px-[45px] py-[13px] text-sm hover:border-primary-500 hover:bg-primary-500 hover:text-gray-50 active:border-primary-600 active:bg-primary-600 active:duration-0'
+            className='bg-primary h-[42px] w-[177px] rounded-[60px] px-[45px] py-[13px] text-sm hover:border-primary-500 hover:bg-primary-500 hover:text-gray-50 active:border-primary-600 active:bg-primary-600 active:duration-0'
           >
             {t('buttons.backToTop')}
           </Button>

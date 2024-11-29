@@ -10,8 +10,8 @@ interface LogoProps {
 
 export const Logo: React.FC<LogoProps> = ({ className }) => {
   return (
-    <Link to='/' className={cn(className)}>
-      <MainLogo />
+    <Link to='/'>
+      <MainLogo className={cn(className)} />
     </Link>
   )
 }

@@ -27,7 +27,7 @@ export const CatalogPage = () => {
 
   const { isLoading, data } = useQuery<Category>({
     queryKey: [QUERY_KEYS.CATEGORY, path, i18n.language],
-    queryFn: () => categoryApi.findByPath(path),
+    queryFn: () => categoryApi.findCategoryByPath(path),
   })
 
   if (location.pathname === '/catalog') navigate('/')

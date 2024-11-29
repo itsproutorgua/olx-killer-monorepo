@@ -10,6 +10,8 @@ export const NewProducts = () => {
       <ScrollableProductList
         title={t('titles.newProductsTitle')}
         path='elektronika/telefony-i-aksesuary/mobilnye-telefony-smartfony'
+        limit={10}
+        sort='created_at:desc'
         scrollStep={3} // Number of items to scroll
         className='max-w-[1150px] overflow-x-auto xl:w-[calc(100vw-var(--aside-nav-width)-var(--extra-padding))] xl:min-w-[1030px]'
         titleWidth='958px'
