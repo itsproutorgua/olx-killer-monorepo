@@ -24,6 +24,7 @@ class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = [
+            'id',
             'title',
             'prices',
             'description',
@@ -38,7 +39,7 @@ class ProductSerializer(serializers.ModelSerializer):
             'created_at',
             'updated_at',
         ]
-        read_only_fields = ['created_at', 'updated_at', 'seller', 'slug', 'views']
+        read_only_fields = ['id', 'created_at', 'updated_at', 'seller', 'slug', 'views']
 
     @extend_schema_field(ProfileSerializer)
     def get_seller(self, obj: Product) -> ProfileSerializer:
