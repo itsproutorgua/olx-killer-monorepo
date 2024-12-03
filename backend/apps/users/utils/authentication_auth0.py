@@ -10,7 +10,7 @@ from apps.log_config import logger
 User = get_user_model()
 
 
-def get_or_create_user_from_auth0(auth0_response: dict):
+def get_or_create_user_from_auth0(auth0_response: dict) -> dict[str, any]:
     email = auth0_response.get('email')
     username = auth0_response.get('nickname')
     email_verified = auth0_response.get('email_verified', False)
@@ -41,12 +41,7 @@ def get_or_create_user_from_auth0(auth0_response: dict):
         user.profile.add_provider(provider_name, provider_id)
         user.save()
 
-    return {
-        'created': created,
-        'email': user.email,
-        'username': user.username,
-        'last_login': user.last_login,
-    }
+    return {'created': created, 'user': user}
 
 
 def get_user_name(username: str) -> str:
