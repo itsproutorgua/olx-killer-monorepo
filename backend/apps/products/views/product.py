@@ -11,7 +11,6 @@ from rest_framework.viewsets import ViewSet
 
 from apps.api_tags import PRODUCT_TAG
 from apps.common import errors
-from apps.common.permissions import IsOwnerOrAdmin
 from apps.products.models import Product
 from apps.products.serializers import ProductSerializer
 
@@ -22,10 +21,8 @@ class ProductAPIViewSet(ViewSet):
     lookup_field = 'slug'
 
     def get_permissions(self):
-        if self.action == 'create':
+        if self.action == ('create', 'update', 'partial_update', 'destroy'):
             return [IsAuthenticated()]
-        if self.action in ['update', 'partial_update', 'destroy']:
-            return [IsAuthenticated(), IsOwnerOrAdmin()]
         return [AllowAny()]
 
     @extend_schema(

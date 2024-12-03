@@ -5,10 +5,10 @@ from drf_spectacular.utils import OpenApiResponse
 from rest_framework import mixins
 from rest_framework import status
 from rest_framework import viewsets
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
 from apps.api_tags import FAVORITE_TAG
-from apps.common.permissions import IsOwnerOrAdmin
 from apps.favorites.models import Favorite
 from apps.favorites.serializers import UserFavoriteSerializer
 
@@ -22,7 +22,6 @@ class FavoriteViewSet(
 
     queryset = Favorite.objects
     serializer_class = UserFavoriteSerializer
-    permission_classes = (IsOwnerOrAdmin,)
 
     def get_queryset(self):
         return (
