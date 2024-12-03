@@ -3,13 +3,13 @@ from drf_spectacular.utils import extend_schema
 from rest_framework import generics
 from rest_framework.permissions import AllowAny
 
-from apps.api_tags import CURRENCY
+from apps.api_tags import CURRENCY_TAG
 from apps.products.models import Currency
 from apps.products.serializers.price import CurrencySerializer
 
 
 @extend_schema(
-    tags=[CURRENCY],
+    tags=[CURRENCY_TAG],
     summary=_('Retrieve a list of all currencies'),
     description=_('Returns a list of available currencies with their code, symbol, and name.'),
     responses={200: CurrencySerializer(many=True)},
