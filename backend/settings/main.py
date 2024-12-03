@@ -60,6 +60,7 @@ INSTALLED_APPS += [
     'apps.products.apps.ProductsConfig',
     'apps.user_messages.apps.UserMessagesConfig',
     'apps.locations.apps.LocationsConfig',
+    'apps.favorites.apps.FavoritesConfig',
     'apps.common',
 ]
 
@@ -74,7 +75,7 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAuthenticated',),
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'apps.users.authentication.Auth0JWTAuthentication',
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
     ),
@@ -103,6 +104,7 @@ SPECTACULAR_SETTINGS = {
     'DESCRIPTION': 'DRF OLX-Killer',
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': False,
+    'COMPONENT_SPLIT_REQUEST': True,
     'SWAGGER_UI_DIST': 'SIDECAR',  # shorthand to use the sidecar instead
     'SWAGGER_UI_FAVICON_HREF': 'SIDECAR',
     'REDOC_DIST': 'SIDECAR',
@@ -111,6 +113,7 @@ SPECTACULAR_SETTINGS = {
         'LinkedIn': 'https://www.linkedin.com/in/stanislav-nikitenko/',
         'telegram': 'https://t.me/F_redy',
     },
+    'SECURITY': [{'Auth0JWT': []}],
 }
 
 # CORS headers
@@ -182,7 +185,7 @@ SIMPLE_JWT = {
     'ROTATE_REFRESH_TOKENS': False,
     'BLACKLIST_AFTER_ROTATION': False,
     'UPDATE_LAST_LOGIN': True,
-    'ALGORITHM': 'HS256',
+    'ALGORITHM': 'RS256',
     'SIGNING_KEY': SECRET_KEY,
     'VERIFYING_KEY': None,
     'AUDIENCE': AUTH0_AUDIENCE,
