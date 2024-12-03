@@ -33,6 +33,7 @@ from drf_spectacular.views import SpectacularSwaggerView
 api = [
     path('', include('apps.users.urls', namespace='users')),
     path('', include('apps.products.urls', namespace='products')),
+    path('', include('apps.favorites.urls', namespace='favorites')),
     # Spectacular
     path('schema/', SpectacularAPIView.as_view(), name='schema'),
     # Optional UI:
