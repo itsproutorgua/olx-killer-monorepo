@@ -5,7 +5,7 @@ from drf_spectacular.utils import OpenApiResponse
 from rest_framework import mixins
 from rest_framework import status
 from rest_framework import viewsets
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.exceptions import NotAuthenticated
 from rest_framework.response import Response
 
 from apps.api_tags import FAVORITE_TAG
@@ -53,7 +53,8 @@ class FavoriteViewSet(
                         response_only=True,
                     )
                 ],
-            )
+            ),
+            status.HTTP_401_UNAUTHORIZED: OpenApiResponse(description=NotAuthenticated.default_detail),
         },
     )
     def list(self, request, *args, **kwargs):
@@ -74,6 +75,7 @@ class FavoriteViewSet(
             status.HTTP_400_BAD_REQUEST: OpenApiResponse(
                 description=_('Validation error: product already in favorites.')
             ),
+            status.HTTP_401_UNAUTHORIZED: OpenApiResponse(description=NotAuthenticated.default_detail),
         },
     )
     def create(self, request, *args, **kwargs):
@@ -94,6 +96,7 @@ class FavoriteViewSet(
             status.HTTP_404_NOT_FOUND: OpenApiResponse(
                 description=_('The specified favorite item does not exist or was not found.'),
             ),
+            status.HTTP_401_UNAUTHORIZED: OpenApiResponse(description=NotAuthenticated.default_detail),
         },
     )
     def destroy(self, request, *args, **kwargs):
