@@ -10,6 +10,7 @@ BAD_REQUEST = _('Validation errors')
 # Category
 INVALID_CATEGORY_PATH = _('Invalid category path')
 CATEGORY_NOT_FOUND = _('Category not found')
+QUERY_PARAMS_NOT_ALLOWED = _('Query parameters are not allowed on this endpoint.')
 
 # Product
 PRODUCT_NOT_FOUND = _('No Product matches the given query.')
