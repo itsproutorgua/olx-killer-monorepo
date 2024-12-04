@@ -1,13 +1,15 @@
 import requests
 from authlib.jose import JsonWebKey
 from authlib.jose import jwt
-from rest_framework.request import Request
-from rest_framework.exceptions import AuthenticationFailed
-from rest_framework_simplejwt.authentication import JWTAuthentication, AuthUser
 from django.conf import settings
-from rest_framework_simplejwt.exceptions import InvalidToken
-from django.utils.translation import gettext_lazy as _
 from django.core.cache import cache
+from django.utils.translation import gettext_lazy as _
+from rest_framework.exceptions import AuthenticationFailed
+from rest_framework.request import Request
+from rest_framework_simplejwt.authentication import AuthUser
+from rest_framework_simplejwt.authentication import JWTAuthentication
+from rest_framework_simplejwt.exceptions import InvalidToken
+
 from apps.log_config import logger
 
 
@@ -37,7 +39,7 @@ class Auth0JWTAuthentication(JWTAuthentication):
                 claims_options={
                     'iss': {'essential': True, 'value': f'https://{settings.AUTH0_DOMAIN}/'},
                     'aud': {'essential': True, 'value': settings.AUTH0_AUDIENCE},
-                }
+                },
             )
         except Exception as e:
             logger.error(f'Failed to validate token: {str(e)}')
