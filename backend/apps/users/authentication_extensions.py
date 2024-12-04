@@ -1,5 +1,5 @@
-from drf_spectacular.extensions import OpenApiAuthenticationExtension
 from django.utils.translation import gettext_lazy as _
+from drf_spectacular.extensions import OpenApiAuthenticationExtension
 
 
 class Auth0JWTAuthenticationExtension(OpenApiAuthenticationExtension):
