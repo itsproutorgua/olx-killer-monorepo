@@ -2,7 +2,7 @@ import i18n from '@/shared/config/i18next/i18next'
 import { SortEnum } from '@/shared/constants/app.const'
 import type { SortOption } from './types'
 
-export const SORT_OPTIONS: Record<string, SortOption> = {
+export const SORT_OPTIONS: Record<SortEnum, SortOption> = {
   'price:asc': {
     label: i18n.t('sort.priceExpensive'),
     value: SortEnum.PRICE_ASC,
