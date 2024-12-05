@@ -1,15 +1,23 @@
 import React from 'react'
+import { format } from 'date-fns'
+import { enGB } from 'date-fns/locale'
 import { useTranslation } from 'react-i18next'
 
 import { SellerProps } from '@/widgets/product-details/ui/product-seller.tsx'
 import { WriteSeller } from '@/features/product'
+import {
+  formatLastOnline,
+  localeMap,
+} from '@/shared/library/utils/reformat-time.ts'
 
 export const ContactSellerCard: React.FC<SellerProps> = ({
   announcement,
   product,
   className,
 }) => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const currentLocale =
+    localeMap[i18n.language as keyof typeof localeMap] || enGB
   return (
     <div className={className}>
       <div className='flex h-full flex-col rounded-[15px] border border-border py-[34px] pl-[34px] pr-12'>
@@ -26,12 +34,14 @@ export const ContactSellerCard: React.FC<SellerProps> = ({
                 {product.seller.first_name}
               </h4>
               <p className='text-primary-gray text-xs leading-none'>
-                {t('words.onOKA')}
-                {announcement.sellerRegisteredAt}
+                {t('words.onOKL')}
+                {format(product.seller.created_at, 'MMMM yyyy', {
+                  locale: currentLocale,
+                })}
               </p>
               <p className='text-primary-gray text-xs leading-none'>
                 {t('words.online')}
-                {announcement.sellerLastOnline}
+                {formatLastOnline(product?.seller?.last_login)}
               </p>
             </div>
           </div>

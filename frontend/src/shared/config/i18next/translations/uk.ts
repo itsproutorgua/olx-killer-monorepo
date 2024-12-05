@@ -113,7 +113,7 @@ export const uk = {
     views: 'Переглядів',
     report: 'Поскаржитись',
     seller: 'Продавець',
-    onOKA: 'на OKA з ',
+    onOKL: 'на OKL з ',
     online: 'Онлайн ',
     allAdsByAuthor: 'Усі оголошення ',
     location: 'Місто',

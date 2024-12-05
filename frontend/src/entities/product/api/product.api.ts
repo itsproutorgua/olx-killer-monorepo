@@ -50,9 +50,12 @@ class ProductApi {
     return response.data
   }
 
-  async findBySlug({ slug }: { slug: string }) {
+  async findBySlug(
+    { slug }: { slug: string },
+    { signal }: { signal: AbortSignal },
+  ) {
     const url = `${this.BASE_URL}${slug}`
-    const response = await instanceBase.get<Product>(url)
+    const response = await instanceBase.get<Product>(url, { signal })
     return response.data
   }
 
@@ -89,8 +92,8 @@ class ProductApi {
 
   findBySlugQueryOptions({ slug }: { slug: string }) {
     return queryOptions<Product>({
-      queryKey: [QUERY_KEYS.PRODUCT, slug, i18n.language],
-      queryFn: () => productApi.findBySlug({ slug }),
+      queryKey: [QUERY_KEYS.PRODUCT, i18n.language, slug],
+      queryFn: meta => this.findBySlug({ slug }, meta),
     })
   }
 }
