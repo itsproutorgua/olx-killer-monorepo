@@ -14,8 +14,8 @@ export const ProductCard = ({
   className?: string
 }) => {
   return (
-    <div
-      // to={`${PUBLIC_PAGES.PRODUCTS}/${product.slug}`}
+    <Link
+      to={`${PUBLIC_PAGES.PRODUCTS}/${product.slug}`}
       className={
         cn(className) + 'h-[224px] w-[173px] xl:h-[348px] xl:w-[305px]'
       }
@@ -40,6 +40,6 @@ export const ProductCard = ({
         </span>
         <AddToFavorite productId={product.id} className='hidden xl:flex' />
       </p>
-    </div>
+    </Link>
   )
 }
