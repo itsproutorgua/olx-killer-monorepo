@@ -1,17 +1,18 @@
 import i18n from '@/shared/config/i18next/i18next'
+import { SortEnum } from '@/shared/constants/app.const'
 import type { SortOption } from './types'
 
 export const SORT_OPTIONS: Record<string, SortOption> = {
   'price:asc': {
     label: i18n.t('sort.priceExpensive'),
-    value: 'price:asc',
+    value: SortEnum.PRICE_ASC,
   },
   'price:desc': {
     label: i18n.t('sort.priceCheap'),
-    value: 'price:desc',
+    value: SortEnum.PRICE_DESC,
   },
   'created_at:desc': {
     label: i18n.t('sort.novelties'),
-    value: 'created_at:desc',
+    value: SortEnum.CREATED_AT_DESC,
   },
 }

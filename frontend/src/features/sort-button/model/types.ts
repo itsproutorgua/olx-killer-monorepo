@@ -1,6 +1,6 @@
-export type SortValue = 'price:asc' | 'price:desc' | 'created_at:desc'
+import type { SortEnum } from '@/shared/constants/app.const'
 
 export interface SortOption {
   label: string
-  value: SortValue
+  value: SortEnum
 }

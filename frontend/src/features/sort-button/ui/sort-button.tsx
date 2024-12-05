@@ -8,20 +8,23 @@ import {
   SelectValue,
 } from '@/shared/ui/shadcn-ui/select'
 import { CheckedIcon } from '@/shared/ui/icons'
+import { SortEnum } from '@/shared/constants/app.const'
 import { useQueryParams } from '@/shared/library/hooks'
-import { SORT_OPTIONS, type SortValue } from '../model'
+import { SORT_OPTIONS } from '../model'
 
 export const SortButton = () => {
   const { setQueryParam, getQueryParamByKey } = useQueryParams()
-  const [value, setValue] = useState(SORT_OPTIONS['created_at:desc'].value)
+  const [value, setValue] = useState(
+    SORT_OPTIONS[SortEnum.CREATED_AT_DESC].value,
+  )
 
-  const onValueChange = (value: SortValue) => {
+  const onValueChange = (value: SortEnum) => {
     setValue(value)
     setQueryParam('sort', value)
   }
 
   useEffect(() => {
-    const sort = getQueryParamByKey('sort') as SortValue
+    const sort = getQueryParamByKey('sort') as SortEnum
     if (sort && SORT_OPTIONS[sort]) {
       setValue(sort)
     }

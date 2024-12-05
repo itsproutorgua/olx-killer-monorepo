@@ -6,7 +6,6 @@ export const NewProductsSlider = () => {
       titleKey='titles.newProductsTitle'
       path='elektronika/telefony-i-aksesuary/mobilnye-telefony-smartfony'
       limit={10}
-      sort='created_at:desc'
       chunkSize={2} // Optional, defaults to 2
       className='mt-8'
       onProductClick={() => {}}
