@@ -32,7 +32,7 @@ class ProductFilterViewSet(mixins.ListModelMixin, GenericViewSet):
     serializer_class = ProductSerializer
     pagination_class = ProductPagination
     permission_classes = (AllowAny,)
-    allowed_sort_fields = ['price', 'title', 'status', 'created_at']
+    allowed_sort_fields = ['price', 'title', 'created_at']
     default_currency = settings.DEFAULT_CURRENCIES[0]['code']
     queryset = (
         Product.objects.select_related(
@@ -85,6 +85,12 @@ class ProductFilterViewSet(mixins.ListModelMixin, GenericViewSet):
                 required=False,
             ),
             OpenApiParameter(
+                name='status',
+                type=str,
+                description=_('Filter products by their status (e.g., "new", "old").'),
+                required=False,
+            ),
+            OpenApiParameter(
                 name='sort_by',
                 type=str,
                 description=_(
@@ -103,28 +109,9 @@ class ProductFilterViewSet(mixins.ListModelMixin, GenericViewSet):
                         description=_('Sort products by price in descending order.'),
                     ),
                     OpenApiExample(
-                        name=_('Sort by created date in ascending order'),
-                        value='created_at:asc',
-                        description=_('Sort products by created date in ascending order.'),
-                    ),
-                    OpenApiExample(
                         name=_('Sort by created date in descending order'),
                         value='created_at:desc',
                         description=_('Sort products by created date in descending order.'),
-                    ),
-                    OpenApiExample(
-                        name=_('Sort by product status in ascending order'),
-                        value='status:asc',
-                        description=_(
-                            'Sort products by status in ascending order(e.g., "new" products appear before "old" ones)'
-                        ),
-                    ),
-                    OpenApiExample(
-                        name=_('Sort by product status in descending order'),
-                        value='status:desc',
-                        description=_(
-                            'Sort products by status in descending order(e.g., "old" products appear before "new" ones)'
-                        ),
                     ),
                 ],
                 required=False,
@@ -144,6 +131,7 @@ class ProductFilterViewSet(mixins.ListModelMixin, GenericViewSet):
         price_min = request.query_params.get('price_min', None)
         price_max = request.query_params.get('price_max', None)
         currency_code = request.query_params.get('currency_code', self.default_currency)
+        product_status = request.query_params.get('status', None)
 
         sort_by = request.query_params.get('sort_by', None)
 
@@ -161,6 +149,12 @@ class ProductFilterViewSet(mixins.ListModelMixin, GenericViewSet):
 
         if price_max is not None:
             queryset = queryset.filter(prices__amount__lte=price_max, prices__currency__code=currency_code).distinct()
+
+        if product_status:
+            if product_status not in ('old', 'new'):
+                return Response({'error': errors.INVALID_PRODUCT_STATUS}, status=status.HTTP_400_BAD_REQUEST)
+
+            queryset = queryset.filter(status=product_status)
 
         # Sorted
         queryset = self.sorted_queryset(sort_by, queryset, currency_code=currency_code)
@@ -205,23 +199,24 @@ class ProductFilterViewSet(mixins.ListModelMixin, GenericViewSet):
 
             order = f'{('', '-')[order == 'desc']}'
 
-            if field == 'price':
-                currency_code = kwargs.get('currency_code')
-                price_subquery = Price.objects.filter(
-                    product=OuterRef('pk'),
-                    currency__code=currency_code,
-                ).order_by('amount')
+            match field:
+                case 'price':
+                    currency_code = kwargs.get('currency_code')
+                    price_subquery = Price.objects.filter(
+                        product=OuterRef('pk'),
+                        currency__code=currency_code,
+                    ).order_by('amount')
 
-                queryset = queryset.annotate(
-                    price_in_currency=Coalesce(
-                        Subquery(price_subquery.values('amount')[:1]),
-                        Value(0),
-                        output_field=DecimalField(),
+                    queryset = queryset.annotate(
+                        price_in_currency=Coalesce(
+                            Subquery(price_subquery.values('amount')[:1]),
+                            Value(0),
+                            output_field=DecimalField(),
+                        )
                     )
-                )
 
-                queryset = queryset.order_by(f'{order}price_in_currency')
-            else:
-                queryset = queryset.order_by(f'{order}{field}')
+                    queryset = queryset.order_by(f'{order}price_in_currency')
+                case _:
+                    queryset = queryset.order_by(f'{order}{field}')
 
         return queryset

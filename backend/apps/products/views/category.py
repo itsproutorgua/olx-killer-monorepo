@@ -8,6 +8,7 @@ from drf_spectacular.utils import extend_schema
 from drf_spectacular.utils import OpenApiResponse
 from rest_framework import mixins
 from rest_framework import status
+from rest_framework.exceptions import ValidationError
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
@@ -37,9 +38,18 @@ class CategoryAPIViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, Gener
         description=_('Retrieve a hierarchical tree of categories.'),
         responses={
             status.HTTP_200_OK: CategorySerializer(many=True),
+            status.HTTP_400_BAD_REQUEST: {
+                'description': _('Returned when query parameters are passed in the request.')
+            },
         },
     )
     def list(self, request, *args, **kwargs):
+        allowed_query_params = {'page'}
+        received_query = set(request.query_params.keys())
+
+        if not received_query.issubset(allowed_query_params):
+            raise ValidationError({'error': errors.QUERY_PARAMS_NOT_ALLOWED})
+
         language = get_language()
         cache_key = f'category_tree_{language}'
         category_tree = cache.get(cache_key)

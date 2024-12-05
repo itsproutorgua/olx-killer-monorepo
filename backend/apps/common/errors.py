@@ -10,11 +10,12 @@ BAD_REQUEST = _('Validation errors')
 # Category
 INVALID_CATEGORY_PATH = _('Invalid category path')
 CATEGORY_NOT_FOUND = _('Category not found')
+QUERY_PARAMS_NOT_ALLOWED = _('Query parameters are not allowed on this endpoint.')
 
 # Product
 PRODUCT_NOT_FOUND = _('No Product matches the given query.')
 INVALID_SORT_FIELD = _('Invalid sort field.')
-
+INVALID_PRODUCT_STATUS = _('Invalid product status. Allowed values are "old" and "new".')
 
 # Image
 INVALID_IMAGE_TYPE = _('Invalid file type. Allowed types: %s') % ', '.join(settings.ALLOWED_IMAGE_MIME_TYPES)

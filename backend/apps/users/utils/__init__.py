@@ -1,1 +1,2 @@
 from apps.users.utils.authentication_auth0 import get_or_create_user_from_auth0
+from apps.users.utils.validate_auth0_token import validate_auth0_token

@@ -2,12 +2,12 @@ import React, { useEffect, useRef, useState } from 'react'
 
 import { ProductCard } from '@/widgets/product-card'
 import { useProducts } from '@/widgets/product-grid/library'
-import type { SortValue } from '@/features/sort-button'
 import { type Product } from '@/entities/product'
 import { SectionTitle } from '@/shared/ui'
 import { ScrollableListArrowLeft } from '@/shared/ui/icons/scrollableListArrowLeft.tsx'
 import { ScrollableListArrowRight } from '@/shared/ui/icons/scrollableListArrowRight.tsx'
 import { ScrollableProductsSkeleton } from '@/shared/ui/skeletons'
+import { SortEnum } from '@/shared/constants/app.const'
 
 interface ScrollableProductListProps {
   className?: string
@@ -15,7 +15,7 @@ interface ScrollableProductListProps {
   title: string
   path: string
   limit: number
-  sort?: SortValue
+  sort?: SortEnum
   scrollStep?: number
   onProductClick: (slug: string) => void
 }

@@ -39,7 +39,7 @@ class UserAdmin(SimpleHistoryAdmin, BaseUserAdmin):
             },
         ),
     )
-    list_display = ('email', 'profile_link', 'is_email_verified', 'date_joined')
+    list_display = ('email', 'profile_link', 'is_email_verified', 'date_joined', 'last_login')
     readonly_fields = ('profile_link', 'last_login', 'date_joined')
     list_display_links = ('email',)
     show_full_result_count = False

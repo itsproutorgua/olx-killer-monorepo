@@ -20,13 +20,11 @@ export const BestDeals = () => {
   const isDesktop = useMediaQuery('(min-width: 1440px)')
   const { t } = useTranslation()
   const limit = 28
-  const sort = 'price:asc'
 
   const { data, cursor } = useProducts(
     {
       path,
       limit,
-      sort,
     },
     { Skeleton: <BestDealsSkeleton /> },
   )

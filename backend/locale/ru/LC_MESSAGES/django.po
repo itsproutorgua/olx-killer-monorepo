@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-27 19:07+0200\n"
+"POT-Creation-Date: 2024-12-04 13:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,48 +40,56 @@ msgstr "Неверный path категории"
 msgid "Category not found"
 msgstr "Категория не найдена"
 
-#: .\apps\common\errors.py:15
+#: .\apps\common\errors.py:13
+msgid "Query parameters are not allowed on this endpoint."
+msgstr "Параметры запроса не допускаются на этой конечной точке."
+
+#: .\apps\common\errors.py:16
 msgid "No Product matches the given query."
 msgstr "Ни один продукт не соответствует данному запросу."
 
-#: .\apps\common\errors.py:16
+#: .\apps\common\errors.py:17
 msgid "Invalid sort field."
 msgstr "Неверное поле sort."
 
-#: .\apps\common\errors.py:20
+#: .\apps\common\errors.py:18
+msgid "Invalid product status. Allowed values are \"old\" and \"new\"."
+msgstr "Неверный статус продукта. Допустимые значения: «старый» и «новый»."
+
+#: .\apps\common\errors.py:21
 #: .\apps\products\serializers\product\product_image.py:22
 #: .\apps\products\serializers\product\product_video.py:23
 #, python-format
 msgid "Invalid file type. Allowed types: %s"
 msgstr "Недопустимый тип файла. Разрешенные типы: %s"
 
-#: .\apps\common\errors.py:21
+#: .\apps\common\errors.py:22
 msgid "Uploaded file is not a valid image."
 msgstr "Загруженный файл не является допустимым изображением."
 
-#: .\apps\common\errors.py:22
+#: .\apps\common\errors.py:23
 #: .\apps\products\serializers\product\product_image.py:26
 #, python-format
 msgid "The image size cannot exceed %s MB."
 msgstr "Размер изображения не может превышать %s МБ."
 
-#: .\apps\common\errors.py:25
+#: .\apps\common\errors.py:26
 #, python-format
 msgid "Invalid video type. Allowed types: %s"
 msgstr "Недопустимый тип видео. Разрешенные типы: %s"
 
-#: .\apps\common\errors.py:26
+#: .\apps\common\errors.py:27
 #: .\apps\products\serializers\product\product_video.py:27
 #, python-format
 msgid "The video size cannot exceed %s MB."
 msgstr "Размер видео не может превышать %s МБ."
 
-#: .\apps\common\errors.py:27
+#: .\apps\common\errors.py:28
 #, python-brace-format
 msgid "Each product can have only {settings.VIDEO_UPLOAD_LIMIT} video."
 msgstr "Каждый продукт может иметь только {settings.VIDEO_UPLOAD_LIMIT} видео."
 
-#: .\apps\common\errors.py:28
+#: .\apps\common\errors.py:29
 msgid "Uploaded file is not a valid video."
 msgstr "Загруженный файл не является допустимым видео."
 
@@ -93,40 +101,113 @@ msgstr "Дата создания"
 msgid "Update date"
 msgstr "Дата обновления"
 
-#: .\apps\common\utils\validate_auth0_token.py:13
-#, python-brace-format
-msgid "Failed to fetch JWKS: {e}"
-msgstr "Не удалось получить JWKS: {e}"
+#: .\apps\favorites\apps.py:8 .\apps\favorites\models.py:33
+msgid "Favorites"
+msgstr "Избранное"
 
-#: .\apps\common\utils\validate_auth0_token.py:18
-#: .\apps\common\utils\validate_auth0_token.py:53
-#: .\apps\users\views\auth0.py:74
-msgid "Invalid token"
-msgstr "Недействительный токен"
+#: .\apps\favorites\models.py:18 .\apps\users\models\profile.py:10
+#: .\apps\users\models\user.py:63
+msgid "User"
+msgstr "Пользователь"
 
-#: .\apps\common\utils\validate_auth0_token.py:36
-msgid "Unable to find the appropriate key."
-msgstr "Не удалось найти подходящий ключ."
+#: .\apps\favorites\models.py:24 .\apps\products\models\price\price.py:23
+#: .\apps\products\models\product.py:57
+msgid "Product"
+msgstr "Продукт"
 
-#: .\apps\common\utils\validate_auth0_token.py:41
-msgid "Invalid token type: Expected id_token, received access_token"
-msgstr "Неверный тип токена: ожидался id_token, получен access_token"
+#: .\apps\favorites\models.py:32
+msgid "Favorite"
+msgstr "Любимый"
 
-#: .\apps\common\utils\validate_auth0_token.py:45
-msgid "Token has expired"
-msgstr "Срок действия токена истек"
+#: .\apps\favorites\serializers\user_favorites.py:30
+msgid "This product has already been added to your favorites."
+msgstr "Этот товар уже добавлен в избранное."
 
-#: .\apps\common\utils\validate_auth0_token.py:47
-msgid "Invalid token audience"
-msgstr "Недействительный токен аудитории"
+#: .\apps\favorites\serializers\user_favorites.py:58
+msgid "Price not available"
+msgstr "Цена недоступна"
 
-#: .\apps\common\utils\validate_auth0_token.py:49
-msgid "Invalid token issuer"
-msgstr "Недействительный эмитент токена"
+#: .\apps\favorites\views\favorites.py:39
+msgid "List favorite items"
+msgstr "Список любимых предметов"
 
-#: .\apps\common\utils\validate_auth0_token.py:51
-msgid "Error decoding token"
-msgstr "Ошибка декодирования токена"
+#: .\apps\favorites\views\favorites.py:40
+msgid "Returns a list of items that the user has marked as favorites."
+msgstr ""
+"Возвращает список элементов, которые пользователь отметил как избранные."
+
+#: .\apps\favorites\views\favorites.py:44
+msgid "A list of favorite items for the user."
+msgstr "Список избранных элементов пользователя."
+
+#: .\apps\favorites\views\favorites.py:67
+msgid "Add item to favorites"
+msgstr "Добавить элемент в избранное"
+
+#: .\apps\favorites\views\favorites.py:69
+msgid ""
+"Adds the specified product to the current user's favorites list. Provide the "
+"`id` of the product in the request body."
+msgstr ""
+"Добавляет указанный продукт в список избранного текущего пользователя. "
+"Укажите `id` продукта в теле запроса."
+
+#: .\apps\favorites\views\favorites.py:74
+msgid "The item was successfully added to favorites."
+msgstr "Элемент успешно добавлен в избранное."
+
+#: .\apps\favorites\views\favorites.py:76
+msgid "Validation error: product already in favorites."
+msgstr "Ошибка проверки: товар уже в избранном."
+
+#: .\apps\favorites\views\favorites.py:89
+msgid "Remove item from favorites"
+msgstr "Удалить элемент из избранного"
+
+#: .\apps\favorites\views\favorites.py:91
+msgid ""
+"Removes the specified product from the user's favorites list. Use the `id` "
+"of the favorite item in the URL."
+msgstr ""
+"Удаляет указанный продукт из списка избранного пользователя. Используйте "
+"`id` избранного элемента в URL."
+
+#: .\apps\favorites\views\favorites.py:95
+msgid "Item successfully removed from favorites."
+msgstr "Элемент успешно удален из избранного."
+
+#: .\apps\favorites\views\favorites.py:97
+msgid "The specified favorite item does not exist or was not found."
+msgstr "Указанный избранный элемент не существует или не найден."
+
+#: .\apps\favorites\views\user_favorites_count.py:15
+msgid "Get favorite products count"
+msgstr "Получить количество любимых объявлений"
+
+#: .\apps\favorites\views\user_favorites_count.py:16
+msgid ""
+"Returns the count of favorite products associated with the current "
+"authenticated user."
+msgstr ""
+"Возвращает количество избранных продуктов, связанных с текущим "
+"аутентифицированным пользователем."
+
+#: .\apps\favorites\views\user_favorites_count.py:19
+msgid "Successful response containing the favorite count."
+msgstr "Успешный ответ, содержащий количество избранных."
+
+#: .\apps\favorites\views\user_favorites_count.py:26
+msgid "The number of products marked as favorite by the user."
+msgstr "Количество товаров, отмеченных пользователем как избранные."
+
+#: .\apps\favorites\views\user_favorites_count.py:34
+msgid "Example Response"
+msgstr "Пример ответа"
+
+#: .\apps\favorites\views\user_favorites_count.py:35
+msgid ""
+"An example response showing the count of favorite products for the user."
+msgstr "Пример ответа, показывающий количество любимых продуктов пользователя."
 
 #: .\apps\locations\admin\location.py:15 .\apps\locations\models\location.py:37
 #: .\apps\users\models\profile.py:25
@@ -308,11 +389,6 @@ msgstr "Должно быть больше или равно {MIN_PRICE}."
 msgid "Amount"
 msgstr "Сумма"
 
-#: .\apps\products\models\price\price.py:23
-#: .\apps\products\models\product.py:57
-msgid "Product"
-msgstr "Продукт"
-
 #: .\apps\products\models\price\price.py:30
 msgid "Price"
 msgstr "Цена"
@@ -401,23 +477,23 @@ msgid "Failed to create price: {}"
 msgstr "Не удалось создать цену: {}"
 
 #: .\apps\products\serializers\price\price.py:56
-#: .\apps\products\serializers\product\product.py:108
+#: .\apps\products\serializers\product\product.py:109
 msgid "Failed to create product price: {}"
 msgstr "Не удалось создать цену продукта: {}"
 
-#: .\apps\products\serializers\product\product.py:62
+#: .\apps\products\serializers\product\product.py:63
 msgid "Database integrity error: {}"
 msgstr "Ошибка целостности базы данных: {}"
 
-#: .\apps\products\serializers\product\product.py:67
+#: .\apps\products\serializers\product\product.py:68
 msgid "Failed to create product prices: {}"
 msgstr "Не удалось создать цены на продукты: {}"
 
-#: .\apps\products\serializers\product\product.py:72
+#: .\apps\products\serializers\product\product.py:73
 msgid "Failed to create product images: {}"
 msgstr "Не удалось создать изображения продукта: {}"
 
-#: .\apps\products\serializers\product\product.py:102
+#: .\apps\products\serializers\product\product.py:103
 msgid "Price with currency {} does not exist."
 msgstr "Цена с валютой {} не существует."
 
@@ -447,19 +523,23 @@ msgstr "Не удалось создать видео: %s"
 msgid "Failed to update video: %s"
 msgstr "Не удалось обновить видео: %s"
 
-#: .\apps\products\views\category.py:36
+#: .\apps\products\views\category.py:37
 msgid "List categories in a tree structure"
 msgstr "Список категорий в древовидной структуре"
 
-#: .\apps\products\views\category.py:37
+#: .\apps\products\views\category.py:38
 msgid "Retrieve a hierarchical tree of categories."
 msgstr "Получить иерархическое дерево категорий."
 
-#: .\apps\products\views\category.py:55
+#: .\apps\products\views\category.py:42
+msgid "Returned when query parameters are passed in the request."
+msgstr "Возвращается, когда в запросе передаются параметры запроса."
+
+#: .\apps\products\views\category.py:62
 msgid "Retrieve a category by path"
 msgstr "Получить категорию по path"
 
-#: .\apps\products\views\category.py:56
+#: .\apps\products\views\category.py:63
 msgid "Retrieve a single category by path"
 msgstr "Получить одну категорию по path"
 
@@ -472,43 +552,43 @@ msgid ""
 "Returns a list of available currencies with their code, symbol, and name."
 msgstr "Возвращает список доступных валют с их кодом, символом и названием."
 
-#: .\apps\products\views\product.py:33
+#: .\apps\products\views\product.py:30
 msgid "Create a product"
 msgstr "Создать продукт"
 
-#: .\apps\products\views\product.py:34
+#: .\apps\products\views\product.py:31
 msgid "Create a new product with the provided data"
 msgstr "Создайте новый продукт с предоставленными данными"
 
-#: .\apps\products\views\product.py:59
+#: .\apps\products\views\product.py:56
 msgid "Retrieve a product"
 msgstr "Получить продукт"
 
-#: .\apps\products\views\product.py:60
+#: .\apps\products\views\product.py:57
 msgid "Retrieve a single product by slug"
 msgstr "Получить один продукт по slug"
 
-#: .\apps\products\views\product.py:93
+#: .\apps\products\views\product.py:90
 msgid "Update a product"
 msgstr "Обновить продукт"
 
-#: .\apps\products\views\product.py:94
+#: .\apps\products\views\product.py:91
 msgid "Update a product with the provided data"
 msgstr "Обновите продукт с предоставленными данными"
 
-#: .\apps\products\views\product.py:121
+#: .\apps\products\views\product.py:118
 msgid "Partial update a product"
 msgstr "Частичное обновление продукта"
 
-#: .\apps\products\views\product.py:122
+#: .\apps\products\views\product.py:119
 msgid "Partial update a product with the provided data"
 msgstr "Частичное обновление продукта с предоставленными данными"
 
-#: .\apps\products\views\product.py:149
+#: .\apps\products\views\product.py:146
 msgid "Delete a product"
 msgstr "Удалить продукт"
 
-#: .\apps\products\views\product.py:150
+#: .\apps\products\views\product.py:147
 msgid "Delete a product by slug"
 msgstr "Удалить продукт по slug"
 
@@ -537,65 +617,37 @@ msgstr "Фильтр максимальной цены"
 msgid "Currency code for the price filter (Default: {default_currency})"
 msgstr "Код валюты для ценового фильтра (по умолчанию: {default_currency})"
 
-#: .\apps\products\views\product_filters.py:91
+#: .\apps\products\views\product_filters.py:90
+msgid "Filter products by their status (e.g., \"new\", \"old\")."
+msgstr "Фильтруйте продукты по их статусу (например, «новый», «старый»)."
+
+#: .\apps\products\views\product_filters.py:97
 msgid "Field to sort products by (e.g., {"
 msgstr "Поле для сортировки продуктов (например, {"
 
-#: .\apps\products\views\product_filters.py:96
+#: .\apps\products\views\product_filters.py:102
 msgid "Sort by price in ascending order"
 msgstr "Сортировать по цене в порядке возрастания"
 
-#: .\apps\products\views\product_filters.py:98
+#: .\apps\products\views\product_filters.py:104
 msgid "Sort products by price in ascending order."
 msgstr "Сортировать товары по цене в порядке возрастания."
 
-#: .\apps\products\views\product_filters.py:101
+#: .\apps\products\views\product_filters.py:107
 msgid "Sort by price in descending order"
 msgstr "Сортировать по цене в порядке убывания"
 
-#: .\apps\products\views\product_filters.py:103
+#: .\apps\products\views\product_filters.py:109
 msgid "Sort products by price in descending order."
 msgstr "Сортировать товары по цене в порядке убывания."
 
-#: .\apps\products\views\product_filters.py:106
-msgid "Sort by created date in ascending order"
-msgstr "Сортировать по дате создания в порядке возрастания"
-
-#: .\apps\products\views\product_filters.py:108
-msgid "Sort products by created date in ascending order."
-msgstr "Сортировать продукты по дате создания в порядке возрастания."
-
-#: .\apps\products\views\product_filters.py:111
+#: .\apps\products\views\product_filters.py:112
 msgid "Sort by created date in descending order"
 msgstr "Сортировать по дате создания в порядке убывания"
 
-#: .\apps\products\views\product_filters.py:113
+#: .\apps\products\views\product_filters.py:114
 msgid "Sort products by created date in descending order."
 msgstr "Сортировать продукты по дате создания в порядке убывания."
-
-#: .\apps\products\views\product_filters.py:116
-msgid "Sort by product status in ascending order"
-msgstr "Сортировать по статусу продукта в порядке возрастания"
-
-#: .\apps\products\views\product_filters.py:119
-msgid ""
-"Sort products by status in ascending order(e.g., \"new\" products appear "
-"before \"old\" ones)"
-msgstr ""
-"Сортировать продукты по статусу в порядке возрастания(например, \"новые\" продукты появляются "
-"перед \"бэушные\")"
-
-#: .\apps\products\views\product_filters.py:123
-msgid "Sort by product status in descending order"
-msgstr "Сортировать по статусу продукта в порядке убывания"
-
-#: .\apps\products\views\product_filters.py:126
-msgid ""
-"Sort products by status in descending order(e.g., \"old\" products appear "
-"before \"new\" ones)"
-msgstr ""
-"Сортировать продукты по статусу в порядке убывания(например, \"бэушные\" продукты отображаются "
-"перед \"новыми\")"
 
 #: .\apps\products\views\products_latest.py:19
 msgid "List of latest products"
@@ -686,6 +738,43 @@ msgstr "Пароли не совпадают."
 msgid "Users"
 msgstr "Пользователи"
 
+#: .\apps\users\authentication.py:31
+msgid "Failed to fetch JWKS"
+msgstr "Не удалось получить JWKS"
+
+#: .\apps\users\authentication.py:46
+msgid "Token validation failed"
+msgstr "Проверка токена не удалась"
+
+#: .\apps\users\authentication.py:52
+#, python-brace-format
+msgid "Token is missing required claim: {claim}"
+msgstr "Отсутствует токен, требуемое требование: {claim}"
+
+#: .\apps\users\authentication.py:78
+msgid "Authorization header must start with 'Bearer'"
+msgstr "Заголовок авторизации должен начинаться с «Bearer»"
+
+#: .\apps\users\authentication.py:81
+msgid "Authorization header is improperly formatted"
+msgstr "Заголовок авторизации неправильно отформатирован"
+
+#: .\apps\users\authentication.py:89
+msgid "Token does not contain 'email' field"
+msgstr "Токен не содержит поля «email»"
+
+#: .\apps\users\authentication.py:94
+msgid "User not found"
+msgstr "Пользователь не найден"
+
+#: .\apps\users\authentication.py:97
+msgid "User is inactive"
+msgstr "Пользователь неактивен"
+
+#: .\apps\users\authentication_extensions.py:14
+msgid "JWT authentication via Auth0"
+msgstr "Аутентификация JWT через Auth0"
+
 #: .\apps\users\managers.py:10
 msgid "The Email must be set"
 msgstr "Необходимо указать адрес электронной почты."
@@ -697,10 +786,6 @@ msgstr "Суперпользователь должен иметь is_staff=True
 #: .\apps\users\managers.py:37
 msgid "Superuser must have is_superuser=True."
 msgstr "Суперпользователь должен иметь is_superuser=True."
-
-#: .\apps\users\models\profile.py:10 .\apps\users\models\user.py:63
-msgid "User"
-msgstr "Пользователь"
 
 #: .\apps\users\models\profile.py:12
 msgid "profile picture"
@@ -720,7 +805,9 @@ msgstr "Поставщики аутентификации"
 
 #: .\apps\users\models\profile.py:33
 msgid "Specifies the authentication providers linked to the user account."
-msgstr "Указывает поставщиков аутентификации, связанных с учетной записью пользователя."
+msgstr ""
+"Указывает поставщиков аутентификации, связанных с учетной записью "
+"пользователя."
 
 #: .\apps\users\models\profile.py:36
 msgid "Phone numbers"
@@ -802,59 +889,97 @@ msgstr "Требуется адрес электронной почты."
 msgid "Provider sub field is missing or empty."
 msgstr "Подполе поставщика отсутствует или пусто."
 
-#: .\apps\users\views\auth0.py:16
+#: .\apps\users\utils\validate_auth0_token.py:13
+#, python-brace-format
+msgid "Failed to fetch JWKS: {e}"
+msgstr "Не удалось получить JWKS: {e}"
+
+#: .\apps\users\utils\validate_auth0_token.py:18
+#: .\apps\users\utils\validate_auth0_token.py:53 .\apps\users\views\auth0.py:75
+msgid "Invalid token"
+msgstr "Недействительный токен"
+
+#: .\apps\users\utils\validate_auth0_token.py:36
+msgid "Unable to find the appropriate key."
+msgstr "Не удалось найти подходящий ключ."
+
+#: .\apps\users\utils\validate_auth0_token.py:41
+msgid "Invalid token type: Expected id_token, received access_token"
+msgstr "Неверный тип токена: ожидался id_token, получен access_token"
+
+#: .\apps\users\utils\validate_auth0_token.py:45
+msgid "Token has expired"
+msgstr "Срок действия токена истек"
+
+#: .\apps\users\utils\validate_auth0_token.py:47
+msgid "Invalid token audience"
+msgstr "Недействительный токен аудитории"
+
+#: .\apps\users\utils\validate_auth0_token.py:49
+msgid "Invalid token issuer"
+msgstr "Недействительный эмитент токена"
+
+#: .\apps\users\utils\validate_auth0_token.py:51
+msgid "Error decoding token"
+msgstr "Ошибка декодирования токена"
+
+#: .\apps\users\views\auth0.py:17
 msgid "User authenticated successfully."
 msgstr "Пользователь успешно аутентифицирован."
 
-#: .\apps\users\views\auth0.py:17
+#: .\apps\users\views\auth0.py:18
 msgid "New user registered successfully."
 msgstr "Новый пользователь успешно зарегистрирован."
 
-#: .\apps\users\views\auth0.py:26
+#: .\apps\users\views\auth0.py:27
 msgid "Authenticate or register a new user"
 msgstr "Аутентифицировать или зарегистрировать нового пользователя"
 
-#: .\apps\users\views\auth0.py:27
+#: .\apps\users\views\auth0.py:28
 msgid "Authenticate or register a new user using the provided Auth0 token."
-msgstr "Выполните аутентификацию или зарегистрируйте нового пользователя, используя предоставленный токен Auth0."
+msgstr ""
+"Выполните аутентификацию или зарегистрируйте нового пользователя, используя "
+"предоставленный токен Auth0."
 
-#: .\apps\users\views\auth0.py:34
+#: .\apps\users\views\auth0.py:35
 msgid ""
 "Bad Request: Invalid token or other validation error. Example errors: Failed "
 "to fetch JWKS, Invalid token type, Invalid audience."
 msgstr ""
-"Неверный запрос: недействительный токен или другая ошибка проверки. Примеры ошибок: Не удалось "
-"извлечь JWKS, недействительный тип токена, недействительная аудитория."
+"Неверный запрос: недействительный токен или другая ошибка проверки. Примеры "
+"ошибок: Не удалось извлечь JWKS, недействительный тип токена, "
+"недействительная аудитория."
 
-#: .\apps\users\views\auth0.py:40
+#: .\apps\users\views\auth0.py:41
 msgid ""
 "Unauthorized: Authentication failed due to invalid or expired token. Example "
 "errors: Token has expired, Invalid token issuer."
 msgstr ""
-"Неавторизованный: Аутентификация не удалась из-за недействительного или просроченного токена. Пример "
-"ошибки: Токен просрочен, Недействительный эмитент токена."
+"Неавторизованный: Аутентификация не удалась из-за недействительного или "
+"просроченного токена. Пример ошибки: Токен просрочен, Недействительный "
+"эмитент токена."
 
-#: .\apps\users\views\auth0.py:47
+#: .\apps\users\views\auth0.py:48
 msgid "User authentication example response"
 msgstr "Пример ответа аутентификации пользователя"
 
-#: .\apps\users\views\auth0.py:48
+#: .\apps\users\views\auth0.py:49
 msgid "Example of a successful response after user authentication."
 msgstr "Пример успешного ответа после аутентификации пользователя."
 
-#: .\apps\users\views\auth0.py:59
+#: .\apps\users\views\auth0.py:60
 msgid "User registration example response"
 msgstr "Пример ответа на регистрацию пользователя"
 
-#: .\apps\users\views\auth0.py:60
+#: .\apps\users\views\auth0.py:61
 msgid "Example of a successful response after user registration."
 msgstr "Пример успешного ответа после регистрации пользователя."
 
-#: .\apps\users\views\auth0.py:71
+#: .\apps\users\views\auth0.py:72
 msgid "Error response example"
 msgstr "Пример ответа об ошибке"
 
-#: .\apps\users\views\auth0.py:72
+#: .\apps\users\views\auth0.py:73
 msgid "Example of an error response when authentication fails."
 msgstr "Пример ответа об ошибке при неудачной аутентификации."
 
@@ -869,3 +994,29 @@ msgstr "Английский"
 #: .\settings\base.py:146
 msgid "Russian"
 msgstr "Русский"
+
+#~ msgid "Sort by created date in ascending order"
+#~ msgstr "Сортировать по дате создания в порядке возрастания"
+
+#~ msgid "Sort products by created date in ascending order."
+#~ msgstr "Сортировать продукты по дате создания в порядке возрастания."
+
+#~ msgid "Sort by product status in ascending order"
+#~ msgstr "Сортировать по статусу продукта в порядке возрастания"
+
+#~ msgid ""
+#~ "Sort products by status in ascending order(e.g., \"new\" products appear "
+#~ "before \"old\" ones)"
+#~ msgstr ""
+#~ "Сортировать продукты по статусу в порядке возрастания(например, \"новые\" "
+#~ "продукты появляются перед \"бэушные\")"
+
+#~ msgid "Sort by product status in descending order"
+#~ msgstr "Сортировать по статусу продукта в порядке убывания"
+
+#~ msgid ""
+#~ "Sort products by status in descending order(e.g., \"old\" products appear "
+#~ "before \"new\" ones)"
+#~ msgstr ""
+#~ "Сортировать продукты по статусу в порядке убывания(например, \"бэушные\" "
+#~ "продукты отображаются перед \"новыми\")"

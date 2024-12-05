@@ -3,3 +3,9 @@ export const APP_VARIABLES = {
   LIMIT: 21,
   LIMIT_MOBILE: 16,
 } as const
+
+export enum SortEnum {
+  PRICE_ASC = 'price:asc',
+  PRICE_DESC = 'price:desc',
+  CREATED_AT_DESC = 'created_at:desc',
+}

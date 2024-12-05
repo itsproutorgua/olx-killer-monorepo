@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-27 19:07+0200\n"
+"POT-Creation-Date: 2024-12-04 13:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,48 +38,56 @@ msgstr "Invalid category path"
 msgid "Category not found"
 msgstr "Category not found"
 
-#: .\apps\common\errors.py:15
+#: .\apps\common\errors.py:13
+msgid "Query parameters are not allowed on this endpoint."
+msgstr ""
+
+#: .\apps\common\errors.py:16
 msgid "No Product matches the given query."
 msgstr "No Product matches the given query."
 
-#: .\apps\common\errors.py:16
+#: .\apps\common\errors.py:17
 msgid "Invalid sort field."
 msgstr "Invalid sort field."
 
-#: .\apps\common\errors.py:20
+#: .\apps\common\errors.py:18
+msgid "Invalid product status. Allowed values are \"old\" and \"new\"."
+msgstr "Invalid product status. Allowed values are \"old\" and \"new\"."
+
+#: .\apps\common\errors.py:21
 #: .\apps\products\serializers\product\product_image.py:22
 #: .\apps\products\serializers\product\product_video.py:23
 #, python-format
 msgid "Invalid file type. Allowed types: %s"
 msgstr "Invalid file type. Allowed types: %s"
 
-#: .\apps\common\errors.py:21
+#: .\apps\common\errors.py:22
 msgid "Uploaded file is not a valid image."
 msgstr "Uploaded file is not a valid image."
 
-#: .\apps\common\errors.py:22
+#: .\apps\common\errors.py:23
 #: .\apps\products\serializers\product\product_image.py:26
 #, python-format
 msgid "The image size cannot exceed %s MB."
 msgstr "The image size cannot exceed %s MB."
 
-#: .\apps\common\errors.py:25
+#: .\apps\common\errors.py:26
 #, python-format
 msgid "Invalid video type. Allowed types: %s"
 msgstr "Invalid video type. Allowed types: %s"
 
-#: .\apps\common\errors.py:26
+#: .\apps\common\errors.py:27
 #: .\apps\products\serializers\product\product_video.py:27
 #, python-format
 msgid "The video size cannot exceed %s MB."
 msgstr "The video size cannot exceed %s MB."
 
-#: .\apps\common\errors.py:27
+#: .\apps\common\errors.py:28
 #, python-brace-format
 msgid "Each product can have only {settings.VIDEO_UPLOAD_LIMIT} video."
 msgstr "Each product can have only {settings.VIDEO_UPLOAD_LIMIT} video."
 
-#: .\apps\common\errors.py:28
+#: .\apps\common\errors.py:29
 msgid "Uploaded file is not a valid video."
 msgstr "Uploaded file is not a valid video."
 
@@ -91,40 +99,113 @@ msgstr "Create date"
 msgid "Update date"
 msgstr "Update date"
 
-#: .\apps\common\utils\validate_auth0_token.py:13
-#, python-brace-format
-msgid "Failed to fetch JWKS: {e}"
-msgstr "Failed to fetch JWKS: {e}"
+#: .\apps\favorites\apps.py:8 .\apps\favorites\models.py:33
+msgid "Favorites"
+msgstr "Favorites"
 
-#: .\apps\common\utils\validate_auth0_token.py:18
-#: .\apps\common\utils\validate_auth0_token.py:53
-#: .\apps\users\views\auth0.py:74
-msgid "Invalid token"
-msgstr "Invalid token"
+#: .\apps\favorites\models.py:18 .\apps\users\models\profile.py:10
+#: .\apps\users\models\user.py:63
+msgid "User"
+msgstr "User"
 
-#: .\apps\common\utils\validate_auth0_token.py:36
-msgid "Unable to find the appropriate key."
-msgstr "Unable to find the appropriate key."
+#: .\apps\favorites\models.py:24 .\apps\products\models\price\price.py:23
+#: .\apps\products\models\product.py:57
+msgid "Product"
+msgstr "Product"
 
-#: .\apps\common\utils\validate_auth0_token.py:41
-msgid "Invalid token type: Expected id_token, received access_token"
-msgstr "Invalid token type: Expected id_token, received access_token"
+#: .\apps\favorites\models.py:32
+msgid "Favorite"
+msgstr "Favorite"
 
-#: .\apps\common\utils\validate_auth0_token.py:45
-msgid "Token has expired"
-msgstr "Token has expired"
+#: .\apps\favorites\serializers\user_favorites.py:30
+msgid "This product has already been added to your favorites."
+msgstr "This product has already been added to your favorites."
 
-#: .\apps\common\utils\validate_auth0_token.py:47
-msgid "Invalid token audience"
-msgstr "Invalid token audience"
+#: .\apps\favorites\serializers\user_favorites.py:58
+msgid "Price not available"
+msgstr "Price not available"
 
-#: .\apps\common\utils\validate_auth0_token.py:49
-msgid "Invalid token issuer"
-msgstr "Invalid token issuer"
+#: .\apps\favorites\views\favorites.py:39
+msgid "List favorite items"
+msgstr "List favorite items"
 
-#: .\apps\common\utils\validate_auth0_token.py:51
-msgid "Error decoding token"
-msgstr "Error decoding token"
+#: .\apps\favorites\views\favorites.py:40
+msgid "Returns a list of items that the user has marked as favorites."
+msgstr "Returns a list of items that the user has marked as favorites."
+
+#: .\apps\favorites\views\favorites.py:44
+msgid "A list of favorite items for the user."
+msgstr "A list of favorite items for the user."
+
+#: .\apps\favorites\views\favorites.py:67
+msgid "Add item to favorites"
+msgstr "Add item to favorites"
+
+#: .\apps\favorites\views\favorites.py:69
+msgid ""
+"Adds the specified product to the current user's favorites list. Provide the "
+"`id` of the product in the request body."
+msgstr ""
+"Adds the specified product to the current user's favorites list. Provide the "
+"`id` of the product in the request body."
+
+#: .\apps\favorites\views\favorites.py:74
+msgid "The item was successfully added to favorites."
+msgstr "The item was successfully added to favorites."
+
+#: .\apps\favorites\views\favorites.py:76
+msgid "Validation error: product already in favorites."
+msgstr "Validation error: product already in favorites."
+
+#: .\apps\favorites\views\favorites.py:89
+msgid "Remove item from favorites"
+msgstr "Remove item from favorites"
+
+#: .\apps\favorites\views\favorites.py:91
+msgid ""
+"Removes the specified product from the user's favorites list. Use the `id` "
+"of the favorite item in the URL."
+msgstr ""
+"Removes the specified product from the user's favorites list. Use the `id` "
+"of the favorite item in the URL."
+
+#: .\apps\favorites\views\favorites.py:95
+msgid "Item successfully removed from favorites."
+msgstr "Item successfully removed from favorites."
+
+#: .\apps\favorites\views\favorites.py:97
+msgid "The specified favorite item does not exist or was not found."
+msgstr "The specified favorite item does not exist or was not found."
+
+#: .\apps\favorites\views\user_favorites_count.py:15
+msgid "Get favorite products count"
+msgstr "Get favorite products count"
+
+#: .\apps\favorites\views\user_favorites_count.py:16
+msgid ""
+"Returns the count of favorite products associated with the current "
+"authenticated user."
+msgstr ""
+"Returns the count of favorite products associated with the current "
+"authenticated user."
+
+#: .\apps\favorites\views\user_favorites_count.py:19
+msgid "Successful response containing the favorite count."
+msgstr "Successful response containing the favorite count."
+
+#: .\apps\favorites\views\user_favorites_count.py:26
+msgid "The number of products marked as favorite by the user."
+msgstr "The number of products marked as favorite by the user."
+
+#: .\apps\favorites\views\user_favorites_count.py:34
+msgid "Example Response"
+msgstr "Example Response"
+
+#: .\apps\favorites\views\user_favorites_count.py:35
+msgid ""
+"An example response showing the count of favorite products for the user."
+msgstr ""
+"An example response showing the count of favorite products for the user."
 
 #: .\apps\locations\admin\location.py:15 .\apps\locations\models\location.py:37
 #: .\apps\users\models\profile.py:25
@@ -306,11 +387,6 @@ msgstr "Must be greater than or equal to {MIN_PRICE}."
 msgid "Amount"
 msgstr "Amount"
 
-#: .\apps\products\models\price\price.py:23
-#: .\apps\products\models\product.py:57
-msgid "Product"
-msgstr "Product"
-
 #: .\apps\products\models\price\price.py:30
 msgid "Price"
 msgstr "Price"
@@ -399,23 +475,23 @@ msgid "Failed to create price: {}"
 msgstr "Failed to create price: {}"
 
 #: .\apps\products\serializers\price\price.py:56
-#: .\apps\products\serializers\product\product.py:108
+#: .\apps\products\serializers\product\product.py:109
 msgid "Failed to create product price: {}"
 msgstr "Failed to create product price: {}"
 
-#: .\apps\products\serializers\product\product.py:62
+#: .\apps\products\serializers\product\product.py:63
 msgid "Database integrity error: {}"
 msgstr "Database integrity error: {}"
 
-#: .\apps\products\serializers\product\product.py:67
+#: .\apps\products\serializers\product\product.py:68
 msgid "Failed to create product prices: {}"
 msgstr "Failed to create product prices: {}"
 
-#: .\apps\products\serializers\product\product.py:72
+#: .\apps\products\serializers\product\product.py:73
 msgid "Failed to create product images: {}"
 msgstr "Failed to create product images: {}"
 
-#: .\apps\products\serializers\product\product.py:102
+#: .\apps\products\serializers\product\product.py:103
 msgid "Price with currency {} does not exist."
 msgstr "Price with currency {} does not exist."
 
@@ -445,19 +521,23 @@ msgstr "Failed to create video: %s"
 msgid "Failed to update video: %s"
 msgstr "Failed to update video: %s"
 
-#: .\apps\products\views\category.py:36
+#: .\apps\products\views\category.py:37
 msgid "List categories in a tree structure"
 msgstr "List categories in a tree structure"
 
-#: .\apps\products\views\category.py:37
+#: .\apps\products\views\category.py:38
 msgid "Retrieve a hierarchical tree of categories."
 msgstr "Retrieve a hierarchical tree of categories."
 
-#: .\apps\products\views\category.py:55
+#: .\apps\products\views\category.py:42
+msgid "Returned when query parameters are passed in the request."
+msgstr ""
+
+#: .\apps\products\views\category.py:62
 msgid "Retrieve a category by path"
 msgstr "Retrieve a category by path"
 
-#: .\apps\products\views\category.py:56
+#: .\apps\products\views\category.py:63
 msgid "Retrieve a single category by path"
 msgstr "Retrieve a single category by path"
 
@@ -471,43 +551,43 @@ msgid ""
 msgstr ""
 "Returns a list of available currencies with their code, symbol, and name."
 
-#: .\apps\products\views\product.py:33
+#: .\apps\products\views\product.py:30
 msgid "Create a product"
 msgstr "Create a product"
 
-#: .\apps\products\views\product.py:34
+#: .\apps\products\views\product.py:31
 msgid "Create a new product with the provided data"
 msgstr "Create a new product with the provided data"
 
-#: .\apps\products\views\product.py:59
+#: .\apps\products\views\product.py:56
 msgid "Retrieve a product"
 msgstr "Retrieve a product"
 
-#: .\apps\products\views\product.py:60
+#: .\apps\products\views\product.py:57
 msgid "Retrieve a single product by slug"
 msgstr "Retrieve a single product by slug"
 
-#: .\apps\products\views\product.py:93
+#: .\apps\products\views\product.py:90
 msgid "Update a product"
 msgstr "Update a product"
 
-#: .\apps\products\views\product.py:94
+#: .\apps\products\views\product.py:91
 msgid "Update a product with the provided data"
 msgstr "Update a product with the provided data"
 
-#: .\apps\products\views\product.py:121
+#: .\apps\products\views\product.py:118
 msgid "Partial update a product"
 msgstr "Partial update a product"
 
-#: .\apps\products\views\product.py:122
+#: .\apps\products\views\product.py:119
 msgid "Partial update a product with the provided data"
 msgstr "Partial update a product with the provided data"
 
-#: .\apps\products\views\product.py:149
+#: .\apps\products\views\product.py:146
 msgid "Delete a product"
 msgstr "Delete a product"
 
-#: .\apps\products\views\product.py:150
+#: .\apps\products\views\product.py:147
 msgid "Delete a product by slug"
 msgstr "Delete a product by slug"
 
@@ -536,65 +616,37 @@ msgstr "Maximum price filter"
 msgid "Currency code for the price filter (Default: {default_currency})"
 msgstr "Currency code for the price filter (Default: {default_currency})"
 
-#: .\apps\products\views\product_filters.py:91
+#: .\apps\products\views\product_filters.py:90
+msgid "Filter products by their status (e.g., \"new\", \"old\")."
+msgstr "Filter products by their status (e.g., \"new\", \"old\")."
+
+#: .\apps\products\views\product_filters.py:97
 msgid "Field to sort products by (e.g., {"
 msgstr "Field to sort products by (e.g., {"
 
-#: .\apps\products\views\product_filters.py:96
+#: .\apps\products\views\product_filters.py:102
 msgid "Sort by price in ascending order"
 msgstr "Sort by price in ascending order"
 
-#: .\apps\products\views\product_filters.py:98
+#: .\apps\products\views\product_filters.py:104
 msgid "Sort products by price in ascending order."
 msgstr "Sort products by price in ascending order."
 
-#: .\apps\products\views\product_filters.py:101
+#: .\apps\products\views\product_filters.py:107
 msgid "Sort by price in descending order"
 msgstr "Sort by price in descending order"
 
-#: .\apps\products\views\product_filters.py:103
+#: .\apps\products\views\product_filters.py:109
 msgid "Sort products by price in descending order."
 msgstr "Sort products by price in descending order."
 
-#: .\apps\products\views\product_filters.py:106
-msgid "Sort by created date in ascending order"
-msgstr "Sort by created date in ascending order"
-
-#: .\apps\products\views\product_filters.py:108
-msgid "Sort products by created date in ascending order."
-msgstr "Sort products by created date in ascending order."
-
-#: .\apps\products\views\product_filters.py:111
+#: .\apps\products\views\product_filters.py:112
 msgid "Sort by created date in descending order"
 msgstr "Sort by created date in descending order"
 
-#: .\apps\products\views\product_filters.py:113
+#: .\apps\products\views\product_filters.py:114
 msgid "Sort products by created date in descending order."
 msgstr "Sort products by created date in descending order."
-
-#: .\apps\products\views\product_filters.py:116
-msgid "Sort by product status in ascending order"
-msgstr "Sort by product status in ascending order"
-
-#: .\apps\products\views\product_filters.py:119
-msgid ""
-"Sort products by status in ascending order(e.g., \"new\" products appear "
-"before \"old\" ones)"
-msgstr ""
-"Sort products by status in ascending order(e.g., \"new\" products appear "
-"before \"old\" ones)"
-
-#: .\apps\products\views\product_filters.py:123
-msgid "Sort by product status in descending order"
-msgstr "Sort by product status in descending order"
-
-#: .\apps\products\views\product_filters.py:126
-msgid ""
-"Sort products by status in descending order(e.g., \"old\" products appear "
-"before \"new\" ones)"
-msgstr ""
-"Sort products by status in descending order(e.g., \"old\" products appear "
-"before \"new\" ones)"
 
 #: .\apps\products\views\products_latest.py:19
 msgid "List of latest products"
@@ -684,6 +736,43 @@ msgstr "Passwords do not match."
 msgid "Users"
 msgstr "Users"
 
+#: .\apps\users\authentication.py:31
+msgid "Failed to fetch JWKS"
+msgstr "Failed to fetch JWKS"
+
+#: .\apps\users\authentication.py:46
+msgid "Token validation failed"
+msgstr "Token validation failed"
+
+#: .\apps\users\authentication.py:52
+#, python-brace-format
+msgid "Token is missing required claim: {claim}"
+msgstr "Token is missing required claim: {claim}"
+
+#: .\apps\users\authentication.py:78
+msgid "Authorization header must start with 'Bearer'"
+msgstr "Authorization header must start with 'Bearer'"
+
+#: .\apps\users\authentication.py:81
+msgid "Authorization header is improperly formatted"
+msgstr "Authorization header is improperly formatted"
+
+#: .\apps\users\authentication.py:89
+msgid "Token does not contain 'email' field"
+msgstr "Token does not contain 'email' field"
+
+#: .\apps\users\authentication.py:94
+msgid "User not found"
+msgstr "User not found"
+
+#: .\apps\users\authentication.py:97
+msgid "User is inactive"
+msgstr "User is inactive"
+
+#: .\apps\users\authentication_extensions.py:14
+msgid "JWT authentication via Auth0"
+msgstr "AJWT authentication via Auth0"
+
 #: .\apps\users\managers.py:10
 msgid "The Email must be set"
 msgstr "The Email must be set"
@@ -695,10 +784,6 @@ msgstr "Superuser must have is_staff=True."
 #: .\apps\users\managers.py:37
 msgid "Superuser must have is_superuser=True."
 msgstr "Superuser must have is_superuser=True."
-
-#: .\apps\users\models\profile.py:10 .\apps\users\models\user.py:63
-msgid "User"
-msgstr "User"
 
 #: .\apps\users\models\profile.py:12
 msgid "profile picture"
@@ -800,23 +885,57 @@ msgstr "Email address is required."
 msgid "Provider sub field is missing or empty."
 msgstr "Provider sub field is missing or empty."
 
-#: .\apps\users\views\auth0.py:16
+#: .\apps\users\utils\validate_auth0_token.py:13
+#, python-brace-format
+msgid "Failed to fetch JWKS: {e}"
+msgstr "Failed to fetch JWKS: {e}"
+
+#: .\apps\users\utils\validate_auth0_token.py:18
+#: .\apps\users\utils\validate_auth0_token.py:53 .\apps\users\views\auth0.py:75
+msgid "Invalid token"
+msgstr "Invalid token"
+
+#: .\apps\users\utils\validate_auth0_token.py:36
+msgid "Unable to find the appropriate key."
+msgstr "Unable to find the appropriate key."
+
+#: .\apps\users\utils\validate_auth0_token.py:41
+msgid "Invalid token type: Expected id_token, received access_token"
+msgstr "Invalid token type: Expected id_token, received access_token"
+
+#: .\apps\users\utils\validate_auth0_token.py:45
+msgid "Token has expired"
+msgstr "Token has expired"
+
+#: .\apps\users\utils\validate_auth0_token.py:47
+msgid "Invalid token audience"
+msgstr "Invalid token audience"
+
+#: .\apps\users\utils\validate_auth0_token.py:49
+msgid "Invalid token issuer"
+msgstr "Invalid token issuer"
+
+#: .\apps\users\utils\validate_auth0_token.py:51
+msgid "Error decoding token"
+msgstr "Error decoding token"
+
+#: .\apps\users\views\auth0.py:17
 msgid "User authenticated successfully."
 msgstr "User authenticated successfully."
 
-#: .\apps\users\views\auth0.py:17
+#: .\apps\users\views\auth0.py:18
 msgid "New user registered successfully."
 msgstr "New user registered successfully."
 
-#: .\apps\users\views\auth0.py:26
+#: .\apps\users\views\auth0.py:27
 msgid "Authenticate or register a new user"
 msgstr "Authenticate or register a new user"
 
-#: .\apps\users\views\auth0.py:27
+#: .\apps\users\views\auth0.py:28
 msgid "Authenticate or register a new user using the provided Auth0 token."
 msgstr "Authenticate or register a new user using the provided Auth0 token."
 
-#: .\apps\users\views\auth0.py:34
+#: .\apps\users\views\auth0.py:35
 msgid ""
 "Bad Request: Invalid token or other validation error. Example errors: Failed "
 "to fetch JWKS, Invalid token type, Invalid audience."
@@ -824,7 +943,7 @@ msgstr ""
 "Bad Request: Invalid token or other validation error. Example errors: Failed "
 "to fetch JWKS, Invalid token type, Invalid audience."
 
-#: .\apps\users\views\auth0.py:40
+#: .\apps\users\views\auth0.py:41
 msgid ""
 "Unauthorized: Authentication failed due to invalid or expired token. Example "
 "errors: Token has expired, Invalid token issuer."
@@ -832,27 +951,27 @@ msgstr ""
 "Unauthorized: Authentication failed due to invalid or expired token. Example "
 "errors: Token has expired, Invalid token issuer."
 
-#: .\apps\users\views\auth0.py:47
+#: .\apps\users\views\auth0.py:48
 msgid "User authentication example response"
 msgstr "User authentication example response"
 
-#: .\apps\users\views\auth0.py:48
+#: .\apps\users\views\auth0.py:49
 msgid "Example of a successful response after user authentication."
 msgstr "Example of a successful response after user authentication."
 
-#: .\apps\users\views\auth0.py:59
+#: .\apps\users\views\auth0.py:60
 msgid "User registration example response"
 msgstr "User registration example response"
 
-#: .\apps\users\views\auth0.py:60
+#: .\apps\users\views\auth0.py:61
 msgid "Example of a successful response after user registration."
 msgstr "Example of a successful response after user registration."
 
-#: .\apps\users\views\auth0.py:71
+#: .\apps\users\views\auth0.py:72
 msgid "Error response example"
 msgstr "Error response example"
 
-#: .\apps\users\views\auth0.py:72
+#: .\apps\users\views\auth0.py:73
 msgid "Example of an error response when authentication fails."
 msgstr "Example of an error response when authentication fails."
 

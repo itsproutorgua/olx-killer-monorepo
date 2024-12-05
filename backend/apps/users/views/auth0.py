@@ -1,3 +1,4 @@
+from django.contrib.auth import login
 from django.http import JsonResponse
 from django.utils.translation import gettext_lazy as _
 from drf_spectacular.utils import extend_schema
@@ -6,9 +7,9 @@ from drf_spectacular.utils import OpenApiResponse
 from rest_framework import response
 from rest_framework import status
 from rest_framework import views
-from rest_framework.permissions import AllowAny
 
 from apps.api_tags import USER_TAG
+from apps.common.permissions import IsAnonymous
 from apps.users.serializers import UserAuthTokenSerializer
 from apps.users.utils import get_or_create_user_from_auth0
 
@@ -18,7 +19,7 @@ MESSAGE_SUCCESS_REGISTRATION = _('New user registered successfully.')
 
 
 class UserAuthenticationView(views.APIView):
-    permission_classes = [AllowAny]
+    permission_classes = [IsAnonymous]
     serializer_class = UserAuthTokenSerializer
 
     @extend_schema(
@@ -85,10 +86,18 @@ class UserAuthenticationView(views.APIView):
         auth0_response = serializer.validated_data['id_token']
         data = get_or_create_user_from_auth0(auth0_response)
         created = data.pop('created')
+        user = data.pop('user')
 
         if 'error' in data:
             return response.Response({'error': data['error']}, status=status.HTTP_400_BAD_REQUEST)
 
-        data['message'] = MESSAGE_SUCCESS_REGISTRATION if created else MESSAGE_SUCCESS_AUTHENTICATION
+        login(request, user)
+
+        data = {
+            'email': user.email,
+            'username': user.username,
+            'last_login': user.last_login,
+            'message': MESSAGE_SUCCESS_REGISTRATION if created else MESSAGE_SUCCESS_AUTHENTICATION,
+        }
 
         return JsonResponse(data, status=status.HTTP_201_CREATED if created else status.HTTP_200_OK)
