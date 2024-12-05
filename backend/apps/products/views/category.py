@@ -24,6 +24,7 @@ class CategoryAPIViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, Gener
     serializer_class = CategorySerializer
     permission_classes = (AllowAny,)
     queryset = Category.objects.all().select_related('parent').prefetch_related('children')
+    pagination_class = None
     lookup_field = 'path'
 
     def get_queryset(self):
@@ -44,10 +45,7 @@ class CategoryAPIViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, Gener
         },
     )
     def list(self, request, *args, **kwargs):
-        allowed_query_params = {'page'}
-        received_query = set(request.query_params.keys())
-
-        if not received_query.issubset(allowed_query_params):
+        if request.query_params:
             raise ValidationError({'error': errors.QUERY_PARAMS_NOT_ALLOWED})
 
         language = get_language()
