@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
 
 import {
   Select,
@@ -9,23 +8,24 @@ import {
   SelectValue,
 } from '@/shared/ui/shadcn-ui/select'
 import { CheckedIcon } from '@/shared/ui/icons'
+import { useQueryParams } from '@/shared/library/hooks'
 import { SORT_OPTIONS, type SortValue } from '../model'
 
 export const SortButton = () => {
-  const [searchParams, setSearchParams] = useSearchParams()
-  const [value, setValue] = useState(SORT_OPTIONS['status:desc'].value)
+  const { setQueryParam, getQueryParamByKey } = useQueryParams()
+  const [value, setValue] = useState(SORT_OPTIONS['created_at:desc'].value)
 
   const onValueChange = (value: SortValue) => {
     setValue(value)
-    setSearchParams({ sort: value })
+    setQueryParam('sort', value)
   }
 
   useEffect(() => {
-    const sort = searchParams.get('sort') as SortValue
+    const sort = getQueryParamByKey('sort') as SortValue
     if (sort && SORT_OPTIONS[sort]) {
       setValue(sort)
     }
-  }, [searchParams])
+  }, [getQueryParamByKey])
 
   return (
     <Select value={value} onValueChange={onValueChange}>

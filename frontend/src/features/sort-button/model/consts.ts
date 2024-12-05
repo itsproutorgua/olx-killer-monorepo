@@ -1,5 +1,5 @@
 import i18n from '@/shared/config/i18next/i18next'
-import type { SortOption } from './sort.types'
+import type { SortOption } from './types'
 
 export const SORT_OPTIONS: Record<string, SortOption> = {
   'price:asc': {
@@ -13,9 +13,5 @@ export const SORT_OPTIONS: Record<string, SortOption> = {
   'created_at:desc': {
     label: i18n.t('sort.novelties'),
     value: 'created_at:desc',
-  },
-  'status:desc': {
-    label: i18n.t('sort.rating'),
-    value: 'status:desc',
   },
 }
