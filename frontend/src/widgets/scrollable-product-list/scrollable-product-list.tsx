@@ -2,7 +2,8 @@ import React, { useEffect, useRef, useState } from 'react'
 
 import { ProductCard } from '@/widgets/product-card'
 import { useProducts } from '@/widgets/product-grid/library'
-import { type Product, type Sort } from '@/entities/product'
+import type { SortValue } from '@/features/sort-button'
+import { type Product } from '@/entities/product'
 import { SectionTitle } from '@/shared/ui'
 import { ScrollableListArrowLeft } from '@/shared/ui/icons/scrollableListArrowLeft.tsx'
 import { ScrollableListArrowRight } from '@/shared/ui/icons/scrollableListArrowRight.tsx'
@@ -14,7 +15,7 @@ interface ScrollableProductListProps {
   title: string
   path: string
   limit: number
-  sort?: Sort
+  sort?: SortValue
   scrollStep?: number
   onProductClick: (slug: string) => void
 }
