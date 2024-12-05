@@ -26,7 +26,10 @@ export const ProductCard = ({
           alt={product.title}
           className='absolute block w-full object-cover'
         />
-        <AddToFavorite className='absolute right-0 top-0 xl:hidden' />
+        <AddToFavorite
+          productId={product.id}
+          className='absolute right-0 top-0 xl:hidden'
+        />
       </div>
       <p className='mb-[25px] line-clamp-3 text-[13px]/[15.6px] text-foreground xl:mb-9 xl:line-clamp-2 xl:h-[38px] xl:text-base/[19.2px]'>
         {product.description}
@@ -35,7 +38,7 @@ export const ProductCard = ({
         <span className='text-base/none text-foreground xl:text-2xl/none'>
           {generatePriceString(product.prices)}
         </span>
-        <AddToFavorite className='hidden xl:flex' />
+        <AddToFavorite productId={product.id} className='hidden xl:flex' />
       </p>
     </Link>
   )

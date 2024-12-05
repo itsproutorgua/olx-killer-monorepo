@@ -3,4 +3,5 @@ export const QUERY_KEYS = {
   CATEGORY: 'oka-category',
   PRODUCTS: 'oka-products',
   PRODUCT: 'oka-product',
+  FAVORITES: 'oka-favorites',
 } as const
