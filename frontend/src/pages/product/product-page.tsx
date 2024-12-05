@@ -12,7 +12,7 @@ import {
 import { useProduct } from '@/entities/product/library/hooks/use-product.tsx'
 import { Breadcrumbs } from '@/shared/ui'
 import { ProductPageSkeleton } from '@/shared/ui/skeletons'
-import type { Crumb } from '@/shared/library/types/types.ts'
+import type { Crumb } from '@/shared/library/types'
 import { generateProductCrumbs } from '@/shared/library/utils/generate-crumbs.ts'
 
 const formatPath = (pathname: string) => {

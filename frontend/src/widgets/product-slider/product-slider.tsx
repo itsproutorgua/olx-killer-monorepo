@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { ProductCard } from '@/widgets/product-card'
 import { useProducts } from '@/widgets/product-grid/library'
 import { chunkArray } from '@/widgets/product-slider/model/product-slider-helper.ts'
-import { Product, type Sort } from '@/entities/product'
+import { Product } from '@/entities/product'
 import {
   Carousel,
   CarouselContent,
@@ -13,6 +13,7 @@ import {
 } from '@/shared/ui/shadcn-ui/carousel.tsx'
 import { SectionTitle } from '@/shared/ui'
 import { ProductSliderSkeleton } from '@/shared/ui/skeletons'
+import { SortEnum } from '@/shared/constants/app.const'
 import { cn } from '@/shared/library/utils'
 
 interface ProductSliderProps {
@@ -21,7 +22,7 @@ interface ProductSliderProps {
   chunkSize?: number // Default chunk size for pairing
   className?: string
   limit: number
-  sort?: Sort
+  sort?: SortEnum
   onProductClick: (slug: string) => void
 }
 

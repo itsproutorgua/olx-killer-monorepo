@@ -3,9 +3,8 @@ import { useTranslation } from 'react-i18next'
 import { FiltersBar } from '@/widgets/filters-bar'
 import { PageToolbar } from '@/widgets/page-toolbar'
 import { PagePagination } from '@/features/page-pagination'
-import type { SortValue } from '@/features/sort-button'
 import { SectionTitle } from '@/shared/ui'
-import { APP_VARIABLES } from '@/shared/constants/app.const'
+import { APP_VARIABLES, type SortEnum } from '@/shared/constants/app.const'
 import { useQueryParams } from '@/shared/library/hooks'
 import { useProducts } from '../library'
 import { ProductList } from './product-list'
@@ -15,7 +14,7 @@ export const ProductGrid = ({ path }: { path: string }) => {
   const { getQueryParamByKey } = useQueryParams()
 
   const limit = APP_VARIABLES.LIMIT
-  const sort = getQueryParamByKey('sort') as SortValue
+  const sort = getQueryParamByKey('sort') as SortEnum
   const page = getQueryParamByKey('page')
     ? Number(getQueryParamByKey('page'))
     : 1

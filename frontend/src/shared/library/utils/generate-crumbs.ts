@@ -3,7 +3,7 @@ import type { Dispatch, SetStateAction } from 'react'
 import type { CategoryParent } from '@/entities/category'
 import { Product } from '@/entities/product'
 import { PUBLIC_PAGES } from '@/shared/constants'
-import type { Crumb } from '../types/types'
+import type { Crumb } from '../types'
 
 export const generateCrumbs = (
   data: CategoryParent,
