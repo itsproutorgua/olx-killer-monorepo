@@ -31,6 +31,16 @@ class FavoriteApi {
     )
     return response.data
   }
+
+  async getFavoriteCount(idToken: string) {
+    const response = await instanceBase.get<{ favorite_count: number }>(
+      `${this.BASE_URL}user-favorite-count/`,
+      {
+        headers: { Authorization: `Bearer ${idToken}` },
+      },
+    )
+    return response.data.favorite_count
+  }
 }
 
 export const favoriteApi = new FavoriteApi()

@@ -38,7 +38,7 @@ export const PopularCategories = () => {
                 .map(cat => (
                   <li
                     key={cat.path}
-                    className='z-50 cursor-pointer transition duration-300 xl:h-[215px] xl:w-[150px] xl:overflow-visible xl:pt-1 xl:hover:scale-105'
+                    className='cursor-pointer transition duration-300 xl:h-[215px] xl:w-[150px] xl:overflow-visible xl:pt-1 xl:hover:scale-105'
                   >
                     <Link
                       to={`/catalog/${cat.path}`}

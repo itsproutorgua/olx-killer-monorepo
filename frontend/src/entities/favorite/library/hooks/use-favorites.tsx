@@ -1,3 +1,4 @@
+import { useAuth0 } from '@auth0/auth0-react'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 
 import { favoriteApi } from '@/entities/favorite/api/favorite.api.ts'
@@ -11,6 +12,19 @@ export const useFavorites = () => {
     queryFn: async () => {
       const idToken = await getIdToken()
       return favoriteApi.getFavorites(idToken)
+    },
+  })
+}
+
+export const useFavoriteCount = () => {
+  const getIdToken = useIdToken()
+  const { isAuthenticated } = useAuth0()
+
+  return useQuery({
+    queryKey: ['favorites', isAuthenticated],
+    queryFn: async () => {
+      const idToken = await getIdToken()
+      return favoriteApi.getFavoriteCount(idToken)
     },
   })
 }
