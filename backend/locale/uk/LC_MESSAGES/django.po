@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-04 13:26+0200\n"
+"POT-Creation-Date: 2024-12-05 17:24+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -128,23 +128,23 @@ msgstr "Цей товар уже додано до ваших улюблених
 msgid "Price not available"
 msgstr "Ціна недоступна"
 
-#: .\apps\favorites\views\favorites.py:39
+#: .\apps\favorites\views\favorites.py:40
 msgid "List favorite items"
 msgstr "Список улюблених"
 
-#: .\apps\favorites\views\favorites.py:40
+#: .\apps\favorites\views\favorites.py:41
 msgid "Returns a list of items that the user has marked as favorites."
 msgstr "Повертає список елементів, які користувач позначив як улюблені."
 
-#: .\apps\favorites\views\favorites.py:44
+#: .\apps\favorites\views\favorites.py:45
 msgid "A list of favorite items for the user."
 msgstr "Список улюблених предметів для користувача."
 
-#: .\apps\favorites\views\favorites.py:67
+#: .\apps\favorites\views\favorites.py:68
 msgid "Add item to favorites"
 msgstr "Додати товар до улюбленого"
 
-#: .\apps\favorites\views\favorites.py:69
+#: .\apps\favorites\views\favorites.py:70
 msgid ""
 "Adds the specified product to the current user's favorites list. Provide the "
 "`id` of the product in the request body."
@@ -152,31 +152,31 @@ msgstr ""
 "Додає вказаний продукт до списку улюбленого поточного користувача. Укажіть "
 "`id` продукту в тілі запиту."
 
-#: .\apps\favorites\views\favorites.py:74
+#: .\apps\favorites\views\favorites.py:75
 msgid "The item was successfully added to favorites."
 msgstr "Елемент успішно додано до улюбленого."
 
-#: .\apps\favorites\views\favorites.py:76
+#: .\apps\favorites\views\favorites.py:77
 msgid "Validation error: product already in favorites."
 msgstr "Помилка підтвердження: товар вже був доданий до улюбленого."
 
-#: .\apps\favorites\views\favorites.py:89
+#: .\apps\favorites\views\favorites.py:91
 msgid "Remove item from favorites"
 msgstr "Видалити елемент із улюблених"
 
-#: .\apps\favorites\views\favorites.py:91
+#: .\apps\favorites\views\favorites.py:93
 msgid ""
 "Removes the specified product from the user's favorites list. Use the `id` "
-"of the favorite item in the URL."
+"of the product in the URL."
 msgstr ""
-"Видаляє вказаний продукт зі списку улюблених користувача. Використовуйте "
-"`id` улюбленого елемента в URL-адресі."
+"Видаляє вказаний продукт зі списку вибраного користувача."
+"Використовуйте 'id' продукту в URL-адресі."
 
-#: .\apps\favorites\views\favorites.py:95
+#: .\apps\favorites\views\favorites.py:97
 msgid "Item successfully removed from favorites."
 msgstr "Елемент успішно видалено з улюблених."
 
-#: .\apps\favorites\views\favorites.py:97
+#: .\apps\favorites\views\favorites.py:99
 msgid "The specified favorite item does not exist or was not found."
 msgstr "Зазначений улюблений елемент не існує або не знайдений."
 
@@ -524,23 +524,23 @@ msgstr "Не вдалося створити відео: %s"
 msgid "Failed to update video: %s"
 msgstr "Не вдалося оновити відео: %s"
 
-#: .\apps\products\views\category.py:37
+#: .\apps\products\views\category.py:38
 msgid "List categories in a tree structure"
 msgstr "Список категорій у структурі дерева"
 
-#: .\apps\products\views\category.py:38
+#: .\apps\products\views\category.py:39
 msgid "Retrieve a hierarchical tree of categories."
 msgstr "Отримати ієрархічне дерево категорій."
 
-#: .\apps\products\views\category.py:42
+#: .\apps\products\views\category.py:44
 msgid "Returned when query parameters are passed in the request."
 msgstr "Повертається, коли в запиті передаються параметри запиту."
 
-#: .\apps\products\views\category.py:62
+#: .\apps\products\views\category.py:72
 msgid "Retrieve a category by path"
 msgstr "Отримати категорію за path"
 
-#: .\apps\products\views\category.py:63
+#: .\apps\products\views\category.py:73
 msgid "Retrieve a single category by path"
 msgstr "Отримати одну категорію за path"
 

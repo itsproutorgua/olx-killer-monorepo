@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-04 13:26+0200\n"
+"POT-Creation-Date: 2024-12-05 17:24+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -125,23 +125,23 @@ msgstr "This product has already been added to your favorites."
 msgid "Price not available"
 msgstr "Price not available"
 
-#: .\apps\favorites\views\favorites.py:39
+#: .\apps\favorites\views\favorites.py:40
 msgid "List favorite items"
 msgstr "List favorite items"
 
-#: .\apps\favorites\views\favorites.py:40
+#: .\apps\favorites\views\favorites.py:41
 msgid "Returns a list of items that the user has marked as favorites."
 msgstr "Returns a list of items that the user has marked as favorites."
 
-#: .\apps\favorites\views\favorites.py:44
+#: .\apps\favorites\views\favorites.py:45
 msgid "A list of favorite items for the user."
 msgstr "A list of favorite items for the user."
 
-#: .\apps\favorites\views\favorites.py:67
+#: .\apps\favorites\views\favorites.py:68
 msgid "Add item to favorites"
 msgstr "Add item to favorites"
 
-#: .\apps\favorites\views\favorites.py:69
+#: .\apps\favorites\views\favorites.py:70
 msgid ""
 "Adds the specified product to the current user's favorites list. Provide the "
 "`id` of the product in the request body."
@@ -149,31 +149,35 @@ msgstr ""
 "Adds the specified product to the current user's favorites list. Provide the "
 "`id` of the product in the request body."
 
-#: .\apps\favorites\views\favorites.py:74
+#: .\apps\favorites\views\favorites.py:75
 msgid "The item was successfully added to favorites."
 msgstr "The item was successfully added to favorites."
 
-#: .\apps\favorites\views\favorites.py:76
+#: .\apps\favorites\views\favorites.py:77
 msgid "Validation error: product already in favorites."
 msgstr "Validation error: product already in favorites."
 
-#: .\apps\favorites\views\favorites.py:89
+#: .\apps\favorites\views\favorites.py:91
 msgid "Remove item from favorites"
 msgstr "Remove item from favorites"
 
-#: .\apps\favorites\views\favorites.py:91
+#: .\apps\favorites\views\favorites.py:93
+#, fuzzy
+#| msgid ""
+#| "Removes the specified product from the user's favorites list. Use the "
+#| "`id` of the favorite item in the URL."
 msgid ""
 "Removes the specified product from the user's favorites list. Use the `id` "
-"of the favorite item in the URL."
+"of the product in the URL."
 msgstr ""
 "Removes the specified product from the user's favorites list. Use the `id` "
 "of the favorite item in the URL."
 
-#: .\apps\favorites\views\favorites.py:95
+#: .\apps\favorites\views\favorites.py:97
 msgid "Item successfully removed from favorites."
 msgstr "Item successfully removed from favorites."
 
-#: .\apps\favorites\views\favorites.py:97
+#: .\apps\favorites\views\favorites.py:99
 msgid "The specified favorite item does not exist or was not found."
 msgstr "The specified favorite item does not exist or was not found."
 
@@ -521,23 +525,23 @@ msgstr "Failed to create video: %s"
 msgid "Failed to update video: %s"
 msgstr "Failed to update video: %s"
 
-#: .\apps\products\views\category.py:37
+#: .\apps\products\views\category.py:38
 msgid "List categories in a tree structure"
 msgstr "List categories in a tree structure"
 
-#: .\apps\products\views\category.py:38
+#: .\apps\products\views\category.py:39
 msgid "Retrieve a hierarchical tree of categories."
 msgstr "Retrieve a hierarchical tree of categories."
 
-#: .\apps\products\views\category.py:42
+#: .\apps\products\views\category.py:44
 msgid "Returned when query parameters are passed in the request."
 msgstr ""
 
-#: .\apps\products\views\category.py:62
+#: .\apps\products\views\category.py:72
 msgid "Retrieve a category by path"
 msgstr "Retrieve a category by path"
 
-#: .\apps\products\views\category.py:63
+#: .\apps\products\views\category.py:73
 msgid "Retrieve a single category by path"
 msgstr "Retrieve a single category by path"
 
