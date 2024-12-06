@@ -7,7 +7,8 @@ from apps.favorites.models import Favorite
 @admin.register(Favorite)
 class FavoritesAdmin(SimpleHistoryAdmin):
     list_display = ('user', 'product', 'created_at')
-    readonly_fields = ('user', 'product', 'created_at')
+    fields = ('pk', 'user', 'product', 'created_at')
+    readonly_fields = ('pk', 'user', 'product', 'created_at')
     show_full_result_count = False
 
     def get_queryset(self, request):
