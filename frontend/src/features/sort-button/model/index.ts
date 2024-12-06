@@ -1,2 +1,2 @@
-export * from './sort.const'
-export * from './sort.types'
+export * from './consts'
+export * from './types'

@@ -112,7 +112,7 @@ export const en = {
     views: 'Views',
     report: 'Report',
     seller: 'Seller',
-    onOKA: 'on OKA since ',
+    onOKL: 'on OKL since ',
     online: 'Online ',
     allAdsByAuthor: 'All ads by author ',
     location: 'Location',

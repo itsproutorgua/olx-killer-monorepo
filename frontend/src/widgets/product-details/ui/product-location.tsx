@@ -21,11 +21,11 @@ export const ProductLocation: React.FC<Props> = ({ location, className }) => {
   const { t } = useTranslation()
   return (
     <div className={className}>
-      <div className='flex h-full flex-col gap-6 rounded-[15px] border border-border px-[34px] py-6'>
+      <div className='flex h-full flex-col gap-6 rounded-[15px] border border-border px-[24px] py-6'>
         <h3 className='font-semibold uppercase leading-none'>
           {t('words.location')}
         </h3>
-        <div className='flex flex-row justify-between gap-4'>
+        <div className='flex flex-row gap-6'>
           <div className='h-[24px] w-[24px]'>
             <LocationIcon className='text-primary' />
           </div>

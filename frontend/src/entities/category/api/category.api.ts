@@ -8,11 +8,8 @@ import { QUERY_KEYS } from '@/shared/constants'
 class CategoryApi {
   private BASE_URL = '/categories'
 
-  async findAllCategories(page: number, { signal }: { signal: AbortSignal }) {
-    const params = new URLSearchParams()
-    params.set('page', page.toString())
-
-    const url = `${this.BASE_URL}/?${params.toString()}`
+  async findAllCategories({ signal }: { signal: AbortSignal }) {
+    const url = `${this.BASE_URL}/`
     const response = await instanceBase.get(url, { signal })
     return response.data
   }
@@ -23,10 +20,10 @@ class CategoryApi {
     return response.data
   }
 
-  findAllCategoriesQueryOptions(page: number) {
+  findAllCategoriesQueryOptions() {
     return queryOptions<CategoryResponse[]>({
-      queryKey: [QUERY_KEYS.CATEGORIES, i18n.language, page],
-      queryFn: meta => this.findAllCategories(page, meta),
+      queryKey: [QUERY_KEYS.CATEGORIES, i18n.language],
+      queryFn: meta => this.findAllCategories(meta),
       retry: 1,
       refetchOnWindowFocus: false,
     })

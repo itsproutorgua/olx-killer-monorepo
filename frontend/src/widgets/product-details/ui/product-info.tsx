@@ -108,12 +108,18 @@ export const ProductInfo: React.FC<Props> = ({ className, product }) => {
         <p className='text-[28px] font-medium leading-[1.22] md:text-[32px]'>
           {generatePriceString(product.prices)}
         </p>
-        <AddToFavorite className='text-xl text-primary-900 md:hidden' />
+        <AddToFavorite
+          productId={product.id}
+          className='text-xl text-primary-900 md:hidden'
+        />
       </div>
       <div className='mt-[32px] flex flex-col items-center gap-[10px] md:mt-[34px] md:flex-row md:gap-[45px]'>
         <div className='flex w-full flex-col items-center gap-[10px] md:w-[291px] md:flex-row md:gap-[19px]'>
           <WriteSeller className='w-full md:w-[238px]' />
-          <AddToFavorite className='hidden h-[34px] w-[34px] text-xl text-primary-900 md:flex md:items-center md:justify-center' />
+          <AddToFavorite
+            productId={product.id}
+            className='hidden h-[34px] w-[34px] text-xl text-primary-900 md:flex md:items-center md:justify-center'
+          />
         </div>
       </div>
       <div className='mt-[54px] hidden max-h-[200px] flex-row gap-5 md:flex'>

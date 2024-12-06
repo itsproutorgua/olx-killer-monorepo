@@ -9,7 +9,7 @@ import { categoryApi, type Category } from '@/entities/category'
 import { Breadcrumbs, PageHeading, PageLoader } from '@/shared/ui'
 import { QUERY_KEYS } from '@/shared/constants'
 import { useMediaQuery } from '@/shared/library/hooks'
-import type { Crumb } from '@/shared/library/types/types'
+import type { Crumb } from '@/shared/library/types'
 import { generateCrumbs } from '@/shared/library/utils/generate-crumbs'
 
 const formatPath = (pathname: string) => {

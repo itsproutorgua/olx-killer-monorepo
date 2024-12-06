@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
+import { useAuth0 } from '@auth0/auth0-react'
 import clsx from 'clsx'
 import { Heart } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
+import { useFavoriteCount } from '@/entities/favorite/library/hooks/use-favorites.tsx'
 import { CirclePlusIcon, UserRoundedIcon } from '@/shared/ui/icons'
 import { BottomBarHome } from '@/shared/ui/icons/bottom-bar-home.tsx'
 import { ChatIcon } from '@/shared/ui/icons/chat-icon.tsx'
@@ -11,6 +13,8 @@ import { ChatIcon } from '@/shared/ui/icons/chat-icon.tsx'
 const SCROLL_THRESHOLD = 5 // Threshold to ignore small scroll movements
 
 const BottomBar = () => {
+  const { data: favoriteCount, isLoading } = useFavoriteCount()
+  const { isAuthenticated, loginWithRedirect, logout } = useAuth0()
   const { t } = useTranslation()
 
   const [isVisible, setIsVisible] = useState(true)
@@ -72,9 +76,18 @@ const BottomBar = () => {
             <span className='text-[13px]'>{t('bottomBar.home')}</span>
           </Link>
 
-          <Link to='/favorites' className='flex w-[70px] flex-col items-center'>
+          <Link
+            to='/favorites'
+            className='relative flex w-[70px] flex-col items-center'
+          >
             <Heart className='h-[30px] w-6 stroke-[1.5]' />
             <span className='text-[13px]'>{t('bottomBar.favorites')}</span>
+            {/* Favorite Count Badge */}
+            {!isLoading && favoriteCount && (
+              <span className='absolute -top-1 right-2.5 flex h-5 w-5 items-center justify-center rounded-full bg-gray-50 text-xs text-primary-900'>
+                {favoriteCount}
+              </span>
+            )}
           </Link>
         </div>
 
@@ -91,10 +104,15 @@ const BottomBar = () => {
             <span className='text-[13px]'>{t('bottomBar.chat')}</span>
           </Link>
 
-          <Link to='/account' className='flex w-[70px] flex-col items-center'>
+          <div
+            onClick={
+              isAuthenticated ? () => logout() : () => loginWithRedirect()
+            }
+            className='flex w-[70px] flex-col items-center'
+          >
             <UserRoundedIcon className='h-[30px] w-6 fill-primary-900' />
             <span className='text-[13px]'>{t('bottomBar.account')}</span>
-          </Link>
+          </div>
         </div>
       </div>
     </div>

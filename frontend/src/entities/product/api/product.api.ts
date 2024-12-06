@@ -1,10 +1,9 @@
 import { keepPreviousData, queryOptions } from '@tanstack/react-query'
 import i18n from 'i18next'
 
-import { type SortValue } from '@/features/sort-button'
 import { instanceBase } from '@/shared/api'
 import { QUERY_KEYS } from '@/shared/constants'
-import { APP_VARIABLES } from '@/shared/constants/app.const'
+import { APP_VARIABLES, SortEnum } from '@/shared/constants/app.const'
 import type { Product, ProductResponse } from '../model'
 
 export interface FilterParams {
@@ -14,7 +13,7 @@ export interface FilterParams {
   limit?: number
   price_max?: number
   price_min?: number
-  sort?: SortValue
+  sort?: SortEnum
 }
 
 class ProductApi {
@@ -40,7 +39,8 @@ class ProductApi {
     if (currency_code) params.set('currency_code', currency_code.toString())
     if (price_max) params.set('price_max', price_max.toString())
     if (price_min) params.set('price_min', price_min.toString())
-    if (sort && sort !== 'status:desc') params.set('sort_by', sort.toString())
+    if (sort && sort !== SortEnum.CREATED_AT_DESC)
+      params.set('sort_by', sort.toString())
 
     const url = `${this.BASE_URL}/filters/?${params.toString()}`
 
@@ -50,9 +50,12 @@ class ProductApi {
     return response.data
   }
 
-  async findBySlug({ slug }: { slug: string }) {
+  async findBySlug(
+    { slug }: { slug: string },
+    { signal }: { signal: AbortSignal },
+  ) {
     const url = `${this.BASE_URL}${slug}`
-    const response = await instanceBase.get<Product>(url)
+    const response = await instanceBase.get<Product>(url, { signal })
     return response.data
   }
 
@@ -63,7 +66,7 @@ class ProductApi {
     limit = APP_VARIABLES.LIMIT,
     price_max,
     price_min,
-    sort,
+    sort = SortEnum.CREATED_AT_DESC,
   }: FilterParams) {
     return queryOptions<ProductResponse>({
       queryKey: [
@@ -89,8 +92,8 @@ class ProductApi {
 
   findBySlugQueryOptions({ slug }: { slug: string }) {
     return queryOptions<Product>({
-      queryKey: [QUERY_KEYS.PRODUCT, slug, i18n.language],
-      queryFn: () => productApi.findBySlug({ slug }),
+      queryKey: [QUERY_KEYS.PRODUCT, i18n.language, slug],
+      queryFn: meta => this.findBySlug({ slug }, meta),
     })
   }
 }

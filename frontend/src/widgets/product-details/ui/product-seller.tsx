@@ -1,8 +1,14 @@
 import React from 'react'
+import { format } from 'date-fns'
+import { enGB } from 'date-fns/locale'
 import { useTranslation } from 'react-i18next'
 
 import { Product } from '@/entities/product'
 import { ArrowIcon } from '@/shared/ui'
+import {
+  formatLastOnline,
+  localeMap,
+} from '@/shared/library/utils/reformat-time.ts'
 
 export interface SellerProps {
   className?: string
@@ -20,14 +26,16 @@ export const ProductSeller: React.FC<SellerProps> = ({
   product,
   className,
 }) => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const currentLocale =
+    localeMap[i18n.language as keyof typeof localeMap] || enGB
   return (
     <div className={className}>
-      <div className='flex h-full flex-col gap-6 rounded-[15px] border border-border px-[34px] py-6'>
+      <div className='flex h-full flex-col gap-6 rounded-[15px] border border-border px-[24px] py-6'>
         <h3 className='font-semibold uppercase leading-none'>
           {t('words.seller')}
         </h3>
-        <div className='flex flex-row justify-between gap-4'>
+        <div className='flex flex-row gap-4'>
           <div className='h-[51px] w-[51px]'>
             <img
               src={announcement.sellerLogo}
@@ -39,12 +47,14 @@ export const ProductSeller: React.FC<SellerProps> = ({
               {product?.seller?.first_name ?? 'Default Name'}
             </h4>
             <p className='text-primary-gray text-xs leading-none'>
-              {t('words.onOKA')}
-              {announcement.sellerRegisteredAt}
+              {t('words.onOKL')}
+              {format(product.seller.created_at, 'MMMM yyyy', {
+                locale: currentLocale,
+              })}
             </p>
             <p className='text-primary-gray text-xs leading-none'>
               {t('words.online')}
-              {announcement.sellerLastOnline}
+              {formatLastOnline(product?.seller?.last_login)}
             </p>
             <button className='mt-2 flex flex-row items-center gap-[9px] text-xs'>
               {t('words.allAdsByAuthor')}
