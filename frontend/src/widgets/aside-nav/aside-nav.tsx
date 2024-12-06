@@ -28,7 +28,6 @@ export const AsideNav = ({ onCloseMenu }: { onCloseMenu?: () => void }) => {
   const navigate = useNavigate()
 
   const { categories, cursor } = useCategories({
-    page: 1,
     Skeleton: <AsideCategorySkeleton />,
   })
 

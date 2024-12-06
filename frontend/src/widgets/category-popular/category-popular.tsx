@@ -20,7 +20,6 @@ export const PopularCategories = () => {
   const { t } = useTranslation()
 
   const { categories, cursor } = useCategories({
-    page: 1,
     Skeleton: <PopularCategorySkeleton />,
   })
 
