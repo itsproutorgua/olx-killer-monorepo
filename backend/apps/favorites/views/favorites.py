@@ -1,3 +1,4 @@
+from django.shortcuts import get_object_or_404
 from django.utils.translation import gettext_lazy as _
 from drf_spectacular.utils import extend_schema
 from drf_spectacular.utils import OpenApiExample
@@ -88,8 +89,7 @@ class FavoriteViewSet(
         tags=[FAVORITE_TAG],
         summary=_('Remove item from favorites'),
         description=_(
-            'Removes the specified product from the user\'s favorites list. '
-            'Use the `id` of the favorite item in the URL.'
+            'Removes the specified product from the user\'s favorites list. Use the `id` of the product in the URL.'
         ),
         responses={
             status.HTTP_204_NO_CONTENT: OpenApiResponse(description=_('Item successfully removed from favorites.')),
@@ -100,6 +100,9 @@ class FavoriteViewSet(
         },
     )
     def destroy(self, request, *args, **kwargs):
-        instance = self.get_object()
-        self.perform_destroy(instance)
+        product_id = kwargs.get('pk')
+        user = request.user
+
+        favorite_item = get_object_or_404(Favorite, user=user, product_id=product_id)
+        favorite_item.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
