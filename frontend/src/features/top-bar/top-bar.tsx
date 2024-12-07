@@ -49,7 +49,7 @@ export const TopBar = () => {
         className='mr-5 h-10 w-10 shrink-0 cursor-pointer md:hidden'
       />
       <Logo
-        className={`flex items-center justify-center transition-all duration-300 ${
+        className={`flex items-center justify-center transition-opacity duration-200 ${
           !isExpanded ? 'opacity-100' : 'w-0 opacity-0'
         } md:px-0 md:opacity-100`}
       />
@@ -90,7 +90,7 @@ export const TopBar = () => {
       {/* Sidebar */}
       <div
         ref={sidebarRef}
-        className={`fixed ${isSidebarOpen ? 'left-0' : '-left-full'} top-0 z-20 h-full w-[300px] bg-gray-50 shadow-lg backdrop-blur transition-all duration-500 ease-in-out`}
+        className={`fixed ${isSidebarOpen ? 'left-0' : '-left-full'} top-0 z-20 h-full w-[300px] bg-gray-50 transition-all duration-300 ease-in-out`}
       >
         <div className='flex justify-between py-4 pl-[27px] pr-5'>
           <h3 className='text-[26px] font-medium'>{t('words.categories')}</h3>
@@ -104,7 +104,7 @@ export const TopBar = () => {
 
       {/* Backdrop */}
       <div
-        className={`fixed ${isSidebarOpen ? 'left-0 opacity-60' : '-left-full opacity-0'} top-0 z-10 h-full w-full bg-black transition-opacity duration-700 ease-in-out`}
+        className={`fixed ${isSidebarOpen ? 'left-0 opacity-60' : '-left-full opacity-0'} top-0 z-10 h-full w-full bg-black transition-opacity duration-200`}
         onClick={() => setIsSidebarOpen(false)}
       />
     </div>

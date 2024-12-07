@@ -94,7 +94,7 @@ export const uk = {
   bottomBar: {
     home: 'Головна',
     catalog: 'Каталог',
-    chat: 'Повідомлення',
+    chat: 'Чат',
     account: 'Профіль',
     favorites: 'Обрані',
   },
