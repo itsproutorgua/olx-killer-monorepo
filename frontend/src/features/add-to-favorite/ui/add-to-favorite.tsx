@@ -73,8 +73,8 @@ export const AddToFavorite = ({
         className={cn(
           'h-6 w-6 transition-colors duration-300',
           isFavorited
-            ? 'fill-red-500 stroke-red-500'
-            : 'fill-transparent group-hover:fill-primary-900 group-active:fill-primary-600 group-active:stroke-primary-600 group-active:duration-0',
+            ? 'fill-primary-600 stroke-primary-600'
+            : 'fill-transparent group-hover:stroke-primary-600 group-active:fill-primary-600 group-active:stroke-primary-600 group-active:duration-300',
         )}
       />
     </button>

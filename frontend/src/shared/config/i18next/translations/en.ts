@@ -93,7 +93,7 @@ export const en = {
   bottomBar: {
     home: 'Home',
     catalog: 'Catalog',
-    chat: 'Messages',
+    chat: 'Chat',
     account: 'Account',
     favorites: 'Favorites',
   },

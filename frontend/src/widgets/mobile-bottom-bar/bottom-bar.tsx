@@ -83,7 +83,7 @@ const BottomBar = () => {
             <Heart className='h-[30px] w-6 stroke-[1.5]' />
             <span className='text-[13px]'>{t('bottomBar.favorites')}</span>
             {/* Favorite Count Badge */}
-            {!isLoading && favoriteCount && (
+            {!isLoading && (favoriteCount ?? 0) > 0 && (
               <span className='absolute -top-1 right-2.5 flex h-5 w-5 items-center justify-center rounded-full bg-gray-50 text-xs text-primary-900'>
                 {favoriteCount}
               </span>
@@ -108,7 +108,7 @@ const BottomBar = () => {
             onClick={
               isAuthenticated ? () => logout() : () => loginWithRedirect()
             }
-            className='flex w-[70px] flex-col items-center'
+            className='flex w-[70px] cursor-pointer flex-col items-center'
           >
             <UserRoundedIcon className='h-[30px] w-6 fill-primary-900' />
             <span className='text-[13px]'>{t('bottomBar.account')}</span>
