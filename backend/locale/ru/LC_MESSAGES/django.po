@@ -54,7 +54,7 @@ msgstr "Неверное поле sort."
 
 #: .\apps\common\errors.py:18
 msgid "Invalid product status. Allowed values are \"old\" and \"new\"."
-msgstr "Неверный статус продукта. Допустимые значения: «старый» и «новый»."
+msgstr "Неверный статус продукта. Допустимые значения: «old» и «new»."
 
 #: .\apps\common\errors.py:21
 #: .\apps\products\serializers\product\product_image.py:22
