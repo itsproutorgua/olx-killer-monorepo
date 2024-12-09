@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import sellerLogo from '@/shared/assets/images/seller/seller_logo.png'
+import { useAuth0 } from '@auth0/auth0-react'
 import i18n from 'i18next'
 import { useTranslation } from 'react-i18next'
 
@@ -23,6 +24,7 @@ interface Props {
 }
 
 export const ProductInfo: React.FC<Props> = ({ className, product }) => {
+  const { isAuthenticated } = useAuth0()
   const { t } = useTranslation()
   const [showFullDescription, setShowFullDescription] = useState(false)
 
@@ -170,12 +172,14 @@ export const ProductInfo: React.FC<Props> = ({ className, product }) => {
           <span>{t('words.report')}</span>
         </button>
       </div>
-      <LoginCard className='mt-[28px] md:mt-[54px]' />
-      <ContactSellerCard
-        announcement={announcement}
-        product={product}
-        className='mt-5'
-      />
+      {!isAuthenticated && <LoginCard className='mt-[28px] md:mt-[54px]' />}
+      {isAuthenticated && (
+        <ContactSellerCard
+          announcement={announcement}
+          product={product}
+          className='mt-5'
+        />
+      )}
     </div>
   )
 }

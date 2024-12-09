@@ -25,7 +25,13 @@ export const LoginCard: React.FC<Props> = ({ className }) => {
             </div>
           </div>
 
-          <LoginButton onClick={() => loginWithRedirect()} />
+          <LoginButton
+            onClick={() =>
+              loginWithRedirect({
+                appState: { targetUrl: window.location.pathname },
+              })
+            }
+          />
         </div>
       </div>
     </div>
