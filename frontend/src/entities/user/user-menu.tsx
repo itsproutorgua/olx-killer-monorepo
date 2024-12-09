@@ -123,7 +123,11 @@ export const UserMenu = () => {
           </>
         ) : (
           <DropdownMenuItem
-            onClick={() => loginWithRedirect()}
+            onClick={() =>
+              loginWithRedirect({
+                appState: { targetUrl: window.location.pathname },
+              })
+            }
             className='cursor-pointer'
           >
             Please Log In{' '}

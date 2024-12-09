@@ -106,7 +106,12 @@ const BottomBar = () => {
 
           <div
             onClick={
-              isAuthenticated ? () => logout() : () => loginWithRedirect()
+              isAuthenticated
+                ? () => logout()
+                : () =>
+                    loginWithRedirect({
+                      appState: { targetUrl: window.location.pathname },
+                    })
             }
             className='flex w-[70px] cursor-pointer flex-col items-center'
           >

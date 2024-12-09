@@ -54,7 +54,7 @@ class ProductApi {
     { slug }: { slug: string },
     { signal }: { signal: AbortSignal },
   ) {
-    const url = `${this.BASE_URL}${slug}`
+    const url = `${this.BASE_URL}${slug}/`
     const response = await instanceBase.get<Product>(url, { signal })
     return response.data
   }

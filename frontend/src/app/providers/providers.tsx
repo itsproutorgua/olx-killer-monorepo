@@ -1,12 +1,20 @@
 import React from 'react'
-import { Auth0Provider } from '@auth0/auth0-react'
+import { AppState, Auth0Provider } from '@auth0/auth0-react'
 import { QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { Toaster } from 'react-hot-toast'
+import { useNavigate } from 'react-router-dom'
 
 import { queryClient } from '@/shared/api'
 
 export const Providers = ({ children }: { children: React.ReactNode }) => {
+  const navigate = useNavigate()
+
+  const onRedirectCallback = (appState?: AppState) => {
+    // Navigate to the returnTo path or fallback to the homepage
+    navigate(appState?.targetUrl || window.location.pathname)
+  }
+
   return (
     <Auth0Provider
       domain='dev-oiwvoe5rjc073q1x.eu.auth0.com'
@@ -14,6 +22,9 @@ export const Providers = ({ children }: { children: React.ReactNode }) => {
       authorizationParams={{
         redirect_uri: window.location.origin,
       }}
+      onRedirectCallback={onRedirectCallback}
+      useRefreshTokens
+      cacheLocation='localstorage'
     >
       <QueryClientProvider client={queryClient}>
         {children}

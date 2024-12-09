@@ -41,7 +41,6 @@ export const PopularCategories = () => {
                   >
                     <Link
                       to={`/catalog/${cat.path}`}
-                      reloadDocument
                       className='xl:space-y-[15px]'
                     >
                       <div className='size-[70px] rounded-[30px] xl:size-[150px]'>
@@ -69,7 +68,6 @@ export const PopularCategories = () => {
                     >
                       <Link
                         to={`/catalog/${cat.path}`}
-                        reloadDocument
                         className='xl:space-y-[15px]'
                       >
                         <div className='size-[70px] rounded-[30px] xl:size-[150px]'>

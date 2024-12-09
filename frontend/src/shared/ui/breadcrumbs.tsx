@@ -1,11 +1,11 @@
 import React from 'react'
 import { ChevronLeft } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
 
 import {
   Breadcrumb,
   BreadcrumbItem,
-  BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbSeparator,
 } from '@/shared/ui/shadcn-ui/breadcrumb'
@@ -30,19 +30,19 @@ export const Breadcrumbs = ({
       <BreadcrumbList className='text-[13px]/[15.73px] text-foreground md:hidden'>
         <BreadcrumbItem className='gap-2'>
           <ChevronLeft className='size-6' />
-          <BreadcrumbLink href='/'>{t('crumbs.home')}</BreadcrumbLink>
+          <Link to='/'>{t('crumbs.home')}</Link>
         </BreadcrumbItem>
       </BreadcrumbList>
 
       {/* Tablet and Desktop screen */}
       <BreadcrumbList className='hidden gap-2 text-[13px]/[15.73px] text-foreground md:flex xl:gap-3 xl:text-base/[19.36px]'>
         <BreadcrumbItem>
-          <BreadcrumbLink
-            href='/'
+          <Link
+            to='/'
             className='hover:text-primary-500 active:text-primary-500'
           >
             <HomeIconBreadcrumb className='h-6 w-6' />
-          </BreadcrumbLink>
+          </Link>
         </BreadcrumbItem>
 
         {crumbs.length > 0 &&
@@ -50,7 +50,7 @@ export const Breadcrumbs = ({
             <React.Fragment key={crumb.text}>
               <BreadcrumbSeparator />
               <BreadcrumbItem className='last:text-gray-500 hover:text-primary-500 last:hover:text-gray-500 active:text-primary-500'>
-                <BreadcrumbLink href={crumb.href}>{crumb.text}</BreadcrumbLink>
+                <Link to={`${crumb.href}`}>{crumb.text}</Link>
               </BreadcrumbItem>
             </React.Fragment>
           ))}

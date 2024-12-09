@@ -1,11 +1,13 @@
 import React from 'react'
 import { Banner } from '@/shared/assets'
+import { useAuth0 } from '@auth0/auth0-react'
 import { useTranslation } from 'react-i18next'
 
 import { Button } from '@/shared/ui/shadcn-ui/button'
 import { LongArrowAltRightIcon } from '@/shared/ui'
 
 export const PromoSection: React.FC = () => {
+  const { loginWithRedirect } = useAuth0()
   const { t } = useTranslation()
   return (
     <section className='container relative pt-[158px] xl:pt-[100px]'>
@@ -17,6 +19,11 @@ export const PromoSection: React.FC = () => {
         <Button
           size='lg'
           className='h-[53px] rounded-[60px] bg-primary-900 p-[5px] pl-[37px] leading-none text-gray-50 transition-colors duration-300 hover:bg-primary-500 active:bg-primary-600 active:text-gray-50 active:duration-0'
+          onClick={() =>
+            loginWithRedirect({
+              appState: { targetUrl: window.location.pathname },
+            })
+          }
         >
           {t('buttons.registerAsSeller')}
           <span className='ml-6 flex size-[43px] items-center justify-center rounded-full bg-gray-50 text-primary-900'>
