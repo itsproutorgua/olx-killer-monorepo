@@ -25,13 +25,18 @@ JAZZMIN_SETTINGS = {
         'locations.village': 'fas fa-tree',
         'locations.region': 'fas fa-map',
         'user_messages.message': 'fas fa-envelope',
+        'favorites.favorite': 'fas fa-heart',
     },
     ############
     # Top Menu #
     ############
     # Links to put along the top menu
     'topmenu_links': [
-        {'name': 'Home', 'url': 'admin:index', 'permissions': ['auth.view_user']},
+        {
+            'name': 'Home',
+            'url': 'admin:index',
+            'permissions': ['auth.view_user'],
+        },
         {
             'name': _('Users'),
             'model': 'user.User',
@@ -54,6 +59,12 @@ JAZZMIN_SETTINGS = {
             'name': _('Locations'),
             'model': 'location.Location',
             'url': 'admin:locations_location_changelist',
+            'permissions': ['auth.view_user'],
+        },
+        {
+            'name': _('Favorites'),
+            'model': 'favorites.Favorite',
+            'url': 'admin:favorites_favorite_changelist',
             'permissions': ['auth.view_user'],
         },
     ],
