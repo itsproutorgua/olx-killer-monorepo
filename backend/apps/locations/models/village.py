@@ -7,7 +7,7 @@ from apps.products.utils import translate_and_set_fields
 
 class Village(TimestampMixin, models.Model):
     name = models.CharField(_('Village Name'), max_length=100)
-    region = models.ForeignKey('Region', on_delete=models.CASCADE, related_name='villages')
+    region = models.ForeignKey('Region', on_delete=models.CASCADE, related_name='villages', verbose_name=_('Region'))
 
     def __str__(self):
         return f'{self.name}'
