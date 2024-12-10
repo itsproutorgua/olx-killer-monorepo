@@ -22,8 +22,6 @@ class Location(TimestampMixin, HistoricalModel, models.Model):
     village = models.ForeignKey('Village', on_delete=models.CASCADE, null=True, blank=True, verbose_name=_('Village'))
     latitude = models.DecimalField(_('Latitude'), max_digits=9, decimal_places=6, blank=True, null=True)
     longitude = models.DecimalField(_('Longitude'), max_digits=9, decimal_places=6, blank=True, null=True)
-    location_name = models.CharField(_('Location name'), max_length=255, blank=True, editable=False, default='-')
-    region_name = models.CharField(_('Region name'), max_length=255, blank=True, editable=False, default='-')
 
     def __str__(self):
         if self.location_type == 'city' and self.city:
@@ -47,17 +45,3 @@ class Location(TimestampMixin, HistoricalModel, models.Model):
 
         if self.city and self.village:
             raise ValidationError(_('Location cannot be both city and village at the same time.'))
-
-    def save(self, *args, **kwargs):
-        match self.location_type:
-            case 'city' if self.city:
-                self.location_name = self.city.name
-                self.region_name = self.city.region.name
-            case 'village' if self.village:
-                self.location_name = self.village.name
-                self.region_name = self.village.region.name
-            case _:
-                self.location_name = '-'
-                self.region_name = '-'
-
-        super().save(*args, **kwargs)
