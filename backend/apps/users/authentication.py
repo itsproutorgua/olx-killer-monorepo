@@ -3,6 +3,8 @@ from authlib.jose import JsonWebKey
 from authlib.jose import jwt
 from django.conf import settings
 from django.core.cache import cache
+from django.db import transaction
+from django.utils.timezone import now
 from django.utils.translation import gettext_lazy as _
 from rest_framework.exceptions import AuthenticationFailed
 from rest_framework.request import Request
@@ -41,6 +43,16 @@ class Auth0JWTAuthentication(JWTAuthentication):
                     'aud': {'essential': True, 'value': settings.AUTH0_AUDIENCE},
                 },
             )
+        except jwt.ExpiredSignatureError:
+            raise AuthenticationFailed(_('Token has expired'))
+        except jwt.InvalidAudienceError:
+            raise AuthenticationFailed(_('Invalid token audience'))
+        except jwt.InvalidIssuerError:
+            raise AuthenticationFailed(_('Invalid token issuer'))
+        except jwt.DecodeError:
+            raise AuthenticationFailed(_('Error decoding token'))
+        except jwt.InvalidTokenError:
+            raise AuthenticationFailed(_('Invalid token'))
         except Exception as e:
             logger.error(f'Failed to validate token: {str(e)}')
             raise InvalidToken(_('Token validation failed'))
@@ -91,9 +103,41 @@ class Auth0JWTAuthentication(JWTAuthentication):
         try:
             user = self.user_model.objects.get(email=email)
         except self.user_model.DoesNotExist:
-            raise AuthenticationFailed(_('User not found'), code='user_not_found')
+            user = self.create_user_from_token(validated_token)
 
         if not user.is_active:
             raise AuthenticationFailed(_('User is inactive'), code='user_inactive')
 
+        return user
+
+    def create_user_from_token(self, validated_token: dict) -> AuthUser:
+        """
+        Creates a new user based on the validated token claims.
+        """
+        email = validated_token.get('email')
+        username = validated_token.get('nickname', email.split('@')[0])
+        email_verified = validated_token.get('email_verified', False)
+        picture = validated_token.get('picture')
+        sub = validated_token.get('sub')
+
+        try:
+            provider_name, provider_id = sub.split('|', 1)
+        except ValueError:
+            logger.error(f"Invalid 'sub' format received: {sub}. Unable to split provider and user ID.")
+            provider_name, provider_id = 'unknown', sub
+
+        with transaction.atomic():
+            user, created = self.user_model.objects.update_or_create(
+                email=email,
+                defaults={
+                    'username': username,
+                    'is_email_verified': email_verified,
+                    'last_login': now(),
+                },
+            )
+            user.profile.picture = picture
+            user.profile.add_provider(provider_name, provider_id)
+            user.save()
+
+        logger.info(f'Created new user with email: {email}')
         return user
