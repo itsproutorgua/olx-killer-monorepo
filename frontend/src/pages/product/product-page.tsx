@@ -5,10 +5,7 @@ import {
   ProductsBySellerSlider,
 } from '@/widgets/other-products-by-seller'
 import { ProductDetails } from '@/widgets/product-details/product-details.tsx'
-import {
-  SimilarProducts,
-  SimilarProductsSlider,
-} from '@/widgets/similar-products'
+import { SimilarProducts } from '@/widgets/similar-products'
 import { useProduct } from '@/entities/product/library/hooks/use-product.tsx'
 import { Breadcrumbs } from '@/shared/ui'
 import { ProductPageSkeleton } from '@/shared/ui/skeletons'
@@ -50,22 +47,24 @@ export const ProductPage = () => {
       <Breadcrumbs crumbs={crumbs} />
 
       {cursor}
-      {data && <ProductDetails product={data} className='mb-20 md:mb-32' />}
+      {data && (
+        <ProductDetails
+          product={data}
+          onProductClick={handleProductClick}
+          className='mb-20 md:mb-32'
+        />
+      )}
 
       <div className='mb-[53px] hidden min-h-[277px] md:relative md:block xl:min-h-[440px]'>
         <ProductsBySeller onProductClick={handleProductClick} />
       </div>
 
-      <div className='mb-20 md:hidden'>
+      <div className='mb-[106px] md:hidden'>
         <ProductsBySellerSlider onProductClick={handleProductClick} />
       </div>
 
       <div className='mb-[53px] hidden min-h-[277px] md:relative md:block xl:min-h-[440px]'>
         <SimilarProducts onProductClick={handleProductClick} />
-      </div>
-
-      <div className='mb-20 md:hidden'>
-        <SimilarProductsSlider onProductClick={handleProductClick} />
       </div>
     </div>
   )

@@ -14,8 +14,6 @@ export interface SellerProps {
   className?: string
   announcement: {
     seller: string
-    sellerRegisteredAt: string
-    sellerLastOnline: string
     sellerLogo: string
   }
   product: Product

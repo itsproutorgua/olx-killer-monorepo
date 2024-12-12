@@ -69,7 +69,7 @@ const BottomBar = () => {
       )}
     >
       {/* Bottom Menu Bar */}
-      <div className='relative flex h-[75px] items-center justify-between rounded-t-[30px] bg-[#2c2a84] px-[8px] text-gray-50'>
+      <div className='relative flex h-[75px] items-center justify-between rounded-t-[30px] bg-primary-900 px-[8px] text-gray-50'>
         <div className='flex w-[35%] flex-row justify-between gap-2'>
           <Link to='/' className='flex w-[70px] flex-col items-center'>
             <BottomBarHome />

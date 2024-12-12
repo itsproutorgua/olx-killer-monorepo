@@ -9,6 +9,7 @@ import { generatePriceString } from '@/widgets/product-card'
 import { ContactSellerCard } from '@/widgets/product-details/ui/contact-seller-card.tsx'
 import { ProductLocation } from '@/widgets/product-details/ui/product-location.tsx'
 import { ProductSeller } from '@/widgets/product-details/ui/product-seller.tsx'
+import { SimilarProductsSlider } from '@/widgets/similar-products'
 import { AddToFavorite } from '@/features/add-to-favorite'
 import { WriteSeller } from '@/features/product'
 import { Product } from '@/entities/product'
@@ -16,14 +17,18 @@ import { formatDate } from '@/entities/product/model/product-date.helper.ts'
 import { Separator } from '@/shared/ui/shadcn-ui/separator.tsx'
 import { FlagIcon } from '@/shared/ui'
 import { ArrowDownSmall } from '@/shared/ui/icons/arrow-down-small.tsx'
-import { Rating } from '@/shared/ui/rating-with-stars.tsx'
 
 interface Props {
   product: Product
   className?: string
+  onProductClick: (newSlug: string) => void
 }
 
-export const ProductInfo: React.FC<Props> = ({ className, product }) => {
+export const ProductInfo: React.FC<Props> = ({
+  className,
+  product,
+  onProductClick,
+}) => {
   const { isAuthenticated } = useAuth0()
   const { t } = useTranslation()
   const [showFullDescription, setShowFullDescription] = useState(false)
@@ -41,24 +46,12 @@ export const ProductInfo: React.FC<Props> = ({ className, product }) => {
   const announcement = {
     id: '858057687',
     views: '61',
-    createdAt: 'August 29, 2024',
-    productName: "Basic Comfort Women's T-Shirt",
     type: `${t('words.business')}`,
     state: `${t('words.state')}${t('words.new')}`,
-    price: '650',
     seller: 'Stylishwear',
-    sellerRegisteredAt: 'August 2024',
-    sellerLastOnline: 'yesterday at 22:09',
     sellerLogo: sellerLogo,
     sellerRating: 4.5,
     reviews: 155,
-    location: {
-      place: 'Kyiv, Holosiivskyi',
-      region: 'Kyiv region',
-      fullLocation: 'Kyiv region, Kyiv, Holosiivskyi',
-    },
-    description:
-      "Sell cool women's T-shirt “Basic Comfort”. It is made of 100% cotton, very soft and comfortable. Excellent fit, suitable for everyday wear. Sizes from XS to 2XL. Sell cool women's T-shirt “Basic Comfort”. It is made of 100% cotton, very soft and comfortable. Excellent fit, suitable for everyday wear. Sizes from XS to 2XL.",
   }
 
   return (
@@ -78,11 +71,13 @@ export const ProductInfo: React.FC<Props> = ({ className, product }) => {
         </span>
       </div>
       <div className='mt-2 leading-none md:mt-[54px] md:hidden'>
-        <Rating
-          rating={announcement.sellerRating}
-          reviews={announcement.reviews}
-        />
-        <p className='mt-2 text-[13px] leading-5 md:mt-[14px]'>
+        <div className='flex items-center text-[12px] text-gray-400'>
+          <p>ID: {announcement.id}</p>
+          <span className='ml-[10px] mt-[1px] border-l border-gray-400 pl-[10px] text-xs'>
+            {t('words.views')}: {product.views}
+          </span>
+        </div>
+        <p className='mt-[14px] text-[13px] leading-5 md:mt-[14px]'>
           {showFullDescription
             ? product.description
             : product.description.slice(0, maxClampLengthSmall) +
@@ -105,6 +100,11 @@ export const ProductInfo: React.FC<Props> = ({ className, product }) => {
             )}
           </button>
         )}
+        <Separator className='mt-[14px] w-full bg-gray-200' />
+        <button className='mt-[14px] text-[#B42318]'>
+          <FlagIcon className='mr-1 inline-block' />
+          <span className='text-[12px]'>{t('words.report')}</span>
+        </button>
       </div>
       <div className='mt-[34px] flex items-center justify-between'>
         <p className='text-[28px] font-medium leading-[1.22] md:text-[32px]'>
@@ -160,7 +160,7 @@ export const ProductInfo: React.FC<Props> = ({ className, product }) => {
             )}
           </button>
         )}
-        <Separator className='border-primary-gray mt-[11px]' />
+        <Separator className='mt-[11px] w-full bg-gray-200' />
       </div>
       <div className='text-primary-gray mt-[11px] hidden flex-row items-center justify-between text-xs md:flex'>
         <p>ID: {announcement.id}</p>
@@ -172,6 +172,13 @@ export const ProductInfo: React.FC<Props> = ({ className, product }) => {
           <span>{t('words.report')}</span>
         </button>
       </div>
+      <div className='mt-10 md:hidden'>
+        <SimilarProductsSlider onProductClick={onProductClick} />
+      </div>
+      <ProductLocation
+        location={product.seller.location}
+        className='mt-[73px] basis-1/2 md:hidden'
+      />
       {!isAuthenticated && <LoginCard className='mt-[28px] md:mt-[54px]' />}
       {isAuthenticated && (
         <ContactSellerCard
