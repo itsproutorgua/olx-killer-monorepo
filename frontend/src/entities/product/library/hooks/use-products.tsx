@@ -6,7 +6,6 @@ import {
   type FilterParams,
   type ProductResponse,
 } from '@/entities/product'
-import { FetchError } from '@/shared/ui/error/fetch-error.tsx'
 
 export const useProducts = (
   params: FilterParams,
@@ -20,7 +19,7 @@ export const useProducts = (
   const cursor = (
     <>
       {isLoading && (Skeleton || <div>Loading...</div>)}
-      {isError && <FetchError />}
+      {isError && (Skeleton || <div>Loading...</div>)}
     </>
   )
   return { data, cursor, isPlaceholderData }

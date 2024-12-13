@@ -9,3 +9,10 @@ export enum SortEnum {
   PRICE_DESC = 'price:desc',
   CREATED_AT_DESC = 'created_at:desc',
 }
+
+export enum FilterEnum {
+  PRICE_MIN = 'price_min',
+  PRICE_MAX = 'price_max',
+  PRICE = 'price', //range 100-200
+  STATUS = 'status',
+}
