@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 
 import { ProductCard } from '@/widgets/product-card'
-import { useProducts } from '@/widgets/product-grid/library'
-import { type Product } from '@/entities/product'
+import { useProducts, type Product } from '@/entities/product'
 import { SectionTitle } from '@/shared/ui'
 import { ScrollableListArrowLeft } from '@/shared/ui/icons/scrollableListArrowLeft.tsx'
 import { ScrollableListArrowRight } from '@/shared/ui/icons/scrollableListArrowRight.tsx'

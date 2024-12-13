@@ -14,6 +14,7 @@ export interface FilterParams {
   price_max?: number
   price_min?: number
   sort?: SortEnum
+  status?: string
 }
 
 class ProductApi {
@@ -28,6 +29,7 @@ class ProductApi {
       price_max,
       price_min,
       sort,
+      status,
     }: FilterParams,
     { signal }: { signal: AbortSignal },
   ) {
@@ -39,6 +41,7 @@ class ProductApi {
     if (currency_code) params.set('currency_code', currency_code.toString())
     if (price_max) params.set('price_max', price_max.toString())
     if (price_min) params.set('price_min', price_min.toString())
+    if (status) params.set('status', status.toString())
     if (sort && sort !== SortEnum.CREATED_AT_DESC)
       params.set('sort_by', sort.toString())
 
@@ -66,6 +69,7 @@ class ProductApi {
     limit = APP_VARIABLES.LIMIT,
     price_max,
     price_min,
+    status,
     sort = SortEnum.CREATED_AT_DESC,
   }: FilterParams) {
     return queryOptions<ProductResponse>({
@@ -78,11 +82,21 @@ class ProductApi {
         limit,
         price_max,
         price_min,
+        status,
         sort,
       ],
       queryFn: meta =>
         this.findByFilters(
-          { path, currency_code, page, limit, price_max, price_min, sort },
+          {
+            path,
+            currency_code,
+            page,
+            limit,
+            price_max,
+            price_min,
+            status,
+            sort,
+          },
           meta,
         ),
       placeholderData: keepPreviousData,

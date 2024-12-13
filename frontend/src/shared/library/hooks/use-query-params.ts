@@ -19,13 +19,25 @@ export const useQueryParams = () => {
 
   const setQueryParam = (key: string, value: string) => {
     const params = new URLSearchParams(location.search)
-    params.set(key, value.toString())
+    const currentParams = Object.fromEntries(params.entries())
+    const updatedParams = { ...currentParams, [key]: value }
+    const newParams = new URLSearchParams(updatedParams)
+    setSearchParams(newParams.toString())
+  }
+
+  const setQueryParams = (updates: Record<string, string>) => {
+    const params = new URLSearchParams(location.search)
+    Object.entries(updates).forEach(([key, value]) => {
+      params.set(key, value)
+    })
     setSearchParams(params.toString())
   }
 
-  const removeQueryParamByKey = (key: string) => {
+  const removeQueryParamByKey = (keys: string[]) => {
     const params = new URLSearchParams(location.search)
-    params.delete(key)
+    keys.forEach(key => {
+      params.delete(key)
+    })
     setSearchParams(params.toString())
   }
 
@@ -33,6 +45,7 @@ export const useQueryParams = () => {
     allQueryParams,
     getQueryParamByKey,
     setQueryParam,
+    setQueryParams,
     removeQueryParamByKey,
   }
 }

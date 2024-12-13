@@ -1,0 +1,138 @@
+// import { useEffect, useState } from 'react'
+
+// import {
+//   Accordion,
+//   AccordionContent,
+//   AccordionItem,
+//   AccordionTrigger,
+// } from '@/shared/ui/shadcn-ui/accordion'
+// import { Checkbox } from '@/shared/ui/shadcn-ui/checkbox'
+// import { Separator } from '@/shared/ui/shadcn-ui/separator'
+// import { Slider } from '@/shared/ui/shadcn-ui/slider'
+// import { COLOR_STYLES } from '@/shared/constants'
+// import { FilterEnum, type StatusValue } from '@/shared/constants/app.const'
+// import { useQueryParams } from '@/shared/library/hooks'
+// import { cn } from '@/shared/library/utils'
+// import { FILTERS } from '../mock'
+
+// export const FiltersForm = () => {
+//   const { setQueryParams, getQueryParamByKey } = useQueryParams()
+//   const [value, setValue] = useState<string[]>(['price'])
+//   const [price, setPrice] = useState([50, 40000])
+//   const [status, setStatus] = useState<StatusValue>('')
+
+//   const handlePrice = () => {
+//     setQueryParams({
+//       [FilterEnum.PRICE_MIN]: String(price[0]),
+//       [FilterEnum.PRICE_MAX]: String(price[1]),
+//     })
+//   }
+
+//   useEffect(() => {
+//     const price_min = getQueryParamByKey(FilterEnum.PRICE_MIN)
+//     const price_max = getQueryParamByKey(FilterEnum.PRICE_MAX)
+//     const status = getQueryParamByKey(FilterEnum.STATUS)
+
+//     if (price_min && price_max) {
+//       setPrice([Number(price_min), Number(price_max)])
+//     }
+
+//     if (status) {
+//       setStatus(status as StatusValue)
+//     }
+//   }, [])
+
+//   return (
+//     <form>
+//       {FILTERS.map(filter => (
+//         <Accordion
+//           key={filter.name}
+//           type='multiple'
+//           value={value}
+//           onValueChange={setValue}
+//         >
+//           <AccordionItem value={filter.name}>
+//             <AccordionTrigger className='flex items-center justify-between py-[18px] pr-8'>
+//               <p className='text-base/5 font-medium'>
+//                 {filter.label}
+//                 {filter.label === 'Price' && ', ₴'}
+//               </p>
+//             </AccordionTrigger>
+//             <AccordionContent className='p-0 pb-4'>
+//               {filter.type === 'checkbox' && (
+//                 <ul className='space-y-2'>
+//                   {filter.items.map(item => (
+//                     <li key={item.label} className='flex items-center gap-2'>
+//                       <Checkbox id={item.label} />
+//                       <label
+//                         htmlFor={item.label}
+//                         className='text-sm font-medium'
+//                       >
+//                         {filter.name === 'colors' ? (
+//                           <span className='flex items-center gap-2'>
+//                             <span
+//                               className={cn(
+//                                 'inline-block size-4 rounded-full border',
+//                                 item.hex && COLOR_STYLES[item.name!],
+//                               )}
+//                             />
+//                             <span>{item.label}</span>
+//                           </span>
+//                         ) : (
+//                           item.label
+//                         )}
+//                       </label>
+//                     </li>
+//                   ))}
+//                 </ul>
+//               )}
+//               {filter.type === 'slider' && (
+//                 <div className='w-[234px] space-y-4'>
+//                   <div className='flex items-center justify-between'>
+//                     <div className='flex items-center gap-2'>
+//                       <input
+//                         type='text'
+//                         value={String(price[0])}
+//                         onChange={e =>
+//                           setPrice([Number(e.target.value), price[1]])
+//                         }
+//                         className='inline-block w-[71px] rounded-lg border border-gray-300 bg-background py-[7px] text-center text-base/5 placeholder:text-gray-400 focus:border-primary-900 focus:outline-none'
+//                         placeholder={filter.items[0].label}
+//                       />
+//                       <Separator className='w-[14px] bg-gray-200' />
+//                       <input
+//                         type='text'
+//                         value={String(price[1])}
+//                         onChange={e =>
+//                           setPrice([price[0], Number(e.target.value)])
+//                         }
+//                         className='inline-block w-[71px] rounded-lg border border-gray-300 bg-background py-[7px] text-center text-base/5 placeholder:text-gray-400 focus:border-primary-900 focus:outline-none'
+//                         placeholder={filter.items[1].label}
+//                       />
+//                     </div>
+//                     <button
+//                       type='button'
+//                       onClick={() => handlePrice()}
+//                       className='flex h-[34px] w-[43px] items-center justify-center rounded-lg border border-gray-300 bg-background text-base/5 transition-colors duration-300 hover:border-primary-900 hover:bg-primary-100'
+//                     >
+//                       ОК
+//                     </button>
+//                   </div>
+
+//                   <Slider
+//                     defaultValue={price}
+//                     min={Number(filter.items[0].label)}
+//                     max={Number(filter.items[1].label)}
+//                     step={1}
+//                     minStepsBetweenThumbs={1}
+//                     onValueChange={values => setPrice(values)}
+//                   />
+//                 </div>
+//               )}
+//             </AccordionContent>
+//           </AccordionItem>
+//         </Accordion>
+//       ))}
+//     </form>
+//   )
+// }
