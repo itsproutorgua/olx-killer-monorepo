@@ -23,8 +23,10 @@ export const ProductGrid = ({ path }: { path: string }) => {
   const page = getQueryParamByKey('page')
     ? Number(getQueryParamByKey('page'))
     : 1
-  const price_min = Number(getQueryParamByKey(FilterEnum.PRICE).split('-')[0])
-  const price_max = Number(getQueryParamByKey(FilterEnum.PRICE).split('-')[1])
+  const priceRange =
+    getQueryParamByKey(FilterEnum.PRICE)?.split('-').map(Number) || []
+  const price_min = Number.isInteger(priceRange[0]) ? priceRange[0] : 0
+  const price_max = Number.isInteger(priceRange[1]) ? priceRange[1] : 40000
   const status = getQueryParamByKey(FilterEnum.STATUS)
 
   const { data, cursor } = useProducts(

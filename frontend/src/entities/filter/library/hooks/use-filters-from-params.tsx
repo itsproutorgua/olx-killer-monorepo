@@ -13,7 +13,7 @@ export const useFiltersFromParams = () => {
     if (Object.values(FilterEnum).includes(key as FilterEnum)) {
       switch (filterKey) {
         case FilterEnum.STATUS:
-          filters[filterKey] = t(`filters.condition.${value}`)
+          filters[filterKey] = t(`filters.condition.${value}`) || 'value'
           break
 
         default:
