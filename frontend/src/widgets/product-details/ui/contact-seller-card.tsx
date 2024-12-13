@@ -45,7 +45,7 @@ export const ContactSellerCard: React.FC<SellerProps> = ({
               </p>
             </div>
           </div>
-          <WriteSeller className='md:min-w-[243px]' />
+          <WriteSeller />
         </div>
       </div>
     </div>

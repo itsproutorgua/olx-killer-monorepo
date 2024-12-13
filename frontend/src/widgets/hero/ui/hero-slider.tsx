@@ -8,7 +8,6 @@ import {
   CarouselPrevious,
   type CarouselApi,
 } from '@/shared/ui/shadcn-ui/carousel.tsx'
-import { Picture } from '@/shared/ui'
 import { cn } from '@/shared/library/utils'
 import { HERO_DATA } from '../mock/hero.mock'
 
@@ -40,11 +39,12 @@ export const HeroSlider = () => {
       <CarouselContent>
         {HERO_DATA.map(item => (
           <CarouselItem key={item.id}>
-            <Picture
+            <img
               src={item.src}
-              srcset={item.srcset}
               alt={item.alt}
-              styles='w-full max-h-[329px] rounded-[15px]'
+              width='630'
+              height='329'
+              className='max-h-[329px] rounded-[15px]'
             />
           </CarouselItem>
         ))}

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import { Spinner } from '@chakra-ui/spinner'
 import { LogInIcon, LogOutIcon } from 'lucide-react'
@@ -13,55 +13,9 @@ import {
 import { UserButton } from './ui'
 
 export const UserMenu = () => {
-  const {
-    isAuthenticated,
-    user,
-    loginWithRedirect,
-    logout,
-    isLoading,
-    error,
-    getIdTokenClaims,
-  } = useAuth0()
+  const { isAuthenticated, user, loginWithRedirect, logout, isLoading, error } =
+    useAuth0()
   const [isOpen, setIsOpen] = useState(false)
-  const [registrationStatus, setRegistrationStatus] = useState<string | null>(
-    null,
-  )
-
-  useEffect(() => {
-    const registerUser = async () => {
-      try {
-        const token = await getIdTokenClaims()
-
-        if (token) {
-          const response = await fetch(
-            'https://api.house-community.site/uk/api/v1/users/authentication/',
-            {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({
-                id_token: token.__raw,
-              }),
-            },
-          )
-
-          if (response.ok) {
-            setRegistrationStatus('Registration successful')
-          } else {
-            setRegistrationStatus('Registration failed')
-          }
-        }
-      } catch (error) {
-        console.error('Error fetching access token or registering user:', error)
-        setRegistrationStatus('Registration error')
-      }
-    }
-
-    if (isAuthenticated && !registrationStatus) {
-      registerUser()
-    }
-  }, [getIdTokenClaims, isAuthenticated, registrationStatus])
 
   return (
     <DropdownMenu>
@@ -112,14 +66,6 @@ export const UserMenu = () => {
               <LogOutIcon className='mr-2 h-4 w-4' />
               Log Out
             </DropdownMenuItem>
-
-            {registrationStatus && (
-              <DropdownMenuItem>
-                <div className='text-center'>
-                  <span>{registrationStatus}</span>
-                </div>
-              </DropdownMenuItem>
-            )}
           </>
         ) : (
           <DropdownMenuItem

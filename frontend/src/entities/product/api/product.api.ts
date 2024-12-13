@@ -1,5 +1,5 @@
 import { keepPreviousData, queryOptions } from '@tanstack/react-query'
-import i18n from 'i18next'
+import { i18n } from 'i18next'
 
 import { instanceBase } from '@/shared/api'
 import { QUERY_KEYS } from '@/shared/constants'
@@ -104,7 +104,7 @@ class ProductApi {
     })
   }
 
-  findBySlugQueryOptions({ slug }: { slug: string }) {
+  findBySlugQueryOptions({ slug }: { slug: string }, i18n: i18n) {
     return queryOptions<Product>({
       queryKey: [QUERY_KEYS.PRODUCT, i18n.language, slug],
       queryFn: meta => this.findBySlug({ slug }, meta),

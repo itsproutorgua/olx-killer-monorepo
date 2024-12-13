@@ -22,7 +22,7 @@ export const WriteSeller: React.FC<Props> = ({ className }) => {
             : () => toast.error('Please log in to contact seller')
         }
       >
-        <span className='md:mr-8'>{t('buttons.writeSeller')}</span>
+        <span className='mr-8'>{t('buttons.writeSeller')}</span>
         <span className='absolute right-[5px] flex size-[43px] items-center justify-center rounded-full bg-background text-foreground'>
           <PenIcon />
         </span>
