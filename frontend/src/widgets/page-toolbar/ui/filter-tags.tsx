@@ -11,7 +11,9 @@ export const FilterTags = () => {
   const { removeQueryParamByKey } = useQueryParams()
 
   const onClear = () => {
-    removeQueryParamByKey(Object.keys(filters))
+    if (filters && Object.keys(filters).length > 0) {
+      removeQueryParamByKey(Object.keys(filters))
+    }
   }
   const onRemove = (key: FilterEnum) => {
     removeQueryParamByKey([key])

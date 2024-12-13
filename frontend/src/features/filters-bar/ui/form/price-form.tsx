@@ -38,7 +38,14 @@ export const PriceForm = () => {
     const price = getQueryParamByKey(FilterEnum.PRICE)
 
     if (price) {
-      form.setValue('price', price.split('-').map(Number))
+      const parsedPrice = price
+        .split('-')
+        .map(Number)
+        .filter(val => val >= 0 && val <= 40000)
+      form.setValue(
+        'price',
+        parsedPrice.length === 2 ? parsedPrice : [40, 40000],
+      )
     } else {
       form.setValue('price', [40, 40000])
     }
