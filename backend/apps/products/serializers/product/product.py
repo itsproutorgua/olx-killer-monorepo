@@ -10,7 +10,7 @@ from apps.products.serializers import CategorySerializer
 from apps.products.serializers.price.price import PriceSerializer
 from apps.products.serializers.product.product_image import ProductImageSerializer
 from apps.products.serializers.product.product_video import ProductVideoSerializer
-from apps.users.serializers.profile import ProfileSerializer
+from apps.users.serializers.product_profile import ProductProfileSerializer
 
 
 class ProductSerializer(serializers.ModelSerializer):
@@ -41,9 +41,9 @@ class ProductSerializer(serializers.ModelSerializer):
         ]
         read_only_fields = ['id', 'created_at', 'updated_at', 'seller', 'slug', 'views']
 
-    @extend_schema_field(ProfileSerializer)
-    def get_seller(self, obj: Product) -> ProfileSerializer:
-        return ProfileSerializer(obj.seller.profile).data
+    @extend_schema_field(ProductProfileSerializer)
+    def get_seller(self, obj: Product) -> ProductProfileSerializer:
+        return ProductProfileSerializer(obj.seller.profile).data
 
     @staticmethod
     def get_status(obj: Product) -> str:
