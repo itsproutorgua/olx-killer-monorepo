@@ -9,7 +9,8 @@ class LocationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Location
-        fields = ['region', 'location_type', 'latitude', 'longitude']
+        fields = ('id', 'location_type', 'region', 'latitude', 'longitude')
+        read_only_fields = ('id', 'location_type', 'region', 'latitude', 'longitude')
 
     def to_representation(self, instance):
         representation = super().to_representation(instance)
@@ -21,7 +22,7 @@ class LocationSerializer(serializers.ModelSerializer):
         else:
             name = None
 
-        representation = {'name': name, **representation}
+        representation = {'id': representation.pop('id'), 'name': name, **representation}
 
         return representation
 
