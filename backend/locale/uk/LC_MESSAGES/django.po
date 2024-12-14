@@ -242,7 +242,7 @@ msgstr "Село"
 
 #: .\apps\locations\models\location.py:16
 msgid "Location Type"
-msgstr "Розташування"
+msgstr "Тип розташування"
 
 #: .\apps\locations\models\location.py:19
 msgid "Type of location"
