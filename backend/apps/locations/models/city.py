@@ -7,7 +7,7 @@ from apps.products.utils import translate_and_set_fields
 
 class City(TimestampMixin, models.Model):
     name = models.CharField(_('City'), max_length=100)
-    region = models.ForeignKey('Region', on_delete=models.CASCADE, related_name='cities')
+    region = models.ForeignKey('Region', on_delete=models.CASCADE, related_name='cities', verbose_name=_('Region'))
     slug = models.SlugField('Slug', blank=True, null=True)
 
     def __str__(self):
