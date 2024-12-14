@@ -1,1 +1,1 @@
-from apps.users.serializers.authentication_auth0 import UserAuthTokenSerializer
+from apps.users.serializers.profile import ProfileSerializer
