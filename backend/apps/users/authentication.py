@@ -108,6 +108,9 @@ class Auth0JWTAuthentication(JWTAuthentication):
         if not user.is_active:
             raise AuthenticationFailed(_('User is inactive'), code='user_inactive')
 
+        user.last_login = now()
+        user.save()
+
         return user
 
     def create_user_from_token(self, validated_token: dict) -> AuthUser:
@@ -115,9 +118,8 @@ class Auth0JWTAuthentication(JWTAuthentication):
         Creates a new user based on the validated token claims.
         """
         email = validated_token.get('email')
-        username = validated_token.get('nickname', email.split('@')[0])
+        username = self.get_username(validated_token)
         email_verified = validated_token.get('email_verified', False)
-        picture = validated_token.get('picture')
         sub = validated_token.get('sub')
 
         try:
@@ -132,12 +134,13 @@ class Auth0JWTAuthentication(JWTAuthentication):
                 defaults={
                     'username': username,
                     'is_email_verified': email_verified,
-                    'last_login': now(),
                 },
             )
-            user.profile.picture = picture
             user.profile.add_provider(provider_name, provider_id)
-            user.save()
 
         logger.info(f'Created new user with email: {email}')
         return user
+
+    @staticmethod
+    def get_username(data: dict) -> str:
+        return data.get('given_name') or data.get('nickname', data.get('email').split('@')[0])
