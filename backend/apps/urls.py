@@ -34,6 +34,7 @@ api = [
     path('', include('apps.users.urls', namespace='users')),
     path('', include('apps.products.urls', namespace='products')),
     path('', include('apps.favorites.urls', namespace='favorites')),
+    path('', include('apps.locations.urls', namespace='locations')),
     # Spectacular
     path('schema/', SpectacularAPIView.as_view(), name='schema'),
     # Optional UI:
