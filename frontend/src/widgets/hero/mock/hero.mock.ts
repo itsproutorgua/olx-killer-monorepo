@@ -15,7 +15,7 @@ export const HERO_DATA: HeroItem[] = [
   {
     id: 1,
     alt: 'hero image',
-    src: hero_375,
+    src: hero_1440,
     type: 'image/jpeg',
     srcset: [
       { width: 375, items: [hero_375, hero_375_x2] },
@@ -25,7 +25,7 @@ export const HERO_DATA: HeroItem[] = [
   {
     id: 2,
     alt: 'hero image',
-    src: hero_375,
+    src: hero_1440,
     type: 'image/jpeg',
     srcset: [
       { width: 375, items: [hero_375, hero_375_x2] },
@@ -35,7 +35,7 @@ export const HERO_DATA: HeroItem[] = [
   {
     id: 3,
     alt: 'hero image',
-    src: hero_375,
+    src: hero_1440,
     type: 'image/jpeg',
     srcset: [
       { width: 375, items: [hero_375, hero_375_x2] },
@@ -45,7 +45,7 @@ export const HERO_DATA: HeroItem[] = [
   {
     id: 4,
     alt: 'hero image',
-    src: hero_375,
+    src: hero_1440,
     type: 'image/jpeg',
     srcset: [
       { width: 375, items: [hero_375, hero_375_x2] },
@@ -55,7 +55,7 @@ export const HERO_DATA: HeroItem[] = [
   {
     id: 5,
     alt: 'hero image',
-    src: hero_375,
+    src: hero_1440,
     type: 'image/jpeg',
     srcset: [
       { width: 375, items: [hero_375, hero_375_x2] },

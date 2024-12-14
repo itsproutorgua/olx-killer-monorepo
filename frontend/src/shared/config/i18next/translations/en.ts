@@ -3,6 +3,7 @@ export const en = {
     searchPlaceholder: "I'm looking for...",
   },
   buttons: {
+    cancelAll: 'Cancel all',
     next: 'Next',
     previous: 'Previous',
     searchButton: 'Find',
@@ -86,14 +87,17 @@ export const en = {
     socialMedia: 'Social media',
     helpCenter: 'Help center',
   },
-  currency: 'UAH',
+  currency: {
+    symbol: '$',
+    label: 'USD',
+  },
   crumbs: {
     home: 'Home page',
   },
   bottomBar: {
     home: 'Home',
     catalog: 'Catalog',
-    chat: 'Messages',
+    chat: 'Chat',
     account: 'Account',
     favorites: 'Favorites',
   },
@@ -126,10 +130,13 @@ export const en = {
     showAll: 'Show all',
   },
   filters: {
-    subcategory: 'Subcategory',
     price: 'Price',
-    size: 'Size',
-    colors: 'Colors',
+    condition: {
+      title: 'Condition',
+      all: 'All',
+      new: 'New',
+      old: 'Used',
+    },
   },
   colors: {
     beige: 'Beige',

@@ -1,12 +1,17 @@
 import { useTranslation } from 'react-i18next'
 
-import { FiltersBar } from '@/widgets/filters-bar'
 import { PageToolbar } from '@/widgets/page-toolbar'
+import { FiltersBar } from '@/features/filters-bar'
 import { PagePagination } from '@/features/page-pagination'
+import { useProducts } from '@/entities/product'
 import { SectionTitle } from '@/shared/ui'
-import { APP_VARIABLES, type SortEnum } from '@/shared/constants/app.const'
+import { NoResults } from '@/shared/ui/no-results'
+import {
+  APP_VARIABLES,
+  FilterEnum,
+  type SortEnum,
+} from '@/shared/constants/app.const'
 import { useQueryParams } from '@/shared/library/hooks'
-import { useProducts } from '../library'
 import { ProductList } from './product-list'
 
 export const ProductGrid = ({ path }: { path: string }) => {
@@ -18,12 +23,20 @@ export const ProductGrid = ({ path }: { path: string }) => {
   const page = getQueryParamByKey('page')
     ? Number(getQueryParamByKey('page'))
     : 1
+  const priceRange =
+    getQueryParamByKey(FilterEnum.PRICE)?.split('-').map(Number) || []
+  const price_min = Number.isInteger(priceRange[0]) ? priceRange[0] : 0
+  const price_max = Number.isInteger(priceRange[1]) ? priceRange[1] : 40000
+  const status = getQueryParamByKey(FilterEnum.STATUS)
 
   const { data, cursor } = useProducts(
     {
       path,
       page,
       limit,
+      price_min,
+      price_max,
+      status,
       sort,
     },
     {},
@@ -45,7 +58,12 @@ export const ProductGrid = ({ path }: { path: string }) => {
             <div className='flex-1 space-y-5'>
               <div className='border-b border-l border-border pb-[60px] pl-5 pt-[18px]'>
                 <SectionTitle title={t('titles.announcementsAll')} />
-                <ProductList data={data.results} />
+
+                {data.count === 0 ? (
+                  <NoResults />
+                ) : (
+                  <ProductList data={data.results} />
+                )}
               </div>
 
               <PagePagination count={data.count} limit={limit} />

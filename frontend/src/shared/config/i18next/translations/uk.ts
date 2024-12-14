@@ -4,6 +4,7 @@ export const uk = {
   },
 
   buttons: {
+    cancelAll: 'Скасувати все',
     next: 'Наступна',
     previous: 'Попередня',
     searchButton: 'Знайти',
@@ -87,14 +88,17 @@ export const uk = {
     socialMedia: 'Соціальні мережі',
     helpCenter: 'Центр підтримки',
   },
-  currency: 'грн',
+  currency: {
+    symbol: '₴',
+    label: 'UAH',
+  },
   crumbs: {
     home: 'Головна сторінка',
   },
   bottomBar: {
     home: 'Головна',
     catalog: 'Каталог',
-    chat: 'Повідомлення',
+    chat: 'Чат',
     account: 'Профіль',
     favorites: 'Обрані',
   },
@@ -126,10 +130,13 @@ export const uk = {
     showAll: 'Показати всі',
   },
   filters: {
-    subcategory: 'Підкатегорія',
     price: 'Ціна',
-    size: 'Розмір',
-    colors: 'Кольори',
+    condition: {
+      title: 'Стан',
+      all: 'Усі',
+      new: 'Нові',
+      old: 'Вживані',
+    },
   },
   colors: {
     beige: 'Бежевий',

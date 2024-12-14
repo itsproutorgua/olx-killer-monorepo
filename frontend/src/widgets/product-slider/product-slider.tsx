@@ -2,9 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { ProductCard } from '@/widgets/product-card'
-import { useProducts } from '@/widgets/product-grid/library'
 import { chunkArray } from '@/widgets/product-slider/model/product-slider-helper.ts'
-import { Product } from '@/entities/product'
+import { Product, useProducts } from '@/entities/product'
 import {
   Carousel,
   CarouselContent,

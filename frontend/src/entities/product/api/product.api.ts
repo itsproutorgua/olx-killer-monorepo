@@ -1,5 +1,5 @@
 import { keepPreviousData, queryOptions } from '@tanstack/react-query'
-import i18n from 'i18next'
+import { i18n } from 'i18next'
 
 import { instanceBase } from '@/shared/api'
 import { QUERY_KEYS } from '@/shared/constants'
@@ -14,6 +14,7 @@ export interface FilterParams {
   price_max?: number
   price_min?: number
   sort?: SortEnum
+  status?: string
 }
 
 class ProductApi {
@@ -28,6 +29,7 @@ class ProductApi {
       price_max,
       price_min,
       sort,
+      status,
     }: FilterParams,
     { signal }: { signal: AbortSignal },
   ) {
@@ -39,6 +41,7 @@ class ProductApi {
     if (currency_code) params.set('currency_code', currency_code.toString())
     if (price_max) params.set('price_max', price_max.toString())
     if (price_min) params.set('price_min', price_min.toString())
+    if (status) params.set('status', status.toString())
     if (sort && sort !== SortEnum.CREATED_AT_DESC)
       params.set('sort_by', sort.toString())
 
@@ -54,7 +57,7 @@ class ProductApi {
     { slug }: { slug: string },
     { signal }: { signal: AbortSignal },
   ) {
-    const url = `${this.BASE_URL}${slug}`
+    const url = `${this.BASE_URL}${slug}/`
     const response = await instanceBase.get<Product>(url, { signal })
     return response.data
   }
@@ -66,6 +69,7 @@ class ProductApi {
     limit = APP_VARIABLES.LIMIT,
     price_max,
     price_min,
+    status,
     sort = SortEnum.CREATED_AT_DESC,
   }: FilterParams) {
     return queryOptions<ProductResponse>({
@@ -78,11 +82,21 @@ class ProductApi {
         limit,
         price_max,
         price_min,
+        status,
         sort,
       ],
       queryFn: meta =>
         this.findByFilters(
-          { path, currency_code, page, limit, price_max, price_min, sort },
+          {
+            path,
+            currency_code,
+            page,
+            limit,
+            price_max,
+            price_min,
+            status,
+            sort,
+          },
           meta,
         ),
       placeholderData: keepPreviousData,
@@ -90,7 +104,7 @@ class ProductApi {
     })
   }
 
-  findBySlugQueryOptions({ slug }: { slug: string }) {
+  findBySlugQueryOptions({ slug }: { slug: string }, i18n: i18n) {
     return queryOptions<Product>({
       queryKey: [QUERY_KEYS.PRODUCT, i18n.language, slug],
       queryFn: meta => this.findBySlug({ slug }, meta),

@@ -1,5 +1,6 @@
 import React from 'react'
 import { useQuery } from '@tanstack/react-query'
+import { useTranslation } from 'react-i18next'
 
 import { Product, productApi } from '@/entities/product'
 import { FetchError } from '@/shared/ui/error/fetch-error.tsx'
@@ -8,8 +9,9 @@ export const useProduct = (
   slug: string,
   { Skeleton }: { Skeleton?: React.ReactNode },
 ) => {
+  const { i18n } = useTranslation()
   const { data, isLoading, isError } = useQuery<Product>({
-    ...productApi.findBySlugQueryOptions({ slug }),
+    ...productApi.findBySlugQueryOptions({ slug }, i18n),
   })
 
   const cursor = (

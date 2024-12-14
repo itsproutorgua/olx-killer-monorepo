@@ -14,7 +14,7 @@ export const FavoriteButton = ({ className }: { className?: string }) => {
     >
       <HeartIcon className='h-6 w-6 fill-primary-900 transition-colors duration-300 group-hover:fill-primary-50' />
       {/* Favorite Count Badge */}
-      {!isLoading && favoriteCount && (
+      {!isLoading && (favoriteCount ?? 0) > 0 && (
         <span className='absolute right-0 top-1 flex h-5 w-5 items-center justify-center rounded-full bg-gray-50 text-xs text-primary-900'>
           {favoriteCount}
         </span>

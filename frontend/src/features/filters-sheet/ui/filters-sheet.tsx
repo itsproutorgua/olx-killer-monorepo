@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
 
-import { FiltersBar } from '@/widgets/filters-bar'
+import { FiltersBar } from '@/features/filters-bar'
 import {
   Sheet,
   SheetClose,

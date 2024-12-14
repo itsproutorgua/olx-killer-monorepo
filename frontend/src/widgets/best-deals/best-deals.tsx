@@ -1,8 +1,7 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { useProducts } from '@/widgets/product-grid/library'
-import { type Product } from '@/entities/product'
+import { useProducts, type Product } from '@/entities/product'
 import {
   Collapsible,
   CollapsibleContent,

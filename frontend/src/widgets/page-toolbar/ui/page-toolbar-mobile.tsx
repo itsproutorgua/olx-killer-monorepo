@@ -1,4 +1,4 @@
-import { FiltersSheet } from '@/widgets/filters-sheet'
+import { FiltersSheet } from '@/features/filters-sheet'
 import { SortButton } from '@/features/sort-button'
 
 export const PageToolbarMobile = () => {

@@ -69,7 +69,7 @@ const BottomBar = () => {
       )}
     >
       {/* Bottom Menu Bar */}
-      <div className='relative flex h-[75px] items-center justify-between rounded-t-[30px] bg-[#2c2a84] px-[8px] text-gray-50'>
+      <div className='relative flex h-[75px] items-center justify-between rounded-t-[30px] bg-primary-900 px-[8px] text-gray-50'>
         <div className='flex w-[35%] flex-row justify-between gap-2'>
           <Link to='/' className='flex w-[70px] flex-col items-center'>
             <BottomBarHome />
@@ -83,7 +83,7 @@ const BottomBar = () => {
             <Heart className='h-[30px] w-6 stroke-[1.5]' />
             <span className='text-[13px]'>{t('bottomBar.favorites')}</span>
             {/* Favorite Count Badge */}
-            {!isLoading && favoriteCount && (
+            {!isLoading && (favoriteCount ?? 0) > 0 && (
               <span className='absolute -top-1 right-2.5 flex h-5 w-5 items-center justify-center rounded-full bg-gray-50 text-xs text-primary-900'>
                 {favoriteCount}
               </span>
@@ -106,9 +106,14 @@ const BottomBar = () => {
 
           <div
             onClick={
-              isAuthenticated ? () => logout() : () => loginWithRedirect()
+              isAuthenticated
+                ? () => logout()
+                : () =>
+                    loginWithRedirect({
+                      appState: { targetUrl: window.location.pathname },
+                    })
             }
-            className='flex w-[70px] flex-col items-center'
+            className='flex w-[70px] cursor-pointer flex-col items-center'
           >
             <UserRoundedIcon className='h-[30px] w-6 fill-primary-900' />
             <span className='text-[13px]'>{t('bottomBar.account')}</span>
