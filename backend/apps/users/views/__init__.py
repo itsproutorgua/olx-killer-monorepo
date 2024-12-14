@@ -1,1 +1,1 @@
-from apps.users.views.auth0 import UserAuthenticationView
+from apps.users.views.profile import ProfileRetrieveUpdateDeleteView
