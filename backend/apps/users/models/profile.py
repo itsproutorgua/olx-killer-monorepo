@@ -10,7 +10,7 @@ class Profile(TimestampMixin, HistoricalModel, models.Model):
     user = models.OneToOneField('User', on_delete=models.CASCADE, related_name='profile', verbose_name=_('User'))
     picture = models.ImageField(
         _('profile picture'),
-        upload_to='user_pictures/',
+        upload_to='user_pictures/%Y/%m/%d',
         blank=True,
         null=True,
         max_length=255,
