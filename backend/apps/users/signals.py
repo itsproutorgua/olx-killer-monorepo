@@ -9,11 +9,11 @@ User = get_user_model()
 
 
 @receiver(post_save, sender=User)
-def create_user_profile(sender, instance, created, **kwargs):
+def manage_user_profile(sender, instance, created, **kwargs):
+    """
+    Creates a profile when a new user is created and ensures the profile is updated on user save.
+    """
     if created:
         Profile.objects.create(user=instance)
-
-
-@receiver(post_save, sender=User)
-def save_user_profile(sender, instance, **kwargs):
-    instance.profile.save()
+    elif hasattr(instance, 'profile'):
+        instance.profile.save()
