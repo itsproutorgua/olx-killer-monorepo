@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.db.models import Q
+from django.utils import timezone
 from django.utils.translation import get_language
 from django.utils.translation import gettext_lazy as _
 from simple_history.admin import SimpleHistoryAdmin
@@ -62,3 +63,11 @@ class ProductAdmin(SimpleHistoryAdmin):
             queryset = Product.objects.filter(q1)
 
         return queryset, use_distinct
+
+    def save_model(self, request, obj, form, change):
+        if not change:
+            obj.seller = request.user
+        else:
+            obj.updated_at = timezone.now()
+
+        super().save_model(request, obj, form, change)
