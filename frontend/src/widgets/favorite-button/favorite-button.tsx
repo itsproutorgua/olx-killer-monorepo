@@ -1,12 +1,16 @@
+import { Link } from 'react-router-dom'
+
 import { useFavoriteCount } from '@/entities/favorite/library/hooks/use-favorites.tsx'
 import { HeartIcon } from '@/shared/ui/icons'
+import { PRIVATE_PAGES } from '@/shared/constants'
 import { cn } from '@/shared/library/utils'
 
 export const FavoriteButton = ({ className }: { className?: string }) => {
   const { data: favoriteCount, isLoading } = useFavoriteCount()
 
   return (
-    <button
+    <Link
+      to={`${PRIVATE_PAGES.ACCOUNT}/${PRIVATE_PAGES.FAVORITE}`}
       className={cn(
         'group relative flex size-11 items-center justify-center text-gray-50 transition-colors duration-300',
         className,
@@ -19,6 +23,6 @@ export const FavoriteButton = ({ className }: { className?: string }) => {
           {favoriteCount}
         </span>
       )}
-    </button>
+    </Link>
   )
 }

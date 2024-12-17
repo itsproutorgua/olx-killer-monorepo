@@ -93,7 +93,7 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({
           <CarouselContent>
             {chunkArray(data.results, dynamicChunkSize).map(
               (pair: Product[], index: number) => (
-                <CarouselItem key={index} className='flex gap-[10px]'>
+                <CarouselItem key={index} className='flex gap-[9px]'>
                   {pair.map((deal: Product) => (
                     <div
                       key={deal.slug}

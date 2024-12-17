@@ -152,4 +152,28 @@ export const en = {
     red: 'Red',
     black: 'Black',
   },
+  account: {
+    myAccount: 'My account',
+    listings: 'Listings',
+    messages: 'Messages',
+    favorites: 'Favorites',
+    profile: 'Profile',
+    settings: 'Settings',
+    logIn: 'Log in to your account',
+    logOut: 'Log out',
+  },
+  listings: {
+    active: 'Active',
+    pending: 'Pending',
+    unpaid: 'Unpaid',
+    inactive: 'Inactive',
+    rejected: 'Rejected',
+    activeEmpty: 'You currently have no active listings',
+    pendingEmpty: 'You currently have no pending listings',
+    unpaidEmpty: 'You currently have no unpaid listings',
+    inactiveEmpty: 'You currently have no inactive listings',
+    rejectedEmpty: 'You currently have no rejected listings',
+    addListings:
+      'Start selling right now! Create your first listing to attract buyers and showcase your products',
+  },
 }
