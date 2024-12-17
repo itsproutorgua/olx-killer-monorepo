@@ -1,8 +1,8 @@
-import { useState } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import { Spinner } from '@chakra-ui/spinner'
-import { LogInIcon, LogOutIcon } from 'lucide-react'
 import { ErrorIcon } from 'react-hot-toast'
+import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
 
 import {
   DropdownMenu,
@@ -10,12 +10,15 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/shared/ui/shadcn-ui/dropdown-menu.tsx'
+import { ArrowLeftRed } from '@/shared/ui/icons/arrow-left-red.tsx'
+import { DangerIcon } from '@/shared/ui/icons/danger-icon.tsx'
+import { PRIVATE_PAGES } from '@/shared/constants'
 import { UserButton } from './ui'
 
 export const UserMenu = () => {
+  const { t } = useTranslation()
   const { isAuthenticated, user, loginWithRedirect, logout, isLoading, error } =
     useAuth0()
-  const [isOpen, setIsOpen] = useState(false)
 
   return (
     <DropdownMenu>
@@ -23,7 +26,7 @@ export const UserMenu = () => {
         asChild
         className='flex size-11 items-center justify-center text-gray-50'
       >
-        <div onClick={() => setIsOpen(!isOpen)}>
+        <div>
           {error && <ErrorIcon />}
           {!error && isLoading && (
             <Spinner
@@ -45,26 +48,26 @@ export const UserMenu = () => {
           )}
         </div>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className='bg-background p-2'>
+      <DropdownMenuContent className='mr-[67px] w-[190px] bg-background p-0'>
         {isAuthenticated ? (
           <>
-            <DropdownMenuItem>
-              <span>{user?.name}</span>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <span>{user?.email}</span>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <span>
-                E-mail: {user?.email_verified ? 'Verified' : 'Not Verified'}
-              </span>
-            </DropdownMenuItem>
+            <Link to={`${PRIVATE_PAGES.ACCOUNT}/${PRIVATE_PAGES.LISTINGS}`}>
+              <DropdownMenuItem className='cursor-pointer justify-between py-[11px] pl-[16px] pr-3'>
+                <span>{t('account.myAccount')}</span>
+                {!user?.email_verified && <DangerIcon />}
+              </DropdownMenuItem>
+            </Link>
+            <Link to={`${PRIVATE_PAGES.ACCOUNT}/${PRIVATE_PAGES.CHAT}`}>
+              <DropdownMenuItem className='cursor-pointer border-y py-[14px] pl-[16px] leading-none'>
+                <span>{t('account.messages')}</span>
+              </DropdownMenuItem>
+            </Link>
             <DropdownMenuItem
               onClick={() => logout()}
-              className='cursor-pointer'
+              className='cursor-pointer gap-3 py-[14px] pl-[16px] leading-none text-error-700'
             >
-              <LogOutIcon className='mr-2 h-4 w-4' />
-              Log Out
+              <ArrowLeftRed />
+              {t('account.logOut')}
             </DropdownMenuItem>
           </>
         ) : (
@@ -74,12 +77,9 @@ export const UserMenu = () => {
                 appState: { targetUrl: window.location.pathname },
               })
             }
-            className='cursor-pointer'
+            className='h-[42px] cursor-pointer'
           >
-            Please Log In{' '}
-            <span className='ml-2'>
-              <LogInIcon />
-            </span>
+            {t('account.logIn')}
           </DropdownMenuItem>
         )}
       </DropdownMenuContent>
