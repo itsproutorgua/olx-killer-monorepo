@@ -13,9 +13,10 @@ CATEGORY_NOT_FOUND = _('Category not found')
 QUERY_PARAMS_NOT_ALLOWED = _('Query parameters are not allowed on this endpoint.')
 
 # Product
-PRODUCT_NOT_FOUND = _('No Product matches the given query.')
+PRODUCT_NOT_FOUND = _('No Advertisement matches the given query.')
 INVALID_SORT_FIELD = _('Invalid sort field.')
-INVALID_PRODUCT_STATUS = _('Invalid product status. Allowed values are "old" and "new".')
+INVALID_PRODUCT_STATUS = _('Invalid advertisement status. Allowed values are `old` and `new`.')
+INVALID_PRODUCT_PARAMETERS = _('Invalid parameters.')
 
 # Image
 INVALID_IMAGE_TYPE = _('Invalid file type. Allowed types: %s') % ', '.join(settings.ALLOWED_IMAGE_MIME_TYPES)
@@ -27,3 +28,6 @@ INVALID_VIDEO_TYPE = _('Invalid video type. Allowed types: %s') % ', '.join(sett
 VIDEO_SIZE_EXCEEDED = _('The video size cannot exceed %s MB.') % settings.MAX_VIDEO_FILE_SIZE_MB
 PRODUCT_VIDEO_LIMIT = _(f'Each product can have only {settings.VIDEO_UPLOAD_LIMIT} video.')
 INVALID_VIDEO = _('Uploaded file is not a valid video.')
+
+# Users
+USER_UNAUTHORIZED = _('Authentication credentials were not provided.')
