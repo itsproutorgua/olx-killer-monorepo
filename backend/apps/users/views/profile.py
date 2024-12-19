@@ -9,12 +9,13 @@ from rest_framework import status
 from rest_framework.exceptions import PermissionDenied
 from simple_history.utils import update_change_reason
 
+from apps.api_tags import PROFILE_TAG
 from apps.users.models import Profile
 from apps.users.serializers import ProfileSerializer
 
 
 @extend_schema(
-    tags=['Profiles'],
+    tags=[PROFILE_TAG],
     summary=_('User profile management'),
     description=_('Endpoint for managing the current user\'s profile, including retrieval, updating, and deletion.'),
 )
