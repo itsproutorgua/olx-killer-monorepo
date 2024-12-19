@@ -7,6 +7,7 @@ from rest_framework import generics
 from rest_framework import mixins
 from rest_framework import status
 from rest_framework.exceptions import PermissionDenied
+from simple_history.utils import update_change_reason
 
 from apps.users.models import Profile
 from apps.users.serializers import ProfileSerializer
@@ -38,8 +39,18 @@ class ProfileRetrieveUpdateDeleteView(
         serializer.save()
 
     def perform_destroy(self, instance):
+        """
+        Deactivates the user's account and related data without full deletion.
+        - Marks the user's account as inactive (`is_active = False`).
+        - Deactivates all active listings associated with the user.
+        - Logs the reason for the account deactivation in the change history.
+        """
         with transaction.atomic():
-            instance.user.delete()
+            update_change_reason(instance.user, _(f'The account was deleted by the {instance.user}.'))
+            instance.user.seller_products.all().update(active=False)
+            instance.user.is_active = False
+
+            instance.user.save()
 
     @extend_schema(
         summary=_('Retrieve user profile'),
@@ -119,7 +130,10 @@ class ProfileRetrieveUpdateDeleteView(
 
     @extend_schema(
         summary=_('Delete user profile'),
-        description=_('Delete the profile of the currently authenticated user.'),
+        description=_(
+            'Deactivates the user account and all associated listings. '
+            'The user data remains in the system for auditing purposes, but the account becomes inaccessible.'
+        ),
         responses={status.HTTP_204_NO_CONTENT: None},
     )
     def delete(self, request, *args, **kwargs):
