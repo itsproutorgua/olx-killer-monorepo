@@ -18,9 +18,9 @@ class ProductAdmin(SimpleHistoryAdmin):
     readonly_fields = ('id', 'created_at', 'updated_at', 'seller', 'slug', 'prod_olx_id', 'views')
     list_display_links = ('title',)
     autocomplete_fields = ['category']
-    search_fields = ('title', 'seller__email')
+    search_fields = ('title',)
     ordering = ('-created_at',)
-    list_filter = (PopularCategoryFilter,)
+    list_filter = (PopularCategoryFilter, 'seller')
     inlines = [PriceInline, ProductImageInline, ProductVideoInline]
     show_full_result_count = False
 
