@@ -7,20 +7,20 @@ from rest_framework.exceptions import NotFound
 from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
 
-from apps.api_tags import PRODUCT_TAG
+from apps.api_tags import PROFILE_TAG
 from apps.common import errors
 from apps.products.models import Product
 from apps.products.pagination import ProductPagination
-from apps.products.serializers import ProductByUserSerializer
+from apps.users.serializers import UserProductsSerializer
 
 
 class UserProductsView(ListAPIView):
     pagination_class = ProductPagination
-    serializer_class = ProductByUserSerializer
+    serializer_class = UserProductsSerializer
     queryset = Product.objects.prefetch_related('prices__currency', 'product_images').order_by('-created_at')
 
     @extend_schema(
-        tags=[PRODUCT_TAG],
+        tags=[PROFILE_TAG],
         summary=_('Retrieve user advertisements'),
         description=_(
             'Retrieve a list of advertisements for the authenticated user. '
@@ -42,7 +42,7 @@ class UserProductsView(ListAPIView):
             )
         ],
         responses={
-            200: ProductByUserSerializer,
+            200: UserProductsSerializer,
             400: OpenApiResponse(description=errors.INVALID_PRODUCT_PARAMETERS),
             401: OpenApiResponse(description=errors.USER_UNAUTHORIZED),
             404: OpenApiResponse(description=errors.PRODUCT_NOT_FOUND),
@@ -77,6 +77,6 @@ class UserProductsView(ListAPIView):
             serializer = self.get_serializer(page, many=True)
             return self.get_paginated_response(serializer.data)
 
-        products_data = ProductByUserSerializer(queryset, many=True).data
+        products_data = self.get_serializer(queryset, many=True).data
 
         return Response(products_data, status=status.HTTP_200_OK)
