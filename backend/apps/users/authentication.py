@@ -106,7 +106,11 @@ class Auth0JWTAuthentication(JWTAuthentication):
             user = self.create_user_from_token(validated_token)
 
         if not user.is_active:
-            raise AuthenticationFailed(_('User is inactive'), code='user_inactive')
+            message = user.history.all().values()[1].get('history_change_reason')
+            if message:
+                raise AuthenticationFailed(_(message), code='user_inactive')
+            else:
+                raise AuthenticationFailed(_('User is inactive'), code='user_inactive')
 
         user.last_login = now()
         user.save()
