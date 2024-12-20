@@ -5,7 +5,7 @@ from django.utils.translation import get_language
 from django.utils.translation import gettext_lazy as _
 from simple_history.admin import SimpleHistoryAdmin
 
-from apps.products.admin.filters import PopularCategoryFilter
+from apps.products.admin import filters
 from apps.products.admin.inlines import PriceInline
 from apps.products.admin.inlines import ProductImageInline
 from apps.products.admin.inlines import ProductVideoInline
@@ -17,12 +17,24 @@ class ProductAdmin(SimpleHistoryAdmin):
     list_display = ('title', 'seller', 'category', 'views', 'active', 'status')
     readonly_fields = ('id', 'created_at', 'updated_at', 'seller', 'slug', 'prod_olx_id', 'views')
     list_display_links = ('title',)
+    list_editable = ('status',)
     autocomplete_fields = ['category']
-    search_fields = ('title',)
+    search_fields = ('title', 'seller__email')
     ordering = ('-created_at',)
-    list_filter = (PopularCategoryFilter, 'seller')
+    list_filter = (
+        filters.ProductStatusFilter,
+        filters.ProductActivityFilter,
+        filters.PopularSellerFilter,
+        filters.PopularCategoryFilter,
+    )
     inlines = [PriceInline, ProductImageInline, ProductVideoInline]
     show_full_result_count = False
+    actions = (
+        'set_status_new',
+        'set_status_old',
+        'set_active',
+        'set_inactive',
+    )
 
     fieldsets = (
         (
@@ -47,6 +59,26 @@ class ProductAdmin(SimpleHistoryAdmin):
         ),
     )
 
+    @admin.action(description=_('Set status to New for selected products'))
+    def set_status_new(self, request, queryset):
+        queryset.update(status=Product.Status.NEW)
+        return queryset
+
+    @admin.action(description=_('Set status to Old for selected products'))
+    def set_status_old(self, request, queryset):
+        queryset.update(status=Product.Status.OLD)
+        return queryset
+
+    @admin.action(description=_('Activate selected products'))
+    def set_active(self, request, queryset):
+        queryset.update(active=True)
+        return queryset
+
+    @admin.action(description=_('Deactivate selected products'))
+    def set_inactive(self, request, queryset):
+        queryset.update(active=False)
+        return queryset
+
     def get_queryset(self, request):
         queryset = super().get_queryset(request)
         return queryset.select_related('category', 'seller')
@@ -62,7 +94,7 @@ class ProductAdmin(SimpleHistoryAdmin):
             q1 = Q(**{f'category__{title_field}__icontains': search_term})
             queryset = Product.objects.filter(q1)
 
-        return queryset, use_distinct
+        return queryset.order_by('-created_at'), use_distinct
 
     def save_model(self, request, obj, form, change):
         if not change:
