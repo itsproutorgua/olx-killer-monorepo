@@ -191,14 +191,14 @@ msgstr "Зазначений улюблений елемент не існує �
 
 #: .\apps\favorites\views\user_favorites_count.py:15
 msgid "Get favorite products count"
-msgstr "Отримати кількість улюблених продуктів"
+msgstr "Отримати кількість улюблених оголошень"
 
 #: .\apps\favorites\views\user_favorites_count.py:16
 msgid ""
 "Returns the count of favorite products associated with the current "
 "authenticated user."
 msgstr ""
-"Повертає кількість улюблених продуктів, пов’язаних із поточним "
+"Повертає кількість улюблених оголошень, пов’язаних із поточним "
 "автентифікованим користувачем."
 
 #: .\apps\favorites\views\user_favorites_count.py:19
@@ -217,7 +217,7 @@ msgstr "Приклад відповіді"
 msgid ""
 "An example response showing the count of favorite products for the user."
 msgstr ""
-"Приклад відповіді, що показує кількість улюблених продуктів для користувача."
+"Приклад відповіді, що показує кількість улюблених оголошень для користувача."
 
 #: .\apps\locations\admin\location.py:15 .\apps\locations\models\location.py:35
 #: .\apps\users\models\profile.py:25
@@ -325,7 +325,7 @@ msgstr ""
 
 #: .\apps\products\admin\category.py:33
 msgid "Number of Products"
-msgstr "Кількість продуктів"
+msgstr "Кількість оголошень"
 
 #: .\apps\products\admin\filters\active_inactive.py:6
 msgid "Activity Status"
@@ -372,11 +372,11 @@ msgstr "Основний"
 
 #: .\apps\products\admin\product.py:62
 msgid "Set status to New for selected products"
-msgstr "Встановити статус 'Новий' для вибраних продуктів"
+msgstr "Встановити статус 'Новий' для вибраних оголошень"
 
 #: .\apps\products\admin\product.py:67
 msgid "Set status to Old for selected products"
-msgstr "Встановити статус 'Вживаний' для вибраних продуктів"
+msgstr "Встановити статус 'Вживаний' для вибраних оголошень"
 
 #: .\apps\products\admin\product.py:72
 msgid "Activate selected products"
@@ -562,7 +562,7 @@ msgstr "Не вдалося створити ціни на продукти: {}"
 
 #: .\apps\products\serializers\product\product.py:73
 msgid "Failed to create product images: {}"
-msgstr "Не вдалося створити зображення продуктів: {}"
+msgstr "Не вдалося створити зображення: {}"
 
 #: .\apps\products\serializers\product\product.py:103
 msgid "Price with currency {} does not exist."
@@ -670,7 +670,7 @@ msgstr "Фільтрувати товари за різними параметр
 
 #: .\apps\products\views\product_filters.py:61
 msgid "Retrieve a list of products filtered by multiple parameters"
-msgstr "Отримати список продуктів, відфільтрованих за кількома параметрами"
+msgstr "Отримати список оголошень, відфільтрованих за кількома параметрами"
 
 #: .\apps\products\views\product_filters.py:66
 msgid "Filter products by category path"
@@ -695,7 +695,7 @@ msgstr "Фільтрувати продукти за їх статусом (на
 
 #: .\apps\products\views\product_filters.py:97
 msgid "Field to sort products by (e.g., {"
-msgstr "Поле для сортування продуктів (наприклад, {"
+msgstr "Поле для сортування оголошень (наприклад, {"
 
 #: .\apps\products\views\product_filters.py:102
 msgid "Sort by price in ascending order"
@@ -723,21 +723,21 @@ msgstr "Сортуйте товари за датою створення в по
 
 #: .\apps\products\views\products_latest.py:19
 msgid "List of latest products"
-msgstr "Список нещодавно доданих продуктів"
+msgstr "Список нещодавно доданих оголошень"
 
 #: .\apps\products\views\products_latest.py:20
 msgid ""
 "Retrieve a list of the latest products with an option to limit the number of "
 "results (10 to 50)."
 msgstr ""
-"Отримати список нещодавно доданих продуктів із можливістю обмеження "
+"Отримати список нещодавно доданих оголошень із можливістю обмеження "
 "кількості результатів (від 10 до 50)."
 
 #: .\apps\products\views\products_latest.py:28
 msgid ""
 "The maximum number of products to retrieve, between 10 and 50. Default is 10."
 msgstr ""
-"Максимальна кількість продуктів, що витягуються: від 10 до 50. Значення за "
+"Максимальна кількість оголошень, що витягуються: від 10 до 50. Значення за "
 "замовчуванням — 10."
 
 #: .\apps\user_messages\apps.py:8
