@@ -380,16 +380,16 @@ msgstr "Встановити статус 'Вживаний' для обрани
 
 #: .\apps\products\admin\product.py:72
 msgid "Activate selected products"
-msgstr "Активувати вибрані продукти"
+msgstr "Активувати обрані оголошення"
 
 #: .\apps\products\admin\product.py:77
 msgid "Deactivate selected products"
-msgstr "Деактивувати вибрані продукти"
+msgstr "Деактивувати обрані оголошення"
 
 #: .\apps\products\apps.py:8 .\apps\products\models\product.py:58
 #: .\settings\jazzmin.py:53
 msgid "Products"
-msgstr "Продукти"
+msgstr "Оголошення"
 
 #: .\apps\products\models\category.py:15
 msgid "Category name"
