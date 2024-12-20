@@ -11,10 +11,10 @@ User = get_user_model()
 
 
 class Product(TimestampMixin, HistoricalModel, models.Model):
-    STATUS_TYPE_CHOICES = [
-        ('new', _('New')),
-        ('old', _('Old')),
-    ]
+    class Status(models.TextChoices):
+        NEW = 'new', _('New')
+        OLD = 'old', _('Old')
+
     title = models.CharField(_('Product name'), max_length=255)
     description = models.TextField(verbose_name=_('Product description'), blank=True, null=True)
     seller = models.ForeignKey(
@@ -32,8 +32,8 @@ class Product(TimestampMixin, HistoricalModel, models.Model):
     status = models.CharField(
         _('Status'),
         max_length=20,
-        choices=STATUS_TYPE_CHOICES,
-        default=STATUS_TYPE_CHOICES[1][0],
+        choices=Status.choices,
+        default=Status.OLD,
         help_text=_('Product status'),
     )
     active = models.BooleanField(
