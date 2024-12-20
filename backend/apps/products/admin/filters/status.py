@@ -3,13 +3,13 @@ from django.utils.translation import gettext_lazy as _
 
 
 class ProductStatusFilter(SimpleListFilter):
-    title = _('Product Status')
+    title = _('Announcement Status')
     parameter_name = 'status'
 
     def lookups(self, request, model_admin):
         return [
-            ('new', _('New products')),
-            ('old', _('Old products')),
+            ('new', _('New')),
+            ('old', _('Old')),
         ]
 
     def queryset(self, request, queryset):
