@@ -1,3 +1,8 @@
+from django.db.models import Case
+from django.db.models import Count
+from django.db.models import IntegerField
+from django.db.models import QuerySet
+from django.db.models import When
 from django.utils.translation import gettext_lazy as _
 from drf_spectacular.utils import extend_schema
 from drf_spectacular.utils import OpenApiParameter
@@ -50,22 +55,17 @@ class UserProductsView(ListAPIView):
     )
     def get(self, request):
         user = request.user
-        active_param = request.query_params.get('active', None)
+        active_param = request.query_params.get('active', '').lower()
+        queryset = self.queryset.filter(seller=user)
+        advertisement_counts = self.get_advertisement_counts(queryset)
 
         if active_param:
-            active_param = active_param.lower()
-            match active_param:
-                case 'true':
-                    queryset = self.queryset.filter(seller=user, active=True)
-                case 'false':
-                    queryset = self.queryset.filter(seller=user, active=False)
-                case _:
-                    return Response(
-                        {'detail': _('Invalid value for active parameter. Use "true" or "false".')},
-                        status=status.HTTP_400_BAD_REQUEST,
-                    )
-        else:
-            queryset = self.queryset.filter(seller=user)
+            if active_param not in ('true', 'false'):
+                return Response(
+                    {'detail': _("Invalid value for active parameter. Use 'true' or 'false'.")},
+                    status=status.HTTP_400_BAD_REQUEST,
+                )
+            queryset = queryset.filter(active=(active_param == 'true'))
 
         if not queryset.exists():
             active_status = '' if active_param is None else ('inactive', 'active')[active_param == 'true']
@@ -74,9 +74,54 @@ class UserProductsView(ListAPIView):
         # Pagination
         page = self.paginate_queryset(queryset)
         if page is not None:
-            serializer = self.get_serializer(page, many=True)
-            return self.get_paginated_response(serializer.data)
+            return self.get_paginated_response_data(page, advertisement_counts)
 
+        # Non-paginated response
         products_data = self.get_serializer(queryset, many=True).data
+        response_data = {
+            **advertisement_counts,
+            'results': products_data,
+        }
+        return Response(response_data, status=status.HTTP_200_OK)
 
-        return Response(products_data, status=status.HTTP_200_OK)
+    @staticmethod
+    def get_advertisement_counts(queryset: QuerySet) -> dict:
+        """
+        Get the counts of active and inactive advertisements for a given queryset.
+
+        Args:
+            queryset (QuerySet): The queryset to count active and inactive advertisements.
+
+        Returns:
+            dict: A dictionary containing counts for total, active, and inactive advertisements.
+        """
+        advertisement_counts = queryset.aggregate(
+            total_active=Count(Case(When(active=True, then=1), output_field=IntegerField())),
+            total_inactive=Count(Case(When(active=False, then=1), output_field=IntegerField())),
+        )
+        return {
+            'total_count': advertisement_counts['total_active'] + advertisement_counts['total_inactive'],
+            'total_active': advertisement_counts['total_active'],
+            'total_inactive': advertisement_counts['total_inactive'],
+        }
+
+    def get_paginated_response_data(self, page: list, advertisement_counts: dict) -> dict[str, any]:
+        """
+        Returns a paginated response with advertisement counts and the paginated list of products.
+
+        Args:
+            page (list): The paginated list of products.
+            advertisement_counts (dict): The dictionary containing advertisement counts.
+
+        Returns:
+            dict: A dictionary with advertisement counts, pagination info, and the product results.
+        """
+        products_data = self.get_serializer(page, many=True).data
+        paginated_response = self.get_paginated_response(products_data)
+        paginated_response.data = {
+            **advertisement_counts,
+            'next': paginated_response.data.get('next'),
+            'previous': paginated_response.data.get('previous'),
+            'results': paginated_response.data.get('results'),
+        }
+        return paginated_response
