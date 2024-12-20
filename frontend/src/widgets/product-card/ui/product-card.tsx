@@ -24,7 +24,7 @@ export const ProductCard = ({
         <img
           src={product.images[0].image}
           alt={product.title}
-          className='absolute block w-full object-cover'
+          className='absolute block h-full w-full object-cover'
         />
         <AddToFavorite
           productId={product.id}

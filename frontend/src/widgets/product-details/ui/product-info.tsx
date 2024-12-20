@@ -47,7 +47,6 @@ export const ProductInfo: React.FC<Props> = ({
     id: '858057687',
     views: '61',
     type: `${t('words.business')}`,
-    state: `${t('words.state')}${t('words.new')}`,
     seller: 'Stylishwear',
     sellerLogo: sellerLogo,
     sellerRating: 4.5,
@@ -63,11 +62,13 @@ export const ProductInfo: React.FC<Props> = ({
         {product.title}
       </h1>
       <div className='mt-[18px] hidden flex-row gap-5 md:flex'>
+        {/*uncomment when announcement.type will be added*/}
+        {/*<span className='flex h-8 items-center rounded-[6px] border border-border px-[21px] py-2.5 text-xs'>*/}
+        {/*  {announcement.type}*/}
+        {/*</span>*/}
         <span className='flex h-8 items-center rounded-[6px] border border-border px-[21px] py-2.5 text-xs'>
-          {announcement.type}
-        </span>
-        <span className='flex h-8 items-center rounded-[6px] border border-border px-[21px] py-2.5 text-xs'>
-          {announcement.state}
+          {t('words.state')}
+          {product.status}
         </span>
       </div>
       <div className='mt-2 leading-none md:mt-[54px] md:hidden'>
@@ -106,7 +107,7 @@ export const ProductInfo: React.FC<Props> = ({
           <span className='text-[12px]'>{t('words.report')}</span>
         </button>
       </div>
-      <div className='mt-[34px] flex items-center justify-between'>
+      <div className='mt-[28px] flex items-center justify-between'>
         <p className='text-[28px] font-medium leading-[1.22] md:text-[32px]'>
           {generatePriceString(product.prices)}
         </p>
@@ -115,7 +116,7 @@ export const ProductInfo: React.FC<Props> = ({
           className='text-xl text-primary-900 md:hidden'
         />
       </div>
-      <div className='mt-[32px] flex flex-col items-center gap-[10px] md:mt-[34px] md:flex-row md:gap-[45px]'>
+      <div className='mt-[28px] flex flex-col items-center gap-[10px] md:mt-[34px] md:flex-row md:gap-[45px]'>
         <div className='flex w-full flex-col items-center gap-[10px] md:w-[291px] md:flex-row md:gap-[19px]'>
           <WriteSeller className='w-full md:w-[238px]' />
           <AddToFavorite
@@ -131,7 +132,7 @@ export const ProductInfo: React.FC<Props> = ({
           className='basis-1/2'
         />
         <ProductLocation
-          location={product.seller.location}
+          location={product?.seller.location}
           className='basis-1/2'
         />
       </div>
@@ -162,7 +163,7 @@ export const ProductInfo: React.FC<Props> = ({
         )}
         <Separator className='mt-[11px] w-full bg-gray-200' />
       </div>
-      <div className='text-primary-gray mt-[11px] hidden flex-row items-center justify-between text-xs md:flex'>
+      <div className='text-primary-gray mt-[11px] hidden flex-row items-center justify-between text-xs md:mb-[104px] md:flex'>
         <p>ID: {announcement.id}</p>
         <p>
           {t('words.views')}: {product.views}
@@ -177,15 +178,11 @@ export const ProductInfo: React.FC<Props> = ({
       </div>
       <ProductLocation
         location={product.seller.location}
-        className='mt-[73px] basis-1/2 md:hidden'
+        className='mb-5 mt-[63px] basis-1/2 md:mb-0 md:hidden'
       />
-      {!isAuthenticated && <LoginCard className='mt-[28px] md:mt-[54px]' />}
+      {!isAuthenticated && <LoginCard className='mt-[28px]' />}
       {isAuthenticated && (
-        <ContactSellerCard
-          announcement={announcement}
-          product={product}
-          className='mt-5'
-        />
+        <ContactSellerCard announcement={announcement} product={product} />
       )}
     </div>
   )
