@@ -372,11 +372,11 @@ msgstr "Основний"
 
 #: .\apps\products\admin\product.py:62
 msgid "Set status to New for selected products"
-msgstr "Встановити статус 'Новий' для вибраних оголошень"
+msgstr "Встановити статус 'Новий' для обраних оголошень"
 
 #: .\apps\products\admin\product.py:67
 msgid "Set status to Old for selected products"
-msgstr "Встановити статус 'Вживаний' для вибраних оголошень"
+msgstr "Встановити статус 'Вживаний' для обраних оголошень"
 
 #: .\apps\products\admin\product.py:72
 msgid "Activate selected products"
