@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-05 17:24+0200\n"
+"POT-Creation-Date: 2024-12-20 09:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -46,53 +46,61 @@ msgid "Query parameters are not allowed on this endpoint."
 msgstr "Параметри запиту не дозволені на цій кінцевій точці."
 
 #: .\apps\common\errors.py:16
-msgid "No Product matches the given query."
-msgstr "Жоден продукт не відповідає даному запиту."
+msgid "No Advertisement matches the given query."
+msgstr "Жоден оголошення не відповідає даному запиту."
 
 #: .\apps\common\errors.py:17
 msgid "Invalid sort field."
 msgstr "Недійсне поле сортування."
 
 #: .\apps\common\errors.py:18
-msgid "Invalid product status. Allowed values are \"old\" and \"new\"."
-msgstr "Недійсний статус товару. Дозволені значення \"old\" і \"new\"."
+msgid "Invalid advertisement status. Allowed values are `old` and `new`."
+msgstr "Недійсний статус оголошення. Дозволеними значеннями є `old` і `new`."
 
-#: .\apps\common\errors.py:21
+#: .\apps\common\errors.py:19
+msgid "Invalid parameters."
+msgstr "Недійсні параметри."
+
+#: .\apps\common\errors.py:22
 #: .\apps\products\serializers\product\product_image.py:22
 #: .\apps\products\serializers\product\product_video.py:23
 #, python-format
 msgid "Invalid file type. Allowed types: %s"
 msgstr "Недійсний тип файлу. Дозволені типи: %s"
 
-#: .\apps\common\errors.py:22
+#: .\apps\common\errors.py:23
 msgid "Uploaded file is not a valid image."
 msgstr "Завантажений файл не є дійсним зображенням."
 
-#: .\apps\common\errors.py:23
+#: .\apps\common\errors.py:24
 #: .\apps\products\serializers\product\product_image.py:26
 #, python-format
 msgid "The image size cannot exceed %s MB."
 msgstr "Розмір зображення не може перевищувати %s Мб."
 
-#: .\apps\common\errors.py:26
+#: .\apps\common\errors.py:27
 #, python-format
 msgid "Invalid video type. Allowed types: %s"
 msgstr "Недійсний тип відео. Дозволені типи: %s"
 
-#: .\apps\common\errors.py:27
+#: .\apps\common\errors.py:28
 #: .\apps\products\serializers\product\product_video.py:27
 #, python-format
 msgid "The video size cannot exceed %s MB."
 msgstr "Розмір відео не може перевищувати %s Мб."
 
-#: .\apps\common\errors.py:28
+#: .\apps\common\errors.py:29
 #, python-brace-format
 msgid "Each product can have only {settings.VIDEO_UPLOAD_LIMIT} video."
 msgstr "Кожен продукт може мати лише {settings.VIDEO_UPLOAD_LIMIT} відео."
 
-#: .\apps\common\errors.py:29
+#: .\apps\common\errors.py:30
 msgid "Uploaded file is not a valid video."
 msgstr "Завантажений файл не є дійсним відеофайлом."
+
+#: .\apps\common\errors.py:33
+msgid "Authentication credentials were not provided."
+msgstr "Облікові дані для автентифікації не надано."
 
 #: .\apps\common\models\time_stamp.py:6
 msgid "Create date"
@@ -103,6 +111,7 @@ msgid "Update date"
 msgstr "Дата оновлення"
 
 #: .\apps\favorites\apps.py:8 .\apps\favorites\models.py:33
+#: .\settings\jazzmin.py:65
 msgid "Favorites"
 msgstr "Улюблені"
 
@@ -160,23 +169,23 @@ msgstr "Елемент успішно додано до улюбленого."
 msgid "Validation error: product already in favorites."
 msgstr "Помилка підтвердження: товар вже був доданий до улюбленого."
 
-#: .\apps\favorites\views\favorites.py:91
+#: .\apps\favorites\views\favorites.py:90
 msgid "Remove item from favorites"
 msgstr "Видалити елемент із улюблених"
 
-#: .\apps\favorites\views\favorites.py:93
+#: .\apps\favorites\views\favorites.py:92
 msgid ""
 "Removes the specified product from the user's favorites list. Use the `id` "
 "of the product in the URL."
 msgstr ""
-"Видаляє вказаний продукт зі списку вибраного користувача."
-"Використовуйте 'id' продукту в URL-адресі."
+"Видаляє вказаний продукт зі списку вибраного користувача.Використовуйте 'id' "
+"продукту в URL-адресі."
 
-#: .\apps\favorites\views\favorites.py:97
+#: .\apps\favorites\views\favorites.py:95
 msgid "Item successfully removed from favorites."
 msgstr "Елемент успішно видалено з улюблених."
 
-#: .\apps\favorites\views\favorites.py:99
+#: .\apps\favorites\views\favorites.py:97
 msgid "The specified favorite item does not exist or was not found."
 msgstr "Зазначений улюблений елемент не існує або не знайдений."
 
@@ -210,18 +219,19 @@ msgid ""
 msgstr ""
 "Приклад відповіді, що показує кількість улюблених продуктів для користувача."
 
-#: .\apps\locations\admin\location.py:15 .\apps\locations\models\location.py:37
+#: .\apps\locations\admin\location.py:15 .\apps\locations\models\location.py:35
 #: .\apps\users\models\profile.py:25
 msgid "Location"
 msgstr "Розташування"
 
-#: .\apps\locations\admin\location.py:19 .\apps\locations\models\region.py:9
-#: .\apps\locations\models\region.py:23
+#: .\apps\locations\admin\location.py:19 .\apps\locations\models\city.py:10
+#: .\apps\locations\models\region.py:9 .\apps\locations\models\region.py:23
+#: .\apps\locations\models\village.py:10
 msgid "Region"
 msgstr "Область"
 
-#: .\apps\locations\apps.py:8 .\apps\locations\models\location.py:38
-#: .\settings\jazzmin.py:54
+#: .\apps\locations\apps.py:8 .\apps\locations\models\location.py:36
+#: .\settings\jazzmin.py:59
 msgid "Locations"
 msgstr "Розташування"
 
@@ -256,27 +266,19 @@ msgstr "Широта"
 msgid "Longitude"
 msgstr "Довгота"
 
-#: .\apps\locations\models\location.py:25
-msgid "Location name"
-msgstr "Назва локації"
-
-#: .\apps\locations\models\location.py:26
-msgid "Region name"
-msgstr "Назва області"
-
-#: .\apps\locations\models\location.py:33
+#: .\apps\locations\models\location.py:31
 msgid "Unknown Location"
 msgstr "Невідоме місцезнаходження"
 
-#: .\apps\locations\models\location.py:44
+#: .\apps\locations\models\location.py:42
 msgid "City must be provided for city location type."
 msgstr "Для типу розташування міста необхідно вказати місто."
 
-#: .\apps\locations\models\location.py:46
+#: .\apps\locations\models\location.py:44
 msgid "Village must be provided for village location type."
 msgstr "Для типу розташування села необхідно вказати село."
 
-#: .\apps\locations\models\location.py:49
+#: .\apps\locations\models\location.py:47
 msgid "Location cannot be both city and village at the same time."
 msgstr "Локація не може бути одночасно містом і селом."
 
@@ -292,20 +294,100 @@ msgstr "Назва села"
 msgid "Villages"
 msgstr "Села"
 
+#: .\apps\locations\views\location.py:18
+msgid "Retrieve a list of locations"
+msgstr "Отримати список місць"
+
+#: .\apps\locations\views\location.py:20
+msgid ""
+"This endpoint returns a list of locations (cities and villages) ordered "
+"alphabetically by city name. Each location includes its id, name, "
+"location_type, region, latitude, and longitude. You can optionally filter "
+"locations by their name using the \"location_name\" query parameter."
+msgstr ""
+
+#: .\apps\locations\views\location.py:28
+msgid ""
+"Filter locations by name (supports partial match for city or village names)"
+msgstr ""
+
+#: .\apps\locations\views\location.py:34
+msgid "A list of locations successfully retrieved."
+msgstr ""
+
+#: .\apps\locations\views\location.py:37
+msgid "Invalid request parameters."
+msgstr ""
+
+#: .\apps\locations\views\location.py:40
+msgid "An unexpected error occurred on the server."
+msgstr ""
+
 #: .\apps\products\admin\category.py:33
 msgid "Number of Products"
 msgstr "Кількість продуктів"
+
+#: .\apps\products\admin\filters\active_inactive.py:6
+msgid "Activity Status"
+msgstr "Статус активності оголошень"
+
+#: .\apps\products\admin\filters\active_inactive.py:11
+#: .\apps\products\models\product.py:40
+msgid "Active"
+msgstr "активний"
+
+#: .\apps\products\admin\filters\active_inactive.py:12
+msgid "Inactive"
+msgstr "Неактивний"
 
 #: .\apps\products\admin\filters\popular_category.py:29
 msgid "Popular Categories"
 msgstr "Популярні категорії"
 
-#: .\apps\products\admin\product.py:28
+#: .\apps\products\admin\filters\popular_seller.py:9
+msgid "Popular sellers"
+msgstr "Популярні продавці"
+
+#: .\apps\products\admin\filters\popular_seller.py:13
+msgid "Top-10 sellers"
+msgstr "Топ-10 продавців"
+
+#: .\apps\products\admin\filters\status.py:6
+msgid "Announcement Status"
+msgstr "Стан оголошення"
+
+#: .\apps\products\admin\filters\status.py:11
+#: .\apps\products\models\product.py:15
+msgid "New"
+msgstr "Новий"
+
+#: .\apps\products\admin\filters\status.py:12
+#: .\apps\products\models\product.py:16
+msgid "Old"
+msgstr "Вживаний"
+
+#: .\apps\products\admin\product.py:41
 msgid "General"
 msgstr "Основний"
 
+#: .\apps\products\admin\product.py:62
+msgid "Set status to New for selected products"
+msgstr "Встановити статус 'Новий' для вибраних продуктів"
+
+#: .\apps\products\admin\product.py:67
+msgid "Set status to Old for selected products"
+msgstr "Встановити статус 'Вживаний' для вибраних продуктів"
+
+#: .\apps\products\admin\product.py:72
+msgid "Activate selected products"
+msgstr "Активувати вибрані продукти"
+
+#: .\apps\products\admin\product.py:77
+msgid "Deactivate selected products"
+msgstr "Деактивувати вибрані продукти"
+
 #: .\apps\products\apps.py:8 .\apps\products\models\product.py:58
-#: .\settings\jazzmin.py:48
+#: .\settings\jazzmin.py:53
 msgid "Products"
 msgstr "Продукти"
 
@@ -335,7 +417,7 @@ msgstr "Перегляди"
 msgid "Category"
 msgstr "Категорія"
 
-#: .\apps\products\models\category.py:37 .\settings\jazzmin.py:42
+#: .\apps\products\models\category.py:37 .\settings\jazzmin.py:47
 msgid "Categories"
 msgstr "Категорії"
 
@@ -398,14 +480,6 @@ msgstr "Ціна"
 msgid "Prices"
 msgstr "Ціни"
 
-#: .\apps\products\models\product.py:15
-msgid "New"
-msgstr "Новий"
-
-#: .\apps\products\models\product.py:16
-msgid "Old"
-msgstr "Вживаний"
-
 #: .\apps\products\models\product.py:18
 msgid "Product name"
 msgstr "Назва продукту"
@@ -425,10 +499,6 @@ msgstr "Стан продукту"
 #: .\apps\products\models\product.py:37
 msgid "Product status"
 msgstr "Стан продукту"
-
-#: .\apps\products\models\product.py:40
-msgid "Active"
-msgstr "активний"
 
 #: .\apps\products\models\product.py:43
 msgid ""
@@ -532,15 +602,15 @@ msgstr "Список категорій у структурі дерева"
 msgid "Retrieve a hierarchical tree of categories."
 msgstr "Отримати ієрархічне дерево категорій."
 
-#: .\apps\products\views\category.py:44
+#: .\apps\products\views\category.py:43
 msgid "Returned when query parameters are passed in the request."
 msgstr "Повертається, коли в запиті передаються параметри запиту."
 
-#: .\apps\products\views\category.py:72
+#: .\apps\products\views\category.py:63
 msgid "Retrieve a category by path"
 msgstr "Отримати категорію за path"
 
-#: .\apps\products\views\category.py:73
+#: .\apps\products\views\category.py:64
 msgid "Retrieve a single category by path"
 msgstr "Отримати одну категорію за path"
 
@@ -736,40 +806,56 @@ msgid "Passwords do not match."
 msgstr "Паролі не збігаються."
 
 #: .\apps\users\apps.py:8 .\apps\users\models\user.py:64
-#: .\settings\jazzmin.py:36
+#: .\settings\jazzmin.py:41
 msgid "Users"
 msgstr "Користувачі"
 
-#: .\apps\users\authentication.py:31
+#: .\apps\users\authentication.py:33
 msgid "Failed to fetch JWKS"
 msgstr "Не вдалося отримати JWKS"
 
-#: .\apps\users\authentication.py:46
+#: .\apps\users\authentication.py:47
+msgid "Token has expired"
+msgstr "Термін дії маркера закінчився"
+
+#: .\apps\users\authentication.py:49
+msgid "Invalid token audience"
+msgstr "Недійсна token audience"
+
+#: .\apps\users\authentication.py:51
+msgid "Invalid token issuer"
+msgstr "Недійсний token issuer"
+
+#: .\apps\users\authentication.py:53
+msgid "Error decoding token"
+msgstr "Помилка декодування token"
+
+#: .\apps\users\authentication.py:55
+msgid "Invalid token"
+msgstr "Недійсний token"
+
+#: .\apps\users\authentication.py:58
 msgid "Token validation failed"
 msgstr "Помилка перевірки Token"
 
-#: .\apps\users\authentication.py:52
+#: .\apps\users\authentication.py:64
 #, python-brace-format
 msgid "Token is missing required claim: {claim}"
 msgstr "У Token відсутня необхідна заявка: {claim}"
 
-#: .\apps\users\authentication.py:78
+#: .\apps\users\authentication.py:90
 msgid "Authorization header must start with 'Bearer'"
 msgstr "Заголовок авторизації має починатися з \"Bearer\""
 
-#: .\apps\users\authentication.py:81
+#: .\apps\users\authentication.py:93
 msgid "Authorization header is improperly formatted"
 msgstr "Заголовок авторизації відформатовано неправильно"
 
-#: .\apps\users\authentication.py:89
+#: .\apps\users\authentication.py:101
 msgid "Token does not contain 'email' field"
 msgstr "Token не містить поля 'email'."
 
-#: .\apps\users\authentication.py:94
-msgid "User not found"
-msgstr "Користувача не знайдено"
-
-#: .\apps\users\authentication.py:97
+#: .\apps\users\authentication.py:113
 msgid "User is inactive"
 msgstr "Користувач неактивний"
 
@@ -883,114 +969,223 @@ msgstr ""
 msgid "date joined"
 msgstr "дата приєднання"
 
-#: .\apps\users\utils\authentication_auth0.py:21
-msgid "Email address is required."
-msgstr "Необхідно вказати адресу електронної пошти."
+#: .\apps\users\serializers\profile.py:20
+msgid "A list of phone numbers (as strings)."
+msgstr "Список телефонних номерів (у вигляді рядків)."
 
-#: .\apps\users\utils\authentication_auth0.py:23
-msgid "Provider sub field is missing or empty."
-msgstr "Підполе постачальника відсутнє або пусте."
+#: .\apps\users\serializers\profile.py:24
+msgid "A location ID."
+msgstr "Ідентифікатор місцезнаходження."
 
-#: .\apps\users\utils\validate_auth0_token.py:13
+#: .\apps\users\serializers\profile.py:62
+msgid "Invalid location ID."
+msgstr "Недійсний ідентифікатор місця"
+
+#: .\apps\users\serializers\profile.py:71
+msgid "Expected a list of phone numbers."
+msgstr "Очікується список телефонних номерів."
+
+#: .\apps\users\views\profile.py:19
+msgid "User profile management"
+msgstr "Керування профілем користувача"
+
+#: .\apps\users\views\profile.py:20
+msgid ""
+"Endpoint for managing the current user's profile, including retrieval, "
+"updating, and deletion."
+msgstr ""
+"Посилання для керування профілем поточного користувача, включаючи пошук, "
+"оновлення та видалення."
+
+#: .\apps\users\views\profile.py:34
+msgid "Profile not found or access denied."
+msgstr "Профіль не знайдено або доступ заборонено."
+
+#: .\apps\users\views\profile.py:39
+msgid "You do not have permission to edit this profile."
+msgstr "Ви не маєте дозволу редагувати цей профіль."
+
+#: .\apps\users\views\profile.py:50
 #, python-brace-format
-msgid "Failed to fetch JWKS: {e}"
-msgstr "Не вдалося отримати JWKS: {e}"
+msgid "The account was deleted by the {instance.user}."
+msgstr "Обліковий запис видалено {instance.user}."
 
-#: .\apps\users\utils\validate_auth0_token.py:18
-#: .\apps\users\utils\validate_auth0_token.py:53 .\apps\users\views\auth0.py:75
-msgid "Invalid token"
-msgstr "Недійсний token"
+#: .\apps\users\views\profile.py:57
+msgid "Retrieve user profile"
+msgstr "Отримати профіль користувача"
 
-#: .\apps\users\utils\validate_auth0_token.py:36
-msgid "Unable to find the appropriate key."
-msgstr "Не вдалося знайти відповідний ключ."
+#: .\apps\users\views\profile.py:58
+msgid "Retrieve the profile of the currently authenticated user."
+msgstr "Отримати профіль поточного автентифікованого користувача."
 
-#: .\apps\users\utils\validate_auth0_token.py:41
-msgid "Invalid token type: Expected id_token, received access_token"
-msgstr "Недійсний тип маркера: очікуваний id_token, отриманий access_token"
+#: .\apps\users\views\profile.py:64
+msgid "Example profile response"
+msgstr "Приклад response профілю"
 
-#: .\apps\users\utils\validate_auth0_token.py:45
-msgid "Token has expired"
-msgstr "Термін дії маркера закінчився"
+#: .\apps\users\views\profile.py:93
+msgid "Update user profile"
+msgstr "Оновити профіль користувача"
 
-#: .\apps\users\utils\validate_auth0_token.py:47
-msgid "Invalid token audience"
-msgstr "Недійсна token audience"
+#: .\apps\users\views\profile.py:94
+msgid "Update the profile of the currently authenticated user."
+msgstr "Оновіть профіль поточного автентифікованого користувача."
 
-#: .\apps\users\utils\validate_auth0_token.py:49
-msgid "Invalid token issuer"
-msgstr "Недійсний token issuer"
+#: .\apps\users\views\profile.py:98
+msgid "Complete profile update example"
+msgstr "Повний приклад оновлення профілю"
 
-#: .\apps\users\utils\validate_auth0_token.py:51
-msgid "Error decoding token"
-msgstr "Помилка декодування token"
+#: .\apps\users\views\profile.py:115
+msgid "Partially update user profile"
+msgstr "Частково оновити профіль користувача"
 
-#: .\apps\users\views\auth0.py:17
-msgid "User authenticated successfully."
-msgstr "Користувач успішно автентифікований."
+#: .\apps\users\views\profile.py:116
+msgid "Partially update the profile of the currently authenticated user."
+msgstr "Частково оновити профіль поточного автентифікованого користувача."
 
-#: .\apps\users\views\auth0.py:18
-msgid "New user registered successfully."
-msgstr "Новий користувач успішно зареєстрований."
+#: .\apps\users\views\profile.py:120
+msgid "Partial profile update example"
+msgstr "Приклад часткового оновлення профілю"
 
-#: .\apps\users\views\auth0.py:27
-msgid "Authenticate or register a new user"
-msgstr "Автентифікуйте або зареєструйте нового користувача"
+#: .\apps\users\views\profile.py:133
+msgid "Delete user profile"
+msgstr "Видалити профіль користувача"
 
-#: .\apps\users\views\auth0.py:28
-msgid "Authenticate or register a new user using the provided Auth0 token."
-msgstr ""
-"Автентифікуйте або зареєструйте нового користувача за допомогою наданого "
-"маркера Auth0."
-
-#: .\apps\users\views\auth0.py:35
+#: .\apps\users\views\profile.py:135
 msgid ""
-"Bad Request: Invalid token or other validation error. Example errors: Failed "
-"to fetch JWKS, Invalid token type, Invalid audience."
+"Deactivates the user account and all associated listings. The user data "
+"remains in the system for auditing purposes, but the account becomes "
+"inaccessible."
 msgstr ""
-"Некоректний запит: недійсний токен або інша помилка валідації.Приклади "
-"помилок: не вдалося отримати JWKS, недійсний тип токена, недійсна аудиторія."
+"Деактивує обліковий запис користувача та всі пов’язані списки. Дані "
+"користувачазалишається в системі для цілей аудиту, але обліковий запис стає "
+"недоступний."
 
-#: .\apps\users\views\auth0.py:41
+#: .\apps\users\views\user_products.py:29
+msgid "Retrieve user advertisements"
+msgstr "Отримати оголошення користувача"
+
+#: .\apps\users\views\user_products.py:31
 msgid ""
-"Unauthorized: Authentication failed due to invalid or expired token. Example "
-"errors: Token has expired, Invalid token issuer."
+"Retrieve a list of advertisements for the authenticated user. Optionally "
+"filter the advertisements by their active status using the `active` query "
+"parameter. Use `true` for active advertisements, `false` for inactive "
+"advertisements. If no `active` parameter is provided, all advertisements for "
+"the user will be returned. The response will be sorted by the most recently "
+"created advertisements first, and it will be paginated, providing a limited "
+"set of advertisements per request."
 msgstr ""
-"Неавторизовано: помилка автентифікації через недійсний або прострочений "
-"маркер. Прикладпомилки: термін дії токена минув, недійсний емітент токена."
+"Отримати список рекламних оголошень для автентифікованого користувача. "
+"Додатково фільтрувати оголошення за їх активним статусом за допомогою запиту "
+"`active` параметр. Використовуйте `true` для активної реклами, `false` для "
+"неактивної реклами. Якщо параметр `active` не надано, усі реклами для "
+"користувач буде повернено. Відповідь буде відсортовано за останньою спершу "
+"створено рекламу, а потім її буде розбито на сторінки, забезпечуючи "
+"обмежений набір оголошень на запит."
 
-#: .\apps\users\views\auth0.py:48
-msgid "User authentication example response"
-msgstr "Приклад відповіді автентифікації користувача"
+#: .\apps\users\views\user_products.py:44
+msgid ""
+"Filter advertisements by their active status. Use `true` for active "
+"advertisements and `false` for inactive advertisements."
+msgstr ""
+"Фільтрувати оголошення за їх активним статусом. Використовуйте `true` для "
+"активних оголошень та `false` для неактивних оголошень."
 
-#: .\apps\users\views\auth0.py:49
-msgid "Example of a successful response after user authentication."
-msgstr "Приклад успішної відповіді після аутентифікації користувача."
+#: .\apps\users\views\user_products.py:65
+msgid "Invalid value for active parameter. Use 'true' or 'false'."
+msgstr ""
+"Недійсне значення для активного параметра. Використовуйте 'true' або 'false'."
 
-#: .\apps\users\views\auth0.py:60
-msgid "User registration example response"
-msgstr "Приклад відповіді щодо реєстрації користувача"
+#: .\apps\users\views\user_products.py:72
+#, python-brace-format
+msgid "This user does't have any {active_status} advertisements."
+msgstr "Цей користувач не має {active_status} оголошень."
 
-#: .\apps\users\views\auth0.py:61
-msgid "Example of a successful response after user registration."
-msgstr "Приклад успішної відповіді після реєстрації користувача."
-
-#: .\apps\users\views\auth0.py:72
-msgid "Error response example"
-msgstr "Приклад відповіді на помилку"
-
-#: .\apps\users\views\auth0.py:73
-msgid "Example of an error response when authentication fails."
-msgstr "Приклад відповіді про помилку, коли автентифікація не вдається."
-
-#: .\settings\base.py:144
+#: .\settings\base.py:145
 msgid "Ukrainian"
 msgstr "Українська"
 
-#: .\settings\base.py:145
+#: .\settings\base.py:146
 msgid "English"
 msgstr "англійська"
 
-#: .\settings\base.py:146
+#: .\settings\base.py:147
 msgid "Russian"
 msgstr "російська"
+
+#~ msgid "Active announcements"
+#~ msgstr "Активні оголошення"
+
+#~ msgid "Inactive announcements"
+#~ msgstr "Неактивні оголошення"
+
+#~ msgid "Location name"
+#~ msgstr "Назва локації"
+
+#~ msgid "Region name"
+#~ msgstr "Назва області"
+
+#~ msgid "User not found"
+#~ msgstr "Користувача не знайдено"
+
+#~ msgid "Email address is required."
+#~ msgstr "Необхідно вказати адресу електронної пошти."
+
+#~ msgid "Provider sub field is missing or empty."
+#~ msgstr "Підполе постачальника відсутнє або пусте."
+
+#, python-brace-format
+#~ msgid "Failed to fetch JWKS: {e}"
+#~ msgstr "Не вдалося отримати JWKS: {e}"
+
+#~ msgid "Unable to find the appropriate key."
+#~ msgstr "Не вдалося знайти відповідний ключ."
+
+#~ msgid "Invalid token type: Expected id_token, received access_token"
+#~ msgstr "Недійсний тип маркера: очікуваний id_token, отриманий access_token"
+
+#~ msgid "User authenticated successfully."
+#~ msgstr "Користувач успішно автентифікований."
+
+#~ msgid "New user registered successfully."
+#~ msgstr "Новий користувач успішно зареєстрований."
+
+#~ msgid "Authenticate or register a new user"
+#~ msgstr "Автентифікуйте або зареєструйте нового користувача"
+
+#~ msgid "Authenticate or register a new user using the provided Auth0 token."
+#~ msgstr ""
+#~ "Автентифікуйте або зареєструйте нового користувача за допомогою наданого "
+#~ "маркера Auth0."
+
+#~ msgid ""
+#~ "Bad Request: Invalid token or other validation error. Example errors: "
+#~ "Failed to fetch JWKS, Invalid token type, Invalid audience."
+#~ msgstr ""
+#~ "Некоректний запит: недійсний токен або інша помилка валідації.Приклади "
+#~ "помилок: не вдалося отримати JWKS, недійсний тип токена, недійсна "
+#~ "аудиторія."
+
+#~ msgid ""
+#~ "Unauthorized: Authentication failed due to invalid or expired token. "
+#~ "Example errors: Token has expired, Invalid token issuer."
+#~ msgstr ""
+#~ "Неавторизовано: помилка автентифікації через недійсний або прострочений "
+#~ "маркер. Прикладпомилки: термін дії токена минув, недійсний емітент токена."
+
+#~ msgid "User authentication example response"
+#~ msgstr "Приклад відповіді автентифікації користувача"
+
+#~ msgid "Example of a successful response after user authentication."
+#~ msgstr "Приклад успішної відповіді після аутентифікації користувача."
+
+#~ msgid "User registration example response"
+#~ msgstr "Приклад відповіді щодо реєстрації користувача"
+
+#~ msgid "Example of a successful response after user registration."
+#~ msgstr "Приклад успішної відповіді після реєстрації користувача."
+
+#~ msgid "Error response example"
+#~ msgstr "Приклад відповіді на помилку"
+
+#~ msgid "Example of an error response when authentication fails."
+#~ msgstr "Приклад відповіді про помилку, коли автентифікація не вдається."
