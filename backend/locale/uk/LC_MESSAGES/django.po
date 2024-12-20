@@ -334,11 +334,11 @@ msgstr "Статус активності оголошень"
 #: .\apps\products\admin\filters\active_inactive.py:11
 #: .\apps\products\models\product.py:40
 msgid "Active"
-msgstr "активний"
+msgstr "Активні"
 
 #: .\apps\products\admin\filters\active_inactive.py:12
 msgid "Inactive"
-msgstr "Неактивний"
+msgstr "Неактивні"
 
 #: .\apps\products\admin\filters\popular_category.py:29
 msgid "Popular Categories"
