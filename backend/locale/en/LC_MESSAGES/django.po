@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-05 17:24+0200\n"
+"POT-Creation-Date: 2024-12-20 09:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -43,53 +43,61 @@ msgid "Query parameters are not allowed on this endpoint."
 msgstr ""
 
 #: .\apps\common\errors.py:16
-msgid "No Product matches the given query."
-msgstr "No Product matches the given query."
+msgid "No Advertisement matches the given query."
+msgstr "No Advertisement matches the given query."
 
 #: .\apps\common\errors.py:17
 msgid "Invalid sort field."
 msgstr "Invalid sort field."
 
 #: .\apps\common\errors.py:18
-msgid "Invalid product status. Allowed values are \"old\" and \"new\"."
-msgstr "Invalid product status. Allowed values are \"old\" and \"new\"."
+msgid "Invalid advertisement status. Allowed values are `old` and `new`."
+msgstr "Invalid advertisement status. Allowed values are `old` and `new`."
 
-#: .\apps\common\errors.py:21
+#: .\apps\common\errors.py:19
+msgid "Invalid parameters."
+msgstr "Invalid parameters."
+
+#: .\apps\common\errors.py:22
 #: .\apps\products\serializers\product\product_image.py:22
 #: .\apps\products\serializers\product\product_video.py:23
 #, python-format
 msgid "Invalid file type. Allowed types: %s"
 msgstr "Invalid file type. Allowed types: %s"
 
-#: .\apps\common\errors.py:22
+#: .\apps\common\errors.py:23
 msgid "Uploaded file is not a valid image."
 msgstr "Uploaded file is not a valid image."
 
-#: .\apps\common\errors.py:23
+#: .\apps\common\errors.py:24
 #: .\apps\products\serializers\product\product_image.py:26
 #, python-format
 msgid "The image size cannot exceed %s MB."
 msgstr "The image size cannot exceed %s MB."
 
-#: .\apps\common\errors.py:26
+#: .\apps\common\errors.py:27
 #, python-format
 msgid "Invalid video type. Allowed types: %s"
 msgstr "Invalid video type. Allowed types: %s"
 
-#: .\apps\common\errors.py:27
+#: .\apps\common\errors.py:28
 #: .\apps\products\serializers\product\product_video.py:27
 #, python-format
 msgid "The video size cannot exceed %s MB."
 msgstr "The video size cannot exceed %s MB."
 
-#: .\apps\common\errors.py:28
+#: .\apps\common\errors.py:29
 #, python-brace-format
 msgid "Each product can have only {settings.VIDEO_UPLOAD_LIMIT} video."
 msgstr "Each product can have only {settings.VIDEO_UPLOAD_LIMIT} video."
 
-#: .\apps\common\errors.py:29
+#: .\apps\common\errors.py:30
 msgid "Uploaded file is not a valid video."
 msgstr "Uploaded file is not a valid video."
+
+#: .\apps\common\errors.py:33
+msgid "Authentication credentials were not provided."
+msgstr "Authentication credentials were not provided."
 
 #: .\apps\common\models\time_stamp.py:6
 msgid "Create date"
@@ -100,6 +108,7 @@ msgid "Update date"
 msgstr "Update date"
 
 #: .\apps\favorites\apps.py:8 .\apps\favorites\models.py:33
+#: .\settings\jazzmin.py:65
 msgid "Favorites"
 msgstr "Favorites"
 
@@ -157,27 +166,23 @@ msgstr "The item was successfully added to favorites."
 msgid "Validation error: product already in favorites."
 msgstr "Validation error: product already in favorites."
 
-#: .\apps\favorites\views\favorites.py:91
+#: .\apps\favorites\views\favorites.py:90
 msgid "Remove item from favorites"
 msgstr "Remove item from favorites"
 
-#: .\apps\favorites\views\favorites.py:93
-#, fuzzy
-#| msgid ""
-#| "Removes the specified product from the user's favorites list. Use the "
-#| "`id` of the favorite item in the URL."
+#: .\apps\favorites\views\favorites.py:92
 msgid ""
 "Removes the specified product from the user's favorites list. Use the `id` "
 "of the product in the URL."
 msgstr ""
 "Removes the specified product from the user's favorites list. Use the `id` "
-"of the favorite item in the URL."
+"of the product in the URL."
 
-#: .\apps\favorites\views\favorites.py:97
+#: .\apps\favorites\views\favorites.py:95
 msgid "Item successfully removed from favorites."
 msgstr "Item successfully removed from favorites."
 
-#: .\apps\favorites\views\favorites.py:99
+#: .\apps\favorites\views\favorites.py:97
 msgid "The specified favorite item does not exist or was not found."
 msgstr "The specified favorite item does not exist or was not found."
 
@@ -211,18 +216,19 @@ msgid ""
 msgstr ""
 "An example response showing the count of favorite products for the user."
 
-#: .\apps\locations\admin\location.py:15 .\apps\locations\models\location.py:37
+#: .\apps\locations\admin\location.py:15 .\apps\locations\models\location.py:35
 #: .\apps\users\models\profile.py:25
 msgid "Location"
 msgstr "Location"
 
-#: .\apps\locations\admin\location.py:19 .\apps\locations\models\region.py:9
-#: .\apps\locations\models\region.py:23
+#: .\apps\locations\admin\location.py:19 .\apps\locations\models\city.py:10
+#: .\apps\locations\models\region.py:9 .\apps\locations\models\region.py:23
+#: .\apps\locations\models\village.py:10
 msgid "Region"
 msgstr "Region"
 
-#: .\apps\locations\apps.py:8 .\apps\locations\models\location.py:38
-#: .\settings\jazzmin.py:54
+#: .\apps\locations\apps.py:8 .\apps\locations\models\location.py:36
+#: .\settings\jazzmin.py:59
 msgid "Locations"
 msgstr "Locations"
 
@@ -257,27 +263,19 @@ msgstr "Latitude"
 msgid "Longitude"
 msgstr "Longitude"
 
-#: .\apps\locations\models\location.py:25
-msgid "Location name"
-msgstr "Location name"
-
-#: .\apps\locations\models\location.py:26
-msgid "Region name"
-msgstr "Region name"
-
-#: .\apps\locations\models\location.py:33
+#: .\apps\locations\models\location.py:31
 msgid "Unknown Location"
 msgstr "Unknown Location"
 
-#: .\apps\locations\models\location.py:44
+#: .\apps\locations\models\location.py:42
 msgid "City must be provided for city location type."
 msgstr "City must be provided for city location type."
 
-#: .\apps\locations\models\location.py:46
+#: .\apps\locations\models\location.py:44
 msgid "Village must be provided for village location type."
 msgstr "Village must be provided for village location type."
 
-#: .\apps\locations\models\location.py:49
+#: .\apps\locations\models\location.py:47
 msgid "Location cannot be both city and village at the same time."
 msgstr "Location cannot be both city and village at the same time."
 
@@ -293,20 +291,105 @@ msgstr "Village Name"
 msgid "Villages"
 msgstr "Villages"
 
+#: .\apps\locations\views\location.py:18
+msgid "Retrieve a list of locations"
+msgstr "Retrieve a list of locations"
+
+#: .\apps\locations\views\location.py:20
+msgid ""
+"This endpoint returns a list of locations (cities and villages) ordered "
+"alphabetically by city name. Each location includes its id, name, "
+"location_type, region, latitude, and longitude. You can optionally filter "
+"locations by their name using the \"location_name\" query parameter."
+msgstr ""
+"This endpoint returns a list of locations (cities and villages) ordered "
+"alphabetically by city name. Each location includes its id, name, "
+"location_type, region, latitude, and longitude. You can optionally filter "
+"locations by their name using the \"location_name\" query parameter."
+
+#: .\apps\locations\views\location.py:28
+msgid ""
+"Filter locations by name (supports partial match for city or village names)"
+msgstr ""
+"Filter locations by name (supports partial match for city or village names)"
+
+#: .\apps\locations\views\location.py:34
+msgid "A list of locations successfully retrieved."
+msgstr "A list of locations successfully retrieved."
+
+#: .\apps\locations\views\location.py:37
+msgid "Invalid request parameters."
+msgstr "Invalid request parameters."
+
+#: .\apps\locations\views\location.py:40
+msgid "An unexpected error occurred on the server."
+msgstr "An unexpected error occurred on the server."
+
 #: .\apps\products\admin\category.py:33
 msgid "Number of Products"
 msgstr "Number of Products"
+
+#: .\apps\products\admin\filters\active_inactive.py:6
+msgid "Activity Status"
+msgstr "Activity Status"
+
+#: .\apps\products\admin\filters\active_inactive.py:11
+#: .\apps\products\models\product.py:40
+msgid "Active"
+msgstr "Active"
+
+#: .\apps\products\admin\filters\active_inactive.py:12
+msgid "Inactive"
+msgstr "Inactive"
 
 #: .\apps\products\admin\filters\popular_category.py:29
 msgid "Popular Categories"
 msgstr "Popular Categories"
 
-#: .\apps\products\admin\product.py:28
+#: .\apps\products\admin\filters\popular_seller.py:9
+msgid "Popular sellers"
+msgstr "Popular sellers"
+
+#: .\apps\products\admin\filters\popular_seller.py:13
+msgid "Top-10 sellers"
+msgstr "Top-10 sellers"
+
+#: .\apps\products\admin\filters\status.py:6
+msgid "Announcement Status"
+msgstr "Announcement Status"
+
+#: .\apps\products\admin\filters\status.py:11
+#: .\apps\products\models\product.py:15
+msgid "New"
+msgstr "New"
+
+#: .\apps\products\admin\filters\status.py:12
+#: .\apps\products\models\product.py:16
+msgid "Old"
+msgstr "Old"
+
+#: .\apps\products\admin\product.py:41
 msgid "General"
 msgstr "General"
 
+#: .\apps\products\admin\product.py:62
+msgid "Set status to New for selected products"
+msgstr ""
+
+#: .\apps\products\admin\product.py:67
+msgid "Set status to Old for selected products"
+msgstr ""
+
+#: .\apps\products\admin\product.py:72
+msgid "Activate selected products"
+msgstr "Activate selected products"
+
+#: .\apps\products\admin\product.py:77
+msgid "Deactivate selected products"
+msgstr "Deactivate selected products"
+
 #: .\apps\products\apps.py:8 .\apps\products\models\product.py:58
-#: .\settings\jazzmin.py:48
+#: .\settings\jazzmin.py:53
 msgid "Products"
 msgstr "Products"
 
@@ -336,7 +419,7 @@ msgstr "Views"
 msgid "Category"
 msgstr "Category"
 
-#: .\apps\products\models\category.py:37 .\settings\jazzmin.py:42
+#: .\apps\products\models\category.py:37 .\settings\jazzmin.py:47
 msgid "Categories"
 msgstr "Categories"
 
@@ -399,14 +482,6 @@ msgstr "Price"
 msgid "Prices"
 msgstr "Price"
 
-#: .\apps\products\models\product.py:15
-msgid "New"
-msgstr "New"
-
-#: .\apps\products\models\product.py:16
-msgid "Old"
-msgstr "Old"
-
 #: .\apps\products\models\product.py:18
 msgid "Product name"
 msgstr "Product name"
@@ -426,10 +501,6 @@ msgstr "Status"
 #: .\apps\products\models\product.py:37
 msgid "Product status"
 msgstr "Product status"
-
-#: .\apps\products\models\product.py:40
-msgid "Active"
-msgstr "active"
 
 #: .\apps\products\models\product.py:43
 msgid ""
@@ -533,15 +604,15 @@ msgstr "List categories in a tree structure"
 msgid "Retrieve a hierarchical tree of categories."
 msgstr "Retrieve a hierarchical tree of categories."
 
-#: .\apps\products\views\category.py:44
+#: .\apps\products\views\category.py:43
 msgid "Returned when query parameters are passed in the request."
-msgstr ""
+msgstr "Returned when query parameters are passed in the request."
 
-#: .\apps\products\views\category.py:72
+#: .\apps\products\views\category.py:63
 msgid "Retrieve a category by path"
 msgstr "Retrieve a category by path"
 
-#: .\apps\products\views\category.py:73
+#: .\apps\products\views\category.py:64
 msgid "Retrieve a single category by path"
 msgstr "Retrieve a single category by path"
 
@@ -736,40 +807,56 @@ msgid "Passwords do not match."
 msgstr "Passwords do not match."
 
 #: .\apps\users\apps.py:8 .\apps\users\models\user.py:64
-#: .\settings\jazzmin.py:36
+#: .\settings\jazzmin.py:41
 msgid "Users"
 msgstr "Users"
 
-#: .\apps\users\authentication.py:31
+#: .\apps\users\authentication.py:33
 msgid "Failed to fetch JWKS"
 msgstr "Failed to fetch JWKS"
 
-#: .\apps\users\authentication.py:46
+#: .\apps\users\authentication.py:47
+msgid "Token has expired"
+msgstr "Token has expired"
+
+#: .\apps\users\authentication.py:49
+msgid "Invalid token audience"
+msgstr "Invalid token audience"
+
+#: .\apps\users\authentication.py:51
+msgid "Invalid token issuer"
+msgstr "Invalid token issuer"
+
+#: .\apps\users\authentication.py:53
+msgid "Error decoding token"
+msgstr "Error decoding token"
+
+#: .\apps\users\authentication.py:55
+msgid "Invalid token"
+msgstr "Invalid token"
+
+#: .\apps\users\authentication.py:58
 msgid "Token validation failed"
 msgstr "Token validation failed"
 
-#: .\apps\users\authentication.py:52
+#: .\apps\users\authentication.py:64
 #, python-brace-format
 msgid "Token is missing required claim: {claim}"
 msgstr "Token is missing required claim: {claim}"
 
-#: .\apps\users\authentication.py:78
+#: .\apps\users\authentication.py:90
 msgid "Authorization header must start with 'Bearer'"
 msgstr "Authorization header must start with 'Bearer'"
 
-#: .\apps\users\authentication.py:81
+#: .\apps\users\authentication.py:93
 msgid "Authorization header is improperly formatted"
 msgstr "Authorization header is improperly formatted"
 
-#: .\apps\users\authentication.py:89
+#: .\apps\users\authentication.py:101
 msgid "Token does not contain 'email' field"
 msgstr "Token does not contain 'email' field"
 
-#: .\apps\users\authentication.py:94
-msgid "User not found"
-msgstr "User not found"
-
-#: .\apps\users\authentication.py:97
+#: .\apps\users\authentication.py:113
 msgid "User is inactive"
 msgstr "User is inactive"
 
@@ -881,112 +968,234 @@ msgstr ""
 msgid "date joined"
 msgstr "date joined"
 
-#: .\apps\users\utils\authentication_auth0.py:21
-msgid "Email address is required."
-msgstr "Email address is required."
+#: .\apps\users\serializers\profile.py:20
+msgid "A list of phone numbers (as strings)."
+msgstr "A list of phone numbers (as strings)."
 
-#: .\apps\users\utils\authentication_auth0.py:23
-msgid "Provider sub field is missing or empty."
-msgstr "Provider sub field is missing or empty."
+#: .\apps\users\serializers\profile.py:24
+msgid "A location ID."
+msgstr "A location ID."
 
-#: .\apps\users\utils\validate_auth0_token.py:13
+#: .\apps\users\serializers\profile.py:62
+msgid "Invalid location ID."
+msgstr"Invalid location ID."
+
+#: .\apps\users\serializers\profile.py:71
+msgid "Expected a list of phone numbers."
+msgstr "Expected a list of phone numbers."
+
+#: .\apps\users\views\profile.py:19
+msgid "User profile management"
+msgstr "User profile management"
+
+#: .\apps\users\views\profile.py:20
+msgid ""
+"Endpoint for managing the current user's profile, including retrieval, "
+"updating, and deletion."
+msgstr ""
+"Endpoint for managing the current user's profile, including retrieval, "
+"updating, and deletion."
+
+#: .\apps\users\views\profile.py:34
+msgid "Profile not found or access denied."
+msgstr "Profile not found or access denied."
+
+#: .\apps\users\views\profile.py:39
+msgid "You do not have permission to edit this profile."
+msgstr "You do not have permission to edit this profile."
+
+#: .\apps\users\views\profile.py:50
 #, python-brace-format
-msgid "Failed to fetch JWKS: {e}"
-msgstr "Failed to fetch JWKS: {e}"
+msgid "The account was deleted by the {instance.user}."
+msgstr "The account was deleted by the {instance.user}."
 
-#: .\apps\users\utils\validate_auth0_token.py:18
-#: .\apps\users\utils\validate_auth0_token.py:53 .\apps\users\views\auth0.py:75
-msgid "Invalid token"
-msgstr "Invalid token"
+#: .\apps\users\views\profile.py:57
+msgid "Retrieve user profile"
+msgstr "Retrieve user profile"
 
-#: .\apps\users\utils\validate_auth0_token.py:36
-msgid "Unable to find the appropriate key."
-msgstr "Unable to find the appropriate key."
+#: .\apps\users\views\profile.py:58
+msgid "Retrieve the profile of the currently authenticated user."
+msgstr "Retrieve the profile of the currently authenticated user."
 
-#: .\apps\users\utils\validate_auth0_token.py:41
-msgid "Invalid token type: Expected id_token, received access_token"
-msgstr "Invalid token type: Expected id_token, received access_token"
+#: .\apps\users\views\profile.py:64
+msgid "Example profile response"
+msgstr "Example profile response"
 
-#: .\apps\users\utils\validate_auth0_token.py:45
-msgid "Token has expired"
-msgstr "Token has expired"
+#: .\apps\users\views\profile.py:93
+msgid "Update user profile"
+msgstr "Update user profile"
 
-#: .\apps\users\utils\validate_auth0_token.py:47
-msgid "Invalid token audience"
-msgstr "Invalid token audience"
+#: .\apps\users\views\profile.py:94
+msgid "Update the profile of the currently authenticated user."
+msgstr "Update the profile of the currently authenticated user."
 
-#: .\apps\users\utils\validate_auth0_token.py:49
-msgid "Invalid token issuer"
-msgstr "Invalid token issuer"
+#: .\apps\users\views\profile.py:98
+msgid "Complete profile update example"
+msgstr "Complete profile update example"
 
-#: .\apps\users\utils\validate_auth0_token.py:51
-msgid "Error decoding token"
-msgstr "Error decoding token"
+#: .\apps\users\views\profile.py:115
+msgid "Partially update user profile"
+msgstr "Partially update user profile"
 
-#: .\apps\users\views\auth0.py:17
-msgid "User authenticated successfully."
-msgstr "User authenticated successfully."
+#: .\apps\users\views\profile.py:116
+msgid "Partially update the profile of the currently authenticated user."
+msgstr "Partially update the profile of the currently authenticated user."
 
-#: .\apps\users\views\auth0.py:18
-msgid "New user registered successfully."
-msgstr "New user registered successfully."
 
-#: .\apps\users\views\auth0.py:27
-msgid "Authenticate or register a new user"
-msgstr "Authenticate or register a new user"
+#: .\apps\users\views\profile.py:120
+msgid "Partial profile update example"
+msgstr "Partial profile update example"
 
-#: .\apps\users\views\auth0.py:28
-msgid "Authenticate or register a new user using the provided Auth0 token."
-msgstr "Authenticate or register a new user using the provided Auth0 token."
+#: .\apps\users\views\profile.py:133
+msgid "Delete user profile"
+msgstr "Delete user profile"
 
-#: .\apps\users\views\auth0.py:35
+#: .\apps\users\views\profile.py:135
 msgid ""
-"Bad Request: Invalid token or other validation error. Example errors: Failed "
-"to fetch JWKS, Invalid token type, Invalid audience."
+"Deactivates the user account and all associated listings. The user data "
+"remains in the system for auditing purposes, but the account becomes "
+"inaccessible."
 msgstr ""
-"Bad Request: Invalid token or other validation error. Example errors: Failed "
-"to fetch JWKS, Invalid token type, Invalid audience."
+"Deactivates the user account and all associated listings. The user data "
+"remains in the system for auditing purposes, but the account becomes "
+"inaccessible."
 
-#: .\apps\users\views\auth0.py:41
+#: .\apps\users\views\user_products.py:29
+msgid "Retrieve user advertisements"
+msgstr "Retrieve user advertisements"
+
+#: .\apps\users\views\user_products.py:31
 msgid ""
-"Unauthorized: Authentication failed due to invalid or expired token. Example "
-"errors: Token has expired, Invalid token issuer."
+"Retrieve a list of advertisements for the authenticated user. Optionally "
+"filter the advertisements by their active status using the `active` query "
+"parameter. Use `true` for active advertisements, `false` for inactive "
+"advertisements. If no `active` parameter is provided, all advertisements for "
+"the user will be returned. The response will be sorted by the most recently "
+"created advertisements first, and it will be paginated, providing a limited "
+"set of advertisements per request."
 msgstr ""
-"Unauthorized: Authentication failed due to invalid or expired token. Example "
-"errors: Token has expired, Invalid token issuer."
+"Retrieve a list of advertisements for the authenticated user. Optionally "
+"filter the advertisements by their active status using the `active` query "
+"parameter. Use `true` for active advertisements, `false` for inactive "
+"advertisements. If no `active` parameter is provided, all advertisements for "
+"the user will be returned. The response will be sorted by the most recently "
+"created advertisements first, and it will be paginated, providing a limited "
+"set of advertisements per request."
 
-#: .\apps\users\views\auth0.py:48
-msgid "User authentication example response"
-msgstr "User authentication example response"
+#: .\apps\users\views\user_products.py:44
+msgid ""
+"Filter advertisements by their active status. Use `true` for active "
+"advertisements and `false` for inactive advertisements."
+msgstr ""
+"Filter advertisements by their active status. Use `true` for active "
+"advertisements and `false` for inactive advertisements."
 
-#: .\apps\users\views\auth0.py:49
-msgid "Example of a successful response after user authentication."
-msgstr "Example of a successful response after user authentication."
+#: .\apps\users\views\user_products.py:65
+msgid "Invalid value for active parameter. Use 'true' or 'false'."
+msgstr "Invalid value for active parameter. Use 'true' or 'false'."
 
-#: .\apps\users\views\auth0.py:60
-msgid "User registration example response"
-msgstr "User registration example response"
+#: .\apps\users\views\user_products.py:72
+#, python-brace-format
+msgid "This user does't have any {active_status} advertisements."
+msgstr "This user does't have any {active_status} advertisements."
 
-#: .\apps\users\views\auth0.py:61
-msgid "Example of a successful response after user registration."
-msgstr "Example of a successful response after user registration."
-
-#: .\apps\users\views\auth0.py:72
-msgid "Error response example"
-msgstr "Error response example"
-
-#: .\apps\users\views\auth0.py:73
-msgid "Example of an error response when authentication fails."
-msgstr "Example of an error response when authentication fails."
-
-#: .\settings\base.py:144
+#: .\settings\base.py:145
 msgid "Ukrainian"
 msgstr "Ukrainian"
 
-#: .\settings\base.py:145
+#: .\settings\base.py:146
 msgid "English"
 msgstr "English"
 
-#: .\settings\base.py:146
+#: .\settings\base.py:147
 msgid "Russian"
 msgstr "Russian"
+
+#, fuzzy
+#~| msgid "Retrieve a product"
+#~ msgid "Active announcements"
+#~ msgstr "Retrieve a product"
+
+#, fuzzy
+#~| msgid "Retrieve a product"
+#~ msgid "Inactive announcements"
+#~ msgstr "Retrieve a product"
+
+#, fuzzy
+#~| msgid "Products"
+#~ msgid "New products"
+#~ msgstr "Products"
+
+#, fuzzy
+#~| msgid "Products"
+#~ msgid "Old products"
+#~ msgstr "Products"
+
+#~ msgid "Location name"
+#~ msgstr "Location name"
+
+#~ msgid "Region name"
+#~ msgstr "Region name"
+
+#~ msgid "User not found"
+#~ msgstr "User not found"
+
+#~ msgid "Email address is required."
+#~ msgstr "Email address is required."
+
+#~ msgid "Provider sub field is missing or empty."
+#~ msgstr "Provider sub field is missing or empty."
+
+#, python-brace-format
+#~ msgid "Failed to fetch JWKS: {e}"
+#~ msgstr "Failed to fetch JWKS: {e}"
+
+#~ msgid "Unable to find the appropriate key."
+#~ msgstr "Unable to find the appropriate key."
+
+#~ msgid "Invalid token type: Expected id_token, received access_token"
+#~ msgstr "Invalid token type: Expected id_token, received access_token"
+
+#~ msgid "User authenticated successfully."
+#~ msgstr "User authenticated successfully."
+
+#~ msgid "New user registered successfully."
+#~ msgstr "New user registered successfully."
+
+#~ msgid "Authenticate or register a new user"
+#~ msgstr "Authenticate or register a new user"
+
+#~ msgid "Authenticate or register a new user using the provided Auth0 token."
+#~ msgstr "Authenticate or register a new user using the provided Auth0 token."
+
+#~ msgid ""
+#~ "Bad Request: Invalid token or other validation error. Example errors: "
+#~ "Failed to fetch JWKS, Invalid token type, Invalid audience."
+#~ msgstr ""
+#~ "Bad Request: Invalid token or other validation error. Example errors: "
+#~ "Failed to fetch JWKS, Invalid token type, Invalid audience."
+
+#~ msgid ""
+#~ "Unauthorized: Authentication failed due to invalid or expired token. "
+#~ "Example errors: Token has expired, Invalid token issuer."
+#~ msgstr ""
+#~ "Unauthorized: Authentication failed due to invalid or expired token. "
+#~ "Example errors: Token has expired, Invalid token issuer."
+
+#~ msgid "User authentication example response"
+#~ msgstr "User authentication example response"
+
+#~ msgid "Example of a successful response after user authentication."
+#~ msgstr "Example of a successful response after user authentication."
+
+#~ msgid "User registration example response"
+#~ msgstr "User registration example response"
+
+#~ msgid "Example of a successful response after user registration."
+#~ msgstr "Example of a successful response after user registration."
+
+#~ msgid "Error response example"
+#~ msgstr "Error response example"
+
+#~ msgid "Example of an error response when authentication fails."
+#~ msgstr "Example of an error response when authentication fails."
