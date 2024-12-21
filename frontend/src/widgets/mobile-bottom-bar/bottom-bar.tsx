@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { useAuth0 } from '@auth0/auth0-react'
 import clsx from 'clsx'
 import { Heart } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
@@ -9,12 +8,12 @@ import { useFavoriteCount } from '@/entities/favorite/library/hooks/use-favorite
 import { CirclePlusIcon, UserRoundedIcon } from '@/shared/ui/icons'
 import { BottomBarHome } from '@/shared/ui/icons/bottom-bar-home.tsx'
 import { ChatIcon } from '@/shared/ui/icons/chat-icon.tsx'
+import { PRIVATE_PAGES } from '@/shared/constants'
 
 const SCROLL_THRESHOLD = 5 // Threshold to ignore small scroll movements
 
 const BottomBar = () => {
   const { data: favoriteCount, isLoading } = useFavoriteCount()
-  const { isAuthenticated, loginWithRedirect, logout } = useAuth0()
   const { t } = useTranslation()
 
   const [isVisible, setIsVisible] = useState(true)
@@ -77,7 +76,7 @@ const BottomBar = () => {
           </Link>
 
           <Link
-            to='/favorites'
+            to={PRIVATE_PAGES.FAVORITE}
             className='relative flex w-[70px] flex-col items-center'
           >
             <Heart className='h-[30px] w-6 stroke-[1.5]' />
@@ -99,25 +98,21 @@ const BottomBar = () => {
         </div>
 
         <div className='flex w-[35%] flex-row justify-between gap-2'>
-          <Link to='/chat' className='flex w-[70px] flex-col items-center'>
+          <Link
+            to={PRIVATE_PAGES.CHAT}
+            className='flex w-[70px] cursor-pointer flex-col items-center'
+          >
             <ChatIcon className='h-[30px h-[30px] stroke-1' />
             <span className='text-[13px]'>{t('bottomBar.chat')}</span>
           </Link>
 
-          <div
-            onClick={
-              isAuthenticated
-                ? () => logout()
-                : () =>
-                    loginWithRedirect({
-                      appState: { targetUrl: window.location.pathname },
-                    })
-            }
+          <Link
+            to={PRIVATE_PAGES.PROFILE}
             className='flex w-[70px] cursor-pointer flex-col items-center'
           >
             <UserRoundedIcon className='h-[30px] w-6 fill-primary-900' />
             <span className='text-[13px]'>{t('bottomBar.account')}</span>
-          </div>
+          </Link>
         </div>
       </div>
     </div>

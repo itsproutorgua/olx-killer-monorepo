@@ -51,7 +51,7 @@ export const ProductPage = () => {
         <ProductDetails
           product={data}
           onProductClick={handleProductClick}
-          className='mb-20 md:mb-32'
+          className='mb-20 md:mb-[104px]'
         />
       )}
 
@@ -59,7 +59,7 @@ export const ProductPage = () => {
         <ProductsBySeller onProductClick={handleProductClick} />
       </div>
 
-      <div className='mb-[106px] md:hidden'>
+      <div className='mb-[126px] md:hidden'>
         <ProductsBySellerSlider onProductClick={handleProductClick} />
       </div>
 

@@ -11,9 +11,9 @@ export const PUBLIC_PAGES = new PublicPages()
 class PrivatePages {
   ACCOUNT = '/account'
   LISTINGS = 'listings'
-  CHAT = 'chat'
-  FAVORITE = 'favorites'
-  PROFILE = 'profile'
+  CHAT = '/account/chat'
+  FAVORITE = '/account/favorites'
+  PROFILE = '/account/profile'
   SETTINGS = 'settings'
 }
 

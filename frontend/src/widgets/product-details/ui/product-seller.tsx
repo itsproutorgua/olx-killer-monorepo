@@ -42,7 +42,7 @@ export const ProductSeller: React.FC<SellerProps> = ({
           </div>
           <div className='flex flex-col gap-3'>
             <h4 className='text-xl leading-none'>
-              {product?.seller?.first_name ?? 'Default Name'}
+              {product?.seller?.first_name ?? product?.seller?.username}
             </h4>
             <p className='text-primary-gray text-xs leading-none'>
               {t('words.onOKL')}

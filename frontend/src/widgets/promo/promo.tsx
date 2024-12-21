@@ -17,8 +17,7 @@ export const PromoSection: React.FC = () => {
           {t('titles.sellPromoTitle')}
         </h2>
         <Button
-          size='lg'
-          className='h-[53px] rounded-[60px] bg-primary-900 p-[5px] pl-[37px] leading-none text-gray-50 transition-colors duration-300 hover:bg-primary-500 active:bg-primary-600 active:text-gray-50 active:duration-0'
+          className='h-[53px] rounded-[60px] bg-primary-900 p-[5px] pl-[37px] text-[13px] leading-none text-gray-50 transition-colors duration-300 hover:bg-primary-500 active:bg-primary-600 active:text-gray-50 active:duration-0 xl:text-base'
           onClick={() =>
             loginWithRedirect({
               appState: { targetUrl: window.location.pathname },
