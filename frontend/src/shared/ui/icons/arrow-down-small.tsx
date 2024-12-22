@@ -12,7 +12,7 @@ export function ArrowDownSmall(props: SVGProps<SVGSVGElement>) {
     >
       <path
         d='M19 9L12 15L5 9'
-        stroke='#030712'
+        stroke='currentColor'
         strokeWidth='1.5'
         strokeLinecap='round'
         strokeLinejoin='round'

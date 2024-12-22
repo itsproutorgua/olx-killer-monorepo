@@ -88,6 +88,19 @@ export const uk = {
     socialMedia: 'Соціальні мережі',
     helpCenter: 'Центр підтримки',
   },
+  chat: {
+    myMessages: 'Мої повідомлення',
+    status: 'У мережі',
+    searchPlaceholder: 'Введіть ім’я',
+    writeMsg: 'Написати повідомлення...',
+  },
+  date: {
+    m: 'хв',
+    ago: 'Тому',
+    today: 'Сьогодні',
+    yesterday: 'Вчора',
+    days: 'днів',
+  },
   currency: {
     symbol: '₴',
     label: 'UAH',

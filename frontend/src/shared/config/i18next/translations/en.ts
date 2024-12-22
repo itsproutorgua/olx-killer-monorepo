@@ -87,6 +87,19 @@ export const en = {
     socialMedia: 'Social media',
     helpCenter: 'Help center',
   },
+  chat: {
+    myMessages: 'My messages',
+    status: 'Online',
+    searchPlaceholder: 'Enter name',
+    writeMsg: 'Write a message...',
+  },
+  date: {
+    m: 'm',
+    ago: 'Ago',
+    today: 'Today',
+    yesterday: 'Yesterday',
+    days: 'days',
+  },
   currency: {
     symbol: '$',
     label: 'USD',
