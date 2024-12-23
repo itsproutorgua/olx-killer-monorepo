@@ -1,3 +1,9 @@
+import { ChatWrapper } from '@/features/chat/ui/chat-wrapper'
+
 export const ChatPage = () => {
-  return <div>Chat Page</div>
+  return (
+    <>
+      <ChatWrapper />
+    </>
+  )
 }

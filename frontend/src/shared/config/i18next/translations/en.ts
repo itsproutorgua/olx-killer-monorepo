@@ -42,7 +42,7 @@ export const en = {
   },
   footerContent: {
     footerMessage:
-      'Our marketplace is a one-stop platform that connects thousands of sellers and buyers. We offer a wide range of products, including clothing and accessories, electronics, home and garden products, baby products, and more.',
+      'Our marketplace is a one-stop platform that connects thousands of sellers and buyers. We offer a wide range of products, including clothing and accessories, electronics, home and garden products, baby products and more.',
     aboutCompany: {
       title: 'About the Company',
       items: {
@@ -87,6 +87,19 @@ export const en = {
     socialMedia: 'Social media',
     helpCenter: 'Help center',
   },
+  chat: {
+    myMessages: 'My messages',
+    status: 'Online',
+    searchPlaceholder: 'Enter name',
+    writeMsg: 'Write a message...',
+  },
+  date: {
+    m: 'm',
+    ago: 'Ago',
+    today: 'Today',
+    yesterday: 'Yesterday',
+    days: 'days',
+  },
   currency: {
     symbol: '$',
     label: 'USD',
@@ -103,6 +116,8 @@ export const en = {
   },
   words: {
     all: 'All',
+    delete: 'Delete',
+    edit: 'Edit',
     categories: 'Categories',
     found: 'Found',
     announcements: 'announcements',
@@ -120,6 +135,7 @@ export const en = {
     online: 'Online ',
     allAdsByAuthor: 'All ads by author ',
     location: 'Location',
+    defaultLocation: 'Unknown',
     viewOnMap: 'View on map',
     loginMessage:
       'Log in to your profile or create a new one to contact this seller.',
@@ -167,6 +183,7 @@ export const en = {
     pending: 'Pending',
     unpaid: 'Unpaid',
     inactive: 'Inactive',
+    listingInactive: 'Listing is inactive',
     rejected: 'Rejected',
     activeEmpty: 'You currently have no active listings',
     pendingEmpty: 'You currently have no pending listings',

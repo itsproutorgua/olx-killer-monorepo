@@ -6,9 +6,9 @@ export const AccountLayout = () => {
   return (
     <div className='container flex h-[766px]'>
       <AccountSidebar />
-      <main className='flex-1'>
+      <div className='flex-1'>
         <Outlet />
-      </main>
+      </div>
     </div>
   )
 }

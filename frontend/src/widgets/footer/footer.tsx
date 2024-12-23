@@ -31,32 +31,6 @@ export const Footer = () => {
       ],
     },
     {
-      title: t('footerContent.forBuyers.title'),
-      items: [
-        { label: t('footerContent.forBuyers.items.catalog'), link: '#' },
-        {
-          label: t('footerContent.forBuyers.items.dealsAndDiscounts'),
-          link: '#',
-        },
-        { label: t('footerContent.forBuyers.items.howToOrder'), link: '#' },
-        { label: t('footerContent.forBuyers.items.paymentMethods'), link: '#' },
-        {
-          label: t('footerContent.forBuyers.items.shippingAndPickup'),
-          link: '#',
-        },
-        {
-          label: t('footerContent.forBuyers.items.returnsAndExchanges'),
-          link: '#',
-        },
-        { label: t('footerContent.forBuyers.items.faq'), link: '#' },
-        { label: t('footerContent.forBuyers.items.myAccount'), link: '#' },
-        {
-          label: t('footerContent.forBuyers.items.customerSupport'),
-          link: '#',
-        },
-      ],
-    },
-    {
       title: t('footerContent.forSellers.title'),
       items: [
         {
@@ -82,14 +56,40 @@ export const Footer = () => {
         { label: t('footerContent.forSellers.items.sellerSupport'), link: '#' },
       ],
     },
+    {
+      title: t('footerContent.forBuyers.title'),
+      items: [
+        { label: t('footerContent.forBuyers.items.catalog'), link: '#' },
+        {
+          label: t('footerContent.forBuyers.items.dealsAndDiscounts'),
+          link: '#',
+        },
+        { label: t('footerContent.forBuyers.items.howToOrder'), link: '#' },
+        { label: t('footerContent.forBuyers.items.paymentMethods'), link: '#' },
+        {
+          label: t('footerContent.forBuyers.items.shippingAndPickup'),
+          link: '#',
+        },
+        {
+          label: t('footerContent.forBuyers.items.returnsAndExchanges'),
+          link: '#',
+        },
+        { label: t('footerContent.forBuyers.items.faq'), link: '#' },
+        { label: t('footerContent.forBuyers.items.myAccount'), link: '#' },
+        {
+          label: t('footerContent.forBuyers.items.customerSupport'),
+          link: '#',
+        },
+      ],
+    },
   ]
 
   return (
-    <footer className='rounded-t-md bg-primary-900 pt-[41px] text-gray-50 xl:pt-[71px]'>
+    <footer className='rounded-t-[30px] bg-primary-900 pt-[41px] text-gray-50 xl:pt-[71px]'>
       <div className='flex flex-col px-[20px] xl:container xl:flex-row'>
         <div className='pr-[74px] xl:w-1/2 xl:pr-[177px]'>
           <Logo className='block h-[56px] w-[156px]' />
-          <p className='text-muted-foreground max-w-[454px] pt-[15px] text-sm xl:text-base'>
+          <p className='text-muted-foreground max-w-[294px] pt-[10px] text-[13px] xl:max-w-[454px] xl:pt-[15px] xl:text-base'>
             {t('footerContent.footerMessage')}
           </p>
           <div className='-ml-[10px] mt-10 hidden gap-[10px] xl:flex'>
@@ -113,7 +113,7 @@ export const Footer = () => {
           {FOOTER_CONTENT.map((section, index) => (
             <div key={index}>
               <h3 className='mb-5 font-semibold'>{section.title}</h3>
-              <ul className='flex flex-col gap-3'>
+              <ul className='flex flex-col gap-[18px] xl:gap-3'>
                 {section.items.map((item, idx) => (
                   <li key={idx} className='leading-none'>
                     <a

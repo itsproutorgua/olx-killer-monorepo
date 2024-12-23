@@ -27,6 +27,8 @@ export interface Product {
   category: Category
   images: ProductImage[]
   seller: Seller
+  status: string
+  active: boolean
   views: number
   slug: string
   vies: number

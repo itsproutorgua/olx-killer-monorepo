@@ -34,18 +34,18 @@ export const ProductLocation: React.FC<Props> = ({ location, className }) => {
               <HoverCard openDelay={500} closeDelay={0}>
                 <HoverCardTrigger asChild>
                   <h4 className='line-clamp-1 text-xl leading-none'>
-                    {location.name}
+                    {location.name ?? t('words.defaultLocation')}
                   </h4>
                 </HoverCardTrigger>
                 {/* Only render HoverCardContent if title length exceeds threshold */}
-                {location.name.length > 9 && (
+                {location.name && location.name.length > 9 && (
                   <HoverCardContent side='top' className='w-fit bg-gray-50'>
                     {location.name}
                   </HoverCardContent>
                 )}
               </HoverCard>
               <p className='text-primary-gray text-xs leading-none'>
-                {location.region}
+                {location.region ?? t('words.defaultLocation')}
               </p>
             </div>
             <button className='mt-2 flex flex-row items-center gap-[9px] text-xs'>
