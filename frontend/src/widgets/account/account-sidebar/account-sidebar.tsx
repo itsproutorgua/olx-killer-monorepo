@@ -14,7 +14,7 @@ export const AccountSidebar = () => {
   const { logout } = useAuth0()
 
   return (
-    <aside className='w-[305px] border-r'>
+    <aside className='w-[305px] shrink-0 border-r'>
       <nav className='space-y-[10px] border-b pb-[30px] pr-[49px] pt-[42px]'>
         {SIDEBAR_ITEMS.map(item => (
           <button

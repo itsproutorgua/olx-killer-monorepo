@@ -8,7 +8,7 @@ export const uk = {
     next: 'Наступна',
     previous: 'Попередня',
     searchButton: 'Знайти',
-    addAdvert: "Додати об'яву",
+    addAdvert: 'Додати оголошення',
     showAllCategories: 'Показати всі категорії',
     showLess: 'Показати менше',
     showMore: 'Показати більше',

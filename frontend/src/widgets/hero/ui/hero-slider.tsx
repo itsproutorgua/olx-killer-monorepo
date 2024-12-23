@@ -35,6 +35,7 @@ export const HeroSlider = () => {
         align: 'start',
         loop: true,
       }}
+      className='max-w-[630px]'
     >
       <CarouselContent>
         {HERO_DATA.map(item => (
