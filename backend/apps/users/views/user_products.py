@@ -50,7 +50,6 @@ class UserProductsView(ListAPIView):
             200: UserProductsSerializer,
             400: OpenApiResponse(description=errors.INVALID_PRODUCT_PARAMETERS),
             401: OpenApiResponse(description=errors.USER_UNAUTHORIZED),
-            404: OpenApiResponse(description=errors.PRODUCT_NOT_FOUND),
         },
     )
     def get(self, request):
@@ -67,22 +66,12 @@ class UserProductsView(ListAPIView):
                 )
             queryset = queryset.filter(active=(active_param == 'true'))
 
-        if not queryset.exists():
-            active_status = '' if active_param is None else ('inactive', 'active')[active_param == 'true']
-            raise NotFound(_(f'This user does\'t have any {active_status} advertisements.'))
-
         # Pagination
         page = self.paginate_queryset(queryset)
         if page is not None:
             return self.get_paginated_response_data(page, advertisement_counts)
 
-        # Non-paginated response
-        products_data = self.get_serializer(queryset, many=True).data
-        response_data = {
-            **advertisement_counts,
-            'results': products_data,
-        }
-        return Response(response_data, status=status.HTTP_200_OK)
+        return Response({**advertisement_counts, 'results': []}, status=status.HTTP_200_OK)
 
     @staticmethod
     def get_advertisement_counts(queryset: QuerySet) -> dict:
