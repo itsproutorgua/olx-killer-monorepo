@@ -47,7 +47,7 @@ class LatestProductListView(ListAPIView):
     def list(self, request, *args, **kwargs):
         limit = int(request.query_params.get('limit', 10))
 
-        if 10 > limit < 51:
+        if not (9 < limit < 51):
             return Response(
                 {'error': 'Invalid limit. It must be between 10 and 50.'}, status=status.HTTP_400_BAD_REQUEST
             )
