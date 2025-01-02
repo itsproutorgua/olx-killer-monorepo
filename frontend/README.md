@@ -1,88 +1,205 @@
-# OLX Killer App
+Collecting workspace information
 
-## Overview
-This project aims to build a marketplace platform similar to [OLX](https://olx.ua) with a key difference: strict filtering and verification processes to eliminate realtors, resellers, and other intermediaries. The platform is designed to ensure that all listings are genuine and directly from individual sellers.
+# OLX Killer Frontend
+
+This repository contains the frontend code for the OLX Killer App, a modern web application built with React, TypeScript, and Tailwind CSS. The frontend interacts with the backend services to provide a seamless user experience for buying and selling products.
+
+## Table of Contents
+
+- Tech Stack
+- Project Structure
+- Getting Started
+   - Prerequisites
+   - Installation
+   - Running the Development Server
+   - Building the Project
+   - Linting the Project
+- Configuration
+- Key Features
+- Development Tools
+- Dependencies
+- License
 
 ## Tech Stack
-- **React + Vite**: For building the user interface and optimizing the development workflow.
-- **Tailwind CSS**: For styling the application with utility-first CSS.
-- **Shadcn/ui**: For utilizing pre-built UI components.
-- **React Router DOM**: For client-side routing.
-- **Auth0**: For handling user authentication and authorization.
-- **TanStack Query**: For managing server-state and data-fetching.
-- **Zustand/Context/LocalStorage**: For state management.
-- **i18next**: For internationalization support.
+
+- **React**: JavaScript library for building user interfaces.
+- **TypeScript**: Typed superset of JavaScript that compiles to plain JavaScript.
+- **Tailwind CSS**: Utility-first CSS framework for rapid UI development.
+- **Vite**: Next-generation frontend tooling for fast builds and hot module replacement.
+- **Auth0**: Authentication and authorization platform.
+- **i18next**: Internationalization framework for JavaScript.
 
 ## Project Structure
-The project follows a combination of Feature-Sliced Design (FSD), Domain-Driven Design (DDD), and Atomic Design principles to ensure scalability, maintainability, and a clear separation of concerns.
 
-### src Directory Layout
-```plaintext
-src/
-├── api/
-│   └── axios.ts
-├── app/
-│   ├── providers.tsx
-│   └── routes.tsx
-├── assets/
-│   └── react.svg
-├── components/
-│   ├── Footer/
-│   ├── Header/
-│   └── ui/
-├── constants/
-│   └── page.const.ts
-├── data/
-│   └── links.data.ts
-├── helpers/
-│   └── api.helpers.ts
-├── hooks/
-│   └── .gitkeep
-├── layouts/
-│   └── root-layout.tsx
-├── lib/
-│   └── cn-merge.ts
-├── pages/
-│   ├── Home/
-│   └── Profile/
-├── services/
-│   └── category/
-│       └── category.service.ts
-├── types/
-├── index.css
-├── main.tsx
-└── vite-env.d.ts
+```
+frontend/
+  ├── .env
+  ├── .env.example
+  ├── .eslintrc.cjs
+  ├── .gitignore
+  ├── .prettierrc
+  ├── components.json
+  ├── index.html
+  ├── package.json
+  ├── postcss.config.js
+  ├── tailwind.config.ts
+  ├── tsconfig.app.json
+  ├── tsconfig.json
+  ├── tsconfig.node.json
+  ├── vite.config.ts
+  ├── src/
+  │   ├── app/
+  │   │   ├── main.tsx
+  │   │   ├── providers.tsx
+  │   │   └── styles/
+  │   │       └── index.css
+  │   ├── entities/
+  │   ├── features/
+  │   ├── pages/
+  │   ├── shared/
+  │   │   ├── api/
+  │   │   ├── assets/
+  │   │   ├── config/
+  │   │   ├── constants/
+  │   │   ├── library/
+  │   │   └── ui/
+  │   └── widgets/
+  └── README.md
 ```
 
-## Setup and Installation
-To get started with the project, follow these steps:
+## Getting Started
 
-1. **Clone the repository**:
-    ```bash
-    git clone https://github.com/zim89/okiller-client.git
-    cd okiller-client
-    ```
+### Prerequisites
 
-2. **Install dependencies**:
-    ```bash
-    npm install
-    ```
+Ensure you have the following installed on your machine:
 
-3. **Run the development server**:
-    ```bash
-    npm run dev
-    ```
+- Node.js (>= 14.x)
+- npm (>= 6.x) or Yarn (>= 1.x)
 
-## Features
-- **User Authentication**: Secure login and registration with Auth0.
-- **Responsive Design**: Fully responsive design with Tailwind CSS.
-- **Product Listings**: Browse and search for products with detailed filters.
-- **Profile Management**: User profiles to manage listings and account settings.
-- **Strict Verification**: Robust verification system to ensure all listings are genuine and from individual sellers.
+### Installation
 
-## Contact
-For any questions or feedback, please reach out to us at [email@example.com](mailto:email@example.com).
+1. Clone the repository:
 
----
+   ```sh
+   git clone https://github.com/itsproutorg/olx-killer-monorepo.git
+   cd frontend
+   ```
 
-We are committed to building a secure and reliable marketplace platform. Thank you for your interest and support!
+2. Install dependencies:
+
+   ```sh
+   npm install
+   ```
+
+   or
+
+   ```sh
+   yarn install
+   ```
+
+### Running the Development Server
+
+Start the development server:
+
+```sh
+npm run dev
+```
+
+or
+
+```sh
+yarn dev
+```
+
+The application will be available at `http://localhost:3000`.
+
+### Building the Project
+
+Build the project for production:
+
+```sh
+npm run build
+```
+
+or
+
+```sh
+yarn build
+```
+
+The built files will be in the `dist` directory.
+
+### Linting the Project
+
+Lint the project:
+
+```sh
+npm run lint
+```
+
+or
+
+```sh
+yarn lint
+```
+
+## Configuration
+
+Configuration files are located in the root directory of the
+
+frontend folder:
+
+- `.env`: Environment variables for development.
+- `.env.example`: Example environment variables file.
+- `tailwind.config.ts`: Tailwind CSS configuration.
+- `tsconfig.json`: TypeScript configuration.
+- `vite.config.ts`: Vite configuration.
+
+## Key Features
+
+- **Responsive Design**: The application is fully responsive and works on all devices.
+- **Authentication**: Secure authentication using Auth0.
+- **Internationalization**: Supports multiple languages using i18next.
+- **State Management**: Efficient state management using React hooks and context.
+- **API Integration**: Seamless integration with backend services using Axios.
+- **Component Library**: Reusable UI components built with Tailwind CSS.
+
+## Development Tools
+
+- **ESLint**: Linter for identifying and reporting on patterns in JavaScript.
+- **Prettier**: Code formatter for consistent code style.
+- **Husky**: Git hooks for running scripts before committing.
+- **Lint-Staged**: Run linters on git staged files.
+- **PostCSS**: Tool for transforming CSS with JavaScript plugins.
+
+## Dependencies
+
+### Main Dependencies
+
+- **@auth0/auth0-react**: Auth0 SDK for React Single Page Applications (SPA).
+- **@chakra-ui/spinner**: Chakra UI Spinner component.
+- **@hookform/resolvers**: Validation resolvers for React Hook Form.
+- **@radix-ui/react-accordion**: Unstyled, accessible components for building high-quality design systems and web apps.
+- **@tanstack/react-query**: Hooks for fetching, caching, and updating asynchronous data in React.
+- **axios**: Promise-based HTTP client for the browser and node.js.
+- **i18next**: Internationalization framework for JavaScript.
+- **react**: A JavaScript library for building user interfaces.
+- **react-dom**: Entry point to the DOM and server renderers for React.
+- **react-hook-form**: Performant, flexible, and extensible forms with easy-to-use validation.
+- **tailwindcss**: Utility-first CSS framework for rapid UI development.
+- **vite**: Next-generation frontend tooling.
+
+### Development Dependencies
+
+- **@typescript-eslint/eslint-plugin**: TypeScript plugin for ESLint.
+- **@vitejs/plugin-react**: Vite plugin for React.
+- **eslint**: Linter for identifying and reporting on patterns in JavaScript.
+- **prettier**: Code formatter for consistent code style.
+- **tailwindcss**: Utility-first CSS framework for rapid UI development.
+- **typescript**: Typed superset of JavaScript that compiles to plain JavaScript.
+
+For a complete list of dependencies, refer to the package.json file.
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for details.

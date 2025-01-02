@@ -14,22 +14,26 @@ export const AccountSidebar = () => {
   const { logout } = useAuth0()
 
   return (
-    <aside className='w-[305px] border-r'>
+    <aside className='w-[305px] shrink-0 border-r'>
       <nav className='space-y-[10px] border-b pb-[30px] pr-[49px] pt-[42px]'>
         {SIDEBAR_ITEMS.map(item => (
           <button
             key={item.title}
             className={`h-[42px] w-full rounded-xl pl-[18px] ${
               activeTab === item.title
-                ? 'bg-primary-500 fill-gray-50 text-gray-50'
-                : 'fill-gray-950 text-gray-950'
+                ? 'bg-primary-500 text-gray-50'
+                : 'text-gray-950'
             }`}
           >
             <Link
               to={item.url}
               className='flex items-center gap-2 text-sm font-[500]'
             >
-              <item.icon />
+              {activeTab === item.title ? (
+                <item.icon.solid />
+              ) : (
+                <item.icon.outline />
+              )}
               {t(`${item.title}`)}
             </Link>
           </button>

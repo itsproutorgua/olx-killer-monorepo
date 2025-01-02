@@ -57,7 +57,7 @@ export const UserMenu = () => {
                 {!user?.email_verified && <DangerIcon />}
               </DropdownMenuItem>
             </Link>
-            <Link to={`${PRIVATE_PAGES.ACCOUNT}/${PRIVATE_PAGES.CHAT}`}>
+            <Link to={PRIVATE_PAGES.CHAT}>
               <DropdownMenuItem className='cursor-pointer border-y py-[14px] pl-[16px] leading-none'>
                 <span>{t('account.messages')}</span>
               </DropdownMenuItem>
