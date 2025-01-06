@@ -44,7 +44,7 @@ export const ProductLocation: React.FC<Props> = ({ location, className }) => {
                   </HoverCardContent>
                 )}
               </HoverCard>
-              <p className='text-primary-gray text-xs leading-none'>
+              <p className='text-xs leading-none text-gray-400'>
                 {location.region ?? t('words.defaultLocation')}
               </p>
             </div>
