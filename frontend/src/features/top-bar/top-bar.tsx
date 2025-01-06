@@ -49,7 +49,7 @@ export const TopBar = () => {
         className='mr-5 h-10 w-10 shrink-0 cursor-pointer md:hidden'
       />
       <Logo
-        className={`flex items-center justify-center transition-opacity duration-200 ${
+        className={`flex items-center justify-center transition-opacity duration-700 ${
           !isExpanded ? 'opacity-100' : 'w-0 opacity-0'
         } md:px-0 md:opacity-100`}
       />
