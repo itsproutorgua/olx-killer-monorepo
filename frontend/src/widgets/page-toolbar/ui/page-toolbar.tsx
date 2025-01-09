@@ -1,13 +1,15 @@
 import { useTranslation } from 'react-i18next'
 
 import { SortButton } from '@/features/sort-button'
-import { useMediaQuery } from '@/shared/library/hooks'
+import { ProductsContext } from '@/entities/product'
+import { useMediaQuery, useStrictContext } from '@/shared/library/hooks'
 import { FilterTags } from './filter-tags'
 import { PageToolbarMobile } from './page-toolbar-mobile'
 
-export const PageToolbar = ({ count }: { count: number }) => {
+export const PageToolbar = () => {
   const isMobile = useMediaQuery('(max-width: 767px)')
   const { t } = useTranslation()
+  const { count } = useStrictContext(ProductsContext)
 
   return (
     <div className='pb-[53px] xl:pb-0'>

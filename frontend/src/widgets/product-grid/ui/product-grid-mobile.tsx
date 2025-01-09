@@ -1,57 +1,69 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
-import { useQuery } from '@tanstack/react-query'
+import { useEffect } from 'react'
+import { useInfiniteQuery } from '@tanstack/react-query'
 import { LoaderCircle } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 
 import { PageToolbar } from '@/widgets/page-toolbar'
 import { ProductCard } from '@/widgets/product-card'
-import { Product, productApi, type ProductResponse } from '@/entities/product'
+import { useFilters } from '@/entities/filter'
+import { productApi, ProductsContext } from '@/entities/product'
 import { SectionTitle } from '@/shared/ui'
 import { QUERY_KEYS } from '@/shared/constants'
 import { APP_VARIABLES } from '@/shared/constants/app.const'
+import { useStrictContext } from '@/shared/library/hooks'
 import { cn } from '@/shared/library/utils'
 
 export const ProductGridMobile = ({ path }: { path: string }) => {
   const { t } = useTranslation()
-  const [page, setPage] = useState(1)
-  const [announcements, setAnnouncements] = useState<Product[]>([])
-  const pages = useRef(1)
+  const { sort, filters } = useFilters()
+  const { setCount } = useStrictContext(ProductsContext)
 
-  const { isLoading, data } = useQuery<ProductResponse>({
-    queryKey: [QUERY_KEYS.PRODUCTS, path, page],
-    queryFn: meta =>
-      productApi.findByFilters(
-        {
-          path,
-          limit: APP_VARIABLES.LIMIT_MOBILE,
-          page,
-        },
-        meta,
-      ),
-    enabled: !!path,
-  })
-
-  const calculateTotalPages = useCallback((count: number) => {
-    return Math.ceil(count / APP_VARIABLES.LIMIT_MOBILE)
-  }, [])
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
+    useInfiniteQuery({
+      queryKey: [QUERY_KEYS.PRODUCTS, path, sort, filters.status],
+      queryFn: meta =>
+        productApi.findByFilters(
+          {
+            path,
+            limit: APP_VARIABLES.LIMIT_MOBILE,
+            page: meta.pageParam ? meta.pageParam : 1,
+            price_min: Number(filters.price?.split('-')[0]),
+            price_max: Number(filters.price?.split('-')[1]),
+            status: filters.status,
+            sort,
+          },
+          meta,
+        ),
+      enabled: !!path,
+      initialPageParam: 1,
+      getNextPageParam: result => {
+        if (result.next) {
+          return Number(result.next.split('page=')[1].split('&')[0])
+        }
+        return undefined
+      },
+      select: result => ({
+        count: result.pages[0].count,
+        items: result.pages.flatMap(page => page.results),
+      }),
+    })
 
   useEffect(() => {
-    if (data) {
-      pages.current = calculateTotalPages(data.count)
-      setAnnouncements(prev => [...prev, ...data.results])
+    if (data?.count) {
+      setCount(data.count)
     }
-  }, [calculateTotalPages, data])
+  }, [data?.count, setCount])
 
   return (
     <>
       <div>
-        <PageToolbar count={0} />
+        <PageToolbar />
         <SectionTitle title={t('titles.announcementsAll')} />
 
         <div className='space-y-[67px]'>
-          {announcements.length > 0 && (
+          {data && data.items.length > 0 && (
             <ul className='grid grid-cols-2 gap-x-2.5 gap-y-10'>
-              {announcements.map((product, index) => (
+              {data.items.map((product, index) => (
                 <li key={index}>
                   <ProductCard product={product} />
                 </li>
@@ -60,10 +72,11 @@ export const ProductGridMobile = ({ path }: { path: string }) => {
           )}
 
           <button
-            onClick={() => setPage(page + 1)}
-            className={cn('btn-secondary', pages.current === page && 'hidden')}
+            onClick={() => fetchNextPage()}
+            disabled={!hasNextPage || isFetchingNextPage}
+            className={cn('btn-secondary', !hasNextPage && 'hidden')}
           >
-            {isLoading ? (
+            {isFetchingNextPage ? (
               <LoaderCircle className='size-6 animate-spin' />
             ) : (
               t('buttons.showMoreAnnouncements')
