@@ -6,6 +6,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { CategoryNavbar } from '@/widgets/category-navbar'
 import { ProductGrid, ProductGridMobile } from '@/widgets/product-grid'
 import { categoryApi, type Category } from '@/entities/category'
+import { ProductsProvider } from '@/entities/product'
 import { Breadcrumbs, PageHeading, PageLoader } from '@/shared/ui'
 import { QUERY_KEYS } from '@/shared/constants'
 import { useMediaQuery } from '@/shared/library/hooks'
@@ -50,11 +51,13 @@ export const CatalogPage = () => {
             <PageHeading title={data.title} />
             <CategoryNavbar data={data.children} />
 
-            {isMobile ? (
-              <ProductGridMobile path={data.path} />
-            ) : (
-              <ProductGrid path={data.path} />
-            )}
+            <ProductsProvider>
+              {isMobile ? (
+                <ProductGridMobile path={data.path} />
+              ) : (
+                <ProductGrid path={data.path} />
+              )}
+            </ProductsProvider>
           </>
         )}
       </div>
