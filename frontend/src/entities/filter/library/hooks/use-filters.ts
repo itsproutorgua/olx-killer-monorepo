@@ -30,8 +30,11 @@ export const useFilters = () => {
 
   const isFiltersEmpty = Object.values(filters).every(value => !value)
 
-  const setFilter = (key: string, value: string) => setQueryParam(key, value)
-  const removeFilter = (key: string) => removeQueryParamByKey([key])
+  const setFilter = (key: keyof Filters, value: string) =>
+    setQueryParam(key, value)
+
+  const removeFilter = (key: keyof Filters) => removeQueryParamByKey([key])
+
   const clearFilters = () => {
     removeQueryParamByKey([FilterEnum.STATUS, FilterEnum.PRICE])
   }

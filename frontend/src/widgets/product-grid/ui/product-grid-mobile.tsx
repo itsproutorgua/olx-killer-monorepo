@@ -33,8 +33,12 @@ export const ProductGridMobile = ({ path }: { path: string }) => {
             path,
             limit: APP_VARIABLES.LIMIT_MOBILE,
             page: meta.pageParam ? meta.pageParam : 1,
-            price_min: Number(filters.price?.split('-')[0]),
-            price_max: Number(filters.price?.split('-')[1]),
+            price_min: filters.price
+              ? Number(filters.price.split('-')[0])
+              : undefined,
+            price_max: filters.price
+              ? Number(filters.price.split('-')[1])
+              : undefined,
             status: filters.status,
             sort,
           },

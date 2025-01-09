@@ -21,7 +21,6 @@ export const FiltersTabs = ({ onCloseSheet }: { onCloseSheet: () => void }) => {
   const { t } = useTranslation()
   const [value, setValue] = useState('')
   const { filters } = useFilters()
-  console.log(filters)
 
   return (
     <Tabs orientation='vertical' value={value} onValueChange={setValue}>
