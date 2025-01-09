@@ -1,6 +1,6 @@
 import { keepPreviousData, queryOptions } from '@tanstack/react-query'
 
-import { ListingResponse } from '@/entities/user/model/types.ts'
+import { ListingResponse } from '@/entities/user-listings/models/types.ts'
 import { instanceBase } from '@/shared/api'
 import { QUERY_KEYS } from '@/shared/constants'
 
