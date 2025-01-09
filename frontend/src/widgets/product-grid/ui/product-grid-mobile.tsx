@@ -20,7 +20,13 @@ export const ProductGridMobile = ({ path }: { path: string }) => {
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
     useInfiniteQuery({
-      queryKey: [QUERY_KEYS.PRODUCTS, path, sort, filters.status],
+      queryKey: [
+        QUERY_KEYS.PRODUCTS,
+        path,
+        sort,
+        filters.status,
+        filters.price,
+      ],
       queryFn: meta =>
         productApi.findByFilters(
           {
