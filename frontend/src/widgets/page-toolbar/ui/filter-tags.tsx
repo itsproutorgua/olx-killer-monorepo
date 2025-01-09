@@ -2,6 +2,7 @@ import { CircleX } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 
 import { useFilters } from '@/entities/filter'
+import type { Filters } from '@/entities/filter/library/hooks/use-filters'
 import { FilterEnum } from '@/shared/constants/app.const'
 
 export const FilterTags = () => {
@@ -13,7 +14,7 @@ export const FilterTags = () => {
       clearFilters()
     }
   }
-  const onRemove = (key: FilterEnum) => removeFilter(key)
+  const onRemove = (key: FilterEnum) => removeFilter(key as keyof Filters)
 
   return (
     <ul className='flex items-center gap-[14px]'>
