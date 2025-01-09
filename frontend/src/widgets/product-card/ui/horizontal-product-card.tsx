@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
-import { Listing } from '@/entities/user/model/types.ts'
+import { Listing } from '@/entities/user-listings/models/types.ts'
 import { DeleteSmall } from '@/shared/ui/icons/delete-small.tsx'
 import { EditSmall } from '@/shared/ui/icons/edit-small.tsx'
 import { XCircleSmall } from '@/shared/ui/icons/x-circle-small.tsx'
@@ -43,7 +43,7 @@ export const HorizontalProductCard = ({
           {!product.active && (
             <div className='flex h-[30px] items-center gap-[10px] rounded bg-error-300 px-3 py-[6px] text-xs'>
               <XCircleSmall />
-              {t('listings.listingInactive')}
+              {t('user-listings.listingInactive')}
             </div>
           )}
         </div>
