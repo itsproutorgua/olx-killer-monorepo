@@ -158,7 +158,7 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 
 # AWS S3
 AWS_LOCATION = 'media'
-MEDIA_URL = f'https://{env('AWS_STORAGE_BUCKET_NAME', default=None)}.s3.amazonaws.com/{AWS_LOCATION}/'
+MEDIA_URL = f'https://{env("AWS_STORAGE_BUCKET_NAME", default=None)}.s3.amazonaws.com/{AWS_LOCATION}/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
