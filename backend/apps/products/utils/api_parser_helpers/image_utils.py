@@ -41,7 +41,7 @@ def save_base64_image_to_product(image_data, product: Product) -> None:
         image = Image.open(io.BytesIO(image_binary))
         image_format = image.format.lower()
     except (IOError, SyntaxError) as e:
-        raise ValidationError("Invalid image file") from e
+        raise ValidationError('Invalid image file') from e
 
     file_extension = image_format if image_format != 'jpeg' else 'jpg'
     image_file_name = f'{file_name}.{file_extension}'

@@ -20,7 +20,6 @@ class FavoriteViewSet(
     mixins.DestroyModelMixin,
     viewsets.GenericViewSet,
 ):
-
     queryset = Favorite.objects
     serializer_class = UserFavoriteSerializer
 
@@ -67,7 +66,7 @@ class FavoriteViewSet(
         tags=[FAVORITE_TAG],
         summary=_('Add item to favorites'),
         description=_(
-            'Adds the specified product to the current user\'s favorites list. '
+            "Adds the specified product to the current user's favorites list. "
             'Provide the `id` of the product in the request body.'
         ),
         request=UserFavoriteSerializer,
@@ -89,7 +88,7 @@ class FavoriteViewSet(
         tags=[FAVORITE_TAG],
         summary=_('Remove item from favorites'),
         description=_(
-            'Removes the specified product from the user\'s favorites list. Use the `id` of the product in the URL.'
+            "Removes the specified product from the user's favorites list. Use the `id` of the product in the URL."
         ),
         responses={
             status.HTTP_204_NO_CONTENT: OpenApiResponse(description=_('Item successfully removed from favorites.')),

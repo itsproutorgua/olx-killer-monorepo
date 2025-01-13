@@ -4,3 +4,13 @@ from apps.products.views.product import ProductAPIViewSet
 from apps.products.views.product_filters import ProductFilterViewSet
 from apps.products.views.products_latest import LatestProductListView
 from apps.products.views.tmp_product import TMPProductCreateAPIView
+
+
+__all__ = [
+    'CategoryAPIViewSet',
+    'CurrencyListView',
+    'ProductAPIViewSet',
+    'ProductFilterViewSet',
+    'LatestProductListView',
+    'TMPProductCreateAPIView',
+]

@@ -8,5 +8,6 @@ exclude =
     .git
     __pycache__
     __init__.py
+    fixtures
 ignore = F403, F405
 max-line-length = 120

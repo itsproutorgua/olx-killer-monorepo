@@ -257,7 +257,7 @@ cities = {
             'languages': {'uk': 'Зеленодольськ', 'en': 'Zelenodolsk', 'ru': 'Зеленодольск'},
         },
         {
-            'name': 'Кам\'янське',
+            'name': "Кам'янське",
             'location_type': 'city',
             'latitude': 48.528889,
             'longitude': 34.597222,
@@ -320,7 +320,7 @@ cities = {
             'languages': {'uk': 'Підгородне', 'en': 'Pidhorodne', 'ru': 'Подгородное'},
         },
         {
-            'name': 'П\'ятихатки',
+            'name': "П'ятихатки",
             'location_type': 'city',
             'latitude': 48.413056,
             'longitude': 33.702778,
@@ -504,7 +504,7 @@ cities = {
             'languages': {'uk': 'Селидове', 'en': 'Selydove', 'ru': 'Селидово'},
         },
         {
-            'name': 'Слов\'янськ',
+            'name': "Слов'янськ",
             'location_type': 'city',
             'latitude': 48.8724,
             'longitude': 37.6172,
@@ -711,7 +711,7 @@ cities = {
             'languages': {'uk': 'Тячів', 'en': 'Tyachiv', 'ru': 'Тячев'},
         },
         {
-            'name': 'Міжгір\'я',
+            'name': "Міжгір'я",
             'location_type': 'city',
             'latitude': 48.5374,
             'longitude': 23.2361,
@@ -804,7 +804,7 @@ cities = {
             'languages': {'uk': 'Запоріжжя', 'en': 'Zaporizhzhia', 'ru': 'Запорожье'},
         },
         {
-            'name': 'Кам\'янка-Дніпровська',
+            'name': "Кам'янка-Дніпровська",
             'location_type': 'city',
             'latitude': 47.463,
             'longitude': 34.4228,
@@ -1111,7 +1111,7 @@ cities = {
             'languages': {'uk': 'Долинська', 'en': 'Dolynska', 'ru': 'Долинская'},
         },
         {
-            'name': 'Знам\'янка',
+            'name': "Знам'янка",
             'location_type': 'city',
             'latitude': 48.7137,
             'longitude': 32.6733,
@@ -1239,7 +1239,7 @@ cities = {
             'languages': {'uk': 'Довжанськ', 'en': 'Dovzhansk', 'ru': 'Довжанск'},
         },
         {
-            'name': 'Зимогір\'я',
+            'name': "Зимогір'я",
             'location_type': 'city',
             'latitude': 48.5911,
             'longitude': 38.9197,
@@ -1542,7 +1542,7 @@ cities = {
             'languages': {'uk': 'Золочів', 'en': 'Zolochiv', 'ru': 'Золочев'},
         },
         {
-            'name': 'Кам\'янка-Бузька',
+            'name': "Кам'янка-Бузька",
             'location_type': 'city',
             'latitude': 50.105,
             'longitude': 24.3377,
@@ -2459,7 +2459,7 @@ cities = {
             'languages': {'uk': 'Красноград', 'en': 'Krasnohrad', 'ru': 'Красноград'},
         },
         {
-            'name': 'Куп\'янськ',
+            'name': "Куп'янськ",
             'location_type': 'city',
             'latitude': 49.7064,
             'longitude': 37.6,
@@ -2617,7 +2617,7 @@ cities = {
             'languages': {'uk': 'Ізяслав', 'en': 'Iziaslav', 'ru': 'Изясллав'},
         },
         {
-            'name': 'Кам\'янець-Подільський',
+            'name': "Кам'янець-Подільський",
             'location_type': 'city',
             'latitude': 48.6806,
             'longitude': 26.5806,
@@ -2710,7 +2710,7 @@ cities = {
             'languages': {'uk': 'Золотоноша', 'en': 'Zolotonosha', 'ru': 'Золотоноша'},
         },
         {
-            'name': 'Кам\'янка',
+            'name': "Кам'янка",
             'location_type': 'city',
             'latitude': 49.0312,
             'longitude': 32.0976,

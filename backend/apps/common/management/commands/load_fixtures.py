@@ -44,4 +44,4 @@ class Command(BaseCommand):
         for fixture in fixture_map:
             model = fixture['model']
             cls.load_data(fixture['path'])
-            logger.info(f'Fixture for {model.split('.')[1]} was loaded from {fixture['path']}.')
+            logger.info(f'Fixture for {model.split(".")[1]} was loaded from {fixture["path"]}.')

@@ -8,7 +8,6 @@ repos:
         types: [ python ]
         pass_filenames: true
         args: [ '--settings-file', 'backend/.isort.cfg' ]
-        exclude: '/migrations/'
 
       - id: black
         name: black
@@ -16,8 +15,7 @@ repos:
         language: system
         types: [ python ]
         pass_filenames: true
-        args: ['--config', 'backend/pyproject.toml']
-        exclude: 'migrations/.*\.py'
+        args: [ '--config', 'backend/pyproject.toml' ]
 
       - id: flake8
         name: flake8
@@ -26,3 +24,10 @@ repos:
         types: [python]
         pass_filenames: false
         args: ['--config', 'backend/.flake8']
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.9.1
+    hooks:
+      - id: ruff
+        args: [ '--fix', '--config', 'backend/ruff.toml' ]
+      - id: ruff-format
