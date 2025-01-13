@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-20 09:18+0200\n"
+"POT-Creation-Date: 2025-01-13 01:13+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -121,7 +121,7 @@ msgid "User"
 msgstr "Користувач"
 
 #: .\apps\favorites\models.py:24 .\apps\products\models\price\price.py:23
-#: .\apps\products\models\product.py:57
+#: .\apps\products\models\product.py:71
 msgid "Product"
 msgstr "Продукт"
 
@@ -137,23 +137,23 @@ msgstr "Цей товар уже додано до ваших улюблених
 msgid "Price not available"
 msgstr "Ціна недоступна"
 
-#: .\apps\favorites\views\favorites.py:40
+#: .\apps\favorites\views\favorites.py:39
 msgid "List favorite items"
 msgstr "Список улюблених"
 
-#: .\apps\favorites\views\favorites.py:41
+#: .\apps\favorites\views\favorites.py:40
 msgid "Returns a list of items that the user has marked as favorites."
 msgstr "Повертає список елементів, які користувач позначив як улюблені."
 
-#: .\apps\favorites\views\favorites.py:45
+#: .\apps\favorites\views\favorites.py:44
 msgid "A list of favorite items for the user."
 msgstr "Список улюблених предметів для користувача."
 
-#: .\apps\favorites\views\favorites.py:68
+#: .\apps\favorites\views\favorites.py:67
 msgid "Add item to favorites"
 msgstr "Додати товар до улюбленого"
 
-#: .\apps\favorites\views\favorites.py:70
+#: .\apps\favorites\views\favorites.py:69
 msgid ""
 "Adds the specified product to the current user's favorites list. Provide the "
 "`id` of the product in the request body."
@@ -161,19 +161,19 @@ msgstr ""
 "Додає вказаний продукт до списку улюбленого поточного користувача. Укажіть "
 "`id` продукту в тілі запиту."
 
-#: .\apps\favorites\views\favorites.py:75
+#: .\apps\favorites\views\favorites.py:74
 msgid "The item was successfully added to favorites."
 msgstr "Елемент успішно додано до улюбленого."
 
-#: .\apps\favorites\views\favorites.py:77
+#: .\apps\favorites\views\favorites.py:76
 msgid "Validation error: product already in favorites."
 msgstr "Помилка підтвердження: товар вже був доданий до улюбленого."
 
-#: .\apps\favorites\views\favorites.py:90
+#: .\apps\favorites\views\favorites.py:89
 msgid "Remove item from favorites"
 msgstr "Видалити елемент із улюблених"
 
-#: .\apps\favorites\views\favorites.py:92
+#: .\apps\favorites\views\favorites.py:91
 msgid ""
 "Removes the specified product from the user's favorites list. Use the `id` "
 "of the product in the URL."
@@ -181,11 +181,11 @@ msgstr ""
 "Видаляє вказаний продукт зі списку вибраного користувача.Використовуйте 'id' "
 "продукту в URL-адресі."
 
-#: .\apps\favorites\views\favorites.py:95
+#: .\apps\favorites\views\favorites.py:94
 msgid "Item successfully removed from favorites."
 msgstr "Елемент успішно видалено з улюблених."
 
-#: .\apps\favorites\views\favorites.py:97
+#: .\apps\favorites\views\favorites.py:96
 msgid "The specified favorite item does not exist or was not found."
 msgstr "Зазначений улюблений елемент не існує або не знайдений."
 
@@ -305,23 +305,30 @@ msgid ""
 "location_type, region, latitude, and longitude. You can optionally filter "
 "locations by their name using the \"location_name\" query parameter."
 msgstr ""
+"Цей кінцевий пункт повертає список локацій (міст і сіл), впорядкованих "
+"алфавітно за назвою міста. Кожна локація містить її ідентифікатор, назву, "
+"тип локації, регіон, широту та довготу. Ви також можете фільтрувати "
+"локації за їх назвою, використовуючи параметр запиту \"location_name\"."
 
 #: .\apps\locations\views\location.py:28
 msgid ""
 "Filter locations by name (supports partial match for city or village names)"
 msgstr ""
+"Фільтруйте локації за назвою (підтримується часткове співпадіння для назв "
+"міст або сіл)"
 
 #: .\apps\locations\views\location.py:34
 msgid "A list of locations successfully retrieved."
-msgstr ""
+msgstr "Список локацій успішно отримано."
 
 #: .\apps\locations\views\location.py:37
 msgid "Invalid request parameters."
-msgstr ""
+msgstr "Невірні параметри запиту."
 
 #: .\apps\locations\views\location.py:40
 msgid "An unexpected error occurred on the server."
-msgstr ""
+msgstr "Сталася непередбачена помилка на сервері."
+
 
 #: .\apps\products\admin\category.py:33
 msgid "Number of Products"
@@ -332,7 +339,7 @@ msgid "Activity Status"
 msgstr "Статус активності оголошень"
 
 #: .\apps\products\admin\filters\active_inactive.py:11
-#: .\apps\products\models\product.py:40
+#: .\apps\products\models\product.py:44
 msgid "Active"
 msgstr "Активні"
 
@@ -366,27 +373,39 @@ msgstr "Новий"
 msgid "Old"
 msgstr "Вживаний"
 
-#: .\apps\products\admin\product.py:41
+#: .\apps\products\admin\product.py:43
 msgid "General"
 msgstr "Основний"
 
-#: .\apps\products\admin\product.py:62
+#: .\apps\products\admin\product.py:65
 msgid "Set status to New for selected products"
 msgstr "Встановити стан 'Новий' для обраних оголошень"
 
-#: .\apps\products\admin\product.py:67
+#: .\apps\products\admin\product.py:70
 msgid "Set status to Old for selected products"
 msgstr "Встановити стан 'Вживаний' для обраних оголошень"
 
-#: .\apps\products\admin\product.py:72
+#: .\apps\products\admin\product.py:75
 msgid "Activate selected products"
 msgstr "Активувати обрані оголошення"
 
-#: .\apps\products\admin\product.py:77
+#: .\apps\products\admin\product.py:80
 msgid "Deactivate selected products"
 msgstr "Деактивувати обрані оголошення"
 
-#: .\apps\products\apps.py:8 .\apps\products\models\product.py:58
+#: .\apps\products\admin\product.py:85
+msgid "Published selected products"
+msgstr "Опублікувати обрані оголошення"
+
+#: .\apps\products\admin\product.py:90
+msgid "Rejected selected products"
+msgstr "Відхилити обрані оголошення"
+
+#: .\apps\products\admin\product.py:95
+msgid "Successfully rejected selected products."
+msgstr "Оголошення успішно відхилено."
+
+#: .\apps\products\apps.py:8 .\apps\products\models\product.py:72
 #: .\settings\jazzmin.py:53
 msgid "Products"
 msgstr "Оголошення"
@@ -409,11 +428,11 @@ msgstr "Зображення"
 msgid "Icon"
 msgstr "Іконка"
 
-#: .\apps\products\models\category.py:29 .\apps\products\models\product.py:47
+#: .\apps\products\models\category.py:29 .\apps\products\models\product.py:61
 msgid "Views"
 msgstr "Перегляди"
 
-#: .\apps\products\models\category.py:36 .\apps\products\models\product.py:30
+#: .\apps\products\models\category.py:36 .\apps\products\models\product.py:34
 msgid "Category"
 msgstr "Категорія"
 
@@ -480,27 +499,35 @@ msgstr "Ціна"
 msgid "Prices"
 msgstr "Ціни"
 
-#: .\apps\products\models\product.py:18
+#: .\apps\products\models\product.py:19
+msgid "Published"
+msgstr "Опубліковано"
+
+#: .\apps\products\models\product.py:20
+msgid "Rejected"
+msgstr "Відхилено"
+
+#: .\apps\products\models\product.py:22
 msgid "Product name"
 msgstr "Назва продукту"
 
-#: .\apps\products\models\product.py:19
+#: .\apps\products\models\product.py:23
 msgid "Product description"
 msgstr "Опис товару"
 
-#: .\apps\products\models\product.py:24
+#: .\apps\products\models\product.py:28
 msgid "Seller"
 msgstr "Продавець"
 
-#: .\apps\products\models\product.py:33
-msgid "Status"
-msgstr "Стан продукту"
-
 #: .\apps\products\models\product.py:37
+msgid "Status"
+msgstr "Стан"
+
+#: .\apps\products\models\product.py:41
 msgid "Product status"
 msgstr "Стан продукту"
 
-#: .\apps\products\models\product.py:43
+#: .\apps\products\models\product.py:47
 msgid ""
 "Indicates whether the listing is currently active.Set to False when the item "
 "is sold or the listing is no longer relevant."
@@ -508,7 +535,21 @@ msgstr ""
 "Вказує, чи є оголошення активним. Встановіть значення False, коли товар "
 "продано або оголошення більше не актуальне."
 
-#: .\apps\products\models\product.py:48
+#: .\apps\products\models\product.py:52
+msgid "Is Published"
+msgstr "Опубліковано"
+
+#: .\apps\products\models\product.py:57
+msgid ""
+"Indicates whether the product is published or rejected. Choose \"Published\" "
+"to make the listing publicly visible, or \"Rejected\" to mark it as not "
+"approved."
+msgstr ""
+"Вказує, опубліковано чи відхилено оголошення. Виберіть \"Опубліковано\" щоб "
+"зробити оголошення загальнодоступним, або \"Відхилено\", щоб позначити його "
+"як не затверджено."
+
+#: .\apps\products\models\product.py:62
 msgid "Parameters"
 msgstr "Параметри"
 
@@ -694,8 +735,8 @@ msgid "Filter products by their status (e.g., \"new\", \"old\")."
 msgstr "Фільтрувати продукти за їх статусом (наприклад, \"new\", \"old\")."
 
 #: .\apps\products\views\product_filters.py:97
-msgid "Field to sort products by (e.g., {"
-msgstr "Поле для сортування оголошень (наприклад, {"
+msgid "Field to sort products by (e.g., {\", \".join(allowed_sort_fields)}) "
+msgstr "Поле для сортування оголошень (наприклад, {\", \".join(allowed_sort_fields)}) "
 
 #: .\apps\products\views\product_filters.py:102
 msgid "Sort by price in ascending order"
@@ -1060,29 +1101,28 @@ msgstr ""
 "користувачазалишається в системі для цілей аудиту, але обліковий запис стає "
 "недоступний."
 
-#: .\apps\users\views\user_products.py:29
+#: .\apps\users\views\user_products.py:28
 msgid "Retrieve user advertisements"
 msgstr "Отримати оголошення користувача"
 
-#: .\apps\users\views\user_products.py:31
+#: .\apps\users\views\user_products.py:30
 msgid ""
 "Retrieve a list of advertisements for the authenticated user. Optionally "
 "filter the advertisements by their active status using the `active` query "
 "parameter. Use `true` for active advertisements, `false` for inactive "
-"advertisements. If no `active` parameter is provided, all advertisements for "
-"the user will be returned. The response will be sorted by the most recently "
-"created advertisements first, and it will be paginated, providing a limited "
-"set of advertisements per request."
+"advertisements. You can also filter by the publication status with the "
+"`is_published` parameter, using values `published` or `rejected`. If both "
+"parameters are passed, the request will return a `400 Bad Request` response."
 msgstr ""
-"Отримати список рекламних оголошень для автентифікованого користувача. "
-"Додатково фільтрувати оголошення за їх активним статусом за допомогою запиту "
-"`active` параметр. Використовуйте `true` для активних оголошень, `false` для "
-"неактивних оголошень. Якщо параметр `active` не надано, усі оголошення для "
-"користувача буде повернено. Відповідь буде відсортовано за останнього спершу "
-"створеного оголошення, а потім її буде розбито на сторінки, забезпечуючи "
-"обмежений набір оголошень на запит."
+"Отримайте список оголошень для автентифікованого користувача. За бажанням "
+"відфільтруйте оголошення за їхньою активністю за допомогою параметра запиту "
+"`active`. Використовуйте `true` для активних оголошень, `false` для неактивних. "
+"Ви також можете відфільтрувати за статусом публікації за допомогою параметра "
+"`is_published`, використовуючи значення `published` або `rejected`. Якщо обидва "
+"параметри передані одночасно, запит поверне відповідь `400 Bad Request`."
 
-#: .\apps\users\views\user_products.py:44
+
+#: .\apps\users\views\user_products.py:43
 msgid ""
 "Filter advertisements by their active status. Use `true` for active "
 "advertisements and `false` for inactive advertisements."
@@ -1090,15 +1130,28 @@ msgstr ""
 "Фільтрувати оголошення за їх активним статусом. Використовуйте `true` для "
 "активних оголошень та `false` для неактивних оголошень."
 
-#: .\apps\users\views\user_products.py:65
-msgid "Invalid value for active parameter. Use 'true' or 'false'."
+#: .\apps\users\views\user_products.py:52
+msgid ""
+"Filter advertisements by publication status. Use `published` for published "
+"products and `rejected` for rejected products."
+msgstr ""
+"Фільтруйте оголошення за статусом публікації. Використовуйте `published` для публікованих "
+"продуктів і `rejected` для відхилених продуктів."
+
+#: .\apps\users\views\user_products.py:71
+msgid "You can filter by either 'active' or 'is_published', not both."
+msgstr "Ви можете фільтрувати за «активним» або «опублікованим», але не за обома."
+
+#: .\apps\users\views\user_products.py:82
+msgid "Invalid value for active parameter. Use `true` or `false`."
 msgstr ""
 "Недійсне значення для активного параметра. Використовуйте 'true' або 'false'."
 
-#: .\apps\users\views\user_products.py:72
-#, python-brace-format
-msgid "This user does't have any {active_status} advertisements."
-msgstr "Цей користувач не має {active_status} оголошень."
+#: .\apps\users\views\user_products.py:91
+msgid ""
+"Invalid value for `is_published` parameter. Use `published` or `rejected`."
+msgstr ""
+"Недійсне значення для параметра is_published. Використовуйте `published` або `rejected`."
 
 #: .\settings\base.py:145
 msgid "Ukrainian"
@@ -1106,11 +1159,15 @@ msgstr "Українська"
 
 #: .\settings\base.py:146
 msgid "English"
-msgstr "англійська"
+msgstr "Англійська"
 
 #: .\settings\base.py:147
 msgid "Russian"
-msgstr "російська"
+msgstr "Російська"
+
+#, python-brace-format
+#~ msgid "This user does't have any {active_status} advertisements."
+#~ msgstr "Цей користувач не має {active_status} оголошень."
 
 #~ msgid "Active announcements"
 #~ msgstr "Активні оголошення"

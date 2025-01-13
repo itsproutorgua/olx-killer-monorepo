@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-20 09:18+0200\n"
+"POT-Creation-Date: 2025-01-13 01:13+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -118,7 +118,7 @@ msgid "User"
 msgstr "User"
 
 #: .\apps\favorites\models.py:24 .\apps\products\models\price\price.py:23
-#: .\apps\products\models\product.py:57
+#: .\apps\products\models\product.py:71
 msgid "Product"
 msgstr "Product"
 
@@ -134,23 +134,23 @@ msgstr "This product has already been added to your favorites."
 msgid "Price not available"
 msgstr "Price not available"
 
-#: .\apps\favorites\views\favorites.py:40
+#: .\apps\favorites\views\favorites.py:39
 msgid "List favorite items"
 msgstr "List favorite items"
 
-#: .\apps\favorites\views\favorites.py:41
+#: .\apps\favorites\views\favorites.py:40
 msgid "Returns a list of items that the user has marked as favorites."
 msgstr "Returns a list of items that the user has marked as favorites."
 
-#: .\apps\favorites\views\favorites.py:45
+#: .\apps\favorites\views\favorites.py:44
 msgid "A list of favorite items for the user."
 msgstr "A list of favorite items for the user."
 
-#: .\apps\favorites\views\favorites.py:68
+#: .\apps\favorites\views\favorites.py:67
 msgid "Add item to favorites"
 msgstr "Add item to favorites"
 
-#: .\apps\favorites\views\favorites.py:70
+#: .\apps\favorites\views\favorites.py:69
 msgid ""
 "Adds the specified product to the current user's favorites list. Provide the "
 "`id` of the product in the request body."
@@ -158,19 +158,19 @@ msgstr ""
 "Adds the specified product to the current user's favorites list. Provide the "
 "`id` of the product in the request body."
 
-#: .\apps\favorites\views\favorites.py:75
+#: .\apps\favorites\views\favorites.py:74
 msgid "The item was successfully added to favorites."
 msgstr "The item was successfully added to favorites."
 
-#: .\apps\favorites\views\favorites.py:77
+#: .\apps\favorites\views\favorites.py:76
 msgid "Validation error: product already in favorites."
 msgstr "Validation error: product already in favorites."
 
-#: .\apps\favorites\views\favorites.py:90
+#: .\apps\favorites\views\favorites.py:89
 msgid "Remove item from favorites"
 msgstr "Remove item from favorites"
 
-#: .\apps\favorites\views\favorites.py:92
+#: .\apps\favorites\views\favorites.py:91
 msgid ""
 "Removes the specified product from the user's favorites list. Use the `id` "
 "of the product in the URL."
@@ -178,11 +178,11 @@ msgstr ""
 "Removes the specified product from the user's favorites list. Use the `id` "
 "of the product in the URL."
 
-#: .\apps\favorites\views\favorites.py:95
+#: .\apps\favorites\views\favorites.py:94
 msgid "Item successfully removed from favorites."
 msgstr "Item successfully removed from favorites."
 
-#: .\apps\favorites\views\favorites.py:97
+#: .\apps\favorites\views\favorites.py:96
 msgid "The specified favorite item does not exist or was not found."
 msgstr "The specified favorite item does not exist or was not found."
 
@@ -334,7 +334,7 @@ msgid "Activity Status"
 msgstr "Activity Status"
 
 #: .\apps\products\admin\filters\active_inactive.py:11
-#: .\apps\products\models\product.py:40
+#: .\apps\products\models\product.py:44
 msgid "Active"
 msgstr "Active"
 
@@ -368,27 +368,45 @@ msgstr "New"
 msgid "Old"
 msgstr "Old"
 
-#: .\apps\products\admin\product.py:41
+#: .\apps\products\admin\product.py:43
 msgid "General"
 msgstr "General"
 
-#: .\apps\products\admin\product.py:62
+#: .\apps\products\admin\product.py:65
 msgid "Set status to New for selected products"
 msgstr ""
 
-#: .\apps\products\admin\product.py:67
+#: .\apps\products\admin\product.py:70
 msgid "Set status to Old for selected products"
 msgstr ""
 
-#: .\apps\products\admin\product.py:72
+#: .\apps\products\admin\product.py:75
 msgid "Activate selected products"
 msgstr "Activate selected products"
 
-#: .\apps\products\admin\product.py:77
+#: .\apps\products\admin\product.py:80
 msgid "Deactivate selected products"
 msgstr "Deactivate selected products"
 
-#: .\apps\products\apps.py:8 .\apps\products\models\product.py:58
+#: .\apps\products\admin\product.py:85
+#, fuzzy
+#| msgid "Activate selected products"
+msgid "Published selected products"
+msgstr "Activate selected products"
+
+#: .\apps\products\admin\product.py:90
+#, fuzzy
+#| msgid "Deactivate selected products"
+msgid "Rejected selected products"
+msgstr "Deactivate selected products"
+
+#: .\apps\products\admin\product.py:95
+#, fuzzy
+#| msgid "Activate selected products"
+msgid "Successfully rejected products."
+msgstr "Activate selected products"
+
+#: .\apps\products\apps.py:8 .\apps\products\models\product.py:72
 #: .\settings\jazzmin.py:53
 msgid "Products"
 msgstr "Products"
@@ -411,11 +429,11 @@ msgstr "Image"
 msgid "Icon"
 msgstr "Icon"
 
-#: .\apps\products\models\category.py:29 .\apps\products\models\product.py:47
+#: .\apps\products\models\category.py:29 .\apps\products\models\product.py:61
 msgid "Views"
 msgstr "Views"
 
-#: .\apps\products\models\category.py:36 .\apps\products\models\product.py:30
+#: .\apps\products\models\category.py:36 .\apps\products\models\product.py:34
 msgid "Category"
 msgstr "Category"
 
@@ -482,27 +500,35 @@ msgstr "Price"
 msgid "Prices"
 msgstr "Price"
 
-#: .\apps\products\models\product.py:18
+#: .\apps\products\models\product.py:19
+msgid "Published"
+msgstr ""
+
+#: .\apps\products\models\product.py:20
+msgid "Rejected"
+msgstr ""
+
+#: .\apps\products\models\product.py:22
 msgid "Product name"
 msgstr "Product name"
 
-#: .\apps\products\models\product.py:19
+#: .\apps\products\models\product.py:23
 msgid "Product description"
 msgstr "Product description"
 
-#: .\apps\products\models\product.py:24
+#: .\apps\products\models\product.py:28
 msgid "Seller"
 msgstr "Seller"
 
-#: .\apps\products\models\product.py:33
+#: .\apps\products\models\product.py:37
 msgid "Status"
 msgstr "Status"
 
-#: .\apps\products\models\product.py:37
+#: .\apps\products\models\product.py:41
 msgid "Product status"
 msgstr "Product status"
 
-#: .\apps\products\models\product.py:43
+#: .\apps\products\models\product.py:47
 msgid ""
 "Indicates whether the listing is currently active.Set to False when the item "
 "is sold or the listing is no longer relevant."
@@ -510,7 +536,18 @@ msgstr ""
 "Indicates whether the listing is currently active.Set to False when the item "
 "is sold or the listing is no longer relevant."
 
-#: .\apps\products\models\product.py:48
+#: .\apps\products\models\product.py:52
+msgid "Is Published"
+msgstr ""
+
+#: .\apps\products\models\product.py:57
+msgid ""
+"Indicates whether the product is published or rejected. Choose \"Published\" "
+"to make the listing publicly visible, or \"Rejected\" to mark it as not "
+"approved."
+msgstr ""
+
+#: .\apps\products\models\product.py:62
 msgid "Parameters"
 msgstr "Parameters"
 
@@ -696,7 +733,9 @@ msgid "Filter products by their status (e.g., \"new\", \"old\")."
 msgstr "Filter products by their status (e.g., \"new\", \"old\")."
 
 #: .\apps\products\views\product_filters.py:97
-msgid "Field to sort products by (e.g., {"
+#, fuzzy
+#| msgid "Field to sort products by (e.g., {"
+msgid "Field to sort products by (e.g., {\", \".join(allowed_sort_fields)}) "
 msgstr "Field to sort products by (e.g., {"
 
 #: .\apps\products\views\product_filters.py:102
@@ -978,7 +1017,7 @@ msgstr "A location ID."
 
 #: .\apps\users\serializers\profile.py:62
 msgid "Invalid location ID."
-msgstr"Invalid location ID."
+msgstr "Invalid location ID."
 
 #: .\apps\users\serializers\profile.py:71
 msgid "Expected a list of phone numbers."
@@ -1041,7 +1080,6 @@ msgstr "Partially update user profile"
 msgid "Partially update the profile of the currently authenticated user."
 msgstr "Partially update the profile of the currently authenticated user."
 
-
 #: .\apps\users\views\profile.py:120
 msgid "Partial profile update example"
 msgstr "Partial profile update example"
@@ -1060,19 +1098,27 @@ msgstr ""
 "remains in the system for auditing purposes, but the account becomes "
 "inaccessible."
 
-#: .\apps\users\views\user_products.py:29
+#: .\apps\users\views\user_products.py:28
 msgid "Retrieve user advertisements"
 msgstr "Retrieve user advertisements"
 
-#: .\apps\users\views\user_products.py:31
+#: .\apps\users\views\user_products.py:30
+#, fuzzy
+#| msgid ""
+#| "Retrieve a list of advertisements for the authenticated user. Optionally "
+#| "filter the advertisements by their active status using the `active` query "
+#| "parameter. Use `true` for active advertisements, `false` for inactive "
+#| "advertisements. If no `active` parameter is provided, all advertisements "
+#| "for the user will be returned. The response will be sorted by the most "
+#| "recently created advertisements first, and it will be paginated, "
+#| "providing a limited set of advertisements per request."
 msgid ""
 "Retrieve a list of advertisements for the authenticated user. Optionally "
 "filter the advertisements by their active status using the `active` query "
 "parameter. Use `true` for active advertisements, `false` for inactive "
-"advertisements. If no `active` parameter is provided, all advertisements for "
-"the user will be returned. The response will be sorted by the most recently "
-"created advertisements first, and it will be paginated, providing a limited "
-"set of advertisements per request."
+"advertisements. You can also filter by the publication status with the "
+"`is_published` parameter, using values `published` or `rejected`. If both "
+"parameters are passed, the request will return a `400 Bad Request` response."
 msgstr ""
 "Retrieve a list of advertisements for the authenticated user. Optionally "
 "filter the advertisements by their active status using the `active` query "
@@ -1082,7 +1128,7 @@ msgstr ""
 "created advertisements first, and it will be paginated, providing a limited "
 "set of advertisements per request."
 
-#: .\apps\users\views\user_products.py:44
+#: .\apps\users\views\user_products.py:43
 msgid ""
 "Filter advertisements by their active status. Use `true` for active "
 "advertisements and `false` for inactive advertisements."
@@ -1090,14 +1136,34 @@ msgstr ""
 "Filter advertisements by their active status. Use `true` for active "
 "advertisements and `false` for inactive advertisements."
 
-#: .\apps\users\views\user_products.py:65
-msgid "Invalid value for active parameter. Use 'true' or 'false'."
+#: .\apps\users\views\user_products.py:52
+#, fuzzy
+#| msgid ""
+#| "Filter advertisements by their active status. Use `true` for active "
+#| "advertisements and `false` for inactive advertisements."
+msgid ""
+"Filter advertisements by publication status. Use `published` for published "
+"products and `rejected` for rejected products."
+msgstr ""
+"Filter advertisements by their active status. Use `true` for active "
+"advertisements and `false` for inactive advertisements."
+
+#: .\apps\users\views\user_products.py:71
+msgid "You can filter by either 'active' or 'is_published', not both."
+msgstr ""
+
+#: .\apps\users\views\user_products.py:82
+#, fuzzy
+#| msgid "Invalid value for active parameter. Use 'true' or 'false'."
+msgid "Invalid value for active parameter. Use `true` or `false`."
 msgstr "Invalid value for active parameter. Use 'true' or 'false'."
 
-#: .\apps\users\views\user_products.py:72
-#, python-brace-format
-msgid "This user does't have any {active_status} advertisements."
-msgstr "This user does't have any {active_status} advertisements."
+#: .\apps\users\views\user_products.py:91
+#, fuzzy
+#| msgid "Invalid value for active parameter. Use 'true' or 'false'."
+msgid ""
+"Invalid value for is_published parameter. Use `published` or `rejected`."
+msgstr "Invalid value for active parameter. Use 'true' or 'false'."
 
 #: .\settings\base.py:145
 msgid "Ukrainian"
@@ -1110,6 +1176,10 @@ msgstr "English"
 #: .\settings\base.py:147
 msgid "Russian"
 msgstr "Russian"
+
+#, python-brace-format
+#~ msgid "This user does't have any {active_status} advertisements."
+#~ msgstr "This user does't have any {active_status} advertisements."
 
 #, fuzzy
 #~| msgid "Retrieve a product"
