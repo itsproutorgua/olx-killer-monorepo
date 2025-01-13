@@ -8,7 +8,6 @@ from drf_spectacular.utils import extend_schema
 from drf_spectacular.utils import OpenApiParameter
 from drf_spectacular.utils import OpenApiResponse
 from rest_framework import status
-from rest_framework.exceptions import NotFound
 from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
 
@@ -31,9 +30,9 @@ class UserProductsView(ListAPIView):
             'Retrieve a list of advertisements for the authenticated user. '
             'Optionally filter the advertisements by their active status using the `active` query parameter. '
             'Use `true` for active advertisements, `false` for inactive advertisements. '
-            'If no `active` parameter is provided, all advertisements for the user will be returned. '
-            'The response will be sorted by the most recently created advertisements first, '
-            'and it will be paginated, providing a limited set of advertisements per request.'
+            'You can also filter by the publication status with the `is_published` parameter, '
+            'using values `published` or `rejected`. '
+            'If both parameters are passed, the request will return a `400 Bad Request` response.'
         ),
         parameters=[
             OpenApiParameter(
@@ -44,7 +43,16 @@ class UserProductsView(ListAPIView):
                     'Filter advertisements by their active status. '
                     'Use `true` for active advertisements and `false` for inactive advertisements.'
                 ),
-            )
+            ),
+            OpenApiParameter(
+                name='is_published',
+                type=str,
+                required=False,
+                description=_(
+                    'Filter advertisements by publication status. '
+                    'Use `published` for published products and `rejected` for rejected products.'
+                ),
+            ),
         ],
         responses={
             200: UserProductsSerializer,
@@ -54,17 +62,36 @@ class UserProductsView(ListAPIView):
     )
     def get(self, request):
         user = request.user
-        active_param = request.query_params.get('active', '').lower()
+        active_param = request.query_params.get('active', '').lower().strip()
+        is_published_param = request.query_params.get('is_published', '').lower().strip()
+
+        # Проверка на то, что нельзя передавать оба параметра одновременно
+        if active_param and is_published_param:
+            return Response(
+                {'detail': _("You can filter by either 'active' or 'is_published', not both.")},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
         queryset = self.queryset.filter(seller=user)
         advertisement_counts = self.get_advertisement_counts(queryset)
 
+        # Фильтрация по active
         if active_param:
             if active_param not in ('true', 'false'):
                 return Response(
-                    {'detail': _("Invalid value for active parameter. Use 'true' or 'false'.")},
+                    {'detail': _('Invalid value for active parameter. Use `true` or `false`.')},
                     status=status.HTTP_400_BAD_REQUEST,
                 )
             queryset = queryset.filter(active=(active_param == 'true'))
+
+        # Фильтрация по is_published
+        if is_published_param:
+            if is_published_param not in (Product.PublishedStatus.PUBLISHED, Product.PublishedStatus.REJECTED):
+                return Response(
+                    {'detail': _('Invalid value for is_published parameter. Use `published` or `rejected`.')},
+                    status=status.HTTP_400_BAD_REQUEST,
+                )
+            queryset = queryset.filter(is_published=is_published_param)
 
         # Pagination
         page = self.paginate_queryset(queryset)
@@ -76,22 +103,35 @@ class UserProductsView(ListAPIView):
     @staticmethod
     def get_advertisement_counts(queryset: QuerySet) -> dict:
         """
-        Get the counts of active and inactive advertisements for a given queryset.
+        Get the counts of active, inactive, published, and rejected advertisements for a given queryset.
 
         Args:
             queryset (QuerySet): The queryset to count active and inactive advertisements.
 
         Returns:
-            dict: A dictionary containing counts for total, active, and inactive advertisements.
+            dict: A dictionary containing counts for active, inactive, published, and rejected advertisements.
         """
         advertisement_counts = queryset.aggregate(
             total_active=Count(Case(When(active=True, then=1), output_field=IntegerField())),
             total_inactive=Count(Case(When(active=False, then=1), output_field=IntegerField())),
+            total_published=Count(
+                Case(When(is_published=Product.PublishedStatus.PUBLISHED, then=1), output_field=IntegerField())
+            ),
+            total_rejected=Count(
+                Case(When(is_published=Product.PublishedStatus.REJECTED, then=1), output_field=IntegerField())
+            ),
         )
+        total_active = advertisement_counts['total_active']
+        total_inactive = advertisement_counts['total_inactive']
+        total_published = advertisement_counts['total_published']
+        total_rejected = advertisement_counts['total_rejected']
+
         return {
-            'total_count': advertisement_counts['total_active'] + advertisement_counts['total_inactive'],
-            'total_active': advertisement_counts['total_active'],
-            'total_inactive': advertisement_counts['total_inactive'],
+            'total_count': sum([total_active, total_inactive]),
+            'total_active': total_active,
+            'total_inactive': total_inactive,
+            'total_published': total_published,
+            'total_rejected': total_rejected,
         }
 
     def get_paginated_response_data(self, page: list, advertisement_counts: dict) -> dict[str, any]:
