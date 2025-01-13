@@ -17,7 +17,7 @@ from apps.users.serializers import ProfileSerializer
 @extend_schema(
     tags=[PROFILE_TAG],
     summary=_('User profile management'),
-    description=_('Endpoint for managing the current user\'s profile, including retrieval, updating, and deletion.'),
+    description=_("Endpoint for managing the current user's profile, including retrieval, updating, and deletion."),
 )
 class ProfileRetrieveUpdateDeleteView(
     mixins.RetrieveModelMixin,

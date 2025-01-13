@@ -23,7 +23,7 @@ class Profile(TimestampMixin, HistoricalModel, models.Model):
         null=True,
         related_name='users',
         verbose_name=_('Location'),
-        help_text=_('This field allows you to specify the user\'s city and region.'),
+        help_text=_("This field allows you to specify the user's city and region."),
     )
     auth_providers = models.JSONField(
         _('Authentication Providers'),
