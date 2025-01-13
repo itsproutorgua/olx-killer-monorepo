@@ -26,6 +26,7 @@ exclude = '''
   | build
   | dist
   | migrations
+  | fixtures
 )/
 '''
 
@@ -63,6 +64,7 @@ boto3 = "^1.35.43"
 whitenoise = "^6.7.0"
 django-csp = "^3.8"
 django-mptt = "^0.16.0"
+ruff = "^0.9.1"
 
 [tool.poetry.dependencies.djangorestframework-simplejwt]
 extras = ["crypto", ]
