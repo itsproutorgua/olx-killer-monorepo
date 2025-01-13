@@ -16,7 +16,7 @@ class UserProductsSerializer(serializers.ModelSerializer):
             'title',
             'prices',
             'images',
-            'active',
+            'description',
             'slug',
             'views',
             'created_at',
