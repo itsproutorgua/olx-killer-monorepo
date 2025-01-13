@@ -51,7 +51,7 @@ class ProductFilterViewSet(mixins.ListModelMixin, GenericViewSet):
             'prices__currency',
             'category__children',
         )
-        .filter(active=True)
+        .filter(active=True, is_published=Product.PublishedStatus.PUBLISHED)
         .order_by(f'-{allowed_sort_fields[-1]}')
     )
 
@@ -94,7 +94,7 @@ class ProductFilterViewSet(mixins.ListModelMixin, GenericViewSet):
                 name='sort_by',
                 type=str,
                 description=_(
-                    f'Field to sort products by (e.g., {', '.join(allowed_sort_fields)}) '
+                    f'Field to sort products by (e.g., {", ".join(allowed_sort_fields)}) '
                     f'followed by ":" and the order ("asc" or "desc"). (Default: {allowed_sort_fields[-1]})'
                 ),
                 examples=[
@@ -197,7 +197,7 @@ class ProductFilterViewSet(mixins.ListModelMixin, GenericViewSet):
             if field not in self.allowed_sort_fields or order not in ['asc', 'desc']:
                 raise ValidationError(errors.INVALID_SORT_FIELD, status.HTTP_400_BAD_REQUEST)
 
-            order = f'{('', '-')[order == 'desc']}'
+            order = f'{("", "-")[order == "desc"]}'
 
             match field:
                 case 'price':

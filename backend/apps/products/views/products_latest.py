@@ -39,7 +39,7 @@ class LatestProductListView(ListAPIView):
     pagination_class = None
     queryset = (
         Product.objects.prefetch_related('prices', 'product_images', 'prices__currency')
-        .filter(active=True)
+        .filter(active=True, is_published=Product.PublishedStatus.PUBLISHED)
         .order_by('-created_at')
     )
     permission_classes = (AllowAny,)

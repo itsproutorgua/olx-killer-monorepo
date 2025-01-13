@@ -73,6 +73,7 @@ class ProductAPIViewSet(ViewSet):
                 'seller__profile__location__city__region',
             ).prefetch_related('product_images', 'prices__currency', 'category__children'),
             slug=str(slug).strip(),
+            is_published=Product.PublishedStatus.PUBLISHED,
         )
 
         session_key = f'viewed_product_{product.id}'

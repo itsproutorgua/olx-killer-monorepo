@@ -15,6 +15,10 @@ class Product(TimestampMixin, HistoricalModel, models.Model):
         NEW = 'new', _('New')
         OLD = 'old', _('Old')
 
+    class PublishedStatus(models.TextChoices):
+        PUBLISHED = 'published', _('Published')
+        REJECTED = 'rejected', _('Rejected')
+
     title = models.CharField(_('Product name'), max_length=255)
     description = models.TextField(verbose_name=_('Product description'), blank=True, null=True)
     seller = models.ForeignKey(
@@ -42,6 +46,16 @@ class Product(TimestampMixin, HistoricalModel, models.Model):
         help_text=_(
             'Indicates whether the listing is currently active.'
             'Set to False when the item is sold or the listing is no longer relevant.'
+        ),
+    )
+    is_published = models.CharField(
+        _('Is Published'),
+        max_length=20,
+        choices=PublishedStatus.choices,
+        default=PublishedStatus.REJECTED,
+        help_text=_(
+            'Indicates whether the product is published or rejected. '
+            'Choose "Published" to make the listing publicly visible, or "Rejected" to mark it as not approved.'
         ),
     )
     views = models.IntegerField(_('Views'), default=0)
