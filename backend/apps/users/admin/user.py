@@ -35,12 +35,12 @@ class UserAdmin(SimpleHistoryAdmin, BaseUserAdmin):
             None,
             {
                 'classes': ('wide',),
-                'fields': ('username', 'usable_password', 'password1', 'password2'),
+                'fields': ('email', 'usable_password', 'password1', 'password2'),
             },
         ),
     )
     list_display = ('email', 'profile_link', 'is_email_verified', 'date_joined', 'last_login')
-    readonly_fields = ('email', 'profile_link', 'last_login', 'date_joined')
+    readonly_fields = ('profile_link', 'last_login', 'date_joined')
     list_display_links = ('email',)
     show_full_result_count = False
 
