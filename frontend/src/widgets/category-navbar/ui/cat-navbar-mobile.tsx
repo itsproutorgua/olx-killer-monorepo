@@ -12,8 +12,7 @@ import { ChevronRight } from '@/shared/ui/icons'
 import { PUBLIC_PAGES } from '@/shared/constants'
 
 export const CategoryNavbarMobile = ({ data }: { data: CategoryChild[] }) => {
-  const items = Math.ceil(data.length / 9)
-  console.log(items)
+  const items = data ? Math.ceil(data.length / 9) : 0
 
   return (
     <Carousel>
@@ -33,11 +32,11 @@ export const CategoryNavbarMobile = ({ data }: { data: CategoryChild[] }) => {
                       {item.title.length > 20 ? (
                         <Link to={href} className='flex gap-1'>
                           <span className='line-clamp-1'>{item.title}</span>
-                          <span>({item.products_cumulative_count})</span>
+                          <span>({item.products_cumulative_count || 0})</span>
                         </Link>
                       ) : (
                         <Link to={href}>
-                          {item.title} ({item.products_cumulative_count})
+                          {item.title} ({item.products_cumulative_count || 0})
                         </Link>
                       )}
                     </li>
