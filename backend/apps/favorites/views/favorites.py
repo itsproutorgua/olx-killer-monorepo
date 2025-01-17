@@ -28,7 +28,7 @@ class FavoriteViewSet(
         return (
             self.queryset.select_related('product')
             .prefetch_related('product__prices__currency')
-            .filter(user=self.request.user, is_published=Product.PublishedStatus.PUBLISHED)
+            .filter(user=self.request.user, publication_status=Product.PublicationStatus.ACTIVE)
             .order_by('-created_at')
         )
 
