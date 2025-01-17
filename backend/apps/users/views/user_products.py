@@ -27,30 +27,20 @@ class UserProductsView(ListAPIView):
         tags=[PROFILE_TAG],
         summary=_('Retrieve user advertisements'),
         description=_(
-            'Retrieve a list of advertisements for the authenticated user. '
-            'Optionally filter the advertisements by their active status using the `active` query parameter. '
-            'Use `true` for active advertisements, `false` for inactive advertisements. '
-            'You can also filter by the publication status with the `is_published` parameter, '
-            'using values `published` or `rejected`. '
-            'If both parameters are passed, the request will return a `400 Bad Request` response.'
+            'This endpoint retrieves a list of user advertisements (products) with their details. '
+            'The publication status defines the visibility of the product: '
+            '`Active` means the product is publicly available, `Draft` indicates unpublished items under review, '
+            '`Inactive` indicates the product is temporarily hidden,'
+            'and `Rejected` represents products that were not approved. '
         ),
         parameters=[
             OpenApiParameter(
-                name='active',
+                name='publication_status',
                 type=str,
                 required=False,
                 description=_(
-                    'Filter advertisements by their active status. '
-                    'Use `true` for active advertisements and `false` for inactive advertisements.'
-                ),
-            ),
-            OpenApiParameter(
-                name='is_published',
-                type=str,
-                required=False,
-                description=_(
-                    'Filter advertisements by publication status. '
-                    'Use `published` for published products and `rejected` for rejected products.'
+                    'Filter products by their publication status. Valid values are: '
+                    '`active`, `inactive`, `draft`, and `rejected`. This parameter is optional.'
                 ),
             ),
         ],
@@ -62,36 +52,20 @@ class UserProductsView(ListAPIView):
     )
     def get(self, request):
         user = request.user
-        active_param = request.query_params.get('active', '').lower().strip()
-        is_published_param = request.query_params.get('is_published', '').lower().strip()
-
-        # Проверка на то, что нельзя передавать оба параметра одновременно
-        if active_param and is_published_param:
-            return Response(
-                {'detail': _("You can filter by either 'active' or 'is_published', not both.")},
-                status=status.HTTP_400_BAD_REQUEST,
-            )
-
         queryset = self.queryset.filter(seller=user)
+
+        publication_status = request.query_params.get('publication_status', '').lower().strip()
         advertisement_counts = self.get_advertisement_counts(queryset)
 
-        # Фильтрация по active
-        if active_param:
-            if active_param not in ('true', 'false'):
-                return Response(
-                    {'detail': _('Invalid value for active parameter. Use `true` or `false`.')},
-                    status=status.HTTP_400_BAD_REQUEST,
-                )
-            queryset = queryset.filter(active=(active_param == 'true'))
+        publication_keys = tuple(dict(Product.PublicationStatus.choices))
+        # Фильтрация по publication_status
+        if publication_status:
+            if publication_status not in publication_keys:
+                params_msg = ' | '.join(f'`{key}`' for key in publication_keys)
+                error_msg = _(f'Invalid value for publication_status parameter. Use {params_msg}.')
+                return Response({'detail': error_msg}, status=status.HTTP_400_BAD_REQUEST)
 
-        # Фильтрация по is_published
-        if is_published_param:
-            if is_published_param not in (Product.PublishedStatus.PUBLISHED, Product.PublishedStatus.REJECTED):
-                return Response(
-                    {'detail': _('Invalid value for is_published parameter. Use `published` or `rejected`.')},
-                    status=status.HTTP_400_BAD_REQUEST,
-                )
-            queryset = queryset.filter(is_published=is_published_param)
+            queryset = queryset.filter(publication_status=publication_status)
 
         # Pagination
         page = self.paginate_queryset(queryset)
@@ -103,34 +77,68 @@ class UserProductsView(ListAPIView):
     @staticmethod
     def get_advertisement_counts(queryset: QuerySet) -> dict:
         """
-        Get the counts of active, inactive, published, and rejected advertisements for a given queryset.
+        Calculates the counts of active, inactive, draft, and rejected advertisements
+        for a given queryset of products.
 
         Args:
-            queryset (QuerySet): The queryset to count active and inactive advertisements.
+            queryset (QuerySet): A Django queryset that includes advertisements (products)
+                whose publication statuses need to be counted.
 
         Returns:
-            dict: A dictionary containing counts for active, inactive, published, and rejected advertisements.
+            dict: A dictionary containing the following keys:
+                - 'total_count': The total number of active and inactive advertisements.
+                - 'total_active': The count of active advertisements.
+                - 'total_inactive': The count of inactive advertisements.
+                - 'total_draft': The count of advertisements in draft status.
+                - 'total_rejected': The count of rejected advertisements.
+
+        Example:
+            If the queryset contains 5 active, 3 inactive, 2 draft, and 1 rejected advertisements,
+            the returned dictionary will be:
+            {
+                'total_count': 8,
+                'total_active': 5,
+                'total_inactive': 3,
+                'total_draft': 2,
+                'total_rejected': 1
+            }
         """
         advertisement_counts = queryset.aggregate(
-            total_active=Count(Case(When(active=True, then=1), output_field=IntegerField())),
-            total_inactive=Count(Case(When(active=False, then=1), output_field=IntegerField())),
-            total_published=Count(
-                Case(When(is_published=Product.PublishedStatus.PUBLISHED, then=1), output_field=IntegerField())
+            total_active=Count(
+                Case(
+                    When(publication_status=Product.PublicationStatus.ACTIVE, then=1),
+                    output_field=IntegerField(),
+                )
+            ),
+            total_inactive=Count(
+                Case(
+                    When(publication_status=Product.PublicationStatus.INACTIVE, then=1),
+                    output_field=IntegerField(),
+                )
+            ),
+            total_draft=Count(
+                Case(
+                    When(publication_status=Product.PublicationStatus.DRAFT, then=1),
+                    output_field=IntegerField(),
+                )
             ),
             total_rejected=Count(
-                Case(When(is_published=Product.PublishedStatus.REJECTED, then=1), output_field=IntegerField())
+                Case(
+                    When(publication_status=Product.PublicationStatus.REJECTED, then=1),
+                    output_field=IntegerField(),
+                )
             ),
         )
         total_active = advertisement_counts['total_active']
         total_inactive = advertisement_counts['total_inactive']
-        total_published = advertisement_counts['total_published']
+        total_draft = advertisement_counts['total_draft']
         total_rejected = advertisement_counts['total_rejected']
 
         return {
             'total_count': sum([total_active, total_inactive]),
             'total_active': total_active,
             'total_inactive': total_inactive,
-            'total_published': total_published,
+            'total_draft': total_draft,
             'total_rejected': total_rejected,
         }
 
