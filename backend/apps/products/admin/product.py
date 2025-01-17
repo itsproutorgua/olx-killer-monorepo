@@ -15,16 +15,15 @@ from apps.products.models.product import Product
 
 @admin.register(Product)
 class ProductAdmin(SimpleHistoryAdmin):
-    list_display = ('title', 'seller', 'category', 'views', 'active', 'status', 'is_published')
+    list_display = ('title', 'seller', 'category', 'views', 'status', 'publication_status')
     readonly_fields = ('id', 'created_at', 'updated_at', 'seller', 'slug', 'prod_olx_id', 'views')
     list_display_links = ('title',)
-    list_editable = ('status', 'is_published')
+    list_editable = ('status', 'publication_status')
     autocomplete_fields = ['category']
     search_fields = ('title', 'seller__email')
     ordering = ('-created_at',)
     list_filter = (
-        filters.ProductActivityFilter,
-        filters.ProductPublishedFilter,
+        filters.ProductPublicationFilter,
         filters.ProductStatusFilter,
         filters.PopularCategoryFilter,
     )
@@ -35,8 +34,8 @@ class ProductAdmin(SimpleHistoryAdmin):
         'set_status_old',
         'set_active',
         'set_inactive',
-        'set_published',
         'set_rejected',
+        'set_draft',
     )
 
     fieldsets = (
@@ -51,8 +50,7 @@ class ProductAdmin(SimpleHistoryAdmin):
                     'params',
                     'seller',
                     'views',
-                    'active',
-                    'is_published',
+                    'publication_status',
                     'id',
                     'slug',
                     'created_at',
@@ -66,36 +64,37 @@ class ProductAdmin(SimpleHistoryAdmin):
     @admin.action(description=_('Set status to New for selected products'))
     def set_status_new(self, request, queryset):
         queryset.update(status=Product.Status.NEW)
-        self.message_user(request, _('Status of selected products has been set to New.'), messages.SUCCESS)
+        self.message_user(request, _("Status of selected products has been set to 'New'."), messages.SUCCESS)
         return queryset
 
     @admin.action(description=_('Set status to Old for selected products'))
     def set_status_old(self, request, queryset):
         queryset.update(status=Product.Status.OLD)
-        self.message_user(request, _('Status of selected products has been set to Old.'), messages.SUCCESS)
+        self.message_user(request, _("Status of selected products has been set to 'Old'."), messages.SUCCESS)
         return queryset
 
-    @admin.action(description=_('Activate selected products'))
+    @admin.action(description=_("Set status to 'active' for selected products"))
     def set_active(self, request, queryset):
-        queryset.update(active=True)
+        queryset.update(publication_status=Product.PublicationStatus.ACTIVE)
         self.message_user(request, _('Selected products have been successfully activated.'), messages.SUCCESS)
         return queryset
 
-    @admin.action(description=_('Deactivate selected products'))
+    @admin.action(description=_("Set status to 'inactive' for selected products"))
     def set_inactive(self, request, queryset):
-        queryset.update(active=False)
-        self.message_user(request, _('Selected products have been successfully deactivated.'), messages.WARNING)
+        queryset.update(publication_status=Product.PublicationStatus.INACTIVE)
+        self.message_user(request, _('Selected products have been successfully inactivated.'), messages.WARNING)
         return queryset
 
-    @admin.action(description=_('Publish selected products'))
-    def set_published(self, request, queryset):
-        queryset.update(is_published=Product.PublishedStatus.PUBLISHED)
-        self.message_user(request, _('Selected products have been successfully published.'), messages.SUCCESS)
+    @admin.action(description=_("Set selected products to 'draft' status"))
+    def set_draft(self, request, queryset):
+        queryset.update(publication_status=Product.PublicationStatus.DRAFT)
+        message = _("Selected products have been successfully moved to 'draft' status.")
+        self.message_user(request, message, messages.SUCCESS)
         return queryset
 
-    @admin.action(description=_('Reject selected products'))
+    @admin.action(description=_("Set selected products to 'reject' status"))
     def set_rejected(self, request, queryset):
-        queryset.update(is_published=Product.PublishedStatus.REJECTED)
+        queryset.update(publication_status=Product.PublicationStatus.REJECTED)
         self.message_user(request, _('Selected products have been successfully rejected.'), messages.WARNING)
         return queryset
 
