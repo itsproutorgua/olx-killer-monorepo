@@ -3045,8 +3045,8 @@
     "model": "locations.location",
     "pk": 235,
     "fields": {
-        "created_at": "2024-12-09T10:58:38.000Z",
-        "updated_at": "2024-12-09T10:58:38.000Z",
+        "created_at": "2024-12-09T10:58:38Z",
+        "updated_at": "2024-12-09T10:58:38Z",
         "location_type": "city",
         "city": 235,
         "village": null,
