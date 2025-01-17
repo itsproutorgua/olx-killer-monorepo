@@ -33,7 +33,7 @@ class ProductFilterViewSet(mixins.ListModelMixin, GenericViewSet):
     pagination_class = ProductPagination
     permission_classes = (AllowAny,)
     allowed_sort_fields = ['price', 'title', 'created_at']
-    default_currency = settings.DEFAULT_CURRENCIES[0]['code']
+    default_currency = settings.DEFAULT_CURRENCY
     queryset = (
         Product.objects.select_related(
             'seller',
@@ -51,7 +51,7 @@ class ProductFilterViewSet(mixins.ListModelMixin, GenericViewSet):
             'prices__currency',
             'category__children',
         )
-        .filter(active=True, is_published=Product.PublishedStatus.PUBLISHED)
+        .filter(publication_status=Product.PublicationStatus.ACTIVE)
         .order_by(f'-{allowed_sort_fields[-1]}')
     )
 
@@ -81,13 +81,13 @@ class ProductFilterViewSet(mixins.ListModelMixin, GenericViewSet):
             OpenApiParameter(
                 name='currency_code',
                 type=str,
-                description=_(f'Currency code for the price filter (Default: {default_currency})'),
+                description=_(f'Currency code for the price filter (Default: {settings.DEFAULT_CURRENCY})'),
                 required=False,
             ),
             OpenApiParameter(
                 name='status',
                 type=str,
-                description=_('Filter products by their status (e.g., "new", "old").'),
+                description=_('Filter products by their status (e.g., `new`, `old`).'),
                 required=False,
             ),
             OpenApiParameter(
@@ -95,7 +95,7 @@ class ProductFilterViewSet(mixins.ListModelMixin, GenericViewSet):
                 type=str,
                 description=_(
                     f'Field to sort products by (e.g., {", ".join(allowed_sort_fields)}) '
-                    f'followed by ":" and the order ("asc" or "desc"). (Default: {allowed_sort_fields[-1]})'
+                    f'followed by ":" and the order (`asc` or `desc`). (Default: {allowed_sort_fields[-1]})'
                 ),
                 examples=[
                     OpenApiExample(
@@ -130,7 +130,7 @@ class ProductFilterViewSet(mixins.ListModelMixin, GenericViewSet):
         category_path = request.query_params.get('category_path', '').strip()
         price_min = request.query_params.get('price_min', None)
         price_max = request.query_params.get('price_max', None)
-        currency_code = request.query_params.get('currency_code', self.default_currency)
+        currency_code = request.query_params.get('currency_code', settings.DEFAULT_CURRENCY)
         product_status = request.query_params.get('status', None)
 
         sort_by = request.query_params.get('sort_by', None)
