@@ -3,6 +3,7 @@ from datetime import timedelta
 from corsheaders.defaults import default_headers
 from corsheaders.defaults import default_methods
 
+from apps.products.utils import CurrencyEnum
 from settings.base import *
 from settings.jazzmin import *
 from settings.logging import *
@@ -41,10 +42,7 @@ ALLOWED_VIDEO_MIME_TYPES = [
     'video/ogg',
 ]
 
-DEFAULT_CURRENCIES = [
-    {'code': 'UAH', 'symbol': '₴', 'name': 'Ukrainian Hryvnia'},  # Don't change the sequence!
-    {'code': 'USD', 'symbol': '$', 'name': 'United States Dollar'},
-]
+DEFAULT_CURRENCY = CurrencyEnum.UAH.value['code']
 
 INSTALLED_APPS += [
     # Third-party apps
