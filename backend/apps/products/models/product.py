@@ -15,9 +15,11 @@ class Product(TimestampMixin, HistoricalModel, models.Model):
         NEW = 'new', _('New')
         OLD = 'old', _('Old')
 
-    class PublishedStatus(models.TextChoices):
-        PUBLISHED = 'published', _('Published')
-        REJECTED = 'rejected', _('Rejected')
+    class PublicationStatus(models.TextChoices):
+        ACTIVE = 'active', _('Active')
+        INACTIVE = 'inactive', _('Inactive')
+        DRAFT = 'draft', _('Draft')  # Очікуючі
+        REJECTED = 'rejected', _('Rejected')  # Відхилені
 
     title = models.CharField(_('Product name'), max_length=255)
     description = models.TextField(verbose_name=_('Product description'), blank=True, null=True)
@@ -40,22 +42,14 @@ class Product(TimestampMixin, HistoricalModel, models.Model):
         default=Status.OLD,
         help_text=_('Product status'),
     )
-    active = models.BooleanField(
-        _('Active'),
-        default=True,
-        help_text=_(
-            'Indicates whether the listing is currently active.'
-            'Set to False when the item is sold or the listing is no longer relevant.'
-        ),
-    )
-    is_published = models.CharField(
-        _('Is Published'),
+    publication_status = models.CharField(
+        _('Publication status'),
         max_length=20,
-        choices=PublishedStatus.choices,
-        default=PublishedStatus.REJECTED,
+        choices=PublicationStatus.choices,
+        default=PublicationStatus.DRAFT,
         help_text=_(
-            'Indicates whether the product is published or rejected. '
-            'Choose "Published" to make the listing publicly visible, or "Rejected" to mark it as not approved.'
+            'Defines the visibility of the product. Select `Active` to make the product publicly available, '
+            '`Draft` for unpublished items under review, or `Rejected` for products that are not approved.'
         ),
     )
     views = models.IntegerField(_('Views'), default=0)
