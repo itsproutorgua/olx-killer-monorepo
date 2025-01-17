@@ -1,11 +1,11 @@
 import os
 
 import django
-from django.conf import settings
 from django.core.management.base import BaseCommand
 
 from apps.log_config import logger
 from apps.products.models import Currency
+from apps.products.utils import CurrencyEnum
 
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings.main')
@@ -21,7 +21,8 @@ class Command(BaseCommand):
 
     @staticmethod
     def create_default_currencies():
-        for currency_data in settings.DEFAULT_CURRENCIES:
+        for currency in CurrencyEnum:
+            currency_data = currency.value
             Currency.objects.get_or_create(
                 code=currency_data['code'],
                 defaults={
