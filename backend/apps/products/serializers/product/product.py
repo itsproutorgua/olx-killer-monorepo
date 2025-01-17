@@ -33,7 +33,7 @@ class ProductSerializer(serializers.ModelSerializer):
             'video',
             'seller',
             'status',
-            'active',
+            'publication_status',
             'slug',
             'views',
             'created_at',
@@ -48,6 +48,10 @@ class ProductSerializer(serializers.ModelSerializer):
     @staticmethod
     def get_status(obj: Product) -> str:
         return obj.get_status_display()
+
+    @staticmethod
+    def set_publication_status(obj: Product):
+        return obj.get_publication_status_display()
 
     def create(self, validated_data: dict) -> Product:
         title = validated_data.pop('title')
