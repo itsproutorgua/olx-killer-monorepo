@@ -82,7 +82,7 @@ class ProductAdmin(SimpleHistoryAdmin):
     @admin.action(description=_("Set status to 'inactive' for selected products"))
     def set_inactive(self, request, queryset):
         queryset.update(publication_status=Product.PublicationStatus.INACTIVE)
-        self.message_user(request, _('Selected products have been successfully inactivated.'), messages.WARNING)
+        self.message_user(request, _('Selected products have been successfully inactivated.'), messages.SUCCESS)
         return queryset
 
     @admin.action(description=_("Set selected products to 'draft' status"))
@@ -95,7 +95,7 @@ class ProductAdmin(SimpleHistoryAdmin):
     @admin.action(description=_("Set selected products to 'reject' status"))
     def set_rejected(self, request, queryset):
         queryset.update(publication_status=Product.PublicationStatus.REJECTED)
-        self.message_user(request, _('Selected products have been successfully rejected.'), messages.WARNING)
+        self.message_user(request, _('Selected products have been successfully rejected.'), messages.SUCCESS)
         return queryset
 
     def get_queryset(self, request):
