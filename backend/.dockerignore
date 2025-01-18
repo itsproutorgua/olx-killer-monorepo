@@ -12,3 +12,8 @@ locales/
 .git
 .venv
 .idea
+.env_example
+.flake8
+.isort.cfg
+.pre-commit-config.yaml
+ruff.toml
