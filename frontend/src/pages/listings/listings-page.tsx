@@ -1,12 +1,19 @@
+import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
+
+import { AddListingButton } from '@/features/announcement/ui/add-listing-button.tsx'
 import { PagePagination } from '@/features/page-pagination'
 import {
   renderListingsContent,
   useListingsState,
 } from '@/entities/user-listings/library'
 import { ListingsTabs } from '@/entities/user-listings/ui/listings-tabs.tsx'
+import { ArrowDownSmall } from '@/shared/ui/icons/arrow-down-small.tsx'
+import { PRIVATE_PAGES } from '@/shared/constants'
 import { useQueryParams } from '@/shared/library/hooks'
 
 export const ListingsPage = () => {
+  const { t } = useTranslation()
   const {
     data,
     cursor,
@@ -30,13 +37,25 @@ export const ListingsPage = () => {
   }
 
   return (
-    <div className='h-full flex-1 pl-[54px] pt-[42px]'>
-      <div className='mb-10 flex'>
+    <div className='pt-10 xl:pl-[42px] xl:pt-[55px]'>
+      <Link
+        to={PRIVATE_PAGES.ACCOUNT}
+        className='mb-[30px] flex items-center gap-[14px] xl:hidden'
+      >
+        <ArrowDownSmall className='rotate-90' />
+        <h1 className='text-2xl font-semibold'>
+          {t(`listings.${activeTab}`)} {t('account.listings').toLowerCase()}
+        </h1>
+      </Link>
+      <div className='mb-10 hidden xl:flex xl:justify-between'>
         <ListingsTabs activeTab={activeTab} onChangeTab={handleTabChange} />
+        <AddListingButton className='-my-2 hidden xl:flex' />
       </div>
 
       {data ? (
-        <div>{renderListingsContent(activeTab, data)}</div>
+        <div className='h-full w-full xl:max-h-[calc(100vh-300px)] xl:overflow-y-auto'>
+          {renderListingsContent(activeTab, data)}
+        </div>
       ) : (
         <div>{cursor}</div>
       )}

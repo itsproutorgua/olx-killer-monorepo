@@ -21,6 +21,7 @@ class ListingsApi {
     const params = new URLSearchParams()
     if (activeTab === 'active') params.set('active', 'true')
     else if (activeTab === 'inactive') params.set('active', 'false')
+    //else if (activeTab === 'rejected') params.set('good', 'true')
     // Adjust logic here if other statuses exist
     params.set('page', currentPage.toString())
     params.set('page_size', PAGE_SIZE.toString())

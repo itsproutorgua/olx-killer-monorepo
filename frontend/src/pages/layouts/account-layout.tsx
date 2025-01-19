@@ -4,8 +4,8 @@ import { AccountSidebar } from '@/widgets/account/account-sidebar/account-sideba
 
 export const AccountLayout = () => {
   return (
-    <div className='container flex h-[calc(100vh-80px)] xl:h-[calc(100vh-96px)]'>
-      <AccountSidebar />
+    <div className='container min-h-[calc(100vh-80px)] xl:flex xl:h-[calc(100vh-96px)]'>
+      <AccountSidebar className='hidden xl:block' />
       <div className='flex-1'>
         <Outlet />
       </div>

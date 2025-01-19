@@ -37,10 +37,10 @@ export const AsideNav = ({ onCloseMenu }: { onCloseMenu?: () => void }) => {
   }
 
   return (
-    <aside className='w-[305px] pl-[18px] pr-2'>
+    <aside className='w-[305px] pl-[18px] pr-0'>
       <Menubar className='h-auto rounded-none border-0 p-0'>
         {cursor}
-        <ul className='max-w-[276px] space-y-2.5'>
+        <ul className='max-w-[287px] space-y-2.5'>
           {categories?.map(cat => (
             <li key={cat.path}>
               <MenubarMenu key={cat.path}>
@@ -48,7 +48,7 @@ export const AsideNav = ({ onCloseMenu }: { onCloseMenu?: () => void }) => {
                   onClick={() => {
                     onCloseMenu && handleCategoryClick(cat.path)
                   }}
-                  className='group flex w-full cursor-pointer items-center justify-between gap-3 rounded-[81px] border-0 py-0 pl-2 pr-2 text-base/4 font-normal transition-colors duration-300 hover:bg-primary-900 hover:text-gray-50 data-[state=open]:bg-primary-900 data-[state=open]:text-gray-50'
+                  className='group flex w-full cursor-pointer items-center justify-between gap-3 rounded-[81px] border-0 py-0 pl-2 pr-0 text-base/4 font-normal transition-colors duration-300 hover:bg-primary-900 hover:text-gray-50 data-[state=open]:bg-primary-900 data-[state=open]:text-gray-50'
                 >
                   {cat.icon ? (
                     <img
