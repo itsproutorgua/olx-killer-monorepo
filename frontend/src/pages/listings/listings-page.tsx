@@ -27,17 +27,16 @@ export const ListingsPage = () => {
   const { setQueryParams } = useQueryParams()
 
   const handleTabChange = (tabId: string) => {
-    const newActiveValue = tabId === 'active' ? 'true' : 'false'
     setActiveTab(tabId)
     setCurrentPage(1) // Reset to page 1 on tab change
     setQueryParams({
-      active: newActiveValue,
+      publication_status: tabId,
       page: '1',
     })
   }
 
   return (
-    <div className='pt-10 xl:pl-[42px] xl:pt-[55px]'>
+    <div className='pt-10 xl:min-h-[calc(100dvh-200px)] xl:pl-[42px] xl:pt-[55px]'>
       <Link
         to={PRIVATE_PAGES.ACCOUNT}
         className='mb-[30px] flex items-center gap-[14px] xl:hidden'
@@ -53,15 +52,19 @@ export const ListingsPage = () => {
       </div>
 
       {data ? (
-        <div className='h-full w-full xl:max-h-[calc(100vh-300px)] xl:overflow-y-auto'>
+        <div className='h-full w-full overflow-x-hidden'>
           {renderListingsContent(activeTab, data)}
         </div>
       ) : (
         <div>{cursor}</div>
       )}
 
-      <div className='mt-5'>
-        <PagePagination count={getTabCount(activeTab)} limit={PAGE_SIZE} />
+      <div className='my-5'>
+        <PagePagination
+          count={getTabCount(activeTab)}
+          limit={PAGE_SIZE}
+          className='flex'
+        />
       </div>
     </div>
   )

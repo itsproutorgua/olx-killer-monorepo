@@ -19,7 +19,10 @@ export const ProductStats: React.FC<ProductStatsProps> = ({
 }) => {
   return (
     <div
-      className={cn('mb-[14px] flex justify-between leading-none', className)}
+      className={cn(
+        'mb-[14px] flex justify-between text-xs leading-none',
+        className,
+      )}
     >
       <div className='flex items-center justify-center gap-[6px]'>
         <MessagesCountIcon className='w-[18px] xl:h-[18px]' />

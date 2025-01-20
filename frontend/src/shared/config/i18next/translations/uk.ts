@@ -186,10 +186,12 @@ export const uk = {
   listings: {
     active: 'Активні',
     pending: 'Очікуючі',
+    listingPending: 'Очікується підтвердження',
     unpaid: 'Неоплачені',
     inactive: 'Неактивні',
     listingInactive: 'Оголошення неактивне',
     rejected: 'Відхилені',
+    listingRejected: 'Оголошення відхилено',
     activeEmpty: 'У вас поки що немає активних оголошень',
     pendingEmpty: 'У вас поки що немає очікуючих оголошень',
     unpaidEmpty: 'У вас поки що немає неоплачених оголошень',

@@ -6,35 +6,37 @@ import { Listing } from '@/entities/user-listings/models/types.ts'
 import { Separator } from '@/shared/ui/shadcn-ui/separator.tsx'
 import { DeleteSmall } from '@/shared/ui/icons/delete-small.tsx'
 import { EditSmall } from '@/shared/ui/icons/edit-small.tsx'
-import { XCircleSmall } from '@/shared/ui/icons/x-circle-small.tsx'
 import { PUBLIC_PAGES } from '@/shared/constants'
 import { cn } from '@/shared/library/utils'
-import { generatePriceString } from '../library'
+import { generatePriceString, getStatusLabel } from '../library'
 
 export const HorizontalProductCard = ({
+  listingStatus,
   product,
   className,
   onEdit,
   onDelete,
 }: {
+  listingStatus?: string
   product: Listing
   className?: string
   onEdit?: () => void
   onDelete?: () => void
 }) => {
   const { t } = useTranslation()
+  const statusLabel = getStatusLabel(t, listingStatus)
   return (
     <div
       className={cn(
-        'flex flex-col justify-between rounded-[10px] bg-white p-4 shadow-md xl:h-[161px] xl:w-[932px] xl:flex-row xl:items-center xl:bg-transparent xl:px-0 xl:shadow-none',
+        'flex flex-col justify-between rounded-[10px] bg-white p-4 shadow-md xl:h-[161px] xl:w-[932px] xl:flex-row xl:items-center xl:bg-transparent xl:px-0 xl:pr-2 xl:shadow-none',
         className,
       )}
     >
       <Link
         to={`${PUBLIC_PAGES.PRODUCTS}/${product.slug}`}
-        className='mb-5 flex'
+        className='mb-5 flex xl:mb-0'
       >
-        <div className='h-[100px] overflow-hidden rounded-lg xl:h-[129px] xl:w-[217px]'>
+        <div className='h-[100px] w-[134px] overflow-hidden rounded-lg xl:h-[129px] xl:w-[217px]'>
           <img
             src={product.images[0]?.image}
             alt={product.title}
@@ -42,14 +44,14 @@ export const HorizontalProductCard = ({
           />
         </div>
 
-        <div className='ml-5 flex h-full max-w-[306px] flex-col justify-between text-gray-900 xl:h-[129px]'>
+        <div className='ml-[10px] flex h-full max-w-[180px] flex-col justify-between text-gray-900 md:max-w-[370px] xl:ml-5 xl:h-[129px] xl:max-w-[306px]'>
           <div className='flex flex-col items-start gap-6'>
             <h2 className='text-xs leading-none xl:text-sm'>{product.title}</h2>
             <p className='leading-5 xl:text-[20px]'>
               {generatePriceString(product.prices)}
             </p>
           </div>
-          {product.active && (
+          {listingStatus === 'active' && (
             <ProductStats
               messagesCount={12}
               views={product.views}
@@ -57,27 +59,37 @@ export const HorizontalProductCard = ({
               className='mb-0 hidden h-6 w-[200px] text-sm xl:flex'
             />
           )}
-          {!product.active && (
-            <div className='hidden h-[30px] items-center gap-[10px] rounded bg-error-300 px-3 py-[6px] text-xs xl:flex'>
-              <XCircleSmall />
-              {t('listings.listingInactive')}
+          {statusLabel && (
+            <div
+              className={cn(
+                'hidden h-[30px] max-w-fit items-center gap-[10px] rounded px-3 py-[6px] text-xs xl:flex',
+                statusLabel.className,
+              )}
+            >
+              {statusLabel.icon}
+              {statusLabel.label}
             </div>
           )}
         </div>
       </Link>
 
-      {!product.active && (
-        <div className='mb-5 flex h-[30px] w-fit items-center gap-[10px] rounded bg-error-300 px-3 py-[6px] text-xs xl:hidden'>
-          <XCircleSmall />
-          {t('listings.listingInactive')}
+      {statusLabel && (
+        <div
+          className={cn(
+            'mb-5 flex h-[30px] w-fit items-center gap-[10px] rounded px-3 py-[6px] text-xs xl:hidden',
+            statusLabel.className,
+          )}
+        >
+          {statusLabel.icon}
+          {statusLabel.label}
         </div>
       )}
 
-      {product.active && (
+      {listingStatus === 'active' && (
         <Separator className='mb-[14px] bg-gray-200 xl:hidden' />
       )}
 
-      {product.active && (
+      {listingStatus === 'active' && (
         <ProductStats
           messagesCount={12}
           views={product.views}

@@ -13,7 +13,11 @@ export const renderListingsContent = (
     <div className='flex flex-col gap-5'>
       {data?.results.map(product => (
         <div key={product.id}>
-          <HorizontalProductCard key={product.id} product={product} />
+          <HorizontalProductCard
+            key={product.id}
+            product={product}
+            listingStatus={activeTab}
+          />
           <Separator className='mt-5 hidden w-full bg-gray-200 xl:block' />
         </div>
       ))}

@@ -1,4 +1,4 @@
-import { keepPreviousData, queryOptions } from '@tanstack/react-query'
+import { queryOptions } from '@tanstack/react-query'
 
 import { ListingResponse } from '@/entities/user-listings/models/types.ts'
 import { instanceBase } from '@/shared/api'
@@ -19,10 +19,29 @@ class ListingsApi {
     { signal }: { signal: AbortSignal },
   ) {
     const params = new URLSearchParams()
-    if (activeTab === 'active') params.set('active', 'true')
-    else if (activeTab === 'inactive') params.set('active', 'false')
-    //else if (activeTab === 'rejected') params.set('good', 'true')
-    // Adjust logic here if other statuses exist
+    if (activeTab) {
+      let publicationStatus = ''
+      switch (activeTab) {
+        case 'active':
+          publicationStatus = 'active'
+          break
+        case 'inactive':
+          publicationStatus = 'inactive'
+          break
+        case 'pending':
+          publicationStatus = 'draft'
+          break
+        case 'rejected':
+          publicationStatus = 'rejected'
+          break
+        default:
+          break
+      }
+      if (publicationStatus) {
+        params.set('publication_status', publicationStatus)
+      }
+    }
+
     params.set('page', currentPage.toString())
     params.set('page_size', PAGE_SIZE.toString())
 
@@ -61,7 +80,6 @@ class ListingsApi {
           },
           meta,
         ),
-      placeholderData: keepPreviousData,
     })
   }
 }

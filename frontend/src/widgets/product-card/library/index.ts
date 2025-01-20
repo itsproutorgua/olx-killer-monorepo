@@ -1,1 +1,1 @@
-export * from './product-card.helpers'
+export * from './product-card.helpers.tsx'
