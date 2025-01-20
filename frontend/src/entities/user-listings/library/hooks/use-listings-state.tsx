@@ -7,21 +7,16 @@ import { useQueryParams } from '@/shared/library/hooks'
 
 export const useListingsState = () => {
   const PAGE_SIZE = 3
-  const { getQueryParamByKey, setQueryParam } = useQueryParams()
+  const { getQueryParamByKey } = useQueryParams()
   const getIdToken = useIdToken()
 
   const activeTabFromUrl =
-    getQueryParamByKey('active') === 'true' ? 'active' : 'inactive'
+    getQueryParamByKey('active') === 'false' ? 'inactive' : 'active'
   const currentPageFromUrl = parseInt(getQueryParamByKey('page') || '1')
 
   const [activeTab, setActiveTab] = useState(activeTabFromUrl)
   const [currentPage, setCurrentPage] = useState(currentPageFromUrl)
   const [idToken, setIdToken] = useState<string>('')
-
-  useEffect(() => {
-    if (!getQueryParamByKey('active')) setQueryParam('active', 'true')
-    if (!getQueryParamByKey('page')) setQueryParam('page', '1')
-  }, [getQueryParamByKey, setQueryParam])
 
   useEffect(() => {
     setActiveTab(activeTabFromUrl)

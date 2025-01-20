@@ -14,7 +14,7 @@ export const renderListingsContent = (
       {data?.results.map(product => (
         <div key={product.id}>
           <HorizontalProductCard key={product.id} product={product} />
-          <Separator className='mt-5 w-[898px] bg-gray-200' />
+          <Separator className='mt-5 hidden w-full bg-gray-200 xl:block' />
         </div>
       ))}
     </div>
