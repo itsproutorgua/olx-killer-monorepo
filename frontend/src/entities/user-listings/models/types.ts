@@ -22,6 +22,8 @@ export interface ListingResponse {
   total_count: number
   total_active: number
   total_inactive: number
+  total_draft: number
+  total_rejected: number
   next: string | null
   previous: string | null
   results: Listing[]

@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import ReactPaginate from 'react-paginate'
 import { animateScroll as scroll } from 'react-scroll'
 
-import { useQueryParams } from '@/shared/library/hooks'
+import { useMediaQuery, useQueryParams } from '@/shared/library/hooks'
 import { cn } from '@/shared/library/utils'
 
 export const PagePagination = ({
@@ -20,6 +20,7 @@ export const PagePagination = ({
   const { t } = useTranslation()
   const { getQueryParamByKey, setQueryParam } = useQueryParams()
   const [page, setPage] = useState(1)
+  const isMobile = useMediaQuery('(max-width: 767px)')
 
   const handleScroll = () => {
     scroll.scrollToTop({
@@ -59,7 +60,7 @@ export const PagePagination = ({
       {pageCount > 1 && (
         <div
           className={cn(
-            'hidden xl:flex xl:items-center xl:justify-between',
+            'hidden justify-between xl:flex xl:items-center',
             className,
           )}
         >
@@ -69,7 +70,7 @@ export const PagePagination = ({
             className='pagination-btn'
           >
             <ChevronLeft className='size-11 stroke-[1.5px]' />
-            {t('buttons.previous')}
+            {!isMobile && t('buttons.previous')}
           </button>
           <ReactPaginate
             breakLabel='...'
@@ -91,7 +92,7 @@ export const PagePagination = ({
             disabled={page === pageCount}
             className='pagination-btn'
           >
-            {t('buttons.next')}
+            {!isMobile && t('buttons.next')}
             <ChevronRight className='size-11 stroke-[1.5px]' />
           </button>
         </div>

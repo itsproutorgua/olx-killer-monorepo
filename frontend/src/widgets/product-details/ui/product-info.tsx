@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import sellerLogo from '@/shared/assets/images/seller/seller_logo.png'
+import React from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import i18n from 'i18next'
 import { useTranslation } from 'react-i18next'
@@ -7,6 +6,7 @@ import { useTranslation } from 'react-i18next'
 import { LoginCard } from '@/widgets/login-card/login-card.tsx'
 import { generatePriceString } from '@/widgets/product-card'
 import { ContactSellerCard } from '@/widgets/product-details/ui/contact-seller-card.tsx'
+import { ProductDescription } from '@/widgets/product-details/ui/product-description.tsx'
 import { ProductLocation } from '@/widgets/product-details/ui/product-location.tsx'
 import { ProductSeller } from '@/widgets/product-details/ui/product-seller.tsx'
 import { SimilarProductsSlider } from '@/widgets/similar-products'
@@ -16,7 +16,6 @@ import { Product } from '@/entities/product'
 import { formatDate } from '@/entities/product/model/product-date.helper.ts'
 import { Separator } from '@/shared/ui/shadcn-ui/separator.tsx'
 import { FlagIcon } from '@/shared/ui'
-import { ArrowDownSmall } from '@/shared/ui/icons/arrow-down-small.tsx'
 
 interface Props {
   product: Product
@@ -31,27 +30,9 @@ export const ProductInfo: React.FC<Props> = ({
 }) => {
   const { isAuthenticated } = useAuth0()
   const { t } = useTranslation()
-  const [showFullDescription, setShowFullDescription] = useState(false)
 
   const maxClampLength = 200
   const maxClampLengthSmall = 130
-  useEffect(() => {
-    setShowFullDescription(false)
-  }, [product])
-
-  const toggleDescription = () => {
-    setShowFullDescription(!showFullDescription)
-  }
-
-  const announcement = {
-    id: '858057687',
-    views: '61',
-    type: `${t('words.business')}`,
-    seller: 'Stylishwear',
-    sellerLogo: sellerLogo,
-    sellerRating: 4.5,
-    reviews: 155,
-  }
 
   return (
     <div className={className}>
@@ -73,34 +54,15 @@ export const ProductInfo: React.FC<Props> = ({
       </div>
       <div className='mt-2 leading-none md:mt-[54px] md:hidden'>
         <div className='flex items-center text-[12px] text-gray-400'>
-          <p>ID: {announcement.id}</p>
+          <p>ID: {product?.id}</p>
           <span className='ml-[10px] mt-[1px] border-l border-gray-400 pl-[10px] text-xs'>
             {t('words.views')}: {product.views}
           </span>
         </div>
-        <p className='mt-[14px] text-[13px] leading-5 md:mt-[14px]'>
-          {showFullDescription
-            ? product.description
-            : product.description.slice(0, maxClampLengthSmall) +
-              (product.description.length > maxClampLengthSmall ? '...' : '')}
-        </p>
-        {product.description.length > maxClampLength && (
-          <button
-            onClick={toggleDescription}
-            className='mt-2 flex items-center text-sm font-semibold text-gray-700 hover:underline'
-          >
-            {showFullDescription ? (
-              <>
-                {t('buttons.showLess')}{' '}
-                <ArrowDownSmall className='rotate-180' />
-              </>
-            ) : (
-              <>
-                {t('buttons.showMore')} <ArrowDownSmall />
-              </>
-            )}
-          </button>
-        )}
+        <ProductDescription
+          description={product?.description}
+          maxClampLength={maxClampLengthSmall}
+        />
         <Separator className='mt-[14px] w-full bg-gray-200' />
         <button className='mt-[14px] text-[#B42318]'>
           <FlagIcon className='mr-1 inline-block' />
@@ -126,11 +88,7 @@ export const ProductInfo: React.FC<Props> = ({
         </div>
       </div>
       <div className='mt-[54px] hidden max-h-[200px] flex-row gap-5 md:flex'>
-        <ProductSeller
-          announcement={announcement}
-          product={product}
-          className='basis-1/2'
-        />
+        <ProductSeller product={product} className='basis-1/2' />
         <ProductLocation
           location={product?.seller.location}
           className='basis-1/2'
@@ -138,33 +96,14 @@ export const ProductInfo: React.FC<Props> = ({
       </div>
       <div className='mt-[54px] hidden leading-none md:block'>
         <h3 className='font-semibold uppercase'>{t('words.description')}</h3>
-        <p className='mt-2 leading-5 md:mt-[14px]'>
-          {showFullDescription
-            ? product.description
-            : product.description.slice(0, maxClampLength) +
-              (product.description.length > maxClampLength ? '...' : '')}
-        </p>
-        {product.description.length > maxClampLength && (
-          <button
-            onClick={toggleDescription}
-            className='dgap-2 mt-2 flex items-center text-sm font-semibold text-gray-700 hover:underline'
-          >
-            {showFullDescription ? (
-              <>
-                {t('buttons.showLess')}{' '}
-                <ArrowDownSmall className='rotate-180' />
-              </>
-            ) : (
-              <>
-                {t('buttons.showMore')} <ArrowDownSmall />
-              </>
-            )}
-          </button>
-        )}
+        <ProductDescription
+          description={product?.description}
+          maxClampLength={maxClampLength}
+        />
         <Separator className='mt-[11px] w-full bg-gray-200' />
       </div>
       <div className='mt-[11px] hidden flex-row items-center justify-between text-xs text-gray-400 md:mb-[104px] md:flex'>
-        <p>ID: {announcement.id}</p>
+        <p>ID: {product?.id}</p>
         <p>
           {t('words.views')}: {product.views}
         </p>
@@ -181,9 +120,7 @@ export const ProductInfo: React.FC<Props> = ({
         className='mb-5 mt-[63px] basis-1/2 md:mb-0 md:hidden'
       />
       {!isAuthenticated && <LoginCard className='mt-[28px]' />}
-      {isAuthenticated && (
-        <ContactSellerCard announcement={announcement} product={product} />
-      )}
+      {isAuthenticated && <ContactSellerCard product={product} />}
     </div>
   )
 }

@@ -186,11 +186,13 @@ export const en = {
   listings: {
     active: 'Active',
     pending: 'Pending',
+    listingPending: 'Awaiting for approval',
     unpaid: 'Unpaid',
     inactive: 'Inactive',
     listings: 'Оголошення',
     listingInactive: 'Listing is inactive',
     rejected: 'Rejected',
+    listingRejected: 'Listing is rejected',
     activeEmpty: 'You currently have no active user-listings',
     pendingEmpty: 'You currently have no pending user-listings',
     unpaidEmpty: 'You currently have no unpaid user-listings',
