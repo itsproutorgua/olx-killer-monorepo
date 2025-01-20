@@ -107,7 +107,7 @@ const BottomBar = () => {
           </Link>
 
           <Link
-            to={PRIVATE_PAGES.PROFILE}
+            to={PRIVATE_PAGES.ACCOUNT}
             className='flex w-[70px] cursor-pointer flex-col items-center'
           >
             <UserRoundedIcon className='h-[30px] w-6 fill-primary-900' />

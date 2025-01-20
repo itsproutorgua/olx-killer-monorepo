@@ -1,20 +1,20 @@
 import { useAuth0 } from '@auth0/auth0-react'
 import { Outlet } from 'react-router-dom'
 
+import { WelcomePage } from '@/pages/welcome/welcome-page.tsx'
 import { PageLoader } from '@/shared/ui'
 
 const PrivateRoute = () => {
-  const { isAuthenticated, isLoading, loginWithRedirect } = useAuth0()
+  const { isAuthenticated, isLoading } = useAuth0()
 
   if (isLoading) {
     return <PageLoader />
   }
   if (isAuthenticated) {
     return <Outlet />
+  } else {
+    return <WelcomePage />
   }
-
-  loginWithRedirect().catch(error => console.error(error))
-  return <PageLoader />
 }
 
 export default PrivateRoute

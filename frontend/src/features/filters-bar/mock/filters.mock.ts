@@ -16,14 +16,14 @@ const PRICE: Filter = {
   items: [{ label: '50' }, { label: '95900' }],
 }
 
-const STATUS: Filter = {
+const CONDITION: Filter = {
   type: 'checkbox',
   name: 'status',
-  label: i18n.t('filters.condition'),
+  label: i18n.t('filters.condition.title'),
   items: [
-    { label: i18n.t('filters.conditionNew'), value: 'new' },
-    { label: i18n.t('filters.conditionUsed'), value: 'old' },
+    { label: i18n.t('filters.condition.new'), value: 'new' },
+    { label: i18n.t('filters.condition.old'), value: 'old' },
   ],
 }
 
-export const FILTERS = [PRICE, STATUS]
+export const FILTERS = [PRICE, CONDITION]

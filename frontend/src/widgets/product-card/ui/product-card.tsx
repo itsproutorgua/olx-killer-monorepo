@@ -22,7 +22,7 @@ export const ProductCard = ({
     >
       <div className='relative mb-[15px] h-[120px] min-w-[173px] overflow-hidden rounded-[15px] bg-gray-300 xl:h-[213px] xl:min-w-[305px]'>
         <img
-          src={product.images[0].image}
+          src={product.images[0]?.image}
           alt={product.title}
           className='absolute block h-full w-full object-cover'
         />

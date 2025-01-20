@@ -22,5 +22,5 @@ export const useProducts = (
       {isError && (Skeleton || <div>Loading...</div>)}
     </>
   )
-  return { data, cursor, isPlaceholderData }
+  return { data, cursor, isPlaceholderData, isLoading, isError }
 }

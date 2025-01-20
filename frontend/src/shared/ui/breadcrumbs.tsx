@@ -49,7 +49,7 @@ export const Breadcrumbs = ({
           crumbs.map(crumb => (
             <React.Fragment key={crumb.text}>
               <BreadcrumbSeparator />
-              <BreadcrumbItem className='last:text-gray-500 hover:text-primary-500 last:hover:text-gray-500 active:text-primary-500'>
+              <BreadcrumbItem className='last:text-gray-400 hover:text-primary-500 last:hover:text-gray-500 active:text-primary-500'>
                 <Link to={`${crumb.href}`}>{crumb.text}</Link>
               </BreadcrumbItem>
             </React.Fragment>

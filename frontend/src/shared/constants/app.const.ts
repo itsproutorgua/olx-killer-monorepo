@@ -15,4 +15,6 @@ export enum FilterEnum {
   PRICE_MAX = 'price_max',
   PRICE = 'price', //range 100-200
   STATUS = 'status',
+  PAGE = 'page',
+  SORT = 'sort',
 }

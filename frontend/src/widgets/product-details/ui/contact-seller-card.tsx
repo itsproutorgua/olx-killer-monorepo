@@ -33,13 +33,13 @@ export const ContactSellerCard: React.FC<SellerProps> = ({
               <h4 className='leading-none md:text-xl'>
                 {product.seller.first_name}
               </h4>
-              <p className='text-primary-gray text-xs leading-none'>
+              <p className='text-xs leading-none text-gray-400'>
                 {t('words.onOKL')}
                 {format(product.seller.created_at, 'MMMM yyyy', {
                   locale: currentLocale,
                 })}
               </p>
-              <p className='text-primary-gray text-xs leading-none'>
+              <p className='text-xs leading-none text-gray-400'>
                 {t('words.online')}
                 {formatLastOnline(product?.seller?.last_login)}
               </p>

@@ -55,7 +55,7 @@ export const ProductInfo: React.FC<Props> = ({
 
   return (
     <div className={className}>
-      <p className='text-primary-gray text-xs'>
+      <p className='text-xs text-gray-400'>
         {t('words.published')} {formatDate(product.created_at, i18n.language)}
       </p>
       <h1 className='mt-[6px] text-2xl font-medium leading-[1.22] md:text-[32px]'>
@@ -163,7 +163,7 @@ export const ProductInfo: React.FC<Props> = ({
         )}
         <Separator className='mt-[11px] w-full bg-gray-200' />
       </div>
-      <div className='text-primary-gray mt-[11px] hidden flex-row items-center justify-between text-xs md:mb-[104px] md:flex'>
+      <div className='mt-[11px] hidden flex-row items-center justify-between text-xs text-gray-400 md:mb-[104px] md:flex'>
         <p>ID: {announcement.id}</p>
         <p>
           {t('words.views')}: {product.views}

@@ -9,6 +9,7 @@ import './styles/index.css'
 
 import PrivateRoute from '@/app/routes/private-routes.tsx'
 
+import { AccountPage } from '@/pages/account/account-page.tsx'
 import { CatalogPage } from '@/pages/catalog/catalog-page.tsx'
 import { ChatPage } from '@/pages/chat/chat-page.tsx'
 import { FavoritesPage } from '@/pages/favorites/favorites-page.tsx'
@@ -37,7 +38,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             />
             <Route element={<PrivateRoute />}>
               <Route path={PRIVATE_PAGES.ACCOUNT} element={<AccountLayout />}>
-                <Route index element={<ListingsPage />} />
+                <Route index element={<AccountPage />} />
                 <Route
                   path={PRIVATE_PAGES.LISTINGS}
                   element={<ListingsPage />}

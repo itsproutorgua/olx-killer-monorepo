@@ -1,20 +1,27 @@
+import React from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import { useTranslation } from 'react-i18next'
 import { Link, useLocation } from 'react-router-dom'
 
 import { ArrowLeftRed } from '@/shared/ui/icons/arrow-left-red.tsx'
 import { SIDEBAR_ITEMS } from '@/shared/constants/account-sidebar.const.ts'
+import { cn } from '@/shared/library/utils'
 
-export const AccountSidebar = () => {
+interface Props {
+  className?: string
+}
+
+export const AccountSidebar: React.FC<Props> = ({ className }) => {
   const location = useLocation()
   const activeTab = SIDEBAR_ITEMS.find(item =>
     location.pathname.endsWith(item.url),
   )?.title
+
   const { t } = useTranslation()
   const { logout } = useAuth0()
 
   return (
-    <aside className='w-[305px] shrink-0 border-r'>
+    <aside className={cn('w-[305px] shrink-0 border-r', className)}>
       <nav className='space-y-[10px] border-b pb-[30px] pr-[49px] pt-[42px]'>
         {SIDEBAR_ITEMS.map(item => (
           <button

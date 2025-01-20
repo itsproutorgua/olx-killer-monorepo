@@ -5,7 +5,7 @@ import { HeroSlider } from './ui'
 
 export const Hero = () => {
   return (
-    <section className='flex items-start gap-[6px]'>
+    <section className='flex items-start gap-5'>
       <div className='flex-shrink-0'>
         <AsideNav />
       </div>

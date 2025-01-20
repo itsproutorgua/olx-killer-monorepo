@@ -51,7 +51,7 @@ export const UserMenu = () => {
       <DropdownMenuContent className='mr-[67px] w-[190px] bg-background p-0'>
         {isAuthenticated ? (
           <>
-            <Link to={`${PRIVATE_PAGES.ACCOUNT}/${PRIVATE_PAGES.LISTINGS}`}>
+            <Link to={`${PRIVATE_PAGES.LISTINGS}`}>
               <DropdownMenuItem className='cursor-pointer justify-between py-[11px] pl-[16px] pr-3'>
                 <span>{t('account.myAccount')}</span>
                 {!user?.email_verified && <DangerIcon />}

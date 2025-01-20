@@ -5,13 +5,16 @@ import ReactPaginate from 'react-paginate'
 import { animateScroll as scroll } from 'react-scroll'
 
 import { useQueryParams } from '@/shared/library/hooks'
+import { cn } from '@/shared/library/utils'
 
 export const PagePagination = ({
   count,
   limit,
+  className,
 }: {
   count: number
   limit: number
+  className?: string
 }) => {
   const pageCount = Math.ceil(count / limit)
   const { t } = useTranslation()
@@ -54,7 +57,12 @@ export const PagePagination = ({
   return (
     <>
       {pageCount > 1 && (
-        <div className='hidden xl:flex xl:items-center xl:justify-between'>
+        <div
+          className={cn(
+            'hidden xl:flex xl:items-center xl:justify-between',
+            className,
+          )}
+        >
           <button
             onClick={() => handleDirectionClick('prev')}
             disabled={page === 1}
