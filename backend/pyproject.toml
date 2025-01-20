@@ -6,8 +6,9 @@ build-backend = "poetry.core.masonry.api"
 name = "olx-killer"
 version = "0.1.0"
 description = ""
-authors = ["Fredy nstanislass@gmail.com", ]
+authors = [ "Fredy nstanislass@gmail.com" ]
 readme = "README.md"
+package-mode = false
 
 [tool.isort]
 force_single_line = true

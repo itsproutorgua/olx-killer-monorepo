@@ -2,7 +2,7 @@ FROM python:3.12-slim
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
-    PYTHONPATH="/code:${PYTHONPATH}" \
+    PYTHONPATH="/code:${PYTHONPATH:-}" \
     PATH="/root/.local/bin:${PATH}"
 
 RUN apt-get update && \
