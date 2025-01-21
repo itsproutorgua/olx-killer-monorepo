@@ -27,7 +27,7 @@ class FavoriteViewSet(
     def get_queryset(self):
         return (
             self.queryset.select_related('product')
-            .prefetch_related('product__prices__currency')
+            .prefetch_related('product__prices__currency', 'product__product_images')
             .filter(user=self.request.user, product__publication_status=Product.PublicationStatus.ACTIVE)
             .order_by('-created_at')
         )
