@@ -52,7 +52,7 @@ export const ListingsPage = () => {
       </div>
 
       {data ? (
-        <div className='h-full w-full overflow-x-hidden'>
+        <div className='h-full w-full'>
           {renderListingsContent(activeTab, data)}
         </div>
       ) : (

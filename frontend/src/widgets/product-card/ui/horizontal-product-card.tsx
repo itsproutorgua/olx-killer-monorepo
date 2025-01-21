@@ -1,7 +1,10 @@
+import React from 'react'
+import { LoaderCircle } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
 import { ProductStats } from '@/features/product'
+import { useFavoriteMutations } from '@/entities/favorite/library/hooks/use-favorites.tsx'
 import { Listing } from '@/entities/user-listings/models/types.ts'
 import { Separator } from '@/shared/ui/shadcn-ui/separator.tsx'
 import { DeleteSmall } from '@/shared/ui/icons/delete-small.tsx'
@@ -25,6 +28,21 @@ export const HorizontalProductCard = ({
 }) => {
   const { t } = useTranslation()
   const statusLabel = getStatusLabel(t, listingStatus)
+
+  const { removeFromFavorites } = useFavoriteMutations()
+  const handleRemoveFavorite = async (
+    event: React.MouseEvent<HTMLButtonElement>,
+  ) => {
+    event.stopPropagation()
+    event.preventDefault()
+
+    try {
+      await removeFromFavorites.mutateAsync(product.id)
+    } catch (error) {
+      console.log('Error occurred when deleting item from favorite')
+    }
+  }
+
   return (
     <div
       className={cn(
@@ -48,7 +66,7 @@ export const HorizontalProductCard = ({
           <div className='flex flex-col items-start gap-6'>
             <h2 className='text-xs leading-none xl:text-sm'>{product.title}</h2>
             <p className='leading-5 xl:text-[20px]'>
-              {generatePriceString(product.prices)}
+              {generatePriceString(product?.prices) || 'Price unavailable'}
             </p>
           </div>
           {listingStatus === 'active' && (
@@ -99,20 +117,31 @@ export const HorizontalProductCard = ({
       )}
 
       <div className='flex h-full flex-col xl:items-start'>
-        <div className='flex flex-row justify-between gap-[10px] text-[14px] xl:items-start xl:gap-[22px]'>
+        <div className='flex flex-row justify-between gap-[10px] text-xs xl:items-start xl:gap-[22px]'>
+          {listingStatus !== 'Favorite' && (
+            <button
+              onClick={onEdit}
+              className='flex w-full items-center justify-center gap-3 rounded-[6px] border border-gray-200 py-[10px] text-gray-900 hover:text-primary-600 xl:w-[156px]'
+            >
+              <EditSmall />
+              {t('words.edit')}
+            </button>
+          )}
           <button
-            onClick={onEdit}
-            className='flex w-full items-center justify-center gap-3 rounded-[6px] border border-gray-200 py-[10px] text-gray-900 hover:text-primary-600 xl:w-[156px]'
+            onClick={
+              listingStatus === 'Favorite' ? handleRemoveFavorite : onDelete
+            }
+            className={`flex w-full items-center justify-center gap-3 rounded-[6px] border border-gray-200 py-[10px] text-error-700 hover:text-error-500 ${listingStatus === 'Favorite' ? 'xl:min-w-[219px] xl:px-8' : 'xl:w-[156px]'}`}
           >
-            <EditSmall />
-            {t('words.edit')}
-          </button>
-          <button
-            onClick={onDelete}
-            className='flex w-full items-center justify-center gap-3 rounded-[6px] border border-gray-200 py-[10px] text-error-700 hover:text-error-500 xl:w-[156px]'
-          >
-            <DeleteSmall />
-            {t('words.delete')}
+            {removeFromFavorites.status === 'pending' ? (
+              <LoaderCircle className='size-[18px] animate-spin' />
+            ) : (
+              <>
+                <DeleteSmall />
+                {t('words.delete')}{' '}
+                {listingStatus === 'Favorite' && t('words.fromFavorite')}
+              </>
+            )}
           </button>
         </div>
       </div>
