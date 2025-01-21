@@ -6,12 +6,11 @@ import { PageLoader } from '@/shared/ui'
 import { useQueryParams } from '@/shared/library/hooks'
 
 export const useListingsState = () => {
-  const PAGE_SIZE = 3
+  const PAGE_SIZE = 10
   const { getQueryParamByKey } = useQueryParams()
   const getIdToken = useIdToken()
 
-  const activeTabFromUrl =
-    getQueryParamByKey('active') === 'false' ? 'inactive' : 'active'
+  const activeTabFromUrl = getQueryParamByKey('publication_status') || 'active'
   const currentPageFromUrl = parseInt(getQueryParamByKey('page') || '1')
 
   const [activeTab, setActiveTab] = useState(activeTabFromUrl)
@@ -35,9 +34,18 @@ export const useListingsState = () => {
   )
 
   const getTabCount = (tabId: string): number => {
-    if (tabId === 'active') return data?.total_active ?? 0
-    if (tabId === 'inactive') return data?.total_inactive ?? 0
-    return 0 // For other tabs
+    switch (tabId) {
+      case 'active':
+        return data?.total_active ?? 0
+      case 'inactive':
+        return data?.total_inactive ?? 0
+      case 'pending':
+        return data?.total_draft ?? 0
+      case 'rejected':
+        return data?.total_rejected ?? 0
+      default:
+        return 0
+    }
   }
 
   return {

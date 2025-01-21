@@ -18,8 +18,7 @@ export const AccountPageMobile = () => {
   const { activeTab } = useListingsState()
 
   const handleTabChange = (tabId: string) => {
-    const newActiveValue = tabId === 'active' ? 'true' : 'false'
-    navigate('/account/listings' + `?active=${newActiveValue}`)
+    navigate('/account/listings' + `?publication_status=${tabId}`)
   }
 
   return (
@@ -31,7 +30,7 @@ export const AccountPageMobile = () => {
           className='h-[70px] w-[70px] rounded-full object-cover'
         />
         <div className='flex flex-1 flex-col gap-1'>
-          <h2 className='text-lg font-medium leading-5'>{user?.name}</h2>
+          <h2 className='font-medium leading-5'>{user?.name}</h2>
           <p className='text-sm font-light'>{user?.email}</p>
         </div>
         <button

@@ -1,4 +1,5 @@
 import React from 'react'
+import sellerLogo from '@/shared/assets/images/seller/seller_logo.png'
 import { format } from 'date-fns'
 import { enGB } from 'date-fns/locale'
 import { useTranslation } from 'react-i18next'
@@ -12,15 +13,10 @@ import {
 
 export interface SellerProps {
   className?: string
-  announcement: {
-    seller: string
-    sellerLogo: string
-  }
   product: Product
 }
 
 export const ProductSeller: React.FC<SellerProps> = ({
-  announcement,
   product,
   className,
 }) => {
@@ -36,7 +32,7 @@ export const ProductSeller: React.FC<SellerProps> = ({
         <div className='flex flex-row gap-4'>
           <div className='h-[51px] w-[51px]'>
             <img
-              src={announcement.sellerLogo}
+              src={sellerLogo}
               alt={`Logo of ${product?.seller?.first_name ?? 'Product Name'}`}
             />
           </div>
