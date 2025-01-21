@@ -5,6 +5,7 @@ from apps.favorites.models import Favorite
 from apps.log_config import logger
 from apps.products.models import Product
 from apps.products.serializers.price.price import PriceSerializer
+from apps.products.serializers.product.product_image import ProductImageSerializer
 
 
 SUPPORTED_LANGUAGES_TO_CURRENCIES = {
@@ -36,11 +37,15 @@ class UserFavoriteSerializer(serializers.ModelSerializer):
 
         return Favorite.objects.create(user=user, product=product)
 
-    def get_product_details(self, obj) -> dict:
+    def get_product_details(self, obj: Favorite) -> dict:
         return {
             'id': obj.product.id,
             'title': obj.product.title,
             'price': self.get_price(obj),
+            'images': ProductImageSerializer(obj.product.product_images.all(), many=True).data,
+            'slug': obj.product.slug,
+            'updated_at': obj.product.updated_at,
+            'created_at': obj.product.created_at,
         }
 
     def get_price(self, obj) -> str:
