@@ -42,7 +42,7 @@ export const ListingsPage = () => {
         className='mb-[30px] flex items-center gap-[14px] xl:hidden'
       >
         <ArrowDownSmall className='rotate-90' />
-        <h1 className='text-2xl font-semibold'>
+        <h1 className='text-2xl font-semibold text-black'>
           {t(`listings.${activeTab}`)} {t('account.listings').toLowerCase()}
         </h1>
       </Link>

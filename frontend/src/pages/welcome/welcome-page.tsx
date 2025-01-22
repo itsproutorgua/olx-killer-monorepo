@@ -25,11 +25,11 @@ export const WelcomePage: React.FC<Props> = ({ className }) => {
         'container flex h-[calc(100vh-80px)] flex-col items-center justify-center xl:h-[calc(100vh-96px)]',
       )}
     >
-      <div className='-mt-36 flex flex-col items-center justify-center gap-4'>
+      <div className='-mt-36 flex flex-col items-center justify-center gap-4 text-black'>
         <h1 className='text-[32px] font-semibold leading-none'>
           {t('account.welcome')}
         </h1>
-        <p className='mb-[14px] w-[275px] text-center leading-none'>
+        <p className='mb-[14px] w-[275px] text-center leading-[21px]'>
           {t('account.welcomeMessage')}
         </p>
         <LoginButton

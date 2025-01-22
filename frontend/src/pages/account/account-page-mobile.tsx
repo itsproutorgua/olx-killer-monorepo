@@ -8,6 +8,7 @@ import { ListingsTabs } from '@/entities/user-listings/ui/listings-tabs.tsx'
 import { EditProfile } from '@/shared/ui/icons'
 import { ArrowDownSmall } from '@/shared/ui/icons/arrow-down-small.tsx'
 import { ArrowLeftRed } from '@/shared/ui/icons/arrow-left-red.tsx'
+import { PRIVATE_PAGES } from '@/shared/constants'
 
 export const AccountPageMobile = () => {
   const { logout } = useAuth0()
@@ -22,7 +23,7 @@ export const AccountPageMobile = () => {
   }
 
   return (
-    <div className='my-5 mb-16 flex h-full flex-col gap-5'>
+    <div className='my-5 mb-16 flex h-full flex-col gap-5 text-black'>
       <div className='relative flex flex-col items-center gap-[10px] rounded-[20px] bg-white py-[26px] shadow-sm'>
         <img
           src={user?.picture}
@@ -55,7 +56,7 @@ export const AccountPageMobile = () => {
           {t('account.otherSettings')}
         </h3>
         <button
-          onClick={() => navigate('/settings')}
+          onClick={() => navigate(PRIVATE_PAGES.SETTINGS)}
           className='flex w-full items-center justify-between border-b border-gray-200 py-[14px] text-start leading-5 hover:cursor-pointer hover:text-primary-500'
         >
           {t('account.settings')}
