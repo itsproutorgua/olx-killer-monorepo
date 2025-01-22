@@ -7,9 +7,13 @@ export const EmptyInbox = ({ type }: { type?: string }) => {
   const { t } = useTranslation()
   return (
     <div className='flex w-full flex-col items-center justify-center pt-[49px]'>
-      <img src={emptyInbox} height='225' width='249' alt='empty-inbox' />
-      <div className='flex flex-col items-center justify-center pt-[46px] text-center xl:w-[512px]'>
-        <h3 className='text-[20px] font-medium leading-[26px]'>
+      <img
+        src={emptyInbox}
+        alt='empty-inbox'
+        className='h-[182px] xl:h-[224px]'
+      />
+      <div className='flex flex-col items-center justify-center pt-[46px] text-center text-gray-950 xl:w-[512px]'>
+        <h3 className='max-w-[271px] text-[20px] font-medium leading-[26px] xl:max-w-[512px]'>
           {t(`listings.${type}Empty`)}
         </h3>
         {type === 'favorite' ? (
