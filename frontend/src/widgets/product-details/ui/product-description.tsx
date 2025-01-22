@@ -8,6 +8,12 @@ interface ProductDescriptionProps {
   maxClampLength: number
 }
 
+const sanitizeDescription = (description: string): string => {
+  // Replace <br /> with spaces and strip other HTML tags
+  const withoutBreaks = description.replace(/<br\s*\/?>/gi, ' ')
+  return withoutBreaks.replace(/<\/?[^>]+(>|$)/g, '')
+}
+
 export const ProductDescription: React.FC<ProductDescriptionProps> = ({
   description,
   maxClampLength,
@@ -19,22 +25,24 @@ export const ProductDescription: React.FC<ProductDescriptionProps> = ({
     setShowFullDescription(!showFullDescription)
   }
 
+  const sanitizedDescription = sanitizeDescription(description)
+
   const truncatedDescription = (length: number) =>
-    description.length > length
-      ? description.slice(0, length) + '...'
-      : description
+    sanitizedDescription.length > length
+      ? sanitizedDescription.slice(0, length) + '...'
+      : sanitizedDescription
 
   return (
     <>
       <p className='mt-[14px] text-[13px] leading-5 md:text-base'>
         {showFullDescription
-          ? description
+          ? sanitizedDescription
           : truncatedDescription(maxClampLength)}
       </p>
-      {description.length > maxClampLength && (
+      {sanitizedDescription.length > maxClampLength && (
         <button
           onClick={toggleDescription}
-          className='mt-2 flex items-center text-sm font-semibold text-gray-700 hover:underline'
+          className='mt-2 flex items-center text-[13px] font-semibold text-gray-700 hover:underline'
         >
           {showFullDescription ? (
             <>

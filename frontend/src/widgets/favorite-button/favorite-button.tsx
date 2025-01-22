@@ -10,7 +10,7 @@ export const FavoriteButton = ({ className }: { className?: string }) => {
 
   return (
     <Link
-      to={`${PRIVATE_PAGES.ACCOUNT}/${PRIVATE_PAGES.FAVORITE}`}
+      to={`${PRIVATE_PAGES.FAVORITE}`}
       className={cn(
         'group relative flex size-11 items-center justify-center text-gray-50 transition-colors duration-300',
         className,

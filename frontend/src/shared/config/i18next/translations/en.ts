@@ -118,6 +118,7 @@ export const en = {
   words: {
     all: 'All',
     delete: 'Delete',
+    fromFavorite: 'from favorite',
     edit: 'Edit',
     categories: 'Categories',
     found: 'Found',
@@ -198,8 +199,11 @@ export const en = {
     unpaidEmpty: 'You currently have no unpaid user-listings',
     inactiveEmpty: 'You currently have no inactive user-listings',
     rejectedEmpty: 'You currently have no rejected user-listings',
+    favoriteEmpty: 'You currently have no favorited listings',
     yourListings: 'Your listings',
     addListings:
       'Start selling right now! Create your first listing to attract buyers and showcase your products',
+    addFavorite:
+      'Start adding listings to favorites and they will be saved here',
   },
 }
