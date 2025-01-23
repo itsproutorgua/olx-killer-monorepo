@@ -10,7 +10,7 @@ export const useListingsState = () => {
   const { getQueryParamByKey } = useQueryParams()
   const getIdToken = useIdToken()
 
-  const activeTabFromUrl = getQueryParamByKey('publication_status') || 'active'
+  const activeTabFromUrl = getQueryParamByKey('status') || 'active'
   const currentPageFromUrl = parseInt(getQueryParamByKey('page') || '1')
 
   const [activeTab, setActiveTab] = useState(activeTabFromUrl)
@@ -33,7 +33,7 @@ export const useListingsState = () => {
     { Skeleton: <PageLoader /> },
   )
 
-  const getTabCount = (tabId: string): number => {
+  const getListingsTabCount = (tabId: string): number => {
     switch (tabId) {
       case 'active':
         return data?.total_active ?? 0
@@ -55,7 +55,7 @@ export const useListingsState = () => {
     setActiveTab,
     currentPage,
     setCurrentPage,
-    getTabCount,
+    getListingsTabCount,
     PAGE_SIZE,
   }
 }

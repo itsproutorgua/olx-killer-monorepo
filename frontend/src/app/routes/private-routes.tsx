@@ -1,7 +1,7 @@
 import { useAuth0 } from '@auth0/auth0-react'
 import { Outlet } from 'react-router-dom'
 
-import { WelcomePage } from '@/pages/welcome/welcome-page.tsx'
+import { WelcomePage } from '@/pages/account/welcome/welcome-page.tsx'
 import { PageLoader } from '@/shared/ui'
 
 const PrivateRoute = () => {

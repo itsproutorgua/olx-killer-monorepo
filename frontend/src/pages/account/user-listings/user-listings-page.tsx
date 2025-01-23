@@ -20,7 +20,7 @@ export const UserListingsPage = () => {
     activeTab,
     setActiveTab,
     setCurrentPage,
-    getTabCount,
+    getListingsTabCount,
     PAGE_SIZE,
   } = useListingsState()
 
@@ -30,7 +30,7 @@ export const UserListingsPage = () => {
     setActiveTab(tabId)
     setCurrentPage(1) // Reset to page 1 on tab change
     setQueryParams({
-      publication_status: tabId,
+      status: tabId,
       page: '1',
     })
   }
@@ -61,7 +61,7 @@ export const UserListingsPage = () => {
 
       <div className='my-5'>
         <PagePagination
-          count={getTabCount(activeTab)}
+          count={getListingsTabCount(activeTab)}
           limit={PAGE_SIZE}
           className='flex'
         />
