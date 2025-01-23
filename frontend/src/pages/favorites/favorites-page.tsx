@@ -28,7 +28,9 @@ export const FavoritesPage = () => {
         className='mb-[30px] flex items-center gap-[14px] xl:hidden'
       >
         <ArrowDownSmall className='rotate-90' />
-        <h1 className='text-2xl font-semibold'>{t('account.favorites')}</h1>
+        <h1 className='text-2xl font-semibold leading-[24px] text-black'>
+          {t('account.favorites')}
+        </h1>
       </Link>
       <div className='h-full w-full overflow-x-hidden'>
         <div className='flex flex-col gap-5'>

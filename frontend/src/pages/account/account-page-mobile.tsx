@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { AddListingButton } from '@/features/announcement/ui/add-listing-button.tsx'
 import { useListingsState } from '@/entities/user-listings/library'
-import { ListingsTabs } from '@/entities/user-listings/ui/listings-tabs.tsx'
+import { UserListingsTabs } from '@/entities/user-listings/ui/user-listings-tabs.tsx'
 import { EditProfile } from '@/shared/ui/icons'
 import { ArrowDownSmall } from '@/shared/ui/icons/arrow-down-small.tsx'
 import { ArrowLeftRed } from '@/shared/ui/icons/arrow-left-red.tsx'
@@ -47,7 +47,10 @@ export const AccountPageMobile = () => {
           {t('listings.yourListings')}
         </h3>
         <div className='divide-y divide-gray-200'>
-          <ListingsTabs activeTab={activeTab} onChangeTab={handleTabChange} />
+          <UserListingsTabs
+            activeTab={activeTab}
+            onChangeTab={handleTabChange}
+          />
         </div>
       </div>
 
