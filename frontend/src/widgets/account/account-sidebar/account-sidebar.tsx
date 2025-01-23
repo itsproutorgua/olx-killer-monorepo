@@ -29,7 +29,7 @@ export const AccountSidebar: React.FC<Props> = ({ className }) => {
             className={`h-[42px] w-full rounded-xl pl-[18px] ${
               activeTab === item.title
                 ? 'bg-primary-500 text-gray-50'
-                : 'text-gray-950'
+                : 'text-gray-900'
             }`}
           >
             <Link

@@ -15,10 +15,10 @@ import { ChatPage } from '@/pages/chat/chat-page.tsx'
 import { FavoritesPage } from '@/pages/favorites/favorites-page.tsx'
 import { HomePage } from '@/pages/home/home-page'
 import { AccountLayout, RootLayout } from '@/pages/layouts'
-import { ListingsPage } from '@/pages/listings/listings-page.tsx'
 import { ProductPage } from '@/pages/product/product-page.tsx'
 import { ProfilePage } from '@/pages/profile/profile-page.tsx'
 import { SettingsPage } from '@/pages/settings/settings-page.tsx'
+import { UserListingsPage } from '@/pages/user-listings/user-listings-page.tsx'
 import { PRIVATE_PAGES, PUBLIC_PAGES } from '@/shared/constants'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -41,7 +41,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                 <Route index element={<AccountPage />} />
                 <Route
                   path={PRIVATE_PAGES.LISTINGS}
-                  element={<ListingsPage />}
+                  element={<UserListingsPage />}
                 />
                 <Route path={PRIVATE_PAGES.CHAT} element={<ChatPage />} />
                 <Route

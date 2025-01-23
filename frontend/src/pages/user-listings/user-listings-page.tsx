@@ -7,12 +7,12 @@ import {
   renderListingsContent,
   useListingsState,
 } from '@/entities/user-listings/library'
-import { ListingsTabs } from '@/entities/user-listings/ui/listings-tabs.tsx'
+import { UserListingsTabs } from '@/entities/user-listings/ui/user-listings-tabs.tsx'
 import { ArrowDownSmall } from '@/shared/ui/icons/arrow-down-small.tsx'
 import { PRIVATE_PAGES } from '@/shared/constants'
 import { useQueryParams } from '@/shared/library/hooks'
 
-export const ListingsPage = () => {
+export const UserListingsPage = () => {
   const { t } = useTranslation()
   const {
     data,
@@ -47,7 +47,7 @@ export const ListingsPage = () => {
         </h1>
       </Link>
       <div className='mb-10 hidden xl:flex xl:justify-between'>
-        <ListingsTabs activeTab={activeTab} onChangeTab={handleTabChange} />
+        <UserListingsTabs activeTab={activeTab} onChangeTab={handleTabChange} />
         <AddListingButton className='-my-2 hidden xl:flex' />
       </div>
 

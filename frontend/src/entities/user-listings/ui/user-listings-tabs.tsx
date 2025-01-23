@@ -2,9 +2,9 @@ import { useTranslation } from 'react-i18next'
 
 import { useListingsState } from '@/entities/user-listings/library'
 import { ArrowDownSmall } from '@/shared/ui/icons/arrow-down-small.tsx'
-import { tabs } from '@/shared/constants/listings-tabs.const.ts'
+import { tabs } from '@/shared/constants/user-listings-tabs.const.ts'
 
-export const ListingsTabs = ({
+export const UserListingsTabs = ({
   activeTab,
   onChangeTab,
 }: {
