@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next'
 
 import { useListingsState } from '@/entities/user-listings/library'
+import { tabs } from '@/entities/user-listings/library/constants/user-listings-tabs.const.ts'
 import { ArrowDownSmall } from '@/shared/ui/icons/arrow-down-small.tsx'
-import { tabs } from '@/shared/constants/user-listings-tabs.const.ts'
 
 export const UserListingsTabs = ({
   activeTab,
@@ -12,7 +12,7 @@ export const UserListingsTabs = ({
   onChangeTab: (tabId: string) => void
 }) => {
   const { t } = useTranslation()
-  const { getTabCount } = useListingsState()
+  const { getListingsTabCount } = useListingsState()
   return (
     <div className='flex flex-col xl:flex-row'>
       {tabs.map(tab => (
@@ -25,7 +25,7 @@ export const UserListingsTabs = ({
               : 'xl:border-b-[1px] xl:border-gray-200 xl:pb-3 xl:text-gray-500'
           }`}
         >
-          {t(tab.label)} ({getTabCount(tab.id)})
+          {t(tab.label)} ({getListingsTabCount(tab.id)})
           <ArrowDownSmall className='-rotate-90 xl:hidden' />
         </button>
       ))}

@@ -19,24 +19,16 @@ class ListingsApi {
     { signal }: { signal: AbortSignal },
   ) {
     const params = new URLSearchParams()
+
+    const status = {
+      active: 'active',
+      inactive: 'inactive',
+      pending: 'draft',
+      rejected: 'rejected',
+    }
+
     if (activeTab) {
-      let publicationStatus = ''
-      switch (activeTab) {
-        case 'active':
-          publicationStatus = 'active'
-          break
-        case 'inactive':
-          publicationStatus = 'inactive'
-          break
-        case 'pending':
-          publicationStatus = 'draft'
-          break
-        case 'rejected':
-          publicationStatus = 'rejected'
-          break
-        default:
-          break
-      }
+      const publicationStatus = status[activeTab as keyof typeof status]
       if (publicationStatus) {
         params.set('publication_status', publicationStatus)
       }
