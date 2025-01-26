@@ -20,6 +20,9 @@ import { Textarea } from '@/shared/ui/shadcn-ui/textarea'
 import { cn } from '@/shared/library/utils'
 import { DndGrid } from './dnd-grid'
 
+const minTextareaLength = 40
+const maxTextareaLength = 15000
+
 export function CreateListingForm() {
   const { t } = useTranslation()
   // const [files, setFiles] = useState<File[]>([])
@@ -31,9 +34,11 @@ export function CreateListingForm() {
     description: z
       .string()
       .min(1, { message: t('errors.input.required') })
-      .min(40, { message: t('errors.input.minLength', { minLength: '40' }) })
+      .min(40, {
+        message: t('errors.input.minLength', { minLength: minTextareaLength }),
+      })
       .max(15000, {
-        message: t('errors.input.maxLength', { maxLength: '40' }),
+        message: t('errors.input.maxLength', { maxLength: maxTextareaLength }),
       }),
     city: z.string().min(1, { message: t('errors.input.required') }),
     region: z.string().min(1, { message: t('errors.input.required') }),
@@ -170,10 +175,15 @@ export function CreateListingForm() {
                       )}
                     >
                       {t('listingForm.fields.desc.desc')}
-                      <span>{form.getValues('description').length}/15000</span>
+                      <span>
+                        {form.getValues('description').length}/
+                        {maxTextareaLength}
+                      </span>
                     </FormDescription>
                     <FormControl>
                       <Textarea
+                        maxLength={maxTextareaLength}
+                        minLength={minTextareaLength}
                         placeholder={t('listingForm.fields.desc.placeholder')}
                         className='form-textarea'
                         {...field}
