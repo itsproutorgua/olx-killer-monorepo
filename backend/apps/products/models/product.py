@@ -79,3 +79,8 @@ class Product(TimestampMixin, HistoricalModel, models.Model):
         if self.pk and self.slug != slug + str(self.pk):
             self.slug = slug + str(self.pk)
             super().save(update_fields=['slug'])
+
+        if not self.product_images.exists():
+            from apps.products.models import ProductImage
+
+            ProductImage.objects.create(product=self)
