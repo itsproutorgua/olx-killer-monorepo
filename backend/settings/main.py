@@ -269,6 +269,7 @@ STORAGES = {
 
 # Для хранения медиафайлов
 DEFAULT_FILE_STORAGE = 'storages.backends.s3.S3Boto3Storage'
+DEFAULT_PRODUCT_IMAGE = 'examples/product_empty_image.jpg'
 
 if DEBUG:
     INSTALLED_APPS += [
