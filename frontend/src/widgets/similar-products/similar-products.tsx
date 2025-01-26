@@ -14,7 +14,7 @@ export const SimilarProducts: React.FC<SimilarProductProps> = ({
 
   return (
     <ScrollableProductList
-      title={t('titles.similarProducts')}
+      title={t('title.similarProducts')}
       path='elektronika/telefony-i-aksesuary/mobilnye-telefony-smartfony'
       limit={10}
       scrollStep={3} // Number of items to scroll

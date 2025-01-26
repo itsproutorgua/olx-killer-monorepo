@@ -12,6 +12,7 @@ import PrivateRoute from '@/app/routes/private-routes.tsx'
 import { AccountPage } from '@/pages/account/account-page.tsx'
 import { ChatPage } from '@/pages/account/chat/chat-page.tsx'
 import { FavoritesPage } from '@/pages/account/favorites/favorites-page.tsx'
+import { CreateListingPage } from '@/pages/account/listings/create'
 import { ProfilePage } from '@/pages/account/profile/profile-page.tsx'
 import { SettingsPage } from '@/pages/account/settings/settings-page.tsx'
 import { UserListingsPage } from '@/pages/account/user-listings/user-listings-page.tsx'
@@ -43,6 +44,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                   path={PRIVATE_PAGES.LISTINGS}
                   element={<UserListingsPage />}
                 />
+
                 <Route path={PRIVATE_PAGES.CHAT} element={<ChatPage />} />
                 <Route
                   path={PRIVATE_PAGES.FAVORITE}
@@ -54,6 +56,10 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                   element={<SettingsPage />}
                 />
               </Route>
+              <Route
+                path={PRIVATE_PAGES.LISTING_CREATE}
+                element={<CreateListingPage />}
+              />
             </Route>
             <Route path='*' element={<div>404 not found!</div>} />
           </Route>

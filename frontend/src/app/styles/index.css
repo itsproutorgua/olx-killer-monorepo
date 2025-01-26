@@ -70,4 +70,22 @@ html body[data-scroll-locked] {
   .pagination-btn {
     @apply flex items-center gap-2 text-sm/[20px] font-semibold text-primary-900 transition-colors duration-300 hover:text-primary-600 disabled:cursor-not-allowed disabled:text-gray-400;
   }
+
+  .form-item {
+    @apply space-y-1.5;
+  }
+  .form-label {
+    @apply text-sm/none font-medium text-gray-950;
+  }
+
+  .form-desc {
+    @apply text-xs/[16.8px] text-gray-600;
+  }
+  .form-input {
+    @apply h-11 !rounded-[50px] shadow-[0_1px_2px_0_rgba(16,24,40,0.05)];
+  }
+
+  .form-textarea {
+    @apply h-[182px] rounded-xl;
+  }
 }

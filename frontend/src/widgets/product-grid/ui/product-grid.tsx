@@ -66,7 +66,7 @@ export const ProductGrid = ({ path }: { path: string }) => {
 
             <div className='flex-1 space-y-5'>
               <div className='border-b border-l border-border pb-[60px] pl-5 pt-[18px]'>
-                <SectionTitle title={t('titles.announcementsAll')} />
+                <SectionTitle title={t('title.announcementsAll')} />
 
                 {data.count === 0 ? (
                   <NoResults />

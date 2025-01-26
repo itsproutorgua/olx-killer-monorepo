@@ -68,7 +68,7 @@ export const ProductGridMobile = ({ path }: { path: string }) => {
     <>
       <div>
         <PageToolbar />
-        <SectionTitle title={t('titles.announcementsAll')} />
+        <SectionTitle title={t('title.announcementsAll')} />
 
         <div className='space-y-[67px]'>
           {data && data.items.length > 0 && (
