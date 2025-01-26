@@ -14,7 +14,7 @@ export const PromoSection: React.FC = () => {
       <img src={Banner} alt='Laptop' className='hidden w-full xl:block' />
       <div className='flex flex-col items-center justify-center gap-[18px] text-center xl:container xl:absolute xl:bottom-0 xl:left-0 xl:block xl:w-[600px] xl:text-left'>
         <h2 className='mb-8 text-4xl font-medium text-gray-900 md:w-full xl:text-5xl'>
-          {t('titles.sellPromoTitle')}
+          {t('title.sellPromoTitle')}
         </h2>
         <Button
           className='h-[53px] rounded-[60px] bg-primary-900 p-[5px] pl-[37px] text-[13px] leading-none text-gray-50 transition-colors duration-300 hover:bg-primary-500 active:bg-primary-600 active:text-gray-50 active:duration-0 xl:text-base'

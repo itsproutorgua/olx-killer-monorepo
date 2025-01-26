@@ -8,7 +8,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/shared/ui/shadcn-ui/carousel'
-import { ChevronRight } from '@/shared/ui/icons'
+import { ChevronRightIcon } from '@/shared/ui/icons'
 import { PUBLIC_PAGES } from '@/shared/constants'
 
 export const CategoryNavbarMobile = ({ data }: { data: CategoryChild[] }) => {
@@ -48,10 +48,10 @@ export const CategoryNavbarMobile = ({ data }: { data: CategoryChild[] }) => {
         </CarouselContent>
         <div className='flex w-full justify-between'>
           <CarouselPrevious className='static m-4 flex size-7 translate-y-0 rotate-180 items-center justify-center border-none bg-primary-900 text-white !opacity-100 disabled:bg-gray-200'>
-            <ChevronRight />
+            <ChevronRightIcon />
           </CarouselPrevious>
           <CarouselNext className='static m-4 flex size-7 translate-y-0 items-center justify-center border-none bg-primary-900 text-white !opacity-100 disabled:bg-gray-200'>
-            <ChevronRight />
+            <ChevronRightIcon />
           </CarouselNext>
         </div>
       </div>

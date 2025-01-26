@@ -1,4 +1,10 @@
+import { crumbs_en, errors_en, listingForms_en, titles_en } from './partials'
+
 export const en = {
+  ...crumbs_en,
+  ...titles_en,
+  ...listingForms_en,
+  ...errors_en,
   inputs: {
     searchPlaceholder: "I'm looking for...",
   },
@@ -31,16 +37,7 @@ export const en = {
     inUse: 'Goods that were in use',
     rating: 'Behind the rating',
   },
-  titles: {
-    announcementTitle: 'Add your own announcement',
-    newProductsTitle: 'New announcements',
-    popularCategoriesTitle: 'Popular categories',
-    sellPromoTitle: 'Do you want to sell on our platform?',
-    bestDealsTitle: 'Best deals',
-    productsBySeller: 'Other announcements by this seller',
-    similarProducts: 'Similar products to your request',
-    announcementsAll: 'All announcements',
-  },
+
   footerContent: {
     footerMessage:
       'Our marketplace is a one-stop platform that connects thousands of sellers and buyers. We offer a wide range of products, including clothing and accessories, electronics, home and garden products, baby products and more.',
@@ -104,9 +101,6 @@ export const en = {
   currency: {
     symbol: '$',
     label: 'USD',
-  },
-  crumbs: {
-    home: 'Home page',
   },
   bottomBar: {
     home: 'Home',

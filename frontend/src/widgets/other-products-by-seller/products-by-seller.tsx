@@ -14,7 +14,7 @@ export const ProductsBySeller: React.FC<SellerProductProps> = ({
 
   return (
     <ScrollableProductList
-      title={t('titles.productsBySeller')}
+      title={t('title.productsBySeller')}
       path='elektronika/telefony-i-aksesuary/mobilnye-telefony-smartfony'
       limit={10}
       scrollStep={3} // Number of items to scroll

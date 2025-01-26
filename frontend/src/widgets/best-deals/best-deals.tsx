@@ -30,7 +30,7 @@ export const BestDeals = () => {
 
   return (
     <section className='container flex flex-col pt-[91px] xl:pt-[100px]'>
-      <SectionTitle title={t('titles.bestDealsTitle')} />
+      <SectionTitle title={t('title.bestDealsTitle')} />
       <Collapsible open={isOpen} onOpenChange={setIsOpen}>
         {cursor}
         <div className='grid grid-cols-2 gap-x-[10px] gap-y-[40px] self-center md:grid-cols-3 xl:grid-cols-4 xl:gap-x-5 xl:gap-y-[60px]'>

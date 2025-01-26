@@ -8,7 +8,7 @@ export const NewProducts = () => {
   return (
     <div className='mt-[50px] flex w-[1058px] overflow-hidden'>
       <ScrollableProductList
-        title={t('titles.newProductsTitle')}
+        title={t('title.newProductsTitle')}
         path='elektronika/telefony-i-aksesuary/mobilnye-telefony-smartfony'
         limit={10}
         scrollStep={3} // Number of items to scroll

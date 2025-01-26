@@ -1,4 +1,10 @@
+import { crumbs_uk, errors_uk, listingForms_uk, titles_uk } from './partials'
+
 export const uk = {
+  ...crumbs_uk,
+  ...titles_uk,
+  ...listingForms_uk,
+  ...errors_uk,
   inputs: {
     searchPlaceholder: 'Я шукаю...',
   },
@@ -31,16 +37,6 @@ export const uk = {
     novelties: 'Нові оголошення',
     used: 'Товари, які були у використанні',
     rating: 'За рейтингом',
-  },
-  titles: {
-    announcementTitle: 'Додайте своє оголошення',
-    newProductsTitle: 'Нові оголошення',
-    popularCategoriesTitle: 'Популярні категорії',
-    sellPromoTitle: 'Хочете продавати на платформі?',
-    bestDealsTitle: 'Найкращі пропозиції',
-    productsBySeller: 'Інші оголошення продавця',
-    similarProducts: 'Схожі товари за вашим запитом',
-    announcementsAll: 'Всі оголошення',
   },
   footerContent: {
     footerMessage:
@@ -105,9 +101,6 @@ export const uk = {
   currency: {
     symbol: '₴',
     label: 'UAH',
-  },
-  crumbs: {
-    home: 'Головна сторінка',
   },
   bottomBar: {
     home: 'Головна',

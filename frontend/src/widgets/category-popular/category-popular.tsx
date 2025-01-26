@@ -26,7 +26,7 @@ export const PopularCategories = () => {
   return (
     <section className='pt-[78px] xl:pt-[116px]'>
       <div className='container'>
-        <SectionTitle title={t('titles.popularCategoriesTitle')} />
+        <SectionTitle title={t('title.popularCategoriesTitle')} />
 
         <Collapsible open={isOpen} onOpenChange={setIsOpen}>
           <div>

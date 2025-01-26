@@ -1,5 +1,4 @@
 import React from 'react'
-import { ChevronLeft } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
@@ -11,6 +10,7 @@ import {
 } from '@/shared/ui/shadcn-ui/breadcrumb'
 import { HomeIconBreadcrumb } from '@/shared/ui/icons-pack.tsx'
 import { cn } from '@/shared/library/utils'
+import { ChevronLeftIcon } from './icons'
 
 export const Breadcrumbs = ({
   crumbs = [],
@@ -29,8 +29,8 @@ export const Breadcrumbs = ({
       {/* Mobile screen */}
       <BreadcrumbList className='text-[13px]/[15.73px] text-foreground md:hidden'>
         <BreadcrumbItem className='gap-2'>
-          <ChevronLeft className='size-6' />
-          <Link to='/'>{t('crumbs.home')}</Link>
+          <ChevronLeftIcon />
+          <Link to='/'>{t('crumb.home')}</Link>
         </BreadcrumbItem>
       </BreadcrumbList>
 
