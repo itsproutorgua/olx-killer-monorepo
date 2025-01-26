@@ -20,6 +20,7 @@ class ProductImage(HistoricalModel, models.Model):
         upload_to='products/images/%Y/%m/%d',
         null=True,
         blank=True,
+        default=settings.DEFAULT_PRODUCT_IMAGE,
         help_text=_('Allowed image formats: %s') % ', '.join(ALLOWED_MIME_TYPES),
     )
 
