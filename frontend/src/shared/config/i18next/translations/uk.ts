@@ -148,6 +148,7 @@ export const uk = {
       new: 'Нові',
       old: 'Вживані',
     },
+    noResults: 'Нічого не знайдено',
   },
   colors: {
     beige: 'Бежевий',

@@ -12,7 +12,7 @@ export const PageToolbar = () => {
   const { count } = useStrictContext(ProductsContext)
 
   return (
-    <div className='pb-[53px] xl:pb-0'>
+    <div className='pb-0'>
       {isMobile ? (
         <PageToolbarMobile />
       ) : (

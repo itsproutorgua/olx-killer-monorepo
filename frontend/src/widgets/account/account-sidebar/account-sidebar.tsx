@@ -22,7 +22,7 @@ export const AccountSidebar: React.FC<Props> = ({ className }) => {
 
   return (
     <aside className={cn('w-[305px] shrink-0 border-r', className)}>
-      <nav className='space-y-[10px] border-b pb-[30px] pr-[49px] pt-[42px]'>
+      <nav className='space-y-[10px] border-b pb-[30px] pr-[48px] pt-[42px]'>
         {SIDEBAR_ITEMS.map(item => (
           <button
             key={item.title}
