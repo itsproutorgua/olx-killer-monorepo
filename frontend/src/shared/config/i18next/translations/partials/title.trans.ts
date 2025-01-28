@@ -15,13 +15,13 @@ export const titles_uk = {
 export const titles_en = {
   title: {
     listingCreate: 'Create a listing',
-    announcementTitle: 'Add your own announcement',
-    newProductsTitle: 'New announcements',
+    announcementTitle: 'Add your own listing',
+    newProductsTitle: 'New listings',
     popularCategoriesTitle: 'Popular categories',
     sellPromoTitle: 'Do you want to sell on our platform?',
     bestDealsTitle: 'Best deals',
-    productsBySeller: 'Other announcements by this seller',
+    productsBySeller: 'Other listings by this seller',
     similarProducts: 'Similar products to your request',
-    announcementsAll: 'All announcements',
+    announcementsAll: 'All listings',
   },
 }

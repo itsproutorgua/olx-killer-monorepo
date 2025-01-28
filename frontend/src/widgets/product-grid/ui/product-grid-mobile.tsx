@@ -7,7 +7,8 @@ import { PageToolbar } from '@/widgets/page-toolbar'
 import { ProductCard } from '@/widgets/product-card'
 import { useFilters } from '@/entities/filter'
 import { productApi, ProductsContext } from '@/entities/product'
-import { SectionTitle } from '@/shared/ui'
+import { PageLoader, SectionTitle } from '@/shared/ui'
+import { NoResults } from '@/shared/ui/no-results.tsx'
 import { QUERY_KEYS } from '@/shared/constants'
 import { APP_VARIABLES } from '@/shared/constants/app.const'
 import { useStrictContext } from '@/shared/library/hooks'
@@ -18,7 +19,7 @@ export const ProductGridMobile = ({ path }: { path: string }) => {
   const { sort, filters } = useFilters()
   const { setCount } = useStrictContext(ProductsContext)
 
-  const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading } =
     useInfiniteQuery({
       queryKey: [
         QUERY_KEYS.PRODUCTS,
@@ -68,31 +69,42 @@ export const ProductGridMobile = ({ path }: { path: string }) => {
     <>
       <div>
         <PageToolbar />
-        <SectionTitle title={t('title.announcementsAll')} />
 
-        <div className='space-y-[67px]'>
-          {data && data.items.length > 0 && (
-            <ul className='grid grid-cols-2 gap-x-2.5 gap-y-10'>
-              {data.items.map((product, index) => (
-                <li key={index}>
-                  <ProductCard product={product} />
-                </li>
-              ))}
-            </ul>
-          )}
+        {isLoading && <PageLoader />}
+        {data?.count === 0 ? (
+          <NoResults />
+        ) : (
+          <>
+            <SectionTitle
+              title={t('title.announcementsAll')}
+              className='pt-[53px]'
+            />
 
-          <button
-            onClick={() => fetchNextPage()}
-            disabled={!hasNextPage || isFetchingNextPage}
-            className={cn('btn-secondary', !hasNextPage && 'hidden')}
-          >
-            {isFetchingNextPage ? (
-              <LoaderCircle className='size-6 animate-spin' />
-            ) : (
-              t('buttons.showMoreAnnouncements')
-            )}
-          </button>
-        </div>
+            <div className='space-y-[67px]'>
+              {data && data.items.length > 0 && (
+                <ul className='grid grid-cols-2 gap-x-2.5 gap-y-10'>
+                  {data.items.map((product, index) => (
+                    <li key={index}>
+                      <ProductCard product={product} />
+                    </li>
+                  ))}
+                </ul>
+              )}
+
+              <button
+                onClick={() => fetchNextPage()}
+                disabled={!hasNextPage || isFetchingNextPage}
+                className={cn('btn-secondary', !hasNextPage && 'hidden')}
+              >
+                {isFetchingNextPage ? (
+                  <LoaderCircle className='size-6 animate-spin' />
+                ) : (
+                  t('buttons.showMoreAnnouncements')
+                )}
+              </button>
+            </div>
+          </>
+        )}
       </div>
     </>
   )

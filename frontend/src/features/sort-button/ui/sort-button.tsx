@@ -1,5 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
+import { getSortOptions } from '@/features/sort-button'
 import {
   Select,
   SelectContent,
@@ -10,10 +12,12 @@ import {
 import { CheckedIcon } from '@/shared/ui/icons'
 import { SortEnum } from '@/shared/constants/app.const'
 import { useQueryParams } from '@/shared/library/hooks'
-import { SORT_OPTIONS } from '../model'
 
 export const SortButton = () => {
+  const { t } = useTranslation()
   const { setQueryParam, getQueryParamByKey } = useQueryParams()
+  const SORT_OPTIONS = useMemo(() => getSortOptions(t), [t])
+
   const [value, setValue] = useState(
     SORT_OPTIONS[SortEnum.CREATED_AT_DESC].value,
   )
@@ -48,13 +52,19 @@ export const SortButton = () => {
           <SelectItem
             key={key}
             value={value.value}
-            className='related group px-[14px] py-2.5 text-[13px]/[24px] font-normal hover:bg-primary-100 data-[state=checked]:cursor-default data-[state=checked]:bg-gray-50 data-[state=checked]:text-foreground xl:text-base'
+            onClick={event => {
+              event.stopPropagation()
+              event.preventDefault()
+            }}
+            className='group px-[14px] py-2.5 text-[13px]/[24px] font-normal hover:bg-primary-100 data-[state=checked]:cursor-default data-[state=checked]:bg-gray-50 data-[state=checked]:text-foreground xl:text-base'
           >
-            {SORT_OPTIONS[value.value].label}
+            <div className='flex flex-row gap-4'>
+              {SORT_OPTIONS[value.value].label}
 
-            <span className='absolute right-[14px] top-1/2 -translate-y-1/2 group-data-[state=unchecked]:hidden'>
-              <CheckedIcon className='size-5' />
-            </span>
+              <span className='group-data-[state=unchecked]:hidden'>
+                <CheckedIcon className='size-5' />
+              </span>
+            </div>
           </SelectItem>
         ))}
       </SelectContent>

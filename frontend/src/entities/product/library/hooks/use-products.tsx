@@ -6,6 +6,7 @@ import {
   type FilterParams,
   type ProductResponse,
 } from '@/entities/product'
+import { PageLoader } from '@/shared/ui'
 
 export const useProducts = (
   params: FilterParams,
@@ -18,7 +19,7 @@ export const useProducts = (
 
   const cursor = (
     <>
-      {isLoading && (Skeleton || <div>Loading...</div>)}
+      {isLoading && (Skeleton || <PageLoader />)}
       {isError && (Skeleton || <div>Loading...</div>)}
     </>
   )
