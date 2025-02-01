@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import {
   closestCenter,
   DndContext,
@@ -8,7 +8,6 @@ import {
   useSensor,
   useSensors,
   type DragEndEvent,
-  type UniqueIdentifier,
 } from '@dnd-kit/core'
 import {
   arrayMove,
@@ -16,15 +15,38 @@ import {
   SortableContext,
   sortableKeyboardCoordinates,
 } from '@dnd-kit/sortable'
-import { Image, ImagePlus } from 'lucide-react'
+import { ImagePlus } from 'lucide-react'
+import { useFormContext } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
+import { XCircleSmall } from '@/shared/ui/icons'
 import { DndSortableItem } from './dnd-sortable-item'
 
 export const DndGrid = () => {
   const { t } = useTranslation()
-  const [activeId, setActiveId] = useState<UniqueIdentifier | null>(null)
-  const [items, setItems] = useState([1, 2, 3, 4, 5, 6, 7])
+  const { setValue, getValues } = useFormContext()
+  const [activeFile, setActiveFile] = useState<File | null>(null)
+
+  const [files, setFiles] = useState<File[]>([])
+  const initialized = useRef(false)
+
+  // Initialize from form values only once
+  useEffect(() => {
+    if (!initialized.current) {
+      const formFiles = getValues('images')
+      if (formFiles) {
+        setFiles(formFiles)
+      }
+      initialized.current = true
+    }
+  }, [getValues])
+
+  // Sync to form values after initial load
+  useEffect(() => {
+    if (initialized.current) {
+      setValue('images', files.length > 0 ? files : undefined)
+    }
+  }, [files, setValue])
 
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -33,22 +55,35 @@ export const DndGrid = () => {
     }),
   )
 
+  const handleAddFiles = (newFiles: FileList) => {
+    const updatedFiles = [
+      ...files,
+      ...Array.from(newFiles).slice(0, 7 - files.length),
+    ]
+    setFiles(updatedFiles)
+  }
+
   const handleDragStart = (e: DragEndEvent) => {
-    setActiveId(e.active.id)
+    const file = files.find(file => file.name === e.active.id)
+    setActiveFile(file || null)
   }
 
   const handleDragEnd = (e: DragEndEvent) => {
-    setActiveId(null)
     const { active, over } = e
 
     if (over && active.id !== over.id) {
-      setItems(items => {
-        const oldIndex = items.indexOf(active.id as number)
-        const newIndex = items.indexOf(over.id as number)
-
-        return arrayMove(items, oldIndex, newIndex)
+      setFiles(currentFiles => {
+        const oldIndex = currentFiles.findIndex(file => file.name === active.id)
+        const newIndex = currentFiles.findIndex(file => file.name === over.id)
+        return arrayMove(currentFiles, oldIndex, newIndex)
       })
     }
+  }
+
+  const handleRemoveFile = (fileName: string) => {
+    setFiles(currentFiles =>
+      currentFiles.filter(file => file.name !== fileName),
+    )
   }
 
   return (
@@ -58,25 +93,64 @@ export const DndGrid = () => {
       onDragStart={handleDragStart}
       onDragEnd={handleDragEnd}
     >
-      <div className='grid grid-cols-2 gap-x-2.5 gap-y-1.5 xl:grid-cols-4 xl:gap-1.5'>
-        <div className='flex h-[104px] cursor-pointer flex-col items-center justify-center gap-2 rounded-[15px] bg-primary-700 text-gray-50 transition-colors duration-300 hover:bg-primary-800 xl:h-[118px]'>
-          <ImagePlus />
-          <p className='text-sm/none font-medium'>
-            {t('listingForm.buttons.download')}
-          </p>
-        </div>
-        <SortableContext items={items} strategy={rectSortingStrategy}>
-          {items.map(id => (
-            <DndSortableItem key={id} id={id} data={items[id - 1]} />
-          ))}
-          <DragOverlay>
-            {activeId ? (
-              <div className='flex h-[104px] cursor-move items-center justify-center rounded-[15px] border-2 border-gray-400 bg-gray-300 text-primary-500 xl:h-[118px]'>
-                <Image />
+      <div className='grid max-w-[802px] grid-cols-2 gap-x-2.5 gap-y-1.5 xl:grid-cols-4 xl:gap-1.5'>
+        {files.length < 7 && (
+          <label className='flex h-[104px] cursor-pointer flex-col items-center justify-center gap-2 rounded-[15px] bg-primary-700 text-gray-50 transition-colors duration-300 hover:bg-primary-800 xl:h-[118px]'>
+            <ImagePlus />
+            <p className='text-sm/none font-medium'>
+              {t('listingForm.buttons.download')}
+            </p>
+            <input
+              type='file'
+              multiple
+              accept='image/*'
+              className='hidden'
+              onChange={e => e.target.files && handleAddFiles(e.target.files)}
+            />
+          </label>
+        )}
+
+        <SortableContext
+          items={files.map(file => file.name)}
+          strategy={rectSortingStrategy}
+        >
+          {files.map(file => (
+            <DndSortableItem key={file.name} id={file.name}>
+              <div className='group relative h-full w-full'>
+                <img
+                  src={URL.createObjectURL(file)}
+                  alt={`Upload ${file.name}`}
+                  className='h-full w-full rounded-[15px] object-cover'
+                />
+                <button
+                  type='button'
+                  onPointerDown={e => {
+                    e.stopPropagation()
+                  }}
+                  onClick={e => {
+                    e.stopPropagation()
+                    handleRemoveFile(file.name)
+                  }}
+                  className='absolute right-1 top-1 rounded-full p-0.5'
+                >
+                  <XCircleSmall className='text-primary-700' />
+                </button>
               </div>
-            ) : null}
-          </DragOverlay>
+            </DndSortableItem>
+          ))}
         </SortableContext>
+
+        <DragOverlay>
+          {activeFile ? (
+            <div className='flex h-[104px] cursor-move items-center justify-center rounded-[15px] xl:h-[118px]'>
+              <img
+                src={URL.createObjectURL(activeFile)}
+                alt={`Dragged ${activeFile.name}`}
+                className='h-full w-full rounded-[15px] object-cover'
+              />
+            </div>
+          ) : null}
+        </DragOverlay>
       </div>
     </DndContext>
   )

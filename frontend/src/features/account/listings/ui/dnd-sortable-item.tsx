@@ -1,3 +1,4 @@
+import React from 'react'
 import type { UniqueIdentifier } from '@dnd-kit/core'
 import { useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
@@ -5,10 +6,10 @@ import { Image } from 'lucide-react'
 
 export function DndSortableItem({
   id,
-  data,
+  children, // Accept children for custom content
 }: {
   id: UniqueIdentifier
-  data: number
+  children?: React.ReactNode // Add children prop
 }) {
   const {
     attributes,
@@ -34,8 +35,8 @@ export function DndSortableItem({
       {...listeners}
       className='flex h-[104px] cursor-move items-center justify-center rounded-[15px] bg-gray-200 text-primary-500 xl:h-[118px]'
     >
-      <Image />
-      <p className='hidden'>{data}</p>
+      {children || <Image />}{' '}
+      {/* Render children or fallback to default icon */}
     </div>
   )
 }

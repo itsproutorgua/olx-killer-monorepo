@@ -16,9 +16,16 @@ export const listingForms_en = {
         label: 'Select category',
         placeholder: 'Handmade cotton chicken',
       },
+      price: {
+        label: 'Enter price',
+        placeholder: '737.00',
+      },
       images: {
         label: 'Add images',
         desc: 'The first image will be on the cover of the listing. Drag to change the order.',
+      },
+      video: {
+        uploadButton: 'Upload product video',
       },
       desc: {
         label: 'Product description',
@@ -72,13 +79,20 @@ export const listingForms_uk = {
         label: 'Оберіть категорію',
         placeholder: 'Бавовняна курка ручної роботи',
       },
+      price: {
+        label: 'Вкажіть ціну',
+        placeholder: '737.00',
+      },
       images: {
         label: 'Додайте фото',
         desc: 'Перше фото буде на обкладинці оголошення. Перетягніть, щоб змінити порядок.',
       },
+      video: {
+        uploadButton: 'Завантажити відео товару',
+      },
       desc: {
         label: 'Опис товару',
-        desc: 'Введіть не менше 40 символів',
+        desc: 'Введіть не менше 10 символів',
         placeholder:
           'Опишіть стан товару, його характеристики, переваги та іншу важливу інформацію, яку варто знати покупцю.',
       },
