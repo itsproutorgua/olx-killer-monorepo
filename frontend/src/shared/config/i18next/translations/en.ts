@@ -1,9 +1,11 @@
+import { profileForms_en } from '@/shared/config/i18next/translations/partials/profile-form.trans.ts'
 import { crumbs_en, errors_en, listingForms_en, titles_en } from './partials'
 
 export const en = {
   ...crumbs_en,
   ...titles_en,
   ...listingForms_en,
+  ...profileForms_en,
   ...errors_en,
   inputs: {
     searchPlaceholder: "I'm looking for...",

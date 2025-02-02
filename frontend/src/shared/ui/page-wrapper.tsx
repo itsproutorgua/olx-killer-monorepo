@@ -1,3 +1,5 @@
+import React from 'react'
+
 import { cn } from '../library/utils'
 
 export const PageWrapper = ({

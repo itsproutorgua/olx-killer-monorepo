@@ -96,7 +96,7 @@ export const DndGrid = () => {
       <div className='grid max-w-[802px] grid-cols-2 gap-x-2.5 gap-y-1.5 xl:grid-cols-4 xl:gap-1.5'>
         {files.length < 7 && (
           <label className='flex h-[104px] cursor-pointer flex-col items-center justify-center gap-2 rounded-[15px] bg-primary-700 text-gray-50 transition-colors duration-300 hover:bg-primary-800 xl:h-[118px]'>
-            <ImagePlus />
+            <ImagePlus className='cursor-pointer' />
             <p className='text-sm/none font-medium'>
               {t('listingForm.buttons.download')}
             </p>
