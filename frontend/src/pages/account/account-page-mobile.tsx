@@ -37,6 +37,7 @@ export const AccountPageMobile = () => {
         <button
           className='absolute right-[18px] top-[18px] h-5 w-5 transition duration-300 hover:text-primary-500'
           aria-label={t('Edit profile')}
+          onClick={() => navigate(PRIVATE_PAGES.PROFILE)}
         >
           <EditProfile />
         </button>

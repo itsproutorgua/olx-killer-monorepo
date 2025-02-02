@@ -53,7 +53,7 @@ export function CreateListingForm() {
   })
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
-    console.log(data.images)
+    console.log(data)
   }
 
   return (
