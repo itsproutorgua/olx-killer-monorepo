@@ -44,8 +44,7 @@ export function CreateListingForm() {
       description: '',
       images: undefined,
       video: undefined,
-      city: '',
-      region: '',
+      location: '',
       user_name: '',
       user_email: '',
       user_phone: '',
@@ -312,6 +311,7 @@ export function CreateListingForm() {
 
               {/* User email input */}
               <FormField
+                disabled
                 control={form.control}
                 name='user_email'
                 render={({ field }) => (
@@ -359,7 +359,7 @@ export function CreateListingForm() {
               {/* City input */}
               <FormField
                 control={form.control}
-                name='city'
+                name='location'
                 render={({ field }) => (
                   <FormItem className='form-item col-start-2 row-start-1'>
                     <FormLabel className='form-label'>
@@ -368,27 +368,6 @@ export function CreateListingForm() {
                     <FormControl>
                       <Input
                         placeholder={t('listingForm.fields.city.placeholder')}
-                        className='form-input'
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              {/* Region input */}
-              <FormField
-                control={form.control}
-                name='region'
-                render={({ field }) => (
-                  <FormItem className='form-item col-start-2 row-start-2'>
-                    <FormLabel className='form-label'>
-                      {t('listingForm.fields.region.label')}*
-                    </FormLabel>
-                    <FormControl>
-                      <Input
-                        placeholder={t('listingForm.fields.region.placeholder')}
                         className='form-input'
                         {...field}
                       />

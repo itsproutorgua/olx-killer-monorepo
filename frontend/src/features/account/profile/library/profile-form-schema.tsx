@@ -20,9 +20,7 @@ export const useProfileSchema = () => {
 
     user_name: z.string().min(1, { message: t('errors.input.required') }),
 
-    city: z.string().min(1, { message: t('errors.input.required') }),
-
-    region: z.string().min(1, { message: t('errors.input.required') }),
+    location: z.string().min(1, { message: t('errors.input.required') }),
 
     user_phone: z.string().min(1, { message: t('errors.input.required') }),
 

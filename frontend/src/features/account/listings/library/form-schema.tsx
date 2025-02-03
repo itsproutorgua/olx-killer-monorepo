@@ -75,9 +75,7 @@ export const useFormSchema = () => {
         { message: t('errors.input.videoDurationExceeded', { max: 15 }) },
       ),
 
-    city: z.string().min(1, { message: t('errors.input.required') }),
-
-    region: z.string().min(1, { message: t('errors.input.required') }),
+    location: z.string().min(1, { message: t('errors.input.required') }),
 
     user_name: z.string().min(1, { message: t('errors.input.required') }),
 

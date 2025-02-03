@@ -37,10 +37,6 @@ export const listingForms_en = {
         label: 'Your city',
         placeholder: 'City name',
       },
-      region: {
-        label: 'Region',
-        placeholder: 'Region name',
-      },
       userName: {
         label: 'User name',
         placeholder: 'David Cooper',
@@ -97,12 +93,8 @@ export const listingForms_uk = {
           'Опишіть стан товару, його характеристики, переваги та іншу важливу інформацію, яку варто знати покупцю.',
       },
       city: {
-        label: 'Ваше місто',
+        label: 'Місцезнаходження',
         placeholder: 'Назва міста',
-      },
-      region: {
-        label: 'Область',
-        placeholder: 'Назва області',
       },
       userName: {
         label: "Ім'я",
