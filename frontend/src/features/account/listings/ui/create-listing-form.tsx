@@ -403,7 +403,7 @@ export function CreateListingForm() {
 
         <button
           type='submit'
-          className={`relative flex h-[53px] min-w-[315px] items-center gap-6 rounded-[60px] bg-primary-900 py-[5px] pr-[5px] text-base/4 text-gray-50 transition-colors duration-300 hover:bg-primary-500 active:bg-primary-600 active:duration-0 ${i18n.language !== 'uk' ? 'pl-[37px]' : 'xl:pl-[20px]'}`}
+          className={`relative mx-auto flex h-[53px] min-w-[315px] items-center gap-6 rounded-[60px] bg-primary-900 py-[5px] pr-[5px] text-base/4 text-gray-50 transition-colors duration-300 hover:bg-primary-500 active:bg-primary-600 active:duration-0 xl:mx-0 ${i18n.language !== 'uk' ? 'pl-[37px]' : 'xl:pl-[20px]'}`}
         >
           <span className='mr-7 flex flex-1 items-center justify-center xl:mr-12'>
             {t('listingForm.buttons.submit')}
