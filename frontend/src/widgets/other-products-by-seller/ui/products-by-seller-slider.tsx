@@ -8,7 +8,7 @@ export const ProductsBySellerSlider: React.FC<SellerProductProps> = ({
 }) => {
   return (
     <ProductSlider
-      titleKey='titles.productsBySeller'
+      titleKey='title.productsBySeller'
       limit={10}
       path='elektronika/telefony-i-aksesuary/mobilnye-telefony-smartfony'
       chunkSize={2} // Set the chunk size as needed
