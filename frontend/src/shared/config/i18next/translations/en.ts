@@ -15,7 +15,7 @@ export const en = {
     next: 'Next',
     previous: 'Previous',
     searchButton: 'Find',
-    addAdvert: 'To add an advert',
+    addAdvert: 'Add your listing',
     showAllCategories: 'Show all categories',
     hideCategories: 'Hide categories',
     showLess: 'Less',

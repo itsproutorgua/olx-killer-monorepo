@@ -6,10 +6,6 @@ export const profileForms_en = {
         noCity: 'No city',
         placeholder: 'City name',
       },
-      region: {
-        label: 'Region',
-        placeholder: 'Region name',
-      },
       userName: {
         label: 'User name',
         placeholder: 'David Cooper',
@@ -35,13 +31,9 @@ export const profileForms_uk = {
   profileForm: {
     fields: {
       city: {
-        label: 'Ваше місто',
+        label: 'Місцезнаходження',
         noCity: 'Місто не вказано',
         placeholder: 'Назва міста',
-      },
-      region: {
-        label: 'Область',
-        placeholder: 'Назва області',
       },
       userName: {
         label: "Ім'я",

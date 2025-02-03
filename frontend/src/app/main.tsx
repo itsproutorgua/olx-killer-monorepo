@@ -19,6 +19,7 @@ import { UserListingsPage } from '@/pages/account/user-listings/user-listings-pa
 import { CatalogPage } from '@/pages/catalog/catalog-page.tsx'
 import { HomePage } from '@/pages/home/home-page'
 import { AccountLayout, RootLayout } from '@/pages/layouts'
+import { AccountRootLayout } from '@/pages/layouts/account-root-layout.tsx'
 import { ProductPage } from '@/pages/product/product-page.tsx'
 import { PRIVATE_PAGES, PUBLIC_PAGES } from '@/shared/constants'
 
@@ -37,6 +38,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
               path={`${PUBLIC_PAGES.PRODUCTS}/*`}
               element={<ProductPage />}
             />
+          </Route>
+          <Route element={<AccountRootLayout />}>
             <Route element={<PrivateRoute />}>
               <Route path={PRIVATE_PAGES.ACCOUNT} element={<AccountLayout />}>
                 <Route index element={<AccountPage />} />
@@ -61,8 +64,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                 element={<CreateListingPage />}
               />
             </Route>
-            <Route path='*' element={<div>404 not found!</div>} />
           </Route>
+          <Route path='*' element={<div>404 not found!</div>} />
         </Routes>
       </Providers>
     </BrowserRouter>

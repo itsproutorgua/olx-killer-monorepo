@@ -19,12 +19,12 @@ export const AccountPageMobile = () => {
   const { activeTab } = useListingsState()
 
   const handleTabChange = (tabId: string) => {
-    navigate('/account/listings' + `?publication_status=${tabId}`)
+    navigate('/account/listings' + `?status=${tabId}`)
   }
 
   return (
-    <div className='my-5 mb-16 flex h-full flex-col gap-5 text-black'>
-      <div className='relative flex flex-col items-center gap-[10px] rounded-[20px] bg-white py-[26px] shadow-sm'>
+    <div className='mb-16 flex h-full flex-col gap-5 text-black'>
+      <div className='relative mt-5 flex flex-col items-center gap-[10px] rounded-[20px] bg-white py-[26px] shadow-sm'>
         <img
           src={user?.picture}
           alt='Profile'

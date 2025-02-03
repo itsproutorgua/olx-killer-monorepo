@@ -22,7 +22,7 @@ export const FavoritesPage = () => {
   }
 
   return (
-    <div className='pt-10 xl:min-h-[calc(100dvh-200px)] xl:pl-[42px] xl:pt-[42px]'>
+    <div className='mb-10 pt-10 xl:min-h-[calc(100dvh-200px)] xl:pl-[42px] xl:pt-[42px]'>
       <Link
         to={PRIVATE_PAGES.ACCOUNT}
         className='mb-[30px] flex items-center gap-[14px] xl:hidden'
@@ -32,7 +32,7 @@ export const FavoritesPage = () => {
           {t('account.favorites')}
         </h1>
       </Link>
-      <div className='h-full w-full overflow-x-hidden'>
+      <div className='h-full w-full'>
         <div className='flex flex-col gap-5'>
           {data?.map(product => (
             <div key={product.id}>

@@ -27,8 +27,7 @@ export function ProfileEditForm() {
     defaultValues: {
       image: undefined,
       user_name: user?.name || '',
-      city: '',
-      region: '',
+      location: '',
       user_phone: user?.phone_number || '',
       user_email: user?.email || '',
     },
@@ -82,7 +81,7 @@ export function ProfileEditForm() {
             {/* City input */}
             <FormField
               control={form.control}
-              name='city'
+              name='location'
               render={({ field }) => (
                 <FormItem className='form-item col-start-2 row-start-1'>
                   <FormLabel className='form-label'>
@@ -91,27 +90,6 @@ export function ProfileEditForm() {
                   <FormControl>
                     <Input
                       placeholder={t('profileForm.fields.city.placeholder')}
-                      className='form-input'
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            {/* Region input */}
-            <FormField
-              control={form.control}
-              name='region'
-              render={({ field }) => (
-                <FormItem className='form-item col-start-2 row-start-2'>
-                  <FormLabel className='form-label'>
-                    {t('profileForm.fields.region.label')}*
-                  </FormLabel>
-                  <FormControl>
-                    <Input
-                      placeholder={t('profileForm.fields.region.placeholder')}
                       className='form-input'
                       {...field}
                     />
@@ -146,6 +124,7 @@ export function ProfileEditForm() {
 
             {/* User email input */}
             <FormField
+              disabled
               control={form.control}
               name='user_email'
               render={({ field }) => (
