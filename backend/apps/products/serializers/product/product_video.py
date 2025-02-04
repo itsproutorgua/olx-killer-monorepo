@@ -4,6 +4,7 @@ from django.db import IntegrityError
 from django.utils.translation import gettext_lazy as _
 from rest_framework import serializers
 
+from apps.products.models import Product
 from apps.products.models import ProductVideo
 
 
@@ -30,8 +31,7 @@ class ProductVideoSerializer(serializers.ModelSerializer):
 
     def validate(self, attrs: dict) -> dict:
         """Validate the attributes for the product video."""
-        product = attrs.get('product')
-
+        product = self.context.get('product')
         if product is None:
             raise serializers.ValidationError(_('Product must be provided.'))
 
@@ -40,11 +40,21 @@ class ProductVideoSerializer(serializers.ModelSerializer):
 
         return attrs
 
-    def create(self, validated_data: dict) -> ProductVideo:
-        product = validated_data.pop('product')
+    @classmethod
+    def create_video(cls, product: Product, video_file: UploadedFile | None) -> ProductVideo | None:
+        """Create or replace a product video."""
+        if video_file is None:
+            return None
 
+        ProductVideo.objects.filter(product=product).delete()
+
+        cls.validate_video(video_file)
+        validated_data = {'product': product, 'video': video_file}
+        return cls().create(validated_data)
+
+    def create(self, validated_data: dict) -> ProductVideo:
         try:
-            return ProductVideo.objects.create(product=product, **validated_data)
+            return ProductVideo.objects.create(**validated_data)
         except IntegrityError as e:
             raise ValidationError(_('Failed to create video: %s') % str(e))
 
