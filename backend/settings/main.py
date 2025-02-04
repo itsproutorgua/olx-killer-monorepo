@@ -20,12 +20,17 @@ DYNAMIC_THROTTLE_RATE = env('DYNAMIC_THROTTLE_RATE', default='7/second')
 
 CATEGORY_TREE_CACHE_TIMEOUT = env('CATEGORY_TREE_CACHE_TIMEOUT')
 
+# User Validators
+MIN_LENGTH_FIRST_NAME = 3
+MAX_LENGTH_FIRST_NAME = 20
+MIN_LENGTH_LAST_NAME = 3
+MAX_LENGTH_LAST_NAME = 20
+
+# Product Validators
+MAX_LENGTH_DESCRIPTION = 10000
+# Video
 VIDEO_UPLOAD_LIMIT = env('VIDEO_UPLOAD_LIMIT')
-MAX_IMAGE_FILE_SIZE_MB = env('MAX_IMAGE_FILE_SIZE_MB')
 MAX_VIDEO_FILE_SIZE_MB = env('MAX_VIDEO_FILE_SIZE_MB')
-
-FRONTEND_HOST = env('FRONTEND_HOST', default='http://localhost:5173')
-
 ALLOWED_IMAGE_MIME_TYPES = ['image/jpeg', 'image/png', 'image/gif', 'image/webp']
 ALLOWED_VIDEO_MIME_TYPES = [
     'video/mp4',
@@ -41,8 +46,12 @@ ALLOWED_VIDEO_MIME_TYPES = [
     'video/webm',
     'video/ogg',
 ]
-
+# Photo
+MAX_IMAGE_FILE_SIZE_MB = env('MAX_IMAGE_FILE_SIZE_MB')
+MAX_COUNT_IMAGE_FILES = 8
 DEFAULT_CURRENCY = CurrencyEnum.UAH.value['code']
+
+FRONTEND_HOST = env('FRONTEND_HOST', default='http://localhost:5173')
 
 INSTALLED_APPS += [
     # Third-party apps
