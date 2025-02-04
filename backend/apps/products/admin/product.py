@@ -10,6 +10,8 @@ from apps.products.admin import filters
 from apps.products.admin.inlines import PriceInline
 from apps.products.admin.inlines import ProductImageInline
 from apps.products.admin.inlines import ProductVideoInline
+from apps.products.models import Price
+from apps.products.models import ProductImage
 from apps.products.models.product import Product
 
 
@@ -120,5 +122,11 @@ class ProductAdmin(SimpleHistoryAdmin):
             obj.seller = request.user
         else:
             obj.updated_at = timezone.now()
+
+        if not obj.product_images.exists():
+            ProductImage.objects.create(product=obj)
+
+        if not obj.prices.exists():
+            Price.objects.create(product=obj)
 
         super().save_model(request, obj, form, change)

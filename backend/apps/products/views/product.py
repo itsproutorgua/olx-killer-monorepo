@@ -21,7 +21,7 @@ class ProductAPIViewSet(ViewSet):
     lookup_field = 'slug'
 
     def get_permissions(self):
-        if self.action == ('create', 'update', 'partial_update', 'destroy'):
+        if self.action in ('create', 'update', 'partial_update', 'destroy'):
             return [IsAuthenticated()]
         return [AllowAny()]
 

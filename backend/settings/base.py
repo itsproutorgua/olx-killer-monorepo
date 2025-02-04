@@ -133,7 +133,7 @@ LOCALE_PATHS = [
 
 LANGUAGE_CODE = 'uk'
 
-TIME_ZONE = 'Europe/Kiev'
+TIME_ZONE = 'Europe/Kyiv'
 
 USE_I18N = True
 
@@ -158,7 +158,9 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 
 # AWS S3
 AWS_LOCATION = 'media'
-MEDIA_URL = f'https://{env("AWS_STORAGE_BUCKET_NAME", default=None)}.s3.amazonaws.com/{AWS_LOCATION}/'
+AWS_STORAGE_BUCKET_NAME = env('AWS_STORAGE_BUCKET_NAME', default=None)
+AWS_S3_REGION_NAME = env('AWS_S3_REGION_NAME', default=None)
+MEDIA_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com/{AWS_LOCATION}/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

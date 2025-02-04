@@ -1,10 +1,12 @@
 from django.contrib.auth.base_user import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.validators import UnicodeUsernameValidator
+from django.core.validators import MinLengthValidator
 from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
+import settings
 from apps.common.models import HistoricalModel
 from apps.users.managers import UserManager
 
@@ -24,15 +26,17 @@ class User(HistoricalModel, PermissionsMixin, AbstractBaseUser):
     )
     first_name = models.CharField(
         _('first name'),
-        max_length=150,
-        help_text=_('Required. 150 characters or fewer.'),
+        max_length=settings.MAX_LENGTH_FIRST_NAME,
+        validators=[MinLengthValidator(settings.MIN_LENGTH_FIRST_NAME, message=_('First name is too short'))],
+        help_text=_(f'Required. {settings.MAX_LENGTH_FIRST_NAME} characters or fewer.'),
         blank=True,
         null=True,
     )
     last_name = models.CharField(
         _('last name'),
-        max_length=150,
-        help_text=_('Required. 150 characters or fewer.'),
+        max_length=settings.MAX_LENGTH_LAST_NAME,
+        validators=[MinLengthValidator(settings.MIN_LENGTH_LAST_NAME, message=_('Last name is too short'))],
+        help_text=_(f'Required. {settings.MAX_LENGTH_LAST_NAME} characters or fewer.'),
         blank=True,
         null=True,
     )

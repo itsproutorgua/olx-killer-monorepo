@@ -20,6 +20,7 @@ class ProductImage(HistoricalModel, models.Model):
         upload_to='products/images/%Y/%m/%d',
         null=True,
         blank=True,
+        default=settings.DEFAULT_PRODUCT_IMAGE,
         help_text=_('Allowed image formats: %s') % ', '.join(ALLOWED_MIME_TYPES),
     )
 
@@ -53,3 +54,6 @@ class ProductImage(HistoricalModel, models.Model):
 
             if self.image.size > self.MAX_FILE_SIZE_MB * 1024 * 1024:
                 raise ValidationError(errors.IMAGE_SIZE_EXCEEDED)
+
+        if self.product.product_images.count() > settings.MAX_COUNT_IMAGE_FILES:
+            raise ValidationError(errors.INVALID_COUNT_IMAGE)
