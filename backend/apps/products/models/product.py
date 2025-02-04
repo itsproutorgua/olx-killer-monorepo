@@ -1,8 +1,10 @@
 from django.contrib.auth import get_user_model
+from django.core.validators import MinLengthValidator
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from slugify import slugify
 
+import settings
 from apps.common.models import HistoricalModel
 from apps.common.models import TimestampMixin
 
@@ -22,7 +24,10 @@ class Product(TimestampMixin, HistoricalModel, models.Model):
         REJECTED = 'rejected', _('Rejected')  # Відхилені
 
     title = models.CharField(_('Product name'), max_length=255)
-    description = models.TextField(verbose_name=_('Product description'), blank=True, null=True)
+    description = models.TextField(
+        verbose_name=_('Product description'),
+        validators=[MinLengthValidator(settings.MAX_LENGTH_DESCRIPTION, message=_('Product description is too short'))],
+    )
     seller = models.ForeignKey(
         to=User,
         on_delete=models.CASCADE,
@@ -40,7 +45,7 @@ class Product(TimestampMixin, HistoricalModel, models.Model):
         max_length=20,
         choices=Status.choices,
         default=Status.OLD,
-        help_text=_('Product status'),
+        help_text=_('Indicates the condition of the product. Select `New` for new items and `Old` for used ones.'),
     )
     publication_status = models.CharField(
         _('Publication status'),
@@ -76,11 +81,6 @@ class Product(TimestampMixin, HistoricalModel, models.Model):
 
         super().save(*args, **kwargs)
 
-        if self.pk and self.slug != slug + str(self.pk):
+        if self.pk and self.slug != (slug + str(self.pk)):
             self.slug = slug + str(self.pk)
             super().save(update_fields=['slug'])
-
-        if not self.product_images.exists():
-            from apps.products.models import ProductImage
-
-            ProductImage.objects.create(product=self)
