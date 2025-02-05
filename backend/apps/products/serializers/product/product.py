@@ -8,6 +8,8 @@ from rest_framework.exceptions import ValidationError
 import settings
 from apps.common import errors
 from apps.products.models import Category
+from apps.products.models import Currency
+from apps.products.models.price.price import MIN_PRICE
 from apps.products.models.product import Product
 from apps.products.serializers import CategorySerializer
 from apps.products.serializers.price.price import PriceSerializer
@@ -19,7 +21,15 @@ from apps.users.serializers.product_profile import ProductProfileSerializer
 class ProductSerializer(serializers.ModelSerializer):
     category = CategorySerializer(read_only=True)
     category_id = serializers.PrimaryKeyRelatedField(queryset=Category.objects.all(), write_only=True, required=True)
-    prices = PriceSerializer(many=True, required=False)
+    prices = PriceSerializer(many=True, required=False, read_only=True)
+    amount = serializers.DecimalField(
+        max_digits=13,
+        decimal_places=2,
+        min_value=MIN_PRICE,
+        write_only=True,
+        required=False,
+    )
+    currency = serializers.PrimaryKeyRelatedField(queryset=Currency.objects.all(), write_only=True, required=False)
     images = ProductImageSerializer(many=True, source='product_images', required=False, read_only=True)
     uploaded_images = serializers.ListField(child=serializers.ImageField(use_url=True), write_only=True, required=False)
     video = ProductVideoSerializer(read_only=True, source='product_videos')
@@ -33,6 +43,8 @@ class ProductSerializer(serializers.ModelSerializer):
             'id',
             'title',
             'prices',
+            'amount',
+            'currency',
             'description',
             'category_id',
             'category',
@@ -91,7 +103,9 @@ class ProductSerializer(serializers.ModelSerializer):
         category_id = validated_data.pop('category_id', None)
         images_data = validated_data.pop('uploaded_images', [])
         video_file = validated_data.pop('upload_video', None)
-        prices_data = validated_data.pop('prices', [])
+        amount = validated_data.pop('amount', MIN_PRICE)
+        currency = validated_data.pop('currency', settings.DEFAULT_CURRENCY)
+        prices_data = [{'amount': amount, 'currency': currency}]
         user = self.context['request'].user
 
         with transaction.atomic():
@@ -137,7 +151,9 @@ class ProductSerializer(serializers.ModelSerializer):
 
         images_data = validated_data.pop('product_images', [])
         video_file = validated_data.pop('upload_video', None)
-        prices_data = validated_data.pop('prices', [])
+        amount = validated_data.pop('amount', MIN_PRICE)
+        currency = validated_data.pop('currency', settings.DEFAULT_CURRENCY)
+        prices_data = [{'amount': amount, 'currency': currency}]
 
         for attr, value in validated_data.items():
             setattr(instance, attr, value)

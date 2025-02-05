@@ -1,6 +1,6 @@
 from django.contrib.auth import get_user_model
-from django.core.validators import MinLengthValidator
 from django.core.validators import MaxLengthValidator
+from django.core.validators import MinLengthValidator
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from slugify import slugify
@@ -30,7 +30,7 @@ class Product(TimestampMixin, HistoricalModel, models.Model):
         validators=[
             MinLengthValidator(settings.MIN_LENGTH_DESCRIPTION, message=_('Product description is too short')),
             MaxLengthValidator(settings.MAX_LENGTH_DESCRIPTION, message=_('Product description is too long')),
-    ],
+        ],
     )
     seller = models.ForeignKey(
         to=User,
