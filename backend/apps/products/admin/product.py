@@ -33,7 +33,7 @@ class ProductAdmin(SimpleHistoryAdmin):
     show_full_result_count = False
     actions = (
         'set_status_new',
-        'set_status_old',
+        'set_status_used',
         'set_active',
         'set_inactive',
         'set_rejected',
@@ -69,10 +69,10 @@ class ProductAdmin(SimpleHistoryAdmin):
         self.message_user(request, _("Status of selected products has been set to 'New'."), messages.SUCCESS)
         return queryset
 
-    @admin.action(description=_('Set status to Old for selected products'))
-    def set_status_old(self, request, queryset):
-        queryset.update(status=Product.Status.OLD)
-        self.message_user(request, _("Status of selected products has been set to 'Old'."), messages.SUCCESS)
+    @admin.action(description=_('Set status to Used for selected products'))
+    def set_status_used(self, request, queryset):
+        queryset.update(status=Product.Status.USED)
+        self.message_user(request, _("Status of selected products has been set to 'Used'."), messages.SUCCESS)
         return queryset
 
     @admin.action(description=_("Set status to 'active' for selected products"))

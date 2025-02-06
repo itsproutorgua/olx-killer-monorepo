@@ -87,7 +87,7 @@ class ProductFilterViewSet(mixins.ListModelMixin, GenericViewSet):
             OpenApiParameter(
                 name='status',
                 type=str,
-                description=_('Filter products by their status (e.g., `new`, `old`).'),
+                description=_('Filter products by their status (e.g., `new`, `used`).'),
                 required=False,
             ),
             OpenApiParameter(
@@ -151,7 +151,7 @@ class ProductFilterViewSet(mixins.ListModelMixin, GenericViewSet):
             queryset = queryset.filter(prices__amount__lte=price_max, prices__currency__code=currency_code).distinct()
 
         if product_status:
-            if product_status not in ('old', 'new'):
+            if product_status not in ('used', 'new'):
                 return Response({'error': errors.INVALID_PRODUCT_STATUS}, status=status.HTTP_400_BAD_REQUEST)
 
             queryset = queryset.filter(status=product_status)

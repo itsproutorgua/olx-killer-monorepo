@@ -16,7 +16,7 @@ User = get_user_model()
 class Product(TimestampMixin, HistoricalModel, models.Model):
     class Status(models.TextChoices):
         NEW = 'new', _('New')
-        OLD = 'old', _('Old')
+        USED = 'used', _('Used')
 
     class PublicationStatus(models.TextChoices):
         ACTIVE = 'active', _('Active')
@@ -48,8 +48,8 @@ class Product(TimestampMixin, HistoricalModel, models.Model):
         _('Status'),
         max_length=20,
         choices=Status.choices,
-        default=Status.OLD,
-        help_text=_('Indicates the condition of the product. Select `New` for new items and `Old` for used ones.'),
+        default=Status.USED,
+        help_text=_('Indicates the condition of the product. Select `New` for new items and `Used` for used ones.'),
     )
     publication_status = models.CharField(
         _('Publication status'),

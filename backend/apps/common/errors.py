@@ -15,7 +15,7 @@ QUERY_PARAMS_NOT_ALLOWED = _('Query parameters are not allowed on this endpoint.
 # Product
 PRODUCT_NOT_FOUND = _('No Advertisement matches the given query.')
 INVALID_SORT_FIELD = _('Invalid sort field.')
-INVALID_PRODUCT_STATUS = _('Invalid advertisement status. Allowed values are `old` and `new`.')
+INVALID_PRODUCT_STATUS = _('Invalid advertisement status. Allowed values are `used` and `new`.')
 INVALID_PRODUCT_PARAMETERS = _('Invalid parameters.')
 
 # Image

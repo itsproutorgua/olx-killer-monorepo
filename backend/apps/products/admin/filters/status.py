@@ -9,14 +9,14 @@ class ProductStatusFilter(SimpleListFilter):
     def lookups(self, request, model_admin):
         return [
             ('new', _('New')),
-            ('old', _('Old')),
+            ('used', _('Used')),
         ]
 
     def queryset(self, request, queryset):
         match self.value():
             case 'new':
                 return queryset.filter(status='new')
-            case 'old':
-                return queryset.filter(status='old')
+            case 'used':
+                return queryset.filter(status='used')
 
         return queryset
