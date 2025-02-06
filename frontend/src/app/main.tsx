@@ -12,7 +12,10 @@ import PrivateRoute from '@/app/routes/private-routes.tsx'
 import { AccountPage } from '@/pages/account/account-page.tsx'
 import { ChatPage } from '@/pages/account/chat/chat-page.tsx'
 import { FavoritesPage } from '@/pages/account/favorites/favorites-page.tsx'
-import { CreateListingPage } from '@/pages/account/listings/create'
+import {
+  CreateListingPage,
+  CreateSuccess,
+} from '@/pages/account/listings/create'
 import { ProfilePage } from '@/pages/account/profile/profile-page.tsx'
 import { SettingsPage } from '@/pages/account/settings/settings-page.tsx'
 import { UserListingsPage } from '@/pages/account/user-listings/user-listings-page.tsx'
@@ -62,6 +65,10 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
               <Route
                 path={PRIVATE_PAGES.LISTING_CREATE}
                 element={<CreateListingPage />}
+              />
+              <Route
+                path={PRIVATE_PAGES.LISTING_SUCCESS}
+                element={<CreateSuccess />}
               />
             </Route>
           </Route>

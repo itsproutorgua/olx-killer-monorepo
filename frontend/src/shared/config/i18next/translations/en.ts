@@ -31,6 +31,7 @@ export const en = {
     filters: 'Filters',
     back: 'Back',
     show: 'Show',
+    backToAccount: 'Back to account',
   },
   sort: {
     priceExpensive: 'From cheap to expensive',
@@ -202,5 +203,14 @@ export const en = {
       'Start selling right now! Create your first listing to attract buyers and showcase your products',
     addFavorite:
       'Start adding listings to favorites and they will be saved here',
+    createdThanksMessage:
+      'Thank you for choosing our marketplace for your listings!',
+    whatNext: {
+      next: 'What next?',
+      messageSearch: 'Your listing will appear in search within a few minutes.',
+      messageSocials: 'To attract more buyers, share your listing on ',
+      messageEdit: 'View and edit your listing in the section ',
+      listingsLink: '"Listings"',
+    },
   },
 }

@@ -20,6 +20,11 @@ export const listingForms_en = {
         label: 'Enter price',
         placeholder: '737.00',
       },
+      status: {
+        label: 'Chose product condition',
+        new: 'New',
+        used: 'Used',
+      },
       images: {
         label: 'Add images',
         desc: 'The first image will be on the cover of the listing. Drag to change the order.',
@@ -78,6 +83,11 @@ export const listingForms_uk = {
       price: {
         label: 'Вкажіть ціну',
         placeholder: '737.00',
+      },
+      status: {
+        label: 'Оберіть стан товару',
+        new: 'Новий',
+        used: 'Був у використанні',
       },
       images: {
         label: 'Додайте фото',

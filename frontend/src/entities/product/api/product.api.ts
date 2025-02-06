@@ -110,6 +110,17 @@ class ProductApi {
       queryFn: meta => this.findBySlug({ slug }, meta),
     })
   }
+
+  async createProduct(productData: FormData, idToken: string) {
+    const url = `${this.BASE_URL}/`
+    const response = await instanceBase.post(url, productData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        Authorization: `Bearer ${idToken}`,
+      },
+    })
+    return response.data
+  }
 }
 
 export const productApi = new ProductApi()

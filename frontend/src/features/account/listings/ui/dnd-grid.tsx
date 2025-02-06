@@ -33,7 +33,7 @@ export const DndGrid = () => {
   // Initialize from form values only once
   useEffect(() => {
     if (!initialized.current) {
-      const formFiles = getValues('images')
+      const formFiles = getValues('uploaded_images')
       if (formFiles) {
         setFiles(formFiles)
       }
@@ -44,7 +44,7 @@ export const DndGrid = () => {
   // Sync to form values after initial load
   useEffect(() => {
     if (initialized.current) {
-      setValue('images', files.length > 0 ? files : undefined)
+      setValue('uploaded_images', files.length > 0 ? files : undefined)
     }
   }, [files, setValue])
 
@@ -133,7 +133,7 @@ export const DndGrid = () => {
                   }}
                   className='absolute right-1 top-1 rounded-full p-0.5'
                 >
-                  <XCircleSmall className='text-primary-700' />
+                  <XCircleSmall className='text-error-600' />
                 </button>
               </div>
             </DndSortableItem>

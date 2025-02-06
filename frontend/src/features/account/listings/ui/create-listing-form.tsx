@@ -1,11 +1,17 @@
 import { useState } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import i18n from 'i18next'
+import { LoaderCircle } from 'lucide-react'
 import { useForm } from 'react-hook-form'
+import toast from 'react-hot-toast'
 import { useTranslation } from 'react-i18next'
+import { useNavigate } from 'react-router-dom'
 import { z } from 'zod'
 
 import { useFormSchema } from '@/features/account/listings'
+import { CurrencySelect } from '@/features/account/listings/ui/currency-select.tsx'
+import { useCreateProduct } from '@/entities/product/library/hooks/use-create-product.tsx'
+import { Checkbox } from '@/shared/ui/shadcn-ui/checkbox.tsx'
 import {
   Form,
   FormControl,
@@ -20,6 +26,7 @@ import { Textarea } from '@/shared/ui/shadcn-ui/textarea'
 import { PenIcon } from '@/shared/ui'
 import { XCircleSmall } from '@/shared/ui/icons'
 import { VideoUploadIcon } from '@/shared/ui/icons/video-upload-icon.tsx'
+import { PRIVATE_PAGES } from '@/shared/constants'
 import { cn } from '@/shared/library/utils'
 import { DndGrid } from './dnd-grid'
 
@@ -28,31 +35,67 @@ const maxTextareaLength = 15000
 
 export function CreateListingForm() {
   const { t } = useTranslation()
+  const navigate = useNavigate()
   const [selectedVideoFile, setSelectedVideoFile] = useState<File | null>(null)
   const handleCancelVideo = () => {
     setSelectedVideoFile(null)
-    form.setValue('video', undefined)
+    form.setValue('upload_video', undefined)
   }
 
   const FormSchema = useFormSchema()
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      name: '',
-      category: '',
-      price: undefined,
+      title: '',
+      category_id: 0,
+      amount: '',
+      currency: 1,
       description: '',
-      images: undefined,
-      video: undefined,
-      location: '',
-      user_name: '',
-      user_email: '',
-      user_phone: '',
+      uploaded_images: undefined,
+      upload_video: undefined,
+      status: 'new',
+      // location: '',
+      // user_name: '',
+      // user_email: '',
+      // user_phone: '',
     },
   })
 
+  const { mutate: createProduct, isPending } = useCreateProduct()
+
   function onSubmit(data: z.infer<typeof FormSchema>) {
-    console.log(data)
+    const formData = new FormData()
+
+    formData.append('title', data.title)
+    formData.append('description', data.description)
+    formData.append('category_id', String(data.category_id))
+    formData.append('status', data.status)
+    formData.append('amount', String(data.amount))
+    formData.append('currency', String(data.currency))
+
+    // Append images as files
+    if (data.uploaded_images && data.uploaded_images.length > 0) {
+      Array.from(data.uploaded_images).forEach(file => {
+        formData.append('uploaded_images', file) // to send multiple images
+      })
+    }
+
+    // Append video file (if exists)
+    if (data.upload_video) {
+      formData.append('upload_video', data.upload_video)
+    }
+
+    createProduct(formData, {
+      onSuccess: () => {
+        navigate(PRIVATE_PAGES.LISTING_SUCCESS, {
+          state: { fromFormSubmission: true },
+          replace: true,
+        })
+      },
+      onError: () => {
+        toast.error('Error during form submission!')
+      },
+    })
   }
 
   return (
@@ -62,7 +105,7 @@ export function CreateListingForm() {
         className='space-y-[50px] xl:w-[885px]'
       >
         <div className='space-y-[60px]'>
-          {/* 1 Info about product */}
+          {/* Info about product */}
           <div className='space-y-10'>
             <div className='flex items-start gap-4 xl:gap-6'>
               <div className='flex size-8 flex-none items-center justify-center rounded-full border border-dashed border-primary-400 text-base/none font-semibold text-primary-700'>
@@ -83,7 +126,7 @@ export function CreateListingForm() {
                 {/* Name input */}
                 <FormField
                   control={form.control}
-                  name='name'
+                  name='title'
                   render={({ field }) => (
                     <FormItem className='form-item'>
                       <FormLabel className='form-label'>
@@ -104,7 +147,7 @@ export function CreateListingForm() {
                 {/* Category input */}
                 <FormField
                   control={form.control}
-                  name='category'
+                  name='category_id'
                   render={({ field }) => (
                     <FormItem className='form-item'>
                       <FormLabel className='form-label'>
@@ -128,33 +171,91 @@ export function CreateListingForm() {
                 {/* Price input */}
                 <FormField
                   control={form.control}
-                  name='price'
+                  name='amount'
                   render={({ field }) => (
                     <FormItem className='form-item'>
-                      <FormLabel className='form-label'>
+                      <FormLabel className='form-label' htmlFor='price'>
                         {t('listingForm.fields.price.label')}*
                       </FormLabel>
                       <FormControl>
-                        <Input
-                          type='number'
-                          placeholder={t(
-                            'listingForm.fields.price.placeholder',
-                          )}
-                          value={field.value ?? ''}
-                          onChange={e => {
-                            const value = e.target.value
-                            const numericValue =
-                              value === '' ? undefined : parseFloat(value)
-                            field.onChange(numericValue)
-                          }}
-                          className='form-input'
-                        />
+                        <div className='relative flex'>
+                          <Input
+                            id='price'
+                            placeholder={t(
+                              'listingForm.fields.price.placeholder',
+                            )}
+                            className='form-input'
+                            {...field}
+                          />
+                          <div className='absolute right-0 h-11 shadow-none'>
+                            <FormField
+                              control={form.control}
+                              name='currency'
+                              render={({ field: currencyField }) => (
+                                <CurrencySelect
+                                  value={currencyField.value.toString()}
+                                  onValueChange={currencyField.onChange}
+                                />
+                              )}
+                            />
+                          </div>
+                        </div>
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
               </div>
+
+              {/*Status Field*/}
+              <FormField
+                control={form.control}
+                name='status'
+                render={({ field }) => (
+                  <FormItem className='space-y-3'>
+                    <FormLabel className='form-label' htmlFor='status-label'>
+                      {t('listingForm.fields.status.label')}*
+                    </FormLabel>
+                    <input hidden type='radio' id='status-label' />
+                    <fieldset
+                      aria-labelledby='status-label'
+                      className='flex gap-4'
+                    >
+                      <FormItem className='flex items-center space-x-3 space-y-0'>
+                        <FormControl>
+                          <Checkbox
+                            id='status-new'
+                            checked={field.value === 'new'}
+                            onCheckedChange={checked =>
+                              checked && field.onChange('new')
+                            }
+                            className='h-5 w-5 rounded-full'
+                          />
+                        </FormControl>
+                        <label className='font-normal' htmlFor='status-new'>
+                          {t('listingForm.fields.status.new')}
+                        </label>
+                      </FormItem>
+                      <FormItem className='flex items-center space-x-3 space-y-0'>
+                        <FormControl>
+                          <Checkbox
+                            id='status-used'
+                            checked={field.value === 'used'}
+                            onCheckedChange={checked =>
+                              checked && field.onChange('used')
+                            }
+                            className='h-5 w-5 rounded-full'
+                          />
+                        </FormControl>
+                        <label className='font-normal' htmlFor='status-used'>
+                          {t('listingForm.fields.status.used')}
+                        </label>
+                      </FormItem>
+                    </fieldset>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
               {/* Images and video inputs */}
               <div className='space-y-5 pt-4 xl:pt-0'>
@@ -169,7 +270,7 @@ export function CreateListingForm() {
 
                 <FormField
                   control={form.control}
-                  name='images'
+                  name='uploaded_images'
                   render={() => (
                     <FormItem>
                       <FormControl>
@@ -182,7 +283,7 @@ export function CreateListingForm() {
 
                 <FormField
                   control={form.control}
-                  name='video'
+                  name='upload_video'
                   render={({ field }) => (
                     <FormItem className='form-item'>
                       <FormControl>
@@ -239,7 +340,7 @@ export function CreateListingForm() {
                 control={form.control}
                 name='description'
                 render={({ field }) => (
-                  <FormItem className='form-item space-y-[10px] pt-4 xl:pt-0'>
+                  <FormItem className='form-item max-w-[518px] space-y-[10px] pt-4 xl:pt-0'>
                     <FormLabel className='form-label'>
                       {t('listingForm.fields.desc.label')}*
                     </FormLabel>
@@ -260,7 +361,7 @@ export function CreateListingForm() {
                         maxLength={maxTextareaLength}
                         minLength={minTextareaLength}
                         placeholder={t('listingForm.fields.desc.placeholder')}
-                        className='form-textarea max-w-[518px] text-gray-500'
+                        className='form-textarea text-gray-500'
                         {...field}
                       />
                     </FormControl>
@@ -286,110 +387,95 @@ export function CreateListingForm() {
             </div>
 
             <div className='space-y-6 xl:grid xl:grid-cols-2 xl:gap-x-10 xl:gap-y-[30px] xl:space-y-0'>
-              {/* Username input */}
-              <FormField
-                control={form.control}
-                name='user_name'
-                render={({ field }) => (
-                  <FormItem className='form-item'>
-                    <FormLabel className='form-label'>
-                      {t('listingForm.fields.userName.label')}*
-                    </FormLabel>
-                    <FormControl>
-                      <Input
-                        placeholder={t(
-                          'listingForm.fields.userName.placeholder',
-                        )}
-                        {...field}
-                        className='form-input'
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+              {/* Username display */}
+              <div className='form-item'>
+                <label className='form-label' htmlFor='username'>
+                  {t('listingForm.fields.userName.label')}
+                </label>
+                <Input
+                  autoComplete='username'
+                  id='username'
+                  disabled
+                  value={t('listingForm.fields.userName.placeholder')}
+                  readOnly
+                  className='form-input bg-gray-50'
+                />
+              </div>
 
-              {/* User email input */}
-              <FormField
-                disabled
-                control={form.control}
-                name='user_email'
-                render={({ field }) => (
-                  <FormItem className='form-item col-start-1 row-start-2'>
-                    <FormLabel className='form-label'>
-                      {t('listingForm.fields.userEmail.label')}*
-                    </FormLabel>
-                    <FormControl>
-                      <Input
-                        placeholder={t(
-                          'listingForm.fields.userEmail.placeholder',
-                        )}
-                        className='form-input'
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+              {/* Email display */}
+              <div className='form-item col-start-1 row-start-2'>
+                <label className='form-label' htmlFor='email'>
+                  {t('listingForm.fields.userEmail.label')}
+                </label>
+                <Input
+                  id='email'
+                  autoComplete='email'
+                  disabled
+                  value={t('listingForm.fields.userEmail.label')}
+                  readOnly
+                  className='form-input bg-gray-50'
+                />
+              </div>
 
-              {/* User phone input */}
-              <FormField
-                control={form.control}
-                name='user_phone'
-                render={({ field }) => (
-                  <FormItem className='form-item col-start-1 row-start-3'>
-                    <FormLabel className='form-label'>
-                      {t('listingForm.fields.userPhone.label')}*
-                    </FormLabel>
-                    <FormControl>
-                      <Input
-                        placeholder={t(
-                          'listingForm.fields.userPhone.placeholder',
-                        )}
-                        className='form-input'
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+              {/* Phone display */}
+              <div className='form-item col-start-1 row-start-3'>
+                <label className='form-label' htmlFor='phone'>
+                  {t('listingForm.fields.userPhone.label')}
+                </label>
+                <Input
+                  autoComplete='phone'
+                  id='phone'
+                  disabled
+                  value={t('listingForm.fields.userPhone.placeholder')}
+                  readOnly
+                  className='form-input bg-gray-50'
+                />
+              </div>
 
-              {/* City input */}
-              <FormField
-                control={form.control}
-                name='location'
-                render={({ field }) => (
-                  <FormItem className='form-item col-start-2 row-start-1'>
-                    <FormLabel className='form-label'>
-                      {t('listingForm.fields.city.label')}*
-                    </FormLabel>
-                    <FormControl>
-                      <Input
-                        placeholder={t('listingForm.fields.city.placeholder')}
-                        className='form-input'
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+              {/* Location display */}
+              <div className='form-item col-start-2 row-start-1'>
+                <label className='form-label' htmlFor='location'>
+                  {t('listingForm.fields.city.label')}
+                </label>
+                <Input
+                  id='location'
+                  disabled
+                  value={t('listingForm.fields.city.placeholder')}
+                  readOnly
+                  className='form-input bg-gray-50'
+                />
+              </div>
             </div>
           </div>
         </div>
 
         <button
           type='submit'
-          className={`relative mx-auto flex h-[53px] min-w-[315px] items-center gap-6 rounded-[60px] bg-primary-900 py-[5px] pr-[5px] text-base/4 text-gray-50 transition-colors duration-300 hover:bg-primary-500 active:bg-primary-600 active:duration-0 xl:mx-0 ${i18n.language !== 'uk' ? 'pl-[37px]' : 'xl:pl-[20px]'}`}
+          className={`relative mx-auto flex h-[53px] min-w-[315px] items-center gap-6 rounded-[60px] bg-primary-900 py-[5px] pr-[5px] text-base/4 text-gray-50 transition-colors duration-300 hover:bg-primary-500 active:bg-primary-600 active:duration-0 xl:mx-0 ${
+            i18n.language !== 'uk' ? 'pl-[37px]' : 'xl:pl-[20px]'
+          }`}
+          disabled={isPending} // Disable button while submitting
         >
-          <span className='mr-7 flex flex-1 items-center justify-center xl:mr-12'>
-            {t('listingForm.buttons.submit')}
-          </span>
-          <span className='absolute right-[5px] flex size-[43px] items-center justify-center rounded-full bg-gray-50 text-foreground'>
-            <PenIcon />
-          </span>
+          {isPending ? (
+            <span
+              className={`flex w-full items-center justify-center pr-0 xl:pr-5 ${
+                i18n.language !== 'uk'
+                  ? 'pr-[32px] xl:pr-[32px]'
+                  : 'pl-[5px] xl:pl-0'
+              }`}
+            >
+              <LoaderCircle className='size-6 animate-spin' />
+            </span>
+          ) : (
+            <span className='mr-7 flex flex-1 items-center justify-center xl:mr-12'>
+              {t('listingForm.buttons.submit')}
+            </span>
+          )}
+          {!isPending && (
+            <span className='absolute right-[5px] flex size-[43px] items-center justify-center rounded-full bg-gray-50 text-foreground'>
+              <PenIcon />
+            </span>
+          )}
         </button>
       </form>
     </Form>
