@@ -10,7 +10,7 @@ export const useFormSchema = () => {
   const { t } = useTranslation()
 
   return z.object({
-    name: z
+    title: z
       .string()
       .min(3, { message: t('errors.input.minLength', { minLength: 3 }) })
       .max(100, { message: t('errors.input.maxLength', { maxLength: 100 }) })
@@ -18,25 +18,24 @@ export const useFormSchema = () => {
         message: t('errors.input.invalidCharacters'),
       }),
 
-    category: z.string().min(1, { message: t('errors.input.required') }),
-
-    price: z
-      .number({
-        required_error: t('errors.input.required'),
-        invalid_type_error: t('errors.input.invalidNumber'),
-      })
-      .positive({ message: t('errors.input.positiveNumber') })
-      .max(1_000_000, {
-        message: t('errors.input.maxValue', { max: 1_000_000 }),
-      })
-      .multipleOf(0.01, { message: t('errors.input.decimalPlaces') }),
+    amount: z
+      .string()
+      .min(1, { message: t('errors.input.required') })
+      .refine(val => !isNaN(parseFloat(val)), {
+        message: t('errors.input.number'),
+      }),
+    currency: z.coerce.number().min(1, { message: t('errors.input.required') }),
 
     description: z
       .string()
       .min(10, { message: t('errors.input.minLength', { minLength: 10 }) })
       .max(1000, { message: t('errors.input.maxLength', { maxLength: 1000 }) }),
 
-    images: z
+    category_id: z.coerce
+      .number()
+      .min(1, { message: t('errors.input.required') }),
+
+    uploaded_images: z
       .array(
         z
           .instanceof(File)
@@ -52,7 +51,7 @@ export const useFormSchema = () => {
       })
       .optional(),
 
-    video: z
+    upload_video: z
       .instanceof(File)
       .optional()
       .refine(
@@ -74,16 +73,19 @@ export const useFormSchema = () => {
         },
         { message: t('errors.input.videoDurationExceeded', { max: 15 }) },
       ),
-
-    location: z.string().min(1, { message: t('errors.input.required') }),
-
-    user_name: z.string().min(1, { message: t('errors.input.required') }),
-
-    user_email: z
-      .string()
-      .min(1, { message: t('errors.input.required') })
-      .email({ message: t('errors.input.email') }),
-
-    user_phone: z.string().min(1, { message: t('errors.input.required') }),
+    status: z.enum(['new', 'used'], {
+      required_error: t('errors.input.required'),
+    }),
   })
 }
+
+// location: z.string().min(1, { message: t('errors.input.required') }),
+//
+//   user_name: z.string().min(1, { message: t('errors.input.required') }),
+//
+//   user_email: z
+//   .string()
+//   .min(1, { message: t('errors.input.required') })
+//   .email({ message: t('errors.input.email') }),
+//
+//   user_phone: z.string().min(1, { message: t('errors.input.required') }),
