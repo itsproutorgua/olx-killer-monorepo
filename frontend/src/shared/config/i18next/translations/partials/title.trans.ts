@@ -9,6 +9,7 @@ export const titles_uk = {
     productsBySeller: 'Інші оголошення продавця',
     similarProducts: 'Схожі товари за вашим запитом',
     announcementsAll: 'Всі оголошення',
+    listingCreatedSuccess: 'Ваше оголошення успішно додано!',
   },
 }
 
@@ -23,5 +24,6 @@ export const titles_en = {
     productsBySeller: 'Other listings by this seller',
     similarProducts: 'Similar products to your request',
     announcementsAll: 'All listings',
+    listingCreatedSuccess: 'Your listing successfully created!',
   },
 }
