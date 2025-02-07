@@ -58,7 +58,7 @@ class LocationListView(ListAPIView):
         )
         # fmt: on
         location_name = self.request.query_params.get('location_name', None)
-        if len(location_name) < 3:
+        if location_name and len(location_name) < 3:
             raise ValidationError(_('Location name must be at least 3 characters long.'))
 
         if location_name:
