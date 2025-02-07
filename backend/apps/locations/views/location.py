@@ -65,8 +65,8 @@ class LocationListView(ListAPIView):
             city_field_name = f'city__name_{language_code}'
             # village_field_name = f'village__name_{language_code}'
 
-            city_query = Q(**{f'{city_field_name}__startswith': location_name})
-            # village_query = Q(**{f'{village_field_name}__startswith': location_name})
+            city_query = Q(**{f'{city_field_name}__istartswith': location_name})
+            # village_query = Q(**{f'{village_field_name}__istartswith': location_name})
 
             queryset = queryset.filter(city_query)
             # queryset = queryset.filter(city_query | village_query)
