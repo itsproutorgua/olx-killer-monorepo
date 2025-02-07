@@ -21,7 +21,7 @@ from apps.users.serializers import UserProductsSerializer
 class UserProductsView(ListAPIView):
     pagination_class = ProductPagination
     serializer_class = UserProductsSerializer
-    queryset = Product.objects.prefetch_related('prices__currency', 'product_images').order_by('-created_at')
+    queryset = Product.objects.prefetch_related('prices__currency', 'product_images').order_by('-updated_at')
 
     @extend_schema(
         tags=[PROFILE_TAG],
