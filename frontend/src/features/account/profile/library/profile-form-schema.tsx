@@ -18,15 +18,26 @@ export const useProfileSchema = () => {
       })
       .optional(),
 
-    user_name: z.string().min(1, { message: t('errors.input.required') }),
+    user_name: z
+      .string()
+      .min(3, { message: t('errors.input.minLength', { minLength: 3 }) })
+      .max(20, { message: t('errors.input.maxLength', { maxLength: 20 }) })
+      .regex(/^[a-zA-Zа-яА-Я0-9]+$/, {
+        message: t('errors.input.invalidCharacters'),
+      }),
 
-    location: z.string().min(1, { message: t('errors.input.required') }),
+    location_id: z.string().min(1, { message: t('errors.input.required') }),
 
-    user_phone: z.string().min(1, { message: t('errors.input.required') }),
+    user_phone: z
+      .string()
+      .min(10, { message: t('errors.input.phone.tooShort', { minLength: 10 }) })
+      .max(15, { message: t('errors.input.phone.tooLong', { minLength: 15 }) })
+      .regex(/^\+?\d{9,15}$/, { message: t('errors.input.phone.invalid') }),
 
     user_email: z
       .string()
       .min(1, { message: t('errors.input.required') })
-      .email({ message: t('errors.input.email') }),
+      .email({ message: t('errors.input.email') })
+      .optional(),
   })
 }

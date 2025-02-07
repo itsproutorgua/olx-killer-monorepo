@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
-import { User } from 'auth0'
 import { useFormContext } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
+import { UserProfile } from '@/entities/user'
 import { EditAvatarIcon } from '@/shared/ui/icons'
 
 interface Props {
   className?: string
-  user?: User
+  user?: UserProfile
 }
 
 export const ProfileData: React.FC<Props> = ({ className, user }) => {
@@ -46,13 +46,14 @@ export const ProfileData: React.FC<Props> = ({ className, user }) => {
         </div>
         <div className='flex flex-1 flex-col gap-1 text-gray-500 xl:gap-2'>
           <h2 className='mb-[6px] font-medium leading-5 text-gray-900 xl:text-xl'>
-            {user?.name}
+            {user?.username}
           </h2>
           <p className='text-sm font-light leading-[18px] xl:font-normal'>
-            {user?.phone_number || t('profileForm.fields.city.noCity')}
+            {user?.location.name || t('profileForm.fields.city.noCity')}
           </p>
           <p className='text-sm font-light leading-[18px] xl:font-normal'>
-            {user?.phone_number || t('profileForm.fields.userPhone.noPhone')}
+            {user?.phone_numbers[0] ||
+              t('profileForm.fields.userPhone.noPhone')}
           </p>
           <p className='text-sm font-light leading-[18px]'>{user?.email}</p>
         </div>

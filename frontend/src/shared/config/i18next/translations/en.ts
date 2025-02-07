@@ -150,7 +150,7 @@ export const en = {
       title: 'Condition',
       all: 'All',
       new: 'New',
-      old: 'Used',
+      used: 'Used',
     },
     noResults: 'No results',
   },

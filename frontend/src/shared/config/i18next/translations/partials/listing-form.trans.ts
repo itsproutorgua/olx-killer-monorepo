@@ -19,6 +19,8 @@ export const listingForms_en = {
       price: {
         label: 'Enter price',
         placeholder: '737.00',
+        hryvna: 'hryvna',
+        dollar: 'dollar',
       },
       status: {
         label: 'Chose product condition',
@@ -27,7 +29,7 @@ export const listingForms_en = {
       },
       images: {
         label: 'Add images',
-        desc: 'The first image will be on the cover of the listing. Drag to change the order.',
+        desc: 'The first image will be on the cover of the listing. Drag to change the order. Max 8 images.',
       },
       video: {
         uploadButton: 'Upload product video',
@@ -40,19 +42,19 @@ export const listingForms_en = {
       },
       city: {
         label: 'Your city',
-        placeholder: 'City name',
+        placeholder: 'Add your city',
       },
       userName: {
         label: 'User name',
-        placeholder: 'David Cooper',
+        placeholder: 'Add your name',
       },
       userEmail: {
         label: 'E-mail',
-        placeholder: 'david19@gmail.com',
+        placeholder: 'Add e-mail',
       },
       userPhone: {
         label: 'Phone number',
-        placeholder: '+380 12 345 67 89',
+        placeholder: 'Add phone number',
       },
     },
     buttons: {
@@ -83,6 +85,8 @@ export const listingForms_uk = {
       price: {
         label: 'Вкажіть ціну',
         placeholder: '737.00',
+        hryvna: 'гривня',
+        dollar: 'долар',
       },
       status: {
         label: 'Оберіть стан товару',
@@ -91,7 +95,7 @@ export const listingForms_uk = {
       },
       images: {
         label: 'Додайте фото',
-        desc: 'Перше фото буде на обкладинці оголошення. Перетягніть, щоб змінити порядок.',
+        desc: 'Перше фото буде на обкладинці оголошення. Перетягніть, щоб змінити порядок. Максимум 8 фото.',
       },
       video: {
         uploadButton: 'Завантажити відео товару',
@@ -104,19 +108,19 @@ export const listingForms_uk = {
       },
       city: {
         label: 'Місцезнаходження',
-        placeholder: 'Назва міста',
+        placeholder: 'Додайте місто',
       },
       userName: {
         label: "Ім'я",
-        placeholder: 'Девід Купер',
+        placeholder: "Додайте ім'я",
       },
       userEmail: {
         label: 'E-mail',
-        placeholder: 'devid19@gmail.com',
+        placeholder: 'Додайте електронну пошту',
       },
       userPhone: {
         label: 'Номер телефону',
-        placeholder: '+380 12 345 67 89',
+        placeholder: 'Додайте номер телефону',
       },
     },
     buttons: {

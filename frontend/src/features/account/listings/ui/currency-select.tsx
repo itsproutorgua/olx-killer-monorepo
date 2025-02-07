@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next'
+
 import { useCurrencies } from '@/entities/currency'
 import {
   Select,
@@ -17,26 +19,44 @@ export function CurrencySelect({ value, onValueChange }: CurrencySelectProps) {
   const { currencies, isLoading } = useCurrencies({
     Skeleton: <div>Loading...</div>,
   })
+  const { t } = useTranslation()
+  const selectedCurrency = currencies?.find(c => c.id.toString() === value)
 
   return (
     <div>
       <Select value={value} onValueChange={onValueChange}>
-        <SelectTrigger className='h-11 w-[103px] rounded-l-none rounded-r-[50px]'>
-          <SelectValue placeholder='UAH' className='text-gray-500' />
+        <SelectTrigger className='h-11 w-[103px] rounded-l-none rounded-r-[50px] focus:ring-0 focus:ring-offset-0'>
+          <SelectValue placeholder='UAH'>
+            {isLoading ? (
+              <p className='px-1 text-gray-500'>Loading</p>
+            ) : (
+              <p className='pl-3 text-gray-500'>
+                {selectedCurrency?.code === 'USD'
+                  ? '$'
+                  : `${selectedCurrency?.code}`}
+              </p>
+            )}
+          </SelectValue>
         </SelectTrigger>
-        <SelectContent className='rounded-[11px] border-none bg-white shadow-md'>
+        <SelectContent className='w-[174px] rounded-[11px] border-none bg-white shadow-md'>
           {isLoading && (
             <SelectGroup>
-              <SelectItem value='1' className='text-gray-500'>
-                <p className='text-gray-500'>Loading</p>
+              <SelectItem value='1' className='pl-0 text-gray-500'>
+                <p className='px-1 text-gray-500'>Loading</p>
               </SelectItem>
             </SelectGroup>
           )}
           {currencies && (
-            <SelectGroup>
+            <SelectGroup className='px-0 py-3'>
               {currencies.map(currency => (
-                <SelectItem key={currency.id} value={currency.id.toString()}>
-                  {currency.code}
+                <SelectItem
+                  key={currency.id}
+                  value={currency.id.toString()}
+                  className={``}
+                >
+                  {currency.code === 'USD'
+                    ? `${currency.symbol} - ${t('listingForm.fields.price.dollar')}`
+                    : `${currency.code} - ${t('listingForm.fields.price.hryvna')}`}
                 </SelectItem>
               ))}
             </SelectGroup>

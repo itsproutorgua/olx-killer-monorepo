@@ -5,19 +5,21 @@ export const profileForms_en = {
         label: 'Your city',
         noCity: 'No city',
         placeholder: 'City name',
+        noResults: 'No city found',
+        searching: 'Searching location...',
       },
       userName: {
         label: 'User name',
-        placeholder: 'David Cooper',
+        placeholder: 'Add your name',
       },
       userEmail: {
         label: 'E-mail',
-        placeholder: 'david19@gmail.com',
+        placeholder: 'Add your e-mail',
       },
       userPhone: {
         label: 'Phone number',
         noPhone: 'No phone number',
-        placeholder: '+380 12 345 67 89',
+        placeholder: 'Add yur phone number',
       },
     },
     buttons: {
@@ -34,19 +36,21 @@ export const profileForms_uk = {
         label: 'Місцезнаходження',
         noCity: 'Місто не вказано',
         placeholder: 'Назва міста',
+        noResults: 'Такого міста не знайдено',
+        searching: 'Пошук міста...',
       },
       userName: {
         label: "Ім'я",
-        placeholder: 'Девід Купер',
+        placeholder: "Додайте ім'я",
       },
       userEmail: {
         label: 'E-mail',
-        placeholder: 'devid19@gmail.com',
+        placeholder: 'Додайте електронну пошту',
       },
       userPhone: {
         label: 'Номер телефону',
         noPhone: 'Номер не вказано',
-        placeholder: '+380 12 345 67 89',
+        placeholder: 'Додайте номер телефону',
       },
     },
     buttons: {
