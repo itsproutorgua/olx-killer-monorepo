@@ -22,7 +22,7 @@ const CONDITION: Filter = {
   label: i18n.t('filters.condition.title'),
   items: [
     { label: i18n.t('filters.condition.new'), value: 'new' },
-    { label: i18n.t('filters.condition.old'), value: 'old' },
+    { label: i18n.t('filters.condition.used'), value: 'used' },
   ],
 }
 

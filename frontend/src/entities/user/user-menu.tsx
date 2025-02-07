@@ -4,6 +4,7 @@ import { ErrorIcon } from 'react-hot-toast'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
+import { useUserProfile } from '@/entities/user/hooks/useUserProfile.tsx'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -19,6 +20,7 @@ export const UserMenu = () => {
   const { t } = useTranslation()
   const { isAuthenticated, user, loginWithRedirect, logout, isLoading, error } =
     useAuth0()
+  const { data: profile } = useUserProfile()
 
   return (
     <DropdownMenu>
@@ -28,22 +30,23 @@ export const UserMenu = () => {
       >
         <div>
           {error && <ErrorIcon />}
-          {!error && isLoading && (
-            <Spinner
-              thickness='4px'
-              speed='0.65s'
-              emptyColor='hsl(0 0% 98%)'
-              color='hsl(237 70% 61%)'
-              size='xl'
-              className='h-8 w-8'
-            />
-          )}
+          {(!error && isLoading) ||
+            (!profile && (
+              <Spinner
+                thickness='4px'
+                speed='0.65s'
+                emptyColor='hsl(0 0% 98%)'
+                color='hsl(237 70% 61%)'
+                size='xl'
+                className='h-8 w-8'
+              />
+            ))}
           {!error && !isLoading && !isAuthenticated && <UserButton />}
-          {!error && !isLoading && isAuthenticated && (
+          {!error && !isLoading && isAuthenticated && profile && (
             <img
-              src={user?.picture}
+              src={profile?.picture}
               alt='Profile'
-              className='h-8 w-8 cursor-pointer rounded-full'
+              className='h-8 w-8 cursor-pointer rounded-full object-cover'
             />
           )}
         </div>

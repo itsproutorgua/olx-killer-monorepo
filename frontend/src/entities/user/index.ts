@@ -1,1 +1,5 @@
 export { UserMenu } from './user-menu'
+export type { UserProfile } from './model/types.ts'
+export * from './api'
+export { useUserProfile } from './hooks/useUserProfile.tsx'
+export { useUpdateProfile } from './hooks/use-update-profile.tsx'
