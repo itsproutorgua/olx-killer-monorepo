@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
-import i18n from 'i18next'
 import { LoaderCircle } from 'lucide-react'
 import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
@@ -231,21 +230,24 @@ export function ProfileEditForm() {
               </div>
             </div>
             <button
+              disabled={isPending}
               type='submit'
-              className={`relative mx-auto flex h-[53px] w-[230px] items-center gap-6 rounded-[60px] bg-primary-900 py-[5px] pr-[5px] text-base/4 text-gray-50 transition-colors duration-300 hover:bg-primary-500 active:bg-primary-600 active:duration-0 md:mx-0 ${i18n.language !== 'uk' ? 'pl-[37px]' : 'pl-[27px]'}`}
+              className={`relative mx-auto flex h-[53px] w-[230px] items-center gap-6 rounded-[60px] bg-primary-900 py-[5px] pr-[5px] text-base/4 text-gray-50 transition-colors duration-300 hover:bg-primary-500 active:bg-primary-600 active:duration-0 disabled:cursor-not-allowed disabled:bg-gray-300 md:mx-0`}
             >
-              <span className='mr-7 flex flex-1 items-center pl-3 xl:mr-12'>
-                {isPending ? (
-                  <p className='pl-12'>
-                    <LoaderCircle className='size-6 animate-spin' />
-                  </p>
-                ) : (
-                  t('profileForm.buttons.submit')
-                )}
-              </span>
-              <span className='absolute right-[5px] flex size-[43px] items-center justify-center rounded-full bg-gray-50 text-foreground'>
-                <PenIcon />
-              </span>
+              {isPending ? (
+                <p className='mx-auto'>
+                  <LoaderCircle className='size-6 animate-spin' />
+                </p>
+              ) : (
+                <span className='mr-16 flex flex-1 items-center pl-[37px]'>
+                  <span className='flex w-full items-center justify-center'>
+                    {t('profileForm.buttons.submit')}
+                  </span>
+                  <span className='absolute right-[5px] flex size-[43px] items-center justify-center rounded-full bg-gray-50 text-foreground'>
+                    <PenIcon />
+                  </span>
+                </span>
+              )}
             </button>
           </form>
         </Form>

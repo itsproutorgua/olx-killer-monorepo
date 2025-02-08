@@ -11,6 +11,7 @@ export const errors_en = {
       positiveNumber: 'Value must be positive',
       invalidNumber: 'Invalid number format',
       decimalPlaces: 'Only two decimal places are allowed',
+      positiveOnly: 'Only positive values allowed',
       maxValue: 'Value must not exceed {{max}}',
       invalidCharacters:
         'Only letters, numbers, spaces, and dashes are allowed',
@@ -42,6 +43,7 @@ export const errors_uk = {
       positiveNumber: 'Значення повинно бути додатним',
       invalidNumber: 'Невірний числовий формат',
       decimalPlaces: 'Допускається не більше двох знаків після коми',
+      positiveOnly: 'Допускаються тільки позитивні значення',
       maxValue: 'Значення не повинно перевищувати {{max}}',
       invalidCharacters: 'Допускаються лише літери, цифри, пробіли та дефіси',
       maxImages: 'Ви можете завантажити максимум {{max}} зображень',
