@@ -109,7 +109,6 @@ export const DndGrid = () => {
               type='file'
               multiple
               accept='image/*'
-              capture='environment'
               className='hidden'
               onChange={e => e.target.files && handleAddFiles(e.target.files)}
             />
@@ -122,7 +121,7 @@ export const DndGrid = () => {
         >
           {files.map(file => (
             <DndSortableItem key={file.name} id={file.name}>
-              <div className='group relative h-full w-full'>
+              <div className='group relative h-full w-full touch-none'>
                 <img
                   src={URL.createObjectURL(file)}
                   alt={`Upload ${file.name}`}
