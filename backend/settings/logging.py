@@ -1,5 +1,6 @@
 from pathlib import Path
 from settings.base import BASE_DIR
+import logging.handlers
 
 
 log_dir = Path(BASE_DIR) / 'logs'
@@ -38,21 +39,21 @@ LOGGING = {
     },
     'loggers': {
         'django': {
-            'handlers': ['console', 'file'],  # Добавлен файл в обработчики
+            'handlers': ['console', 'file'],  # Логи Django в консоль и файл
             'level': 'INFO',  # Логирование от INFO и выше
         },
         'django.request': {
-            'handlers': ['warning_console', 'file'],  # Добавлен файл в обработчики
+            'handlers': ['warning_console', 'file'],  # Логирование ошибок Django в консоль и файл
             'level': 'WARNING',  # Логирование от WARNING и выше
             'propagate': False,
         },
         'gunicorn.error': {
-            'handlers': ['console', 'file'],  # Логи ошибок Gunicorn будут также записываться в файл
+            'handlers': ['console', 'file'],  # Логи ошибок Gunicorn будут записываться в файл
             'level': 'ERROR',  # Логирование от ERROR и выше
             'propagate': False,
         },
         'gunicorn.access': {
-            'handlers': ['access_console', 'file'],  # Логи доступа Gunicorn будут записываться в файл
+            'handlers': ['access_console', 'file'],  # Логи запросов Gunicorn будут записываться в файл
             'level': 'INFO',  # Логирование от INFO и выше
             'propagate': False,
         },
