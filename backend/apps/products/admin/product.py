@@ -18,7 +18,7 @@ from apps.products.models.product import Product
 @admin.register(Product)
 class ProductAdmin(SimpleHistoryAdmin):
     list_display = ('title', 'seller', 'category', 'views', 'status', 'publication_status')
-    readonly_fields = ('id', 'created_at', 'updated_at', 'seller', 'slug', 'prod_olx_id', 'views')
+    readonly_fields = ('id', 'created_at', 'updated_at', 'slug', 'prod_olx_id', 'views')
     list_display_links = ('title',)
     list_editable = ('status', 'publication_status')
     autocomplete_fields = ['category']
