@@ -23,6 +23,9 @@ services:
       - db
       - redis
     restart: unless-stopped
+    volumes:
+      - .:/code:delegated
+      - ./logs:/app/logs
 
   db:
     image: postgres:13
@@ -49,3 +52,6 @@ services:
       - backend
       - redis
     restart: unless-stopped
+    volumes:
+      - .:/code:delegated
+      - ./logs:/app/logs
