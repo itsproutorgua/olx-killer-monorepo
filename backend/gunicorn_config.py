@@ -10,7 +10,7 @@ worker_connections = 1000
 timeout = 30
 
 # Настройки для логирования Gunicorn
-loglevel = 'info'  # Уровень логирования
+loglevel = 'debug'  # Уровень логирования
 
 # Настройки формата для запросов Gunicorn
 access_log_format = '%(t)s %(h)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"'
