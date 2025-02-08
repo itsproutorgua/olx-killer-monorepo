@@ -149,7 +149,7 @@ export const uk = {
       title: 'Стан',
       all: 'Усі',
       new: 'Нові',
-      old: 'Вживані',
+      used: 'Вживані',
     },
     noResults: 'Нічого не знайдено',
   },

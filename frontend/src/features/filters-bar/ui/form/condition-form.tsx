@@ -18,7 +18,7 @@ import {
 import { FilterEnum } from '@/shared/constants/app.const'
 import { useQueryParams } from '@/shared/library/hooks'
 
-const ConditionEnum = ['all', 'new', 'old'] as const
+const ConditionEnum = ['all', 'new', 'used'] as const
 const FormSchema = z.object({
   condition: z.enum(ConditionEnum, { message: 'Invalid condition' }),
 })
@@ -41,8 +41,8 @@ export function ConditionForm() {
       label: t('filters.condition.new'),
     },
     {
-      value: 'old',
-      label: t('filters.condition.old'),
+      value: 'used',
+      label: t('filters.condition.used'),
     },
   ]
 

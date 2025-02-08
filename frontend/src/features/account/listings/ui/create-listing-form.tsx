@@ -9,8 +9,10 @@ import { useNavigate } from 'react-router-dom'
 import { z } from 'zod'
 
 import { useFormSchema } from '@/features/account/listings'
+// import { CategoryDialog } from '@/features/account/listings/ui/category-select-dialog.tsx'
 import { CurrencySelect } from '@/features/account/listings/ui/currency-select.tsx'
 import { useCreateProduct } from '@/entities/product/library/hooks/use-create-product.tsx'
+import { useUserProfile } from '@/entities/user'
 import { Checkbox } from '@/shared/ui/shadcn-ui/checkbox.tsx'
 import {
   Form,
@@ -24,7 +26,7 @@ import {
 import { Input } from '@/shared/ui/shadcn-ui/input'
 import { Textarea } from '@/shared/ui/shadcn-ui/textarea'
 import { PenIcon } from '@/shared/ui'
-import { XCircleSmall } from '@/shared/ui/icons'
+import { SpinnerIcon, XCircleSmall } from '@/shared/ui/icons'
 import { VideoUploadIcon } from '@/shared/ui/icons/video-upload-icon.tsx'
 import { PRIVATE_PAGES } from '@/shared/constants'
 import { cn } from '@/shared/library/utils'
@@ -35,6 +37,7 @@ const maxTextareaLength = 15000
 
 export function CreateListingForm() {
   const { t } = useTranslation()
+  const { data: userProfile, isLoading } = useUserProfile()
   const navigate = useNavigate()
   const [selectedVideoFile, setSelectedVideoFile] = useState<File | null>(null)
   const handleCancelVideo = () => {
@@ -386,66 +389,84 @@ export function CreateListingForm() {
               </div>
             </div>
 
-            <div className='space-y-6 xl:grid xl:grid-cols-2 xl:gap-x-10 xl:gap-y-[30px] xl:space-y-0'>
-              {/* Username display */}
-              <div className='form-item'>
-                <label className='form-label' htmlFor='username'>
-                  {t('listingForm.fields.userName.label')}
-                </label>
-                <Input
-                  autoComplete='username'
-                  id='username'
-                  disabled
-                  value={t('listingForm.fields.userName.placeholder')}
-                  readOnly
-                  className='form-input bg-gray-50'
-                />
+            {isLoading ? (
+              <div className='flex justify-center xl:max-w-[422px] xl:justify-start xl:pl-32'>
+                <SpinnerIcon className='h-12 w-12 animate-spin text-primary-900' />
               </div>
+            ) : (
+              <div className='flex flex-col gap-6 xl:max-w-[422px] xl:gap-[30px]'>
+                {/* Username display */}
+                <div className='form-item'>
+                  <label className='form-label' htmlFor='username'>
+                    {t('listingForm.fields.userName.label')}*
+                  </label>
+                  <Input
+                    autoComplete='username'
+                    id='username'
+                    disabled
+                    value={
+                      userProfile?.username ||
+                      t('listingForm.fields.userName.placeholder')
+                    }
+                    readOnly
+                    className='form-input bg-gray-50'
+                  />
+                </div>
 
-              {/* Email display */}
-              <div className='form-item col-start-1 row-start-2'>
-                <label className='form-label' htmlFor='email'>
-                  {t('listingForm.fields.userEmail.label')}
-                </label>
-                <Input
-                  id='email'
-                  autoComplete='email'
-                  disabled
-                  value={t('listingForm.fields.userEmail.label')}
-                  readOnly
-                  className='form-input bg-gray-50'
-                />
-              </div>
+                {/* Email display */}
+                <div className='form-item col-start-1 row-start-2'>
+                  <label className='form-label' htmlFor='email'>
+                    {t('listingForm.fields.userEmail.label')}*
+                  </label>
+                  <Input
+                    id='email'
+                    autoComplete='email'
+                    disabled
+                    value={
+                      userProfile?.email ||
+                      t('listingForm.fields.userEmail.label')
+                    }
+                    readOnly
+                    className='form-input bg-gray-50'
+                  />
+                </div>
 
-              {/* Phone display */}
-              <div className='form-item col-start-1 row-start-3'>
-                <label className='form-label' htmlFor='phone'>
-                  {t('listingForm.fields.userPhone.label')}
-                </label>
-                <Input
-                  autoComplete='phone'
-                  id='phone'
-                  disabled
-                  value={t('listingForm.fields.userPhone.placeholder')}
-                  readOnly
-                  className='form-input bg-gray-50'
-                />
-              </div>
+                {/* Phone display */}
+                <div className='form-item col-start-1 row-start-3'>
+                  <label className='form-label' htmlFor='phone'>
+                    {t('listingForm.fields.userPhone.label')}*
+                  </label>
+                  <Input
+                    autoComplete='phone'
+                    id='phone'
+                    disabled
+                    value={
+                      userProfile?.phone_numbers[0] ||
+                      t('listingForm.fields.userPhone.placeholder')
+                    }
+                    readOnly
+                    className='form-input bg-gray-50'
+                  />
+                </div>
 
-              {/* Location display */}
-              <div className='form-item col-start-2 row-start-1'>
-                <label className='form-label' htmlFor='location'>
-                  {t('listingForm.fields.city.label')}
-                </label>
-                <Input
-                  id='location'
-                  disabled
-                  value={t('listingForm.fields.city.placeholder')}
-                  readOnly
-                  className='form-input bg-gray-50'
-                />
+                {/* Location display */}
+                <div className='form-item col-start-2 row-start-1'>
+                  <label className='form-label' htmlFor='location'>
+                    {t('listingForm.fields.city.label')}*
+                  </label>
+                  <Input
+                    id='location'
+                    disabled
+                    value={
+                      userProfile?.location.name ||
+                      t('listingForm.fields.city.placeholder')
+                    }
+                    readOnly
+                    className='form-input bg-gray-50'
+                  />
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
 
@@ -477,6 +498,7 @@ export function CreateListingForm() {
             </span>
           )}
         </button>
+        {/*<CategoryDialog />*/}
       </form>
     </Form>
   )

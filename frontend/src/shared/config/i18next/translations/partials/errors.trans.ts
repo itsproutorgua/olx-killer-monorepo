@@ -20,6 +20,11 @@ export const errors_en = {
       invalidVideoFormat: 'Only MP4 and WebM formats are allowed',
       videoSizeExceeded: 'Video size should be less than {{maxSize}}',
       videoDurationExceeded: 'Video duration must not exceed {{max}} seconds',
+      phone: {
+        tooShort: 'Phone number must be at least {{minLength}} digits',
+        tooLong: 'Phone number must not exceed {{maxLength}} digits',
+        invalid: 'Invalid phone number format',
+      },
     },
   },
 }
@@ -46,6 +51,11 @@ export const errors_uk = {
       videoSizeExceeded: 'Розмір відео повинен бути менше {{maxSize}}',
       videoDurationExceeded:
         'Тривалість відео не повинна перевищувати {{max}} секунд',
+      phone: {
+        tooShort: 'Номер телефону має бути мінімум 10 цифр',
+        tooLong: 'Номер телефону не повинен перевищувати 15 цифр',
+        invalid: 'Невірний формат номеру телефону',
+      },
     },
   },
 }

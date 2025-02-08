@@ -6,4 +6,5 @@ export const QUERY_KEYS = {
   FAVORITES: 'oka-favorites',
   LISTINGS: 'oka-user-listings',
   CURRENCIES: 'oka-currencies',
+  LOCATIONS: 'oka-locations',
 } as const

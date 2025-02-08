@@ -1,12 +1,16 @@
-import { useAuth0 } from '@auth0/auth0-react'
+import { useEffect, useState } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import i18n from 'i18next'
+import { LoaderCircle } from 'lucide-react'
 import { useForm } from 'react-hook-form'
+import toast from 'react-hot-toast'
 import { useTranslation } from 'react-i18next'
 import { z } from 'zod'
 
 import { useProfileSchema } from '@/features/account/profile'
 import { ProfileData } from '@/features/account/profile/ui/profile-data.tsx'
+import { useLocations } from '@/entities/locations'
+import { useUpdateProfile, useUserProfile } from '@/entities/user' // Import the useUpdateProfile hook
 import {
   Form,
   FormControl,
@@ -16,149 +20,236 @@ import {
   FormMessage,
 } from '@/shared/ui/shadcn-ui/form.tsx'
 import { Input } from '@/shared/ui/shadcn-ui/input.tsx'
-import { PenIcon } from '@/shared/ui'
+import { PageLoader, PenIcon } from '@/shared/ui'
+import { useDebounce } from '@/shared/library/hooks'
 
 export function ProfileEditForm() {
   const { t } = useTranslation()
-  const { user } = useAuth0()
+  const { data: user, isSuccess: profileLoaded } = useUserProfile()
+  const { mutate, isPending } = useUpdateProfile()
+  const [searchTerm, setSearchTerm] = useState('')
+  const [isLocationFocused, setIsLocationFocused] = useState(false)
+  const debouncedSearchTerm = useDebounce(searchTerm, 500)
+  const { locations, cursor } = useLocations(debouncedSearchTerm, {})
   const ProfileFormSchema = useProfileSchema()
   const form = useForm<z.infer<typeof ProfileFormSchema>>({
     resolver: zodResolver(ProfileFormSchema),
     defaultValues: {
       image: undefined,
-      user_name: user?.name || '',
-      location: '',
-      user_phone: user?.phone_number || '',
-      user_email: user?.email || '',
+      user_name: '',
+      location_id: '',
+      user_phone: '',
+      user_email: '',
     },
   })
 
-  function onSubmit(data: z.infer<typeof ProfileFormSchema>) {
-    console.log(data)
+  useEffect(() => {
+    if (profileLoaded && user) {
+      setSearchTerm(user.location?.name || '')
+      form.reset({
+        image: undefined,
+        user_name: user?.username || '',
+        location_id: user?.location.name || '',
+        user_phone: user?.phone_numbers[0] || '',
+        user_email: user?.email || '',
+      })
+      form.setValue(
+        'location_id',
+        user?.location?.id ? user?.location.id.toString() : '',
+      )
+    }
+  }, [profileLoaded, user])
+
+  const onSubmit = async (data: z.infer<typeof ProfileFormSchema>) => {
+    const formData = new FormData()
+
+    formData.append('username', data.user_name)
+    formData.append('location_id', data.location_id)
+
+    formData.append('phone_numbers', data.user_phone)
+
+    if (data.image) {
+      formData.append('picture', data.image)
+    }
+
+    try {
+      mutate(formData, {
+        onSuccess: () => {
+          toast.success('Profile updated successfully!', { duration: 4000 })
+        },
+        onError: () => {
+          toast.error('Error updating profile')
+        },
+      })
+    } catch (error) {
+      console.error('Error updating profile', error)
+    }
   }
 
   return (
-    <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className='space-y-10 xl:space-y-[54px]'
-      >
-        <FormField
-          control={form.control}
-          name='image'
-          render={() => (
-            <FormItem>
-              <FormControl>
-                <ProfileData user={user} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <div>
-          <div className='space-y-6 xl:flex xl:max-w-[422px] xl:flex-col xl:gap-y-[30px] xl:space-y-0'>
-            {/* Username input */}
+    <>
+      {!user ? (
+        <PageLoader />
+      ) : (
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(onSubmit, errors => {
+              console.log('Validation errors:', errors)
+            })}
+            className='space-y-10 xl:space-y-[54px]'
+          >
             <FormField
               control={form.control}
-              name='user_name'
-              render={({ field }) => (
-                <FormItem className='form-item'>
-                  <FormLabel className='form-label'>
-                    {t('profileForm.fields.userName.label')}*
-                  </FormLabel>
+              name='image'
+              render={() => (
+                <FormItem>
                   <FormControl>
-                    <Input
-                      placeholder={t('profileForm.fields.userName.placeholder')}
-                      {...field}
-                      className='form-input'
-                    />
+                    <ProfileData user={user} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
+            <div>
+              <div className='space-y-6 xl:flex xl:max-w-[422px] xl:flex-col xl:gap-y-[30px] xl:space-y-0'>
+                {/* Username input */}
+                <FormField
+                  control={form.control}
+                  name='user_name'
+                  render={({ field }) => (
+                    <FormItem className='form-item'>
+                      <FormLabel className='form-label'>
+                        {t('profileForm.fields.userName.label')}*
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder={
+                            user?.username ||
+                            t('profileForm.fields.userName.placeholder')
+                          }
+                          {...field}
+                          className='form-input'
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
-            {/* City input */}
-            <FormField
-              control={form.control}
-              name='location'
-              render={({ field }) => (
-                <FormItem className='form-item col-start-2 row-start-1'>
-                  <FormLabel className='form-label'>
-                    {t('profileForm.fields.city.label')}*
-                  </FormLabel>
-                  <FormControl>
-                    <Input
-                      placeholder={t('profileForm.fields.city.placeholder')}
-                      className='form-input'
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            {/* User phone input */}
-            <FormField
-              control={form.control}
-              name='user_phone'
-              render={({ field }) => (
-                <FormItem className='form-item col-start-1 row-start-3'>
-                  <FormLabel className='form-label'>
-                    {t('profileForm.fields.userPhone.label')}*
-                  </FormLabel>
-                  <FormControl>
-                    <Input
-                      placeholder={t(
-                        'profileForm.fields.userPhone.placeholder',
+                <FormField
+                  control={form.control}
+                  name='location_id'
+                  render={({ field }) => (
+                    <FormItem className='form-item relative col-start-2 row-start-1'>
+                      <FormLabel className='form-label' htmlFor='location'>
+                        {t('profileForm.fields.city.label')}*
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          id='location'
+                          placeholder={t('profileForm.fields.city.placeholder')}
+                          className={`form-input relative`}
+                          {...field}
+                          value={searchTerm}
+                          onChange={e => {
+                            setSearchTerm(e.target.value)
+                            field.onChange(e.target.value)
+                          }}
+                          onFocus={() => setIsLocationFocused(true)}
+                          onBlur={() => setIsLocationFocused(false)}
+                        />
+                      </FormControl>
+                      {/* Display search results */}
+                      {isLocationFocused && debouncedSearchTerm.length >= 3 && (
+                        <div className='absolute left-0 right-0 top-full z-50 mt-2 max-h-60 overflow-auto rounded-xl bg-white p-2 shadow-lg'>
+                          {cursor}
+                          {locations?.map(location => (
+                            <div
+                              key={location.id}
+                              className='cursor-pointer p-2 hover:bg-gray-100'
+                              onMouseDown={e => {
+                                e.preventDefault()
+                                setSearchTerm(location.name)
+                                field.onChange(location.id.toString())
+                                setIsLocationFocused(false)
+                              }}
+                            >
+                              {location.name}, {location.region}
+                            </div>
+                          ))}
+                          {locations?.length === 0 && (
+                            <div className='p-2 text-gray-500'>
+                              {t('profileForm.fields.city.noResults')}
+                            </div>
+                          )}
+                        </div>
                       )}
-                      className='form-input'
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
-            {/* User email input */}
-            <FormField
-              disabled
-              control={form.control}
-              name='user_email'
-              render={({ field }) => (
-                <FormItem className='form-item col-start-1 row-start-2'>
-                  <FormLabel className='form-label'>
-                    {t('profileForm.fields.userEmail.label')}*
-                  </FormLabel>
-                  <FormControl>
-                    <Input
-                      placeholder={t(
-                        'profileForm.fields.userEmail.placeholder',
-                      )}
-                      className='form-input'
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
-        </div>
-        <button
-          type='submit'
-          className={`relative mx-auto flex h-[53px] w-[230px] items-center gap-6 rounded-[60px] bg-primary-900 py-[5px] pr-[5px] text-base/4 text-gray-50 transition-colors duration-300 hover:bg-primary-500 active:bg-primary-600 active:duration-0 md:mx-0 ${i18n.language !== 'uk' ? 'pl-[37px]' : 'xl:pl-[20px]'}`}
-        >
-          <span className='mr-7 flex flex-1 items-center justify-center xl:mr-12'>
-            {t('profileForm.buttons.submit')}
-          </span>
-          <span className='absolute right-[5px] flex size-[43px] items-center justify-center rounded-full bg-gray-50 text-foreground'>
-            <PenIcon />
-          </span>
-        </button>
-      </form>
-    </Form>
+                {/* User phone input */}
+                <FormField
+                  control={form.control}
+                  name='user_phone'
+                  render={({ field }) => (
+                    <FormItem className='form-item col-start-1 row-start-3'>
+                      <FormLabel className='form-label'>
+                        {t('profileForm.fields.userPhone.label')}*
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder={t(
+                            'profileForm.fields.userPhone.placeholder',
+                          )}
+                          className='form-input'
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                {/* Email display */}
+                <div className='form-item col-start-1 row-start-2'>
+                  <label className='form-label' htmlFor='email'>
+                    {t('listingForm.fields.userEmail.label')}*
+                  </label>
+                  <Input
+                    id='email'
+                    autoComplete='email'
+                    disabled
+                    value={
+                      user?.email || t('listingForm.fields.userEmail.label')
+                    }
+                    readOnly
+                    className='form-input bg-gray-50'
+                  />
+                </div>
+              </div>
+            </div>
+            <button
+              type='submit'
+              className={`relative mx-auto flex h-[53px] w-[230px] items-center gap-6 rounded-[60px] bg-primary-900 py-[5px] pr-[5px] text-base/4 text-gray-50 transition-colors duration-300 hover:bg-primary-500 active:bg-primary-600 active:duration-0 md:mx-0 ${i18n.language !== 'uk' ? 'pl-[37px]' : 'pl-[27px]'}`}
+            >
+              <span className='mr-7 flex flex-1 items-center pl-3 xl:mr-12'>
+                {isPending ? (
+                  <p className='pl-12'>
+                    <LoaderCircle className='size-6 animate-spin' />
+                  </p>
+                ) : (
+                  t('profileForm.buttons.submit')
+                )}
+              </span>
+              <span className='absolute right-[5px] flex size-[43px] items-center justify-center rounded-full bg-gray-50 text-foreground'>
+                <PenIcon />
+              </span>
+            </button>
+          </form>
+        </Form>
+      )}
+    </>
   )
 }
