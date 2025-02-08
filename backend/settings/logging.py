@@ -1,5 +1,9 @@
-import os
+from pathlib import Path
 from settings.base import BASE_DIR
+
+
+log_dir = Path(BASE_DIR) / 'logs'
+log_dir.mkdir(parents=True, exist_ok=True)
 
 LOGGING = {
     'version': 1,
@@ -7,15 +11,7 @@ LOGGING = {
     'formatters': {
         'verbose': {
             'format': '%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-            'datefmt': '%d/%b/%Y %H:%M:%S',
-        },
-        'warning': {
-            'format': '[%(asctime)s] WARNING: %(message)s',
-            'datefmt': '%d/%b/%Y %H:%M:%S',
-        },
-        'access': {
-            'format': '[%(asctime)s] "%(message)s"',
-            'datefmt': '%d/%b/%Y %H:%M:%S',
+            'datefmt': '%A-%d-%B-%Y  %H:%M:%S',
         },
     },
     'handlers': {
@@ -25,17 +21,17 @@ LOGGING = {
         },
         'warning_console': {
             'class': 'logging.StreamHandler',
-            'formatter': 'warning',
+            'formatter': 'verbose',
         },
         'access_console': {
             'class': 'logging.StreamHandler',
-            'formatter': 'access',
+            'formatter': 'verbose',
         },
         'file': {
             'class': 'logging.handlers.RotatingFileHandler',
-            'filename': os.path.join(BASE_DIR, 'logs/olx.log'),  # Путь к файлу логов
+            'filename': log_dir / 'olx.log',  # Путь к файлу логов
             'formatter': 'verbose',
-            'level': 'DEBUG',
+            'level': 'DEBUG',  # Все логи начиная с DEBUG
             'maxBytes': 10 * 1024 * 1024,  # Максимальный размер файла 10MB
             'backupCount': 10,  # Хранить 10 резервных копий
         },
@@ -43,21 +39,21 @@ LOGGING = {
     'loggers': {
         'django': {
             'handlers': ['console', 'file'],  # Добавлен файл в обработчики
-            'level': 'INFO',
+            'level': 'INFO',  # Логирование от INFO и выше
         },
         'django.request': {
             'handlers': ['warning_console', 'file'],  # Добавлен файл в обработчики
-            'level': 'WARNING',
+            'level': 'WARNING',  # Логирование от WARNING и выше
             'propagate': False,
         },
         'gunicorn.error': {
-            'handlers': ['console'],
-            'level': 'DEBUG',
+            'handlers': ['console', 'file'],  # Логи ошибок Gunicorn будут также записываться в файл
+            'level': 'ERROR',  # Логирование от ERROR и выше
             'propagate': False,
         },
         'gunicorn.access': {
-            'handlers': ['access_console'],
-            'level': 'DEBUG',
+            'handlers': ['access_console', 'file'],  # Логи доступа Gunicorn будут записываться в файл
+            'level': 'INFO',  # Логирование от INFO и выше
             'propagate': False,
         },
     },
