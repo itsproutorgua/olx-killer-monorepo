@@ -1,9 +1,10 @@
+import logging
 import os
 
 import django
 from django.core.management.base import BaseCommand
 
-from apps.log_config import logger
+
 from apps.products.models import Category
 from apps.products.utils.olx_categories import categories
 
@@ -12,6 +13,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings.main')
 
 django.setup()
 
+logger = logging.getLogger(__name__)
 
 class Command(BaseCommand):
     help = 'Creating OLX categories in the database'

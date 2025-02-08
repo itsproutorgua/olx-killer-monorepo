@@ -1,9 +1,12 @@
+import os
+from settings.base import BASE_DIR
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'formatters': {
         'verbose': {
-            'format': '[%(asctime)s]: %(message)s',
+            'format': '%(asctime)s - %(name)s - %(levelname)s - %(message)s',
             'datefmt': '%d/%b/%Y %H:%M:%S',
         },
         'warning': {
@@ -28,14 +31,22 @@ LOGGING = {
             'class': 'logging.StreamHandler',
             'formatter': 'access',
         },
+        'file': {
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join(BASE_DIR, 'logs/olx.log'),  # Путь к файлу логов
+            'formatter': 'verbose',
+            'level': 'DEBUG',
+            'maxBytes': 10 * 1024 * 1024,  # Максимальный размер файла 10MB
+            'backupCount': 10,  # Хранить 10 резервных копий
+        },
     },
     'loggers': {
         'django': {
-            'handlers': ['console'],
+            'handlers': ['console', 'file'],  # Добавлен файл в обработчики
             'level': 'INFO',
         },
         'django.request': {
-            'handlers': ['warning_console'],
+            'handlers': ['warning_console', 'file'],  # Добавлен файл в обработчики
             'level': 'WARNING',
             'propagate': False,
         },

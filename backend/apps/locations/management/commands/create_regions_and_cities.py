@@ -1,3 +1,4 @@
+import logging
 import os
 
 import django
@@ -8,7 +9,8 @@ from apps.locations.models.location import Location
 from apps.locations.models.region import Region
 from apps.locations.utils.locations.cities import cities
 from apps.locations.utils.locations.regions import regions
-from apps.log_config import logger
+
+logger = logging.getLogger(__name__)
 
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings.main')

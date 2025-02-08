@@ -1,10 +1,13 @@
+import logging
+
 import boto3
 from botocore.exceptions import ClientError
 from celery.exceptions import MaxRetriesExceededError
 from django.conf import settings
 
 from apps.celery import app
-from apps.log_config import logger
+
+logger = logging.getLogger(__name__)
 
 
 @app.task(name='delete_product_file', bind=True, max_retries=3, default_retry_delay=30)

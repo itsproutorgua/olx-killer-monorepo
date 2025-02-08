@@ -1,12 +1,13 @@
+import logging
+
 import boto3
 from botocore.exceptions import ClientError
 from django.conf import settings
 
-from apps.log_config import logger
 
+logger = logging.getLogger(__name__)
 
 s3_client = boto3.client('s3')
-
 
 def file_exists_on_s3(key: str) -> bool:
     """

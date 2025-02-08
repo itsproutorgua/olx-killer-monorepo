@@ -1,9 +1,9 @@
 import os
-
+import logging
 import django
 from django.core.management.base import BaseCommand
 
-from apps.log_config import logger
+
 from apps.products.models import Currency
 from apps.products.utils import CurrencyEnum
 
@@ -12,6 +12,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings.main')
 
 django.setup()
 
+logger = logging.getLogger(__name__)
 
 class Command(BaseCommand):
     help = 'Create default currencies in the database'
