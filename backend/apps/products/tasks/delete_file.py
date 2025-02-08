@@ -7,6 +7,7 @@ from django.conf import settings
 
 from apps.celery import app
 
+
 logger = logging.getLogger(__name__)
 
 

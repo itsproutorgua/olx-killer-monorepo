@@ -9,6 +9,7 @@ logger = logging.getLogger(__name__)
 
 s3_client = boto3.client('s3')
 
+
 def file_exists_on_s3(key: str) -> bool:
     """
     Check if a file exists in S3.

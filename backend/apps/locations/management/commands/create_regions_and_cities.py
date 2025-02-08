@@ -10,6 +10,7 @@ from apps.locations.models.region import Region
 from apps.locations.utils.locations.cities import cities
 from apps.locations.utils.locations.regions import regions
 
+
 logger = logging.getLogger(__name__)
 
 

@@ -5,13 +5,14 @@ from django.utils.translation import get_language
 from drf_spectacular.utils import extend_schema_field
 from rest_framework import serializers
 
-
 from apps.products.models import Category
 from apps.products.models import Product
 from apps.products.serializers.category.children_category import CategoryChildrenSerializer
 from apps.products.serializers.category.parent_category import ParentSerializer
 
+
 logger = logging.getLogger(__name__)
+
 
 class CategorySerializer(serializers.ModelSerializer):
     img_url = serializers.ImageField(source='img', read_only=True)

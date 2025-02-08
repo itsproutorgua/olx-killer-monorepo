@@ -14,6 +14,7 @@ from rest_framework_simplejwt.authentication import AuthUser
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework_simplejwt.exceptions import InvalidToken
 
+
 logger = logging.getLogger(__name__)
 
 

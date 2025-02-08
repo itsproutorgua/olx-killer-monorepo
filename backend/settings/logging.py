@@ -1,6 +1,6 @@
 from pathlib import Path
+
 from settings.base import BASE_DIR
-import logging.handlers
 
 
 log_dir = Path(BASE_DIR) / 'logs'
@@ -20,14 +20,6 @@ LOGGING = {
             'class': 'logging.StreamHandler',
             'formatter': 'verbose',
         },
-        'warning_console': {
-            'class': 'logging.StreamHandler',
-            'formatter': 'verbose',
-        },
-        'access_console': {
-            'class': 'logging.StreamHandler',
-            'formatter': 'verbose',
-        },
         'file': {
             'class': 'logging.handlers.RotatingFileHandler',
             'filename': log_dir / 'olx.log',  # Путь к файлу логов
@@ -40,21 +32,26 @@ LOGGING = {
     'loggers': {
         'django': {
             'handlers': ['console', 'file'],  # Логи Django в консоль и файл
-            'level': 'INFO',  # Логирование от INFO и выше
+            'level': 'INFO',  # Логирование всех сообщений в консоль
         },
         'django.request': {
-            'handlers': ['warning_console', 'file'],  # Логирование ошибок Django в консоль и файл
-            'level': 'WARNING',  # Логирование от WARNING и выше
+            'handlers': ['console', 'file'],  # Логирование запросов Django в консоль и файл
+            'level': 'INFO',  # Логирование всех сообщений в консоль
             'propagate': False,
         },
         'gunicorn.error': {
-            'handlers': ['console', 'file'],  # Логи ошибок Gunicorn будут записываться в файл
-            'level': 'ERROR',  # Логирование от ERROR и выше
+            'handlers': ['file'],  # Логи ошибок Gunicorn записываются только в файл
+            'level': 'ERROR',  # Логирование только ошибок в файл
             'propagate': False,
         },
         'gunicorn.access': {
-            'handlers': ['access_console', 'file'],  # Логи запросов Gunicorn будут записываться в файл
-            'level': 'INFO',  # Логирование от INFO и выше
+            'handlers': ['console'],  # Логи запросов Gunicorn будут записываться только в консоль
+            'level': 'INFO',  # Логирование всех запросов в консоль
+            'propagate': False,
+        },
+        'django.db.backends': {
+            'handlers': ['console', 'file'],  # Логируем SQL-запросы в консоль и файл
+            'level': 'WARNING',  # Логируем все запросы
             'propagate': False,
         },
     },
