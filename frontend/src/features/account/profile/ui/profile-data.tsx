@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { profileDefault } from '@/shared/assets'
 import { useFormContext } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
@@ -27,7 +28,7 @@ export const ProfileData: React.FC<Props> = ({ className, user }) => {
       <div className='flex max-w-[422px] gap-[18px] rounded-[20px] bg-white py-8 pl-8 shadow-sm xl:items-center xl:gap-8 xl:bg-transparent xl:py-0 xl:pl-0 xl:shadow-none'>
         <div className='relative'>
           <img
-            src={previewImage || user?.picture}
+            src={previewImage || user?.picture || profileDefault}
             alt='Profile'
             className='h-[70px] w-[70px] rounded-full object-cover xl:h-[100px] xl:w-[100px]'
           />

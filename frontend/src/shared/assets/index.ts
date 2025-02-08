@@ -1,4 +1,5 @@
 import emptyInbox from './images/account/inbox-empty.png'
+import profileDefault from './images/account/profileDefault.png'
 import Banner from './images/banner/baner.png'
 import bestDeals_375_x2 from './images/bestDeals/bestDeal_375_x2.png'
 import bestDeals_375 from './images/bestDeals/bestDeal_375.png'
@@ -33,3 +34,5 @@ export { bestDeals_1440 }
 export { bestDeals_1440_x2 }
 
 export { emptyInbox }
+
+export { profileDefault }

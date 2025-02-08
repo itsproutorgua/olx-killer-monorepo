@@ -53,7 +53,10 @@ export function ProfileEditForm() {
         user_phone: user?.phone_numbers[0] || '',
         user_email: user?.email || '',
       })
-      form.setValue('location_id', user?.location.id.toString() || '')
+      form.setValue(
+        'location_id',
+        user?.location?.id ? user?.location.id.toString() : '',
+      )
     }
   }, [profileLoaded, user])
 

@@ -1,3 +1,4 @@
+import { profileDefault } from '@/shared/assets'
 import { useAuth0 } from '@auth0/auth0-react'
 import { Spinner } from '@chakra-ui/spinner'
 import { ErrorIcon } from 'react-hot-toast'
@@ -31,7 +32,7 @@ export const UserMenu = () => {
         <div>
           {error && <ErrorIcon />}
           {(!error && isLoading) ||
-            (!profile && (
+            (!profile && isAuthenticated && (
               <Spinner
                 thickness='4px'
                 speed='0.65s'
@@ -44,7 +45,7 @@ export const UserMenu = () => {
           {!error && !isLoading && !isAuthenticated && <UserButton />}
           {!error && !isLoading && isAuthenticated && profile && (
             <img
-              src={profile?.picture}
+              src={profile?.picture || profileDefault}
               alt='Profile'
               className='h-8 w-8 cursor-pointer rounded-full object-cover'
             />
