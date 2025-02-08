@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { z } from 'zod'
 
-const MAX_IMAGE_SIZE = 1024 * 1024 // 1MB
+const MAX_IMAGE_SIZE = 10 * 1024 * 1024 // 1MB
 const MAX_VIDEO_SIZE = 10 * 1024 * 1024 // 10MB
 const MAX_IMAGES_COUNT = 8
 const VIDEO_MAX_DURATION = 15 // seconds
@@ -13,8 +13,8 @@ export const useFormSchema = () => {
     title: z
       .string()
       .min(3, { message: t('errors.input.minLength', { minLength: 3 }) })
-      .max(100, { message: t('errors.input.maxLength', { maxLength: 100 }) })
-      .regex(/^[a-zA-Z0-9\s-]+$/, {
+      .max(100, { message: t('errors.input.maxLength', { maxLength: 255 }) })
+      .regex(/^[a-zA-Zа-яА-Я0-9\s-]+$/, {
         message: t('errors.input.invalidCharacters'),
       }),
 
@@ -23,6 +23,15 @@ export const useFormSchema = () => {
       .min(1, { message: t('errors.input.required') })
       .refine(val => !isNaN(parseFloat(val)), {
         message: t('errors.input.number'),
+      })
+      .refine(val => /^\d+(\.\d{1,2})?$/.test(val), {
+        message: t('errors.input.decimalPlaces'), // Ensures up to two decimal places
+      })
+      .refine(val => parseFloat(val) > 0, {
+        message: t('errors.input.positiveOnly'), // Ensures only positive values
+      })
+      .refine(val => parseFloat(val) <= 1000000000, {
+        message: t('errors.input.max', { max: '1,000,000,000' }),
       }),
     currency: z.coerce.number().min(1, { message: t('errors.input.required') }),
 
@@ -43,7 +52,7 @@ export const useFormSchema = () => {
             message: t('errors.input.invalidImageFormat'),
           })
           .refine(file => file.size <= MAX_IMAGE_SIZE, {
-            message: t('errors.input.imageSizeExceeded', { maxSize: '1MB' }),
+            message: t('errors.input.imageSizeExceeded', { maxSize: '10MB' }),
           }),
       )
       .max(MAX_IMAGES_COUNT, {
