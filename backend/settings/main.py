@@ -1,4 +1,5 @@
 from datetime import timedelta
+from logging import config as logging_config
 
 from corsheaders.defaults import default_headers
 from corsheaders.defaults import default_methods
@@ -9,7 +10,7 @@ from settings.jazzmin import *
 from settings.logging import LOGGING
 
 
-LOGGING = LOGGING
+logging_config.dictConfig(LOGGING)
 
 
 DEVELOPMENT_ENVIRONMENT = 'development'

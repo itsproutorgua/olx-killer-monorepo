@@ -2,8 +2,9 @@ FROM python:3.12-slim
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
-    PYTHONPATH="/code:${PYTHONPATH:-}" \
     PATH="/root/.local/bin:${PATH}"
+ENV PYTHONPATH="/code:${PYTHONPATH}"
+
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends gettext && \
