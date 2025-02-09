@@ -4,6 +4,7 @@
 // }
 
 export interface CategoryParent {
+  id: number
   title: string
   path: string
   views: number
@@ -11,6 +12,7 @@ export interface CategoryParent {
 }
 
 export interface CategoryChild {
+  id: number
   title: string
   path: string
   views: number
@@ -20,6 +22,7 @@ export interface CategoryChild {
 }
 
 export interface Category {
+  id: number
   title: string
   path: string
   views: number
@@ -30,6 +33,7 @@ export interface Category {
 }
 
 export interface CategoryResponse {
+  id: number
   title: string
   path: string
   icon: string | null
@@ -38,6 +42,7 @@ export interface CategoryResponse {
 }
 
 export interface Subcategory {
+  id: number
   title: string
   path: string
   parent_id: number | null
@@ -47,6 +52,7 @@ export interface Subcategory {
 }
 
 export interface Item {
+  id: number
   title: string
   path: string
   parent_id: number | null
