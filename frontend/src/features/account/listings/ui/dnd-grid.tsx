@@ -5,6 +5,7 @@ import {
   DragOverlay,
   KeyboardSensor,
   PointerSensor,
+  TouchSensor,
   useSensor,
   useSensors,
   type DragEndEvent,
@@ -30,7 +31,6 @@ export const DndGrid = () => {
   const [files, setFiles] = useState<File[]>([])
   const initialized = useRef(false)
 
-  // Initialize from form values only once
   useEffect(() => {
     if (!initialized.current) {
       const formFiles = getValues('uploaded_images')
@@ -41,7 +41,6 @@ export const DndGrid = () => {
     }
   }, [getValues])
 
-  // Sync to form values after initial load
   useEffect(() => {
     if (initialized.current) {
       setValue('uploaded_images', files.length > 0 ? files : undefined)
@@ -49,6 +48,12 @@ export const DndGrid = () => {
   }, [files, setValue])
 
   const sensors = useSensors(
+    useSensor(TouchSensor, {
+      activationConstraint: {
+        delay: 250,
+        tolerance: 5,
+      },
+    }),
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, {
       coordinateGetter: sortableKeyboardCoordinates,
@@ -116,7 +121,7 @@ export const DndGrid = () => {
         >
           {files.map(file => (
             <DndSortableItem key={file.name} id={file.name}>
-              <div className='group relative h-full w-full'>
+              <div className='group relative h-full w-full touch-none'>
                 <img
                   src={URL.createObjectURL(file)}
                   alt={`Upload ${file.name}`}
