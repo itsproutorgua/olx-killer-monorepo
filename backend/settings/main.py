@@ -6,6 +6,10 @@ from corsheaders.defaults import default_methods
 from apps.products.utils import CurrencyEnum
 from settings.base import *
 from settings.jazzmin import *
+from settings.logging import LOGGING
+
+
+LOGGING = LOGGING
 
 
 DEVELOPMENT_ENVIRONMENT = 'development'

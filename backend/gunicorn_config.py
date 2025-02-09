@@ -1,3 +1,6 @@
+# local windows
+# uvicorn apps.asgi:application --reload --host 0.0.0.0 --port 8000
+
 import multiprocessing
 
 
@@ -8,9 +11,3 @@ worker_class = 'gthread'
 threads = 4
 worker_connections = 1000
 timeout = 30
-
-# Настройки для логирования Gunicorn
-loglevel = 'debug'  # Уровень логирования
-
-# Настройки формата для запросов Gunicorn
-access_log_format = '%(t)s %(h)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"'
