@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import i18n from 'i18next'
 import { LoaderCircle } from 'lucide-react'
@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom'
 import { z } from 'zod'
 
 import { useFormSchema } from '@/features/account/listings'
-// import { CategoryDialog } from '@/features/account/listings/ui/category-select-dialog.tsx'
+import { CategoryDialog } from '@/features/account/listings/ui/category-select-dialog.tsx'
 import { CurrencySelect } from '@/features/account/listings/ui/currency-select.tsx'
 import { useCreateProduct } from '@/entities/product/library/hooks/use-create-product.tsx'
 import { useUserProfile } from '@/entities/user'
@@ -25,8 +25,9 @@ import {
 } from '@/shared/ui/shadcn-ui/form'
 import { Input } from '@/shared/ui/shadcn-ui/input'
 import { Textarea } from '@/shared/ui/shadcn-ui/textarea'
-import { PenIcon } from '@/shared/ui'
-import { SpinnerIcon, XCircleSmall } from '@/shared/ui/icons'
+import { PenIcon, SpinnerIcon } from '@/shared/ui'
+import { XCircleSmall } from '@/shared/ui/icons'
+import { ArrowDownSmall } from '@/shared/ui/icons/arrow-down-small.tsx'
 import { VideoUploadIcon } from '@/shared/ui/icons/video-upload-icon.tsx'
 import { PRIVATE_PAGES } from '@/shared/constants'
 import { cn } from '@/shared/library/utils'
@@ -37,8 +38,14 @@ const maxTextareaLength = 15000
 
 export function CreateListingForm() {
   const { t } = useTranslation()
-  const { data: userProfile, isLoading } = useUserProfile()
+  const {
+    data: userProfile,
+    isLoading,
+    isSuccess: profileLoaded,
+  } = useUserProfile()
   const navigate = useNavigate()
+  const [isCategoryDialogOpen, setIsCategoryDialogOpen] = useState(false)
+  const [categoryTitle, setCategoryTitle] = useState('')
   const [selectedVideoFile, setSelectedVideoFile] = useState<File | null>(null)
   const handleCancelVideo = () => {
     setSelectedVideoFile(null)
@@ -57,12 +64,27 @@ export function CreateListingForm() {
       uploaded_images: undefined,
       upload_video: undefined,
       status: 'new',
-      // location: '',
-      // user_name: '',
-      // user_email: '',
-      // user_phone: '',
+      user_name:
+        userProfile?.username || t('listingForm.fields.userName.placeholder'),
+      user_email: userProfile?.email || t('listingForm.fields.userEmail.label'),
+      user_phone:
+        userProfile?.phone_numbers[0] ||
+        t('listingForm.fields.userPhone.placeholder'),
+      location:
+        userProfile?.location?.name || t('listingForm.fields.city.placeholder'),
     },
   })
+
+  useEffect(() => {
+    if (profileLoaded && userProfile) {
+      form.reset({
+        user_name: userProfile?.username || '',
+        location: userProfile?.location.name || '',
+        user_phone: userProfile?.phone_numbers[0] || '',
+        user_email: userProfile?.email || '',
+      })
+    }
+  }, [profileLoaded, userProfile])
 
   const { mutate: createProduct, isPending } = useCreateProduct()
 
@@ -153,17 +175,34 @@ export function CreateListingForm() {
                   name='category_id'
                   render={({ field }) => (
                     <FormItem className='form-item'>
-                      <FormLabel className='form-label'>
+                      <FormLabel className='form-label' htmlFor='category'>
                         {t('listingForm.fields.category.label')}*
                       </FormLabel>
                       <FormControl>
-                        <Input
-                          placeholder={t(
-                            'listingForm.fields.category.placeholder',
-                          )}
-                          className='form-input'
-                          {...field}
-                        />
+                        <div className='relative'>
+                          <Input
+                            id='category'
+                            placeholder={t(
+                              'listingForm.fields.category.placeholder',
+                            )}
+                            className='form-input cursor-pointer'
+                            readOnly
+                            value={categoryTitle}
+                            onClick={() => setIsCategoryDialogOpen(true)}
+                          />
+                          <ArrowDownSmall
+                            className='absolute right-[15px] top-[10px]'
+                            onClick={() => setIsCategoryDialogOpen(true)}
+                          />
+                          <CategoryDialog
+                            open={isCategoryDialogOpen}
+                            onOpenChange={setIsCategoryDialogOpen}
+                            onSelect={(id: string, title: string) => {
+                              field.onChange(id)
+                              setCategoryTitle(title)
+                            }}
+                          />
+                        </div>
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -395,76 +434,100 @@ export function CreateListingForm() {
               </div>
             ) : (
               <div className='flex flex-col gap-6 xl:max-w-[422px] xl:gap-[30px]'>
-                {/* Username display */}
-                <div className='form-item'>
-                  <label className='form-label' htmlFor='username'>
-                    {t('listingForm.fields.userName.label')}*
-                  </label>
-                  <Input
-                    autoComplete='username'
-                    id='username'
-                    disabled
-                    value={
-                      userProfile?.username ||
-                      t('listingForm.fields.userName.placeholder')
-                    }
-                    readOnly
-                    className='form-input bg-gray-50'
-                  />
-                </div>
+                <FormField
+                  control={form.control}
+                  name='user_name'
+                  render={({ field }) => (
+                    <FormItem className='form-item'>
+                      <FormLabel className='form-label' htmlFor='username'>
+                        {t('listingForm.fields.userName.label')}*
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          {...field}
+                          id='username'
+                          readOnly
+                          placeholder={t(
+                            'listingForm.fields.userName.placeholder',
+                          )}
+                          className='form-input bg-gray-50'
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
                 {/* Email display */}
-                <div className='form-item col-start-1 row-start-2'>
-                  <label className='form-label' htmlFor='email'>
-                    {t('listingForm.fields.userEmail.label')}*
-                  </label>
-                  <Input
-                    id='email'
-                    autoComplete='email'
-                    disabled
-                    value={
-                      userProfile?.email ||
-                      t('listingForm.fields.userEmail.label')
-                    }
-                    readOnly
-                    className='form-input bg-gray-50'
-                  />
-                </div>
+                <FormField
+                  control={form.control}
+                  name='user_email'
+                  render={({ field }) => (
+                    <FormItem className='form-item'>
+                      <FormLabel className='form-label' htmlFor='email'>
+                        {t('listingForm.fields.userEmail.label')}*
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          {...field}
+                          id='email'
+                          readOnly
+                          placeholder={t('listingForm.fields.userEmail.label')}
+                          className='form-input bg-gray-50'
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
                 {/* Phone display */}
-                <div className='form-item col-start-1 row-start-3'>
-                  <label className='form-label' htmlFor='phone'>
-                    {t('listingForm.fields.userPhone.label')}*
-                  </label>
-                  <Input
-                    autoComplete='phone'
-                    id='phone'
-                    disabled
-                    value={
-                      userProfile?.phone_numbers[0] ||
-                      t('listingForm.fields.userPhone.placeholder')
-                    }
-                    readOnly
-                    className='form-input bg-gray-50'
-                  />
-                </div>
+                <FormField
+                  control={form.control}
+                  name='user_phone'
+                  render={({ field }) => (
+                    <FormItem className='form-item'>
+                      <FormLabel className='form-label' htmlFor='phone'>
+                        {t('listingForm.fields.userPhone.label')}*
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          {...field}
+                          id='phone'
+                          readOnly
+                          placeholder={t(
+                            'listingForm.fields.userPhone.placeholder',
+                          )}
+                          className='form-input bg-gray-50'
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
                 {/* Location display */}
-                <div className='form-item col-start-2 row-start-1'>
-                  <label className='form-label' htmlFor='location'>
-                    {t('listingForm.fields.city.label')}*
-                  </label>
-                  <Input
-                    id='location'
-                    disabled
-                    value={
-                      userProfile?.location.name ||
-                      t('listingForm.fields.city.placeholder')
-                    }
-                    readOnly
-                    className='form-input bg-gray-50'
-                  />
-                </div>
+                <FormField
+                  control={form.control}
+                  name='location'
+                  render={({ field }) => (
+                    <FormItem className='form-item'>
+                      <FormLabel className='form-label' htmlFor='location'>
+                        {t('listingForm.fields.city.label')}*
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          {...field}
+                          id='location'
+                          readOnly
+                          placeholder={t('listingForm.fields.city.placeholder')}
+                          className='form-input bg-gray-50'
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
               </div>
             )}
           </div>
@@ -472,10 +535,10 @@ export function CreateListingForm() {
 
         <button
           type='submit'
-          className={`relative mx-auto flex h-[53px] min-w-[315px] items-center gap-6 rounded-[60px] bg-primary-900 py-[5px] pr-[5px] text-base/4 text-gray-50 transition-colors duration-300 hover:bg-primary-500 active:bg-primary-600 active:duration-0 xl:mx-0 ${
+          className={`relative mx-auto flex h-[53px] min-w-[315px] items-center gap-6 rounded-[60px] bg-primary-900 py-[5px] pr-[5px] text-base/4 text-gray-50 transition-colors duration-300 hover:bg-primary-500 active:bg-primary-600 active:duration-0 disabled:cursor-not-allowed disabled:bg-gray-300 xl:mx-0 ${
             i18n.language !== 'uk' ? 'pl-[37px]' : 'xl:pl-[20px]'
           }`}
-          disabled={isPending} // Disable button while submitting
+          disabled={isPending}
         >
           {isPending ? (
             <span
@@ -498,7 +561,6 @@ export function CreateListingForm() {
             </span>
           )}
         </button>
-        {/*<CategoryDialog />*/}
       </form>
     </Form>
   )

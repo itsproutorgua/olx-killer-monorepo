@@ -26,6 +26,7 @@ export const errors_en = {
         tooLong: 'Phone number must not exceed {{maxLength}} digits',
         invalid: 'Invalid phone number format',
       },
+      update: 'update data in profile',
     },
   },
 }
@@ -58,6 +59,7 @@ export const errors_uk = {
         tooLong: 'Номер телефону не повинен перевищувати 15 цифр',
         invalid: 'Невірний формат номеру телефону',
       },
+      update: 'оновіть дані в профілі',
     },
   },
 }
