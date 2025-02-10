@@ -123,6 +123,8 @@ class ProductAdmin(SimpleHistoryAdmin):
         else:
             obj.updated_at = timezone.now()
 
+        obj.save()
+
         if not obj.product_images.exists():
             ProductImage.objects.create(product=obj)
 
