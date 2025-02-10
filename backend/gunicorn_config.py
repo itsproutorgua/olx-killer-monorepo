@@ -20,7 +20,7 @@ timeout = 30
 accesslog = '-'  # Для вывода логов доступа в stdout
 errorlog = '-'  # Для вывода логов ошибок в stdout
 
-access_log_format = '%(h)s "%(r)s" %(s)s %(b)s'
+access_log_format = '"%(r)s" %(s)s %(b)s'
 
 # Стандартный вывод
 # %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
