@@ -14,6 +14,7 @@ class LatestProductSerializer(serializers.ModelSerializer):
         fields = [
             'title',
             'prices',
+            'description',
             'images',
             'slug',
             'created_at',
