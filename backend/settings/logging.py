@@ -19,13 +19,15 @@ class IgnoreStaticRequestsFilter(logging.Filter):
         return 'GET /static/' not in record.getMessage()
 
 
-class PlainFormatter(logging.Formatter):
+class BaseFormatter(logging.Formatter):
     def format(self, record):
         log_message = super().format(record)
 
+        # Выравнивание уровня логирования
         levelname = record.levelname.ljust(LEVEL_LENGTH)
         log_message = log_message.replace(record.levelname, levelname)
 
+        # Выравнивание имени логгера
         log_parts = log_message.split(' | ')
         if len(log_parts) > 2:
             log_parts[1] = log_parts[1].ljust(NAME_LENGTH)
@@ -34,7 +36,7 @@ class PlainFormatter(logging.Formatter):
         return log_message
 
 
-class ColoredFormatter(logging.Formatter):
+class ColoredFormatter(BaseFormatter):
     COLORS = {
         'DEBUG': '\033[94m',  # Синий
         'INFO': '\033[92m',  # Зеленый
@@ -52,39 +54,33 @@ class ColoredFormatter(logging.Formatter):
     }
 
     METHOD_COLORS = {
-        'GET': '\033[94m', # Синий
-        'POST': '\033[92m', # Зеленый
-        'PUT': '\033[93m', # Желтый
-        'DELETE': '\033[91m', # Красный
-        'PATCH': '\033[95m', # Фиолетовый
+        'GET': '\033[94m',  # Синий
+        'POST': '\033[92m',  # Зеленый
+        'PUT': '\033[93m',  # Желтый
+        'DELETE': '\033[91m',  # Красный
+        'PATCH': '\033[95m',  # Фиолетовый
     }
 
     def format(self, record):
         log_message = super().format(record)
 
-        # Уровень логирования
-        levelname = record.levelname.ljust(LEVEL_LENGTH)
+        # Раскрашивание уровня логирования
         color = self.COLORS.get(record.levelname, self.COLORS['RESET'])
-        log_message = log_message.replace(record.levelname, f'{color}{levelname}{self.COLORS["RESET"]}')
+        log_message = log_message.replace(record.levelname, f'{color}{record.levelname}{self.COLORS["RESET"]}')
 
-        # HTTP статус-коды
+        # Раскрашивание HTTP статус-кода
         match_status = re.search(r'"\s(\d{3})\s', log_message)
         if match_status:
             status_code = match_status.group(1)
             status_color = self.STATUS_COLORS.get(status_code[0], self.COLORS['RESET'])
             log_message = log_message.replace(status_code, f'{status_color}{status_code}{self.COLORS["RESET"]}')
 
-        # HTTP методы
+        # Раскрашивание HTTP метода
         match_method = re.search(r'"\s*(GET|POST|PUT|DELETE|PATCH)', log_message)
         if match_method:
             method = match_method.group(1)
             method_color = self.METHOD_COLORS.get(method, self.COLORS['RESET'])
             log_message = log_message.replace(method, f'{method_color}{method}{self.COLORS["RESET"]}')
-
-        log_parts = log_message.split(' | ')
-        if len(log_parts) > 2:
-            log_parts[1] = log_parts[1].ljust(NAME_LENGTH)
-            log_message = ' | '.join(log_parts)
 
         return log_message
 
@@ -94,7 +90,7 @@ LOGGING = {
     'disable_existing_loggers': False,
     'formatters': {
         'verbose': {
-            '()': PlainFormatter,
+            '()': BaseFormatter,
             'format': OUTPUT_FORMAT,
             'datefmt': DATE_FORMAT,
         },
