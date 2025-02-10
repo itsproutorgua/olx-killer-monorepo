@@ -27,7 +27,7 @@ export function CurrencySelect({ value, onValueChange }: CurrencySelectProps) {
       <Select value={value} onValueChange={onValueChange}>
         <SelectTrigger className='h-11 w-[103px] rounded-l-none rounded-r-[50px] focus:ring-0 focus:ring-offset-0'>
           <SelectValue placeholder='UAH'>
-            {isLoading ? (
+            {isLoading || !value ? (
               <p className='px-1 text-gray-500'>Loading</p>
             ) : (
               <p className='pl-3 text-gray-500'>

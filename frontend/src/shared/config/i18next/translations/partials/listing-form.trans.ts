@@ -14,7 +14,8 @@ export const listingForms_en = {
       },
       category: {
         label: 'Select category',
-        placeholder: 'Handmade cotton chicken',
+        placeholder: 'Click to select category',
+        allCategories: 'All Categories',
       },
       price: {
         label: 'Enter price',
@@ -80,7 +81,8 @@ export const listingForms_uk = {
       },
       category: {
         label: 'Оберіть категорію',
-        placeholder: 'Бавовняна курка ручної роботи',
+        placeholder: 'Натисніть щоб обрати категорію',
+        allCategories: 'Усі Категорії',
       },
       price: {
         label: 'Вкажіть ціну',

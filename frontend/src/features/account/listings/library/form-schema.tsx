@@ -85,16 +85,27 @@ export const useFormSchema = () => {
     status: z.enum(['new', 'used'], {
       required_error: t('errors.input.required'),
     }),
+    location: z.string().min(1, {
+      message: t('errors.input.required') + ', ' + t('errors.input.update'),
+    }),
+
+    user_name: z
+      .string()
+      .min(1, {
+        message: t('errors.input.required') + ', ' + t('errors.input.update'),
+      }),
+
+    user_email: z
+      .string()
+      .min(1, {
+        message: t('errors.input.required') + ', ' + t('errors.input.update'),
+      })
+      .email({ message: t('errors.input.email') }),
+
+    user_phone: z
+      .string()
+      .min(1, {
+        message: t('errors.input.required') + ', ' + t('errors.input.update'),
+      }),
   })
 }
-
-// location: z.string().min(1, { message: t('errors.input.required') }),
-//
-//   user_name: z.string().min(1, { message: t('errors.input.required') }),
-//
-//   user_email: z
-//   .string()
-//   .min(1, { message: t('errors.input.required') })
-//   .email({ message: t('errors.input.email') }),
-//
-//   user_phone: z.string().min(1, { message: t('errors.input.required') }),
