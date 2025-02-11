@@ -1,18 +1,18 @@
-from django.db import models
 from django.contrib.auth import get_user_model
-import uuid
+from django.db import models
+
+from ...common.models.time_stamp import TimestampMixin
+
 
 User = get_user_model()
 
-class ChatRoom(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)  
-    users = models.ManyToManyField(User, related_name="chat_rooms")  
-    created_at = models.DateTimeField(auto_now_add=True)  
+
+class ChatRoom(TimestampMixin, models.Model):
+    first_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='first_user')
+    second_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='second_user')
 
     def __str__(self):
-        return " / ".join([user.username for user in self.users.all()])
-    
-    class Meta:
-        db_table = 'ChatRoom'
-        
+        return ' / '.join([str(self.first_user), str(self.second_user)])
 
+    class Meta:
+        db_table = 'chatrooms'
