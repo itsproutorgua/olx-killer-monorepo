@@ -115,6 +115,7 @@ export const uk = {
   words: {
     all: 'Усі',
     delete: 'Видалити',
+    deactivate: 'Деактивувати',
     fromFavorite: 'з обраного',
     edit: 'Редагувати',
     categories: 'Категорії',

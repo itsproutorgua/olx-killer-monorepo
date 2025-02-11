@@ -1,4 +1,4 @@
-import { keepPreviousData, queryOptions } from '@tanstack/react-query'
+import { queryOptions } from '@tanstack/react-query'
 
 import { ListingResponse } from '@/entities/user-listings/models/types.ts'
 import { instanceBase } from '@/shared/api'
@@ -72,7 +72,6 @@ class ListingsApi {
           },
           meta,
         ),
-      placeholderData: keepPreviousData,
     })
   }
 }

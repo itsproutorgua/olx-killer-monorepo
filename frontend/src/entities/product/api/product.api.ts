@@ -62,6 +62,12 @@ class ProductApi {
     return response.data
   }
 
+  async findLatest({ signal }: { signal: AbortSignal }) {
+    const url = `${this.BASE_URL}/latest`
+    const response = await instanceBase.get<Product[]>(url, { signal })
+    return response.data
+  }
+
   findByFiltersQueryOptions({
     path,
     currency_code,
@@ -111,11 +117,28 @@ class ProductApi {
     })
   }
 
+  findLatestQueryOptions(i18n: i18n) {
+    return queryOptions<Product[]>({
+      queryKey: [QUERY_KEYS.PRODUCT, i18n.language],
+      queryFn: meta => this.findLatest(meta),
+    })
+  }
+
   async createProduct(productData: FormData, idToken: string) {
     const url = `${this.BASE_URL}/`
     const response = await instanceBase.post(url, productData, {
       headers: {
         'Content-Type': 'multipart/form-data',
+        Authorization: `Bearer ${idToken}`,
+      },
+    })
+    return response.data
+  }
+
+  async deleteProduct(slug: string, idToken: string) {
+    const url = `${this.BASE_URL}/${slug}/`
+    const response = await instanceBase.delete(url, {
+      headers: {
         Authorization: `Bearer ${idToken}`,
       },
     })

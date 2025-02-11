@@ -115,6 +115,7 @@ export const en = {
   words: {
     all: 'All',
     delete: 'Delete',
+    deactivate: 'Deactivate',
     fromFavorite: 'from favorite',
     edit: 'Edit',
     categories: 'Categories',
