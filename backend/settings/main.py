@@ -62,7 +62,7 @@ INSTALLED_APPS += [
     'apps.locations.apps.LocationsConfig',
     'apps.favorites.apps.FavoritesConfig',
     'apps.common',
-    'apps.chat', 
+    'apps.chat',
 ]
 
 MIDDLEWARE += [
@@ -232,8 +232,9 @@ SUPER_PASSWORD = env('SUPER_PASSWORD')
 AUTH_USER_MODEL = 'users.User'
 
 # Redis
-REDIS_URL = os.getenv('REDIS_URL', 'redis://localhost:6379/')
+REDIS_URL = os.getenv('REDIS_URL', 'redis://redis:6379/')
 REDIS_CACHE_URL = f'{REDIS_URL}/1'
+
 
 # Celery
 CELERY_TIMEZONE = TIME_ZONE
