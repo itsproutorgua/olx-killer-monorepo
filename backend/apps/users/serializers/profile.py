@@ -2,6 +2,7 @@ from django.utils.translation import gettext_lazy as _
 from drf_spectacular.utils import extend_schema_field
 from rest_framework import serializers
 
+import settings
 from apps.locations.models import Location
 from apps.locations.serializers.location import LocationSerializer
 from apps.users.models import Profile
@@ -40,6 +41,27 @@ class ProfileSerializer(serializers.ModelSerializer):
         )
         read_only_fields = ('id', 'last_login', 'created_at')
 
+    @staticmethod
+    def _validate_name(value: str, min_length: int, max_length: int, field_name: str) -> str:
+        if value and len(value) < min_length:
+            raise serializers.ValidationError(_(f'Ensure {field_name} has at least {min_length} characters.'))
+        if value and len(value) > max_length:
+            raise serializers.ValidationError(_(f'Ensure {field_name} has at most {max_length} characters.'))
+        if value and not value.isalpha():
+            raise serializers.ValidationError(_(f'Ensure {field_name} contains only alphabetic characters.'))
+
+        return value
+
+    def validate_first_name(self, value: str) -> str:
+        min_length_first_name = settings.MIN_LENGTH_FIRST_NAME
+        max_length_first_name = settings.MAX_LENGTH_FIRST_NAME
+        return self._validate_name(value, min_length_first_name, max_length_first_name, 'first name')
+
+    def validate_last_name(self, value: str) -> str:
+        min_length_last_name = settings.MIN_LENGTH_LAST_NAME
+        max_length_last_name = settings.MAX_LENGTH_LAST_NAME
+        return self._validate_name(value, min_length_last_name, max_length_last_name, 'last name')
+
     @extend_schema_field(LocationSerializer)
     def get_location(self, obj: Profile) -> LocationSerializer:
         return LocationSerializer(obj.location).data
@@ -49,7 +71,6 @@ class ProfileSerializer(serializers.ModelSerializer):
         user_data = validated_data.pop('user', {})
         for attr, value in user_data.items():
             setattr(instance.user, attr, value)
-        instance.user.save()
 
         # Location
         location_id = validated_data.pop('location_id', None)
@@ -76,5 +97,7 @@ class ProfileSerializer(serializers.ModelSerializer):
         # Profile
         for attr, value in validated_data.items():
             setattr(instance, attr, value)
+
+        instance.user.save()
 
         return instance

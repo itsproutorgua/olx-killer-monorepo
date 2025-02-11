@@ -42,3 +42,14 @@ export interface ProductResponse {
   previous: string | null
   results: Product[]
 }
+
+//for creating of listing
+export interface ProductData {
+  title: string
+  prices: string
+  description: string
+  category_id: number
+  uploaded_images?: File[] | undefined
+  upload_video?: File | undefined
+  status: 'new' | 'used'
+}

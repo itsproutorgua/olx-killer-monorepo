@@ -31,7 +31,7 @@ export const PopularCategories = () => {
         <Collapsible open={isOpen} onOpenChange={setIsOpen}>
           <div>
             {cursor}
-            <ul className='-mr-5 flex items-start gap-[16px] px-1 pt-1 scrollbar-hide xl:container xl:grid xl:grid-cols-7 xl:gap-x-[38px] xl:gap-y-[45px] xl:px-1'>
+            <ul className='-mr-5 flex items-start gap-[16px] overflow-x-scroll px-1 pt-1 scrollbar-hide xl:container xl:grid xl:grid-cols-7 xl:gap-x-[38px] xl:gap-y-[45px] xl:px-1'>
               {categories
                 ?.slice(0, isDesktop ? 7 : categories.length)
                 .map(cat => (

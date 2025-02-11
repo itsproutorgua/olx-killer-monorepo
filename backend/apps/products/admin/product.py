@@ -10,13 +10,15 @@ from apps.products.admin import filters
 from apps.products.admin.inlines import PriceInline
 from apps.products.admin.inlines import ProductImageInline
 from apps.products.admin.inlines import ProductVideoInline
+from apps.products.models import Price
+from apps.products.models import ProductImage
 from apps.products.models.product import Product
 
 
 @admin.register(Product)
 class ProductAdmin(SimpleHistoryAdmin):
     list_display = ('title', 'seller', 'category', 'views', 'status', 'publication_status')
-    readonly_fields = ('id', 'created_at', 'updated_at', 'seller', 'slug', 'prod_olx_id', 'views')
+    readonly_fields = ('id', 'created_at', 'updated_at', 'slug', 'prod_olx_id', 'views')
     list_display_links = ('title',)
     list_editable = ('status', 'publication_status')
     autocomplete_fields = ['category']
@@ -31,7 +33,7 @@ class ProductAdmin(SimpleHistoryAdmin):
     show_full_result_count = False
     actions = (
         'set_status_new',
-        'set_status_old',
+        'set_status_used',
         'set_active',
         'set_inactive',
         'set_rejected',
@@ -67,10 +69,10 @@ class ProductAdmin(SimpleHistoryAdmin):
         self.message_user(request, _("Status of selected products has been set to 'New'."), messages.SUCCESS)
         return queryset
 
-    @admin.action(description=_('Set status to Old for selected products'))
-    def set_status_old(self, request, queryset):
-        queryset.update(status=Product.Status.OLD)
-        self.message_user(request, _("Status of selected products has been set to 'Old'."), messages.SUCCESS)
+    @admin.action(description=_('Set status to Used for selected products'))
+    def set_status_used(self, request, queryset):
+        queryset.update(status=Product.Status.USED)
+        self.message_user(request, _("Status of selected products has been set to 'Used'."), messages.SUCCESS)
         return queryset
 
     @admin.action(description=_("Set status to 'active' for selected products"))
@@ -120,5 +122,13 @@ class ProductAdmin(SimpleHistoryAdmin):
             obj.seller = request.user
         else:
             obj.updated_at = timezone.now()
+
+        obj.save()
+
+        if not obj.product_images.exists():
+            ProductImage.objects.create(product=obj)
+
+        if not obj.prices.exists():
+            Price.objects.create(product=obj)
 
         super().save_model(request, obj, form, change)

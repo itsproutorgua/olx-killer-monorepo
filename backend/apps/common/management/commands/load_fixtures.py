@@ -1,10 +1,12 @@
+import logging
 import os
 
 import django
 from django.core.management import call_command
 from django.core.management.base import BaseCommand
 
-from apps.log_config import logger
+
+logger = logging.getLogger(__name__)
 
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings.main')

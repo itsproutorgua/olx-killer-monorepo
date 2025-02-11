@@ -10,15 +10,30 @@ export const listingForms_en = {
     fields: {
       name: {
         label: 'Enter name',
-        placeholder: 'Handmade cotton chicken',
+        placeholder: 'Add name',
       },
       category: {
         label: 'Select category',
-        placeholder: 'Handmade cotton chicken',
+        placeholder: 'Click to select category',
+        allCategories: 'All Categories',
+      },
+      price: {
+        label: 'Enter price',
+        placeholder: '737.00',
+        hryvna: 'hryvna',
+        dollar: 'dollar',
+      },
+      status: {
+        label: 'Chose product condition',
+        new: 'New',
+        used: 'Used',
       },
       images: {
         label: 'Add images',
-        desc: 'The first image will be on the cover of the listing. Drag to change the order.',
+        desc: 'The first image will be on the cover of the listing. Drag to change the order. Max 8 images.',
+      },
+      video: {
+        uploadButton: 'Upload product video',
       },
       desc: {
         label: 'Product description',
@@ -28,23 +43,19 @@ export const listingForms_en = {
       },
       city: {
         label: 'Your city',
-        placeholder: 'City name',
-      },
-      region: {
-        label: 'Region',
-        placeholder: 'Region name',
+        placeholder: 'Add your city',
       },
       userName: {
         label: 'User name',
-        placeholder: 'David Cooper',
+        placeholder: 'Add your name',
       },
       userEmail: {
         label: 'E-mail',
-        placeholder: 'david19@gmail.com',
+        placeholder: 'Add e-mail',
       },
       userPhone: {
         label: 'Phone number',
-        placeholder: '+380 12 345 67 89',
+        placeholder: 'Add phone number',
       },
     },
     buttons: {
@@ -66,41 +77,52 @@ export const listingForms_uk = {
     fields: {
       name: {
         label: 'Вкажіть назву',
-        placeholder: 'Бавовняна курка ручної роботи',
+        placeholder: 'Додайте назву',
       },
       category: {
         label: 'Оберіть категорію',
-        placeholder: 'Бавовняна курка ручної роботи',
+        placeholder: 'Натисніть щоб обрати категорію',
+        allCategories: 'Усі Категорії',
+      },
+      price: {
+        label: 'Вкажіть ціну',
+        placeholder: '737.00',
+        hryvna: 'гривня',
+        dollar: 'долар',
+      },
+      status: {
+        label: 'Оберіть стан товару',
+        new: 'Новий',
+        used: 'Був у використанні',
       },
       images: {
         label: 'Додайте фото',
-        desc: 'Перше фото буде на обкладинці оголошення. Перетягніть, щоб змінити порядок.',
+        desc: 'Перше фото буде на обкладинці оголошення. Перетягніть, щоб змінити порядок. Максимум 8 фото.',
+      },
+      video: {
+        uploadButton: 'Завантажити відео товару',
       },
       desc: {
         label: 'Опис товару',
-        desc: 'Введіть не менше 40 символів',
+        desc: 'Введіть не менше 10 символів',
         placeholder:
           'Опишіть стан товару, його характеристики, переваги та іншу важливу інформацію, яку варто знати покупцю.',
       },
       city: {
-        label: 'Ваше місто',
-        placeholder: 'Назва міста',
-      },
-      region: {
-        label: 'Область',
-        placeholder: 'Назва області',
+        label: 'Місцезнаходження',
+        placeholder: 'Додайте місто',
       },
       userName: {
         label: "Ім'я",
-        placeholder: 'Девід Купер',
+        placeholder: "Додайте ім'я",
       },
       userEmail: {
         label: 'E-mail',
-        placeholder: 'devid19@gmail.com',
+        placeholder: 'Додайте електронну пошту',
       },
       userPhone: {
         label: 'Номер телефону',
-        placeholder: '+380 12 345 67 89',
+        placeholder: 'Додайте номер телефону',
       },
     },
     buttons: {

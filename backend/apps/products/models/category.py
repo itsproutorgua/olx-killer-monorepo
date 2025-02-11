@@ -52,6 +52,7 @@ class Category(TimestampMixin, MPTTModel):
 
         for category in categories:
             categories_dict[category['pk']] = {
+                'id': category['pk'],
                 'title': category[title_field],
                 'path': category['path'],
                 'icon': format_media_url(category['icon']),

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 
 import { ProductStats } from '@/features/product'
 import { useFavoriteMutations } from '@/entities/favorite/library/hooks/use-favorites.tsx'
+import { useDeleteProduct } from '@/entities/product/library/hooks/use-delete-product.tsx'
 import { Listing } from '@/entities/user-listings/models/types.ts'
 import { Separator } from '@/shared/ui/shadcn-ui/separator.tsx'
 import { DeleteSmall } from '@/shared/ui/icons/delete-small.tsx'
@@ -18,18 +19,17 @@ export const HorizontalProductCard = ({
   product,
   className,
   onEdit,
-  onDelete,
 }: {
   listingStatus?: string
   product: Listing
   className?: string
   onEdit?: () => void
-  onDelete?: () => void
 }) => {
   const { t } = useTranslation()
   const statusLabel = getStatusLabel(t, listingStatus)
 
   const { removeFromFavorites } = useFavoriteMutations()
+  const deleteProductMutation = useDeleteProduct()
   const handleRemoveFavorite = async (
     event: React.MouseEvent<HTMLButtonElement>,
   ) => {
@@ -40,6 +40,19 @@ export const HorizontalProductCard = ({
       await removeFromFavorites.mutateAsync(product.id)
     } catch (error) {
       console.log('Error occurred when deleting item from favorite')
+    }
+  }
+
+  const handleDeleteProduct = async (
+    event: React.MouseEvent<HTMLButtonElement>,
+  ) => {
+    event.stopPropagation()
+    event.preventDefault()
+
+    try {
+      await deleteProductMutation.mutateAsync(product.slug)
+    } catch (error) {
+      console.log('Error occurred when deleting product')
     }
   }
 
@@ -129,7 +142,9 @@ export const HorizontalProductCard = ({
           )}
           <button
             onClick={
-              listingStatus === 'Favorite' ? handleRemoveFavorite : onDelete
+              listingStatus === 'Favorite'
+                ? handleRemoveFavorite
+                : handleDeleteProduct
             }
             className={`flex w-full items-center justify-center gap-3 rounded-[6px] border border-gray-200 py-[10px] text-error-700 hover:text-error-500 ${listingStatus === 'Favorite' ? 'xl:min-w-[219px] xl:px-8' : 'xl:w-[156px]'}`}
           >
@@ -138,8 +153,11 @@ export const HorizontalProductCard = ({
             ) : (
               <>
                 <DeleteSmall />
-                {t('words.delete')}{' '}
-                {listingStatus === 'Favorite' && t('words.fromFavorite')}
+                {listingStatus === 'active'
+                  ? `${t('words.deactivate')}`
+                  : listingStatus === 'Favorite'
+                    ? `${t('words.delete')} ${t('words.fromFavorite')}`
+                    : t('words.delete')}
               </>
             )}
           </button>

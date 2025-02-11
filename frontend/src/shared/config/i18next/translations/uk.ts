@@ -1,9 +1,11 @@
+import { profileForms_uk } from '@/shared/config/i18next/translations/partials/profile-form.trans.ts'
 import { crumbs_uk, errors_uk, listingForms_uk, titles_uk } from './partials'
 
 export const uk = {
   ...crumbs_uk,
   ...titles_uk,
   ...listingForms_uk,
+  ...profileForms_uk,
   ...errors_uk,
   inputs: {
     searchPlaceholder: 'Я шукаю...',
@@ -30,6 +32,7 @@ export const uk = {
     filters: 'Фільтри',
     back: 'Назад',
     show: 'Показати',
+    backToAccount: 'Повернутись до кабінету',
   },
   sort: {
     priceExpensive: 'Від дешевих до дорогих',
@@ -112,6 +115,7 @@ export const uk = {
   words: {
     all: 'Усі',
     delete: 'Видалити',
+    deactivate: 'Деактивувати',
     fromFavorite: 'з обраного',
     edit: 'Редагувати',
     categories: 'Категорії',
@@ -146,7 +150,7 @@ export const uk = {
       title: 'Стан',
       all: 'Усі',
       new: 'Нові',
-      old: 'Вживані',
+      used: 'Вживані',
     },
     noResults: 'Нічого не знайдено',
   },
@@ -198,5 +202,15 @@ export const uk = {
       'Почніть продавати просто зараз! Створіть перше оголошення, щоб залучити покупців і представити ваші товари',
     addFavorite:
       'Почніть додавати оголошення в обрані та вони будуть збережені тут',
+    createdThanksMessage:
+      'Дякуємо, що обрали наш майданчик для розміщення оголошень!',
+    whatNext: {
+      next: 'Що далі?',
+      messageSearch:
+        'Ваше оголошення з’явиться в пошуку протягом кількох хвилин.',
+      messageSocials: 'Щоб залучити більше покупців, поділіться оголошенням у ',
+      messageEdit: 'Переглядайте та редагуйте своє оголошення у розділі ',
+      listingsLink: '"Оголошення"',
+    },
   },
 }

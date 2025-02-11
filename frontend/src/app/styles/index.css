@@ -72,7 +72,7 @@ html body[data-scroll-locked] {
   }
 
   .form-item {
-    @apply space-y-1.5;
+    @apply space-y-1.5 leading-none;
   }
   .form-label {
     @apply text-sm/none font-medium text-gray-950;

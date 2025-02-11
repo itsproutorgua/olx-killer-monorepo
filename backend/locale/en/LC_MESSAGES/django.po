@@ -51,8 +51,8 @@ msgid "Invalid sort field."
 msgstr "Invalid sort field."
 
 #: .\apps\common\errors.py:18
-msgid "Invalid advertisement status. Allowed values are `old` and `new`."
-msgstr "Invalid advertisement status. Allowed values are `old` and `new`."
+msgid "Invalid advertisement status. Allowed values are `used` and `new`."
+msgstr "Invalid advertisement status. Allowed values are `used` and `new`."
 
 #: .\apps\common\errors.py:19
 msgid "Invalid parameters."
@@ -358,8 +358,8 @@ msgstr "New"
 
 #: .\apps\products\admin\filters\status.py:12
 #: .\apps\products\models\product.py:16
-msgid "Old"
-msgstr "Old"
+msgid "Used"
+msgstr "Used"
 
 #: .\apps\products\admin\product.py:43
 msgid "General"
@@ -374,11 +374,11 @@ msgid "Status of selected products has been set to 'New'."
 msgstr ""
 
 #: .\apps\products\admin\product.py:70
-msgid "Set status to Old for selected products"
+msgid "Set status to Used for selected products"
 msgstr ""
 
 #: .\apps\products\admin\product.py:73
-msgid "Status of selected products has been set to 'Old'."
+msgid "Status of selected products has been set to 'Used'."
 msgstr ""
 
 #: .\apps\products\admin\product.py:76
@@ -750,10 +750,8 @@ msgid ""
 msgstr "Currency code for the price filter (Default: {default_currency})"
 
 #: .\apps\products\views\product_filters.py:90
-#, fuzzy
-#| msgid "Filter products by their status (e.g., \"new\", \"old\")."
-msgid "Filter products by their status (e.g., `new`, `old`)."
-msgstr "Filter products by their status (e.g., \"new\", \"old\")."
+msgid "Filter products by their status (e.g., `new`, `used`)."
+msgstr "Filter products by their status (e.g., \"new\", \"used\")."
 
 #: .\apps\products\views\product_filters.py:97
 #, fuzzy

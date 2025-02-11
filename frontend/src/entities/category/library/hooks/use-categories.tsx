@@ -2,6 +2,7 @@ import React from 'react'
 import { useQuery } from '@tanstack/react-query'
 
 import { categoryApi, CategoryResponse } from '@/entities/category'
+import { PageLoader } from '@/shared/ui'
 import { FetchError } from '@/shared/ui/error/fetch-error.tsx'
 
 export const useCategories = ({ Skeleton }: { Skeleton?: React.ReactNode }) => {
@@ -15,7 +16,12 @@ export const useCategories = ({ Skeleton }: { Skeleton?: React.ReactNode }) => {
 
   const cursor = (
     <>
-      {isLoading && (Skeleton || <div>Loading...</div>)}
+      {isLoading &&
+        (Skeleton || (
+          <div>
+            <PageLoader />
+          </div>
+        ))}
       {isError && <FetchError />}
     </>
   )

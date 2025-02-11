@@ -15,13 +15,14 @@ QUERY_PARAMS_NOT_ALLOWED = _('Query parameters are not allowed on this endpoint.
 # Product
 PRODUCT_NOT_FOUND = _('No Advertisement matches the given query.')
 INVALID_SORT_FIELD = _('Invalid sort field.')
-INVALID_PRODUCT_STATUS = _('Invalid advertisement status. Allowed values are `old` and `new`.')
+INVALID_PRODUCT_STATUS = _('Invalid advertisement status. Allowed values are `used` and `new`.')
 INVALID_PRODUCT_PARAMETERS = _('Invalid parameters.')
 
 # Image
 INVALID_IMAGE_TYPE = _('Invalid file type. Allowed types: %s') % ', '.join(settings.ALLOWED_IMAGE_MIME_TYPES)
 INVALID_IMAGE = _('Uploaded file is not a valid image.')
 IMAGE_SIZE_EXCEEDED = _('The image size cannot exceed %s MB.') % settings.MAX_IMAGE_FILE_SIZE_MB
+INVALID_COUNT_IMAGE = _(f'You can upload a maximum of {settings.MAX_COUNT_IMAGE_FILES} images.')
 
 # Video
 INVALID_VIDEO_TYPE = _('Invalid video type. Allowed types: %s') % ', '.join(settings.ALLOWED_VIDEO_MIME_TYPES)

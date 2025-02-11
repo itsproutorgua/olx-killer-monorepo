@@ -5,7 +5,7 @@ volumes:
 x-base: &base-backend
   build: .
   volumes:
-    - .:/code:delegated
+    - .:/code
   depends_on:
     - db
     - redis
@@ -23,6 +23,9 @@ services:
       - db
       - redis
     restart: unless-stopped
+    volumes:
+      - .:/code
+      - ./logs:/code/logs
 
   db:
     image: postgres:13
@@ -64,3 +67,6 @@ services:
       - redis
 
 
+    volumes:
+      - .:/code
+      - ./logs:/code/logs

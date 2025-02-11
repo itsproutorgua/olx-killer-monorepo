@@ -1,19 +1,20 @@
 import React, { useEffect, useRef, useState } from 'react'
 
 import { ProductCard } from '@/widgets/product-card'
-import { useProducts, type Product } from '@/entities/product'
+import { type Product } from '@/entities/product'
 import { SectionTitle } from '@/shared/ui'
 import { ScrollableListArrowLeft } from '@/shared/ui/icons/scrollableListArrowLeft.tsx'
 import { ScrollableListArrowRight } from '@/shared/ui/icons/scrollableListArrowRight.tsx'
-import { ScrollableProductsSkeleton } from '@/shared/ui/skeletons'
 import { SortEnum } from '@/shared/constants/app.const'
 
 interface ScrollableProductListProps {
   className?: string
   titleWidth?: string
   title: string
-  path: string
-  limit: number
+  data?: Product[]
+  cursor?: React.ReactNode
+  path?: string
+  limit?: number
   sort?: SortEnum
   scrollStep?: number
   onProductClick: (slug: string) => void
@@ -21,9 +22,8 @@ interface ScrollableProductListProps {
 
 export const ScrollableProductList: React.FC<ScrollableProductListProps> = ({
   title,
-  path,
-  limit,
-  sort,
+  data,
+  cursor,
   scrollStep = 3, // Default scroll step of 3 items
   className,
   titleWidth = '1280px',
@@ -32,15 +32,6 @@ export const ScrollableProductList: React.FC<ScrollableProductListProps> = ({
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const [isLeftDisabled, setIsLeftDisabled] = useState(true)
   const [isRightDisabled, setIsRightDisabled] = useState(false)
-
-  const { data, cursor } = useProducts(
-    {
-      path,
-      limit,
-      sort,
-    },
-    { Skeleton: <ScrollableProductsSkeleton /> },
-  )
 
   useEffect(() => {
     // Disable buttons based on the scroll position
@@ -122,7 +113,7 @@ export const ScrollableProductList: React.FC<ScrollableProductListProps> = ({
           ref={scrollContainerRef}
           onScroll={handleScroll}
         >
-          {data?.results.slice(0, 10).map((product: Product) => (
+          {data?.map((product: Product) => (
             <div
               key={product.slug}
               onClick={() => onProductClick(`/${product.slug}`)}

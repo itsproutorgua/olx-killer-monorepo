@@ -2,8 +2,9 @@ FROM python:3.12-slim
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
-    PYTHONPATH="/code:${PYTHONPATH:-}" \
     PATH="/root/.local/bin:${PATH}"
+ENV PYTHONPATH="/code:${PYTHONPATH}"
+
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends gettext && \
@@ -22,5 +23,7 @@ COPY pyproject.toml poetry.lock ./
 RUN poetry install --no-interaction --no-ansi && rm -rf /root/.cache/*
 
 COPY . .
+
+RUN chmod +x /code/entrypoint.sh
 
 EXPOSE 8000

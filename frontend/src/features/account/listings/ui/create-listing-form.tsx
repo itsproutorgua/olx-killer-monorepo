@@ -1,11 +1,19 @@
-'use client'
-
+import { useEffect, useState } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Pencil } from 'lucide-react'
+import i18n from 'i18next'
+import { LoaderCircle } from 'lucide-react'
 import { useForm } from 'react-hook-form'
+import toast from 'react-hot-toast'
 import { useTranslation } from 'react-i18next'
+import { useNavigate } from 'react-router-dom'
 import { z } from 'zod'
 
+import { useFormSchema } from '@/features/account/listings'
+import { CategoryDialog } from '@/features/account/listings/ui/category-select-dialog.tsx'
+import { CurrencySelect } from '@/features/account/listings/ui/currency-select.tsx'
+import { useCreateProduct } from '@/entities/product/library/hooks/use-create-product.tsx'
+import { useUserProfile } from '@/entities/user'
+import { Checkbox } from '@/shared/ui/shadcn-ui/checkbox.tsx'
 import {
   Form,
   FormControl,
@@ -17,62 +25,102 @@ import {
 } from '@/shared/ui/shadcn-ui/form'
 import { Input } from '@/shared/ui/shadcn-ui/input'
 import { Textarea } from '@/shared/ui/shadcn-ui/textarea'
+import { PenIcon, SpinnerIcon } from '@/shared/ui'
+import { XCircleSmall } from '@/shared/ui/icons'
+import { ArrowDownSmall } from '@/shared/ui/icons/arrow-down-small.tsx'
+import { VideoUploadIcon } from '@/shared/ui/icons/video-upload-icon.tsx'
+import { PRIVATE_PAGES } from '@/shared/constants'
 import { cn } from '@/shared/library/utils'
 import { DndGrid } from './dnd-grid'
 
-const minTextareaLength = 40
+const minTextareaLength = 10
 const maxTextareaLength = 15000
 
 export function CreateListingForm() {
   const { t } = useTranslation()
-  // const [files, setFiles] = useState<File[]>([])
+  const {
+    data: userProfile,
+    isLoading,
+    isSuccess: profileLoaded,
+  } = useUserProfile()
+  const navigate = useNavigate()
+  const [isCategoryDialogOpen, setIsCategoryDialogOpen] = useState(false)
+  const [categoryTitle, setCategoryTitle] = useState('')
+  const [selectedVideoFile, setSelectedVideoFile] = useState<File | null>(null)
+  const handleCancelVideo = () => {
+    setSelectedVideoFile(null)
+    form.setValue('upload_video', undefined)
+  }
 
-  const FormSchema = z.object({
-    name: z.string().min(1, { message: t('errors.input.required') }),
-    category: z.string().min(1, { message: t('errors.input.required') }),
-    images: z.array(z.instanceof(File)),
-    description: z
-      .string()
-      .min(1, { message: t('errors.input.required') })
-      .min(40, {
-        message: t('errors.input.minLength', { minLength: minTextareaLength }),
-      })
-      .max(15000, {
-        message: t('errors.input.maxLength', { maxLength: maxTextareaLength }),
-      }),
-    city: z.string().min(1, { message: t('errors.input.required') }),
-    region: z.string().min(1, { message: t('errors.input.required') }),
-    user_name: z.string().min(1, { message: t('errors.input.required') }),
-    user_email: z
-      .string()
-      .min(1, { message: t('errors.input.required') })
-      .email({ message: t('errors.input.email') }),
-    user_phone: z.string().min(1, { message: t('errors.input.required') }),
-  })
+  const FormSchema = useFormSchema()
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      name: '',
-      category: '',
-      images: [],
+      title: '',
+      category_id: 0,
+      amount: '',
+      currency: 1,
       description: '',
-      city: '',
-      region: '',
-      user_name: '',
-      user_email: '',
-      user_phone: '',
+      uploaded_images: undefined,
+      upload_video: undefined,
+      status: 'new',
+      user_name:
+        userProfile?.username || t('listingForm.fields.userName.placeholder'),
+      user_email: userProfile?.email || t('listingForm.fields.userEmail.label'),
+      user_phone:
+        userProfile?.phone_numbers[0] ||
+        t('listingForm.fields.userPhone.placeholder'),
+      location:
+        userProfile?.location?.name || t('listingForm.fields.city.placeholder'),
     },
   })
 
-  // const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   if (event.target.files) {
-  //     setFiles(Array.from(event.target.files))
-  //     form.setValue('images', Array.from(event.target.files))
-  //   }
-  // }
+  useEffect(() => {
+    if (profileLoaded && userProfile) {
+      form.reset({
+        user_name: userProfile?.username || '',
+        location: userProfile?.location.name || '',
+        user_phone: userProfile?.phone_numbers[0] || '',
+        user_email: userProfile?.email || '',
+      })
+    }
+  }, [profileLoaded, userProfile])
+
+  const { mutate: createProduct, isPending } = useCreateProduct()
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
-    console.log(data)
+    const formData = new FormData()
+
+    formData.append('title', data.title)
+    formData.append('description', data.description)
+    formData.append('category_id', String(data.category_id))
+    formData.append('status', data.status)
+    formData.append('amount', String(data.amount))
+    formData.append('currency', String(data.currency))
+
+    // Append images as files
+    if (data.uploaded_images && data.uploaded_images.length > 0) {
+      Array.from(data.uploaded_images).forEach(file => {
+        formData.append('uploaded_images', file) // to send multiple images
+      })
+    }
+
+    // Append video file (if exists)
+    if (data.upload_video) {
+      formData.append('upload_video', data.upload_video)
+    }
+
+    createProduct(formData, {
+      onSuccess: () => {
+        navigate(PRIVATE_PAGES.LISTING_SUCCESS, {
+          state: { fromFormSubmission: true },
+          replace: true,
+        })
+      },
+      onError: () => {
+        toast.error('Error during form submission!')
+      },
+    })
   }
 
   return (
@@ -82,7 +130,7 @@ export function CreateListingForm() {
         className='space-y-[50px] xl:w-[885px]'
       >
         <div className='space-y-[60px]'>
-          {/* 1 Info about product */}
+          {/* Info about product */}
           <div className='space-y-10'>
             <div className='flex items-start gap-4 xl:gap-6'>
               <div className='flex size-8 flex-none items-center justify-center rounded-full border border-dashed border-primary-400 text-base/none font-semibold text-primary-700'>
@@ -103,11 +151,11 @@ export function CreateListingForm() {
                 {/* Name input */}
                 <FormField
                   control={form.control}
-                  name='name'
+                  name='title'
                   render={({ field }) => (
                     <FormItem className='form-item'>
                       <FormLabel className='form-label'>
-                        {t('listingForm.fields.name.label')}
+                        {t('listingForm.fields.name.label')}*
                       </FormLabel>
                       <FormControl>
                         <Input
@@ -124,20 +172,76 @@ export function CreateListingForm() {
                 {/* Category input */}
                 <FormField
                   control={form.control}
-                  name='category'
+                  name='category_id'
                   render={({ field }) => (
                     <FormItem className='form-item'>
-                      <FormLabel className='form-label'>
-                        {t('listingForm.fields.category.label')}
+                      <FormLabel className='form-label' htmlFor='category'>
+                        {t('listingForm.fields.category.label')}*
                       </FormLabel>
                       <FormControl>
-                        <Input
-                          placeholder={t(
-                            'listingForm.fields.category.placeholder',
-                          )}
-                          className='form-input'
-                          {...field}
-                        />
+                        <div className='relative'>
+                          <Input
+                            id='category'
+                            placeholder={t(
+                              'listingForm.fields.category.placeholder',
+                            )}
+                            className='form-input cursor-pointer'
+                            readOnly
+                            value={categoryTitle}
+                            onClick={() => setIsCategoryDialogOpen(true)}
+                          />
+                          <ArrowDownSmall
+                            className='absolute right-[15px] top-[10px]'
+                            onClick={() => setIsCategoryDialogOpen(true)}
+                          />
+                          <CategoryDialog
+                            open={isCategoryDialogOpen}
+                            onOpenChange={setIsCategoryDialogOpen}
+                            onSelect={(id: string, title: string) => {
+                              field.onChange(id)
+                              setCategoryTitle(title)
+                            }}
+                          />
+                        </div>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+              <div className='space-y-6 xl:grid xl:grid-cols-2 xl:gap-10 xl:space-y-0'>
+                {/* Price input */}
+                <FormField
+                  control={form.control}
+                  name='amount'
+                  render={({ field }) => (
+                    <FormItem className='form-item'>
+                      <FormLabel className='form-label' htmlFor='price'>
+                        {t('listingForm.fields.price.label')}*
+                      </FormLabel>
+                      <FormControl>
+                        <div className='relative flex'>
+                          <Input
+                            id='price'
+                            placeholder={t(
+                              'listingForm.fields.price.placeholder',
+                            )}
+                            className='form-input'
+                            {...field}
+                          />
+                          <div className='absolute right-0 h-11 shadow-none'>
+                            <FormField
+                              control={form.control}
+                              name='currency'
+                              render={({ field: currencyField }) => (
+                                <CurrencySelect
+                                  value={currencyField.value.toString()}
+                                  onValueChange={currencyField.onChange}
+                                />
+                              )}
+                            />
+                          </div>
+                        </div>
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -145,8 +249,58 @@ export function CreateListingForm() {
                 />
               </div>
 
-              {/* Images input */}
-              <div className='space-y-5'>
+              {/*Status Field*/}
+              <FormField
+                control={form.control}
+                name='status'
+                render={({ field }) => (
+                  <FormItem className='space-y-3'>
+                    <FormLabel className='form-label' htmlFor='status-label'>
+                      {t('listingForm.fields.status.label')}*
+                    </FormLabel>
+                    <input hidden type='radio' id='status-label' />
+                    <fieldset
+                      aria-labelledby='status-label'
+                      className='flex flex-col gap-[10px]'
+                    >
+                      <FormItem className='flex items-center space-x-3 space-y-0'>
+                        <FormControl>
+                          <Checkbox
+                            id='status-new'
+                            checked={field.value === 'new'}
+                            onCheckedChange={checked =>
+                              checked && field.onChange('new')
+                            }
+                            className='h-5 w-5 rounded-full'
+                          />
+                        </FormControl>
+                        <label className='font-normal' htmlFor='status-new'>
+                          {t('listingForm.fields.status.new')}
+                        </label>
+                      </FormItem>
+                      <FormItem className='flex items-center space-x-3 space-y-0'>
+                        <FormControl>
+                          <Checkbox
+                            id='status-used'
+                            checked={field.value === 'used'}
+                            onCheckedChange={checked =>
+                              checked && field.onChange('used')
+                            }
+                            className='h-5 w-5 rounded-full'
+                          />
+                        </FormControl>
+                        <label className='font-normal' htmlFor='status-used'>
+                          {t('listingForm.fields.status.used')}
+                        </label>
+                      </FormItem>
+                    </fieldset>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              {/* Images and video inputs */}
+              <div className='space-y-5 pt-4 xl:pt-0'>
                 <div className='space-y-2.5'>
                   <p className='form-label'>
                     {t('listingForm.fields.images.label')}
@@ -156,7 +310,71 @@ export function CreateListingForm() {
                   </p>
                 </div>
 
-                <DndGrid />
+                <FormField
+                  control={form.control}
+                  name='uploaded_images'
+                  render={() => (
+                    <FormItem>
+                      <FormControl>
+                        <DndGrid />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name='upload_video'
+                  render={({ field }) => (
+                    <FormItem className='form-item'>
+                      <FormControl>
+                        <div>
+                          <label htmlFor='video-upload'>
+                            <span className='cursor-pointer text-sm leading-none text-[#737373]'>
+                              {selectedVideoFile ? (
+                                <span className='flex items-center gap-2 text-primary-500'>
+                                  {selectedVideoFile.name}{' '}
+                                  <span
+                                    className='cursor-pointer'
+                                    onClick={e => {
+                                      e.preventDefault()
+                                      handleCancelVideo()
+                                    }}
+                                  >
+                                    <XCircleSmall className='text-primary-700' />
+                                  </span>
+                                </span>
+                              ) : (
+                                <span className='flex items-center gap-[10px]'>
+                                  <VideoUploadIcon />{' '}
+                                  {t('listingForm.fields.video.uploadButton')}
+                                </span>
+                              )}
+                            </span>
+                            <Input
+                              id='video-upload'
+                              type='file'
+                              accept='video/*'
+                              className='hidden'
+                              onChange={e => {
+                                if (
+                                  e.target.files &&
+                                  e.target.files.length > 0
+                                ) {
+                                  const file = e.target.files[0]
+                                  setSelectedVideoFile(file)
+                                  field.onChange(file)
+                                }
+                              }}
+                            />
+                          </label>
+                        </div>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
               </div>
 
               {/* Description input */}
@@ -164,14 +382,14 @@ export function CreateListingForm() {
                 control={form.control}
                 name='description'
                 render={({ field }) => (
-                  <FormItem className='form-item'>
+                  <FormItem className='form-item max-w-[518px] space-y-[10px] pt-4 xl:pt-0'>
                     <FormLabel className='form-label'>
-                      {t('listingForm.fields.desc.label')}
+                      {t('listingForm.fields.desc.label')}*
                     </FormLabel>
                     <FormDescription
                       className={cn(
                         'form-description',
-                        'flex justify-between pb-[14px]',
+                        'flex justify-between pb-[10px] text-gray-600',
                       )}
                     >
                       {t('listingForm.fields.desc.desc')}
@@ -185,7 +403,7 @@ export function CreateListingForm() {
                         maxLength={maxTextareaLength}
                         minLength={minTextareaLength}
                         placeholder={t('listingForm.fields.desc.placeholder')}
-                        className='form-textarea'
+                        className='form-textarea text-gray-500'
                         {...field}
                       />
                     </FormControl>
@@ -194,57 +412,11 @@ export function CreateListingForm() {
                   </FormItem>
                 )}
               />
-
-              <div className='space-y-6 xl:grid xl:grid-cols-2 xl:gap-10 xl:space-y-0'>
-                {/* City input */}
-                <FormField
-                  control={form.control}
-                  name='city'
-                  render={({ field }) => (
-                    <FormItem className='form-item'>
-                      <FormLabel className='form-label'>
-                        {t('listingForm.fields.city.label')}
-                      </FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder={t('listingForm.fields.city.placeholder')}
-                          className='form-input'
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                {/* Region input */}
-                <FormField
-                  control={form.control}
-                  name='region'
-                  render={({ field }) => (
-                    <FormItem className='form-item'>
-                      <FormLabel className='form-label'>
-                        {t('listingForm.fields.region.label')}
-                      </FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder={t(
-                            'listingForm.fields.region.placeholder',
-                          )}
-                          className='form-input'
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
             </div>
           </div>
 
           {/* Contacts info */}
-          <div className='space-y-10 xl:space-y-8'>
+          <div className='space-y-[30px]'>
             <div className='flex items-center gap-4'>
               <div className='flex size-8 flex-none items-center justify-center rounded-full border border-dashed border-primary-400 text-base/none font-semibold text-primary-700'>
                 2
@@ -256,84 +428,138 @@ export function CreateListingForm() {
               </div>
             </div>
 
-            <div className='space-y-6 xl:w-[423px] xl:space-y-8'>
-              {/* User name input */}
-              <FormField
-                control={form.control}
-                name='user_name'
-                render={({ field }) => (
-                  <FormItem className='form-item'>
-                    <FormLabel className='form-label'>
-                      {t('listingForm.fields.userName.label')}
-                    </FormLabel>
-                    <FormControl>
-                      <Input
-                        placeholder={t(
-                          'listingForm.fields.userName.placeholder',
-                        )}
-                        {...field}
-                        className='form-input'
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+            {isLoading ? (
+              <div className='flex justify-center xl:max-w-[422px] xl:justify-start xl:pl-32'>
+                <SpinnerIcon className='h-12 w-12 animate-spin text-primary-900' />
+              </div>
+            ) : (
+              <div className='flex flex-col gap-6 xl:max-w-[422px] xl:gap-[30px]'>
+                <FormField
+                  control={form.control}
+                  name='user_name'
+                  render={({ field }) => (
+                    <FormItem className='form-item'>
+                      <FormLabel className='form-label' htmlFor='username'>
+                        {t('listingForm.fields.userName.label')}*
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          {...field}
+                          id='username'
+                          readOnly
+                          placeholder={t(
+                            'listingForm.fields.userName.placeholder',
+                          )}
+                          className='form-input bg-gray-50'
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
-              {/* User email input */}
-              <FormField
-                control={form.control}
-                name='user_email'
-                render={({ field }) => (
-                  <FormItem className='form-item'>
-                    <FormLabel className='form-label'>
-                      {t('listingForm.fields.userEmail.label')}
-                    </FormLabel>
-                    <FormControl>
-                      <Input
-                        placeholder={t(
-                          'listingForm.fields.userEmail.placeholder',
-                        )}
-                        className='form-input'
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+                {/* Email display */}
+                <FormField
+                  control={form.control}
+                  name='user_email'
+                  render={({ field }) => (
+                    <FormItem className='form-item'>
+                      <FormLabel className='form-label' htmlFor='email'>
+                        {t('listingForm.fields.userEmail.label')}*
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          {...field}
+                          id='email'
+                          readOnly
+                          placeholder={t('listingForm.fields.userEmail.label')}
+                          className='form-input bg-gray-50'
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
-              {/* User phone input */}
-              <FormField
-                control={form.control}
-                name='user_phone'
-                render={({ field }) => (
-                  <FormItem className='form-item'>
-                    <FormLabel className='form-label'>
-                      {t('listingForm.fields.userPhone.label')}
-                    </FormLabel>
-                    <FormControl>
-                      <Input
-                        placeholder={t(
-                          'listingForm.fields.userPhone.placeholder',
-                        )}
-                        className='form-input'
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
+                {/* Phone display */}
+                <FormField
+                  control={form.control}
+                  name='user_phone'
+                  render={({ field }) => (
+                    <FormItem className='form-item'>
+                      <FormLabel className='form-label' htmlFor='phone'>
+                        {t('listingForm.fields.userPhone.label')}*
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          {...field}
+                          id='phone'
+                          readOnly
+                          placeholder={t(
+                            'listingForm.fields.userPhone.placeholder',
+                          )}
+                          className='form-input bg-gray-50'
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                {/* Location display */}
+                <FormField
+                  control={form.control}
+                  name='location'
+                  render={({ field }) => (
+                    <FormItem className='form-item'>
+                      <FormLabel className='form-label' htmlFor='location'>
+                        {t('listingForm.fields.city.label')}*
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          {...field}
+                          id='location'
+                          readOnly
+                          placeholder={t('listingForm.fields.city.placeholder')}
+                          className='form-input bg-gray-50'
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+            )}
           </div>
         </div>
 
-        <button className='relative mx-auto flex h-[53px] min-w-[315px] items-center rounded-[60px] bg-primary-900 pl-[37px] text-base/none text-gray-50 transition-colors duration-300 hover:bg-primary-500 active:bg-primary-600 active:duration-0 xl:mx-0 xl:mr-auto'>
-          <span>{t('listingForm.buttons.submit')}</span>
-          <span className='absolute right-[5px] top-1/2 flex size-[43px] -translate-y-1/2 transform items-center justify-center rounded-full bg-gray-50 text-foreground'>
-            <Pencil className='size-5' />
-          </span>
+        <button
+          type='submit'
+          className={`relative mx-auto flex h-[53px] min-w-[315px] items-center gap-6 rounded-[60px] bg-primary-900 py-[5px] pr-[5px] text-base/4 text-gray-50 transition-colors duration-300 hover:bg-primary-500 active:bg-primary-600 active:duration-0 disabled:cursor-not-allowed disabled:bg-gray-300 xl:mx-0 ${
+            i18n.language !== 'uk' ? 'pl-[37px]' : 'xl:pl-[20px]'
+          }`}
+          disabled={isPending}
+        >
+          {isPending ? (
+            <span
+              className={`flex w-full items-center justify-center pr-0 xl:pr-5 ${
+                i18n.language !== 'uk'
+                  ? 'pr-[32px] xl:pr-[32px]'
+                  : 'pl-[5px] xl:pl-0'
+              }`}
+            >
+              <LoaderCircle className='size-6 animate-spin' />
+            </span>
+          ) : (
+            <span className='mr-7 flex flex-1 items-center justify-center xl:mr-12'>
+              {t('listingForm.buttons.submit')}
+            </span>
+          )}
+          {!isPending && (
+            <span className='absolute right-[5px] flex size-[43px] items-center justify-center rounded-full bg-gray-50 text-foreground'>
+              <PenIcon />
+            </span>
+          )}
         </button>
       </form>
     </Form>

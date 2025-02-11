@@ -54,8 +54,8 @@ msgid "Invalid sort field."
 msgstr "Недійсне поле сортування."
 
 #: .\apps\common\errors.py:18
-msgid "Invalid advertisement status. Allowed values are `old` and `new`."
-msgstr "Недійсний статус оголошення. Дозволеними значеннями є `old` і `new`."
+msgid "Invalid advertisement status. Allowed values are `used` and `new`."
+msgstr "Недійсний статус оголошення. Дозволеними значеннями є `used` і `new`."
 
 #: .\apps\common\errors.py:19
 msgid "Invalid parameters."
@@ -360,7 +360,7 @@ msgstr "Новий"
 
 #: .\apps\products\admin\filters\status.py:12
 #: .\apps\products\models\product.py:16
-msgid "Old"
+msgid "Used"
 msgstr "Вживаний"
 
 #: .\apps\products\admin\product.py:43
@@ -378,13 +378,13 @@ msgid "Status of selected products has been set to 'New'."
 msgstr "Статус обраних оголошень встановлено як 'Новий'."
 
 #: .\apps\products\admin\product.py:70
-msgid "Set status to Old for selected products"
+msgid "Set status to Used for selected products"
 msgstr "Встановити стан 'Вживаний' для обраних оголошень"
 
 #: .\apps\products\admin\product.py:73
 #, fuzzy
 #| msgid "Status of selected products has been set to Old."
-msgid "Status of selected products has been set to 'Old'."
+msgid "Status of selected products has been set to 'Used'."
 msgstr "Статус обраних оголошень встановлено як 'Вживаний'."
 
 #: .\apps\products\admin\product.py:76
@@ -760,8 +760,8 @@ msgstr "Код валюти для фільтра ціни (за умовчан�
 #: .\apps\products\views\product_filters.py:90
 #, fuzzy
 #| msgid "Filter products by their status (e.g., \"new\", \"old\")."
-msgid "Filter products by their status (e.g., `new`, `old`)."
-msgstr "Фільтрувати продукти за їх статусом (наприклад, \"new\", \"old\")."
+msgid "Filter products by their status (e.g., `new`, `used`)."
+msgstr "Фільтрувати продукти за їх статусом (наприклад, \"new\", \"used\")."
 
 #: .\apps\products\views\product_filters.py:97
 msgid "Field to sort products by (e.g., {\", \".join(allowed_sort_fields)}) "

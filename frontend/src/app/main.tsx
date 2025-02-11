@@ -12,13 +12,17 @@ import PrivateRoute from '@/app/routes/private-routes.tsx'
 import { AccountPage } from '@/pages/account/account-page.tsx'
 import { ChatPage } from '@/pages/account/chat/chat-page.tsx'
 import { FavoritesPage } from '@/pages/account/favorites/favorites-page.tsx'
-import { CreateListingPage } from '@/pages/account/listings/create'
+import {
+  CreateListingPage,
+  CreateSuccess,
+} from '@/pages/account/listings/create'
 import { ProfilePage } from '@/pages/account/profile/profile-page.tsx'
 import { SettingsPage } from '@/pages/account/settings/settings-page.tsx'
 import { UserListingsPage } from '@/pages/account/user-listings/user-listings-page.tsx'
 import { CatalogPage } from '@/pages/catalog/catalog-page.tsx'
 import { HomePage } from '@/pages/home/home-page'
 import { AccountLayout, RootLayout } from '@/pages/layouts'
+import { AccountRootLayout } from '@/pages/layouts/account-root-layout.tsx'
 import { ProductPage } from '@/pages/product/product-page.tsx'
 import { PRIVATE_PAGES, PUBLIC_PAGES } from '@/shared/constants'
 
@@ -37,6 +41,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
               path={`${PUBLIC_PAGES.PRODUCTS}/*`}
               element={<ProductPage />}
             />
+          </Route>
+          <Route element={<AccountRootLayout />}>
             <Route element={<PrivateRoute />}>
               <Route path={PRIVATE_PAGES.ACCOUNT} element={<AccountLayout />}>
                 <Route index element={<AccountPage />} />
@@ -60,9 +66,13 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                 path={PRIVATE_PAGES.LISTING_CREATE}
                 element={<CreateListingPage />}
               />
+              <Route
+                path={PRIVATE_PAGES.LISTING_SUCCESS}
+                element={<CreateSuccess />}
+              />
             </Route>
-            <Route path='*' element={<div>404 not found!</div>} />
           </Route>
+          <Route path='*' element={<div>404 not found!</div>} />
         </Routes>
       </Providers>
     </BrowserRouter>

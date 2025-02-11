@@ -1,9 +1,11 @@
+import { profileForms_en } from '@/shared/config/i18next/translations/partials/profile-form.trans.ts'
 import { crumbs_en, errors_en, listingForms_en, titles_en } from './partials'
 
 export const en = {
   ...crumbs_en,
   ...titles_en,
   ...listingForms_en,
+  ...profileForms_en,
   ...errors_en,
   inputs: {
     searchPlaceholder: "I'm looking for...",
@@ -13,7 +15,7 @@ export const en = {
     next: 'Next',
     previous: 'Previous',
     searchButton: 'Find',
-    addAdvert: 'To add an advert',
+    addAdvert: 'Add your listing',
     showAllCategories: 'Show all categories',
     hideCategories: 'Hide categories',
     showLess: 'Less',
@@ -29,6 +31,7 @@ export const en = {
     filters: 'Filters',
     back: 'Back',
     show: 'Show',
+    backToAccount: 'Back to account',
   },
   sort: {
     priceExpensive: 'From cheap to expensive',
@@ -112,6 +115,7 @@ export const en = {
   words: {
     all: 'All',
     delete: 'Delete',
+    deactivate: 'Deactivate',
     fromFavorite: 'from favorite',
     edit: 'Edit',
     categories: 'Categories',
@@ -147,7 +151,7 @@ export const en = {
       title: 'Condition',
       all: 'All',
       new: 'New',
-      old: 'Used',
+      used: 'Used',
     },
     noResults: 'No results',
   },
@@ -200,5 +204,14 @@ export const en = {
       'Start selling right now! Create your first listing to attract buyers and showcase your products',
     addFavorite:
       'Start adding listings to favorites and they will be saved here',
+    createdThanksMessage:
+      'Thank you for choosing our marketplace for your listings!',
+    whatNext: {
+      next: 'What next?',
+      messageSearch: 'Your listing will appear in search within a few minutes.',
+      messageSocials: 'To attract more buyers, share your listing on ',
+      messageEdit: 'View and edit your listing in the section ',
+      listingsLink: '"Listings"',
+    },
   },
 }

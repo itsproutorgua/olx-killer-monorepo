@@ -14,8 +14,10 @@ class LatestProductSerializer(serializers.ModelSerializer):
         fields = [
             'title',
             'prices',
+            'description',
             'images',
             'slug',
             'created_at',
+            'updated_at',
         ]
-        read_only_fields = ['created_at', 'slug']
+        read_only_fields = ['created_at', 'updated_at', 'slug']

@@ -1,3 +1,5 @@
+import logging
+
 import requests
 from authlib.jose import JsonWebKey
 from authlib.jose import jwt
@@ -12,7 +14,8 @@ from rest_framework_simplejwt.authentication import AuthUser
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework_simplejwt.exceptions import InvalidToken
 
-from apps.log_config import logger
+
+logger = logging.getLogger(__name__)
 
 
 class Auth0JWTAuthentication(JWTAuthentication):

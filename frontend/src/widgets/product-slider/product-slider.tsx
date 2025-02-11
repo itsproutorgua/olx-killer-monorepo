@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 
 import { ProductCard } from '@/widgets/product-card'
 import { chunkArray } from '@/widgets/product-slider/model/product-slider-helper.ts'
-import { Product, useProducts } from '@/entities/product'
+import { Product } from '@/entities/product'
 import {
   Carousel,
   CarouselContent,
@@ -11,25 +11,24 @@ import {
   type CarouselApi,
 } from '@/shared/ui/shadcn-ui/carousel.tsx'
 import { SectionTitle } from '@/shared/ui'
-import { ProductSliderSkeleton } from '@/shared/ui/skeletons'
 import { SortEnum } from '@/shared/constants/app.const'
 import { cn } from '@/shared/library/utils'
 
 interface ProductSliderProps {
   titleKey: string // Translation key for the title
-  path: string // Products array
+  data?: Product[]
+  cursor: React.ReactNode
   chunkSize?: number // Default chunk size for pairing
   className?: string
-  limit: number
+  limit?: number
   sort?: SortEnum
   onProductClick: (slug: string) => void
 }
 
 export const ProductSlider: React.FC<ProductSliderProps> = ({
   titleKey,
-  path,
-  limit,
-  sort,
+  data,
+  cursor,
   chunkSize = 2, // Default chunk size is set to 2
   className,
   onProductClick,
@@ -39,15 +38,6 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({
   const [current, setCurrent] = useState(0)
   const [count, setCount] = useState(0)
   const [dynamicChunkSize, setDynamicChunkSize] = useState(chunkSize) // Track dynamic chunk size
-
-  const { data, cursor } = useProducts(
-    {
-      path,
-      limit,
-      sort,
-    },
-    { Skeleton: <ProductSliderSkeleton /> },
-  )
 
   // Handle screen size changes
   useEffect(() => {
@@ -91,7 +81,7 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({
         {/* Actual Data */}
         {data && (
           <CarouselContent>
-            {chunkArray(data.results, dynamicChunkSize).map(
+            {chunkArray(data, dynamicChunkSize).map(
               (pair: Product[], index: number) => (
                 <CarouselItem key={index} className='flex gap-[9px]'>
                   {pair.map((deal: Product) => (

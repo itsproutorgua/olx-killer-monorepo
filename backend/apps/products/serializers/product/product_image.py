@@ -36,11 +36,14 @@ class ProductImageSerializer(serializers.ModelSerializer):
         return ProductImage.objects.create(product=product, **validated_data)
 
     @classmethod
-    def create_images(cls, product: Product, images_data: dict) -> None:
+    def create_images(cls, product: Product, images_data: list) -> None:
         """A method for creating images for a product."""
         for image_data in images_data:
             try:
-                image_data['product'] = product
+                image_data = {'product': product, 'image': image_data}
                 cls().create(image_data)
             except IntegrityError as e:
                 raise ValidationError(_('Failed to create product image: {}'.format(e)))
+
+        if not images_data and product.product_images.first() is None:
+            cls().create({'product': product})

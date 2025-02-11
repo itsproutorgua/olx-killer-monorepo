@@ -1,8 +1,11 @@
 from django.contrib.auth import get_user_model
+from django.core.validators import MaxLengthValidator
+from django.core.validators import MinLengthValidator
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from slugify import slugify
 
+import settings
 from apps.common.models import HistoricalModel
 from apps.common.models import TimestampMixin
 
@@ -13,7 +16,7 @@ User = get_user_model()
 class Product(TimestampMixin, HistoricalModel, models.Model):
     class Status(models.TextChoices):
         NEW = 'new', _('New')
-        OLD = 'old', _('Old')
+        USED = 'used', _('Used')
 
     class PublicationStatus(models.TextChoices):
         ACTIVE = 'active', _('Active')
@@ -22,7 +25,13 @@ class Product(TimestampMixin, HistoricalModel, models.Model):
         REJECTED = 'rejected', _('Rejected')  # Відхилені
 
     title = models.CharField(_('Product name'), max_length=255)
-    description = models.TextField(verbose_name=_('Product description'), blank=True, null=True)
+    description = models.TextField(
+        verbose_name=_('Product description'),
+        validators=[
+            MinLengthValidator(settings.MIN_LENGTH_DESCRIPTION, message=_('Product description is too short')),
+            MaxLengthValidator(settings.MAX_LENGTH_DESCRIPTION, message=_('Product description is too long')),
+        ],
+    )
     seller = models.ForeignKey(
         to=User,
         on_delete=models.CASCADE,
@@ -39,8 +48,8 @@ class Product(TimestampMixin, HistoricalModel, models.Model):
         _('Status'),
         max_length=20,
         choices=Status.choices,
-        default=Status.OLD,
-        help_text=_('Product status'),
+        default=Status.USED,
+        help_text=_('Indicates the condition of the product. Select `New` for new items and `Used` for used ones.'),
     )
     publication_status = models.CharField(
         _('Publication status'),
@@ -76,6 +85,6 @@ class Product(TimestampMixin, HistoricalModel, models.Model):
 
         super().save(*args, **kwargs)
 
-        if self.pk and self.slug != slug + str(self.pk):
+        if self.pk and self.slug != (slug + str(self.pk)):
             self.slug = slug + str(self.pk)
             super().save(update_fields=['slug'])
