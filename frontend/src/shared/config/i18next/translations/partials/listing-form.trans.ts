@@ -10,7 +10,7 @@ export const listingForms_en = {
     fields: {
       name: {
         label: 'Enter name',
-        placeholder: 'Handmade cotton chicken',
+        placeholder: 'Add name',
       },
       category: {
         label: 'Select category',
@@ -77,7 +77,7 @@ export const listingForms_uk = {
     fields: {
       name: {
         label: 'Вкажіть назву',
-        placeholder: 'Бавовняна курка ручної роботи',
+        placeholder: 'Додайте назву',
       },
       category: {
         label: 'Оберіть категорію',
