@@ -261,7 +261,7 @@ export function CreateListingForm() {
                     <input hidden type='radio' id='status-label' />
                     <fieldset
                       aria-labelledby='status-label'
-                      className='flex gap-4'
+                      className='flex flex-col gap-[10px]'
                     >
                       <FormItem className='flex items-center space-x-3 space-y-0'>
                         <FormControl>

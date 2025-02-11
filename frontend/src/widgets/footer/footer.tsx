@@ -132,7 +132,9 @@ export const Footer = () => {
       <div className='px-[10px] pt-[60px] xl:container xl:pt-[119px]'>
         <Separator className='bg-gray-50' />
         <div className='flex flex-col-reverse items-center justify-between gap-[30px] pb-[18px] pt-[60px] xl:flex-row xl:py-5'>
-          <p>2024 OLX KILLER. {t('footerContent.rights')}</p>
+          <p>
+            {new Date().getFullYear()} OKL. {t('footerContent.rights')}
+          </p>
           <Button
             onClick={() => scrollTo({ top: 0, behavior: 'smooth' })}
             variant='outline'

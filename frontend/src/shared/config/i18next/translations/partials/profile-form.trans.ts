@@ -4,7 +4,7 @@ export const profileForms_en = {
       city: {
         label: 'Your city',
         noCity: 'No city',
-        placeholder: 'City name',
+        placeholder: 'Start typing city name',
         noResults: 'No city found',
         searching: 'Searching location...',
       },
@@ -35,7 +35,7 @@ export const profileForms_uk = {
       city: {
         label: 'Місцезнаходження',
         noCity: 'Місто не вказано',
-        placeholder: 'Назва міста',
+        placeholder: 'Почніть вводити назву міста',
         noResults: 'Такого міста не знайдено',
         searching: 'Пошук міста...',
       },
