@@ -66,6 +66,9 @@ whitenoise = "^6.7.0"
 django-csp = "^3.8"
 django-mptt = "^0.16.0"
 ruff = "^0.9.1"
+channels = "^4.2.0"
+daphne = "^4.1.2"
+channels-redis = "^4.2.1"
 
 [tool.poetry.dependencies.djangorestframework-simplejwt]
 extras = ["crypto", ]
