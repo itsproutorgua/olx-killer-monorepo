@@ -26,6 +26,10 @@ export const profileForms_en = {
       download: 'Download photos',
       submit: 'Save changes',
     },
+    messages: {
+      profileUpdateSuccess: 'Profile updated successfully!',
+      profileUpdateError: 'Error updating profile!',
+    },
   },
 }
 
@@ -56,6 +60,10 @@ export const profileForms_uk = {
     buttons: {
       download: 'Завантажити фото',
       submit: 'Зберегти зміни',
+    },
+    messages: {
+      profileUpdateSuccess: 'Профіль оновлено успішно!',
+      profileUpdateError: 'Помилка оновлення профілю!',
     },
   },
 }
