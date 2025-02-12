@@ -43,7 +43,7 @@ class Category(TimestampMixin, MPTTModel):
         title_field = f'title_{language_code}'
 
         category_fields = ['pk', title_field, 'path', 'icon', 'img', 'parent_id']
-        categories = Category.objects.values(*category_fields).order_by('views')
+        categories = Category.objects.values(*category_fields).order_by('-views')
 
         def format_media_url(field):
             return f'{settings.MEDIA_URL}{field}' if field else None
