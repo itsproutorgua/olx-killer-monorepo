@@ -403,7 +403,7 @@ export function CreateListingForm() {
                         maxLength={maxTextareaLength}
                         minLength={minTextareaLength}
                         placeholder={t('listingForm.fields.desc.placeholder')}
-                        className='form-textarea text-gray-500'
+                        className='form-textarea text-gray-900'
                         {...field}
                       />
                     </FormControl>
