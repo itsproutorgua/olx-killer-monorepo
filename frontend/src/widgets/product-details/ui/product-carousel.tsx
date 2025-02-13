@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import ReactPlayer from 'react-player'
 
 import { Product } from '@/entities/product'
 import {
@@ -31,6 +32,7 @@ export const ProductCarousel: React.FC<Props> = ({ product }) => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [thumbsStartIndex, setThumbsStartIndex] = useState(0)
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [playing, setPlaying] = useState(false)
   const THUMBS_TO_SHOW = 5
 
   // Combine images and videos into a single media array
@@ -70,29 +72,37 @@ export const ProductCarousel: React.FC<Props> = ({ product }) => {
           {media.length > 0
             ? media.map((item, index) => (
                 <CarouselItem key={item.id}>
-                  <div
-                    onClick={handleImageClick}
-                    className='flex h-[238px] w-[355px] cursor-pointer items-center justify-center rounded-[14px] bg-gray-100 md:h-[353px] md:w-full xl:h-[613px] xl:w-[629px]'
-                  >
+                  <div className='flex h-[238px] w-[355px] cursor-pointer items-center justify-center rounded-[14px] bg-gray-100 md:h-[353px] md:w-full xl:h-[613px] xl:w-[629px]'>
                     {'isVideo' in item ? (
-                      <div className='relative h-full w-full'>
-                        <video
-                          className='h-full w-full rounded-[14px] object-cover'
+                      <div className='relative h-full w-full overflow-hidden rounded-[14px]'>
+                        <ReactPlayer
+                          url={item.video}
+                          playing={playing}
+                          height='100%'
+                          width='100%'
+                          onPlay={() => setPlaying(true)}
+                          onPause={() => setPlaying(false)}
                           controls
-                          muted
-                          playsInline
-                        >
-                          <source src={item.video} type='video/mp4' />
-                        </video>
-                        <div className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform text-white'>
-                          <VideoPlayIcon className='h-16 w-16' />
-                        </div>
+                        />
+                        {!playing && (
+                          <div className='absolute left-1/2 top-[48%] -translate-x-1/2 -translate-y-1/2 transform text-white'>
+                            <VideoPlayIcon
+                              className='h-16 w-16'
+                              onClick={e => {
+                                e.preventDefault()
+                                e.stopPropagation()
+                                setPlaying(prev => !prev)
+                              }}
+                            />
+                          </div>
+                        )}
                       </div>
                     ) : (
                       <img
                         src={item.image}
                         alt={product.title || `Product image ${index + 1}`}
                         className='h-full w-full rounded-[14px] object-cover'
+                        onClick={handleImageClick}
                       />
                     )}
                   </div>
@@ -194,14 +204,26 @@ export const ProductCarousel: React.FC<Props> = ({ product }) => {
                 <CarouselItem key={item.id}>
                   <div className='flex h-[85vh] w-full items-center justify-center'>
                     {'isVideo' in item ? (
-                      <video
-                        className='max-h-full max-w-full object-contain'
-                        controls
-                        autoPlay
-                      >
-                        <source src={item.video} type='video/mp4' />
-                        Your browser does not support the video tag.
-                      </video>
+                      <div className='relative'>
+                        <ReactPlayer
+                          url={item.video}
+                          autoplay={true}
+                          playing={playing}
+                          height='100%'
+                          width='100%'
+                          onPlay={() => setPlaying(true)}
+                          onPause={() => setPlaying(false)}
+                          controls
+                        />
+                        {!playing && (
+                          <div className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform text-white'>
+                            <VideoPlayIcon
+                              className='h-16 w-16 cursor-pointer'
+                              onClick={() => setPlaying(prev => !prev)}
+                            />
+                          </div>
+                        )}
+                      </div>
                     ) : (
                       <img
                         src={item.image}
