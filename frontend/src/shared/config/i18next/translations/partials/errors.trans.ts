@@ -3,6 +3,7 @@ export const errors_en = {
     input: {
       required: 'Required field',
       email: 'Invalid email',
+      location: 'Invalid location, please select city from list',
       minLength: 'Minimum length is {{minLength}} characters',
       maxLength: 'Maximum length is {{maxLength}} characters',
       min: 'Minimum value is {{min}}',
@@ -36,6 +37,7 @@ export const errors_uk = {
     input: {
       required: "Обов'язкове поле",
       email: 'Невірний email',
+      location: 'Невірна локація, оберіть місто зі списку',
       minLength: 'Мінімальна довжина {{minLength}} символів',
       maxLength: 'Максимальна довжина {{maxLength}} символів',
       min: 'Мінімальне значення {{min}}',

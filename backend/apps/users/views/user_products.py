@@ -138,7 +138,7 @@ class UserProductsView(ListAPIView):
             'total_count': sum([total_active, total_inactive]),
             'total_active': total_active,
             'total_inactive': total_inactive,
-            'total_draft': total_draft,
+            'total_pending': total_draft,
             'total_rejected': total_rejected,
         }
 

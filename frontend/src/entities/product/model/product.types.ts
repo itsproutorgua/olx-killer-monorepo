@@ -19,6 +19,11 @@ export interface ProductImage {
   image: string
 }
 
+export interface ProductVideo {
+  id: number
+  video: string
+}
+
 export interface Product {
   id: number
   title: string
@@ -34,6 +39,7 @@ export interface Product {
   vies: number
   created_at: string
   updated_at: string
+  video: ProductVideo[]
 }
 
 export interface ProductResponse {

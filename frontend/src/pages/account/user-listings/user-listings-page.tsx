@@ -7,6 +7,7 @@ import {
   renderListingsContent,
   useListingsState,
 } from '@/entities/user-listings/library'
+import { ListingResponse } from '@/entities/user-listings/models/types.ts'
 import { UserListingsTabs } from '@/entities/user-listings/ui/user-listings-tabs.tsx'
 import { ArrowDownSmall } from '@/shared/ui/icons/arrow-down-small.tsx'
 import { PRIVATE_PAGES } from '@/shared/constants'
@@ -35,6 +36,9 @@ export const UserListingsPage = () => {
     })
   }
 
+  const tabKey = `total_${activeTab}` as keyof ListingResponse
+  const totalCount = data?.[tabKey]
+
   return (
     <div className='pt-10 xl:min-h-[calc(100dvh-200px)] xl:pl-[42px] xl:pt-[55px]'>
       <Link
@@ -48,7 +52,9 @@ export const UserListingsPage = () => {
       </Link>
       <div className='mb-10 hidden xl:flex xl:justify-between'>
         <UserListingsTabs activeTab={activeTab} onChangeTab={handleTabChange} />
-        <AddListingButton className='-my-2 hidden xl:flex' />
+        {typeof totalCount === 'number' && totalCount > 0 && (
+          <AddListingButton className='-my-2 hidden xl:flex' />
+        )}
       </div>
 
       {data ? (

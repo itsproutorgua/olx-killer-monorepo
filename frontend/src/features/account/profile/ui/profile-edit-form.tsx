@@ -28,7 +28,11 @@ export function ProfileEditForm() {
   const { mutate, isPending } = useUpdateProfile()
   const [searchTerm, setSearchTerm] = useState('')
   const [isLocationFocused, setIsLocationFocused] = useState(false)
-  const debouncedSearchTerm = useDebounce(searchTerm, 500)
+  const [isSelectingLocation, setIsSelectingLocation] = useState(false)
+  const debouncedSearchTerm = useDebounce(
+    searchTerm.toLowerCase().split(', ')[0],
+    200,
+  )
   const { locations, cursor } = useLocations(debouncedSearchTerm, {})
   const ProfileFormSchema = useProfileSchema()
   const form = useForm<z.infer<typeof ProfileFormSchema>>({
@@ -44,11 +48,11 @@ export function ProfileEditForm() {
 
   useEffect(() => {
     if (profileLoaded && user) {
-      setSearchTerm(user.location?.name || '')
+      setSearchTerm(user?.location.name + ', ' + user?.location.region || '')
       form.reset({
         image: undefined,
         user_name: user?.username || '',
-        location_id: user?.location.name || '',
+        location_id: user?.location.name + ', ' + user?.location.region || '',
         user_phone: user?.phone_numbers[0] || '',
         user_email: user?.email || '',
       })
@@ -74,10 +78,14 @@ export function ProfileEditForm() {
     try {
       mutate(formData, {
         onSuccess: () => {
-          toast.success('Profile updated successfully!', { duration: 4000 })
+          toast.success(t('profileForm.messages.profileUpdateSuccess'), {
+            duration: 4000,
+          })
         },
         onError: () => {
-          toast.error('Error updating profile')
+          toast.error(t('profileForm.messages.profileUpdateError'), {
+            duration: 4000,
+          })
         },
       })
     } catch (error) {
@@ -147,18 +155,47 @@ export function ProfileEditForm() {
                         <Input
                           id='location'
                           placeholder={t('profileForm.fields.city.placeholder')}
-                          className={`form-input relative`}
-                          {...field}
+                          className='form-input relative'
                           value={searchTerm}
                           onChange={e => {
                             setSearchTerm(e.target.value)
-                            field.onChange(e.target.value)
+                            setIsLocationFocused(true)
+                            setIsSelectingLocation(false)
+                          }}
+                          onBlur={async () => {
+                            if (isSelectingLocation) return
+
+                            // Use a small timeout to allow state updates to propagate
+                            setTimeout(() => {
+                              const selectedLocation = locations?.find(loc => {
+                                const [inputName] = searchTerm
+                                  .toLowerCase()
+                                  .split(', ')
+                                return (
+                                  loc.name.toLowerCase().trim() ===
+                                  inputName?.trim()
+                                )
+                              })
+
+                              if (!selectedLocation) {
+                                setSearchTerm('')
+                                field.onChange('')
+                                form.setError('location_id', {
+                                  message: t('errors.input.location'),
+                                })
+                              } else {
+                                setSearchTerm(
+                                  `${selectedLocation.name}, ${selectedLocation.region}`,
+                                )
+                                field.onChange(selectedLocation.id.toString())
+                                form.clearErrors('location_id')
+                              }
+                              setIsLocationFocused(false)
+                            }, 100)
                           }}
                           onFocus={() => setIsLocationFocused(true)}
-                          onBlur={() => setIsLocationFocused(false)}
                         />
                       </FormControl>
-                      {/* Display search results */}
                       {isLocationFocused && debouncedSearchTerm.length >= 3 && (
                         <div className='absolute left-0 right-0 top-full z-50 mt-2 max-h-60 overflow-auto rounded-xl bg-white p-2 shadow-lg'>
                           {cursor}
@@ -168,9 +205,13 @@ export function ProfileEditForm() {
                               className='cursor-pointer p-2 hover:bg-gray-100'
                               onMouseDown={e => {
                                 e.preventDefault()
-                                setSearchTerm(location.name)
-                                field.onChange(location.id.toString())
+                                setSearchTerm(
+                                  location.name + ', ' + location.region,
+                                )
+                                field.onChange(location.id.toString()) // Assign valid location ID
                                 setIsLocationFocused(false)
+                                setIsSelectingLocation(true)
+                                form.clearErrors('location_id')
                               }}
                             >
                               {location.name}, {location.region}
