@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { PlayIcon } from 'lucide-react'
 
 import { Product } from '@/entities/product'
 import {
@@ -16,6 +15,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/shared/ui/shadcn-ui/dialog.tsx'
+import { VideoPlayIcon } from '@/shared/ui/icons'
 import { CarouselThumbnailNext } from '@/shared/ui/icons/carouselThumbnailNext.tsx'
 import { CarouselThumbnailPrevious } from '@/shared/ui/icons/carouselThumbnailPrevious.tsx'
 import { cn } from '@/shared/library/utils'
@@ -78,14 +78,14 @@ export const ProductCarousel: React.FC<Props> = ({ product }) => {
                       <div className='relative h-full w-full'>
                         <video
                           className='h-full w-full rounded-[14px] object-cover'
-                          controls={false}
+                          controls
                           muted
                           playsInline
                         >
                           <source src={item.video} type='video/mp4' />
                         </video>
                         <div className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform text-white'>
-                          <PlayIcon className='h-16 w-16' />
+                          <VideoPlayIcon className='h-16 w-16' />
                         </div>
                       </div>
                     ) : (
@@ -126,30 +126,34 @@ export const ProductCarousel: React.FC<Props> = ({ product }) => {
                       onClick={() =>
                         mainCarouselApi?.scrollTo(thumbsStartIndex + index)
                       }
-                      className={cn(
-                        'cursor-pointer',
-                        thumbsStartIndex + index === current - 1
-                          ? 'opacity-100'
-                          : 'opacity-30',
-                      )}
                     >
                       <div className='relative flex h-[48px] w-[48px] items-center justify-center rounded bg-gray-100 md:h-[88px] md:w-[88px]'>
                         {'isVideo' in item ? (
                           <>
                             <video
-                              className='h-full w-full rounded object-cover'
+                              className={cn(
+                                'h-full w-full cursor-pointer rounded object-cover',
+                                thumbsStartIndex + index === current - 1
+                                  ? 'opacity-100'
+                                  : 'opacity-30',
+                              )}
                               muted
                               playsInline
                             >
                               <source src={item.video} type='video/mp4' />
                             </video>
-                            <PlayIcon className='absolute h-4 w-4 text-white md:h-6 md:w-6' />
+                            <VideoPlayIcon className='absolute z-50 h-4 w-4 text-white opacity-100 md:h-7 md:w-7' />
                           </>
                         ) : (
                           <img
                             src={item.image}
                             alt={product.title || `Thumbnail ${index + 1}`}
-                            className='h-full w-full rounded object-cover'
+                            className={cn(
+                              'h-full w-full cursor-pointer rounded object-cover',
+                              thumbsStartIndex + index === current - 1
+                                ? 'opacity-100'
+                                : 'opacity-30',
+                            )}
                           />
                         )}
                       </div>
