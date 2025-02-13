@@ -33,12 +33,10 @@ export const ProductCarousel: React.FC<Props> = ({ product }) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const THUMBS_TO_SHOW = 5
 
-  // Combine images and video into media array
+  // Combine images and videos into a single media array
   const media = [
-    ...(product.images?.length ? product.images : []),
-    ...(product.video.video !== null
-      ? [{ isVideo: true, url: product.video }]
-      : []),
+    ...(product.images?.map(img => ({ ...img, isImage: true })) || []),
+    ...(product.video?.map(vid => ({ ...vid, isVideo: true })) || []),
   ]
 
   useEffect(() => {
@@ -71,7 +69,7 @@ export const ProductCarousel: React.FC<Props> = ({ product }) => {
         <CarouselContent>
           {media.length > 0
             ? media.map((item, index) => (
-                <CarouselItem key={index}>
+                <CarouselItem key={item.id}>
                   <div
                     onClick={handleImageClick}
                     className='flex h-[238px] w-[355px] cursor-pointer items-center justify-center rounded-[14px] bg-gray-100 md:h-[353px] md:w-full xl:h-[613px] xl:w-[629px]'
@@ -84,7 +82,7 @@ export const ProductCarousel: React.FC<Props> = ({ product }) => {
                           muted
                           playsInline
                         >
-                          <source src={item.url.video} type='video/mp4' />
+                          <source src={item.video} type='video/mp4' />
                         </video>
                         <div className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform text-white'>
                           <PlayIcon className='h-16 w-16' />
@@ -124,7 +122,7 @@ export const ProductCarousel: React.FC<Props> = ({ product }) => {
                   .slice(thumbsStartIndex, thumbsStartIndex + THUMBS_TO_SHOW)
                   .map((item, index) => (
                     <button
-                      key={index}
+                      key={item.id}
                       onClick={() =>
                         mainCarouselApi?.scrollTo(thumbsStartIndex + index)
                       }
@@ -143,7 +141,7 @@ export const ProductCarousel: React.FC<Props> = ({ product }) => {
                               muted
                               playsInline
                             >
-                              <source src={item.url.video} type='video/mp4' />
+                              <source src={item.video} type='video/mp4' />
                             </video>
                             <PlayIcon className='absolute h-4 w-4 text-white md:h-6 md:w-6' />
                           </>
@@ -182,14 +180,14 @@ export const ProductCarousel: React.FC<Props> = ({ product }) => {
           </DialogHeader>
           <p id='dialog-description' className='sr-only'>
             View media of {product.title}. Use arrow keys to navigate through
-            the images and video.
+            the images and videos.
           </p>
           <Carousel
             opts={{ align: 'start', loop: true, startIndex: currentIndex }}
           >
             <CarouselContent>
-              {media.map((item, index) => (
-                <CarouselItem key={index}>
+              {media.map(item => (
+                <CarouselItem key={item.id}>
                   <div className='flex h-[85vh] w-full items-center justify-center'>
                     {'isVideo' in item ? (
                       <video
@@ -197,13 +195,13 @@ export const ProductCarousel: React.FC<Props> = ({ product }) => {
                         controls
                         autoPlay
                       >
-                        <source src={item.url.video} type='video/mp4' />
+                        <source src={item.video} type='video/mp4' />
                         Your browser does not support the video tag.
                       </video>
                     ) : (
                       <img
                         src={item.image}
-                        alt={`Product image ${index + 1}`}
+                        alt={`Product image ${item.id}`}
                         className='max-h-full max-w-full object-contain'
                       />
                     )}

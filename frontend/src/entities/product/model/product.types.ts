@@ -39,10 +39,8 @@ export interface Product {
   vies: number
   created_at: string
   updated_at: string
-  video: ProductVideo
+  video: ProductVideo[]
 }
-
-export type MediaItem = ProductImage | { type: 'video'; src: string }
 
 export interface ProductResponse {
   count: number
