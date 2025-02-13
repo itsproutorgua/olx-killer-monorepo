@@ -19,6 +19,7 @@ import {
 import { VideoPlayIcon } from '@/shared/ui/icons'
 import { CarouselThumbnailNext } from '@/shared/ui/icons/carouselThumbnailNext.tsx'
 import { CarouselThumbnailPrevious } from '@/shared/ui/icons/carouselThumbnailPrevious.tsx'
+import { useMediaQuery } from '@/shared/library/hooks'
 import { cn } from '@/shared/library/utils'
 
 interface Props {
@@ -33,6 +34,7 @@ export const ProductCarousel: React.FC<Props> = ({ product }) => {
   const [thumbsStartIndex, setThumbsStartIndex] = useState(0)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [playing, setPlaying] = useState(false)
+  const isMobile = useMediaQuery('(max-width: 767px)')
   const THUMBS_TO_SHOW = 5
 
   // Combine images and videos into a single media array
@@ -84,7 +86,7 @@ export const ProductCarousel: React.FC<Props> = ({ product }) => {
                           onPause={() => setPlaying(false)}
                           controls
                         />
-                        {!playing && (
+                        {!isMobile && !playing && (
                           <div className='absolute left-1/2 top-[48%] -translate-x-1/2 -translate-y-1/2 transform text-white'>
                             <VideoPlayIcon
                               className='h-16 w-16'
@@ -215,7 +217,7 @@ export const ProductCarousel: React.FC<Props> = ({ product }) => {
                           onPause={() => setPlaying(false)}
                           controls
                         />
-                        {!playing && (
+                        {!isMobile && !playing && (
                           <div className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform text-white'>
                             <VideoPlayIcon
                               className='h-16 w-16 cursor-pointer'
