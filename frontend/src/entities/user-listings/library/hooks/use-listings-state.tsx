@@ -34,18 +34,14 @@ export const useListingsState = () => {
   )
 
   const getListingsTabCount = (tabId: string): number => {
-    switch (tabId) {
-      case 'active':
-        return data?.total_active ?? 0
-      case 'inactive':
-        return data?.total_inactive ?? 0
-      case 'pending':
-        return data?.total_draft ?? 0
-      case 'rejected':
-        return data?.total_rejected ?? 0
-      default:
-        return 0
+    const tabCounts: Record<string, number | undefined> = {
+      active: data?.total_active,
+      inactive: data?.total_inactive,
+      pending: data?.total_pending,
+      rejected: data?.total_rejected,
     }
+
+    return tabCounts[tabId] ?? 0
   }
 
   return {
