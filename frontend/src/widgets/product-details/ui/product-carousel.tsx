@@ -72,15 +72,12 @@ export const ProductCarousel: React.FC<Props> = ({ product }) => {
           {media.length > 0
             ? media.map((item, index) => (
                 <CarouselItem key={item.id}>
-                  <div
-                    onClick={handleImageClick}
-                    className='flex h-[238px] w-[355px] cursor-pointer items-center justify-center rounded-[14px] bg-gray-100 md:h-[353px] md:w-full xl:h-[613px] xl:w-[629px]'
-                  >
+                  <div className='flex h-[238px] w-[355px] cursor-pointer items-center justify-center rounded-[14px] bg-gray-100 md:h-[353px] md:w-full xl:h-[613px] xl:w-[629px]'>
                     {'isVideo' in item ? (
-                      <div className='relative h-full w-full rounded-[14px]'>
+                      <div className='relative h-full w-full overflow-hidden rounded-[14px]'>
                         <ReactPlayer
-                          className='rounded-[14px]'
                           url={item.video}
+                          playing={playing}
                           height='100%'
                           width='100%'
                           onPlay={() => setPlaying(true)}
@@ -88,8 +85,15 @@ export const ProductCarousel: React.FC<Props> = ({ product }) => {
                           controls
                         />
                         {!playing && (
-                          <div className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform text-white'>
-                            <VideoPlayIcon className='h-16 w-16' />
+                          <div className='absolute left-1/2 top-[48%] -translate-x-1/2 -translate-y-1/2 transform text-white'>
+                            <VideoPlayIcon
+                              className='h-16 w-16'
+                              onClick={e => {
+                                e.preventDefault()
+                                e.stopPropagation()
+                                setPlaying(prev => !prev)
+                              }}
+                            />
                           </div>
                         )}
                       </div>
@@ -98,6 +102,7 @@ export const ProductCarousel: React.FC<Props> = ({ product }) => {
                         src={item.image}
                         alt={product.title || `Product image ${index + 1}`}
                         className='h-full w-full rounded-[14px] object-cover'
+                        onClick={handleImageClick}
                       />
                     )}
                   </div>
@@ -201,7 +206,6 @@ export const ProductCarousel: React.FC<Props> = ({ product }) => {
                     {'isVideo' in item ? (
                       <div className='relative'>
                         <ReactPlayer
-                          className='rounded-[14px]'
                           url={item.video}
                           autoplay={true}
                           playing={playing}
@@ -215,7 +219,7 @@ export const ProductCarousel: React.FC<Props> = ({ product }) => {
                           <div className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform text-white'>
                             <VideoPlayIcon
                               className='h-16 w-16 cursor-pointer'
-                              onClick={() => setPlaying(!playing)}
+                              onClick={() => setPlaying(prev => !prev)}
                             />
                           </div>
                         )}
