@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { PlayIcon } from 'lucide-react'
 
 import { Product } from '@/entities/product'
 import {
@@ -27,28 +28,30 @@ interface Props {
 export const ProductCarousel: React.FC<Props> = ({ product }) => {
   const [mainCarouselApi, setMainCarouselApi] = useState<CarouselApi>()
   const [current, setCurrent] = useState(0)
-  const [currentIndex, setCurrentIndex] = useState(0) // Track current index for modal
+  const [currentIndex, setCurrentIndex] = useState(0)
   const [thumbsStartIndex, setThumbsStartIndex] = useState(0)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const THUMBS_TO_SHOW = 5
 
-  const images =
-    product.images && product.images.length > 0 ? product.images : null
+  // Combine images and video into media array
+  const media = [
+    ...(product.images?.length ? product.images : []),
+    ...(product.video.video !== null
+      ? [{ isVideo: true, url: product.video }]
+      : []),
+  ]
 
   useEffect(() => {
-    if (!mainCarouselApi) {
-      return
-    }
+    if (!mainCarouselApi) return
 
     setCurrent(mainCarouselApi.selectedScrollSnap() + 1)
-    setCurrentIndex(mainCarouselApi.selectedScrollSnap()) // Initialize the current index
+    setCurrentIndex(mainCarouselApi.selectedScrollSnap())
 
     mainCarouselApi.on('select', () => {
       const selectedSnap = mainCarouselApi.selectedScrollSnap()
       setCurrent(selectedSnap + 1)
-      setCurrentIndex(selectedSnap) // Update the current index for the modal
+      setCurrentIndex(selectedSnap)
 
-      // Adjust thumbnail window based on the selected slide
       if (selectedSnap >= thumbsStartIndex + THUMBS_TO_SHOW) {
         setThumbsStartIndex(selectedSnap - THUMBS_TO_SHOW + 1)
       } else if (selectedSnap < thumbsStartIndex) {
@@ -63,31 +66,44 @@ export const ProductCarousel: React.FC<Props> = ({ product }) => {
     <div className='relative'>
       <Carousel
         setApi={setMainCarouselApi}
-        opts={{
-          align: 'start',
-          loop: true,
-        }}
+        opts={{ align: 'start', loop: true }}
       >
         <CarouselContent>
-          {images
-            ? images.map((image, index) => (
+          {media.length > 0
+            ? media.map((item, index) => (
                 <CarouselItem key={index}>
                   <div
                     onClick={handleImageClick}
                     className='flex h-[238px] w-[355px] cursor-pointer items-center justify-center rounded-[14px] bg-gray-100 md:h-[353px] md:w-full xl:h-[613px] xl:w-[629px]'
                   >
-                    <img
-                      src={image.image}
-                      alt={product.title || `Product image ${index + 1}`}
-                      className='h-full w-full rounded-[14px] object-cover'
-                    />
+                    {'isVideo' in item ? (
+                      <div className='relative h-full w-full'>
+                        <video
+                          className='h-full w-full rounded-[14px] object-cover'
+                          controls={false}
+                          muted
+                          playsInline
+                        >
+                          <source src={item.url.video} type='video/mp4' />
+                        </video>
+                        <div className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform text-white'>
+                          <PlayIcon className='h-16 w-16' />
+                        </div>
+                      </div>
+                    ) : (
+                      <img
+                        src={item.image}
+                        alt={product.title || `Product image ${index + 1}`}
+                        className='h-full w-full rounded-[14px] object-cover'
+                      />
+                    )}
                   </div>
                 </CarouselItem>
               ))
             : Array.from({ length: 3 }).map((_, index) => (
                 <CarouselItem key={index}>
                   <div className='flex h-[613px] w-full items-center justify-center rounded-[15px] bg-gray-50'>
-                    <span>No Image Available</span>
+                    <span>No Media Available</span>
                   </div>
                 </CarouselItem>
               ))}
@@ -103,10 +119,10 @@ export const ProductCarousel: React.FC<Props> = ({ product }) => {
             <CarouselThumbnailPrevious />
           </CarouselPrevious>
           <div className='flex max-w-2xl gap-[10px] overflow-hidden'>
-            {images
-              ? images
+            {media.length > 0
+              ? media
                   .slice(thumbsStartIndex, thumbsStartIndex + THUMBS_TO_SHOW)
-                  .map((image, index) => (
+                  .map((item, index) => (
                     <button
                       key={index}
                       onClick={() =>
@@ -119,12 +135,25 @@ export const ProductCarousel: React.FC<Props> = ({ product }) => {
                           : 'opacity-30',
                       )}
                     >
-                      <div className='flex h-[48px] w-[48px] items-center justify-center rounded bg-gray-100 md:h-[88px] md:w-[88px]'>
-                        <img
-                          src={image.image}
-                          alt={product.title || `Thumbnail ${index + 1}`}
-                          className='h-full w-full rounded object-cover'
-                        />
+                      <div className='relative flex h-[48px] w-[48px] items-center justify-center rounded bg-gray-100 md:h-[88px] md:w-[88px]'>
+                        {'isVideo' in item ? (
+                          <>
+                            <video
+                              className='h-full w-full rounded object-cover'
+                              muted
+                              playsInline
+                            >
+                              <source src={item.url.video} type='video/mp4' />
+                            </video>
+                            <PlayIcon className='absolute h-4 w-4 text-white md:h-6 md:w-6' />
+                          </>
+                        ) : (
+                          <img
+                            src={item.image}
+                            alt={product.title || `Thumbnail ${index + 1}`}
+                            className='h-full w-full rounded object-cover'
+                          />
+                        )}
                       </div>
                     </button>
                   ))
@@ -152,25 +181,32 @@ export const ProductCarousel: React.FC<Props> = ({ product }) => {
             <DialogTitle>{product.title}</DialogTitle>
           </DialogHeader>
           <p id='dialog-description' className='sr-only'>
-            View images of {product.title}. Use arrow keys to navigate through
-            the images.
+            View media of {product.title}. Use arrow keys to navigate through
+            the images and video.
           </p>
           <Carousel
-            opts={{
-              align: 'start',
-              loop: true,
-              startIndex: currentIndex,
-            }}
+            opts={{ align: 'start', loop: true, startIndex: currentIndex }}
           >
             <CarouselContent>
-              {images?.map((image, index) => (
+              {media.map((item, index) => (
                 <CarouselItem key={index}>
                   <div className='flex h-[85vh] w-full items-center justify-center'>
-                    <img
-                      src={image.image}
-                      alt={`Product image ${index + 1}`}
-                      className='max-h-full max-w-full object-contain'
-                    />
+                    {'isVideo' in item ? (
+                      <video
+                        className='max-h-full max-w-full object-contain'
+                        controls
+                        autoPlay
+                      >
+                        <source src={item.url.video} type='video/mp4' />
+                        Your browser does not support the video tag.
+                      </video>
+                    ) : (
+                      <img
+                        src={item.image}
+                        alt={`Product image ${index + 1}`}
+                        className='max-h-full max-w-full object-contain'
+                      />
+                    )}
                   </div>
                 </CarouselItem>
               ))}

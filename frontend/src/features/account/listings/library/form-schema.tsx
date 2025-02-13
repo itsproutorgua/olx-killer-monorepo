@@ -14,7 +14,7 @@ export const useFormSchema = () => {
       .string()
       .min(3, { message: t('errors.input.minLength', { minLength: 3 }) })
       .max(100, { message: t('errors.input.maxLength', { maxLength: 255 }) })
-      .regex(/^[a-zA-Zа-яА-Я0-9\s-]+$/, {
+      .regex(/^[a-zA-Zа-яА-ЯґҐєЄіІїЇ0-9\s-]+$/, {
         message: t('errors.input.invalidCharacters'),
       }),
 
@@ -89,11 +89,9 @@ export const useFormSchema = () => {
       message: t('errors.input.required') + ', ' + t('errors.input.update'),
     }),
 
-    user_name: z
-      .string()
-      .min(1, {
-        message: t('errors.input.required') + ', ' + t('errors.input.update'),
-      }),
+    user_name: z.string().min(1, {
+      message: t('errors.input.required') + ', ' + t('errors.input.update'),
+    }),
 
     user_email: z
       .string()
@@ -102,10 +100,8 @@ export const useFormSchema = () => {
       })
       .email({ message: t('errors.input.email') }),
 
-    user_phone: z
-      .string()
-      .min(1, {
-        message: t('errors.input.required') + ', ' + t('errors.input.update'),
-      }),
+    user_phone: z.string().min(1, {
+      message: t('errors.input.required') + ', ' + t('errors.input.update'),
+    }),
   })
 }
