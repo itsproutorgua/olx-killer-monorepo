@@ -30,9 +30,9 @@ class ProductSerializer(serializers.ModelSerializer):
         required=False,
     )
     currency = serializers.PrimaryKeyRelatedField(queryset=Currency.objects.all(), write_only=True, required=False)
-    images = ProductImageSerializer(many=True, source='product_images', required=False, read_only=True)
+    images = ProductImageSerializer(many=True, source='product_images', read_only=True)
     uploaded_images = serializers.ListField(child=serializers.ImageField(use_url=True), write_only=True, required=False)
-    video = ProductVideoSerializer(read_only=True, source='product_videos')
+    video = ProductVideoSerializer(source='product_videos', read_only=True, many=True)
     upload_video = serializers.FileField(write_only=True, required=False)
     seller = serializers.SerializerMethodField(read_only=True)
     status = serializers.ChoiceField(choices=Product.Status.choices)

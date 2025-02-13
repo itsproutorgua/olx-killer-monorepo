@@ -9,7 +9,7 @@ from apps.products.serializers.product.product_video import ProductVideoSerializ
 class UserProductsSerializer(serializers.ModelSerializer):
     prices = PriceSerializer(many=True)
     images = ProductImageSerializer(many=True, source='product_images')
-    video = ProductVideoSerializer(source='product_videos', read_only=True)
+    video = ProductVideoSerializer(source='product_videos', read_only=True, many=True)
 
     class Meta:
         model = Product
