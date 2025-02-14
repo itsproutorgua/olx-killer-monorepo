@@ -19,7 +19,6 @@ User = get_user_model()
 
 @extend_schema(
     tags=['Chat'],
-    security=[{'BearerAuth': []}],
 )
 class ChatRoomView(GenericViewSet):
     queryset = ChatRoom.objects.all()
