@@ -24,7 +24,7 @@ export const en = {
     loadMore: 'Load more',
     buy: 'Buy',
     registerAsSeller: 'Register as a seller',
-    loginOrCreate: 'Login or create an account',
+    loginOrCreate: 'Log in or create an account',
     backToTop: 'Back to top',
     writeSeller: 'Write to the seller',
     showNumber: 'Show number',
