@@ -35,10 +35,10 @@ export const AccountPageMobile = () => {
           />
           <div className='flex flex-1 flex-col items-center gap-1'>
             <h2 className='font-medium leading-5'>{user?.username}</h2>
-            <p className='text-sm font-light'>{user?.email}</p>
+            <p className='text-sm font-light decoration-0'>{user?.email}</p>
           </div>
           <button
-            className='absolute right-[18px] top-[18px] h-5 w-5 transition duration-300 hover:text-primary-500'
+            className='absolute right-[18px] top-[18px] h-5 w-5 text-gray-500 transition duration-300 hover:text-primary-500'
             aria-label={t('Edit profile')}
             onClick={() => navigate(PRIVATE_PAGES.PROFILE)}
           >
