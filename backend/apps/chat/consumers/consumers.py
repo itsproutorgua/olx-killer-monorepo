@@ -2,12 +2,13 @@ import json
 
 from asgiref.sync import sync_to_async
 from channels.generic.websocket import AsyncWebsocketConsumer
+from django.core.exceptions import FieldError
 from rest_framework.exceptions import AuthenticationFailed
 
 from apps.users.authentication import Auth0JWTAuthentication
 
 from ..models.chat import ChatRoom
-
+from ..models.message import Message
 
 class ChatConsumer(AsyncWebsocketConsumer):
     async def connect(self):
@@ -69,6 +70,25 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
         await self.accept()
 
+        # Load 50 last messages from database
+        try:
+            messages = await sync_to_async( 
+                lambda:list( 
+                    Message.objects.filter(chat_room=self.room)
+                    .select_related('sender')
+                    .values('text', 'sender__email')
+                    .order_by('-created_at')[:50] 
+                ),
+                thread_sensitive=True
+            )()
+        except FieldError as e:
+            messages = []
+
+        
+        messages_data = [{'text': msg['text'], 'sender_email': msg['sender__email']} for msg in messages]
+
+        await self.send(text_data=json.dumps(messages_data))
+
     async def disconnect(self, close_code):
         # Disconnect from chat group
         await self.channel_layer.group_discard(
@@ -81,6 +101,16 @@ class ChatConsumer(AsyncWebsocketConsumer):
         test_data_json = json.loads(text_data)
         message = test_data_json['message']
 
+        # Save message to database
+        await sync_to_async(
+            lambda: Message.objects.create(
+                chat_room=self.room,
+                sender=self.scope['user'],
+                text=message,
+            ),
+            thread_sensitive=True,
+        )()
+
         # Send message to chat group
         await self.channel_layer.group_send(self.chat_group_name, {'type': 'chat_message', 'message': message})
 
@@ -90,3 +120,4 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
         # Send message to WebSocket
         await self.send(text_data=json.dumps({'message': message}))
+
