@@ -10,6 +10,7 @@ from apps.users.authentication import Auth0JWTAuthentication
 from ..models.chat import ChatRoom
 from ..models.message import Message
 
+
 class ChatConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         # get room id
@@ -72,19 +73,18 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
         # Load 50 last messages from database
         try:
-            messages = await sync_to_async( 
-                lambda:list( 
+            messages = await sync_to_async(
+                lambda: list(
                     Message.objects.filter(chat_room=self.room)
                     .select_related('sender')
                     .values('text', 'sender__email')
-                    .order_by('-created_at')[:50] 
+                    .order_by('-created_at')[:50]
                 ),
-                thread_sensitive=True
+                thread_sensitive=True,
             )()
-        except FieldError as e:
+        except FieldError:
             messages = []
 
-        
         messages_data = [{'text': msg['text'], 'sender_email': msg['sender__email']} for msg in messages]
 
         await self.send(text_data=json.dumps(messages_data))
@@ -120,4 +120,3 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
         # Send message to WebSocket
         await self.send(text_data=json.dumps({'message': message}))
-
