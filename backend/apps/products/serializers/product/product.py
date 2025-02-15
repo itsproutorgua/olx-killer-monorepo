@@ -122,7 +122,6 @@ class ProductSerializer(serializers.ModelSerializer):
             try:
                 PriceSerializer.create_prices(product, prices_data)
             except ValidationError as e:
-                product.delete()
                 raise ValidationError(_('Failed to create product prices: {}'.format(e)), code='validation_error')
 
             try:
@@ -130,13 +129,11 @@ class ProductSerializer(serializers.ModelSerializer):
                     raise ValidationError(errors.INVALID_COUNT_IMAGE, code='invalid_count_images')
                 ProductImageSerializer.create_images(product, images_data)
             except ValidationError as e:
-                product.delete()
                 raise ValidationError(_('Failed to create product images: {}'.format(e)), code='validation_error')
 
             try:
                 ProductVideoSerializer.create_video(product, video_file)
             except ValidationError as e:
-                product.delete()
                 raise ValidationError(_('Failed to create product video: {}'.format(e)), code='validation_error')
 
         return product
