@@ -9,6 +9,8 @@ app_name = 'api_products'
 router = routers.DefaultRouter()
 router.register('categories', views.CategoryAPIViewSet, basename='category')
 router.register('products', views.ProductAPIViewSet, basename='products')
+router.register(r'products/search', views.ProductSearchViewSet, basename='search')
+
 
 urlpatterns = [
     path('products/filters/', views.ProductFilterViewSet.as_view({'get': 'list'}), name='product-filter'),
