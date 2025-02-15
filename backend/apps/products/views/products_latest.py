@@ -38,7 +38,7 @@ class LatestProductListView(ListAPIView):
     serializer_class = LatestProductSerializer
     pagination_class = None
     queryset = (
-        Product.objects.prefetch_related('prices', 'product_images', 'prices__currency')
+        Product.objects.prefetch_related('prices', 'product_images', 'product_videos', 'prices__currency')
         .filter(publication_status=Product.PublicationStatus.ACTIVE)
         .order_by('-created_at')
     )
@@ -49,7 +49,8 @@ class LatestProductListView(ListAPIView):
 
         if not (9 < limit < 51):
             return Response(
-                {'error': 'Invalid limit. It must be between 10 and 50.'}, status=status.HTTP_400_BAD_REQUEST
+                {'error': _('Invalid limit. It must be between 10 and 50.')},
+                status=status.HTTP_400_BAD_REQUEST,
             )
 
         queryset = self.get_queryset()[:limit]
