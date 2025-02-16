@@ -18,8 +18,8 @@ class ChatRoomAdmin(admin.ModelAdmin):
     show_full_result_count = False
 
     search_fields = [
-        'first_user__email', 
-        'second_user__email', 
+        'first_user__email',
+        'second_user__email',
     ]
 
     def get_queryset(self, request):
@@ -42,7 +42,7 @@ class MessageAdmin(admin.ModelAdmin):
     show_full_result_count = False
 
     search_fields = [
-        'sender__email', 
+        'sender__email',
     ]
 
     def get_queryset(self, request):

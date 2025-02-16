@@ -1,9 +1,8 @@
+from chat import ChatRoom
+from common.models.time_stamp import TimestampMixin
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-
-from common.models.time_stamp import TimestampMixin
-from chat import ChatRoom
 
 
 User = get_user_model()
@@ -15,18 +14,16 @@ class Message(TimestampMixin, models.Model):
         DELIVERED = 'delivered', _('Delivered')
         READ = 'read', _('Read')
 
-    chat_room = models.ForeignKey(ChatRoom, on_delete=models.CASCADE, related_name='messages', verbose_name=_('Chat Room'))
-    sender = models.ForeignKey(User, on_delete=models.CASCADE, 
-                               related_name='sender_messages', 
-                               verbose_name=_('Sender'))
+    chat_room = models.ForeignKey(
+        ChatRoom, on_delete=models.CASCADE, related_name='messages', verbose_name=_('Chat Room')
+    )
+    sender = models.ForeignKey(User, on_delete=models.CASCADE, related_name='sender_messages', verbose_name=_('Sender'))
     text = models.TextField(verbose_name=_('Text'))
-    status = models.CharField(_('Status'), max_length=20, 
-                              choices=Status.choices, 
-                              default=Status.SENT)
+    status = models.CharField(_('Status'), max_length=20, choices=Status.choices, default=Status.SENT)
 
     def __str__(self):
         return f'{self.sender}'
-    
+
     def make_as_delivered(self):
         if self.status == self.Status.SENT:
             self.status = self.Status.DELIVERED
