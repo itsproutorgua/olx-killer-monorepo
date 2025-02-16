@@ -63,6 +63,18 @@ export const listingForms_en = {
       submit: 'Publish listing',
     },
   },
+  feedbackForm: {
+    answer: {
+      sold: 'Yes, I sold the item',
+      sold_elsewhere: 'Sold on another platform',
+      not_sold: 'No, it didn’t work out',
+    },
+    description: {
+      label: 'Tell us why you couldn’t sell the item.',
+      placeholder:
+        'For example, not enough views, inconvenient interface, or other reasons. Your feedback will help us improve!',
+    },
+  },
 }
 
 export const listingForms_uk = {
@@ -128,6 +140,18 @@ export const listingForms_uk = {
     buttons: {
       download: 'Завантажити фото',
       submit: 'Опублікувати оголошення',
+    },
+  },
+  feedbackForm: {
+    answer: {
+      sold: 'Так, я продав товар',
+      sold_elsewhere: 'Продав на іншій платформі',
+      not_sold: 'Ні, не вийшло',
+    },
+    description: {
+      label: 'Розкажіть, чому не вийшло продати товар.',
+      placeholder:
+        'Наприклад, недостатньо переглядів, незручний інтерфейс або інші причини. Ваші коментарі допоможуть нам стати кращими!',
     },
   },
 }

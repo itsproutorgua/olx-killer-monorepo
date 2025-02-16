@@ -25,3 +25,4 @@ export { SearchIconListingSuccess } from '@/shared/ui/icons/search-icon-listing-
 export { InstagramSolidIcon } from '@/shared/ui/icons/instagram-solid-icon.tsx'
 export { FacebookSolidIcon } from '@/shared/ui/icons/facebook-solid-icon.tsx'
 export { VideoPlayIcon } from '@/shared/ui/icons/video-play-icon.tsx'
+export { SellFeedbackIcon } from '@/shared/ui/icons/sell-feedback-icon.tsx'

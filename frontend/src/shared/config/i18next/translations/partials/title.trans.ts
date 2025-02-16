@@ -10,6 +10,8 @@ export const titles_uk = {
     similarProducts: 'Схожі товари за вашим запитом',
     announcementsAll: 'Всі оголошення',
     listingCreatedSuccess: 'Ваше оголошення успішно додано!',
+    listingSellFeedback: 'Чи вийшло продати товар на нашій платформі?',
+    feedbackSuccess: 'Дякуємо за ваш відгук!',
   },
 }
 
@@ -25,5 +27,7 @@ export const titles_en = {
     similarProducts: 'Similar products to your request',
     announcementsAll: 'All listings',
     listingCreatedSuccess: 'Your listing successfully created!',
+    listingSellFeedback: 'Did you manage to sell the product on our platform?',
+    feedbackSuccess: 'Thank you for your feedback!',
   },
 }

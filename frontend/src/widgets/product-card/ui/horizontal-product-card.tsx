@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useQueryClient } from '@tanstack/react-query'
 import { LoaderCircle } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
+import {
+  FeedbackSendSuccess,
+  ListingSellFeedback,
+} from '@/features/account/listings'
+import { FeedbackFormData } from '@/features/account/listings/library/sell-feedback-shema.tsx'
 import { ProductStats } from '@/features/product'
 import { useFavoriteMutations } from '@/entities/favorite/library/hooks/use-favorites.tsx'
 import { useDeleteProduct } from '@/entities/product/library/hooks/use-delete-product.tsx'
@@ -26,6 +32,9 @@ export const HorizontalProductCard = ({
   onEdit?: () => void
 }) => {
   const { t } = useTranslation()
+  const [isFeedbackOpen, setIsFeedbackOpen] = useState(false)
+  const [isSuccessOpen, setIsSuccessOpen] = useState(false)
+  const queryClient = useQueryClient()
   const statusLabel = getStatusLabel(t, listingStatus)
 
   const { removeFromFavorites } = useFavoriteMutations()
@@ -54,6 +63,38 @@ export const HorizontalProductCard = ({
     } catch (error) {
       console.log('Error occurred when deleting product')
     }
+  }
+
+  const handleDeactivateProduct = async (
+    event: React.MouseEvent<HTMLButtonElement>,
+  ) => {
+    event.stopPropagation()
+    event.preventDefault()
+    setIsFeedbackOpen(true)
+  }
+
+  const handleDeactivateClick = async (feedbackData?: FeedbackFormData) => {
+    try {
+      // Submit feedback data here if needed
+      console.log('Feedback data:', feedbackData)
+
+      // Execute deactivation
+      await deleteProductMutation.mutateAsync(product.slug, {
+        onSuccess: () => {
+          // 3. Show success modal immediately
+          setIsSuccessOpen(true)
+          setIsFeedbackOpen(false)
+        },
+      })
+    } catch (error) {
+      console.error('Deactivation failed:', error)
+    }
+  }
+
+  const handleSuccessClose = () => {
+    // 4. When success modal closes, trigger revalidation
+    queryClient.invalidateQueries({ queryKey: ['oka-user-listings'] })
+    setIsSuccessOpen(false)
   }
 
   return (
@@ -144,7 +185,9 @@ export const HorizontalProductCard = ({
             onClick={
               listingStatus === 'Favorite'
                 ? handleRemoveFavorite
-                : handleDeleteProduct
+                : listingStatus === 'active'
+                  ? handleDeactivateProduct
+                  : handleDeleteProduct
             }
             className={`flex w-full items-center justify-center gap-3 rounded-[6px] border border-gray-200 py-[10px] text-error-700 hover:text-error-500 ${listingStatus === 'Favorite' ? 'xl:min-w-[219px] xl:px-8' : 'xl:w-[156px]'}`}
           >
@@ -161,6 +204,16 @@ export const HorizontalProductCard = ({
               </>
             )}
           </button>
+          <ListingSellFeedback
+            open={isFeedbackOpen}
+            onOpenChange={setIsFeedbackOpen}
+            onFormSubmit={handleDeactivateClick}
+          />
+
+          <FeedbackSendSuccess
+            open={isSuccessOpen}
+            onOpenChange={handleSuccessClose}
+          />
         </div>
       </div>
     </div>
