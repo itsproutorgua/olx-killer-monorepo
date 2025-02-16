@@ -32,6 +32,7 @@ export const en = {
     back: 'Back',
     show: 'Show',
     backToAccount: 'Back to account',
+    submit: 'Submit',
   },
   sort: {
     priceExpensive: 'From cheap to expensive',
@@ -213,5 +214,9 @@ export const en = {
       messageEdit: 'View and edit your listing in the section ',
       listingsLink: '"Listings"',
     },
+    sellFeedbackMessage:
+      'We strive to make the platform better. Share how your experience went.',
+    feedbackSuccess:
+      'Your opinion is very important to us and helps improve our platform!',
   },
 }
