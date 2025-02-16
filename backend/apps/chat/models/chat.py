@@ -16,3 +16,4 @@ class ChatRoom(TimestampMixin, models.Model):
 
     class Meta:
         db_table = 'chatrooms'
+        app_label = 'chat'

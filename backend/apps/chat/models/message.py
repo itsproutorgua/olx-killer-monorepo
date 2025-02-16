@@ -21,5 +21,6 @@ class Message(TimestampMixin, models.Model):
 
     class Meta:
         db_table = 'messages'
+        app_label = 'chat'
         verbose_name = _('Message')
         verbose_name_plural = _('Messages')
