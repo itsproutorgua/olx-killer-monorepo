@@ -67,6 +67,18 @@ JAZZMIN_SETTINGS = {
             'url': 'admin:favorites_favorite_changelist',
             'permissions': ['auth.view_user'],
         },
+        {
+            'name': _('Chat'),
+            'model': 'chat.ChatRoom',
+            'url': 'admin:chat_chatroom_changelist',
+            'permissions': ['auth.view_user'],
+        },
+        {
+            'name': _('Messages'),
+            'model': 'chat.Message',
+            'url': 'admin:chat_message_changelist',
+            'permissions': ['auth.view_user'],
+        },
     ],
 }
 
