@@ -53,8 +53,8 @@ This document provides an overview of the `ChatConsumer` class, which is respons
         "message_id": 1,
         "sender_id": 1,
         "status": "delivered",
-        "created_at": 1739738505.140038,
-        "updated_at": 1739738505.140059
+        "created_at": "2025-02-16T12:34:56.789Z",
+        "updated_at": "2025-02-16T12:34:56.789Z"
     }
 }
 ```
@@ -82,8 +82,8 @@ This document provides an overview of the `ChatConsumer` class, which is respons
         "message_id": 1,
         "sender_id": 1,
         "status": "delivered",
-        "created_at": 1739738505.140038,
-        "updated_at": 1739738505.140059
+        "created_at": "2025-02-16T12:34:56.789Z",
+        "updated_at": "2025-02-16T12:34:56.789Z"
     }
 }
 ```
@@ -104,8 +104,8 @@ This document provides an overview of the `ChatConsumer` class, which is respons
         "message_id": 1,
         "sender_id": 1,
         "status": "read",
-        "created_at": 1739738505.140038,
-        "updated_at": 1739738505.140059
+        "created_at": "2025-02-16T12:34:56.789Z",
+        "updated_at": "2025-02-16T12:34:56.789Z"
     }
 }
 ```
