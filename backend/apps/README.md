@@ -14,19 +14,12 @@ This document provides an overview of the `ChatConsumer` class, which is respons
 - Joins the WebSocket group corresponding to the chat room.
 - Loads the last 50 messages from the database and sends them to the client.
 
-**Example Response:**
-```json
-[
-    {"text": "Hello!", "sender_email": "user1@example.com"},
-    {"text": "Hi there!", "sender_email": "user2@example.com"}
-]
-```
-
 ---
 
 ### Disconnect (`disconnect` method)
 **Description:**
 - Removes the user from the WebSocket group when they disconnect.
+- Updates the user's status to offline.
 
 ---
 
@@ -46,7 +39,23 @@ This document provides an overview of the `ChatConsumer` class, which is respons
 **Broadcasted Message Format:**
 ```json
 {
-    "message": "Hello, how are you?"
+    "type": "chat_message",
+    "message_id": 1
+}
+```
+
+**Example Response:**
+```json
+{
+    "type": "chat_message",
+    "message": {
+        "text": "Hello, how are you?",
+        "message_id": 1,
+        "sender_id": 1,
+        "status": "delivered",
+        "created_at": 1739738505.140038,
+        "updated_at": 1739738505.140059
+    }
 }
 ```
 
@@ -55,6 +64,72 @@ This document provides an overview of the `ChatConsumer` class, which is respons
 ### Receive Broadcasted Messages (`chat_message` method)
 **Description:**
 - Sends messages received from the WebSocket group to the connected WebSocket clients.
+
+---
+
+### Mark Message as Delivered (`mark_message_as_delivered` method)
+**Description:**
+- Marks the message as delivered.
+- Sends the message to the client.
+- If the recipient is online, marks the message as read.
+
+**Example Event:**
+```json
+{
+    "type": "mark_message_as_delivered",
+    "message": {
+        "text": "Hello, how are you?",
+        "message_id": 1,
+        "sender_id": 1,
+        "status": "delivered",
+        "created_at": 1739738505.140038,
+        "updated_at": 1739738505.140059
+    }
+}
+```
+
+---
+
+### Mark Message as Read (`mark_message_as_read` method)
+**Description:**
+- Marks the message as read.
+- Sends the message to the client.
+
+**Example Event:**
+```json
+{
+    "type": "mark_message_as_read",
+    "message": {
+        "text": "Hello, how are you?",
+        "message_id": 1,
+        "sender_id": 1,
+        "status": "read",
+        "created_at": 1739738505.140038,
+        "updated_at": 1739738505.140059
+    }
+}
+```
+
+---
+
+
+### Send Last Messages (`send_last_messages` method)
+**Description:**
+- Loads the last 50 messages from the database and sends them to the client.
+
+**Example Response:**
+```json
+[
+    {
+        "text": "Hello, how are you?",
+        "sender_email": "user1@example.com"
+    },
+    {
+        "text": "I'm good, thanks!",
+        "sender_email": "user2@example.com"
+    }
+]
+```
 
 ---
 
@@ -68,8 +143,7 @@ This document provides an overview of the `ChatConsumer` class, which is respons
 ## Error Handling
 - If the chat room is not found, the connection is closed.
 - If the user is not part of the chat room, the connection is closed.
-- If a database field error occurs while loading messages, an empty message list is returned
-
+- If a database field error occurs while loading messages, an empty message list is returned.
 
 ---
 
