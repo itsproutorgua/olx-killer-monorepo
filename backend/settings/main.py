@@ -76,7 +76,7 @@ INSTALLED_APPS += [
     'apps.locations.apps.LocationsConfig',
     'apps.favorites.apps.FavoritesConfig',
     'apps.common',
-    'apps.chat',
+    'apps.chat.apps.ChatConfig',
 ]
 
 MIDDLEWARE += [
