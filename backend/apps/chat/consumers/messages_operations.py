@@ -2,7 +2,7 @@ import json
 
 from asgiref.sync import sync_to_async
 from django.core.exceptions import FieldError
-from models.message import Message
+from apps.chat.models.message import Message
 
 
 async def chat_message(consumer, event):
@@ -63,8 +63,8 @@ async def serialize_message(message):
             'message_id': message.id,
             'sender_id': message.sender.id,
             'status': message.status,
-            'created_at': message.created_at.timestamp(),
-            'updated_at': message.updated_at.timestamp(),
+            'created_at': message.created_at.isoformat(),
+            'updated_at': message.updated_at.isoformat(),
         },
         thread_sensitive=True,
     )()

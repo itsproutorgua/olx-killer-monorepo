@@ -1,7 +1,7 @@
 from asgiref.sync import sync_to_async
 from django.utils import timezone
-from models.chat import ChatRoom
-from models.useractivity import UserActivity
+from apps.chat.models.chat import ChatRoom
+from apps.chat.models.useractivity import UserActivity
 from rest_framework.exceptions import AuthenticationFailed
 
 from apps.users.authentication import Auth0JWTAuthentication

@@ -1,8 +1,8 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
-from ..models.chat import ChatRoom
-from ..serializers.message import MessageSerializer
+from apps.chat.models.chat import ChatRoom
+from apps.chat.serializers.message import MessageSerializer
 
 
 User = get_user_model()

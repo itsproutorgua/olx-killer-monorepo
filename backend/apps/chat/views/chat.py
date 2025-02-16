@@ -10,8 +10,8 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
 
-from ..models.chat import ChatRoom
-from ..serializers.chat import ChatSerializer
+from apps.chat.models.chat import ChatRoom
+from apps.chat.serializers.chat import ChatSerializer
 
 
 User = get_user_model()

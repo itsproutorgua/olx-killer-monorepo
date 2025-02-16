@@ -1,19 +1,19 @@
 import json
 
 from channels.generic.websocket import AsyncWebsocketConsumer
-from messages_operations import chat_message
-from messages_operations import get_message
-from messages_operations import mark_message_as_delivered
-from messages_operations import mark_message_as_read
-from messages_operations import save_message
-from messages_operations import send_last_messages
-from messages_operations import serialize_message
-from users_and_rooms_operations import authenticate_user
-from users_and_rooms_operations import get_chat_room
-from users_and_rooms_operations import get_recipient
-from users_and_rooms_operations import is_user_in_chat
-from users_and_rooms_operations import is_user_online
-from users_and_rooms_operations import update_user_status
+from apps.chat.consumers.messages_operations import chat_message
+from apps.chat.consumers.messages_operations import get_message
+from apps.chat.consumers.messages_operations import mark_message_as_delivered
+from apps.chat.consumers.messages_operations import mark_message_as_read
+from apps.chat.consumers.messages_operations import save_message
+from apps.chat.consumers.messages_operations import send_last_messages
+from apps.chat.consumers.messages_operations import serialize_message
+from apps.chat.consumers.users_and_rooms_operations import authenticate_user
+from apps.chat.consumers.users_and_rooms_operations import get_chat_room
+from apps.chat.consumers.users_and_rooms_operations import get_recipient
+from apps.chat.consumers.users_and_rooms_operations import is_user_in_chat
+from apps.chat.consumers.users_and_rooms_operations import is_user_online
+from apps.chat.consumers.users_and_rooms_operations import update_user_status
 
 
 class ChatConsumer(AsyncWebsocketConsumer):

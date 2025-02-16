@@ -1,4 +1,4 @@
-from common.models.time_stamp import TimestampMixin
+from apps.common.models.time_stamp import TimestampMixin
 from django.contrib.auth import get_user_model
 from django.db import models
 

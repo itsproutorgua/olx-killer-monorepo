@@ -2,8 +2,8 @@
 from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
 
-from ..models.chat import ChatRoom
-from ..models.message import Message
+from apps.chat.models.chat import ChatRoom
+from apps.chat.models.message import Message
 
 
 @admin.register(ChatRoom)

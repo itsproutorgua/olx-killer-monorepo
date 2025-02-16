@@ -2,7 +2,7 @@ from django.urls import include
 from django.urls import path
 from rest_framework.routers import SimpleRouter
 
-from .views.chat import ChatRoomView
+from apps.chat.views.chat import ChatRoomView
 
 
 router = SimpleRouter()
