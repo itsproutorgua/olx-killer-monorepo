@@ -6,7 +6,7 @@ This document provides an overview of the `ChatConsumer` class, which is respons
 ## WebSocket Endpoints
 
 ### Connect (`connect` method)
-**Endpoint:** `ws://<server>/ws/chat/<room_id>/`
+**Endpoint:** `ws://127.0.0.1:8001/ws/chat/<room_id>/`
 
 **Description:**
 - Authenticates the user using a JWT token.
