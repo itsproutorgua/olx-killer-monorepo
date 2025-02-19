@@ -37,6 +37,7 @@ export function ProfileEditForm() {
   const ProfileFormSchema = useProfileSchema()
   const form = useForm<z.infer<typeof ProfileFormSchema>>({
     resolver: zodResolver(ProfileFormSchema),
+    mode: 'onChange',
     defaultValues: {
       image: undefined,
       user_name: '',
@@ -48,7 +49,9 @@ export function ProfileEditForm() {
 
   useEffect(() => {
     if (profileLoaded && user) {
-      setSearchTerm(user?.location.name + ', ' + user?.location.region || '')
+      if (user?.location?.id) {
+        setSearchTerm(user?.location.name + ', ' + user?.location.region || '')
+      }
       form.reset({
         image: undefined,
         user_name: user?.username || '',
@@ -60,6 +63,7 @@ export function ProfileEditForm() {
         'location_id',
         user?.location?.id ? user?.location.id.toString() : '',
       )
+      form.trigger(['location_id', 'user_phone'])
     }
   }, [profileLoaded, user])
 
