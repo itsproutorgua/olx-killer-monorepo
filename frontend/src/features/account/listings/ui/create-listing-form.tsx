@@ -11,6 +11,7 @@ import { z } from 'zod'
 import { useFormSchema } from '@/features/account/listings'
 import { CategoryDialog } from '@/features/account/listings/ui/category-select-dialog.tsx'
 import { CurrencySelect } from '@/features/account/listings/ui/currency-select.tsx'
+import { ProfileNotFilled } from '@/features/account/listings/ui/profile-not-filled.tsx'
 import { useCreateProduct } from '@/entities/product/library/hooks/use-create-product.tsx'
 import { useUserProfile } from '@/entities/user'
 import { Checkbox } from '@/shared/ui/shadcn-ui/checkbox.tsx'
@@ -55,6 +56,7 @@ export function CreateListingForm() {
   const FormSchema = useFormSchema()
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
+    mode: 'onChange',
     defaultValues: {
       title: '',
       category_id: 0,
@@ -129,6 +131,11 @@ export function CreateListingForm() {
         onSubmit={form.handleSubmit(onSubmit)}
         className='space-y-[50px] xl:w-[885px]'
       >
+        {userProfile &&
+          (form.watch('user_phone') === '' ||
+            form.watch('location') === '') && (
+            <ProfileNotFilled className='-mt-[10px] min-h-[164px] max-w-[666px] xl:-mt-5' />
+          )}
         <div className='space-y-[60px]'>
           {/* Info about product */}
           <div className='space-y-10'>
