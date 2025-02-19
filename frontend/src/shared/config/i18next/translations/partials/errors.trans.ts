@@ -4,6 +4,7 @@ export const errors_en = {
       required: 'Required field',
       email: 'Invalid email',
       location: 'Invalid location, please select city from list',
+      locationNeeded: 'To create a listing, add location',
       minLength: 'Minimum length is {{minLength}} characters',
       maxLength: 'Maximum length is {{maxLength}} characters',
       min: 'Minimum value is {{min}}',
@@ -23,6 +24,7 @@ export const errors_en = {
       videoSizeExceeded: 'Video size should be less than {{maxSize}}',
       videoDurationExceeded: 'Video duration must not exceed {{max}} seconds',
       phone: {
+        needed: 'To create a listing, add phone number',
         tooShort: 'Phone number must be at least {{minLength}} digits',
         tooLong: 'Phone number must not exceed {{maxLength}} digits',
         invalid: 'Invalid phone number format',
@@ -38,6 +40,7 @@ export const errors_uk = {
       required: "Обов'язкове поле",
       email: 'Невірний email',
       location: 'Невірна локація, оберіть місто зі списку',
+      locationNeeded: 'Для подачі оголошення, додайте місто',
       minLength: 'Мінімальна довжина {{minLength}} символів',
       maxLength: 'Максимальна довжина {{maxLength}} символів',
       min: 'Мінімальне значення {{min}}',
@@ -57,6 +60,7 @@ export const errors_uk = {
       videoDurationExceeded:
         'Тривалість відео не повинна перевищувати {{max}} секунд',
       phone: {
+        needed: 'Для подачі оголошення, додайте номер телефону',
         tooShort: 'Номер телефону має бути мінімум 10 цифр',
         tooLong: 'Номер телефону не повинен перевищувати 15 цифр',
         invalid: 'Невірний формат номеру телефону',

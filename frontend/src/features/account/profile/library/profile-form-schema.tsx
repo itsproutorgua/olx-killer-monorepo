@@ -26,10 +26,13 @@ export const useProfileSchema = () => {
         message: t('errors.input.invalidCharacters'),
       }),
 
-    location_id: z.string().min(1, { message: t('errors.input.required') }),
+    location_id: z
+      .string()
+      .min(1, { message: t('errors.input.locationNeeded') }),
 
     user_phone: z
       .string()
+      .min(1, { message: t('errors.input.phone.needed') })
       .min(10, { message: t('errors.input.phone.tooShort', { minLength: 10 }) })
       .max(15, { message: t('errors.input.phone.tooLong', { minLength: 15 }) })
       .regex(/^\+?\d{9,15}$/, { message: t('errors.input.phone.invalid') }),
