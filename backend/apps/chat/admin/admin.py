@@ -1,13 +1,13 @@
-# from simple_history.admin import SimpleHistoryAdmin
 from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
+from simple_history.admin import SimpleHistoryAdmin
 
 from apps.chat.models.chat import ChatRoom
 from apps.chat.models.message import Message
 
 
 @admin.register(ChatRoom)
-class ChatRoomAdmin(admin.ModelAdmin):
+class ChatRoomAdmin(SimpleHistoryAdmin):
     fieldsets = (
         (None, {'fields': ('first_user', 'second_user')}),
         (_('Important dates'), {'fields': ('created_at', 'updated_at')}),
@@ -31,7 +31,7 @@ class ChatRoomAdmin(admin.ModelAdmin):
 
 
 @admin.register(Message)
-class MessageAdmin(admin.ModelAdmin):
+class MessageAdmin(SimpleHistoryAdmin):
     fieldsets = (
         (None, {'fields': ('chat_room', 'sender', 'text')}),
         (_('Important dates'), {'fields': ('created_at', 'updated_at')}),
