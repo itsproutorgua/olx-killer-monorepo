@@ -1,10 +1,13 @@
 import json
 
 from channels.generic.websocket import AsyncWebsocketConsumer
+
 from apps.chat.consumers.messages_operations import chat_message
 from apps.chat.consumers.messages_operations import get_message
 from apps.chat.consumers.messages_operations import mark_message_as_delivered
 from apps.chat.consumers.messages_operations import mark_message_as_read
+from apps.chat.consumers.messages_operations import message_deleted
+from apps.chat.consumers.messages_operations import message_edited
 from apps.chat.consumers.messages_operations import save_message
 from apps.chat.consumers.messages_operations import send_last_messages
 from apps.chat.consumers.messages_operations import serialize_message
@@ -79,14 +82,23 @@ class ChatConsumer(AsyncWebsocketConsumer):
     async def mark_message_as_read(self, message_id):
         await mark_message_as_read(self, message_id)
 
-    async def serialize_message(self, message):
-        return await serialize_message(message)
-
-    async def get_message(self, message_id):
-        return await get_message(message_id)
-
     async def get_recipient(self):
         return await get_recipient(self.room, self.scope['user'])
 
-    async def is_user_online(self, user):
+    async def message_deleted(self, event):
+        await message_deleted(self, event)
+
+    async def message_edited(self, event):
+        await message_edited(self, event)
+
+    @staticmethod
+    async def is_user_online(user):
         return await is_user_online(user)
+
+    @staticmethod
+    async def get_message(message_id):
+        return await get_message(message_id)
+
+    @staticmethod
+    async def serialize_message(message):
+        return await serialize_message(message)
