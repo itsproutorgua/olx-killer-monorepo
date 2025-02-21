@@ -33,12 +33,20 @@ class ChatRoomAdmin(SimpleHistoryAdmin):
 @admin.register(Message)
 class MessageAdmin(SimpleHistoryAdmin):
     fieldsets = (
-        (None, {'fields': ('chat_room', 'sender', 'text')}),
+        (
+            None,
+            {
+                'fields': (
+                    'chat_room',
+                    'sender',
+                )
+            },
+        ),
         (_('Important dates'), {'fields': ('created_at', 'updated_at')}),
     )
-    list_display = ('id', 'chat_room', 'sender', 'text', 'created_at', 'updated_at')
+    list_display = ('chat_room', 'sender', 'created_at', 'updated_at')
     readonly_fields = ('created_at', 'updated_at')
-    list_display_links = ('id', 'chat_room', 'sender')
+    list_display_links = ('chat_room', 'sender')
     show_full_result_count = False
 
     search_fields = [
