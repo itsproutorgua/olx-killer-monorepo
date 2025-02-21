@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useAuth0 } from '@auth0/auth0-react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import i18n from 'i18next'
 import { LoaderCircle } from 'lucide-react'
@@ -8,14 +9,22 @@ import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import { z } from 'zod'
 
-import { useFormSchema } from '@/features/account/listings'
-import { CategoryDialog } from '@/features/account/listings/ui/category-select-dialog.tsx'
-import { CurrencySelect } from '@/features/account/listings/ui/currency-select.tsx'
-import { ProfileNotFilled } from '@/features/account/listings/ui/profile-not-filled.tsx'
+import {
+  CategoryDialog,
+  CurrencySelect,
+  ProfileNotFilled,
+  useFormSchema,
+} from '@/features/account/listings'
 import { useCreateProduct } from '@/entities/product/library/hooks/use-create-product.tsx'
 import { useUserProfile } from '@/entities/user'
-import { Checkbox } from '@/shared/ui/shadcn-ui/checkbox.tsx'
+import { PenIcon, SpinnerIcon } from '@/shared/ui'
 import {
+  ArrowDownSmall,
+  VideoUploadIcon,
+  XCircleSmall,
+} from '@/shared/ui/icons'
+import {
+  Checkbox,
   Form,
   FormControl,
   FormDescription,
@@ -23,13 +32,9 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/shared/ui/shadcn-ui/form'
-import { Input } from '@/shared/ui/shadcn-ui/input'
-import { Textarea } from '@/shared/ui/shadcn-ui/textarea'
-import { PenIcon, SpinnerIcon } from '@/shared/ui'
-import { XCircleSmall } from '@/shared/ui/icons'
-import { ArrowDownSmall } from '@/shared/ui/icons/arrow-down-small.tsx'
-import { VideoUploadIcon } from '@/shared/ui/icons/video-upload-icon.tsx'
+  Input,
+  Textarea,
+} from '@/shared/ui/shadcn-ui'
 import { PRIVATE_PAGES } from '@/shared/constants'
 import { cn } from '@/shared/library/utils'
 import { DndGrid } from './dnd-grid'
@@ -39,6 +44,7 @@ const maxTextareaLength = 15000
 
 export function CreateListingForm() {
   const { t } = useTranslation()
+  const { user: userAuth } = useAuth0()
   const {
     data: userProfile,
     isLoading,
@@ -545,7 +551,7 @@ export function CreateListingForm() {
           className={`relative mx-auto flex h-[53px] min-w-[315px] items-center gap-6 rounded-[60px] bg-primary-900 py-[5px] pr-[5px] text-base/4 text-gray-50 transition-colors duration-300 hover:bg-primary-500 active:bg-primary-600 active:duration-0 disabled:cursor-not-allowed disabled:bg-gray-300 xl:mx-0 ${
             i18n.language !== 'uk' ? 'pl-[37px]' : 'xl:pl-[20px]'
           }`}
-          disabled={isPending}
+          disabled={isPending || !userAuth?.email_verified}
         >
           {isPending ? (
             <span
