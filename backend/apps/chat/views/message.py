@@ -77,10 +77,23 @@ class EditMessageView(APIView):
             'application/json': {
                 'schema': {
                     'type': 'object',
-                    'properties': {'text': {'type': 'string', 'example': 'Updated message text'}},
+                    'properties': {
+                        'text': {
+                            'type': 'string',
+                            'example': 'Updated message text',
+                        }
+                    },
+                    'required': ['text'],
                 }
             }
         },
+        examples=[
+            OpenApiExample(
+                'Edit Message Example',
+                description='Example request for updating a message',
+                value={'text': 'Updated message text'},
+            )
+        ],
         responses={
             200: OpenApiResponse(
                 response=OpenApiTypes.OBJECT,

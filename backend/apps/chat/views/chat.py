@@ -52,11 +52,12 @@ class ChatRoomView(GenericViewSet):
             )
         ],
     )
-    @action(detail=False, methods=['post'], url_path=r'(?P<userid1>\d+)/(?P<userid2>\d+)')
-    def get_or_create_room(self, request, userid1, userid2):
+    @action(detail=False, methods=['post'])
+    def get_or_create_room(self, request):
+        userid1 = request.query_params.get('user_id_1')
+        userid2 = request.query_params.get('user_id_2')
         user1 = get_object_or_404(User, id=userid1)
         user2 = get_object_or_404(User, id=userid2)
-        print(user1, user2)
 
-        room, created = self.queryset.get_or_create(first_user=user1, second_user=user2)
+        room, __ = self.queryset.get_or_create(first_user=user1, second_user=user2)
         return Response({'room_id': room.id})
