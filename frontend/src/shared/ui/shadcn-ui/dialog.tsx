@@ -42,7 +42,7 @@ const DialogContent = React.forwardRef<
       {...props}
     >
       {children}
-      <DialogPrimitive.Close className='dark:ring-offset-neutral-950 dark:focus:ring-neutral-300 absolute right-10 top-[42px] rounded-sm ring-offset-white transition-opacity focus:outline-none disabled:pointer-events-none data-[state=open]:bg-primary-700 data-[state=open]:text-primary-700 dark:data-[state=open]:bg-primary-700 dark:data-[state=open]:text-primary-700'>
+      <DialogPrimitive.Close className='dark:ring-offset-neutral-950 dark:focus:ring-neutral-300 absolute right-5 top-5 rounded-sm ring-offset-white transition-opacity focus:outline-none disabled:pointer-events-none data-[state=open]:bg-primary-700 data-[state=open]:text-primary-700 dark:data-[state=open]:bg-primary-700 dark:data-[state=open]:text-primary-700'>
         <XCircleSmall className='h-[34px] w-[34px] text-primary-700' />
         <span className='sr-only'>Close</span>
       </DialogPrimitive.Close>
