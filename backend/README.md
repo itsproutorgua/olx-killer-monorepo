@@ -55,6 +55,9 @@
 - Redis 5.x
 - PostgreSQL 12+
 - boto3 1.x
+- channels 4.x
+- daphne 4.x
+- channels-redis 4.x
 
 ## Start Docker:
 
@@ -109,6 +112,30 @@ Make sure you have Docker and Docker Compose installed and upgrade on your machi
    ```bash
    docker-compose down -v
    ```
+
+## Start local
+
+1. **Repeat steps 1-3 from `Start Docker`**
+
+2. **Ensure you have run redis and postgres on ports 6379|5432**
+
+  ```bash
+    netstat -tulnp | grep -E '6379|5432'
+  ```
+
+3. **Make migrations**
+
+  ```bash
+  python manage.py migrate
+  ```
+  ```bash
+  python manage.py makemigrations
+  ```
+
+ 4. **Start project**
+```bash
+  python manage.py runserver 0.0.0.0:8000 & daphne -b 0.0.0.0 -p 8001 apps.asgi:application
+```
 
 ### URLS:
 
