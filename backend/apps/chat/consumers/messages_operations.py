@@ -1,4 +1,5 @@
 import json
+from typing import Any
 
 from asgiref.sync import sync_to_async
 from channels.generic.websocket import AsyncWebsocketConsumer
@@ -7,7 +8,7 @@ from django.core.exceptions import FieldError
 from apps.chat.models.message import Message
 
 
-async def chat_message(consumer: AsyncWebsocketConsumer, event: dict[str, int]) -> None:
+async def chat_message(consumer: AsyncWebsocketConsumer, event: dict[str, Any]) -> None:
     message_id = event['message_id']
     message = await get_message(message_id)
     message_data = await serialize_message(message)
@@ -125,56 +126,24 @@ async def send_last_messages(consumer: AsyncWebsocketConsumer) -> None:
     await consumer.send(text_data=json.dumps(messages_data))
 
 
-async def delete_message(consumer: AsyncWebsocketConsumer, event: dict[str, int]) -> None:
-    message_id = event['message_id']
-    message = await get_message(message_id)
-
-    if message.sender == consumer.scope['user']:
-        await sync_to_async(message.delete)()
-        await consumer.channel_layer.group_send(
-            consumer.chat_group_name,
-            {
-                'type': 'message_deleted',
-                'message_id': message_id,
-            },
-        )
-
-
-async def message_deleted(consumer: AsyncWebsocketConsumer, event: dict[str, int]) -> None:
+async def message_deleted(consumer: AsyncWebsocketConsumer, event: dict[str, Any]) -> None:
     await consumer.send(
         text_data=json.dumps(
             {
                 'type': 'message_deleted',
-                'message_id': event['message_id'],
+                'message_id': event['message']['message_id'],
             }
         )
     )
 
 
-async def edit_message(consumer: AsyncWebsocketConsumer, event: dict[str, int]) -> None:
-    message_id = event['message_id']
-    new_text = event['text']
-    message = await get_message(message_id)
-    if message.sender == consumer.scope['user']:
-        message.text = new_text
-        await sync_to_async(message.save)(update_fields=['text'])
-        await consumer.channel_layer.group_send(
-            consumer.chat_group_name,
-            {
-                'type': 'message_edited',
-                'message_id': message_id,
-                'text': new_text,
-            },
-        )
-
-
-async def message_edited(consumer: AsyncWebsocketConsumer, event: dict[str, int, str]) -> None:
+async def message_edited(consumer: AsyncWebsocketConsumer, event: dict[str, Any]) -> None:
     await consumer.send(
         text_data=json.dumps(
             {
                 'type': 'message_edited',
-                'message_id': event['message_id'],
-                'text': event['text'],
+                'message_id': event['message']['message_id'],
+                'text': event['message']['text'],
             }
         )
     )
