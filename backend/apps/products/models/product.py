@@ -74,6 +74,7 @@ class Product(TimestampMixin, HistoricalModel, models.Model):
         verbose_name = _('Product')
         verbose_name_plural = _('Products')
         unique_together = ('title', 'seller', 'category')
+        indexes = [models.Index(fields=['title'])]
 
     def save(self, *args, **kwargs):
         slug = slugify(self.title)
