@@ -68,6 +68,7 @@ INSTALLED_APPS += [
     'corsheaders',
     'rosetta',
     'simple_history',
+    'channels',
     # Local apps
     'apps.users.apps.UsersConfig',
     'apps.products.apps.ProductsConfig',
@@ -75,6 +76,7 @@ INSTALLED_APPS += [
     'apps.locations.apps.LocationsConfig',
     'apps.favorites.apps.FavoritesConfig',
     'apps.common',
+    'apps.chat.apps.ChatConfig',
 ]
 
 MIDDLEWARE += [
@@ -127,6 +129,16 @@ SPECTACULAR_SETTINGS = {
         'telegram': 'https://t.me/F_redy',
     },
     'SECURITY': [{'Auth0JWT': []}],
+}
+
+# Django Channels
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            'hosts': [os.environ.get('REDIS_URL', ('127.0.0.1', 6379))],
+        },
+    },
 }
 
 # CORS headers
@@ -234,8 +246,9 @@ SUPER_PASSWORD = env('SUPER_PASSWORD')
 AUTH_USER_MODEL = 'users.User'
 
 # Redis
-REDIS_URL = os.getenv('REDIS_URL', 'redis://localhost:6379/')
+REDIS_URL = os.getenv('REDIS_URL', 'redis://redis:6379/')
 REDIS_CACHE_URL = f'{REDIS_URL}/1'
+
 
 # Celery
 CELERY_TIMEZONE = TIME_ZONE

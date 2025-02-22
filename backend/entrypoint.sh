@@ -53,4 +53,4 @@ fi
 django-admin compilemessages
 python manage.py collectstatic --no-input --clear
 
-exec gunicorn -c gunicorn_config.py apps.wsgi:application
+exec gunicorn -c gunicorn_config.py apps.wsgi:application 

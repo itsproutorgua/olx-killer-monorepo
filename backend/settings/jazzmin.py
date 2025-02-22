@@ -26,6 +26,8 @@ JAZZMIN_SETTINGS = {
         'locations.region': 'fas fa-map',
         'user_messages.message': 'fas fa-envelope',
         'favorites.favorite': 'fas fa-heart',
+        'chat.message': 'fas fa-envelope',
+        'chat.chatroom': 'fas fa-comments',
     },
     ############
     # Top Menu #
@@ -65,6 +67,18 @@ JAZZMIN_SETTINGS = {
             'name': _('Favorites'),
             'model': 'favorites.Favorite',
             'url': 'admin:favorites_favorite_changelist',
+            'permissions': ['auth.view_user'],
+        },
+        {
+            'name': _('Chat'),
+            'model': 'chat.ChatRoom',
+            'url': 'admin:chat_chatroom_changelist',
+            'permissions': ['auth.view_user'],
+        },
+        {
+            'name': _('Messages'),
+            'model': 'chat.Message',
+            'url': 'admin:chat_message_changelist',
             'permissions': ['auth.view_user'],
         },
     ],

@@ -38,7 +38,7 @@ services:
     ports:
       - "5432:5432"
     restart: unless-stopped
-
+  
   redis:
     image: redis:alpine
     ports:
@@ -48,10 +48,25 @@ services:
   worker:
     <<: *base-backend
     command: celery -A apps.celery worker --loglevel=info
+    environment:
+      - REDIS_URL=redis://redis:6379
     depends_on:
       - backend
       - redis
     restart: unless-stopped
+
+  daphne:
+    <<: *base-backend
+    container_name: daphne
+    command: bash -c "daphne -v 3 -b 0.0.0.0 -p 8001 apps.asgi:application"
+    ports:
+      - "8001:8001"
+    depends_on:
+      - worker
+      - backend
+      - redis
+
+
     volumes:
       - .:/code
       - ./logs:/code/logs
