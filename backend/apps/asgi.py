@@ -11,7 +11,7 @@ import os
 
 import django
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', '..settings.main')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings.main')
 django.setup()
 
 from channels.auth import AuthMiddlewareStack
