@@ -155,5 +155,6 @@ class ProductAPIViewSet(ViewSet):
     )
     def destroy(self, request, slug=None):
         product = get_object_or_404(Product, slug=str(slug).strip())
-        product.delete()
+        product.publication_status = Product.PublicationStatus.DELETED
+        product.save(update_fields=('publication_status', 'updated_at'))
         return Response(status=status.HTTP_204_NO_CONTENT)
