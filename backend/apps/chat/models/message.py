@@ -3,13 +3,14 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 from apps.chat.models.chat import ChatRoom
+from apps.common.models import HistoricalModel
 from apps.common.models.time_stamp import TimestampMixin
 
 
 User = get_user_model()
 
 
-class Message(TimestampMixin, models.Model):
+class Message(TimestampMixin, HistoricalModel, models.Model):
     class Status(models.TextChoices):
         SENT = 'sent', _('Sent')
         DELIVERED = 'delivered', _('Delivered')

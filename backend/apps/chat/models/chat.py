@@ -1,16 +1,20 @@
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 
+from apps.common.models import HistoricalModel
 from apps.common.models.time_stamp import TimestampMixin
 
 
 User = get_user_model()
 
 
-class ChatRoom(TimestampMixin, models.Model):
-    first_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='first_user', verbose_name='First User')
+class ChatRoom(TimestampMixin, HistoricalModel, models.Model):
+    first_user = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name='first_user', verbose_name=_('First User')
+    )
     second_user = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name='second_user', verbose_name='Second User'
+        User, on_delete=models.CASCADE, related_name='second_user', verbose_name=_('Second User')
     )
 
     def __str__(self):
