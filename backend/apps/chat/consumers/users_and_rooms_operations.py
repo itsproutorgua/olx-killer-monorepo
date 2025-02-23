@@ -29,9 +29,10 @@ async def get_chat_room(room_id: int) -> ChatRoom:
 
 
 async def authenticate_user(scope: dict) -> User:
-    headers = dict(scope.get('headers'))
-    token = headers.get(b'authorization', b'').decode('utf-8').split()[1] if b'authorization' in headers else None
-
+    subprotocols = scope.get('subprotocols', [])
+    token = None
+    if subprotocols[0] == 'Bearer':
+        token = subprotocols[1]
     if not token:
         return None
 
