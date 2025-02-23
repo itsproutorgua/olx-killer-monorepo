@@ -72,7 +72,6 @@ INSTALLED_APPS += [
     # Local apps
     'apps.users.apps.UsersConfig',
     'apps.products.apps.ProductsConfig',
-    'apps.user_messages.apps.UserMessagesConfig',
     'apps.locations.apps.LocationsConfig',
     'apps.favorites.apps.FavoritesConfig',
     'apps.common',
