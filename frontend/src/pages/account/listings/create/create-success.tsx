@@ -1,4 +1,5 @@
 import React from 'react'
+import { useQueryClient } from '@tanstack/react-query'
 import { useTranslation } from 'react-i18next'
 import { Link, Navigate, useLocation } from 'react-router-dom'
 
@@ -21,6 +22,10 @@ interface Props {
 export const CreateSuccess: React.FC<Props> = ({ className }) => {
   const { t } = useTranslation()
   const location = useLocation()
+  const queryClient = useQueryClient()
+  const handleRevalidate = () => {
+    queryClient.invalidateQueries({ queryKey: ['oka-user-listings'] })
+  }
 
   // Check if navigation state contains submission confirmation
   if (!location.state?.fromFormSubmission) {
@@ -85,7 +90,7 @@ export const CreateSuccess: React.FC<Props> = ({ className }) => {
             </p>
           </div>
         </div>
-        <Link to='/account'>
+        <Link to='/account' onClick={handleRevalidate}>
           <LoginButton onClick={() => {}} text={t('buttons.backToAccount')} />
         </Link>
       </div>

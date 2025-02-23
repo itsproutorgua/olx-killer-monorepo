@@ -9,8 +9,10 @@ import {
   ListingSellFeedback,
 } from '@/features/account/listings'
 import { FeedbackFormData } from '@/features/account/listings/library/sell-feedback-shema.tsx'
+import { ListingDeleteWarning } from '@/features/account/listings/ui/listing-delete-warning.tsx'
 import { ProductStats } from '@/features/product'
 import { useFavoriteMutations } from '@/entities/favorite/library/hooks/use-favorites.tsx'
+import { useDeactivateProduct } from '@/entities/product/library/hooks/use-deactivate-product.tsx'
 import { useDeleteProduct } from '@/entities/product/library/hooks/use-delete-product.tsx'
 import { Listing } from '@/entities/user-listings/models/types.ts'
 import { Separator } from '@/shared/ui/shadcn-ui/separator.tsx'
@@ -34,11 +36,14 @@ export const HorizontalProductCard = ({
   const { t } = useTranslation()
   const [isFeedbackOpen, setIsFeedbackOpen] = useState(false)
   const [isSuccessOpen, setIsSuccessOpen] = useState(false)
+  const [isDeleteWarningOpen, setIsDeleteWarningOpen] = useState(false)
   const queryClient = useQueryClient()
   const statusLabel = getStatusLabel(t, listingStatus)
 
   const { removeFromFavorites } = useFavoriteMutations()
-  const deleteProductMutation = useDeleteProduct()
+  const { isPending: isDeleting, mutateAsync: deleteProductMutation } =
+    useDeleteProduct()
+  const deactivateProductMutation = useDeactivateProduct()
   const handleRemoveFavorite = async (
     event: React.MouseEvent<HTMLButtonElement>,
   ) => {
@@ -57,9 +62,16 @@ export const HorizontalProductCard = ({
   ) => {
     event.stopPropagation()
     event.preventDefault()
+    setIsDeleteWarningOpen(true)
+  }
 
+  const handleDeleteClick = async () => {
     try {
-      await deleteProductMutation.mutateAsync(product.slug)
+      await deleteProductMutation(product.slug, {
+        onSuccess: () => {
+          setIsDeleteWarningOpen(false)
+        },
+      })
     } catch (error) {
       console.log('Error occurred when deleting product')
     }
@@ -75,24 +87,29 @@ export const HorizontalProductCard = ({
 
   const handleDeactivateClick = async (feedbackData?: FeedbackFormData) => {
     try {
-      // Submit feedback data here if needed
-      console.log('Feedback data:', feedbackData)
+      if (!feedbackData) {
+        console.error('No feedback data provided.')
+        return
+      }
 
-      // Execute deactivation
-      await deleteProductMutation.mutateAsync(product.slug, {
-        onSuccess: () => {
-          // 3. Show success modal immediately
-          setIsSuccessOpen(true)
-          setIsFeedbackOpen(false)
+      await deactivateProductMutation.mutateAsync(
+        {
+          productId: product.id,
+          feedbackData,
         },
-      })
+        {
+          onSuccess: () => {
+            setIsSuccessOpen(true)
+            setIsFeedbackOpen(false)
+          },
+        },
+      )
     } catch (error) {
       console.error('Deactivation failed:', error)
     }
   }
 
   const handleSuccessClose = () => {
-    // 4. When success modal closes, trigger revalidation
     queryClient.invalidateQueries({ queryKey: ['oka-user-listings'] })
     setIsSuccessOpen(false)
   }
@@ -213,6 +230,12 @@ export const HorizontalProductCard = ({
           <FeedbackSendSuccess
             open={isSuccessOpen}
             onOpenChange={handleSuccessClose}
+          />
+          <ListingDeleteWarning
+            open={isDeleteWarningOpen}
+            onOpenChange={setIsDeleteWarningOpen}
+            onClickDelete={handleDeleteClick}
+            isDeleting={isDeleting}
           />
         </div>
       </div>
