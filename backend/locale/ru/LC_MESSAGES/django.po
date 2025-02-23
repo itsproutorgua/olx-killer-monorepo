@@ -586,10 +586,8 @@ msgid "Deactivation Feedback"
 msgstr ""
 
 #: .\apps\products\models\deactivate_feedback.py:45
-#, fuzzy
-#| msgid "Deactivate selected products"
 msgid "Deactivation Feedbacks"
-msgstr "Деактивировать выбранные продукты"
+msgstr ""
 
 #: .\apps\products\models\filters\filter.py:34
 msgid "Filter"
