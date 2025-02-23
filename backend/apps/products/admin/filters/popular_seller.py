@@ -5,7 +5,7 @@ from django.utils.translation import gettext_lazy as _
 from apps.products.models import Product
 
 
-# Временно не используется
+# TODO придумать логику для использования
 class PopularSellerFilter(SimpleListFilter):
     title = _('Popular sellers')
     parameter_name = 'popular_seller'

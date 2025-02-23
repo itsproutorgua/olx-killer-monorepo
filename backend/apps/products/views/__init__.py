@@ -1,5 +1,6 @@
 from apps.products.views.category import CategoryAPIViewSet
 from apps.products.views.currency import CurrencyListView
+from apps.products.views.deactivated_feedback import ProductDeactivationFeedbackCreateView
 from apps.products.views.product import ProductAPIViewSet
 from apps.products.views.product_filters import ProductFilterViewSet
 from apps.products.views.product_search import ProductSearchViewSet
@@ -14,5 +15,6 @@ __all__ = [
     'ProductFilterViewSet',
     'LatestProductListView',
     'ProductSearchViewSet',
+    'ProductDeactivationFeedbackCreateView',
     'TMPProductCreateAPIView',
 ]
