@@ -24,7 +24,6 @@ JAZZMIN_SETTINGS = {
         'locations.city': 'fas fa-city',
         'locations.village': 'fas fa-tree',
         'locations.region': 'fas fa-map',
-        'user_messages.message': 'fas fa-envelope',
         'favorites.favorite': 'fas fa-heart',
         'chat.message': 'fas fa-envelope',
         'chat.chatroom': 'fas fa-comments',
