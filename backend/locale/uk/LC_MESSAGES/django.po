@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-17 15:30+0200\n"
+"POT-Creation-Date: 2025-02-23 13:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,6 +20,93 @@ msgstr ""
 "11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % "
 "100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || "
 "(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
+
+#: .\apps\chat\admin\admin.py:13 .\apps\chat\admin\admin.py:45
+#: .\apps\users\admin\user.py:31
+msgid "Important dates"
+msgstr "Важливі дати"
+
+#: .\apps\chat\apps.py:8 .\settings\jazzmin.py:73
+msgid "Chat"
+msgstr ""
+
+#: .\apps\chat\models\message.py:14
+msgid "Sent"
+msgstr ""
+
+#: .\apps\chat\models\message.py:15
+msgid "Delivered"
+msgstr ""
+
+#: .\apps\chat\models\message.py:16
+msgid "Read"
+msgstr ""
+
+#: .\apps\chat\models\message.py:19
+msgid "Chat Room"
+msgstr ""
+
+#: .\apps\chat\models\message.py:21
+msgid "Sender"
+msgstr ""
+
+#: .\apps\chat\models\message.py:22
+msgid "Text"
+msgstr ""
+
+#: .\apps\chat\models\message.py:23 .\apps\chat\models\useractivity.py:18
+#: .\apps\products\models\product.py:50
+msgid "Status"
+msgstr "Стан"
+
+#: .\apps\chat\models\message.py:41
+msgid "Message"
+msgstr "повідомлення"
+
+#: .\apps\chat\models\message.py:42 .\settings\jazzmin.py:79
+msgid "Messages"
+msgstr "Повідомлення"
+
+#: .\apps\chat\models\useractivity.py:13
+msgid "Online"
+msgstr ""
+
+#: .\apps\chat\models\useractivity.py:14
+msgid "Offline"
+msgstr ""
+
+#: .\apps\chat\models\useractivity.py:16 .\apps\favorites\models.py:18
+#: .\apps\users\models\profile.py:10 .\apps\users\models\user.py:67
+msgid "User"
+msgstr "Користувач"
+
+#: .\apps\chat\models\useractivity.py:17
+msgid "Last Seen"
+msgstr ""
+
+#: .\apps\chat\models\useractivity.py:26 .\apps\chat\models\useractivity.py:27
+#, fuzzy
+#| msgid "User is inactive"
+msgid "User Activity"
+msgstr "Користувач неактивний"
+
+#: .\apps\chat\views\chat.py:29
+msgid "Get or create chat room"
+msgstr ""
+
+#: .\apps\chat\views\chat.py:30
+msgid "Get or create a chat room between two users."
+msgstr ""
+
+#: .\apps\chat\views\chat.py:36
+#, fuzzy
+#| msgid "Partial profile update example"
+msgid "Chat room created example"
+msgstr "Приклад часткового оновлення профілю"
+
+#: .\apps\chat\views\chat.py:46
+msgid "Get or create chat room example"
+msgstr ""
 
 #: .\apps\common\errors.py:6
 msgid "Unauthorized"
@@ -62,43 +149,54 @@ msgid "Invalid parameters."
 msgstr "Недійсні параметри."
 
 #: .\apps\common\errors.py:22
+#, fuzzy
+#| msgid "You do not have permission to edit this profile."
+msgid "You do not have permission to provide feedback for this product."
+msgstr "Ви не маєте дозволу редагувати цей профіль."
+
+#: .\apps\common\errors.py:25
 #: .\apps\products\serializers\product\product_image.py:22
-#: .\apps\products\serializers\product\product_video.py:23
+#: .\apps\products\serializers\product\product_video.py:24
 #, python-format
 msgid "Invalid file type. Allowed types: %s"
 msgstr "Недійсний тип файлу. Дозволені типи: %s"
 
-#: .\apps\common\errors.py:23
+#: .\apps\common\errors.py:26
 msgid "Uploaded file is not a valid image."
 msgstr "Завантажений файл не є дійсним зображенням."
 
-#: .\apps\common\errors.py:24
+#: .\apps\common\errors.py:27
 #: .\apps\products\serializers\product\product_image.py:26
 #, python-format
 msgid "The image size cannot exceed %s MB."
 msgstr "Розмір зображення не може перевищувати %s Мб."
 
-#: .\apps\common\errors.py:27
+#: .\apps\common\errors.py:28
+#, python-brace-format
+msgid "You can upload a maximum of {settings.MAX_COUNT_IMAGE_FILES} images."
+msgstr ""
+
+#: .\apps\common\errors.py:31
 #, python-format
 msgid "Invalid video type. Allowed types: %s"
 msgstr "Недійсний тип відео. Дозволені типи: %s"
 
-#: .\apps\common\errors.py:28
-#: .\apps\products\serializers\product\product_video.py:27
+#: .\apps\common\errors.py:32
+#: .\apps\products\serializers\product\product_video.py:28
 #, python-format
 msgid "The video size cannot exceed %s MB."
 msgstr "Розмір відео не може перевищувати %s Мб."
 
-#: .\apps\common\errors.py:29
+#: .\apps\common\errors.py:33
 #, python-brace-format
 msgid "Each product can have only {settings.VIDEO_UPLOAD_LIMIT} video."
 msgstr "Кожен продукт може мати лише {settings.VIDEO_UPLOAD_LIMIT} відео."
 
-#: .\apps\common\errors.py:30
+#: .\apps\common\errors.py:34
 msgid "Uploaded file is not a valid video."
 msgstr "Завантажений файл не є дійсним відеофайлом."
 
-#: .\apps\common\errors.py:33
+#: .\apps\common\errors.py:37
 msgid "Authentication credentials were not provided."
 msgstr "Облікові дані для автентифікації не надано."
 
@@ -111,17 +209,14 @@ msgid "Update date"
 msgstr "Дата оновлення"
 
 #: .\apps\favorites\apps.py:8 .\apps\favorites\models.py:33
-#: .\settings\jazzmin.py:65
+#: .\settings\jazzmin.py:67
 msgid "Favorites"
 msgstr "Улюблені"
 
-#: .\apps\favorites\models.py:18 .\apps\users\models\profile.py:10
-#: .\apps\users\models\user.py:63
-msgid "User"
-msgstr "Користувач"
-
-#: .\apps\favorites\models.py:24 .\apps\products\models\price\price.py:23
-#: .\apps\products\models\product.py:65
+#: .\apps\favorites\models.py:24
+#: .\apps\products\models\deactivate_feedback.py:20
+#: .\apps\products\models\price\price.py:27
+#: .\apps\products\models\product.py:76
 msgid "Product"
 msgstr "Продукт"
 
@@ -132,10 +227,6 @@ msgstr "Улюблене"
 #: .\apps\favorites\serializers\user_favorites.py:30
 msgid "This product has already been added to your favorites."
 msgstr "Цей товар уже додано до ваших улюблених."
-
-#: .\apps\favorites\serializers\user_favorites.py:58
-msgid "Price not available"
-msgstr "Ціна недоступна"
 
 #: .\apps\favorites\views\favorites.py:40
 msgid "List favorite items"
@@ -231,7 +322,7 @@ msgid "Region"
 msgstr "Область"
 
 #: .\apps\locations\apps.py:8 .\apps\locations\models\location.py:36
-#: .\settings\jazzmin.py:59
+#: .\settings\jazzmin.py:61
 msgid "Locations"
 msgstr "Розташування"
 
@@ -294,40 +385,50 @@ msgstr "Назва села"
 msgid "Villages"
 msgstr "Села"
 
-#: .\apps\locations\views\location.py:18
+#: .\apps\locations\views\location.py:19
 msgid "Retrieve a list of locations"
 msgstr "Отримати список місць"
 
-#: .\apps\locations\views\location.py:20
+#: .\apps\locations\views\location.py:21
+#, fuzzy
+#| msgid ""
+#| "This endpoint returns a list of locations (cities and villages) ordered "
+#| "alphabetically by city name. Each location includes its id, name, "
+#| "location_type, region, latitude, and longitude. You can optionally filter "
+#| "locations by their name using the \"location_name\" query parameter."
 msgid ""
 "This endpoint returns a list of locations (cities and villages) ordered "
-"alphabetically by city name. Each location includes its id, name, "
-"location_type, region, latitude, and longitude. You can optionally filter "
-"locations by their name using the \"location_name\" query parameter."
+"alphabetically by city name. Each location includes its `id`, `name`, "
+"`location_type`, `region`, `latitude`, and `longitude`. You can optionally "
+"filter locations by their name using the `location_name` query parameter."
 msgstr ""
 "Цей кінцевий пункт повертає список локацій (міст і сіл), впорядкованих "
 "алфавітно за назвою міста. Кожна локація містить її ідентифікатор, назву, "
 "тип локації, регіон, широту та довготу. Ви також можете фільтрувати локації "
 "за їх назвою, використовуючи параметр запиту \"location_name\"."
 
-#: .\apps\locations\views\location.py:28
+#: .\apps\locations\views\location.py:29
 msgid ""
 "Filter locations by name (supports partial match for city or village names)"
 msgstr ""
 "Фільтруйте локації за назвою (підтримується часткове співпадіння для назв "
 "міст або сіл)"
 
-#: .\apps\locations\views\location.py:34
+#: .\apps\locations\views\location.py:35
 msgid "A list of locations successfully retrieved."
 msgstr "Список локацій успішно отримано."
 
-#: .\apps\locations\views\location.py:37
+#: .\apps\locations\views\location.py:38
 msgid "Invalid request parameters."
 msgstr "Невірні параметри запиту."
 
-#: .\apps\locations\views\location.py:40
+#: .\apps\locations\views\location.py:41
 msgid "An unexpected error occurred on the server."
 msgstr "Сталася непередбачена помилка на сервері."
+
+#: .\apps\locations\views\location.py:62
+msgid "Location name must be at least 3 characters long."
+msgstr ""
 
 #: .\apps\products\admin\category.py:33
 msgid "Number of Products"
@@ -345,94 +446,76 @@ msgstr "Популярні продавці"
 msgid "Top-10 sellers"
 msgstr "Топ-10 продавців"
 
-#: .\apps\products\admin\filters\publication_status.py:8
-msgid "Publication Status"
-msgstr "Статус оголошення"
-
-#: .\apps\products\admin\filters\status.py:6
-msgid "Announcement Status"
-msgstr "Стан оголошення"
-
-#: .\apps\products\admin\filters\status.py:11
-#: .\apps\products\models\product.py:15
-msgid "New"
-msgstr "Новий"
-
-#: .\apps\products\admin\filters\status.py:12
-#: .\apps\products\models\product.py:16
-msgid "Used"
-msgstr "Вживаний"
-
-#: .\apps\products\admin\product.py:43
+#: .\apps\products\admin\product.py:46
 msgid "General"
 msgstr "Основний"
 
-#: .\apps\products\admin\product.py:64
+#: .\apps\products\admin\product.py:67
 msgid "Set status to New for selected products"
 msgstr "Встановити стан 'Новий' для обраних оголошень"
 
-#: .\apps\products\admin\product.py:67
+#: .\apps\products\admin\product.py:70
 #, fuzzy
 #| msgid "Status of selected products has been set to New."
 msgid "Status of selected products has been set to 'New'."
 msgstr "Статус обраних оголошень встановлено як 'Новий'."
 
-#: .\apps\products\admin\product.py:70
+#: .\apps\products\admin\product.py:73
 msgid "Set status to Used for selected products"
 msgstr "Встановити стан 'Вживаний' для обраних оголошень"
 
-#: .\apps\products\admin\product.py:73
+#: .\apps\products\admin\product.py:76
 #, fuzzy
 #| msgid "Status of selected products has been set to Old."
 msgid "Status of selected products has been set to 'Used'."
 msgstr "Статус обраних оголошень встановлено як 'Вживаний'."
 
-#: .\apps\products\admin\product.py:76
+#: .\apps\products\admin\product.py:79
 #, fuzzy
 #| msgid "Set status to New for selected products"
 msgid "Set status to 'active' for selected products"
 msgstr "Встановити стан 'Новий' для обраних оголошень"
 
-#: .\apps\products\admin\product.py:79
+#: .\apps\products\admin\product.py:82
 msgid "Selected products have been successfully activated."
 msgstr ""
 
-#: .\apps\products\admin\product.py:82
+#: .\apps\products\admin\product.py:85
 #, fuzzy
 #| msgid "Set status to New for selected products"
 msgid "Set status to 'inactive' for selected products"
 msgstr "Встановити стан 'Новий' для обраних оголошень"
 
-#: .\apps\products\admin\product.py:85
+#: .\apps\products\admin\product.py:88
 #, fuzzy
 #| msgid "Selected products have been successfully deactivated."
 msgid "Selected products have been successfully inactivated."
 msgstr "Вибрані продукти успішно дезактивовано."
 
-#: .\apps\products\admin\product.py:88
+#: .\apps\products\admin\product.py:91
 #, fuzzy
 #| msgid "Set selected products to draft status"
 msgid "Set selected products to 'draft' status"
 msgstr "Встановити стан 'Очікуючі' для обраних оголошень"
 
-#: .\apps\products\admin\product.py:91
+#: .\apps\products\admin\product.py:94
 #, fuzzy
 #| msgid "Selected products have been successfully moved to draft status."
 msgid "Selected products have been successfully moved to 'draft' status."
 msgstr "Вибрані оголошень успішно переміщено в статус 'Очікуючі'."
 
-#: .\apps\products\admin\product.py:95
+#: .\apps\products\admin\product.py:98
 #, fuzzy
 #| msgid "Set selected products to draft status"
 msgid "Set selected products to 'reject' status"
 msgstr "Встановити стан 'Очікуючі' для обраних оголошень"
 
-#: .\apps\products\admin\product.py:98
+#: .\apps\products\admin\product.py:101
 msgid "Selected products have been successfully rejected."
 msgstr ""
 
-#: .\apps\products\apps.py:8 .\apps\products\models\product.py:66
-#: .\settings\jazzmin.py:53
+#: .\apps\products\apps.py:8 .\apps\products\models\product.py:77
+#: .\settings\jazzmin.py:55
 msgid "Products"
 msgstr "Оголошення"
 
@@ -446,7 +529,6 @@ msgstr "Батьківська категорія"
 
 #: .\apps\products\models\category.py:24
 #: .\apps\products\models\product_image.py:19
-#: .\apps\user_messages\models\message_image.py:10
 msgid "Image"
 msgstr "Зображення"
 
@@ -454,17 +536,68 @@ msgstr "Зображення"
 msgid "Icon"
 msgstr "Іконка"
 
-#: .\apps\products\models\category.py:29 .\apps\products\models\product.py:55
+#: .\apps\products\models\category.py:29 .\apps\products\models\product.py:66
 msgid "Views"
 msgstr "Перегляди"
 
-#: .\apps\products\models\category.py:36 .\apps\products\models\product.py:36
+#: .\apps\products\models\category.py:36 .\apps\products\models\product.py:47
 msgid "Category"
 msgstr "Категорія"
 
-#: .\apps\products\models\category.py:37 .\settings\jazzmin.py:47
+#: .\apps\products\models\category.py:37 .\settings\jazzmin.py:49
 msgid "Categories"
 msgstr "Категорії"
+
+#: .\apps\products\models\deactivate_feedback.py:12
+#: .\apps\products\models\product.py:26
+msgid "Sold"
+msgstr ""
+
+#: .\apps\products\models\deactivate_feedback.py:13
+msgid "Sold Elsewhere"
+msgstr ""
+
+#: .\apps\products\models\deactivate_feedback.py:14
+msgid "Not Sold"
+msgstr ""
+
+#: .\apps\products\models\deactivate_feedback.py:21
+#, fuzzy
+#| msgid "Selected products have been successfully deactivated."
+msgid "The product that has been deactivated."
+msgstr "Вибрані продукти успішно дезактивовано."
+
+#: .\apps\products\models\deactivate_feedback.py:27
+#, fuzzy
+#| msgid "Status"
+msgid "Sale Status"
+msgstr "Стан"
+
+#: .\apps\products\models\deactivate_feedback.py:28
+#, fuzzy
+#| msgid "Set status to New for selected products"
+msgid "The current sale status of the deactivated product."
+msgstr "Встановити стан 'Новий' для обраних оголошень"
+
+#: .\apps\products\models\deactivate_feedback.py:33
+msgid "Deactivation Reason"
+msgstr ""
+
+#: .\apps\products\models\deactivate_feedback.py:35
+msgid ""
+"Description of why the product was deactivated, including the reason and any "
+"additional comments."
+msgstr ""
+
+#: .\apps\products\models\deactivate_feedback.py:44
+msgid "Deactivation Feedback"
+msgstr ""
+
+#: .\apps\products\models\deactivate_feedback.py:45
+#, fuzzy
+#| msgid "Deactivate selected products"
+msgid "Deactivation Feedbacks"
+msgstr "Деактивувати обрані оголошення"
 
 #: .\apps\products\models\filters\filter.py:34
 msgid "Filter"
@@ -500,7 +633,7 @@ msgid "Currency name"
 msgstr "Назва валюти"
 
 #: .\apps\products\models\price\currency.py:18
-#: .\apps\products\models\price\price.py:22
+#: .\apps\products\models\price\price.py:26
 msgid "Currency"
 msgstr "Валюта"
 
@@ -508,86 +641,110 @@ msgstr "Валюта"
 msgid "Currencies"
 msgstr "Валюти"
 
-#: .\apps\products\models\price\price.py:12
+#: .\apps\products\models\price\price.py:15
 #, python-brace-format
 msgid "Must be greater than or equal to {MIN_PRICE}."
 msgstr "Має бути більше або дорівнювати {MIN_PRICE}."
 
-#: .\apps\products\models\price\price.py:17
+#: .\apps\products\models\price\price.py:20
 msgid "Amount"
 msgstr "Сума"
 
-#: .\apps\products\models\price\price.py:30
+#: .\apps\products\models\price\price.py:34
 msgid "Price"
 msgstr "Ціна"
 
-#: .\apps\products\models\price\price.py:31
+#: .\apps\products\models\price\price.py:35
 msgid "Prices"
 msgstr "Ціни"
 
+#: .\apps\products\models\product.py:18
+msgid "New"
+msgstr "Новий"
+
 #: .\apps\products\models\product.py:19
+msgid "Used"
+msgstr "Вживаний"
+
+#: .\apps\products\models\product.py:22
 msgid "Active"
 msgstr "Активні"
 
-#: .\apps\products\models\product.py:20
+#: .\apps\products\models\product.py:23
 msgid "Inactive"
 msgstr "Неактивні"
 
-#: .\apps\products\models\product.py:21
+#: .\apps\products\models\product.py:24
 msgid "Draft"
 msgstr "Очікуючі"
 
-#: .\apps\products\models\product.py:22
+#: .\apps\products\models\product.py:25
 msgid "Rejected"
 msgstr "Відхилені"
 
-#: .\apps\products\models\product.py:24
+#: .\apps\products\models\product.py:27
+#, fuzzy
+#| msgid "Delete a product"
+msgid "Deleted"
+msgstr "Видалити товар"
+
+#: .\apps\products\models\product.py:29
 msgid "Product name"
 msgstr "Назва продукту"
 
-#: .\apps\products\models\product.py:25
+#: .\apps\products\models\product.py:31
 msgid "Product description"
 msgstr "Опис товару"
 
-#: .\apps\products\models\product.py:30
+#: .\apps\products\models\product.py:33
+#, fuzzy
+#| msgid "Product description"
+msgid "Product description is too short"
+msgstr "Опис товару"
+
+#: .\apps\products\models\product.py:34
+#, fuzzy
+#| msgid "Product description"
+msgid "Product description is too long"
+msgstr "Опис товару"
+
+#: .\apps\products\models\product.py:41
 msgid "Seller"
 msgstr "Продавець"
 
-#: .\apps\products\models\product.py:39
-msgid "Status"
-msgstr "Стан"
+#: .\apps\products\models\product.py:54
+msgid ""
+"Indicates the condition of the product. Select `New` for new items and "
+"`Used` for used ones."
+msgstr ""
 
-#: .\apps\products\models\product.py:43
-msgid "Product status"
-msgstr "Стан продукту"
-
-#: .\apps\products\models\product.py:46
+#: .\apps\products\models\product.py:57
 #, fuzzy
 #| msgid "Product status"
 msgid "Publication status"
 msgstr "Стан продукту"
 
-#: .\apps\products\models\product.py:51
+#: .\apps\products\models\product.py:62
 msgid ""
 "Defines the visibility of the product. Select `Active` to make the product "
 "publicly available, `Draft` for unpublished items under review, or "
 "`Rejected` for products that are not approved."
 msgstr ""
 
-#: .\apps\products\models\product.py:56
+#: .\apps\products\models\product.py:67
 msgid "Parameters"
 msgstr "Параметри"
 
-#: .\apps\products\models\product_image.py:23
+#: .\apps\products\models\product_image.py:24
 #, python-format
 msgid "Allowed image formats: %s"
 msgstr "Дозволені формати зображень: %s"
 
-#: .\apps\products\models\product_image.py:31
+#: .\apps\products\models\product_image.py:32
 msgid "Product Image"
 msgstr "Зображення продукту"
 
-#: .\apps\products\models\product_image.py:32
+#: .\apps\products\models\product_image.py:33
 msgid "Product Images"
 msgstr "Зображення продукту"
 
@@ -605,34 +762,54 @@ msgstr "Дозволені формати відео: %s"
 msgid "Product Videos"
 msgstr "Відео продукту"
 
-#: .\apps\products\serializers\price\price.py:38
+#: .\apps\products\serializers\price\price.py:36
+#: .\apps\products\serializers\price\price.py:72
 msgid "Invalid currency specified."
 msgstr "Вказана недійсна валюта."
 
-#: .\apps\products\serializers\price\price.py:40
+#: .\apps\products\serializers\price\price.py:38
 msgid "Failed to create price: {}"
 msgstr "Не вдалося створити ціну: {}"
 
-#: .\apps\products\serializers\price\price.py:56
-#: .\apps\products\serializers\product\product.py:113
+#: .\apps\products\serializers\price\price.py:55
 msgid "Failed to create product price: {}"
 msgstr "Не вдалося створити ціну продукту: {}"
 
-#: .\apps\products\serializers\product\product.py:67
-msgid "Database integrity error: {}"
-msgstr "Помилка цілісності бази даних: {}"
+#: .\apps\products\serializers\price\price.py:82
+#, fuzzy
+#| msgid "Failed to create price: {}"
+msgid "Failed to update price: {}"
+msgstr "Не вдалося створити ціну: {}"
 
-#: .\apps\products\serializers\product\product.py:72
+#: .\apps\products\serializers\product\product.py:116
+msgid "A product with this title, category, and seller already exists."
+msgstr ""
+
+#: .\apps\products\serializers\product\product.py:120
+#, fuzzy
+#| msgid "Failed to create product price: {}"
+msgid "Failed to create product: {}"
+msgstr "Не вдалося створити ціну продукту: {}"
+
+#: .\apps\products\serializers\product\product.py:125
 msgid "Failed to create product prices: {}"
 msgstr "Не вдалося створити ціни на продукти: {}"
 
-#: .\apps\products\serializers\product\product.py:77
+#: .\apps\products\serializers\product\product.py:132
 msgid "Failed to create product images: {}"
 msgstr "Не вдалося створити зображення: {}"
 
-#: .\apps\products\serializers\product\product.py:107
-msgid "Price with currency {} does not exist."
-msgstr "Ціна з валютою {} не існує."
+#: .\apps\products\serializers\product\product.py:137
+#, fuzzy
+#| msgid "Failed to create product price: {}"
+msgid "Failed to create product video: {}"
+msgstr "Не вдалося створити ціну продукту: {}"
+
+#: .\apps\products\serializers\product\product.py:161
+#, fuzzy
+#| msgid "Failed to create product prices: {}"
+msgid "Failed to update product prices: {}"
+msgstr "Не вдалося створити ціни на продукти: {}"
 
 #: .\apps\products\serializers\product\product_image.py:34
 msgid "The product does not exist."
@@ -650,33 +827,33 @@ msgstr "Продукт повинен бути наданий."
 msgid "Each product can have only one video."
 msgstr "Кожен продукт може мати лише одне відео."
 
-#: .\apps\products\serializers\product\product_video.py:49
+#: .\apps\products\serializers\product\product_video.py:59
 #, python-format
 msgid "Failed to create video: %s"
 msgstr "Не вдалося створити відео: %s"
 
-#: .\apps\products\serializers\product\product_video.py:58
+#: .\apps\products\serializers\product\product_video.py:68
 #, python-format
 msgid "Failed to update video: %s"
 msgstr "Не вдалося оновити відео: %s"
 
-#: .\apps\products\views\category.py:38
+#: .\apps\products\views\category.py:39
 msgid "List categories in a tree structure"
 msgstr "Список категорій у структурі дерева"
 
-#: .\apps\products\views\category.py:39
+#: .\apps\products\views\category.py:40
 msgid "Retrieve a hierarchical tree of categories."
 msgstr "Отримати ієрархічне дерево категорій."
 
-#: .\apps\products\views\category.py:43
+#: .\apps\products\views\category.py:44
 msgid "Returned when query parameters are passed in the request."
 msgstr "Повертається, коли в запиті передаються параметри запиту."
 
-#: .\apps\products\views\category.py:63
+#: .\apps\products\views\category.py:64
 msgid "Retrieve a category by path"
 msgstr "Отримати категорію за path"
 
-#: .\apps\products\views\category.py:64
+#: .\apps\products\views\category.py:65
 msgid "Retrieve a single category by path"
 msgstr "Отримати одну категорію за path"
 
@@ -689,6 +866,16 @@ msgid ""
 "Returns a list of available currencies with their code, symbol, and name."
 msgstr ""
 "Повертає список доступних валют із їхніми кодами, символами та назвами."
+
+#: .\apps\products\views\deactivated_feedback.py:15
+msgid "Submit product deactivation feedback"
+msgstr ""
+
+#: .\apps\products\views\deactivated_feedback.py:16
+msgid ""
+"Creates a new feedback record about product deactivation, including sale "
+"status and reason."
+msgstr ""
 
 #: .\apps\products\views\product.py:30
 msgid "Create a product"
@@ -793,6 +980,29 @@ msgstr "Сортувати за датою створення в порядку 
 msgid "Sort products by created date in descending order."
 msgstr "Сортуйте товари за датою створення в порядку спадання."
 
+#: .\apps\products\views\product_search.py:21
+#, fuzzy
+#| msgid "Retrieve user advertisements"
+msgid "Search for advertisements by title"
+msgstr "Отримати оголошення користувача"
+
+#: .\apps\products\views\product_search.py:23
+msgid ""
+"Search for advertisements by title. Allows filtering by a keyword to "
+"retrieve relevant advertisements."
+msgstr ""
+
+#: .\apps\products\views\product_search.py:32
+msgid ""
+"Retrieve a paginated list of advertisements, sorted by the latest updates "
+"and title. Supports detailed filtering by title. The search query must be at "
+"least 3 characters long."
+msgstr ""
+
+#: .\apps\products\views\product_search.py:54
+msgid "The search query must be at least 3 characters long."
+msgstr ""
+
 #: .\apps\products\views\products_latest.py:19
 msgid "List of latest products"
 msgstr "Список нещодавно доданих оголошень"
@@ -812,42 +1022,9 @@ msgstr ""
 "Максимальна кількість оголошень, що витягуються: від 10 до 50. Значення за "
 "замовчуванням — 10."
 
-#: .\apps\user_messages\apps.py:8
-msgid "User messages"
-msgstr "Повідомлення користувача"
-
-#: .\apps\user_messages\models\message.py:13
-msgid "Message subject"
-msgstr "Тема повідомлення"
-
-#: .\apps\user_messages\models\message.py:14
-#: .\apps\user_messages\models\message.py:47
-msgid "Message"
-msgstr "повідомлення"
-
-#: .\apps\user_messages\models\message.py:15
-msgid "Is the message read"
-msgstr "Чи прочитано повідомлення"
-
-#: .\apps\user_messages\models\message.py:20
-msgid "The sender of the message"
-msgstr "Відправник повідомлення"
-
-#: .\apps\user_messages\models\message.py:26
-msgid "The recipient of the message"
-msgstr "Одержувач повідомлення"
-
-#: .\apps\user_messages\models\message.py:48
-msgid "Messages"
-msgstr "Повідомлення"
-
-#: .\apps\user_messages\models\message_image.py:17
-msgid "Message Image"
-msgstr "Зображення повідомлення"
-
-#: .\apps\user_messages\models\message_image.py:18
-msgid "Message Images"
-msgstr "Зображення повідомлень"
+#: .\apps\products\views\products_latest.py:52
+msgid "Invalid limit. It must be between 10 and 50."
+msgstr ""
 
 #: .\apps\users\admin\profile.py:22
 msgid "User Email"
@@ -861,10 +1038,6 @@ msgstr "Особиста інформація"
 msgid "Permissions"
 msgstr "Дозволи"
 
-#: .\apps\users\admin\user.py:31
-msgid "Important dates"
-msgstr "Важливі дати"
-
 #: .\apps\users\admin\user.py:54
 msgid "Profile link"
 msgstr "Посилання на профіль"
@@ -877,57 +1050,57 @@ msgstr "Переглянути профіль"
 msgid "Passwords do not match."
 msgstr "Паролі не збігаються."
 
-#: .\apps\users\apps.py:8 .\apps\users\models\user.py:64
-#: .\settings\jazzmin.py:41
+#: .\apps\users\apps.py:8 .\apps\users\models\user.py:68
+#: .\settings\jazzmin.py:43
 msgid "Users"
 msgstr "Користувачі"
 
-#: .\apps\users\authentication.py:33
+#: .\apps\users\authentication.py:36
 msgid "Failed to fetch JWKS"
 msgstr "Не вдалося отримати JWKS"
 
-#: .\apps\users\authentication.py:47
+#: .\apps\users\authentication.py:50
 msgid "Token has expired"
 msgstr "Термін дії маркера закінчився"
 
-#: .\apps\users\authentication.py:49
+#: .\apps\users\authentication.py:52
 msgid "Invalid token audience"
 msgstr "Недійсна token audience"
 
-#: .\apps\users\authentication.py:51
+#: .\apps\users\authentication.py:54
 msgid "Invalid token issuer"
 msgstr "Недійсний token issuer"
 
-#: .\apps\users\authentication.py:53
+#: .\apps\users\authentication.py:56
 msgid "Error decoding token"
 msgstr "Помилка декодування token"
 
-#: .\apps\users\authentication.py:55
+#: .\apps\users\authentication.py:58
 msgid "Invalid token"
 msgstr "Недійсний token"
 
-#: .\apps\users\authentication.py:58
+#: .\apps\users\authentication.py:61
 msgid "Token validation failed"
 msgstr "Помилка перевірки Token"
 
-#: .\apps\users\authentication.py:64
+#: .\apps\users\authentication.py:67
 #, python-brace-format
 msgid "Token is missing required claim: {claim}"
 msgstr "У Token відсутня необхідна заявка: {claim}"
 
-#: .\apps\users\authentication.py:90
+#: .\apps\users\authentication.py:93
 msgid "Authorization header must start with 'Bearer'"
 msgstr "Заголовок авторизації має починатися з \"Bearer\""
 
-#: .\apps\users\authentication.py:93
+#: .\apps\users\authentication.py:96
 msgid "Authorization header is improperly formatted"
 msgstr "Заголовок авторизації відформатовано неправильно"
 
-#: .\apps\users\authentication.py:101
+#: .\apps\users\authentication.py:104
 msgid "Token does not contain 'email' field"
 msgstr "Token не містить поля 'email'."
 
-#: .\apps\users\authentication.py:113
+#: .\apps\users\authentication.py:116
 msgid "User is inactive"
 msgstr "Користувач неактивний"
 
@@ -985,51 +1158,67 @@ msgstr "Профіль"
 msgid "Profiles"
 msgstr "Профілі"
 
-#: .\apps\users\models\user.py:20
+#: .\apps\users\models\user.py:22
 msgid "username"
 msgstr "Псевдонім"
 
-#: .\apps\users\models\user.py:22
+#: .\apps\users\models\user.py:24
 msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
 msgstr "Обов'язковий. 150 символів або менше. Лише літери, цифри та @/./+/-/_."
 
-#: .\apps\users\models\user.py:26
+#: .\apps\users\models\user.py:28
 msgid "first name"
 msgstr "ім'я"
 
-#: .\apps\users\models\user.py:28 .\apps\users\models\user.py:35
-msgid "Required. 150 characters or fewer."
+#: .\apps\users\models\user.py:30
+msgid "First name is too short"
+msgstr ""
+
+#: .\apps\users\models\user.py:31
+#, fuzzy, python-brace-format
+#| msgid "Required. 150 characters or fewer."
+msgid "Required. {settings.MAX_LENGTH_FIRST_NAME} characters or fewer."
 msgstr "Обов'язковий. 150 символів або менше."
 
-#: .\apps\users\models\user.py:33
+#: .\apps\users\models\user.py:36
 msgid "last name"
 msgstr "прізвище"
 
+#: .\apps\users\models\user.py:38
+msgid "Last name is too short"
+msgstr ""
+
 #: .\apps\users\models\user.py:39
+#, fuzzy, python-brace-format
+#| msgid "Required. 150 characters or fewer."
+msgid "Required. {settings.MAX_LENGTH_LAST_NAME} characters or fewer."
+msgstr "Обов'язковий. 150 символів або менше."
+
+#: .\apps\users\models\user.py:43
 msgid "email address"
 msgstr "адреса електронної пошти"
 
-#: .\apps\users\models\user.py:41
+#: .\apps\users\models\user.py:45
 msgid "email confirm"
 msgstr "підтвердження електронної пошти"
 
-#: .\apps\users\models\user.py:43
+#: .\apps\users\models\user.py:47
 msgid "Indicates whether the user has verified their email address."
 msgstr "Вказує, чи підтвердив користувач свою електронну адресу."
 
-#: .\apps\users\models\user.py:46
+#: .\apps\users\models\user.py:50
 msgid "staff status"
 msgstr "статус персоналу"
 
-#: .\apps\users\models\user.py:48
+#: .\apps\users\models\user.py:52
 msgid "Designates whether the user can log into this admin site."
 msgstr "Визначає, чи може користувач увійти на цей сайт адміністратора."
 
-#: .\apps\users\models\user.py:51
+#: .\apps\users\models\user.py:55
 msgid "active"
 msgstr "активний"
 
-#: .\apps\users\models\user.py:54
+#: .\apps\users\models\user.py:58
 msgid ""
 "Designates whether this user should be treated as active. Unselect this "
 "instead of deleting accounts."
@@ -1037,23 +1226,38 @@ msgstr ""
 "Визначає, чи слід розглядати цього користувача як активного. Зніміть цей "
 "прапорець замість того, щоб видаляти облікові записи."
 
-#: .\apps\users\models\user.py:57
+#: .\apps\users\models\user.py:61
 msgid "date joined"
 msgstr "дата приєднання"
 
-#: .\apps\users\serializers\profile.py:20
+#: .\apps\users\serializers\profile.py:21
 msgid "A list of phone numbers (as strings)."
 msgstr "Список телефонних номерів (у вигляді рядків)."
 
-#: .\apps\users\serializers\profile.py:24
+#: .\apps\users\serializers\profile.py:25
 msgid "A location ID."
 msgstr "Ідентифікатор місцезнаходження."
 
-#: .\apps\users\serializers\profile.py:62
+#: .\apps\users\serializers\profile.py:47
+#, python-brace-format
+msgid "Ensure {field_name} has at least {min_length} characters."
+msgstr ""
+
+#: .\apps\users\serializers\profile.py:49
+#, python-brace-format
+msgid "Ensure {field_name} has at most {max_length} characters."
+msgstr ""
+
+#: .\apps\users\serializers\profile.py:51
+#, python-brace-format
+msgid "Ensure {field_name} contains only alphabetic characters."
+msgstr ""
+
+#: .\apps\users\serializers\profile.py:83
 msgid "Invalid location ID."
 msgstr "Недійсний ідентифікатор місця"
 
-#: .\apps\users\serializers\profile.py:71
+#: .\apps\users\serializers\profile.py:92
 msgid "Expected a list of phone numbers."
 msgstr "Очікується список телефонних номерів."
 
@@ -1159,17 +1363,56 @@ msgid "Invalid value for publication_status parameter. Use {params_msg}."
 msgstr ""
 "Недійсне значення для активного параметра. Використовуйте 'true' або 'false'."
 
-#: .\settings\base.py:145
+#: .\settings\base.py:146
 msgid "Ukrainian"
 msgstr "Українська"
 
-#: .\settings\base.py:146
+#: .\settings\base.py:147
 msgid "English"
 msgstr "Англійська"
 
-#: .\settings\base.py:147
+#: .\settings\base.py:148
 msgid "Russian"
 msgstr "Російська"
+
+#~ msgid "Price not available"
+#~ msgstr "Ціна недоступна"
+
+#~ msgid "Publication Status"
+#~ msgstr "Статус оголошення"
+
+#~ msgid "Announcement Status"
+#~ msgstr "Стан оголошення"
+
+#~ msgid "Product status"
+#~ msgstr "Стан продукту"
+
+#~ msgid "Database integrity error: {}"
+#~ msgstr "Помилка цілісності бази даних: {}"
+
+#~ msgid "Price with currency {} does not exist."
+#~ msgstr "Ціна з валютою {} не існує."
+
+#~ msgid "User messages"
+#~ msgstr "Повідомлення користувача"
+
+#~ msgid "Message subject"
+#~ msgstr "Тема повідомлення"
+
+#~ msgid "Is the message read"
+#~ msgstr "Чи прочитано повідомлення"
+
+#~ msgid "The sender of the message"
+#~ msgstr "Відправник повідомлення"
+
+#~ msgid "The recipient of the message"
+#~ msgstr "Одержувач повідомлення"
+
+#~ msgid "Message Image"
+#~ msgstr "Зображення повідомлення"
+
+#~ msgid "Message Images"
+#~ msgstr "Зображення повідомлень"
 
 #, fuzzy
 #~| msgid ""
@@ -1232,9 +1475,6 @@ msgstr "Російська"
 
 #~ msgid "Activate selected products"
 #~ msgstr "Активувати обрані оголошення"
-
-#~ msgid "Deactivate selected products"
-#~ msgstr "Деактивувати обрані оголошення"
 
 #, fuzzy
 #~| msgid "Rejected selected products"
