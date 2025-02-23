@@ -144,6 +144,31 @@ class ProductApi {
     })
     return response.data
   }
+
+  async deactivateProduct(
+    productId: number,
+    feedbackData: { answer: string; description?: string },
+    idToken: string,
+  ) {
+    const url = `${this.BASE_URL}/feedback/`
+    const response = await instanceBase.post(
+      url,
+      {
+        product: productId,
+        answer: feedbackData.answer,
+        ...(feedbackData.description
+          ? { description: feedbackData.description }
+          : {}),
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${idToken}`,
+          'Content-Type': 'application/json',
+        },
+      },
+    )
+    return response.data
+  }
 }
 
 export const productApi = new ProductApi()

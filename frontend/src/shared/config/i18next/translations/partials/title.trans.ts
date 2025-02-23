@@ -12,6 +12,7 @@ export const titles_uk = {
     listingCreatedSuccess: 'Ваше оголошення успішно додано!',
     listingSellFeedback: 'Чи вийшло продати товар на нашій платформі?',
     feedbackSuccess: 'Дякуємо за ваш відгук!',
+    deleteListingWarning: 'Ви впевненні, що бажаєте видалити оголошення?',
   },
 }
 
@@ -29,5 +30,6 @@ export const titles_en = {
     listingCreatedSuccess: 'Your listing successfully created!',
     listingSellFeedback: 'Did you manage to sell the product on our platform?',
     feedbackSuccess: 'Thank you for your feedback!',
+    deleteListingWarning: 'Are you sure you want to delete the listing?',
   },
 }

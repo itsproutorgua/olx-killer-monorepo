@@ -47,12 +47,7 @@ export function ListingSellFeedback({
     },
   })
 
-  const answer = form.watch('answer')
-  const description = form.watch('description')
-
-  const isSubmitDisabled =
-    form.formState.isSubmitting ||
-    (answer === 'not_sold' && !description?.trim())
+  const isSubmitDisabled = form.formState.isSubmitting
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
