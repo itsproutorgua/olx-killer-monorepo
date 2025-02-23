@@ -8,6 +8,7 @@ from simple_history.admin import SimpleHistoryAdmin
 
 from apps.products.admin import filters
 from apps.products.admin.inlines import PriceInline
+from apps.products.admin.inlines import ProductDeactivationFeedbackInline
 from apps.products.admin.inlines import ProductImageInline
 from apps.products.admin.inlines import ProductVideoInline
 from apps.products.models import Price
@@ -25,11 +26,11 @@ class ProductAdmin(SimpleHistoryAdmin):
     search_fields = ('title', 'seller__email')
     ordering = ('-created_at',)
     list_filter = (
-        filters.ProductPublicationFilter,
-        filters.ProductStatusFilter,
+        'publication_status',
+        'status',
         filters.PopularCategoryFilter,
     )
-    inlines = [PriceInline, ProductImageInline, ProductVideoInline]
+    inlines = [PriceInline, ProductImageInline, ProductVideoInline, ProductDeactivationFeedbackInline]
     show_full_result_count = False
     actions = (
         'set_status_new',
