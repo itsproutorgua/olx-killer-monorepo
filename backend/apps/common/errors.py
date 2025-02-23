@@ -18,6 +18,9 @@ INVALID_SORT_FIELD = _('Invalid sort field.')
 INVALID_PRODUCT_STATUS = _('Invalid advertisement status. Allowed values are `used` and `new`.')
 INVALID_PRODUCT_PARAMETERS = _('Invalid parameters.')
 
+# Deactivated Feedback
+FEEDBACK_PERMISSION_ERROR = _('You do not have permission to provide feedback for this product.')
+
 # Image
 INVALID_IMAGE_TYPE = _('Invalid file type. Allowed types: %s') % ', '.join(settings.ALLOWED_IMAGE_MIME_TYPES)
 INVALID_IMAGE = _('Uploaded file is not a valid image.')
