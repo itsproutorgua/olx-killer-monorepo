@@ -36,6 +36,7 @@ export const uk = {
     returnBack: 'Повернутись назад',
     submit: 'Відправити',
     delete: 'Видалити',
+    toProfile: 'Перейти у профіль',
   },
   sort: {
     priceExpensive: 'Від дешевих до дорогих',

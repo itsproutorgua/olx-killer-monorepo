@@ -15,6 +15,7 @@ import {
   ProfileNotFilled,
   useFormSchema,
 } from '@/features/account/listings'
+import { EmailNotVerified } from '@/features/account/profile/ui/email-not-verified.tsx'
 import { useCreateProduct } from '@/entities/product/library/hooks/use-create-product.tsx'
 import { useUserProfile } from '@/entities/user'
 import { PenIcon, SpinnerIcon } from '@/shared/ui'
@@ -137,10 +138,15 @@ export function CreateListingForm() {
         onSubmit={form.handleSubmit(onSubmit)}
         className='space-y-[50px] xl:w-[885px]'
       >
+        {!userAuth?.email_verified && (
+          <EmailNotVerified className='-mb-10 -mt-[10px] max-w-[666px] xl:-mt-5' />
+        )}
         {userProfile &&
           (form.watch('user_phone') === '' ||
             form.watch('location') === '') && (
-            <ProfileNotFilled className='-mt-[10px] min-h-[164px] max-w-[666px] xl:-mt-5' />
+            <div>
+              <ProfileNotFilled className='-mt-[10px] min-h-[164px] max-w-[666px] xl:-mt-5' />
+            </div>
           )}
         <div className='space-y-[60px]'>
           {/* Info about product */}

@@ -35,6 +35,7 @@ export const en = {
     returnBack: 'Return back',
     submit: 'Submit',
     delete: 'Delete',
+    toProfile: 'To profile page',
   },
   sort: {
     priceExpensive: 'From cheap to expensive',

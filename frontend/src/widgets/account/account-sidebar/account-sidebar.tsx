@@ -3,6 +3,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { useTranslation } from 'react-i18next'
 import { Link, useLocation } from 'react-router-dom'
 
+import { DangerTriangleIcon, DangerTriangleSolidIcon } from '@/shared/ui/icons'
 import { ArrowLeftRed } from '@/shared/ui/icons/arrow-left-red.tsx'
 import { SIDEBAR_ITEMS } from '@/shared/constants/account-sidebar.const.ts'
 import { cn } from '@/shared/library/utils'
@@ -18,7 +19,7 @@ export const AccountSidebar: React.FC<Props> = ({ className }) => {
   )?.title
 
   const { t } = useTranslation()
-  const { logout } = useAuth0()
+  const { logout, user } = useAuth0()
 
   return (
     <aside className={cn('w-[305px] shrink-0 border-r', className)}>
@@ -42,6 +43,15 @@ export const AccountSidebar: React.FC<Props> = ({ className }) => {
                 <item.icon.outline />
               )}
               {t(`${item.title}`)}
+              {item.title === 'account.profile' && !user?.email_verified && (
+                <>
+                  {activeTab === 'account.profile' ? (
+                    <DangerTriangleSolidIcon className='ml-auto mr-[18px] h-5 w-5 text-error-400' />
+                  ) : (
+                    <DangerTriangleIcon className='ml-auto mr-[18px] h-5 w-5' />
+                  )}
+                </>
+              )}
             </Link>
           </button>
         ))}
