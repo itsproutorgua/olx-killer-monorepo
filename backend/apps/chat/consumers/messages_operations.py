@@ -126,24 +126,33 @@ async def send_last_messages(consumer: AsyncWebsocketConsumer) -> None:
     await consumer.send(text_data=json.dumps(messages_data))
 
 
-async def message_deleted(consumer: AsyncWebsocketConsumer, event: dict[str, Any]) -> None:
+async def message_delete(consumer: AsyncWebsocketConsumer, message_id: int) -> None:
+    await sync_to_async(
+        lambda: Message.objects.filter(id=message_id).delete(),
+        thread_sensitive=True,
+    )()
+
     await consumer.send(
         text_data=json.dumps(
             {
                 'type': 'message_deleted',
-                'message_id': event['message']['message_id'],
+                'message_id': message_id,
             }
         )
     )
 
 
-async def message_edited(consumer: AsyncWebsocketConsumer, event: dict[str, Any]) -> None:
+async def message_edit(consumer: AsyncWebsocketConsumer, message_id: int, message_text: str) -> None:
+    await sync_to_async(
+        lambda: Message.objects.filter(id=message_id).update(text=message_text), thread_sensitive=True
+    )()
+
     await consumer.send(
         text_data=json.dumps(
             {
                 'type': 'message_edited',
-                'message_id': event['message']['message_id'],
-                'text': event['message']['text'],
+                'message_id': message_id,
+                'text': message_text,
             }
         )
     )
