@@ -1,3 +1,5 @@
+import textwrap
+
 from django.contrib import admin
 from django.contrib import messages
 from django.db.models import Q
@@ -18,9 +20,9 @@ from apps.products.models.product import Product
 
 @admin.register(Product)
 class ProductAdmin(SimpleHistoryAdmin):
-    list_display = ('title', 'seller', 'category', 'views', 'status', 'publication_status')
+    list_display = ('get_short_title', 'seller', 'category', 'views', 'status', 'publication_status', 'updated_at')
     readonly_fields = ('id', 'created_at', 'updated_at', 'slug', 'prod_olx_id', 'views')
-    list_display_links = ('title',)
+    list_display_links = ('get_short_title',)
     list_editable = ('status', 'publication_status')
     autocomplete_fields = ['category']
     search_fields = ('title', 'seller__email')
@@ -63,6 +65,11 @@ class ProductAdmin(SimpleHistoryAdmin):
             },
         ),
     )
+
+    @admin.display(description=_('Product name'), ordering='title')
+    def get_short_title(self, obj):
+        max_length = 20
+        return textwrap.shorten(obj.title, width=max_length, placeholder='') or obj.title[:max_length]
 
     @admin.action(description=_('Set status to New for selected products'))
     def set_status_new(self, request, queryset):
@@ -114,9 +121,9 @@ class ProductAdmin(SimpleHistoryAdmin):
 
             search_term = search_term.strip()
             q1 = Q(**{f'category__{title_field}__icontains': search_term})
-            queryset = Product.objects.filter(q1)
+            queryset = queryset.filter(q1)
 
-        return queryset.order_by('-created_at'), use_distinct
+        return queryset, use_distinct
 
     def save_model(self, request, obj, form, change):
         if not change:
