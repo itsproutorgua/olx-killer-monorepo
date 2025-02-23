@@ -51,7 +51,7 @@ class ProductVideo(HistoricalModel, models.Model):
             if self.video.size > self.MAX_FILE_SIZE_MB * 1024 * 1024:
                 raise ValidationError(errors.VIDEO_SIZE_EXCEEDED)
 
-        # FIXME проблемі с админкой
+        # FIXME проблемы с админкой
         # if ProductVideo.objects.filter(product=self.product).exists() and not self.pk:
         # if self.product.product_videos.count() > VIDEO_UPLOAD_LIMIT:
         #     raise ValidationError(errors.PRODUCT_VIDEO_LIMIT)
