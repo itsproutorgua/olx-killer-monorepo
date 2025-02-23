@@ -23,6 +23,8 @@ class Product(TimestampMixin, HistoricalModel, models.Model):
         INACTIVE = 'inactive', _('Inactive')
         DRAFT = 'draft', _('Draft')  # Очікуючі
         REJECTED = 'rejected', _('Rejected')  # Відхилені
+        SOLD = 'sold', _('Sold')
+        DELETED = 'deleted', _('Deleted')
 
     title = models.CharField(_('Product name'), max_length=255)
     description = models.TextField(
