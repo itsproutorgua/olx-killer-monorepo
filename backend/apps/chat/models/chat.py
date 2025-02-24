@@ -28,3 +28,4 @@ class ChatRoom(TimestampMixin, HistoricalModel, models.Model):
     class Meta:
         db_table = 'chatrooms'
         app_label = 'chat'
+        constraints = [models.UniqueConstraint(fields=['first_user', 'second_user'], name='unique_together')]
