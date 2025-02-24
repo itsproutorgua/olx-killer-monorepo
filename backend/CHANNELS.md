@@ -4,13 +4,13 @@
 
 ## API Endpoints
 
-### Create Chat Room (`POST  http://127.0.0.1:8000/en/api/v1/chatrooms/get_or_create_room/?user_id_1=<int:user_id_1>&user_id_2=<int:user_id_2>`)
+### Create Chat Room (`POST  http://127.0.0.1:8000/en/api/v1/chat-rooms/create/`)
 **Description:**
 - Creates a chat room between two users.
 
 **Example Request:**
 ```http
-POST http://127.0.0.1:8000/en/api/v1/chat-rooms/get_or_create_room/
+POST http://127.0.0.1:8000/en/api/v1/chat-rooms/create/
 Authorization: Bearer <token>
 Content-Type: application/json
 Body:
@@ -33,6 +33,56 @@ status_code = 200
     }
 }
 ```
+ if room has been created
+
+status_code = 400 
+```json
+{
+    "non_field_errors": [
+        "The fields first_user, second_user must make a unique set."
+    ]
+}
+```
+
+if first_user and second_user have same ids
+
+status_code = 400
+
+```json
+{
+    "non_field_errors": [
+        "Users id are same"
+    ]
+}
+```
+
+### Get Chat Room (`GET  http://127.0.0.1:8000/en/api/v1/chatrooms/retrieve/`)
+
+**Example Request:**
+```http
+POST http://127.0.0.1:8000/en/api/v1/chat-rooms/retrieve/?first_user=55&second_user=11
+Authorization: Bearer <token>
+Content-Type: application/json
+```
+
+**Example Response:**
+```json
+{
+    "id": 43,
+    "first_user": 55,
+    "second_user": 11
+}
+```
+if not found
+
+status_code = 404
+
+```json
+{
+    "detail": "No ChatRoom matches the given query."
+}
+```
+
 
 ## WebSocket Endpoints
 
