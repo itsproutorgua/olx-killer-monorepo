@@ -49,7 +49,6 @@ class ChatConsumer(AsyncWebsocketConsumer):
         await update_user_status(self.scope['user'], is_online=True)
 
     async def disconnect(self, close_code):
-        print(f'🔌 Отключение, код: {close_code}')
         # Leave chat group
         await self.channel_layer.group_discard(self.chat_group_name, self.channel_name)
 
