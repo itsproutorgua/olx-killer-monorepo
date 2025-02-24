@@ -20,6 +20,7 @@ JAZZMIN_SETTINGS = {
         'products.product': 'fas fa-box',
         'products.category': 'fas fa-tags',
         'products.currency': 'fas fa-dollar-sign',
+        'products.productdeactivationfeedback': 'fas fa-comment-dots',
         'locations.location': 'fas fa-map-marker-alt',
         'locations.city': 'fas fa-city',
         'locations.village': 'fas fa-tree',

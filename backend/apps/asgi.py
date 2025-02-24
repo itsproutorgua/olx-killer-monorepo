@@ -12,15 +12,17 @@ import os
 import django
 
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings.main')  # noqa: E402
-django.setup()  # noqa: E402
 
-from channels.auth import AuthMiddlewareStack
-from channels.routing import ProtocolTypeRouter
-from channels.routing import URLRouter
-from django.core.asgi import get_asgi_application
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings.main')
+django.setup() 
 
-from apps.chat.routing import websocket_urlpatterns
+from channels.auth import AuthMiddlewareStack  # noqa: E402
+from channels.routing import ProtocolTypeRouter  # noqa: E402
+from channels.routing import URLRouter  # noqa: E402
+from django.core.asgi import get_asgi_application  # noqa: E402
+
+from apps.chat.routing import websocket_urlpatterns  # noqa: E402
+
 
 
 application = ProtocolTypeRouter(

@@ -1,5 +1,9 @@
 export const profileForms_en = {
   profileForm: {
+    titles: {
+      emailNotVerified: 'Your email is not verified',
+      notFilled: 'Your profile is filled up to 60%',
+    },
     fields: {
       city: {
         label: 'Your city',
@@ -29,12 +33,20 @@ export const profileForms_en = {
     messages: {
       profileUpdateSuccess: 'Profile updated successfully!',
       profileUpdateError: 'Error updating profile!',
+      verifyEmail:
+        'Please check your email and verify your e-mail to publish listings.',
+      fillProfile:
+        'To publish a listing, you need to fill in your profile. It will take a few minutes.',
     },
   },
 }
 
 export const profileForms_uk = {
   profileForm: {
+    titles: {
+      emailNotVerified: 'Ваш e-mail не підтверджено',
+      notFilled: 'Ваш профіль заповнений на 60%',
+    },
     fields: {
       city: {
         label: 'Місцезнаходження',
@@ -64,6 +76,10 @@ export const profileForms_uk = {
     messages: {
       profileUpdateSuccess: 'Профіль оновлено успішно!',
       profileUpdateError: 'Помилка оновлення профілю!',
+      verifyEmail:
+        'Будь ласка, перевірте пошту та підтвердіть адресу, щоб публікувати оголошення.',
+      fillProfile:
+        'Для публікації оголошення необхідно заповнити профіль. Це займе всього кілька хвилин.',
     },
   },
 }
