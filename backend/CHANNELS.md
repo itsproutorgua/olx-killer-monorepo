@@ -4,90 +4,13 @@
 
 ## API Endpoints
 
-### Create Chat Room (`POST  http://127.0.0.1:8000/en/api/v1/chat-rooms/create/`)
-**Description:**
-- Creates a chat room between two users.
-
-**Example Request:**
-```http
-POST http://127.0.0.1:8000/en/api/v1/chat-rooms/create/
-Authorization: Bearer <token>
-Content-Type: application/json
-Body:
-    {
-        "first_user": 4,
-        "second_user": 5
-    }
-```
-the first_user and second_user fields are user IDs 
-
-
-**Example Response:**
-status_code = 200
-```json
-{
-    "room_data": {
-        "id": 26,
-        "first_user": 6,
-        "second_user": 2
-    }
-}
-```
- if room has been created
-
-status_code = 400 
-```json
-{
-    "non_field_errors": [
-        "The fields first_user, second_user must make a unique set."
-    ]
-}
-```
-
-if first_user and second_user have same ids
-
-status_code = 400
-
-```json
-{
-    "non_field_errors": [
-        "Users id are same"
-    ]
-}
-```
-
-### Get Chat Room (`GET  http://127.0.0.1:8000/en/api/v1/chatrooms/retrieve/`)
-
-**Example Request:**
-```http
-POST http://127.0.0.1:8000/en/api/v1/chat-rooms/retrieve/?first_user=55&second_user=11
-Authorization: Bearer <token>
-Content-Type: application/json
-```
-
-**Example Response:**
-```json
-{
-    "id": 43,
-    "first_user": 55,
-    "second_user": 11
-}
-```
-if not found
-
-status_code = 404
-
-```json
-{
-    "detail": "No ChatRoom matches the given query."
-}
-```
-
-
 ## WebSocket Endpoints
 
 ### Connect
-**Endpoint:** `ws://127.0.0.1:8001/ws/chat/<room_id>/`
+**Endpoint:** `ws://127.0.0.1:8001/ws/chat/?firts_user=<int>&second_user=<int>/`
+
+firts_user - sender id
+second_user - reciever id
 
 **Description:**
 - Authenticates the user using a JWT token.
@@ -98,7 +21,7 @@ status_code = 404
 **Example method**
 
 ```javascript
-    const socket = new WebSocket("ws://127.0.0.1:8001/ws/chat/<room_id>/", ["Bearer", jwt_token]);
+    const socket = new WebSocket("ws://127.0.0.1:8001/ws/chat/?firts_user=1&second_user=2/", ["Bearer", jwt_token]);
 
     socket.onopen = function () {
         console.log("Connected to websocket");
@@ -276,7 +199,7 @@ status_code = 404
     </form>
     <script>
         const token = "token"
-        const socket = new WebSocket("ws://127.0.0.1:8001/ws/chat/2/", ["Bearer", token]);
+        const socket = new WebSocket("ws://127.0.0.1:8001/ws/chat/?firts_user=1&second_user=2/", ["Bearer", token]);
 
         socket.onopen = function () {
             console.log("Connected to  WebSocket");
