@@ -22,9 +22,10 @@ from channels.routing import URLRouter  # noqa: E402
 from django.core.asgi import get_asgi_application  # noqa: E402
 
 from apps.chat.routing import websocket_urlpatterns  # noqa: E402
+from apps.chat.middlwares.queryparams import QueryParamsMiddleware
 
 
 
 application = ProtocolTypeRouter(
-    {'http': get_asgi_application(), 'websocket': AuthMiddlewareStack(URLRouter(websocket_urlpatterns))}
+    {'http': get_asgi_application(), 'websocket': AuthMiddlewareStack(QueryParamsMiddleware(URLRouter(websocket_urlpatterns)))}
 )
