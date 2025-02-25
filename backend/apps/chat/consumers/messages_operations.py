@@ -40,7 +40,7 @@ async def mark_message_as_delivered(consumer: AsyncWebsocketConsumer, message_id
     )
 
     room = consumer.room
-    recipient = await sync_to_async(room.get_recipient)(consumer.scope['user'])
+    recipient = await sync_to_async(room.get_recipient)(consumer.scope['first_user'])
     if recipient and await consumer.is_user_online(recipient):
         await mark_message_as_read(consumer, message_id)
 
@@ -89,7 +89,7 @@ async def save_message(consumer: AsyncWebsocketConsumer, message_text: str) -> M
     return await sync_to_async(
         lambda: Message.objects.create(
             chat_room=consumer.room,
-            sender=consumer.scope['user'],
+            sender=consumer.scope['first_user'],
             text=message_text,
         ),
         thread_sensitive=True,
@@ -109,7 +109,7 @@ async def send_last_messages(consumer: AsyncWebsocketConsumer) -> None:
 
     messages_data = []
     for msg in messages:
-        if msg.status == Message.Status.DELIVERED and msg.sender != consumer.scope['user']:
+        if msg.status == Message.Status.DELIVERED:
             await update_message_status(msg.id, Message.Status.READ)
             msg.status = Message.Status.READ
         messages_data.append(

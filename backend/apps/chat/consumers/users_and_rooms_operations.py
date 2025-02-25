@@ -2,6 +2,7 @@ from asgiref.sync import sync_to_async
 from django.db.utils import IntegrityError
 from django.utils import timezone
 from rest_framework.exceptions import AuthenticationFailed
+from channels.generic.websocket import AsyncWebsocketConsumer
 
 from apps.chat.exceptions.exceptions import DatabaseIntegrityError
 from apps.chat.exceptions.exceptions import InvalidTokenFormatError
@@ -10,6 +11,7 @@ from apps.chat.models.chat import ChatRoom
 from apps.chat.models.useractivity import UserActivity
 from apps.users.authentication import Auth0JWTAuthentication
 from apps.users.models import User
+from django.db.models import Q
 
 
 async def update_user_status(user: User, is_online: bool) -> None:
@@ -22,10 +24,6 @@ async def update_user_status(user: User, is_online: bool) -> None:
         ),
         thread_sensitive=True,
     )()
-
-
-async def get_chat_room(room_id: int) -> ChatRoom:
-    return await sync_to_async(lambda: ChatRoom.objects.filter(id=room_id).first(), thread_sensitive=True)()
 
 
 async def authenticate_user(scope: dict) -> User:
@@ -47,27 +45,43 @@ async def authenticate_user(scope: dict) -> User:
     except IndexError:
         raise MalformedAuthorizationHeaderError()
     except IntegrityError:
-        raise DatabaseIntegrityError()
+        raise DatabaseIntegrityError()   
 
+async def validate_user(consumer: AsyncWebsocketConsumer) -> None: 
+    first_user_id = consumer.scope['first_user_id']
+    first_user = consumer.scope['first_user']
 
-async def is_user_in_chat(room_id: int, user_email: str) -> bool:
-    users = await sync_to_async(
-        lambda: list(
-            ChatRoom.objects.select_related('first_user', 'second_user')
-            .filter(id=room_id)
-            .values_list('first_user__email', 'second_user__email')
-        ),
-        thread_sensitive=True,
-    )()
+    first_user_id = await sync_to_async(lambda: User.objects.get(id=first_user_id))()
 
-    return bool(users) and user_email in users[0]
-
+    if first_user != first_user_id:
+        await consumer.close()
 
 async def get_recipient(room: ChatRoom, user: User) -> User:
     return await sync_to_async(lambda: room.get_recipient(user))()
 
+async def get_chat_room(room_id: int) -> int:
+    return await sync_to_async(lambda: ChatRoom.objects.filter(id=room_id).first())()
 
 async def is_user_online(user: User) -> bool:
     return await sync_to_async(
         lambda: UserActivity.objects.filter(user=user, status=UserActivity.Status.ONLINE).exists()
     )()
+
+
+async def create_or_get_room(first_user_email: str, second_user_id: int) -> int:
+    first_user = await sync_to_async(lambda: User.objects.get(email=first_user_email))()
+    second_user = await sync_to_async(lambda: User.objects.get(id=second_user_id))()
+
+    room = await sync_to_async(lambda: ChatRoom.objects.filter(
+                                Q(first_user=first_user, second_user=second_user) | 
+                                Q(first_user=second_user, second_user=first_user)
+                        ).first())()
+    
+    if room:
+        return room.id
+    
+    room = await sync_to_async(lambda: ChatRoom.objects.create(
+        first_user=first_user, second_user=second_user
+        ))()
+    
+    return room.id
