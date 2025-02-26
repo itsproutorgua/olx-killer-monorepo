@@ -55,10 +55,14 @@ export const ProductInfo: React.FC<Props> = ({
       <div className='mt-2 leading-none md:mt-[54px] md:hidden'>
         <div className='flex items-center text-[12px] text-gray-400'>
           <p>ID: {product?.id}</p>
-          <span className='ml-[10px] mt-[1px] border-l border-gray-400 pl-[10px] text-xs'>
+          <span className='ml-[10px] mt-[1px] border-l border-gray-400 px-[10px] text-xs'>
             {t('words.views')}: {product.views}
           </span>
         </div>
+        <span className='mt-[14px] flex h-8 max-w-fit items-center rounded-[6px] border border-border px-[21px] py-2.5 text-xs'>
+          {t('words.state')}
+          {product.status}
+        </span>
         <ProductDescription
           description={product?.description}
           maxClampLength={maxClampLengthSmall}

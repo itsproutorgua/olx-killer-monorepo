@@ -126,6 +126,9 @@ export function ProfileEditForm() {
             />
             <div>
               <div className='space-y-6 xl:flex xl:max-w-[422px] xl:flex-col xl:gap-y-[30px] xl:space-y-0'>
+                <h1 className='-mb-1 text-lg font-semibold xl:-mb-[10px]'>
+                  {t('profileForm.titles.editProfile')}
+                </h1>
                 {/* Username input */}
                 <FormField
                   control={form.control}
