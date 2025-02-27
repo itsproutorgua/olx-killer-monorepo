@@ -41,7 +41,7 @@ import { cn } from '@/shared/library/utils'
 import { DndGrid } from './dnd-grid'
 
 const minTextareaLength = 10
-const maxTextareaLength = 15000
+const maxTextareaLength = 10000
 
 export function CreateListingForm() {
   const { t } = useTranslation()

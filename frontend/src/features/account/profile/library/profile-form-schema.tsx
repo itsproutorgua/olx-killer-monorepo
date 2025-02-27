@@ -22,7 +22,7 @@ export const useProfileSchema = () => {
       .string()
       .min(3, { message: t('errors.input.minLength', { minLength: 3 }) })
       .max(20, { message: t('errors.input.maxLength', { maxLength: 20 }) })
-      .regex(/^[a-zA-Zа-яА-ЯґҐєЄіІїЇ0-9\s-]+$/, {
+      .regex(/^[a-zA-Zа-яА-ЯґҐєЄіІїЇ0-9\s]+$/, {
         message: t('errors.input.invalidCharacters'),
       }),
 
