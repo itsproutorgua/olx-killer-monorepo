@@ -32,7 +32,10 @@ export const en = {
     back: 'Back',
     show: 'Show',
     backToAccount: 'Back to account',
+    returnBack: 'Return back',
     submit: 'Submit',
+    delete: 'Delete',
+    toProfile: 'To profile page',
   },
   sort: {
     priceExpensive: 'From cheap to expensive',
@@ -218,5 +221,7 @@ export const en = {
       'We strive to make the platform better. Share how your experience went.',
     feedbackSuccess:
       'Your opinion is very important to us and helps improve our platform!',
+    deleteListingMessage:
+      'After deletion, your listing will disappear forever. Make sure you no longer need it.',
   },
 }

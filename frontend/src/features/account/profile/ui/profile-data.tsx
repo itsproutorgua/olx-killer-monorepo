@@ -50,6 +50,8 @@ export const ProfileData: React.FC<Props> = ({ className, user }) => {
             {user?.username}
           </h2>
           <p className='text-sm font-light leading-[18px] xl:font-normal'>
+            {user?.location.location_type === 'city' &&
+              t('profileForm.short.city')}
             {user?.location.name || t('profileForm.fields.city.noCity')}
           </p>
           <p className='text-sm font-light leading-[18px] xl:font-normal'>

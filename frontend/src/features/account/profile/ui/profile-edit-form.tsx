@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useAuth0 } from '@auth0/auth0-react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { LoaderCircle } from 'lucide-react'
 import { useForm } from 'react-hook-form'
@@ -7,6 +8,7 @@ import { useTranslation } from 'react-i18next'
 import { z } from 'zod'
 
 import { useProfileSchema } from '@/features/account/profile'
+import { EmailNotVerified } from '@/features/account/profile/ui/email-not-verified.tsx'
 import { ProfileData } from '@/features/account/profile/ui/profile-data.tsx'
 import { useLocations } from '@/entities/locations'
 import { useUpdateProfile, useUserProfile } from '@/entities/user' // Import the useUpdateProfile hook
@@ -24,6 +26,7 @@ import { useDebounce } from '@/shared/library/hooks'
 
 export function ProfileEditForm() {
   const { t } = useTranslation()
+  const { user: userAuth } = useAuth0()
   const { data: user, isSuccess: profileLoaded } = useUserProfile()
   const { mutate, isPending } = useUpdateProfile()
   const [searchTerm, setSearchTerm] = useState('')
@@ -123,6 +126,9 @@ export function ProfileEditForm() {
             />
             <div>
               <div className='space-y-6 xl:flex xl:max-w-[422px] xl:flex-col xl:gap-y-[30px] xl:space-y-0'>
+                <h1 className='-mb-1 text-lg font-semibold xl:-mb-[10px]'>
+                  {t('profileForm.titles.editProfile')}
+                </h1>
                 {/* Username input */}
                 <FormField
                   control={form.control}
@@ -271,13 +277,16 @@ export function ProfileEditForm() {
                     readOnly
                     className='form-input bg-gray-50'
                   />
+                  {!userAuth?.email_verified && (
+                    <EmailNotVerified className='!mt-[14px]' />
+                  )}
                 </div>
               </div>
             </div>
             <button
               disabled={isPending}
               type='submit'
-              className={`relative mx-auto flex h-[53px] w-[230px] items-center gap-6 rounded-[60px] bg-primary-900 py-[5px] pr-[5px] text-base/4 text-gray-50 transition-colors duration-300 hover:bg-primary-500 active:bg-primary-600 active:duration-0 disabled:cursor-not-allowed disabled:bg-gray-300 md:mx-0`}
+              className={`relative mx-auto flex h-[53px] w-[230px] items-center gap-6 rounded-[60px] bg-primary-900 py-[5px] pr-[5px] text-base/4 text-gray-50 transition-colors duration-300 hover:bg-primary-500 active:bg-primary-600 active:duration-0 disabled:cursor-not-allowed disabled:bg-gray-300 md:mx-0 ${!userAuth?.email_verified && '!mt-[30px]'}`}
             >
               {isPending ? (
                 <p className='mx-auto'>

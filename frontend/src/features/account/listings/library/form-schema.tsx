@@ -13,7 +13,7 @@ export const useFormSchema = () => {
     title: z
       .string()
       .min(3, { message: t('errors.input.minLength', { minLength: 3 }) })
-      .max(100, { message: t('errors.input.maxLength', { maxLength: 255 }) })
+      .max(150, { message: t('errors.input.maxLength', { maxLength: 150 }) })
       .regex(/^[a-zA-Zа-яА-ЯґҐєЄіІїЇ0-9\s-]+$/, {
         message: t('errors.input.invalidCharacters'),
       }),
@@ -38,7 +38,9 @@ export const useFormSchema = () => {
     description: z
       .string()
       .min(10, { message: t('errors.input.minLength', { minLength: 10 }) })
-      .max(1000, { message: t('errors.input.maxLength', { maxLength: 1000 }) }),
+      .max(10000, {
+        message: t('errors.input.maxLength', { maxLength: 10000 }),
+      }),
 
     category_id: z.coerce
       .number()
