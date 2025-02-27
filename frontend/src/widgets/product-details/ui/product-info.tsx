@@ -84,7 +84,10 @@ export const ProductInfo: React.FC<Props> = ({
       </div>
       <div className='mt-[28px] flex flex-col items-center gap-[10px] md:mt-[34px] md:flex-row md:gap-[45px]'>
         <div className='flex w-full flex-col items-center gap-[10px] md:w-[291px] md:flex-row md:gap-[19px]'>
-          <WriteSeller className='w-full md:w-[238px]' />
+          <WriteSeller
+            className='w-full md:w-[238px]'
+            sellerId={product.seller.id}
+          />
           <AddToFavorite
             productId={product.id}
             className='hidden h-[34px] w-[34px] text-xl text-primary-900 md:flex md:items-center md:justify-center'
