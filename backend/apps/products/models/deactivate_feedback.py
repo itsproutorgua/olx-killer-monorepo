@@ -47,11 +47,11 @@ class ProductDeactivationFeedback(TimestampMixin, HistoricalModel, models.Model)
     def save(self, *args, **kwargs):
         match self.answer:
             case self.AnswerStatus.SOLD | self.AnswerStatus.SOLD_ELSEWHERE:
-                self.product.publication_status = Product.PublicationStatus.SOLD
+                self.product.publication_status = Product.PublicationStatus.INACTIVE
             case self.AnswerStatus.NOT_SOLD:
                 self.product.publication_status = Product.PublicationStatus.INACTIVE
             case _:
-                self.product.publication_status = Product.PublicationStatus.INACTIVE
+                self.product.publication_status = Product.PublicationStatus.DELETED
 
         with transaction.atomic():
             self.product.save(update_fields=('publication_status', 'updated_at'))
