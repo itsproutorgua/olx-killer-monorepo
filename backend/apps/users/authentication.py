@@ -1,7 +1,7 @@
 import logging
 
 import requests
-from authlib.jose import JsonWebKey
+from authlib.jose import JsonWebKey, JoseError
 from authlib.jose import jwt
 from django.conf import settings
 from django.core.cache import cache
@@ -46,17 +46,7 @@ class Auth0JWTAuthentication(JWTAuthentication):
                     'aud': {'essential': True, 'value': settings.AUTH0_AUDIENCE},
                 },
             )
-        except jwt.ExpiredSignatureError:
-            raise AuthenticationFailed(_('Token has expired'))
-        except jwt.InvalidAudienceError:
-            raise AuthenticationFailed(_('Invalid token audience'))
-        except jwt.InvalidIssuerError:
-            raise AuthenticationFailed(_('Invalid token issuer'))
-        except jwt.DecodeError:
-            raise AuthenticationFailed(_('Error decoding token'))
-        except jwt.InvalidTokenError:
-            raise AuthenticationFailed(_('Invalid token'))
-        except Exception as e:
+        except JoseError as e:
             logger.error(f'Failed to validate token: {str(e)}')
             raise InvalidToken(_('Token validation failed'))
 
