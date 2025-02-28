@@ -135,6 +135,17 @@ class ProductApi {
     return response.data
   }
 
+  async updateProduct(productData: FormData, idToken: string, slug: string) {
+    const url = `${this.BASE_URL}${slug}`
+    const response = await instanceBase.patch(url, productData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        Authorization: `Bearer ${idToken}`,
+      },
+    })
+    return response.data
+  }
+
   async deleteProduct(slug: string, idToken: string) {
     const url = `${this.BASE_URL}/${slug}/`
     const response = await instanceBase.delete(url, {
