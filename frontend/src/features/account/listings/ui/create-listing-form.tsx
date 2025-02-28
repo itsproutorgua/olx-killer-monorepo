@@ -16,7 +16,9 @@ import {
   useFormSchema,
 } from '@/features/account/listings'
 import { EmailNotVerified } from '@/features/account/profile/ui/email-not-verified.tsx'
+import { useProduct } from '@/entities/product'
 import { useCreateProduct } from '@/entities/product/library/hooks/use-create-product.tsx'
+import { useUpdateProduct } from '@/entities/product/library/hooks/use-update-product.tsx'
 import { useUserProfile } from '@/entities/user'
 import { PenIcon, SpinnerIcon } from '@/shared/ui'
 import {
@@ -40,12 +42,28 @@ import { PRIVATE_PAGES } from '@/shared/constants'
 import { cn } from '@/shared/library/utils'
 import { DndGrid } from './dnd-grid'
 
+interface Props {
+  mode?: 'create' | 'edit'
+  productSlug?: string
+  onOpenChange?(open: boolean): void
+}
+
 const minTextareaLength = 10
 const maxTextareaLength = 10000
 
-export function CreateListingForm() {
+export function CreateListingForm({
+  mode = 'create',
+  productSlug,
+  onOpenChange,
+}: Props) {
   const { t } = useTranslation()
   const { user: userAuth } = useAuth0()
+  const { data: existingProduct, isSuccess: productLoaded } = useProduct(
+    productSlug ?? '',
+    {
+      enabled: mode === 'edit',
+    },
+  )
   const {
     data: userProfile,
     isLoading,
@@ -59,6 +77,14 @@ export function CreateListingForm() {
     setSelectedVideoFile(null)
     form.setValue('upload_video', undefined)
   }
+  //To be used in future
+  // const convertToFile = (productImages: ProductImage[]): File[] => {
+  //   return productImages.map(image => {
+  //     return new File([image.image], image.id.toString(), {
+  //       type: 'image/jpeg',
+  //     })
+  //   })
+  // }
 
   const FormSchema = useFormSchema()
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -85,17 +111,36 @@ export function CreateListingForm() {
   })
 
   useEffect(() => {
-    if (profileLoaded && userProfile) {
+    if (mode === 'edit' && productLoaded && existingProduct) {
       form.reset({
+        title: existingProduct.title,
+        description: existingProduct.description,
+        category_id: existingProduct.category.id,
+        amount: existingProduct.prices[0].amount.toString(),
+        currency: existingProduct.prices[0].currency.id,
+        status:
+          existingProduct.status === 'used' ||
+          existingProduct.status === 'Вживаний'
+            ? 'used'
+            : 'new',
+      })
+      setCategoryTitle(existingProduct.category.title)
+    }
+
+    if (profileLoaded && userProfile) {
+      form.reset(prev => ({
+        ...prev,
         user_name: userProfile?.username || '',
         location: userProfile?.location.name || '',
         user_phone: userProfile?.phone_numbers[0] || '',
         user_email: userProfile?.email || '',
-      })
+      }))
     }
-  }, [profileLoaded, userProfile])
+  }, [existingProduct, mode, productLoaded, profileLoaded, userProfile])
 
   const { mutate: createProduct, isPending } = useCreateProduct()
+  const { mutate: updateProduct, isPending: isUpdatePending } =
+    useUpdateProduct(productSlug || '')
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
     const formData = new FormData()
@@ -119,17 +164,34 @@ export function CreateListingForm() {
       formData.append('upload_video', data.upload_video)
     }
 
-    createProduct(formData, {
-      onSuccess: () => {
-        navigate(PRIVATE_PAGES.LISTING_SUCCESS, {
-          state: { fromFormSubmission: true },
-          replace: true,
-        })
-      },
-      onError: () => {
-        toast.error('Error during form submission!')
-      },
-    })
+    if (mode === 'create') {
+      createProduct(formData, {
+        onSuccess: () => {
+          navigate(PRIVATE_PAGES.LISTING_SUCCESS, {
+            state: { fromFormSubmission: true },
+            replace: true,
+          })
+        },
+        onError: () => {
+          toast.error('Error during form submission!')
+        },
+      })
+    } else {
+      updateProduct(formData, {
+        onSuccess: () => {
+          if (onOpenChange) {
+            onOpenChange(false)
+          }
+          toast.success('Product updated successfully!')
+        },
+        onError: () => {
+          if (onOpenChange) {
+            onOpenChange(false)
+          }
+          toast.error('Error during form submission!')
+        },
+      })
+    }
   }
 
   return (
@@ -557,9 +619,9 @@ export function CreateListingForm() {
           className={`relative mx-auto flex h-[53px] min-w-[315px] items-center gap-6 rounded-[60px] bg-primary-900 py-[5px] pr-[5px] text-base/4 text-gray-50 transition-colors duration-300 hover:bg-primary-500 active:bg-primary-600 active:duration-0 disabled:cursor-not-allowed disabled:bg-gray-300 xl:mx-0 ${
             i18n.language !== 'uk' ? 'pl-[37px]' : 'xl:pl-[20px]'
           }`}
-          disabled={isPending || !userAuth?.email_verified}
+          disabled={isPending || !userAuth?.email_verified || isUpdatePending}
         >
-          {isPending ? (
+          {isPending || isUpdatePending ? (
             <span
               className={`flex w-full items-center justify-center pr-0 xl:pr-5 ${
                 i18n.language !== 'uk'
@@ -569,9 +631,13 @@ export function CreateListingForm() {
             >
               <LoaderCircle className='size-6 animate-spin' />
             </span>
-          ) : (
+          ) : mode === 'create' ? (
             <span className='mr-7 flex flex-1 items-center justify-center xl:mr-12'>
               {t('listingForm.buttons.submit')}
+            </span>
+          ) : (
+            <span className='mr-7 flex flex-1 items-center justify-center xl:mr-12'>
+              {t('listingForm.buttons.update')}
             </span>
           )}
           {!isPending && (
