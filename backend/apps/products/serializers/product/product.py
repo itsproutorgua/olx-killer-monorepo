@@ -146,11 +146,15 @@ class ProductSerializer(serializers.ModelSerializer):
             instance.save()
             return instance
 
-        images_data = validated_data.pop('product_images', [])
+        category = validated_data.pop('category_id', None)
         video_file = validated_data.pop('upload_video', None)
+        images_data = validated_data.pop('uploaded_images', [])
         amount = validated_data.pop('amount', MIN_PRICE)
         currency = validated_data.pop('currency', settings.DEFAULT_CURRENCY)
         prices_data = [{'amount': amount, 'currency': currency}]
+
+        if category:
+            validated_data['category'] = category
 
         for attr, value in validated_data.items():
             setattr(instance, attr, value)

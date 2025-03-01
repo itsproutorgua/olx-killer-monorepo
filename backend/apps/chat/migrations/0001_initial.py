@@ -7,13 +7,12 @@ from django.db import migrations
 from django.db import models
 
 
+
 class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-        migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
@@ -40,6 +39,7 @@ class Migration(migrations.Migration):
                         verbose_name='Second User',
                     ),
                 ),
+
             ],
             options={
                 'db_table': 'chatrooms',
@@ -181,24 +181,6 @@ class Migration(migrations.Migration):
                         verbose_name='Status',
                     ),
                 ),
-                (
-                    'chat_room',
-                    models.ForeignKey(
-                        on_delete=django.db.models.deletion.CASCADE,
-                        related_name='messages',
-                        to='chat.chatroom',
-                        verbose_name='Chat Room',
-                    ),
-                ),
-                (
-                    'sender',
-                    models.ForeignKey(
-                        on_delete=django.db.models.deletion.CASCADE,
-                        related_name='sender_messages',
-                        to=settings.AUTH_USER_MODEL,
-                        verbose_name='Sender',
-                    ),
-                ),
             ],
             options={
                 'verbose_name': 'Message',
@@ -222,6 +204,7 @@ class Migration(migrations.Migration):
                         verbose_name='Status',
                     ),
                 ),
+
                 (
                     'user',
                     models.OneToOneField(
@@ -231,6 +214,7 @@ class Migration(migrations.Migration):
                         verbose_name='User',
                     ),
                 ),
+
             ],
             options={
                 'verbose_name': 'User Activity',
@@ -242,4 +226,5 @@ class Migration(migrations.Migration):
             model_name='chatroom',
             constraint=models.UniqueConstraint(fields=('first_user', 'second_user'), name='unique_together'),
         ),
+
     ]
