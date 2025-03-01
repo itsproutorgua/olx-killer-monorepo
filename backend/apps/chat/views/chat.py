@@ -7,11 +7,11 @@ from rest_framework.viewsets import GenericViewSet
 
 from apps.chat.models.chat import ChatRoom
 from apps.chat.models.message import Message
-from apps.chat.serializers.chat import ChatRecieveSerializer
+from apps.chat.serializers.chat import ChatReceiveSerializer
 
 
-class ChatRecieveView(ListModelMixin, GenericViewSet):
-    serializer_class = ChatRecieveSerializer
+class ChatsReceiveView(ListModelMixin, GenericViewSet):
+    serializer_class = ChatReceiveSerializer
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
