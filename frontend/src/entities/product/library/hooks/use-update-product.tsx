@@ -3,18 +3,23 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { productApi } from '@/entities/product'
 import { useIdToken } from '@/entities/user/library/hooks/use-id-token.tsx'
 
-export const useCreateProduct = () => {
+export const useUpdateProduct = (slug: string) => {
   const getIdToken = useIdToken()
   const queryClient = useQueryClient()
 
   return useMutation({
     mutationFn: async (productData: FormData) => {
       const idToken = await getIdToken()
-      return productApi.createProduct(productData, idToken)
+      return productApi.updateProduct(productData, idToken, slug)
     },
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ['oka-products', 'oka-user-listings'],
+        queryKey: ['oka-user-listings', 'oka-products'],
+      })
+    },
+    onError: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['oka-user-listings', 'oka-products'],
       })
     },
   })
