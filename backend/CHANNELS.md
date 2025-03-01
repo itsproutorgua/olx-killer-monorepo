@@ -4,6 +4,46 @@
 
 ## API Endpoints
 
+### Get all sender rooms `http://127.0.0.1:8000/en/api/v1/chat/recieve/`
+
+Example request
+```http
+GET http://127.0.0.1:8000/en/api/v1/chat/recieve/?first_user=2
+```
+
+Example responce
+```json
+{
+    "count": 4,
+    "next": null,
+    "previous": null,
+    "results": [
+        {
+            "id": 66,
+            "first_user": 2,
+            "second_user": 8
+        },
+        {
+            "id": 68,
+            "first_user": 2,
+            "second_user": 10
+        },
+        {
+            "id": 71,
+            "first_user": 2,
+            "second_user": 11
+        },
+        {
+            "id": 79,
+            "first_user": 2,
+            "second_user": 2
+        }
+    ]
+}
+
+id - room_id
+```
+
 ## WebSocket Endpoints
 
 ### Connect
@@ -13,7 +53,7 @@ firts_user - sender id
 second_user - reciever id
 
 **Description:**
-- Authenticates the user using a JWT token.
+- Authenticates the user using a JWT token id token.
 - Verifies if the user is part of the chat room.
 - Joins the WebSocket group corresponding to the chat room.
 - Loads the last 50 messages from the database and sends them to the client.
