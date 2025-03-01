@@ -1,41 +1,25 @@
-from django.contrib.auth import get_user_model
-from django.db.models import Q
-from django.shortcuts import get_object_or_404
-from drf_spectacular.utils import extend_schema
-from rest_framework.generics import CreateAPIView
-from rest_framework.generics import RetrieveAPIView
+from apps.chat.seializers.chat import ChatRecieveSerializer
+from django.db.models import OuterRef, Subquery, Q
+from apps.chat.models.chat import ChatRoom
+from apps.chat.models.message import Message
+from rest_framework.viewsets import GenericViewSet
+from rest_framework.mixins import ListModelMixin
 from rest_framework.permissions import IsAuthenticated
 
-from apps.chat.models.chat import ChatRoom
-from apps.chat.serializers.chat import ChatCreateSerializer
-from apps.chat.serializers.chat import ChatRetrieveSerialzier
 
-
-User = get_user_model()
-
-
-@extend_schema(
-    tags=['Chat'],
-)
-class ChatRoomCreateView(CreateAPIView):
-    queryset = ChatRoom.objects.all()
-    serializer_class = ChatCreateSerializer
+class ChatRecieveView(ListModelMixin, GenericViewSet):
+    serializer_class = ChatRecieveSerializer
     permission_classes = [IsAuthenticated]
 
+    def get_queryset(self):
+        user = self.request.GET.get('first_user')
+        last_message_subquery = Message.objects.filter(
+            chat_room=OuterRef('pk')
+        ).order_by('created_at').values('created_at')[:1]
 
-@extend_schema(
-    tags=['Chat'],
-)
-class ChatRoomRetrieveView(RetrieveAPIView):
-    serializer_class = ChatRetrieveSerialzier
-    permission_classes = [IsAuthenticated]
+        return ChatRoom.objects.filter(
+            Q(first_user=user) | Q(second_user=user)
+        ).annotate(
+            last_message_time=Subquery(last_message_subquery)
+        ).order_by('last_message_time')
 
-    def get_object(self):
-        first_user = self.request.query_params.get('first_user')
-        second_user = self.request.query_params.get('second_user')
-
-        room = ChatRoom.objects.filter(
-            Q(first_user=first_user, second_user=second_user) | Q(first_user=second_user, second_user=first_user)
-        )
-
-        return get_object_or_404(room)
