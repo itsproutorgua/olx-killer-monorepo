@@ -1,5 +1,6 @@
 from django.core.exceptions import ValidationError
 from django.db import IntegrityError
+from django.db import transaction
 from django.utils.translation import gettext_lazy as _
 from rest_framework import serializers
 
@@ -38,12 +39,16 @@ class ProductImageSerializer(serializers.ModelSerializer):
     @classmethod
     def create_images(cls, product: Product, images_data: list) -> None:
         """A method for creating images for a product."""
-        for image_data in images_data:
-            try:
-                image_data = {'product': product, 'image': image_data}
-                cls().create(image_data)
-            except IntegrityError as e:
-                raise ValidationError(_('Failed to create product image: {}'.format(e)))
+        with transaction.atomic():
+            if images_data:
+                product.product_images.all().delete()
 
-        if not images_data and product.product_images.first() is None:
-            cls().create({'product': product})
+            for image_data in images_data:
+                try:
+                    image_data = {'product': product, 'image': image_data}
+                    cls().create(image_data)
+                except IntegrityError as e:
+                    raise ValidationError(_('Failed to create product image: {}'.format(e)))
+
+            if not images_data and product.product_images.first() is None:
+                cls().create({'product': product})
