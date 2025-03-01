@@ -100,7 +100,7 @@ async def send_last_messages(consumer: AsyncWebsocketConsumer) -> None:
     try:
         messages = await sync_to_async(
             lambda: list(
-                Message.objects.filter(chat_room=consumer.room).select_related('sender').order_by('-created_at')[:50]
+                Message.objects.filter(chat_room=consumer.room).select_related('sender').order_by('created_at')[:50]
             ),
             thread_sensitive=True,
         )()

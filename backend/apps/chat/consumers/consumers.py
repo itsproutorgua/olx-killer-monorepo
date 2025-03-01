@@ -1,7 +1,6 @@
 import json
 
 from channels.generic.websocket import AsyncWebsocketConsumer
-from channels.generic.websocket import AsyncWebsocketConsumer
 
 from apps.chat.consumers.messages_operations import chat_message
 from apps.chat.consumers.messages_operations import get_message
@@ -13,13 +12,14 @@ from apps.chat.consumers.messages_operations import save_message
 from apps.chat.consumers.messages_operations import send_last_messages
 from apps.chat.consumers.messages_operations import serialize_message
 from apps.chat.consumers.users_and_rooms_operations import authenticate_user
+from apps.chat.consumers.users_and_rooms_operations import create_or_get_room
 from apps.chat.consumers.users_and_rooms_operations import get_chat_room
 from apps.chat.consumers.users_and_rooms_operations import get_recipient
 from apps.chat.consumers.users_and_rooms_operations import is_user_online
+from apps.chat.consumers.users_and_rooms_operations import is_vaild_sender
 from apps.chat.consumers.users_and_rooms_operations import update_user_status
-from apps.chat.consumers.users_and_rooms_operations import create_or_get_room
-from apps.chat.consumers.users_and_rooms_operations import validate_user
- 
+from apps.chat.consumers.users_and_rooms_operations import validate_user_id
+
 
 class ChatConsumer(AsyncWebsocketConsumer):
     async def connect(self):
@@ -35,9 +35,9 @@ class ChatConsumer(AsyncWebsocketConsumer):
         self.scope['first_user'] = await authenticate_user(self.scope)
         if not self.scope['first_user']:
             return await self.close()
-        
-        await validate_user(self)
-        
+
+        await validate_user_id(self)
+
         id = await create_or_get_room(self.scope['first_user'], self.scope['second_user'])
         self.room_id = id
         self.chat_group_name = f'chat_{self.room_id}'
@@ -83,11 +83,15 @@ class ChatConsumer(AsyncWebsocketConsumer):
                 )
             elif action == 'delete':
                 message_id = data.get('message_id')
-                await message_delete(self, message_id)
+                sender_id = data.get('sender_id')
+                if is_vaild_sender(message_id, sender_id):
+                    await message_delete(self, message_id)
             elif action == 'edit':
                 message_id = data.get('message_id')
                 message_text = data.get('text')
-                await message_edit(self, message_id, message_text)
+                sender_id = data.get('sender_id')
+                if is_vaild_sender(message_id, sender_id):
+                    await message_edit(self, message_id, message_text)
 
         except json.JSONDecodeError:
             await self.send_error('Invalid JSON format')
