@@ -61,7 +61,9 @@ export const listingForms_en = {
     buttons: {
       download: 'Download photos',
       submit: 'Publish listing',
+      update: 'Save changes',
     },
+    update: 'Edit listing',
   },
   feedbackForm: {
     answer: {
@@ -140,7 +142,9 @@ export const listingForms_uk = {
     buttons: {
       download: 'Завантажити фото',
       submit: 'Опублікувати оголошення',
+      update: 'Зберегти зміни',
     },
+    update: 'Редагування оголошення',
   },
   feedbackForm: {
     answer: {
