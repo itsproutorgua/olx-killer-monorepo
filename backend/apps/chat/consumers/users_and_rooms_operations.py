@@ -1,5 +1,5 @@
 from asgiref.sync import sync_to_async
-from channels.generic.websocket import AsyncWebsocketConsumer
+from apps.chat.consumers.consumers import ChatConsumer
 from django.db.models import Q
 from django.db.utils import IntegrityError
 from django.utils import timezone
@@ -49,7 +49,7 @@ async def authenticate_user(scope: dict) -> User:
         raise DatabaseIntegrityError()
 
 
-async def validate_user_id(consumer: AsyncWebsocketConsumer) -> None:
+async def validate_user_id(consumer: ChatConsumer) -> None:
     first_user_id = consumer.scope['first_user_id']
     first_user = consumer.scope['first_user']
 

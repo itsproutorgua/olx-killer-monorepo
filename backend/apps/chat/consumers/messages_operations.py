@@ -2,13 +2,13 @@ import json
 from typing import Any
 
 from asgiref.sync import sync_to_async
-from channels.generic.websocket import AsyncWebsocketConsumer
+from apps.chat.consumers.consumers import ChatConsumer
 from django.core.exceptions import FieldError
 
 from apps.chat.models.message import Message
 
 
-async def chat_message(consumer: AsyncWebsocketConsumer, event: dict[str, Any]) -> None:
+async def chat_message(consumer:  ChatConsumer, event: dict[str, Any]) -> None:
     message_id = event['message_id']
     message = await get_message(message_id)
     message_data = await serialize_message(message)
@@ -25,7 +25,7 @@ async def chat_message(consumer: AsyncWebsocketConsumer, event: dict[str, Any]) 
     await mark_message_as_delivered(consumer, message_id)
 
 
-async def mark_message_as_delivered(consumer: AsyncWebsocketConsumer, message_id: int) -> None:
+async def mark_message_as_delivered(consumer: ChatConsumer, message_id: int) -> None:
     await update_message_status(message_id, Message.Status.DELIVERED)
     message = await get_message(message_id)
     message_data = await serialize_message(message)
@@ -45,7 +45,7 @@ async def mark_message_as_delivered(consumer: AsyncWebsocketConsumer, message_id
         await mark_message_as_read(consumer, message_id)
 
 
-async def mark_message_as_read(consumer: AsyncWebsocketConsumer, message_id: int) -> None:
+async def mark_message_as_read(consumer:  ChatConsumer, message_id: int) -> None:
     await update_message_status(message_id, Message.Status.READ)
     message = await get_message(message_id)
     message_data = await serialize_message(message)
@@ -85,7 +85,7 @@ async def update_message_status(message_id: int, status: Message.Status) -> None
     )()
 
 
-async def save_message(consumer: AsyncWebsocketConsumer, message_text: str) -> Message:
+async def save_message(consumer: ChatConsumer, message_text: str) -> Message:
     return await sync_to_async(
         lambda: Message.objects.create(
             chat_room=consumer.room,
@@ -96,7 +96,7 @@ async def save_message(consumer: AsyncWebsocketConsumer, message_text: str) -> M
     )()
 
 
-async def send_last_messages(consumer: AsyncWebsocketConsumer) -> None:
+async def send_last_messages(consumer:  ChatConsumer) -> None:
     try:
         messages = await sync_to_async(
             lambda: list(
@@ -126,7 +126,7 @@ async def send_last_messages(consumer: AsyncWebsocketConsumer) -> None:
     await consumer.send(text_data=json.dumps(messages_data))
 
 
-async def message_delete(consumer: AsyncWebsocketConsumer, message_id: int) -> None:
+async def message_delete(consumer: ChatConsumer, message_id: int) -> None:
     await sync_to_async(
         lambda: Message.objects.filter(id=message_id).delete(),
         thread_sensitive=True,
@@ -142,7 +142,7 @@ async def message_delete(consumer: AsyncWebsocketConsumer, message_id: int) -> N
     )
 
 
-async def message_edit(consumer: AsyncWebsocketConsumer, message_id: int, message_text: str) -> None:
+async def message_edit(consumer:  ChatConsumer, message_id: int, message_text: str) -> None:
     await sync_to_async(
         lambda: Message.objects.filter(id=message_id).update(text=message_text), thread_sensitive=True
     )()

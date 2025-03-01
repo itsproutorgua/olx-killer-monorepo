@@ -1,7 +1,6 @@
 import json
 
 from channels.generic.websocket import AsyncWebsocketConsumer
-
 from apps.chat.consumers.messages_operations import chat_message
 from apps.chat.consumers.messages_operations import get_message
 from apps.chat.consumers.messages_operations import mark_message_as_delivered
@@ -23,10 +22,13 @@ from apps.chat.consumers.users_and_rooms_operations import validate_user_id
 
 class ChatConsumer(AsyncWebsocketConsumer):
     async def connect(self):
-        query_params = self.scope['query_params']
+        try:
+            query_params = self.scope['query_params']
 
-        self.scope['first_user_id'] = query_params['first_user'][0]
-        self.scope['second_user'] = query_params['second_user'][0]
+            self.scope['first_user_id'] = query_params['first_user'][0]
+            self.scope['second_user'] = query_params['second_user'][0]
+        except KeyError:
+            raise KeyError("Enter correct query params")
 
         if self.scope['first_user_id'] == self.scope['second_user']:
             await self.close()
