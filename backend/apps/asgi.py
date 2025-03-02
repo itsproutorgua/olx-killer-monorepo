@@ -27,5 +27,8 @@ from apps.chat.middlwares.queryparams import QueryParamsMiddleware
 
 
 application = ProtocolTypeRouter(
-    {'http': get_asgi_application(), 'websocket': AuthMiddlewareStack(QueryParamsMiddleware(URLRouter(websocket_urlpatterns)))}
+    {
+        'http': get_asgi_application(),
+        'websocket': AuthMiddlewareStack(QueryParamsMiddleware(URLRouter(websocket_urlpatterns))),
+        }
 )
