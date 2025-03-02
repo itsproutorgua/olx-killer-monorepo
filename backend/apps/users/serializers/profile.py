@@ -85,7 +85,7 @@ class ProfileSerializer(serializers.ModelSerializer):
             if not phone_pattern.match(phone_number):
                 raise serializers.ValidationError(
                     _('Invalid phone number. Only digits are allowed. Max length is 15 digits.'),
-                    )
+                )
 
         return phone_numbers
 
