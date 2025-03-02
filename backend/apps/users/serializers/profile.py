@@ -64,28 +64,30 @@ class ProfileSerializer(serializers.ModelSerializer):
         max_length_last_name = settings.MAX_LENGTH_LAST_NAME
         return self._validate_name(value, min_length_last_name, max_length_last_name, 'last name')
 
-    def validate_username(self, value: str) -> str:
-        min_length_last_name = settings.MIN_LENGTH_LAST_NAME
-        max_length_last_name = settings.MAX_LENGTH_LAST_NAME
-        return self._validate_name(value, min_length_last_name, max_length_last_name, 'username')
+    @staticmethod
+    def validate_username(username: str) -> str:
+        min_length = settings.MIN_LENGTH_LAST_NAME
+        max_length = settings.MAX_LENGTH_LAST_NAME
+        if username and len(username) < min_length:
+            raise serializers.ValidationError(_(f'Ensure {username!r} has at least {min_length} characters.'))
+        if username and len(username) > max_length:
+            raise serializers.ValidationError(_(f'Ensure {username!r} has at most {max_length} characters.'))
+        if username and not re.match(r'(?i)^[a-zа-яіё0-9]+$', username):
+            raise serializers.ValidationError(_(f'Ensure {username!r} contains only letters and numbers.'))
+
+        return username
 
     @staticmethod
-    def validate_phone_numbers(values: list) -> list:
-        phone_pattern = re.compile(r'^\+?\d+$')
+    def validate_phone_numbers(phone_numbers: list) -> list:
+        phone_pattern = re.compile(r'^\d{1,15}$')
 
-        for phone_number in values:
-            if '+' in phone_number and not phone_number.startswith('+'):
-                raise serializers.ValidationError(_('Invalid phone number. Ensure phone numbers start with +'))
-
-            if phone_number.count('+') > 1:
-                raise serializers.ValidationError(
-                    _('Phone number can contain only one "+" at the beginning: {}').format(phone_number))
-
+        for phone_number in phone_numbers:
             if not phone_pattern.match(phone_number):
                 raise serializers.ValidationError(
-                    _('Invalid phone number. Only digits and one "+" at the start are allowed.'))
+                    _('Invalid phone number. Only digits are allowed. Max length is 15 digits.'),
+                    )
 
-        return values
+        return phone_numbers
 
     @extend_schema_field(LocationSerializer)
     def get_location(self, obj: Profile) -> LocationSerializer:
