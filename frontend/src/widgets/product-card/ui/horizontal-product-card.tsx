@@ -250,10 +250,10 @@ export const HorizontalProductCard = ({
       </div>
       <Dialog open={isEditOpen} onOpenChange={setIsEditOpen}>
         <DialogContent
-          className='max-h-[90vh] min-w-fit overflow-y-scroll rounded-[20px] py-10'
+          className='bottom-0 left-0 right-0 top-0 m-auto grid h-fit max-h-[90vh] w-fit min-w-full transform-none place-items-center overflow-y-scroll rounded-[20px] py-10 md:min-w-fit'
           aria-describedby={undefined}
         >
-          <DialogTitle className='flex flex-col items-center gap-5 py-3 text-2xl font-medium leading-[29px] text-gray-900'>
+          <DialogTitle className='flex flex-col items-center gap-5 pb-3 text-2xl font-medium leading-[29px] text-gray-900'>
             <span>{t('listingForm.update')}</span>
           </DialogTitle>
           <CreateListingForm
