@@ -185,7 +185,7 @@ export const en = {
     logIn: 'Log in to your account',
     logOut: 'Log out',
     welcomeMessage:
-      'Please create an account or sign-in to publish your listing!',
+      'Please create an account or sign in to publish your listing!',
   },
   listings: {
     active: 'Active',
