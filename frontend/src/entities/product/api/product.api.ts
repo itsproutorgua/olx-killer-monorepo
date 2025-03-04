@@ -136,7 +136,7 @@ class ProductApi {
   }
 
   async updateProduct(productData: FormData, idToken: string, slug: string) {
-    const url = `${this.BASE_URL}${slug}`
+    const url = `${this.BASE_URL}${slug}/`
     const response = await instanceBase.patch(url, productData, {
       headers: {
         'Content-Type': 'multipart/form-data',
