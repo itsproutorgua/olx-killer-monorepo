@@ -4,111 +4,119 @@
 
 ## API Endpoints
 
-### Create Chat Room (`POST  http://127.0.0.1:8000/en/api/v1/chatrooms/get_or_create_room/?user_id_1=<int:user_id_1>&user_id_2=<int:user_id_2>`)
-**Description:**
-- Creates a chat room between two users.
+### Get all sender rooms `http://127.0.0.1:8000/en/api/v1/chat/recieve/`
 
-**Example Request:**
+Example request
 ```http
-POST http://127.0.0.1:8000/en/api/v1/chatrooms/get_or_create_room/?user_id_1=3&user_id_2=4
-Authorization: Bearer <token>
-Content-Type: application/json
+GET http://127.0.0.1:8000/en/api/v1/chat/recieve/?first_user=2
 ```
 
-**Example Response:**
-status_code = 200
+Example responce
 ```json
 {
-    "room_id": 1
+    "count": 4,
+    "next": null,
+    "previous": null,
+    "results": [
+        {
+            "id": 66,
+            "first_user": 2,
+            "second_user": 8
+        },
+        {
+            "id": 68,
+            "first_user": 2,
+            "second_user": 10
+        },
+        {
+            "id": 71,
+            "first_user": 2,
+            "second_user": 11
+        },
+        {
+            "id": 79,
+            "first_user": 2,
+            "second_user": 2
+        }
+    ]
 }
+
+id - room_id
 ```
-
-### Edit Message (`PUT  http://127.0.0.1:8000/en/api/v1/messages/{message_id}/edit`)
-**Description:**
-- Edits the text of a message sent by the authenticated user.
-
-**Example Request:**
-```http
-PUT  http://127.0.0.1:8000/en/api/v1/messages/1/edit
-Authorization: Bearer <token>
-Content-Type: application/json
-
-{
-    "text": "Updated message text"
-}
-```
-
-**Example Response:**
-status_code = 200
-```json
-{
-    "status": "success",
-    "message": "Message updated successfully"
-}
-```
-And message to websocket
-```json
-{
-    "type": "message_edited",
-    "message_id": 55,
-    "text": "Updated message text"
-}
-```
-
-### Delete Message (`DELETE  http://127.0.0.1:8000/en/api/v1/messages/{message_id}/delete`)
-**Description:**
-- Deletes a message sent by the authenticated user.
-
-**Example Request:**
-```http
-DELETE  http://127.0.0.1:8000/en/api/v1/messages/1/delete
-Authorization: Bearer <token>
-```
-
-**Example Response:**
-status_code = 204
-```json
-{
-    "status": "success",
-    "message": "Message deleted successfully"
-}
-```
-And message to websocket
-```json
-{
-    "type": "message_deleted",
-    "message_id": 56
-}
-```
-
 
 ## WebSocket Endpoints
 
-### Connect (`connect` method)
-**Endpoint:** `ws://127.0.0.1:8001/ws/chat/<room_id>/`
+### Connect
+**Endpoint:** `ws://127.0.0.1:8001/ws/chat/?firts_user=<int>&second_user=<int>/`
+
+firts_user - sender id
+second_user - reciever id
 
 **Description:**
-- Authenticates the user using a JWT token.
+- Authenticates the user using a JWT token id token.
 - Verifies if the user is part of the chat room.
 - Joins the WebSocket group corresponding to the chat room.
 - Loads the last 50 messages from the database and sends them to the client.
+  
+**Example method**
 
-### Disconnect (`disconnect` method)
-**Description:**
-- Removes the user from the WebSocket group when they disconnect.
-- Updates the user's status to offline.
+```javascript
+    const socket = new WebSocket("ws://127.0.0.1:8001/ws/chat/?firts_user=1&second_user=2/", ["Bearer", jwt_token]);
 
+    socket.onopen = function () {
+        console.log("Connected to websocket");
+    };
+```
+  
 ---
 
-### Send Message (`receive` method)
+### Send Last Messages 
+**Description:**
+- After connection automatically downloads the last 50 messages after from the database and sends them to the client.
+
+**Example Response:**
+```json
+[
+    {
+        "message_id": 45,
+        "text": "hello",
+        "sender_email": "daragan.liza@gmail.com",
+        "status": "read",
+        "created_at": "2025-02-18T18:28:52.258755+00:00",
+        "updated_at": "2025-02-18T18:28:52.258773+00:00"
+    },
+    {
+        "message_id": 44,
+        "text": "hello",
+        "sender_email": "daragan.liza@gmail.com",
+        "status": "read",
+        "created_at": "2025-02-16T21:20:22.998221+00:00",
+        "updated_at": "2025-02-16T21:20:22.998242+00:00"
+    },
+    {
+        "message_id": 43,
+        "text": "hello",
+        "sender_email": "gavriliuk.sviatoslav@gmail.com",
+        "status": "read",
+        "created_at": "2025-02-16T20:50:16.726344+00:00",
+        "updated_at": "2025-02-21T16:57:26.073464+00:00"
+    },
+    {
+    ...
+    }
+]
+```
+---
+
+### Send Message 
 **Description:**
 - Accepts incoming messages from the WebSocket client.
 - Saves the message to the database.
-- Broadcasts the message to all users in the chat room.
 
 **Example Request:**
 ```json
 {
+    "action": "send",
     "message": "Hello, how are you?"
 }
 ```
@@ -150,103 +158,46 @@ And message to websocket
 }
 ```
 
----
+--- 
 
-### Receive Broadcasted Messages (`chat_message` method)
-**Description:**
-- Sends messages received from the WebSocket group to the connected WebSocket clients.
+### Edit message
 
----
-
-### Mark Message as Delivered (`mark_message_as_delivered` method)
-**Description:**
-- Marks the message as delivered.
-- Sends the message to the client.
-- If the recipient is online, marks the message as read.
-
-**Example Event:**
+**Example request**
 ```json
 {
-    "type": "mark_message_as_delivered",
-    "message": {
-        "text": "Hello, how are you?",
-        "message_id": 1,
-        "sender_id": 1,
-        "status": "delivered",
-        "created_at": "2025-02-16T12:34:56.789Z",
-        "updated_at": "2025-02-16T12:34:56.789Z"
-    }
+    "action": "edit",
+    "message_id": 63,
+    "text": "new message"
 }
 ```
 
----
-
-### Mark Message as Read (`mark_message_as_read` method)
-**Description:**
-- Marks the message as read.
-- Sends the message to the client.
-
-**Example Event:**
+**Example resonce**
 ```json
 {
-    "type": "mark_message_as_read",
-    "message": {
-        "text": "Hello, how are you?",
-        "message_id": 1,
-        "sender_id": 1,
-        "status": "read",
-        "created_at": "2025-02-16T12:34:56.789Z",
-        "updated_at": "2025-02-16T12:34:56.789Z"
-    }
+    "type": "message_edited", 
+    "message_id": 63, 
+    "text": "new message"
+}
+```
+---
+
+### Delete message
+
+**Example request**
+```json
+{
+    "action": "delete",
+    "message_id": 63,
 }
 ```
 
----
-
-
-### Send Last Messages (`send_last_messages` method)
-**Description:**
-- Loads the last 50 messages from the database and sends them to the client.
-
-**Example Response:**
+**Example resonce**
 ```json
-[
-    {
-        "message_id": 45,
-        "text": "hello",
-        "sender_email": "daragan.liza@gmail.com",
-        "status": "read",
-        "created_at": "2025-02-18T18:28:52.258755+00:00",
-        "updated_at": "2025-02-18T18:28:52.258773+00:00"
-    },
-    {
-        "message_id": 44,
-        "text": "hello",
-        "sender_email": "daragan.liza@gmail.com",
-        "status": "read",
-        "created_at": "2025-02-16T21:20:22.998221+00:00",
-        "updated_at": "2025-02-16T21:20:22.998242+00:00"
-    },
-    {
-        "message_id": 43,
-        "text": "hello",
-        "sender_email": "gavriliuk.sviatoslav@gmail.com",
-        "status": "read",
-        "created_at": "2025-02-16T20:50:16.726344+00:00",
-        "updated_at": "2025-02-21T16:57:26.073464+00:00"
-    },
-    {
-    ...
-    }
-]
+{
+    "type": "message_deleted", 
+    "message_id": 63
+}
 ```
-
----
-
-## Authentication
-- The WebSocket connection requires a valid JWT token in the `Authorization` header.
-- Token is extracted and validated using `Auth0JWTAuthentication`.
-- If authentication fails, the connection is closed.
 
 ---
 
@@ -259,21 +210,101 @@ And message to websocket
 
 ## Testing the WebSocket Connection
 
-### Using Postman
-1. Open Postman and select **HTTP** requests type.
-2. Enter the HTTP url `http://127.0.0.1:8000/en/api/v1/chatrooms/get_or_create_room/?user_id_1=<int:user_id_1>&user_id_2=<int:user_id_2>` and send POST request
-3. After you get responce, switch requests type to **WebSocket**
-4. Enter the WebSocket URL: `ws://127.0.0.1:8001/ws/chat/<room_id>/`.
-5. Add an `Authorization` header with a valid JWT token.
-Example
-```http
-    "Authorization": "Bearer <token>"
+## Example code
+
+```javascript
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Socket chat</title>
+    <style>
+      body { margin: 0; padding-bottom: 3rem; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+
+      #form { background: rgba(0, 0, 0, 0.15); padding: 0.25rem; position: fixed; bottom: 0; left: 0; right: 0; display: flex; height: 3rem; box-sizing: border-box; backdrop-filter: blur(10px); }
+      #input { border: none; padding: 0 1rem; flex-grow: 1; border-radius: 2rem; margin: 0.25rem; }
+      #input:focus { outline: none; }
+      #form > button { background: #333; border: none; padding: 0 1rem; margin: 0.25rem; border-radius: 3px; outline: none; color: #fff; }
+
+      #messages { list-style-type: none; margin: 0; padding: 0; }
+      #messages > li { padding: 0.5rem 1rem; display: flex; justify-content: space-between; align-items: center; }
+      #messages > li:nth-child(odd) { background: #efefef; }
+      .delete-btn { background: none; border: none; color: red; font-size: 1rem; cursor: pointer; }
+    </style>
+  </head>
+  <body>
+    <ul id="messages"></ul>
+    <form id="form">
+      <input id="input" autocomplete="off" /><button>Send</button>
+    </form>
+    <script>
+        const token = "token"
+        const socket = new WebSocket("ws://127.0.0.1:8001/ws/chat/?firts_user=1&second_user=2/", ["Bearer", token]);
+
+        socket.onopen = function () {
+            console.log("Connected to  WebSocket");
+        };
+
+        socket.onmessage = function (event) {
+            console.log("Message received", event.data);
+            const data = JSON.parse(event.data);
+        };
+
+        socket.onerror = function (error) {
+            console.error("Error WebSocket:", error);
+        };
+
+        socket.onclose = function (event) {
+            console.log(" WebSocket closed:", event.code, event.reason);
+        };
+
+        document.getElementById("form").addEventListener("submit", function (e) {
+            e.preventDefault();
+            sendMessage();
+        });
+
+        function sendMessage() {
+            const input = document.getElementById("input");
+            if (input.value.trim() !== "") {
+                socket.send(JSON.stringify({
+                    action: "send",
+                    message: input.value
+                }));
+                input.value = "";  
+            }
+        }
+
+        function deleteMessage(messageId) {
+            socket.send(JSON.stringify({
+                action: "delete",
+                message_id: messageId
+            }));
+        }
+
+        function editMessage(messageId, newMessage) {
+            socket.send(JSON.stringify({
+                action: "edit",
+                message_id: messageId,
+                text: newMessage
+            }));
+        }
+
+        function addMessageToList(messageId, user, message) {
+            const li = document.createElement("li");
+            li.id = `msg-${messageId}`;
+            li.innerHTML = `<span><b>${user}:</b> ${message}</span> 
+                            <button class="delete-btn" onclick="deleteMessage('${messageId}')">🗑</button>`;
+            document.getElementById("messages").appendChild(li);
+        }
+
+        function removeMessageFromList(messageId) {
+            const messageElement = document.getElementById(`msg-${messageId}`);
+            if (messageElement) {
+                messageElement.remove();
+            }
+        }
+    </script>
+  </body>
+</html>
+
 ```
-6. Click **Connect**.
-7. Send a sample message:
-   ```json
-   {
-       "message": "Hello, this is a test message!"
-   }
-   ```
-8. Verify that the response contains the sent message.

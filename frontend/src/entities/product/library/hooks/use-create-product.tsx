@@ -14,7 +14,7 @@ export const useCreateProduct = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ['oka-products', 'oka-user-listings'],
+        queryKey: ['oka-user-listings'],
       })
     },
   })

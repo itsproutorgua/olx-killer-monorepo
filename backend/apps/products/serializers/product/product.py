@@ -146,11 +146,15 @@ class ProductSerializer(serializers.ModelSerializer):
             instance.save()
             return instance
 
-        images_data = validated_data.pop('product_images', [])
+        category = validated_data.pop('category_id', None)
         video_file = validated_data.pop('upload_video', None)
+        images_data = validated_data.pop('uploaded_images', [])
         amount = validated_data.pop('amount', MIN_PRICE)
         currency = validated_data.pop('currency', settings.DEFAULT_CURRENCY)
         prices_data = [{'amount': amount, 'currency': currency}]
+
+        if category:
+            validated_data['category'] = category
 
         for attr, value in validated_data.items():
             setattr(instance, attr, value)
@@ -161,9 +165,8 @@ class ProductSerializer(serializers.ModelSerializer):
             raise ValidationError(_('Failed to update product prices: {}'.format(e)), code='validation_error')
 
         if images_data is not None:
-            count_images = instance.product_images.count()
-            max_count_manges = settings.MAX_COUNT_IMAGE_FILES
-            if (count_images > max_count_manges) or (count_images + len(images_data) > max_count_manges):
+            max_count_images = settings.MAX_COUNT_IMAGE_FILES
+            if len(images_data) > max_count_images:
                 raise ValidationError(errors.INVALID_COUNT_IMAGE)
             ProductImageSerializer.create_images(instance, images_data)
 

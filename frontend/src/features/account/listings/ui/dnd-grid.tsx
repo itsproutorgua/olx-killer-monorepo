@@ -10,6 +10,7 @@ import {
   useSensors,
   type DragEndEvent,
 } from '@dnd-kit/core'
+import { restrictToParentElement } from '@dnd-kit/modifiers'
 import {
   arrayMove,
   rectSortingStrategy,
@@ -30,16 +31,18 @@ export const DndGrid = () => {
 
   const [files, setFiles] = useState<File[]>([])
   const initialized = useRef(false)
+  const uploadedImages = getValues('uploaded_images')
 
   useEffect(() => {
-    if (!initialized.current) {
-      const formFiles = getValues('uploaded_images')
-      if (formFiles) {
-        setFiles(formFiles)
-      }
+    if (initialized.current) return
+
+    const formFiles = getValues('uploaded_images')
+
+    if (formFiles && formFiles.length > 0) {
+      setFiles(formFiles)
       initialized.current = true
     }
-  }, [getValues])
+  }, [getValues, uploadedImages])
 
   useEffect(() => {
     if (initialized.current) {
@@ -63,7 +66,7 @@ export const DndGrid = () => {
   const handleAddFiles = (newFiles: FileList) => {
     const updatedFiles = [
       ...files,
-      ...Array.from(newFiles).slice(0, 7 - files.length),
+      ...Array.from(newFiles).slice(0, 8 - files.length),
     ]
     setFiles(updatedFiles)
   }
@@ -97,9 +100,10 @@ export const DndGrid = () => {
       collisionDetection={closestCenter}
       onDragStart={handleDragStart}
       onDragEnd={handleDragEnd}
+      modifiers={[restrictToParentElement]}
     >
       <div className='grid max-w-[802px] grid-cols-2 gap-x-2.5 gap-y-1.5 xl:grid-cols-4 xl:gap-1.5'>
-        {files.length < 7 && (
+        {files.length < 8 && (
           <label className='flex h-[104px] cursor-pointer flex-col items-center justify-center gap-2 rounded-[15px] bg-primary-700 text-gray-50 transition-colors duration-300 hover:bg-primary-800 xl:h-[118px]'>
             <ImagePlus className='cursor-pointer' />
             <p className='text-sm/none font-medium'>
@@ -107,6 +111,7 @@ export const DndGrid = () => {
             </p>
             <input
               type='file'
+              onClick={() => (initialized.current = true)}
               multiple
               accept='image/*'
               className='hidden'

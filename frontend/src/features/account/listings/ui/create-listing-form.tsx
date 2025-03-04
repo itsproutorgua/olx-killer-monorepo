@@ -16,7 +16,7 @@ import {
   useFormSchema,
 } from '@/features/account/listings'
 import { EmailNotVerified } from '@/features/account/profile/ui/email-not-verified.tsx'
-import { useProduct } from '@/entities/product'
+import { ProductImage, useProduct } from '@/entities/product'
 import { useCreateProduct } from '@/entities/product/library/hooks/use-create-product.tsx'
 import { useUpdateProduct } from '@/entities/product/library/hooks/use-update-product.tsx'
 import { useUserProfile } from '@/entities/user'
@@ -40,6 +40,8 @@ import {
 } from '@/shared/ui/shadcn-ui'
 import { PRIVATE_PAGES } from '@/shared/constants'
 import { cn } from '@/shared/library/utils'
+import { urlToFile } from '@/shared/library/utils/url-to-image-file.ts'
+import { urlToVideoFile } from '@/shared/library/utils/url-to-video.ts'
 import { DndGrid } from './dnd-grid'
 
 interface Props {
@@ -76,15 +78,8 @@ export function CreateListingForm({
   const handleCancelVideo = () => {
     setSelectedVideoFile(null)
     form.setValue('upload_video', undefined)
+    form.clearErrors('upload_video')
   }
-  //To be used in future
-  // const convertToFile = (productImages: ProductImage[]): File[] => {
-  //   return productImages.map(image => {
-  //     return new File([image.image], image.id.toString(), {
-  //       type: 'image/jpeg',
-  //     })
-  //   })
-  // }
 
   const FormSchema = useFormSchema()
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -106,36 +101,76 @@ export function CreateListingForm({
         userProfile?.phone_numbers[0] ||
         t('listingForm.fields.userPhone.placeholder'),
       location:
-        userProfile?.location?.name || t('listingForm.fields.city.placeholder'),
+        `${userProfile?.location?.name}, ${userProfile?.location.region}` ||
+        t('listingForm.fields.city.placeholder'),
     },
   })
 
   useEffect(() => {
-    if (mode === 'edit' && productLoaded && existingProduct) {
-      form.reset({
-        title: existingProduct.title,
-        description: existingProduct.description,
-        category_id: existingProduct.category.id,
-        amount: existingProduct.prices[0].amount.toString(),
-        currency: existingProduct.prices[0].currency.id,
-        status:
-          existingProduct.status === 'used' ||
-          existingProduct.status === 'Вживаний'
-            ? 'used'
-            : 'new',
-      })
-      setCategoryTitle(existingProduct.category.title)
+    const resetFormFields = () => {
+      if (mode === 'edit' && productLoaded && existingProduct) {
+        form.reset({
+          title: existingProduct?.title || '',
+          description: existingProduct?.description || '',
+          category_id: existingProduct?.category?.id || 0,
+          amount: existingProduct?.prices?.[0]?.amount?.toString() || '',
+          currency: existingProduct?.prices?.[0]?.currency?.id || 1,
+          status:
+            existingProduct?.status === 'used' ||
+            existingProduct?.status === 'Вживаний'
+              ? 'used'
+              : 'new',
+          user_name: userProfile?.username || '',
+          location:
+            `${userProfile?.location?.name}, ${userProfile?.location.region}` ||
+            '',
+          user_phone: userProfile?.phone_numbers?.[0] || '',
+          user_email: userProfile?.email || '',
+        })
+
+        if (existingProduct?.category?.title) {
+          setCategoryTitle(existingProduct.category.title)
+        }
+      }
+      if (mode === 'create' && productLoaded && userProfile) {
+        form.reset({
+          user_name: userProfile?.username || '',
+          location:
+            `${userProfile?.location?.name}, ${userProfile?.location.region}` ||
+            '',
+          user_phone: userProfile?.phone_numbers?.[0] || '',
+          user_email: userProfile?.email || '',
+        })
+      }
     }
 
-    if (profileLoaded && userProfile) {
-      form.reset(prev => ({
-        ...prev,
-        user_name: userProfile?.username || '',
-        location: userProfile?.location.name || '',
-        user_phone: userProfile?.phone_numbers[0] || '',
-        user_email: userProfile?.email || '',
-      }))
+    const loadImageFiles = async () => {
+      if (mode === 'edit' && productLoaded && existingProduct) {
+        try {
+          const imageFiles = await Promise.all(
+            existingProduct.images.map(
+              (image: ProductImage, index: number) =>
+                urlToFile(image.image, index), // Extract URL before passing
+            ),
+          )
+
+          // Convert video to File object (if exists)
+          let videoFile: File | undefined
+          if (existingProduct.video.length > 0) {
+            videoFile = await urlToVideoFile(existingProduct.video[0].video)
+            setSelectedVideoFile(videoFile)
+          }
+
+          form.setValue('uploaded_images', imageFiles)
+          form.setValue('upload_video', videoFile || undefined)
+        } catch (error) {
+          console.error('Error loading images:', error)
+        }
+      }
     }
+
+    resetFormFields()
+    loadImageFiles()
   }, [existingProduct, mode, productLoaded, profileLoaded, userProfile])
 
   const { mutate: createProduct, isPending } = useCreateProduct()

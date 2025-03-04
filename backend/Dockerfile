@@ -23,7 +23,3 @@ COPY pyproject.toml poetry.lock ./
 RUN poetry install --no-interaction --no-ansi && rm -rf /root/.cache/*
 
 COPY . .
-
-RUN chmod +x /code/entrypoint.sh
-
-EXPOSE 8000

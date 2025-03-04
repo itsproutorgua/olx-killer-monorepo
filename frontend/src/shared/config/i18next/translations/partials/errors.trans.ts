@@ -16,7 +16,7 @@ export const errors_en = {
       positiveOnly: 'Only positive values allowed',
       maxValue: 'Value must not exceed {{max}}',
       invalidCharacters:
-        'Only letters, numbers, spaces, and dashes are allowed',
+        'Only letters, numbers, spaces, and dash between are allowed ',
       maxImages: 'You can upload a maximum of {{max}} images',
       invalidImageFormat: 'Only JPEG and PNG formats are allowed',
       imageSizeExceeded: 'Image size should be less than {{maxSize}}',
@@ -51,7 +51,8 @@ export const errors_uk = {
       decimalPlaces: 'Допускається не більше двох знаків після коми',
       positiveOnly: 'Допускаються тільки позитивні значення',
       maxValue: 'Значення не повинно перевищувати {{max}}',
-      invalidCharacters: 'Допускаються лише літери, цифри, пробіли та дефіси',
+      invalidCharacters:
+        'Допускаються лише літери, цифри, пробіли та дефіс всередині',
       maxImages: 'Ви можете завантажити максимум {{max}} зображень',
       invalidImageFormat: 'Допускаються лише формати JPEG та PNG',
       imageSizeExceeded: 'Розмір зображення повинен бути менше {{maxSize}}',

@@ -1,7 +1,8 @@
 import logging
 
 import requests
-from authlib.jose import JsonWebKey, JoseError
+from authlib.jose import JoseError
+from authlib.jose import JsonWebKey
 from authlib.jose import jwt
 from django.conf import settings
 from django.core.cache import cache

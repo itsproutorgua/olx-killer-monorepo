@@ -14,12 +14,12 @@ export const useUpdateProduct = (slug: string) => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ['oka-user-listings', 'oka-products'],
+        queryKey: ['oka-user-listings'],
       })
     },
     onError: () => {
       queryClient.invalidateQueries({
-        queryKey: ['oka-user-listings', 'oka-products'],
+        queryKey: ['oka-user-listings'],
       })
     },
   })
