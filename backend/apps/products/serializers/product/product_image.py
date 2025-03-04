@@ -1,9 +1,11 @@
+from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.db import IntegrityError
 from django.db import transaction
 from django.utils.translation import gettext_lazy as _
 from rest_framework import serializers
 
+from apps.common import errors
 from apps.products.models import Product
 from apps.products.models import ProductImage
 
@@ -39,6 +41,10 @@ class ProductImageSerializer(serializers.ModelSerializer):
     @classmethod
     def create_images(cls, product: Product, images_data: list) -> None:
         """A method for creating images for a product."""
+        max_count_images = settings.MAX_COUNT_IMAGE_FILES
+        if len(images_data) > max_count_images:
+            raise ValidationError(errors.INVALID_COUNT_IMAGE.format(max_count_images), code='invalid_count_images')
+
         with transaction.atomic():
             if images_data:
                 product.product_images.all().delete()
