@@ -108,7 +108,7 @@ export function CreateListingForm({
 
   useEffect(() => {
     const resetFormFields = () => {
-      if (mode === 'edit' && productLoaded && existingProduct) {
+      if (mode === 'edit') {
         form.reset({
           title: existingProduct?.title || '',
           description: existingProduct?.description || '',
@@ -131,8 +131,7 @@ export function CreateListingForm({
         if (existingProduct?.category?.title) {
           setCategoryTitle(existingProduct.category.title)
         }
-      }
-      if (mode === 'create' && productLoaded && userProfile) {
+      } else {
         form.reset({
           user_name: userProfile?.username || '',
           location:

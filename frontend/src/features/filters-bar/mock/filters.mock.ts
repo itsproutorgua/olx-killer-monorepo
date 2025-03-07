@@ -1,5 +1,3 @@
-import i18n from '@/shared/config/i18next/i18next'
-
 type FilterType = 'checkbox' | 'slider'
 
 export interface Filter {
@@ -12,17 +10,17 @@ export interface Filter {
 const PRICE: Filter = {
   type: 'slider',
   name: 'price',
-  label: i18n.t('filters.price'),
+  label: 'filters.price',
   items: [{ label: '50' }, { label: '95900' }],
 }
 
 const CONDITION: Filter = {
   type: 'checkbox',
   name: 'status',
-  label: i18n.t('filters.condition.title'),
+  label: 'filters.condition.title',
   items: [
-    { label: i18n.t('filters.condition.new'), value: 'new' },
-    { label: i18n.t('filters.condition.used'), value: 'used' },
+    { label: 'filters.condition.new', value: 'new' },
+    { label: 'filters.condition.used', value: 'used' },
   ],
 }
 

@@ -32,7 +32,7 @@ export const FiltersTabs = ({ onCloseSheet }: { onCloseSheet: () => void }) => {
               value={filter.name}
               className='flex w-full items-center justify-between border-b border-gray-200 py-[14px] text-base/5 font-medium text-foreground'
             >
-              {filter.label}
+              {t(filter.label)}
 
               <span className='flex items-center gap-2 text-sm font-normal text-gray-400'>
                 {filters[filter.name as keyof Filters] ? (

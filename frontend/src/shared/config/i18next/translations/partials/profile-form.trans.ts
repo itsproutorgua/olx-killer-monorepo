@@ -28,7 +28,7 @@ export const profileForms_en = {
       },
     },
     buttons: {
-      download: 'Download photos',
+      download: 'Upload photos',
       submit: 'Save changes',
     },
     messages: {
