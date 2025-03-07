@@ -64,11 +64,16 @@ export const DndGrid = () => {
   )
 
   const handleAddFiles = (newFiles: FileList) => {
-    const updatedFiles = [
-      ...files,
-      ...Array.from(newFiles).slice(0, 8 - files.length),
-    ]
-    setFiles(updatedFiles)
+    const newFilesArray = Array.from(newFiles).map(file => {
+      return new File([file], `${Date.now()}-${file.name}`, {
+        type: file.type,
+      })
+    })
+
+    setFiles(prevFiles => [
+      ...prevFiles,
+      ...newFilesArray.slice(0, 8 - prevFiles.length),
+    ])
   }
 
   const handleDragStart = (e: DragEndEvent) => {
@@ -111,7 +116,10 @@ export const DndGrid = () => {
             </p>
             <input
               type='file'
-              onClick={() => (initialized.current = true)}
+              onClick={e => {
+                e.currentTarget.value = ''
+                initialized.current = true
+              }}
               multiple
               accept='image/*'
               className='hidden'
