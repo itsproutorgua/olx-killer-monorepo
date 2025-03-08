@@ -25,7 +25,7 @@ FEEDBACK_PERMISSION_ERROR = _('You do not have permission to provide feedback fo
 INVALID_IMAGE_TYPE = _('Invalid file type. Allowed types: %s') % ', '.join(settings.ALLOWED_IMAGE_MIME_TYPES)
 INVALID_IMAGE = _('Uploaded file is not a valid image.')
 IMAGE_SIZE_EXCEEDED = _('The image size cannot exceed %s MB.') % settings.MAX_IMAGE_FILE_SIZE_MB
-INVALID_COUNT_IMAGE = _(f'You can upload a maximum of {settings.MAX_COUNT_IMAGE_FILES} images.')
+INVALID_COUNT_IMAGE = _('You can upload a maximum of {} images.')
 
 # Video
 INVALID_VIDEO_TYPE = _('Invalid video type. Allowed types: %s') % ', '.join(settings.ALLOWED_VIDEO_MIME_TYPES)
@@ -35,3 +35,4 @@ INVALID_VIDEO = _('Uploaded file is not a valid video.')
 
 # Users
 USER_UNAUTHORIZED = _('Authentication credentials were not provided.')
+PHONE_NUMBER_ERROR = _('Invalid phone number. Only digits are allowed. Length must be between {} and {} digits.')

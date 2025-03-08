@@ -37,7 +37,7 @@ export const listingForms_en = {
       },
       desc: {
         label: 'Product description',
-        desc: 'Enter at least 40 characters',
+        desc: 'Enter at least 10 characters',
         placeholder:
           'Describe the condition of the product, its characteristics, advantages, and other important information that the buyer should know.',
       },
@@ -59,7 +59,7 @@ export const listingForms_en = {
       },
     },
     buttons: {
-      download: 'Download photos',
+      download: 'Upload photos',
       submit: 'Publish listing',
       update: 'Save changes',
     },

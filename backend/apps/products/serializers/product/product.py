@@ -125,8 +125,6 @@ class ProductSerializer(serializers.ModelSerializer):
                 raise ValidationError(_('Failed to create product prices: {}'.format(e)), code='validation_error')
 
             try:
-                if len(images_data) > settings.MAX_COUNT_IMAGE_FILES:
-                    raise ValidationError(errors.INVALID_COUNT_IMAGE, code='invalid_count_images')
                 ProductImageSerializer.create_images(product, images_data)
             except ValidationError as e:
                 raise ValidationError(_('Failed to create product images: {}'.format(e)), code='validation_error')
@@ -165,9 +163,6 @@ class ProductSerializer(serializers.ModelSerializer):
             raise ValidationError(_('Failed to update product prices: {}'.format(e)), code='validation_error')
 
         if images_data is not None:
-            max_count_images = settings.MAX_COUNT_IMAGE_FILES
-            if len(images_data) > max_count_images:
-                raise ValidationError(errors.INVALID_COUNT_IMAGE)
             ProductImageSerializer.create_images(instance, images_data)
 
         if video_file:

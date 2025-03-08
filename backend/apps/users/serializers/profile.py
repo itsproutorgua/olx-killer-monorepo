@@ -5,6 +5,7 @@ from drf_spectacular.utils import extend_schema_field
 from rest_framework import serializers
 
 import settings
+from apps.common import errors
 from apps.locations.models import Location
 from apps.locations.serializers.location import LocationSerializer
 from apps.users.models import Profile
@@ -79,13 +80,13 @@ class ProfileSerializer(serializers.ModelSerializer):
 
     @staticmethod
     def validate_phone_numbers(phone_numbers: list) -> list:
-        phone_pattern = re.compile(r'^\d{1,15}$')
+        min_length = settings.MIN_PHONE_NUMBER_LENGTH
+        max_length = settings.MAX_PHONE_NUMBER_LENGTH
+        phone_pattern = re.compile(rf'^\d{{{min_length},{max_length}}}$')
 
         for phone_number in phone_numbers:
             if not phone_pattern.match(phone_number):
-                raise serializers.ValidationError(
-                    _('Invalid phone number. Only digits are allowed. Max length is 15 digits.'),
-                )
+                raise serializers.ValidationError(errors.PHONE_NUMBER_ERROR.format(min_length, max_length))
 
         return phone_numbers
 
