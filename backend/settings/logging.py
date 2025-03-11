@@ -177,7 +177,7 @@ LOGGING = {
             'propagate': False,
         },
         'daphne.error': {
-            'handlers': ['console', 'file'],
+            'handlers': ['c.onsole', 'file'],
             'level': 'ERROR',
             'propagate': False,
         },
