@@ -171,9 +171,14 @@ LOGGING = {
             'propagate': False,
             'filters': ['ignore_static'],
         },
-        'daphne': {
+        'daphne.access': {
             'handlers': ['console', 'file'],
             'level': 'INFO',
+            'propagate': False,
+        },
+        'daphne.error': {
+            'handlers': ['console', 'file'],
+            'level': 'ERROR',
             'propagate': False,
         },
     },
