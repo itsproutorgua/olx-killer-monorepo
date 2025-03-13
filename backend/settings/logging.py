@@ -160,24 +160,29 @@ LOGGING = {
             'level': 'INFO',
             'propagate': False,
         },
-        'uvicorn.error': {
+        # 'uvicorn.error': {
+        #     'handlers': ['console', 'file'],
+        #     'level': 'ERROR',
+        #     'propagate': False,
+        # },
+        # 'uvicorn.access': {
+        #     'handlers': ['console', 'file'],
+        #     'level': 'INFO',
+        #     'propagate': False,
+        #     'filters': ['ignore_static'],
+        # },
+        'daphne': {  
             'handlers': ['console', 'file'],
-            'level': 'ERROR',
+            'level': 'INFO',  
             'propagate': False,
         },
-        'uvicorn.access': {
+        'daphne.access': {  
             'handlers': ['console', 'file'],
             'level': 'INFO',
             'propagate': False,
-            'filters': ['ignore_static'],
         },
-        'daphne.access': {
+        'daphne.error': {  #
             'handlers': ['console', 'file'],
-            'level': 'INFO',
-            'propagate': False,
-        },
-        'daphne.error': {
-            'handlers': ['c.onsole', 'file'],
             'level': 'ERROR',
             'propagate': False,
         },
