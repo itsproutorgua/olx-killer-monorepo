@@ -8,8 +8,8 @@ import { useUserProfile } from '@/entities/user'
 import { ScrollArea } from '@/shared/ui/shadcn-ui/scroll-area'
 import { cn } from '@/shared/library/utils'
 
-export const MessageList = ({ roomId }: { roomId: number }) => {
-  const { messages } = useChat(roomId)
+export const MessageList = ({ sellerId }: { sellerId: number }) => {
+  const { messages } = useChat(sellerId)
   const { data: user } = useUserProfile()
   // const { t } = useTranslation()
 

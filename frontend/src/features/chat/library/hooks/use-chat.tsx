@@ -1,19 +1,30 @@
 import { useEffect, useRef, useState } from 'react'
 
 import { Message, WebSocketResponse } from '@/features/chat'
+import { useUserProfile } from '@/entities/user'
+import { useIdToken } from '@/entities/user/library/hooks/use-id-token.tsx'
 
-export const useChat = (roomId: number) => {
+export const useChat = (sellerId: number) => {
   const [messages, setMessages] = useState<Message[]>([])
+  const { data: user } = useUserProfile()
+
   const [isConnected, setIsConnected] = useState(false)
   const ws = useRef<WebSocket | null>(null)
+  const getIdToken = useIdToken()
 
   useEffect(() => {
-    const connect = () => {
-      ws.current = new WebSocket(`ws://localhost:8001/ws/chat/${roomId}/`)
+    const connect = async () => {
+      const token = await getIdToken()
+      const url = `ws://api.house-community.site/ws/chat/?first_user=${user?.id}&second_user=${sellerId}`
+      ws.current = new WebSocket(url, ['Bearer', token])
 
       ws.current.onopen = () => {
         setIsConnected(true)
         console.log('WebSocket connected')
+      }
+
+      ws.current.onerror = function (error) {
+        console.error('Error WebSocket:', error)
       }
 
       ws.current.onmessage = e => {
@@ -21,17 +32,18 @@ export const useChat = (roomId: number) => {
         handleMessage(data)
       }
 
-      ws.current.onclose = () => {
+      ws.current.onclose = event => {
         setIsConnected(false)
         console.log('WebSocket disconnected')
+        console.log(' WebSocket closed:', event.code, event.reason)
       }
     }
 
     connect()
-    return () => {
-      ws.current?.close()
-    }
-  }, [roomId])
+    // return () => {
+    //   ws.current?.close()
+    // }
+  }, [sellerId, user?.id])
 
   const handleMessage = (data: WebSocketResponse) => {
     switch (data.type) {

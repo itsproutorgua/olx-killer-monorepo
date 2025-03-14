@@ -4,8 +4,6 @@ import toast from 'react-hot-toast'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 
-import { useUserProfile } from '@/entities/user'
-import { useIdToken } from '@/entities/user/library/hooks/use-id-token.tsx'
 import { PenIcon } from '@/shared/ui'
 
 interface Props {
@@ -15,8 +13,6 @@ interface Props {
 
 export const WriteSeller: React.FC<Props> = ({ className, sellerId }) => {
   const { isAuthenticated } = useAuth0()
-  const { data: user } = useUserProfile()
-  const getIdToken = useIdToken()
   const { t } = useTranslation()
   const navigate = useNavigate()
 
@@ -27,27 +23,7 @@ export const WriteSeller: React.FC<Props> = ({ className, sellerId }) => {
     }
 
     try {
-      const token = await getIdToken()
-      console.log(user?.id)
-      console.log(sellerId)
-      const response = await fetch(
-        `https://api.house-community.site/uk/api/v1/chat-rooms/get_or_create_room/`,
-        {
-          method: 'POST',
-          headers: {
-            Authorization: `Bearer ${token}`,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            userid1: user?.id,
-            userid2: sellerId,
-          }),
-        },
-      )
-
-      if (!response.ok) throw new Error('Failed to create chat room')
-
-      navigate(`/account/chat`) // Redirect to chat page
+      navigate(`/account/chat`, { state: { sellerId } })
     } catch (error) {
       toast.error('Error starting chat. Please try again.')
       console.error(error)

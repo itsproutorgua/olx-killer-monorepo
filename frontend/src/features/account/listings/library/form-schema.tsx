@@ -2,9 +2,9 @@ import { useTranslation } from 'react-i18next'
 import { z } from 'zod'
 
 const MAX_IMAGE_SIZE = 10 * 1024 * 1024 // 1MB
-const MAX_VIDEO_SIZE = 10 * 1024 * 1024 // 10MB
+const MAX_VIDEO_SIZE = 50 * 1024 * 1024 // 10MB
 const MAX_IMAGES_COUNT = 8
-const VIDEO_MAX_DURATION = 15 // seconds
+const VIDEO_MAX_DURATION = 60 // seconds
 
 export const useFormSchema = () => {
   const { t } = useTranslation()
@@ -72,7 +72,7 @@ export const useFormSchema = () => {
         },
       )
       .refine(file => !file || file.size <= MAX_VIDEO_SIZE, {
-        message: t('errors.input.videoSizeExceeded', { maxSize: '10MB' }),
+        message: t('errors.input.videoSizeExceeded', { maxSize: '50MB' }),
       })
       .refine(
         async file => {
@@ -82,7 +82,7 @@ export const useFormSchema = () => {
           await new Promise(resolve => (video.onloadedmetadata = resolve))
           return video.duration <= VIDEO_MAX_DURATION
         },
-        { message: t('errors.input.videoDurationExceeded', { max: 15 }) },
+        { message: t('errors.input.videoDurationExceeded', { max: 60 }) },
       ),
     status: z.enum(['new', 'used'], {
       required_error: t('errors.input.required'),

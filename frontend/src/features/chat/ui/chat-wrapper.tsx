@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next'
+import { useLocation } from 'react-router-dom'
 
 import { ChatList } from './chat-list'
 import { ChatSearch } from './chat-search'
@@ -8,6 +9,8 @@ import { MessageList } from './message-list'
 
 export const ChatWrapper = () => {
   const { t } = useTranslation()
+  const location = useLocation()
+  const sellerId = location.state?.sellerId
 
   return (
     <div className='flex h-full'>
@@ -22,8 +25,8 @@ export const ChatWrapper = () => {
       </div>
       <div className='grid flex-grow grid-rows-[auto_1fr_auto] self-stretch border-x border-x-border'>
         <MessageHeader />
-        <MessageList />
-        <MessageForm />
+        <MessageList sellerId={sellerId} />
+        <MessageForm sellerId={sellerId} />
       </div>
     </div>
   )

@@ -26,8 +26,8 @@ const FormSchema = z.object({
     }),
 })
 
-export function MessageForm({ roomId }: { roomId: number }) {
-  const { sendMessage } = useChat(roomId)
+export function MessageForm({ sellerId }: { sellerId: number }) {
+  const { sendMessage } = useChat(sellerId)
   const { t } = useTranslation()
 
   const form = useForm<z.infer<typeof FormSchema>>({
