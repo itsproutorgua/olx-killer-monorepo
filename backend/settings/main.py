@@ -73,7 +73,6 @@ INSTALLED_APPS += [
     'rosetta',
     'simple_history',
     'channels',
-    'daphne',
     # Local apps
     'apps.users.apps.UsersConfig',
     'apps.products.apps.ProductsConfig',
