@@ -1,6 +1,7 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
+import { useTranslation } from 'react-i18next'
 import { z } from 'zod'
 
 import {
@@ -15,11 +16,20 @@ import { Slider } from '@/shared/ui/shadcn-ui/slider'
 import { FilterEnum } from '@/shared/constants/app.const'
 import { useQueryParams } from '@/shared/library/hooks'
 
-const FormSchema = z.object({
-  price: z.array(z.number()),
-})
+const usePriceFormSchema = () => {
+  const { t } = useTranslation()
+  return z.object({
+    price: z
+      .array(z.number())
+      .length(2) // Ensure exactly two numbers are provided
+      .refine(([min, max]) => min <= max, {
+        message: t('filters.priceError'),
+      }),
+  })
+}
 
 export const PriceForm = () => {
+  const FormSchema = usePriceFormSchema()
   const { setQueryParams, getQueryParamByKey } = useQueryParams()
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -34,22 +44,30 @@ export const PriceForm = () => {
     })
   }
 
-  useEffect(() => {
-    const price = getQueryParamByKey(FilterEnum.PRICE)
+  const prevPriceRef = useRef<string | null>(null)
+  const priceParam = getQueryParamByKey(FilterEnum.PRICE)
 
-    if (price) {
-      const parsedPrice = price
+  useEffect(() => {
+    // Only update the form if the price param exists and is different from the previous one
+    if (priceParam && priceParam !== prevPriceRef.current) {
+      const parsedPrice = priceParam
         .split('-')
         .map(Number)
-        .filter(val => val >= 0 && val <= 40000)
+        .filter(val => val >= 0)
+
       form.setValue(
         'price',
         parsedPrice.length === 2 ? parsedPrice : [40, 40000],
       )
-    } else {
-      form.setValue('price', [40, 40000])
     }
-  }, [form, getQueryParamByKey])
+    // Reset the form when price param is removed
+    else if (!priceParam && prevPriceRef.current) {
+      form.resetField('price')
+    }
+
+    // Update the previous price ref
+    prevPriceRef.current = priceParam
+  }, [priceParam, form])
 
   return (
     <Form {...form}>
@@ -64,21 +82,21 @@ export const PriceForm = () => {
                   <div className='flex items-center justify-between'>
                     <div className='flex items-center gap-2'>
                       <input
-                        type='text'
+                        type='number'
                         value={String(value[0])}
                         onChange={e =>
                           onChange([Number(e.target.value), value[1]])
                         }
-                        className='inline-block w-[71px] rounded-lg border border-gray-300 bg-background py-[7px] text-center text-base/5 placeholder:text-gray-400 focus:border-primary-900 focus:outline-none'
+                        className='no-spinner inline-block w-[71px] rounded-lg border border-gray-300 bg-background py-[7px] text-center text-base/5 placeholder:text-gray-400 focus:border-primary-900 focus:outline-none'
                       />
                       <Separator className='w-[14px] bg-gray-200' />
                       <input
-                        type='text'
+                        type='number'
                         value={String(value[1])}
                         onChange={e =>
                           onChange([value[0], Number(e.target.value)])
                         }
-                        className='inline-block w-[71px] rounded-lg border border-gray-300 bg-background py-[7px] text-center text-base/5 placeholder:text-gray-400 focus:border-primary-900 focus:outline-none'
+                        className='no-spinner inline-block w-[71px] rounded-lg border border-gray-300 bg-background py-[7px] text-center text-base/5 placeholder:text-gray-400 focus:border-primary-900 focus:outline-none'
                       />
                     </div>
                     <button
@@ -98,7 +116,7 @@ export const PriceForm = () => {
                   />
                 </div>
               </FormControl>
-              <FormMessage />
+              <FormMessage className='pt-2' />
             </FormItem>
           )}
         />

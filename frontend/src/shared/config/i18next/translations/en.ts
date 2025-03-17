@@ -151,6 +151,7 @@ export const en = {
   },
   filters: {
     price: 'Price',
+    priceError: 'Minimum price cannot be greater than maximum price',
     condition: {
       title: 'Condition',
       all: 'All',

@@ -150,6 +150,7 @@ export const uk = {
   },
   filters: {
     price: 'Ціна',
+    priceError: 'Мінімальна ціна повинна бути менша за максимальну',
     condition: {
       title: 'Стан',
       all: 'Усі',

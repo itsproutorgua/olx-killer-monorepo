@@ -25,11 +25,13 @@ import { AccountLayout, RootLayout } from '@/pages/layouts'
 import { AccountRootLayout } from '@/pages/layouts/account-root-layout.tsx'
 import { ProductPage } from '@/pages/product/product-page.tsx'
 import { PRIVATE_PAGES, PUBLIC_PAGES } from '@/shared/constants'
+import { ScrollToTop } from '@/shared/library/utils/scroll-to-top.ts'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <BrowserRouter>
       <Providers>
+        <ScrollToTop />
         <Routes>
           <Route path='/' element={<RootLayout />}>
             <Route index element={<HomePage />} />

@@ -36,7 +36,7 @@ export const FiltersSheet = ({ className }: { className?: string }) => {
       <SheetContent
         side='left'
         aria-describedby={undefined}
-        className='h-full w-[304px] border-0 bg-gray-50 p-0 px-2.5 pb-2.5 shadow-none'
+        className='flex h-full w-[304px] flex-col gap-0 border-0 bg-gray-50 p-0 px-2.5 pb-2.5 shadow-none'
       >
         <SheetHeader className='flex h-20 w-full flex-row items-center justify-between border-b border-gray-200'>
           <SheetTitle className='text-2xl/none text-foreground'>
@@ -56,10 +56,10 @@ export const FiltersSheet = ({ className }: { className?: string }) => {
           )}
         </SheetHeader>
 
-        <div className='flex h-[calc(100%-80px)] flex-col justify-between overflow-y-auto'>
+        <div className='flex flex-grow flex-col justify-between overflow-y-auto'>
           <FiltersBar onCloseSheet={() => setIsSheetOpen(false)} />
 
-          <div className='space-y-4'>
+          <div className='mt-auto space-y-4'>
             {!isFiltersEmpty && (
               <p className='border-t border-t-border pt-4 text-center text-[13px]/[15.6px] text-gray-400'>
                 {t('words.found')} {count} {t('words.announcements')}
