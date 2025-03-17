@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { z } from 'zod'
 
-const MAX_IMAGE_SIZE = 1024 * 1024 // 1MB
+const MAX_IMAGE_SIZE = 10 * 1024 * 1024 // 10MB
 
 export const useProfileSchema = () => {
   const { t } = useTranslation()
@@ -14,7 +14,7 @@ export const useProfileSchema = () => {
         { message: t('errors.input.invalidImageFormat') },
       )
       .refine(file => file.size <= MAX_IMAGE_SIZE, {
-        message: t('errors.input.imageSizeExceeded', { maxSize: '1MB' }),
+        message: t('errors.input.imageSizeExceeded', { maxSize: '10MB' }),
       })
       .optional(),
 
