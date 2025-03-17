@@ -46,12 +46,12 @@ export const TopBar = () => {
     <div className='relative flex w-full items-center justify-between'>
       <CatalogMenu
         onClick={() => setIsSidebarOpen(true)}
-        className='mr-5 h-10 w-10 shrink-0 cursor-pointer md:hidden'
+        className='mr-5 h-10 w-10 shrink-0 cursor-pointer xl:hidden'
       />
       <Logo
         className={`flex items-center justify-center transition-opacity duration-700 ${
           !isExpanded ? 'opacity-100' : 'w-0 opacity-0'
-        } md:px-0 md:opacity-100`}
+        } xl:px-0 xl:opacity-100`}
       />
 
       {/* Search Section */}
@@ -62,21 +62,21 @@ export const TopBar = () => {
               isExpanded
                 ? 'w-full opacity-100 duration-200'
                 : 'w-0 opacity-0 duration-0'
-            } md:w-full md:px-0 md:opacity-100`}
+            } xl:w-full xl:px-0 xl:opacity-100`}
           >
             <input
               name='search'
               type='text'
-              className='w-full rounded-[60px] py-2.5 pl-[48.92px] pr-[97px] placeholder:text-foreground focus:outline-none md:pl-[58.49px] md:pr-[133.89px]'
+              className='w-full rounded-[60px] py-2.5 pl-[48.92px] pr-[97px] placeholder:text-foreground focus:outline-none xl:pl-[58.49px] xl:pr-[133.89px]'
               placeholder={t('inputs.searchPlaceholder')}
             />
             <button className='absolute right-[4.81px] top-1/2 flex h-9 w-[91px] -translate-y-1/2 items-center justify-center rounded-[60px] bg-primary-900 text-[13px] text-gray-50 transition-colors duration-300 hover:bg-primary-500 active:bg-primary-600 active:duration-0 xl:right-[4.89px] xl:w-[117px]'>
               {t('buttons.searchButton')}
             </button>
-            <SearchIcon className='absolute left-[17.49px] md:top-1/2 md:-translate-y-1/2 xl:left-[22.49px]' />
+            <SearchIcon className='absolute left-[17.49px] xl:left-[22.49px] xl:top-1/2 xl:-translate-y-1/2' />
           </div>
         </div>
-        <button onClick={handleToggleSearch} className='z-10 ml-auto md:hidden'>
+        <button onClick={handleToggleSearch} className='z-10 ml-auto xl:hidden'>
           <SearchIconRounded />
         </button>
 
@@ -90,7 +90,7 @@ export const TopBar = () => {
       {/* Sidebar */}
       <div
         ref={sidebarRef}
-        className={`fixed ${isSidebarOpen ? 'left-0' : '-left-full'} top-0 z-20 h-full w-[310px] bg-gray-50 transition-all duration-300 ease-out`}
+        className={`fixed ${isSidebarOpen ? 'left-0' : '-left-full'} top-0 z-20 h-full w-[310px] overflow-y-scroll bg-gray-50 pb-32 transition-all duration-300 ease-out`}
       >
         <div className='flex justify-between py-4 pl-[27px] pr-5'>
           <h3 className='text-[26px] font-medium'>{t('words.categories')}</h3>

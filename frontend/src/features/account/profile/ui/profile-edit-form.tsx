@@ -168,7 +168,7 @@ export function ProfileEditForm() {
                           className='form-input relative'
                           value={searchTerm}
                           onChange={e => {
-                            setSearchTerm(e.target.value)
+                            setSearchTerm(e.target.value.trim())
                             setIsLocationFocused(true)
                             setIsSelectingLocation(false)
                           }}
