@@ -63,7 +63,7 @@ const BottomBar = () => {
   return (
     <div
       className={clsx(
-        'fixed bottom-0 left-0 right-0 z-50 transform transition-transform duration-300 md:hidden',
+        'fixed bottom-0 left-0 right-0 z-50 transform transition-transform duration-300 xl:hidden',
         isVisible ? 'translate-y-0' : 'translate-y-[100px]',
       )}
     >

@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next'
 import { z } from 'zod'
 
-const MAX_IMAGE_SIZE = 10 * 1024 * 1024 // 1MB
-const MAX_VIDEO_SIZE = 50 * 1024 * 1024 // 10MB
+const MAX_IMAGE_SIZE = 10 * 1024 * 1024 // 10MB
+const MAX_VIDEO_SIZE = 100 * 1024 * 1024 // 100MB
 const MAX_IMAGES_COUNT = 8
 const VIDEO_MAX_DURATION = 60 // seconds
 
@@ -14,9 +14,12 @@ export const useFormSchema = () => {
       .string()
       .min(3, { message: t('errors.input.minLength', { minLength: 3 }) })
       .max(150, { message: t('errors.input.maxLength', { maxLength: 150 }) })
-      .regex(/^[a-zA-Zа-яА-ЯґҐєЄіІїЇ0-9\s-]+$/, {
-        message: t('errors.input.invalidCharacters'),
-      }),
+      .regex(
+        /^\s?[a-zA-Zа-яА-ЯґҐєЄіІїЇ0-9]+(?:[-\sʼ'][a-zA-Zа-яА-ЯґҐєЄіІїЇ0-9]+)*\s?$/,
+        {
+          message: t('errors.input.invalidCharacters'),
+        },
+      ),
 
     amount: z
       .string()
@@ -40,6 +43,9 @@ export const useFormSchema = () => {
       .min(10, { message: t('errors.input.minLength', { minLength: 10 }) })
       .max(10000, {
         message: t('errors.input.maxLength', { maxLength: 10000 }),
+      })
+      .refine(value => value.trim().length >= 10, {
+        message: t('errors.input.minLength', { minLength: 10 }),
       }),
 
     category_id: z.coerce
@@ -66,13 +72,15 @@ export const useFormSchema = () => {
       .instanceof(File)
       .optional()
       .refine(
-        file => !file || ['video/mp4', 'video/webm'].includes(file.type),
+        file =>
+          !file ||
+          ['video/mp4', 'video/webm', 'video/quicktime'].includes(file.type),
         {
           message: t('errors.input.invalidVideoFormat'),
         },
       )
       .refine(file => !file || file.size <= MAX_VIDEO_SIZE, {
-        message: t('errors.input.videoSizeExceeded', { maxSize: '50MB' }),
+        message: t('errors.input.videoSizeExceeded', { maxSize: '100MB' }),
       })
       .refine(
         async file => {

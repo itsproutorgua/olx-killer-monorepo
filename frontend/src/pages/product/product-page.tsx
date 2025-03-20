@@ -32,11 +32,6 @@ export const ProductPage = () => {
   }
 
   useEffect(() => {
-    // Scroll to top on mount or when slug changes
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }, [slug])
-
-  useEffect(() => {
     if (data) {
       generateProductCrumbs(data, setCrumbs)
     }
