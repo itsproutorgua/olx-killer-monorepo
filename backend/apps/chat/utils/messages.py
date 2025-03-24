@@ -20,7 +20,8 @@ class MessageUtils:
                 {
                     'type': 'chat_message',
                     'message': message_data,
-                }
+                },
+                ensure_ascii=False,
             )
         )
 
@@ -37,7 +38,8 @@ class MessageUtils:
                 {
                     'type': 'mark_message_as_delivered',
                     'message': message_data,
-                }
+                },
+                ensure_ascii=False,
             )
         )
 
@@ -57,7 +59,8 @@ class MessageUtils:
                 {
                     'type': 'mark_message_as_read',
                     'message': message_data,
-                }
+                },
+                ensure_ascii=False,
             )
         )
 
@@ -155,6 +158,7 @@ class MessageUtils:
                     'type': 'message_edited',
                     'message_id': message_id,
                     'text': message_text,
-                }
+                },
+                ensure_ascii=False,
             )
         )
