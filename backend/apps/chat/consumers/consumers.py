@@ -1,10 +1,14 @@
 import json
+import logging
 
 from channels.generic.websocket import AsyncWebsocketConsumer
 
 from apps.chat.utils.messages import MessageUtils
 from apps.chat.utils.rooms import RoomUtils
 from apps.chat.utils.users import UserUtils
+
+
+logger = logging.getLogger(__name__)
 
 
 class ChatConsumer(AsyncWebsocketConsumer):
@@ -19,11 +23,15 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
         if self.scope['first_user_id'] == self.scope['second_user']:
             return await self.close(4003, "Users must be different")
+        
+        logger.debug(f"Scope: {self.scope}")
 
         # Authenticate user
         self.scope['first_user'] = await UserUtils.authenticate_user(self.scope)
         if not self.scope['first_user']:
             return await self.close(4001, "Authentication failed")
+        
+        logger.debug(f"First user: {self.scope['first_user']}")
 
         id = await RoomUtils.create_or_get_room(self.scope['first_user'], self.scope['second_user'])
         self.room_id = id
