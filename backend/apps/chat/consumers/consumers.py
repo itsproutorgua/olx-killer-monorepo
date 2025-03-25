@@ -18,14 +18,12 @@ class ChatConsumer(AsyncWebsocketConsumer):
             raise KeyError('Enter correct query params')
 
         if self.scope['first_user_id'] == self.scope['second_user']:
-            await self.close()
+            return await self.close(4003, "Users must be different")
 
         # Authenticate user
         self.scope['first_user'] = await UserUtils.authenticate_user(self.scope)
         if not self.scope['first_user']:
-            return await self.close()
-
-        await UserUtils.validate_user_id(self)
+            return await self.close(4001, "Authentication failed")
 
         id = await RoomUtils.create_or_get_room(self.scope['first_user'], self.scope['second_user'])
         self.room_id = id
@@ -34,7 +32,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
         # Get chat room object
         self.room = await RoomUtils.get_chat_room(self.room_id)
         if not self.room:
-            return await self.close()
+            return await self.close(4004, "Chat room not found")
 
         # Connect to chat group
         await self.channel_layer.group_add(self.chat_group_name, self.channel_name)
@@ -98,7 +96,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
         return await UserUtils.get_recipient(self.room, self.scope['first_user'])
 
     async def message_delete(self, event):
-        await MessageUtils.message_delete(self, event)
+        await MessageUtils.message_delete(self, event) 
 
     async def message_edit(self, event):
         await MessageUtils.message_edit(self, event)
