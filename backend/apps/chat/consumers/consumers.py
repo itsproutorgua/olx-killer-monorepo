@@ -33,6 +33,8 @@ class ChatConsumer(AsyncWebsocketConsumer):
         
         logger.debug(f"First user: {self.scope['first_user']}")
 
+        await UserUtils.validate_user_id(self)
+
         id = await RoomUtils.create_or_get_room(self.scope['first_user'], self.scope['second_user'])
         self.room_id = id
         self.chat_group_name = f'chat_{self.room_id}'
