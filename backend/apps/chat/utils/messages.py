@@ -128,7 +128,7 @@ class MessageUtils:
                 }
             )
 
-        await consumer.send(text_data=json.dumps(messages_data))
+        await consumer.send(text_data=json.dumps(messages_data, ensure_ascii=False))
 
     @staticmethod
     async def message_delete(consumer, message_id: int) -> None:
