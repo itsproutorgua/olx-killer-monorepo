@@ -36,7 +36,7 @@ export function MessageForm({ sellerId }: { sellerId: number }) {
 
   const handleSubmit = (data: z.infer<typeof FormSchema>) => {
     sendMessage(data.msg)
-    form.reset()
+    form.reset({ msg: '' })
   }
 
   return (

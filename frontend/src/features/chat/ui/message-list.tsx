@@ -1,7 +1,5 @@
-// import { ScrollToButton } from './scroll-to-button'
+import { useEffect, useRef } from 'react'
 import { EyeIcon } from 'lucide-react'
-
-// import { useTranslation } from 'react-i18next'
 
 import { useChat } from '@/features/chat/library/hooks/use-chat.tsx'
 import { useUserProfile } from '@/entities/user'
@@ -11,13 +9,26 @@ import { cn } from '@/shared/library/utils'
 export const MessageList = ({ sellerId }: { sellerId: number }) => {
   const { messages } = useChat(sellerId)
   const { data: user } = useUserProfile()
-  // const { t } = useTranslation()
+  const scrollRef = useRef<HTMLDivElement | null>(null)
+
+  // Scroll to the latest message whenever messages change
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollTop = scrollRef.current.scrollHeight
+    }
+  }, [messages])
 
   return (
-    <ScrollArea className='relative h-full border-y border-y-border bg-gray-100 p-6'>
+    <ScrollArea
+      ref={scrollRef}
+      className='relative h-full flex-grow overflow-y-auto border-y border-y-border bg-gray-100 p-6'
+    >
       <ul className='space-y-5'>
         {messages.map(msg => (
-          <li key={msg.message_id} className='space-y-2.5'>
+          <li
+            key={`${msg.message_id}-${msg.created_at}`}
+            className='space-y-2.5'
+          >
             <div
               className={cn(
                 'rounded-[10px] px-3.5 py-2 text-sm/[21px] tracking-tight',
