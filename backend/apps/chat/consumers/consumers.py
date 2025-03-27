@@ -2,7 +2,8 @@ import json
 import logging
 
 from channels.generic.websocket import AsyncWebsocketConsumer
-
+from asgiref.sync import sync_to_async
+from apps.users.models.profile import Profile
 from apps.chat.utils.messages import MessageUtils
 from apps.chat.utils.rooms import RoomUtils
 from apps.chat.utils.users import UserUtils
@@ -16,12 +17,18 @@ class ChatConsumer(AsyncWebsocketConsumer):
         try:
             query_params = self.scope['query_params']
 
-            self.scope['first_user_id'] = query_params['first_user'][0]
+            self.scope['first_user'] = query_params['first_user'][0]
             self.scope['second_user'] = query_params['second_user'][0]
         except KeyError:
             raise KeyError('Enter correct query params')
 
-        if self.scope['first_user_id'] == self.scope['second_user']:
+        first_profile = await sync_to_async(lambda: Profile.objects.select_related('user').get(id=self.scope['first_user']), thread_sensitive=True)()
+        self.scope['first_user_id'] = first_profile.user.id
+
+        second_profile = await sync_to_async(lambda: Profile.objects.select_related('user').get(id=self.scope['second_user']), thread_sensitive=True)()
+        self.scope['second_user_id'] = second_profile.user.id
+
+        if self.scope['first_user_id'] == self.scope['second_user_id']:
             return await self.close(4003, "Users must be different")
         
         logger.debug(f"Scope: {self.scope}")
@@ -35,7 +42,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
         await UserUtils.validate_user_id(self)
 
-        id = await RoomUtils.create_or_get_room(self.scope['first_user'], self.scope['second_user'])
+        id = await RoomUtils.create_or_get_room(self.scope['first_user'], self.scope['second_user_id'])
         self.room_id = id
         self.chat_group_name = f'chat_{self.room_id}'
 
