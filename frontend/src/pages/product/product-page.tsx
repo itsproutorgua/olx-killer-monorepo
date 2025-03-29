@@ -46,7 +46,7 @@ export const ProductPage = () => {
         <ProductDetails
           product={data}
           onProductClick={handleProductClick}
-          className='mb-20 md:mb-[104px]'
+          className='mb-20 md:mb-10'
         />
       )}
 

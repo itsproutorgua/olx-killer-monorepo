@@ -121,7 +121,7 @@ export const DndGrid = () => {
                 initialized.current = true
               }}
               multiple
-              accept='image/*'
+              accept='image/jpeg, image/png, image/heic, image/heif'
               className='hidden'
               onChange={e => e.target.files && handleAddFiles(e.target.files)}
             />

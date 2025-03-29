@@ -24,7 +24,7 @@ export const CategoryNavbarSkeleton = () => {
           {Array.from({ length: 8 }).map((_, idx) => (
             <li
               key={idx}
-              className='relative after:absolute after:-right-6 after:top-0 after:h-40 after:w-px after:bg-border [&nth-child(4n)]:after:hidden'
+              className='relative after:absolute after:-right-6 after:top-0 after:h-40 after:w-px after:bg-border'
             >
               <Skeleton className='h-5 w-1/2' />
             </li>

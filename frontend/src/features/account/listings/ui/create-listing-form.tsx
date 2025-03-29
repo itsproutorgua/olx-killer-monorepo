@@ -134,9 +134,9 @@ export function CreateListingForm({
       } else {
         form.reset({
           user_name: userProfile?.username || '',
-          location:
-            `${userProfile?.location?.name}, ${userProfile?.location.region}` ||
-            '',
+          location: userProfile?.location?.name
+            ? `${userProfile?.location.name}, ${userProfile?.location.region}`
+            : '',
           user_phone: userProfile?.phone_numbers?.[0] || '',
           user_email: userProfile?.email || '',
         })
@@ -290,16 +290,17 @@ export function CreateListingForm({
                   name='category_id'
                   render={({ field }) => (
                     <FormItem className='form-item'>
-                      <FormLabel className='form-label' htmlFor='category'>
+                      <FormLabel className='form-label' htmlFor='category_id'>
                         {t('listingForm.fields.category.label')}*
                       </FormLabel>
                       <FormControl>
                         <div className='relative'>
                           <Input
-                            id='category'
+                            id='category_id'
                             placeholder={t(
                               'listingForm.fields.category.placeholder',
                             )}
+                            {...field}
                             className='form-input cursor-pointer'
                             readOnly
                             value={categoryTitle}
@@ -470,7 +471,7 @@ export function CreateListingForm({
                             <Input
                               id='video-upload'
                               type='file'
-                              accept='video/*'
+                              accept='video/mp4, video/webm, video/quicktime'
                               className='hidden'
                               onChange={e => {
                                 if (
