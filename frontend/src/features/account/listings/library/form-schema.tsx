@@ -4,7 +4,7 @@ import { z } from 'zod'
 const MAX_IMAGE_SIZE = 10 * 1024 * 1024 // 10MB
 const MAX_VIDEO_SIZE = 100 * 1024 * 1024 // 100MB
 const MAX_IMAGES_COUNT = 8
-const VIDEO_MAX_DURATION = 15 // seconds
+const VIDEO_MAX_DURATION = 60 // seconds
 
 export const useFormSchema = () => {
   const { t } = useTranslation()
@@ -24,8 +24,11 @@ export const useFormSchema = () => {
     amount: z
       .string()
       .min(1, { message: t('errors.input.required') })
-      .refine(val => !isNaN(parseFloat(val)), {
-        message: t('errors.input.number'),
+      .refine(val => /^[0-9]*\.?[0-9]*$/.test(val), {
+        message: t('errors.input.number'), // Ensures only numbers and an optional dot
+      })
+      .refine(val => !val.endsWith('.'), {
+        message: t('errors.input.decimalIncomplete'), // Prevents incomplete decimals like "99."
       })
       .refine(val => /^\d+(\.\d{1,2})?$/.test(val), {
         message: t('errors.input.decimalPlaces'), // Ensures up to two decimal places
@@ -90,7 +93,7 @@ export const useFormSchema = () => {
           await new Promise(resolve => (video.onloadedmetadata = resolve))
           return video.duration <= VIDEO_MAX_DURATION
         },
-        { message: t('errors.input.videoDurationExceeded', { max: 15 }) },
+        { message: t('errors.input.videoDurationExceeded', { max: 60 }) },
       ),
     status: z.enum(['new', 'used'], {
       required_error: t('errors.input.required'),

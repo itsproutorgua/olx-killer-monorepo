@@ -10,9 +10,11 @@ export const errors_en = {
       min: 'Minimum value is {{min}}',
       max: 'Maximum value is {{max}}',
       pattern: 'Invalid format',
+      number: 'Only numbers are allowed',
       positiveNumber: 'Value must be positive',
       invalidNumber: 'Invalid number format',
       decimalPlaces: 'Only two decimal places are allowed',
+      decimalIncomplete: 'Incomplete decimals like "99." are not allowed',
       positiveOnly: 'Only positive values allowed',
       maxValue: 'Value must not exceed {{max}}',
       invalidCharacters:
@@ -46,9 +48,12 @@ export const errors_uk = {
       min: 'Мінімальне значення {{min}}',
       max: 'Максимальне значення {{max}}',
       pattern: 'Неправильний формат',
+      number: 'Допускаються лише числа',
       positiveNumber: 'Значення повинно бути додатним',
       invalidNumber: 'Невірний числовий формат',
       decimalPlaces: 'Допускається не більше двох знаків після коми',
+      decimalIncomplete:
+        'Неповні десяткові числа, такі як "99." не допускаються',
       positiveOnly: 'Допускаються тільки позитивні значення',
       maxValue: 'Значення не повинно перевищувати {{max}}',
       invalidCharacters:

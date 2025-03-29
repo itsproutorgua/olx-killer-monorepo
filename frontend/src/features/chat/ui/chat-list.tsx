@@ -28,7 +28,7 @@ export const ChatList = () => {
                 </span>
               </div>
               <div className='flex items-center justify-between'>
-                <p className='line-clamp-1 w-[198px] text-xs/[14.52px] text-gray-950'>
+                <p className='line-clamp-1 w-[157px] text-xs/[14.52px] text-gray-950'>
                   {item.msg}
                 </p>
                 {item.msg_count === 0 ? (

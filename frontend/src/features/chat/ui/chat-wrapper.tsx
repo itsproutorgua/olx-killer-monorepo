@@ -11,7 +11,7 @@ export const ChatWrapper = () => {
 
   return (
     <div className='flex h-full'>
-      <div className='w-[402px] space-y-6 px-6 py-[30px]'>
+      <div className='w-[329px] space-y-6 px-6 py-[30px]'>
         <div className='space-y-3'>
           <h2 className='pl-5 text-xl/none font-medium text-gray-950'>
             {t('chat.myMessages')}

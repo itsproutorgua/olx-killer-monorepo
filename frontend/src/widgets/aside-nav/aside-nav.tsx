@@ -40,7 +40,7 @@ export const AsideNav = ({ onCloseMenu }: { onCloseMenu?: () => void }) => {
     <aside className='w-[305px] pl-[18px] pr-0'>
       <Menubar className='h-auto rounded-none border-0 p-0'>
         {cursor}
-        <ul className='max-w-[287px] space-y-2.5'>
+        <ul className='max-w-[287px] space-y-1'>
           {categories?.map(cat => (
             <li key={cat.path}>
               <MenubarMenu key={cat.path}>
@@ -48,7 +48,7 @@ export const AsideNav = ({ onCloseMenu }: { onCloseMenu?: () => void }) => {
                   onClick={() => {
                     onCloseMenu && handleCategoryClick(cat.path)
                   }}
-                  className='group flex w-full cursor-pointer items-center justify-between gap-3 rounded-[81px] border-0 py-0 pl-2 pr-0 text-base/4 font-normal transition-colors duration-300 hover:bg-primary-900 hover:text-gray-50 data-[state=open]:bg-primary-900 data-[state=open]:text-gray-50'
+                  className='group flex w-full cursor-pointer items-center justify-between gap-3 rounded-[81px] border-0 py-[6px] pl-2 pr-0 text-base/4 font-normal transition-colors duration-300 hover:bg-primary-900 hover:text-gray-50 data-[state=open]:bg-primary-900 data-[state=open]:text-gray-50'
                 >
                   {cat.icon ? (
                     <img
@@ -117,7 +117,7 @@ export const AsideNav = ({ onCloseMenu }: { onCloseMenu?: () => void }) => {
                       <div>
                         <Link
                           to={`/catalog/${sub.path}`}
-                          className='rounded-[7px] bg-primary-900 px-[5px] py-[1px] text-xs text-gray-50 transition-colors duration-300 hover:bg-primary-600'
+                          className='rounded-[100px] bg-primary-700 px-6 py-2 text-sm text-gray-50 transition-colors duration-300 hover:bg-primary-600'
                         >
                           {t('words.showAll')}
                         </Link>

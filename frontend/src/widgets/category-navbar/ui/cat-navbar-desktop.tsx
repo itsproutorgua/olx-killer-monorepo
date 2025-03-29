@@ -8,7 +8,7 @@ export const CategoryNavbarDesktop = ({ data }: { data: CategoryChild[] }) => {
       {data.map(cat => (
         <li
           key={cat.path}
-          className='relative after:absolute after:-right-6 after:top-0 after:h-40 after:w-px after:bg-border [&nth-child(4n)]:after:hidden'
+          className='relative after:absolute after:-right-6 after:top-0 after:h-40 after:w-px after:bg-border'
         >
           <Link
             to={cat.path}
