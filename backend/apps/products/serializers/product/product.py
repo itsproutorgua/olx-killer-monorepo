@@ -31,7 +31,12 @@ class ProductSerializer(serializers.ModelSerializer):
     )
     currency = serializers.PrimaryKeyRelatedField(queryset=Currency.objects.all(), write_only=True, required=False)
     images = ProductImageSerializer(many=True, source='product_images', read_only=True)
-    uploaded_images = serializers.ListField(child=serializers.ImageField(use_url=True), write_only=True, required=False)
+    uploaded_images = serializers.ListField(
+        child=serializers.ImageField(use_url=True, allow_null=True),
+        write_only=True,
+        required=False,
+        allow_empty=True,
+    )
     video = ProductVideoSerializer(source='product_videos', read_only=True, many=True)
     upload_video = serializers.FileField(write_only=True, required=False)
     seller = serializers.SerializerMethodField(read_only=True)
@@ -82,6 +87,15 @@ class ProductSerializer(serializers.ModelSerializer):
         representation['publication_status'] = instance.get_publication_status_display()
 
         return representation
+
+    def to_internal_value(self, data):
+        if 'uploaded_images' in data:
+            data = data.copy()
+            uploaded_images = data.get('uploaded_images')
+            if uploaded_images is None or uploaded_images == '':
+                data['uploaded_images'] = None
+
+        return super().to_internal_value(data)
 
     def validate(self, attrs):
         unknown_fields = set(self.initial_data.keys()) - set(self.fields.keys())
