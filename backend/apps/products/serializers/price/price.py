@@ -49,6 +49,7 @@ class PriceSerializer(serializers.ModelSerializer):
 
         for price_data in prices_data:
             try:
+                price_data['currency'] = Currency.objects.get(code=price_data.get('currency'))
                 price_data['product'] = product
                 cls().create(price_data)
             except IntegrityError as e:
