@@ -32,7 +32,7 @@ export const FiltersTabs = ({ onCloseSheet }: { onCloseSheet: () => void }) => {
               value={filter.name}
               className='flex w-full items-center justify-between border-b border-gray-200 py-[14px] text-base/5 font-medium text-foreground'
             >
-              {filter.label}
+              {t(filter.label)}
 
               <span className='flex items-center gap-2 text-sm font-normal text-gray-400'>
                 {filters[filter.name as keyof Filters] ? (
@@ -58,7 +58,7 @@ export const FiltersTabs = ({ onCloseSheet }: { onCloseSheet: () => void }) => {
             'absolute right-0 top-0 m-0 h-full w-full bg-background px-2.5 data-[state=active]:translate-x-0 data-[state=inactive]:translate-x-[380px]',
           )}
         >
-          <div className='grid h-screen grid-rows-[auto_1fr_auto]'>
+          <div className='grid h-full grid-rows-[auto_1fr_auto]'>
             <FiltersTabsHeader label={filter.label} setValue={setValue} />
             <FiltersTabsContent filter={filter} />
             <FiltersTabsFooter onBack={setValue} onShow={onCloseSheet} />

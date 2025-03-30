@@ -126,6 +126,9 @@ export function ProfileEditForm() {
             />
             <div>
               <div className='space-y-6 xl:flex xl:max-w-[422px] xl:flex-col xl:gap-y-[30px] xl:space-y-0'>
+                {!userAuth?.email_verified && (
+                  <EmailNotVerified className='-mb-4' />
+                )}
                 <h1 className='-mb-1 text-lg font-semibold xl:-mb-[10px]'>
                   {t('profileForm.titles.editProfile')}
                 </h1>
@@ -168,7 +171,7 @@ export function ProfileEditForm() {
                           className='form-input relative'
                           value={searchTerm}
                           onChange={e => {
-                            setSearchTerm(e.target.value)
+                            setSearchTerm(e.target.value.trim())
                             setIsLocationFocused(true)
                             setIsSelectingLocation(false)
                           }}
@@ -277,9 +280,6 @@ export function ProfileEditForm() {
                     readOnly
                     className='form-input bg-gray-50'
                   />
-                  {!userAuth?.email_verified && (
-                    <EmailNotVerified className='!mt-[14px]' />
-                  )}
                 </div>
               </div>
             </div>

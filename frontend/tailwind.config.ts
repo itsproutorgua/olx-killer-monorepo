@@ -67,6 +67,9 @@ const config = {
         800: '#912018',
         900: '#7A271A',
       },
+      warning: {
+        100: '#FFF0CF',
+      },
     },
 
     extend: {

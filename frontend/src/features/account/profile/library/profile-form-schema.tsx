@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { z } from 'zod'
 
-const MAX_IMAGE_SIZE = 1024 * 1024 // 1MB
+const MAX_IMAGE_SIZE = 10 * 1024 * 1024 // 10MB
 
 export const useProfileSchema = () => {
   const { t } = useTranslation()
@@ -14,7 +14,7 @@ export const useProfileSchema = () => {
         { message: t('errors.input.invalidImageFormat') },
       )
       .refine(file => file.size <= MAX_IMAGE_SIZE, {
-        message: t('errors.input.imageSizeExceeded', { maxSize: '1MB' }),
+        message: t('errors.input.imageSizeExceeded', { maxSize: '10MB' }),
       })
       .optional(),
 
@@ -22,9 +22,12 @@ export const useProfileSchema = () => {
       .string()
       .min(3, { message: t('errors.input.minLength', { minLength: 3 }) })
       .max(20, { message: t('errors.input.maxLength', { maxLength: 20 }) })
-      .regex(/^[a-zA-Zа-яА-ЯґҐєЄіІїЇ0-9]+(?:-[a-zA-Zа-яА-ЯґҐєЄіІїЇ0-9]+)*$/, {
-        message: t('errors.input.invalidCharacters'),
-      }),
+      .regex(
+        /^\s?[a-zA-Zа-яА-ЯґҐєЄіІїЇ0-9]+(?:[-\sʼ'][a-zA-Zа-яА-ЯґҐєЄіІїЇ0-9]+)*\s?$/,
+        {
+          message: t('errors.input.invalidCharacters'),
+        },
+      ),
 
     location_id: z
       .string()

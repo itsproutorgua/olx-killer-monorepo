@@ -30,7 +30,6 @@ const ProductPageSkeletonDesktop: React.FC<ProductPageLoaderProps> = props => (
     <rect x='985' y='321' rx='15' ry='15' width='296' height='200' />
     <rect x='669' y='575' rx='15' ry='15' width='610' height='138' />
     <rect x='669' y='809' rx='15' ry='15' width='611' height='127' />
-    <rect x='669' y='956' rx='15' ry='15' width='611' height='186' />
   </ContentLoader>
 )
 

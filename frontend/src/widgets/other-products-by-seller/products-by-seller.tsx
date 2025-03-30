@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 
 import { ScrollableProductList } from '@/widgets/scrollable-product-list/scrollable-product-list.tsx'
 import { useLatestProducts } from '@/entities/product/library/hooks/use-latest-products.tsx'
-import { ProductSliderSkeleton } from '@/shared/ui/skeletons'
+import { ScrollableProductsSkeleton } from '@/shared/ui/skeletons'
 
 export interface SellerProductProps {
   onProductClick: (slug: string) => void
@@ -14,7 +14,7 @@ export const ProductsBySeller: React.FC<SellerProductProps> = ({
 }) => {
   const { t } = useTranslation()
   const { data, cursor } = useLatestProducts({
-    Skeleton: <ProductSliderSkeleton />,
+    Skeleton: <ScrollableProductsSkeleton />,
   })
 
   return (
