@@ -1,13 +1,13 @@
 import { useEffect, useRef } from 'react'
 import { EyeIcon } from 'lucide-react'
 
-import { useChat } from '@/features/chat/library/hooks/use-chat.tsx'
+import { useChatContext } from '@/features/chat/chat-context/chat-context.tsx'
 import { useUserProfile } from '@/entities/user'
 import { ScrollArea } from '@/shared/ui/shadcn-ui/scroll-area'
 import { cn } from '@/shared/library/utils'
 
-export const MessageList = ({ sellerId }: { sellerId: number }) => {
-  const { messages } = useChat(sellerId)
+export const MessageList = () => {
+  const { messages } = useChatContext()
   const { data: user } = useUserProfile()
   const scrollRef = useRef<HTMLDivElement | null>(null)
 
@@ -26,7 +26,7 @@ export const MessageList = ({ sellerId }: { sellerId: number }) => {
       <ul className='space-y-5'>
         {messages.map(msg => (
           <li
-            key={`${msg.message_id}-${msg.created_at}`}
+            key={msg.message_id + msg.created_at + Math.random()}
             className='space-y-2.5'
           >
             <div

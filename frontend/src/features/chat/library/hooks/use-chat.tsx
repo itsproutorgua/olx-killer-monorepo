@@ -1,67 +1,94 @@
 import { useEffect, useRef, useState } from 'react'
 
 import { Message, WebSocketResponse } from '@/features/chat'
-//import { useUserProfile } from '@/entities/user'
+import { useUserProfile } from '@/entities/user'
 import { useIdToken } from '@/entities/user/library/hooks/use-id-token.tsx'
 
 export const useChat = (sellerId: number) => {
   const [messages, setMessages] = useState<Message[]>([])
-  //const { data: user } = useUserProfile()
+  const { data: user } = useUserProfile()
   const [isConnected, setIsConnected] = useState(false)
   const ws = useRef<WebSocket | null>(null)
   const getIdToken = useIdToken()
-  const isConnecting = useRef(false) // Prevent multiple simultaneous connections
+  const isConnecting = useRef(false)
+  const [isReady, setIsReady] = useState(false)
 
   useEffect(() => {
+    if (!sellerId || !user?.id) return
+
+    let socket: WebSocket | null = null
+    let isCurrent = true // Track if this effect is still relevant
+
     const connect = async () => {
-      if (ws.current || isConnecting.current) return // Prevent duplicate connections
       isConnecting.current = true
 
-      const token = await getIdToken()
-      const url = `ws://54.145.126.99:8001/ws/chat/?first_user=19654&second_user=${sellerId}`
-      ws.current = new WebSocket(url, ['Bearer', token])
+      try {
+        const token = await getIdToken()
+        const url = `ws://54.145.126.99:8001/ws/chat/?first_user=${user.id}&second_user=${sellerId}`
 
-      ws.current.onopen = () => {
-        setIsConnected(true)
-        console.log('WebSocket connected')
-      }
+        socket = new WebSocket(url, ['Bearer', token])
+        ws.current = socket // Update ref with current socket
 
-      ws.current.onerror = error => {
-        console.error('Error WebSocket:', error)
-      }
-
-      ws.current.onmessage = e => {
-        try {
-          const data = JSON.parse(e.data) // Parse incoming message
-
-          if (Array.isArray(data)) {
-            // 🔥 Server sent initial messages
-            setMessages(data) // Replace messages (avoid duplication)
-          } else {
-            // 🔥 Normal WebSocket message
-            handleMessage(data)
-          }
-        } catch (error) {
-          console.error('Invalid WebSocket message:', error)
+        socket.onopen = () => {
+          if (!isCurrent) return // Skip if effect was cleaned up
+          setIsConnected(true)
+          setIsReady(true)
+          console.log(`WebSocket connected for sellerId: ${sellerId}`)
         }
-      }
 
-      ws.current.onclose = event => {
-        setIsConnected(false)
-        console.log('WebSocket disconnected:', event.code, event.reason)
-        ws.current = null // Ensure state is cleared
-      }
+        socket.onmessage = e => {
+          if (!isCurrent) return
+          try {
+            const data = JSON.parse(e.data)
 
-      isConnecting.current = false
+            if (Array.isArray(data)) {
+              setMessages(data) // Initial messages from server
+            } else {
+              handleMessage(data)
+            }
+          } catch (error) {
+            console.error('Invalid WebSocket message:', error)
+          }
+        }
+
+        socket.onerror = error => {
+          if (!isCurrent) return
+          console.error('WebSocket error:', error)
+          setIsReady(false)
+        }
+
+        socket.onclose = event => {
+          if (!isCurrent) return
+          console.log(
+            `WebSocket closed for sellerId: ${sellerId}`,
+            event.code,
+            event.reason,
+          )
+          setIsConnected(false)
+          setIsReady(false)
+          // Only nullify if the closed socket is the current one
+          if (ws.current === socket) {
+            ws.current = null
+          }
+          isConnecting.current = false
+        }
+      } catch (error) {
+        console.error('Failed to connect WebSocket:', error)
+        isConnecting.current = false
+        if (isCurrent) setIsReady(false)
+      }
     }
 
     connect()
 
     return () => {
-      ws.current?.close()
-      ws.current = null
+      isCurrent = false // Mark this effect as stale
+      socket?.close() // Close only the socket from this effect
+      // DO NOT nullify ws.current here - it may belong to a newer effect
+      setIsConnected(false)
+      setIsReady(false)
     }
-  }, [sellerId])
+  }, [sellerId, user?.id])
 
   const handleMessage = (data: WebSocketResponse) => {
     setMessages(prev => {
@@ -90,12 +117,19 @@ export const useChat = (sellerId: number) => {
   }
 
   const sendMessage = (text: string) => {
-    if (ws.current?.readyState === WebSocket.OPEN) {
-      ws.current.send(JSON.stringify({ action: 'send', message: text }))
+    const currentSocket = ws.current // Capture current ref value
+
+    if (!currentSocket) {
+      console.error('No WebSocket connection established')
+      return
+    }
+
+    if (currentSocket.readyState === WebSocket.OPEN) {
+      currentSocket.send(JSON.stringify({ action: 'send', message: text }))
     } else {
-      console.error('WebSocket is not open')
+      console.error('WebSocket is closed, cannot send message')
     }
   }
 
-  return { messages, sendMessage, isConnected }
+  return { messages, sendMessage, isConnected, isReady } // Added isReady for UI feedback
 }

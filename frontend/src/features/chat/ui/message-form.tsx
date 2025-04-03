@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { z } from 'zod'
 
-import { useChat } from '@/features/chat/library/hooks/use-chat.tsx'
+import { useChatContext } from '@/features/chat/chat-context/chat-context.tsx'
 import {
   Form,
   FormControl,
@@ -26,8 +26,8 @@ const FormSchema = z.object({
     }),
 })
 
-export function MessageForm({ sellerId }: { sellerId: number }) {
-  const { sendMessage } = useChat(sellerId)
+export function MessageForm() {
+  const { sendMessage } = useChatContext()
   const { t } = useTranslation()
 
   const form = useForm<z.infer<typeof FormSchema>>({
