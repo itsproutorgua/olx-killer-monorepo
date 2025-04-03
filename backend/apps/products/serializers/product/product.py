@@ -6,7 +6,6 @@ from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 
 import settings
-from apps.common import errors
 from apps.products.models import Category
 from apps.products.models import Currency
 from apps.products.models.price.price import MIN_PRICE
