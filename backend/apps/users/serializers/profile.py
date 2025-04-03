@@ -73,8 +73,9 @@ class ProfileSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError(_(f'Ensure {username!r} has at least {min_length} characters.'))
         if username and len(username) > max_length:
             raise serializers.ValidationError(_(f'Ensure {username!r} has at most {max_length} characters.'))
-        if username and not re.match(r'(?i)^[a-zа-яіё0-9]+$', username):
-            raise serializers.ValidationError(_(f'Ensure {username!r} contains only letters and numbers.'))
+        if username and not re.match(r"(?i)^[a-zа-яіё0-9'’‘-]+$", username):
+            msg = _(f'Ensure {username!r} contains only letters, numbers, apostrophes, and hyphens.')
+            raise serializers.ValidationError(msg)
 
         return username
 

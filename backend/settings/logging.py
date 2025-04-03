@@ -171,12 +171,12 @@ LOGGING = {
         #     'propagate': False,
         #     'filters': ['ignore_static'],
         # },
-        'daphne': {  
+        'daphne': {
             'handlers': ['console', 'file'],
-            'level': 'INFO',  
+            'level': 'INFO',
             'propagate': False,
         },
-        'daphne.access': {  
+        'daphne.access': {
             'handlers': ['console', 'file'],
             'level': 'INFO',
             'propagate': False,

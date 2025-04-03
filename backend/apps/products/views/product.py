@@ -4,8 +4,7 @@ from django.utils.translation import gettext_lazy as _
 from drf_spectacular.utils import extend_schema
 from drf_spectacular.utils import OpenApiResponse
 from rest_framework import status
-from rest_framework.permissions import AllowAny
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
 from rest_framework.viewsets import ViewSet
 
@@ -19,11 +18,7 @@ class ProductAPIViewSet(ViewSet):
     queryset = Product.objects.all().select_related('seller', 'category').order_by('-updated_at')
     serializer_class = ProductSerializer
     lookup_field = 'slug'
-
-    def get_permissions(self):
-        if self.action in ('create', 'update', 'partial_update', 'destroy'):
-            return [IsAuthenticated()]
-        return [AllowAny()]
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
     @extend_schema(
         tags=[PRODUCT_TAG],

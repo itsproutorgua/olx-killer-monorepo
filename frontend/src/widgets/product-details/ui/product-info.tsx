@@ -109,7 +109,7 @@ export const ProductInfo: React.FC<Props> = ({
         />
         <Separator className='mt-[11px] w-full bg-gray-200' />
       </div>
-      <div className='mt-[11px] hidden flex-row items-center justify-between text-xs text-gray-400 md:mb-[104px] md:flex'>
+      <div className='mt-[11px] hidden flex-row items-center justify-between text-xs text-gray-400 md:mb-10 md:flex'>
         <p>ID: {product?.id}</p>
         <p>
           {t('words.views')}: {product.views}

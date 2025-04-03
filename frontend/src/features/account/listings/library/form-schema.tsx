@@ -24,8 +24,11 @@ export const useFormSchema = () => {
     amount: z
       .string()
       .min(1, { message: t('errors.input.required') })
-      .refine(val => !isNaN(parseFloat(val)), {
-        message: t('errors.input.number'),
+      .refine(val => /^[0-9]*\.?[0-9]*$/.test(val), {
+        message: t('errors.input.number'), // Ensures only numbers and an optional dot
+      })
+      .refine(val => !val.endsWith('.'), {
+        message: t('errors.input.decimalIncomplete'), // Prevents incomplete decimals like "99."
       })
       .refine(val => /^\d+(\.\d{1,2})?$/.test(val), {
         message: t('errors.input.decimalPlaces'), // Ensures up to two decimal places
