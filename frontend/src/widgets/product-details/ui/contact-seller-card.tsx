@@ -45,7 +45,7 @@ export const ContactSellerCard: React.FC<SellerProps> = ({
               </p>
             </div>
           </div>
-          <WriteSeller />
+          <WriteSeller sellerId={product.seller.id} />
         </div>
       </div>
     </div>
