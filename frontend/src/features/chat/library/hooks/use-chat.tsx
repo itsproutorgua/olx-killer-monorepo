@@ -24,7 +24,9 @@ export const useChat = (sellerId: number) => {
 
       try {
         const token = await getIdToken()
-        const url = `wss://api.house-community.site/ws/chat/?first_user=${user.id}&second_user=${sellerId}`
+        //ws://54.145.126.99:8001
+        //wss://api.house-community.site
+        const url = `wss://chat.house-community.site/ws/chat/?first_user=${user.id}&second_user=${sellerId}`
 
         socket = new WebSocket(url, ['Bearer', token])
         ws.current = socket // Update ref with current socket
