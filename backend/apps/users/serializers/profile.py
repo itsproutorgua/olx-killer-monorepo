@@ -50,8 +50,9 @@ class ProfileSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError(_(f'Ensure {field_name!r} has at least {min_length} characters.'))
         if value and len(value) > max_length:
             raise serializers.ValidationError(_(f'Ensure {field_name!r} has at most {max_length} characters.'))
-        if value and not value.isalpha():
-            raise serializers.ValidationError(_(f'Ensure {field_name!r} contains only alphabetic characters.'))
+        if value and not re.match(r"(?i)^[a-zа-яїєіё0-9'’`‘-]+$", value):
+            err = _(f'Field {field_name!r} may contain only letters, digits, apostrophes, and hyphens.')
+            raise serializers.ValidationError(err)
 
         return value
 
@@ -65,25 +66,16 @@ class ProfileSerializer(serializers.ModelSerializer):
         max_length_last_name = settings.MAX_LENGTH_LAST_NAME
         return self._validate_name(value, min_length_last_name, max_length_last_name, 'last name')
 
-    @staticmethod
-    def validate_username(username: str) -> str:
-        min_length = settings.MIN_LENGTH_LAST_NAME
-        max_length = settings.MAX_LENGTH_LAST_NAME
-        if username and len(username) < min_length:
-            raise serializers.ValidationError(_(f'Ensure {username!r} has at least {min_length} characters.'))
-        if username and len(username) > max_length:
-            raise serializers.ValidationError(_(f'Ensure {username!r} has at most {max_length} characters.'))
-        if username and not re.match(r"(?i)^[a-zа-яіё0-9'’‘-]+$", username):
-            msg = _(f'Ensure {username!r} contains only letters, numbers, apostrophes, and hyphens.')
-            raise serializers.ValidationError(msg)
-
-        return username
+    def validate_username(self, value: str) -> str:
+        min_length_username = settings.MIN_LENGTH_LAST_NAME
+        max_length_username = settings.MAX_LENGTH_LAST_NAME
+        return self._validate_name(value, min_length_username, max_length_username, 'username')
 
     @staticmethod
     def validate_phone_numbers(phone_numbers: list) -> list:
         min_length = settings.MIN_PHONE_NUMBER_LENGTH
         max_length = settings.MAX_PHONE_NUMBER_LENGTH
-        phone_pattern = re.compile(rf'^\d{{{min_length},{max_length}}}$')
+        phone_pattern = re.compile(rf'^\+?\d{{{min_length},{max_length}}}$')
 
         for phone_number in phone_numbers:
             if not phone_pattern.match(phone_number):
