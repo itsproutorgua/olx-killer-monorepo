@@ -35,4 +35,5 @@ INVALID_VIDEO = _('Uploaded file is not a valid video.')
 
 # Users
 USER_UNAUTHORIZED = _('Authentication credentials were not provided.')
-PHONE_NUMBER_ERROR = _('Invalid phone number. Only digits are allowed. Length must be between {} and {} digits.')
+PHONE_NUMBER_ERROR = _('Invalid phone number. Only digits are allowed, optionally starting with "+".'
+                       'Length must be between {} and {} characters.')
