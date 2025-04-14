@@ -1,3 +1,5 @@
+import re
+
 from django.db import transaction
 from django.db.utils import IntegrityError
 from django.utils.translation import gettext_lazy as _
@@ -6,7 +8,10 @@ from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 
 import settings
-from apps.common import errors
+
+from apps.common.errors import ERROR_TITLE_TOO_SHORT
+from apps.common.errors import ERROR_TITLE_TOO_LONG
+from apps.common.errors import ERROR_TITLE_INVALID_CHARS
 from apps.products.models import Category
 from apps.products.models import Currency
 from apps.products.models.price.price import MIN_PRICE
@@ -27,9 +32,8 @@ class ProductSerializer(serializers.ModelSerializer):
         decimal_places=2,
         min_value=MIN_PRICE,
         write_only=True,
-        required=False,
     )
-    currency = serializers.PrimaryKeyRelatedField(queryset=Currency.objects.all(), write_only=True, required=False)
+    currency = serializers.PrimaryKeyRelatedField(queryset=Currency.objects.all(), write_only=True)
     images = ProductImageSerializer(many=True, source='product_images', read_only=True)
     uploaded_images = serializers.ListField(
         child=serializers.ImageField(use_url=True, allow_null=True),
@@ -106,6 +110,16 @@ class ProductSerializer(serializers.ModelSerializer):
             )
 
         return attrs
+
+    @staticmethod
+    def validate_title(value):
+        if len(value) < settings.MIN_LENGTH_TITLE:
+            raise serializers.ValidationError(ERROR_TITLE_TOO_SHORT.format(min_length_title=settings.MIN_LENGTH_TITLE))
+        if len(value) > settings.MAX_LENGTH_TITLE:
+            raise serializers.ValidationError(ERROR_TITLE_TOO_LONG.format(max_length_title=settings.MAX_LENGTH_TITLE))
+        if not re.match(r"^[\w\s'’\-]+$", value, re.UNICODE):
+            raise serializers.ValidationError(ERROR_TITLE_INVALID_CHARS)
+        return value
 
     @staticmethod
     @extend_schema_field(ProductProfileSerializer)
