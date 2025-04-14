@@ -48,12 +48,12 @@ class UserUtils:
             raise MalformedAuthorizationHeaderError()
         except IntegrityError:
             raise DatabaseIntegrityError()
-        
+
     @staticmethod
     async def validate_user_id(consumer) -> None:
         first_user_id = consumer.scope['first_user_id']
         first_user = consumer.scope['first_user']
-        
+
         first_user_id = await sync_to_async(lambda: User.objects.get(id=first_user_id))()
 
         if first_user != first_user_id:
@@ -63,7 +63,7 @@ class UserUtils:
     async def is_vaild_sender(message_id: int, sender_id: int) -> bool:
         message = Message.objects.filter(id=message_id).first()
         sender_profile = Profile.objects.select_related('profile').get(id=sender_id)
-        sender = sender_profile.user.id
+        sender = sender_profile.user
 
         if message.sender != sender:
             return False

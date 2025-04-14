@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { z } from 'zod'
 
+import { useChatContext } from '@/features/chat/chat-context/chat-context.tsx'
 import {
   Form,
   FormControl,
@@ -26,19 +27,21 @@ const FormSchema = z.object({
 })
 
 export function MessageForm() {
+  const { sendMessage } = useChatContext()
   const { t } = useTranslation()
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
   })
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
-    console.log(data)
+  const handleSubmit = (data: z.infer<typeof FormSchema>) => {
+    sendMessage(data.msg)
+    form.reset({ msg: '' })
   }
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className='relative'>
+      <form onSubmit={form.handleSubmit(handleSubmit)} className='relative'>
         <FormField
           control={form.control}
           name='msg'

@@ -1,47 +1,53 @@
+import { useEffect, useRef } from 'react'
+import { EyeIcon } from 'lucide-react'
+
+import { useChatContext } from '@/features/chat/chat-context/chat-context.tsx'
+import { useUserProfile } from '@/entities/user'
 import { ScrollArea } from '@/shared/ui/shadcn-ui/scroll-area'
 import { cn } from '@/shared/library/utils'
-import { MSG_DATA } from '../model/msg.data'
-import { ScrollToButton } from './scroll-to-button'
 
 export const MessageList = () => {
+  const { messages } = useChatContext()
+  const { data: user } = useUserProfile()
+  const scrollRef = useRef<HTMLDivElement | null>(null)
+
+  // Scroll to the latest message whenever messages change
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollTop = scrollRef.current.scrollHeight
+    }
+  }, [messages])
+
   return (
     <ScrollArea
-      type='hover'
-      className='relative h-full border-y border-y-border bg-gray-100 p-6'
+      ref={scrollRef}
+      className='relative h-full flex-grow overflow-y-auto border-y border-y-border bg-gray-100 p-6'
     >
       <ul className='space-y-5'>
-        {MSG_DATA.map(msg => (
-          <li key={msg.id} className='space-y-2.5'>
+        {messages.map(msg => (
+          <li
+            key={msg.message_id + msg.created_at + Math.random()}
+            className='space-y-2.5'
+          >
             <div
               className={cn(
                 'rounded-[10px] px-3.5 py-2 text-sm/[21px] tracking-tight',
-                msg.type === 'income'
-                  ? 'mr-auto rounded-tl-none bg-background text-gray-950'
-                  : 'ml-auto rounded-tr-none bg-primary-500 text-background',
-                msg.msg_img ? 'w-[400px]' : 'max-w-[340px]',
+                msg.sender_id === user?.id
+                  ? 'ml-auto rounded-tr-none bg-primary-500 text-background'
+                  : 'mr-auto rounded-tl-none bg-background text-gray-950',
               )}
             >
-              {msg.msg_img && (
-                <img
-                  src={msg.msg_img}
-                  alt='msg'
-                  className='mb-3 w-full rounded-[10px]'
-                />
-              )}
-              <p>{msg.msg}</p>
+              <p>{msg.text}</p>
+              <div className='mt-2 flex items-center justify-end gap-2'>
+                <span className='text-xs text-opacity-80'>
+                  {new Date(msg.created_at).toLocaleTimeString()}
+                </span>
+                {msg.status === 'read' && <EyeIcon className='h-4 w-4' />}
+              </div>
             </div>
-            <p
-              className={cn(
-                'text-xs/[14.52px] tracking-tight text-primary-400',
-                msg.type === 'income' ? 'text-left' : 'text-right',
-              )}
-            >
-              {msg.date}
-            </p>
           </li>
         ))}
       </ul>
-      <ScrollToButton styles='absolute bottom-6 right-6' />
     </ScrollArea>
   )
 }

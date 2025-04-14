@@ -2,10 +2,12 @@ import json
 from typing import Any
 
 from asgiref.sync import sync_to_async
+from channels.db import database_sync_to_async
 from django.core.exceptions import FieldError
 
 from apps.chat.models.message import Message
 from apps.chat.utils.users import UserUtils
+from apps.users.models.profile import Profile
 
 
 class MessageUtils:
@@ -65,40 +67,36 @@ class MessageUtils:
         )
 
     @staticmethod
-    async def serialize_message(message: Message) -> dict:
-        return await sync_to_async(
-            lambda: {
+    @database_sync_to_async
+    def serialize_message(message: Message) -> dict:
+        return {
                 'text': message.text,
                 'message_id': message.id,
-                'sender_id': message.sender.id,
+                'sender_id': Profile.objects.get(user=message.sender).id,
                 'status': message.status,
                 'created_at': message.created_at.isoformat(),
                 'updated_at': message.updated_at.isoformat(),
-            },
-            thread_sensitive=True,
-        )()
+            }
+           
 
     @staticmethod
-    async def get_message(message_id: int) -> Message:
-        return await sync_to_async(lambda: Message.objects.get(id=message_id))()
+    @database_sync_to_async
+    def get_message(message_id: int) -> Message:
+        return Message.objects.get(id=message_id)
 
     @staticmethod
-    async def update_message_status(message_id: int, status: Message.Status) -> None:
-        await sync_to_async(
-            lambda: Message.objects.filter(id=message_id).update(status=status),
-            thread_sensitive=True,
-        )()
+    @database_sync_to_async
+    def update_message_status(message_id: int, status: Message.Status) -> None:
+        Message.objects.filter(id=message_id).update(status=status)
 
     @staticmethod
-    async def save_message(consumer, message_text: str) -> Message:
-        return await sync_to_async(
-            lambda: Message.objects.create(
+    @database_sync_to_async
+    def save_message(consumer, message_text: str) -> Message:
+        return Message.objects.create(
                 chat_room=consumer.room,
                 sender=consumer.scope['first_user'],
                 text=message_text,
-            ),
-            thread_sensitive=True,
-        )()
+            )
 
     @staticmethod
     async def send_last_messages(consumer) -> None:
@@ -118,14 +116,7 @@ class MessageUtils:
                 await MessageUtils.update_message_status(msg.id, Message.Status.READ)
                 msg.status = Message.Status.READ
             messages_data.append(
-                {
-                    'message_id': msg.id,
-                    'text': msg.text,
-                    'sender_email': msg.sender.email,
-                    'status': msg.status,
-                    'created_at': msg.created_at.isoformat(),
-                    'updated_at': msg.updated_at.isoformat(),
-                }
+                await MessageUtils.serialize_message(msg)
             )
 
         await consumer.send(text_data=json.dumps(messages_data, ensure_ascii=False))
