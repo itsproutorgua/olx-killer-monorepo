@@ -17,6 +17,9 @@ PRODUCT_NOT_FOUND = _('No Advertisement matches the given query.')
 INVALID_SORT_FIELD = _('Invalid sort field.')
 INVALID_PRODUCT_STATUS = _('Invalid advertisement status. Allowed values are `used` and `new`.')
 INVALID_PRODUCT_PARAMETERS = _('Invalid parameters.')
+ERROR_TITLE_TOO_SHORT = _('Title must be at least {min_length_title} characters long.')
+ERROR_TITLE_TOO_LONG = _('Title must not exceed {max_length_title} characters.')
+ERROR_TITLE_INVALID_CHARS = _('Title can only contain letters, numbers, spaces, apostrophes, and hyphens.')
 
 # Deactivated Feedback
 FEEDBACK_PERMISSION_ERROR = _('You do not have permission to provide feedback for this product.')
