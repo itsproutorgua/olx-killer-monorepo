@@ -74,8 +74,8 @@ class Category(TimestampMixin, MPTTModel):
 
         self.path = f'{self.parent.path}/{self.slug}' if self.parent else self.slug
 
-        if self.title:
-            translate_and_set_fields(self, field_name_prefix='title', field_to_translate='title')
+        # if self.title:
+        #     translate_and_set_fields(self, field_name_prefix='title', field_to_translate='title')
 
         if self.parent is None:
             self.img = self.check_and_set_default_image(self.slug, 'images')
