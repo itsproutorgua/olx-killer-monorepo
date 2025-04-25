@@ -46,10 +46,8 @@ export const ProductGrid = ({ path }: { path: string }) => {
   const { setCount } = useStrictContext(ProductsContext)
 
   useEffect(() => {
-    if (data?.count) {
-      setCount(data.count)
-    }
-  }, [data?.count, setCount])
+    setCount(data?.count ?? 0)
+  }, [data?.count, setCount, data])
 
   return (
     <>

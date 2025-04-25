@@ -13,7 +13,7 @@ export const EmailNotVerified: React.FC<Props> = ({ className }) => {
   return (
     <div className={cn('rounded-[10px] bg-error-200 p-6', className)}>
       <h3 className='flex items-center gap-4 text-sm font-medium'>
-        <DangerTriangleIcon />
+        <DangerTriangleIcon className='text-error-700' />
         <span className='text-black'>
           {t('profileForm.titles.emailNotVerified')}
         </span>

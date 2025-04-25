@@ -37,7 +37,12 @@ export const FiltersTabs = ({ onCloseSheet }: { onCloseSheet: () => void }) => {
               <span className='flex items-center gap-2 text-sm font-normal text-gray-400'>
                 {filters[filter.name as keyof Filters] ? (
                   <span className='capitalize'>
-                    {filters[filter.name as keyof Filters]}
+                    {t(
+                      filter.items.find(
+                        item =>
+                          item.value === filters[filter.name as keyof Filters],
+                      )?.label || 'words.all',
+                    )}
                   </span>
                 ) : (
                   <span>{t('words.all')}</span>

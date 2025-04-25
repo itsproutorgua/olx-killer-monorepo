@@ -3,8 +3,11 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { useTranslation } from 'react-i18next'
 import { Link, useLocation } from 'react-router-dom'
 
-import { DangerTriangleIcon, DangerTriangleSolidIcon } from '@/shared/ui/icons'
-import { ArrowLeftRed } from '@/shared/ui/icons/arrow-left-red.tsx'
+import {
+  DangerTriangleIcon,
+  DangerTriangleSolidIcon,
+  ExitDoorIcon,
+} from '@/shared/ui/icons'
 import { SIDEBAR_ITEMS } from '@/shared/constants/account-sidebar.const.ts'
 import { cn } from '@/shared/library/utils'
 
@@ -46,9 +49,9 @@ export const AccountSidebar: React.FC<Props> = ({ className }) => {
               {item.title === 'account.profile' && !user?.email_verified && (
                 <>
                   {activeTab === 'account.profile' ? (
-                    <DangerTriangleSolidIcon className='ml-auto mr-[18px] h-5 w-5 text-error-400' />
+                    <DangerTriangleSolidIcon className='ml-auto mr-[18px] h-5 w-5 text-gray-50' />
                   ) : (
-                    <DangerTriangleIcon className='ml-auto mr-[18px] h-5 w-5' />
+                    <DangerTriangleIcon className='ml-auto mr-[18px] h-5 w-5 text-primary-500' />
                   )}
                 </>
               )}
@@ -58,9 +61,9 @@ export const AccountSidebar: React.FC<Props> = ({ className }) => {
       </nav>
       <button
         onClick={() => logout()}
-        className='mt-[30px] flex h-8 w-full items-center gap-[17px] pl-[18px] text-left text-sm text-error-700'
+        className='mt-[30px] flex h-8 w-full items-center gap-[9px] pl-[18px] text-left text-sm text-gray-500'
       >
-        <ArrowLeftRed />
+        <ExitDoorIcon />
         {t('account.logOut')}
       </button>
     </aside>
