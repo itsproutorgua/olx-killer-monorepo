@@ -55,7 +55,9 @@ export const TopBar = () => {
       />
 
       {/* Search Section */}
-      <div className={`flex items-center gap-5 ${isExpanded && 'w-full'}`}>
+      <div
+        className={`ml-20 flex items-center gap-5 ${isExpanded && 'w-full'}`}
+      >
         <div className='relative w-full xl:w-[616px]' ref={searchRef}>
           <div
             className={`flex items-center transition-all ${

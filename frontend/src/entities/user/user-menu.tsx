@@ -12,7 +12,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/shared/ui/shadcn-ui/dropdown-menu.tsx'
-import { ArrowLeftRed } from '@/shared/ui/icons/arrow-left-red.tsx'
+import { ExitDoorIcon } from '@/shared/ui/icons'
 import { DangerIcon } from '@/shared/ui/icons/danger-icon.tsx'
 import { PRIVATE_PAGES } from '@/shared/constants'
 import { UserButton } from './ui'
@@ -68,9 +68,9 @@ export const UserMenu = () => {
             </Link>
             <DropdownMenuItem
               onClick={() => logout()}
-              className='cursor-pointer gap-3 py-[14px] pl-[16px] leading-none text-error-700'
+              className='cursor-pointer gap-[9px] py-[14px] pl-[16px] leading-none text-gray-500'
             >
-              <ArrowLeftRed />
+              <ExitDoorIcon />
               {t('account.logOut')}
             </DropdownMenuItem>
           </>

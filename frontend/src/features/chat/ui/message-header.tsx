@@ -18,7 +18,7 @@ export const MessageHeader = () => {
           <AvatarImage src={avatar_img} />
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
-        <div className='space-y-2'>
+        <div className='space-y-1'>
           <p className='text-sm/[21px] font-semibold text-gray-950'>John Doe</p>
           <p className='flex items-center gap-1.5 text-xs/[14.52px] text-gray-950'>
             <span className='flex size-[18px] items-center justify-center'>

@@ -60,9 +60,7 @@ export const ProductGridMobile = ({ path }: { path: string }) => {
     })
 
   useEffect(() => {
-    if (data?.count) {
-      setCount(data.count)
-    }
+    setCount(data?.count ?? 0)
   }, [data?.count, setCount])
 
   return (

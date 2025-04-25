@@ -14,9 +14,9 @@ interface Props {
 export const ProfileNotFilled: React.FC<Props> = ({ className }) => {
   const { t } = useTranslation()
   return (
-    <div className={cn('bg-warning-100 rounded-[10px] p-6', className)}>
+    <div className={cn('rounded-[10px] bg-warning-100 p-6', className)}>
       <h3 className='flex items-center gap-4 text-sm font-medium'>
-        <DangerTriangleIcon />
+        <DangerTriangleIcon className='text-error-700' />
         <span className='text-black'>{t('profileForm.titles.notFilled')}</span>
       </h3>
       <p className='mt-[10px] text-xs text-gray-800 xl:text-sm'>
