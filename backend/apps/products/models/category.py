@@ -7,7 +7,6 @@ from mptt.models import TreeForeignKey
 from slugify import slugify
 
 from apps.common.models import TimestampMixin
-from apps.products.utils import translate_and_set_fields
 from apps.products.utils.check_file_exists import file_exists_on_s3
 
 

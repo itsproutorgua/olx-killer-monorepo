@@ -4,6 +4,10 @@
 
 ## API Endpoints
 
+### Creating chat room 
+[swagger](https://api.house-community.site/en/api/v1/swagger/)
+
+
 ### Get all sender rooms `http://127.0.0.1:8000/en/api/v1/chat/recieve/`
 
 Example request
@@ -19,38 +23,38 @@ Example responce
     "previous": null,
     "results": [
         {
-            "id": 66,
-            "first_user": 2,
-            "second_user": 8
+            "last_message": {
+                "content": "аівсівм",
+                "created_at": "2025-03-24T06:44:32.156598Z",
+                "from_this_user": false
+            }
         },
         {
-            "id": 68,
-            "first_user": 2,
-            "second_user": 10
+            "last_message": {
+                "content": "перемога",
+                "created_at": "2025-03-25T12:36:37.439926Z",
+                "from_this_user": false
+            }
         },
         {
-            "id": 71,
-            "first_user": 2,
-            "second_user": 11
+            "last_message": {
+                "content": "redfbgfg",
+                "created_at": "2025-04-03T14:28:22.747952Z",
+                "from_this_user": false
+            }
         },
         {
-            "id": 79,
-            "first_user": 2,
-            "second_user": 2
+            "last_message": null
         }
     ]
 }
 
-id - room_id
 ```
 
 ## WebSocket Endpoints
 
 ### Connect
-**Endpoint:** `ws://127.0.0.1:8001/ws/chat/?firts_user=<int>&second_user=<int>/`
-
-firts_user - sender id
-second_user - reciever id
+**Endpoint:** `ws://chat.house-community.site/ws/chat/?room_id=4/`
 
 **Description:**
 - Authenticates the user using a JWT token id token.
@@ -61,7 +65,7 @@ second_user - reciever id
 **Example method**
 
 ```javascript
-    const socket = new WebSocket("ws://127.0.0.1:8001/ws/chat/?firts_user=1&second_user=2/", ["Bearer", jwt_token]);
+    const socket = new WebSocket("ws://127.0.0.1:8001/ws/chat/?room_id13/", ["Bearer", jwt_token]);
 
     socket.onopen = function () {
         console.log("Connected to websocket");

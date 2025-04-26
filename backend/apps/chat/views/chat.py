@@ -1,23 +1,75 @@
 from django.db.models import OuterRef
 from django.db.models import Q
 from django.db.models import Subquery
-from rest_framework.mixins import ListModelMixin
-from rest_framework.permissions import IsAuthenticated
-from rest_framework.viewsets import GenericViewSet
 from drf_spectacular.utils import extend_schema
 from drf_spectacular.utils import OpenApiParameter
 from drf_spectacular.utils import OpenApiResponse
+from rest_framework.generics import CreateAPIView
+from rest_framework.generics import ListAPIView
+from rest_framework.permissions import IsAuthenticated
 
 from apps.chat.models.chat import ChatRoom
 from apps.chat.models.message import Message
 from apps.chat.serializers.chat import ChatReceiveSerializer
+from apps.chat.serializers.chat import ChatRoomCreateSerializer
 from apps.users.models.profile import Profile
+
+
+@extend_schema(
+    tags=['Chat'],
+    summary='Create chat room',
+    description='This endpoint create chat room for two users.',
+)
+class ChatRoomCreateView(CreateAPIView):
+    serializer_class = ChatRoomCreateSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        context.update(
+            {
+                'first_profile_id': self.request.GET.get('first_profile_id'),
+                'second_profile_id': self.request.GET.get('second_profile_id'),
+            }
+        )
+        return context
+
+    @extend_schema(
+        tags=['Chat'],
+        summary='Create users chat room and retrieve room id',
+        description='This endpoint retrieves a list of chats for the user.',
+        parameters=[
+            OpenApiParameter(
+                name='first_profile_id',
+                type=int,
+                required=True,
+                description='first user profile id.',
+            ),
+            OpenApiParameter(
+                name='second_profile_id',
+                type=int,
+                required=True,
+                description='second user profile id.',
+            ),
+        ],
+        responses={
+            200: OpenApiResponse(
+                description='Chat room created successfully.',
+                response=ChatRoomCreateSerializer,
+            ),
+            401: OpenApiResponse(description='User unauthorized.'),
+        },
+    )
+    def post(self, request, *args, **kwargs):
+        return super().create(request, *args, **kwargs)
+
 
 @extend_schema(
     tags=['Chat'],
     summary='Retrieve user chats',
-    description='This endpoint retrieves a list of chats for the user.',)
-class ChatsReceiveView(ListModelMixin, GenericViewSet):
+    description='This endpoint retrieves a list of chats for the user.',
+)
+class ChatsReceiveView(ListAPIView):
     serializer_class = ChatReceiveSerializer
     permission_classes = [IsAuthenticated]
 
@@ -33,7 +85,12 @@ class ChatsReceiveView(ListModelMixin, GenericViewSet):
             .annotate(last_message_time=Subquery(last_message_subquery))
             .order_by('last_message_time')
         )
-    
+
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        context.update({'profile_id': self.request.GET.get('profile_id')})
+        return context
+
     @extend_schema(
         tags=['Chat'],
         summary='Retrieve user chats',
@@ -49,17 +106,10 @@ class ChatsReceiveView(ListModelMixin, GenericViewSet):
         responses={
             200: OpenApiResponse(
                 description='List of chats retrieved successfully.',
-                response=ChatReceiveSerializer,  
+                response=ChatReceiveSerializer,
             ),
             401: OpenApiResponse(description='User unauthorized.'),
         },
     )
-    def list(self, request, *args, **kwargs):
-        profile_id = request.GET.get('profile_id')
-
-        queryset = self.get_queryset()
-        pag_queryset = self.paginate_queryset(queryset)
-
-        serializer = self.get_serializer(pag_queryset, many=True, context={'profile_id': profile_id})
-
-        return self.get_paginated_response(serializer.data)
+    def get(self, request, *args, **kwargs):
+        return super().list(request, *args, **kwargs)
