@@ -8,10 +8,9 @@ from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 
 import settings
-
-from apps.common.errors import ERROR_TITLE_TOO_SHORT
-from apps.common.errors import ERROR_TITLE_TOO_LONG
 from apps.common.errors import ERROR_TITLE_INVALID_CHARS
+from apps.common.errors import ERROR_TITLE_TOO_LONG
+from apps.common.errors import ERROR_TITLE_TOO_SHORT
 from apps.products.models import Category
 from apps.products.models import Currency
 from apps.products.models.price.price import MIN_PRICE
