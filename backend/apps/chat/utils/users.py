@@ -1,4 +1,5 @@
 from asgiref.sync import sync_to_async
+from channels.db import database_sync_to_async
 from django.db.utils import IntegrityError
 from django.utils import timezone
 from rest_framework.exceptions import AuthenticationFailed
@@ -50,13 +51,18 @@ class UserUtils:
             raise DatabaseIntegrityError()
 
     @staticmethod
-    async def validate_user_id(consumer) -> None:
-        first_user_id = consumer.scope['first_user_id']
+    @database_sync_to_async
+    def get_users(room):
+        return room.first_user, room.second_user
+
+    @staticmethod
+    async def validate_user(consumer) -> None:
         first_user = consumer.scope['first_user']
+        room = consumer.room
 
-        first_user_id = await sync_to_async(lambda: User.objects.get(id=first_user_id))()
+        room__first_user, room__second_user = await UserUtils.get_users(room)
 
-        if first_user != first_user_id:
+        if first_user not in [room__first_user, room__second_user]:
             await consumer.close()
 
     @staticmethod

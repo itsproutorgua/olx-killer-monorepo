@@ -1,62 +1,35 @@
 import json
-import logging
 
-from asgiref.sync import sync_to_async
 from channels.generic.websocket import AsyncWebsocketConsumer
 
 from apps.chat.utils.messages import MessageUtils
 from apps.chat.utils.rooms import RoomUtils
 from apps.chat.utils.users import UserUtils
-from apps.users.models.profile import Profile
-
-
-logger = logging.getLogger(__name__)
 
 
 class ChatConsumer(AsyncWebsocketConsumer):
     async def connect(self):
+        # Get room id from query params
         try:
             query_params = self.scope['query_params']
 
-            self.scope['first_user_profile'] = query_params['first_user'][0]
-            self.scope['second_user_profile'] = query_params['second_user'][0]
+            self.scope['room_id'] = query_params['room_id'][0]
         except KeyError:
             raise KeyError('Enter correct query params')
 
-        if self.scope['first_user_profile'] == self.scope['second_user_profile']:
-            return await self.close(4003, 'Users must be different')
-
-        logger.debug(f'Scope: {self.scope}')
-
-        first_profile = await sync_to_async(
-            lambda: Profile.objects.select_related('user').get(id=self.scope['first_user_profile']),
-            thread_sensitive=True,
-        )()
-        self.scope['first_user_id'] = first_profile.user.id
-
-        second_profile = await sync_to_async(
-            lambda: Profile.objects.select_related('user').get(id=self.scope['second_user_profile']),
-            thread_sensitive=True,
-        )()
-        self.scope['second_user_id'] = second_profile.user.id
+        print(self.scope['room_id'])
 
         # Authenticate user
         self.scope['first_user'] = await UserUtils.authenticate_user(self.scope)
         if not self.scope['first_user']:
             return await self.close(4001, 'Authentication failed')
 
-        logger.debug(f'First user: {self.scope["first_user"]}')
+        # Get room
+        self.room = await RoomUtils.get_chat_room(room_id=self.scope['room_id'])
+        self.chat_group_name = f'chat_{self.scope["room_id"]}'
 
-        await UserUtils.validate_user_id(self)
-
-        id = await RoomUtils.create_or_get_room(self.scope['first_user'], self.scope['second_user_id'])
-        self.room_id = id
-        self.chat_group_name = f'chat_{self.room_id}'
-
-        # Get chat room object
-        self.room = await RoomUtils.get_chat_room(self.room_id)
-        if not self.room:
-            return await self.close(4004, 'Chat room not found')
+        # Ensure that is right user
+        await UserUtils.validate_user(self)
 
         # Connect to chat group
         await self.channel_layer.group_add(self.chat_group_name, self.channel_name)
@@ -93,11 +66,13 @@ class ChatConsumer(AsyncWebsocketConsumer):
                     },
                 )
             elif action == 'delete':
+                # Delete Message
                 message_id = data.get('message_id')
                 sender_id = data.get('sender_id')
                 if await UserUtils.is_vaild_sender(message_id, sender_id):
                     await MessageUtils.message_delete(self, message_id)
             elif action == 'edit':
+                # Edit message
                 message_id = data.get('message_id')
                 message_text = data.get('text')
                 sender_id = data.get('sender_id')

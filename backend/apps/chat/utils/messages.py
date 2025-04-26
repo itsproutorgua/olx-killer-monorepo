@@ -70,14 +70,13 @@ class MessageUtils:
     @database_sync_to_async
     def serialize_message(message: Message) -> dict:
         return {
-                'text': message.text,
-                'message_id': message.id,
-                'sender_id': Profile.objects.get(user=message.sender).id,
-                'status': message.status,
-                'created_at': message.created_at.isoformat(),
-                'updated_at': message.updated_at.isoformat(),
-            }
-           
+            'text': message.text,
+            'message_id': message.id,
+            'sender_id': Profile.objects.get(user=message.sender).id,
+            'status': message.status,
+            'created_at': message.created_at.isoformat(),
+            'updated_at': message.updated_at.isoformat(),
+        }
 
     @staticmethod
     @database_sync_to_async
@@ -93,10 +92,10 @@ class MessageUtils:
     @database_sync_to_async
     def save_message(consumer, message_text: str) -> Message:
         return Message.objects.create(
-                chat_room=consumer.room,
-                sender=consumer.scope['first_user'],
-                text=message_text,
-            )
+            chat_room=consumer.room,
+            sender=consumer.scope['first_user'],
+            text=message_text,
+        )
 
     @staticmethod
     async def send_last_messages(consumer) -> None:
@@ -115,9 +114,7 @@ class MessageUtils:
             if msg.status == Message.Status.DELIVERED:
                 await MessageUtils.update_message_status(msg.id, Message.Status.READ)
                 msg.status = Message.Status.READ
-            messages_data.append(
-                await MessageUtils.serialize_message(msg)
-            )
+            messages_data.append(await MessageUtils.serialize_message(msg))
 
         await consumer.send(text_data=json.dumps(messages_data, ensure_ascii=False))
 
