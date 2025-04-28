@@ -14,13 +14,14 @@ class ProfileSerializer(serializers.ModelSerializer):
 
 
 class ChatReceiveSerializer(serializers.ModelSerializer):
-    first_user_profile = ProfileSerializer(source='first_user.profile', write_only=True)
-    second_user_profile = ProfileSerializer(source='second_user.profile', write_only=True)
-    last_message = serializers.SerializerMethodField(read_only=True)
+    first_user_profile = ProfileSerializer(source='first_user.profile')
+    second_user_profile = ProfileSerializer(source='second_user.profile')
+    last_message = serializers.SerializerMethodField(method_name='get_last_message')
+    room_id = serializers.SerializerMethodField(method_name='get_room_id')
 
     class Meta:
         model = ChatRoom
-        fields = ['first_user_profile', 'second_user_profile', 'last_message']
+        fields = ['room_id', 'first_user_profile', 'second_user_profile', 'last_message']
 
     @extend_schema_field(
         {
@@ -51,6 +52,9 @@ class ChatReceiveSerializer(serializers.ModelSerializer):
                 'created_at': last_message.created_at,
                 'from_this_user': True if sender_id == user_id else False,
             }
+        
+    def get_room_id(self, obj):
+        return obj.id
 
 
 class ChatRoomCreateSerializer(serializers.ModelSerializer):
