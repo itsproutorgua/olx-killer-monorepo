@@ -8,9 +8,14 @@ from apps.users.models.profile import Profile
 
 
 class ProfileSerializer(serializers.ModelSerializer):
+    username = serializers.SerializerMethodField()
+
     class Meta:
         model = Profile
-        fields = ['id', 'picture', 'user__username']
+        fields = ['id', 'picture', 'username']
+
+    def get_username(self, obj):
+        return obj.user.username
 
 
 class ChatReceiveSerializer(serializers.ModelSerializer):
@@ -52,7 +57,7 @@ class ChatReceiveSerializer(serializers.ModelSerializer):
                 'created_at': last_message.created_at,
                 'from_this_user': True if sender_id == user_id else False,
             }
-
+        
     def get_room_id(self, obj):
         return obj.id
 
