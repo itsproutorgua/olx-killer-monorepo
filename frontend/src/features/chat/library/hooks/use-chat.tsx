@@ -4,7 +4,7 @@ import { Message, WebSocketResponse } from '@/features/chat'
 import { useUserProfile } from '@/entities/user'
 import { useIdToken } from '@/entities/user/library/hooks/use-id-token.tsx'
 
-export const useChat = (sellerId: number) => {
+export const useChat = (roomId: string | null) => {
   const [messages, setMessages] = useState<Message[]>([])
   const { data: user } = useUserProfile()
   const [isConnected, setIsConnected] = useState(false)
@@ -14,7 +14,7 @@ export const useChat = (sellerId: number) => {
   const [isReady, setIsReady] = useState(false)
 
   useEffect(() => {
-    if (!sellerId || !user?.id) return
+    if (!roomId || !user?.id) return
 
     let socket: WebSocket | null = null
     let isCurrent = true // Track if this effect is still relevant
@@ -26,7 +26,7 @@ export const useChat = (sellerId: number) => {
         const token = await getIdToken()
         //ws://54.145.126.99:8001
         //wss://api.house-community.site
-        const url = `wss://chat.house-community.site/ws/chat/?first_user=${user.id}&second_user=${sellerId}`
+        const url = `wss://chat.house-community.site/ws/chat/?room_id=${roomId}`
 
         socket = new WebSocket(url, ['Bearer', token])
         ws.current = socket // Update ref with current socket
@@ -35,7 +35,6 @@ export const useChat = (sellerId: number) => {
           if (!isCurrent) return // Skip if effect was cleaned up
           setIsConnected(true)
           setIsReady(true)
-          console.log(`WebSocket connected for sellerId: ${sellerId}`)
         }
 
         socket.onmessage = e => {
@@ -62,7 +61,7 @@ export const useChat = (sellerId: number) => {
         socket.onclose = event => {
           if (!isCurrent) return
           console.log(
-            `WebSocket closed for sellerId: ${sellerId}`,
+            `WebSocket closed for sellerId: ${roomId}`,
             event.code,
             event.reason,
           )
@@ -90,7 +89,7 @@ export const useChat = (sellerId: number) => {
       setIsConnected(false)
       setIsReady(false)
     }
-  }, [sellerId, user?.id])
+  }, [roomId, user?.id])
 
   const handleMessage = (data: WebSocketResponse) => {
     setMessages(prev => {
