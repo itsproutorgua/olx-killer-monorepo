@@ -13,8 +13,18 @@ interface ChatContextValue {
   messages: Message[]
   sendMessage: (text: string) => void
   isConnected: boolean
-  selectedSellerId: number | null
-  setSelectedSellerId: (sellerId: number | null) => void
+  currentRoomId: string | null
+  setCurrentRoomId: (roomId: string | null) => void
+  selectedSellerProfile: {
+    id: number
+    picture: string | null
+    username: string
+  } | null
+  setSelectedSellerProfile: (
+    profile: { id: number; picture: string | null; username: string } | null,
+  ) => void
+  mobileView: 'list' | 'chat'
+  setMobileView: (view: 'list' | 'chat') => void
 }
 
 const ChatContext = createContext<ChatContextValue | undefined>(undefined)
@@ -29,34 +39,40 @@ export const useChatContext = () => {
 
 interface ChatProviderProps {
   children: ReactNode
-  initialSellerId?: number
+  initialRoomId?: string
 }
 
 export const ChatProvider = ({
   children,
-  initialSellerId,
+  initialRoomId,
 }: ChatProviderProps) => {
-  const [selectedSellerId, setSelectedSellerId] = useState<number | null>(
-    initialSellerId || null,
+  const [currentRoomId, setCurrentRoomId] = useState<string | null>(
+    initialRoomId || null,
   )
-
-  // Reconnect WebSocket when selectedSellerId changes
-  const { messages, sendMessage, isConnected } = useBaseChat(
-    selectedSellerId ?? 0,
-  )
+  const { messages, sendMessage, isConnected } = useBaseChat(currentRoomId)
+  const [selectedSellerProfile, setSelectedSellerProfile] = useState<{
+    id: number
+    picture: string | null
+    username: string
+  } | null>(null)
+  const [mobileView, setMobileView] = useState<'list' | 'chat'>('list')
 
   useEffect(() => {
-    if (initialSellerId && !selectedSellerId) {
-      setSelectedSellerId(initialSellerId)
+    if (initialRoomId && !currentRoomId) {
+      setCurrentRoomId(initialRoomId)
     }
-  }, [initialSellerId, selectedSellerId])
+  }, [initialRoomId, currentRoomId])
 
   const value = {
     messages,
     sendMessage,
     isConnected,
-    selectedSellerId,
-    setSelectedSellerId,
+    currentRoomId,
+    setCurrentRoomId,
+    selectedSellerProfile,
+    setSelectedSellerProfile,
+    mobileView,
+    setMobileView,
   }
 
   return <ChatContext.Provider value={value}>{children}</ChatContext.Provider>
