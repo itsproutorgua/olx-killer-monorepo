@@ -10,7 +10,7 @@ from apps.users.models.profile import Profile
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
-        fields = ['id', 'picture']
+        fields = ['id', 'picture', 'user__username']
 
 
 class ChatReceiveSerializer(serializers.ModelSerializer):
@@ -52,7 +52,7 @@ class ChatReceiveSerializer(serializers.ModelSerializer):
                 'created_at': last_message.created_at,
                 'from_this_user': True if sender_id == user_id else False,
             }
-        
+
     def get_room_id(self, obj):
         return obj.id
 
