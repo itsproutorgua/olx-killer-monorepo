@@ -17,8 +17,6 @@ class ChatConsumer(AsyncWebsocketConsumer):
         except KeyError:
             raise KeyError('Enter correct query params')
 
-        print(self.scope['room_id'])
-
         # Authenticate user
         self.scope['first_user'] = await UserUtils.authenticate_user(self.scope)
         if not self.scope['first_user']:
@@ -91,6 +89,9 @@ class ChatConsumer(AsyncWebsocketConsumer):
     async def mark_message_as_read(self, message_id):
         await MessageUtils.mark_message_as_read(self, message_id)
 
+    async def send_last_readed_messages(self, event):
+        await MessageUtils.send_last_readed_messages(self, event)
+
     async def get_recipient(self):
         return await UserUtils.get_recipient(self.room, self.scope['first_user'])
 
@@ -99,3 +100,4 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
     async def message_edit(self, event):
         await MessageUtils.message_edit(self, event)
+
