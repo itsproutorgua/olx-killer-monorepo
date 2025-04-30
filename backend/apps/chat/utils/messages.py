@@ -110,13 +110,26 @@ class MessageUtils:
             messages = []
 
         messages_data = []
+        readed_messages = []
+
         for msg in messages:
-            if msg.status == Message.Status.DELIVERED:
+            if msg.sender != consumer.scope['first_user'] and msg.status == Message.Status.DELIVERED:
                 await MessageUtils.update_message_status(msg.id, Message.Status.READ)
                 msg.status = Message.Status.READ
-            messages_data.append(await MessageUtils.serialize_message(msg))
-
+                readed_messages.append(await MessageUtils.serialize_message(msg))
+            else:
+                messages_data.append(await MessageUtils.serialize_message(msg))
         await consumer.send(text_data=json.dumps(messages_data, ensure_ascii=False))
+        await consumer.channel_layer.group_send(
+            consumer.chat_group_name,
+            {
+                'type': 'send_last_readed_messages',
+                'messages': readed_messages
+            }
+        )
+
+    async def send_last_readed_messages(consumer, event) -> None:
+        await consumer.send(text_data=json.dumps(event['messages'], ensure_ascii=False))
 
     @staticmethod
     async def message_delete(consumer, message_id: int) -> None:
