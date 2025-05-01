@@ -1,12 +1,14 @@
 from django.db.models import OuterRef
 from django.db.models import Q
-from django.db.models import Subquery
+from django.db.models import Subquery, DateTimeField, Value
+from django.db.models.functions import Coalesce
 from drf_spectacular.utils import extend_schema
 from drf_spectacular.utils import OpenApiParameter
 from drf_spectacular.utils import OpenApiResponse
 from rest_framework.generics import CreateAPIView
 from rest_framework.generics import ListAPIView
 from rest_framework.permissions import IsAuthenticated
+
 
 from apps.chat.models.chat import ChatRoom
 from apps.chat.models.message import Message
@@ -77,20 +79,22 @@ class ChatsReceiveView(ListAPIView):
         profile_id = self.request.GET.get('profile_id')
         profile = Profile.objects.filter(id=profile_id).first()
         last_message_subquery = (
-            Message.objects.filter(chat_room=OuterRef('pk')).order_by('created_at').values('created_at')[:1]
+            Message.objects.filter(chat_room=OuterRef('pk')).order_by('-created_at').values('created_at')[:1]
         )
 
         return (
             ChatRoom.objects.filter(Q(first_user=profile.user) | Q(second_user=profile.user))
-            .annotate(last_message_time=Subquery(last_message_subquery))
-            .order_by('last_message_time')
+            .annotate(last_message_time=Coalesce(
+                Subquery(last_message_subquery, output_field=DateTimeField()), 
+                Value('1970-01-01 00:00:00', output_field=DateTimeField())))
+            .order_by('-last_message_time')
         )
 
     def get_serializer_context(self):
         context = super().get_serializer_context()
         context.update({'profile_id': self.request.GET.get('profile_id')})
         return context
-
+    
     @extend_schema(
         tags=['Chat'],
         summary='Retrieve user chats',

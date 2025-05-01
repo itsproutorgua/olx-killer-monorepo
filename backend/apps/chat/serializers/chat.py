@@ -8,14 +8,14 @@ from apps.users.models.profile import Profile
 
 
 class ProfileSerializer(serializers.ModelSerializer):
-    first_name = serializers.SerializerMethodField()
+    username = serializers.SerializerMethodField()
 
     class Meta:
         model = Profile
-        fields = ['id', 'picture', 'first_name']
+        fields = ['id', 'picture', 'username']
 
-    def get_first_name(self, obj):
-        return obj.user.first_name
+    def get_username(self, obj):
+        return obj.user.username
 
 
 class ChatReceiveSerializer(serializers.ModelSerializer):
