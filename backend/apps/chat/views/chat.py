@@ -9,6 +9,7 @@ from rest_framework.generics import CreateAPIView
 from rest_framework.generics import ListAPIView
 from rest_framework.permissions import IsAuthenticated
 
+
 from apps.chat.models.chat import ChatRoom
 from apps.chat.models.message import Message
 from apps.chat.serializers.chat import ChatReceiveSerializer
@@ -78,7 +79,7 @@ class ChatsReceiveView(ListAPIView):
         profile_id = self.request.GET.get('profile_id')
         profile = Profile.objects.filter(id=profile_id).first()
         last_message_subquery = (
-            Message.objects.filter(chat_room=OuterRef('pk')).order_by('created_at').values('created_at')[:1]
+            Message.objects.filter(chat_room=OuterRef('pk')).order_by('-created_at').values('created_at')[:1]
         )
 
         return (
@@ -93,7 +94,7 @@ class ChatsReceiveView(ListAPIView):
         context = super().get_serializer_context()
         context.update({'profile_id': self.request.GET.get('profile_id')})
         return context
-
+    
     @extend_schema(
         tags=['Chat'],
         summary='Retrieve user chats',
