@@ -88,7 +88,7 @@ const ChatContent = ({
   }, [initialMobileView, isMobile, setMobileView])
 
   return (
-    <div className='flex h-[100vh] xl:h-[calc(100vh-100px)]'>
+    <div className='flex h-[100dvh] xl:h-[calc(100vh-100px)]'>
       {(mobileView === 'list' || !isMobile) && (
         <div
           className={`w-full ${!isMobile ? 'max-w-[402px] px-6' : 'px-[10px]'} space-y-6 py-[30px]`}
