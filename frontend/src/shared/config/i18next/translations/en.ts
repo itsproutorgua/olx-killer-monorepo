@@ -225,4 +225,9 @@ export const en = {
     deleteListingMessage:
       'After deletion, your listing will disappear forever. Make sure you no longer need it.',
   },
+  messages: {
+    loginToWrite: 'You need to log in to write a message',
+    writeYourself: 'You cannot write to yourself',
+    errorChatStart: 'Chat creation error. Try again',
+  },
 }

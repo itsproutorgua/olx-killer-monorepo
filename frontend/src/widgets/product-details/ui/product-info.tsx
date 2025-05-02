@@ -87,6 +87,7 @@ export const ProductInfo: React.FC<Props> = ({
           <WriteSeller
             className='w-full md:w-[238px]'
             sellerId={product.seller.id}
+            productSlug={product.slug}
           />
           <AddToFavorite
             productId={product.id}

@@ -15,6 +15,7 @@ export const useChat = (roomId: string | null) => {
 
   useEffect(() => {
     if (!roomId || !user?.id) return
+    setMessages([])
 
     let socket: WebSocket | null = null
     let isCurrent = true // Track if this effect is still relevant
@@ -39,13 +40,40 @@ export const useChat = (roomId: string | null) => {
 
         socket.onmessage = e => {
           if (!isCurrent) return
+
           try {
             const data = JSON.parse(e.data)
+            console.log('Incoming WS:', data)
 
+            // Case 1: array of messages
             if (Array.isArray(data)) {
-              setMessages(data) // Initial messages from server
-            } else {
+              if (data.length === 0) return // Ignore empty batches
+
+              setMessages(prev => {
+                const merged = [...prev, ...data]
+
+                // Deduplicate by message_id
+                const unique = Array.from(
+                  new Map(merged.map(m => [m.message_id, m])).values(),
+                )
+
+                // Sort by created_at timestamp
+                return unique.sort(
+                  (a, b) =>
+                    new Date(a.created_at).getTime() -
+                    new Date(b.created_at).getTime(),
+                )
+              })
+            }
+
+            // Case 2: object-based real-time message or update
+            else if (typeof data === 'object' && data !== null) {
               handleMessage(data)
+            }
+
+            // Case 3: Unexpected
+            else {
+              console.warn('Unexpected WebSocket message format:', data)
             }
           } catch (error) {
             console.error('Invalid WebSocket message:', error)
