@@ -43,7 +43,6 @@ export const useChat = (roomId: string | null) => {
 
           try {
             const data = JSON.parse(e.data)
-            console.log('Incoming WS:', data)
 
             // Case 1: array of messages
             if (Array.isArray(data)) {
