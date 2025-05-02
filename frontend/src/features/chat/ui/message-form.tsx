@@ -17,6 +17,7 @@ import {
 } from '@/shared/ui/shadcn-ui/form'
 import { AttachIcon, SendIcon } from '@/shared/ui/icons'
 import { useMediaQuery } from '@/shared/library/hooks'
+import { setViewportForIOS } from '@/shared/library/utils/viewportAutozoom.ts'
 
 const FormSchema = z.object({
   msg: z
@@ -33,7 +34,7 @@ export function MessageForm() {
   const { sendMessage } = useChatContext()
   const { t } = useTranslation()
   const isDesktop = useMediaQuery('(min-width: 1440px)')
-  const minRows = isDesktop ? 5 : 1
+  const minRows = isDesktop ? 6 : 1
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -47,6 +48,11 @@ export function MessageForm() {
       form.setValue('msg', prefill)
     }
   }, [prefill])
+
+  // Viewport meta tag for iOS on mount
+  useEffect(() => {
+    setViewportForIOS()
+  }, [])
 
   const handleSubmit = (data: z.infer<typeof FormSchema>) => {
     sendMessage(data.msg)
@@ -67,11 +73,11 @@ export function MessageForm() {
                     placeholder={t('chat.writeMsg')}
                     minRows={minRows}
                     maxRows={6}
-                    className='box-border w-full resize-none scroll-pb-5 rounded-none border-0 bg-transparent px-[52px] py-5 text-[13px] leading-[20px] text-gray-500 [-webkit-text-size-adjust:100%] focus:border-transparent focus:outline-none focus:ring-0 xl:px-6 xl:py-6 xl:pr-[120px] xl:text-[13px]'
+                    className='box-border w-full resize-none scroll-pb-5 rounded-none border-0 bg-transparent px-[52px] py-5 text-[13px] leading-[20px] [-webkit-text-size-adjust:100%] focus:border-transparent focus:outline-none focus:ring-0 xl:px-6 xl:py-6 xl:pr-[120px] xl:text-[13px]'
                     {...field}
                   />
                   {/* Gradient overlays */}
-                  <div className='pointer-events-none absolute inset-0 flex flex-col justify-between'>
+                  <div className='pointer-events-none absolute inset-0 flex flex-col justify-between pr-4'>
                     <div className='h-6 bg-gradient-to-b from-background to-transparent' />
                     <div className='h-6 bg-gradient-to-t from-background to-transparent' />
                   </div>
@@ -82,11 +88,11 @@ export function MessageForm() {
         />
         <button
           type='button'
-          className='absolute left-3 top-4 size-5 text-primary-400 xl:hidden xl:size-6'
+          className='absolute bottom-6 left-3 size-5 text-primary-400 xl:hidden'
         >
           <AttachIcon />
         </button>
-        <div className='absolute right-3 top-[14px] flex items-center gap-5 xl:right-6 xl:top-6'>
+        <div className='absolute bottom-[14px] right-3 flex items-center gap-5 xl:bottom-[100px] xl:right-6'>
           <button
             type='button'
             className='hidden size-5 text-primary-400 xl:block xl:size-6'
