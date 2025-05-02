@@ -67,7 +67,7 @@ export function MessageForm() {
                     placeholder={t('chat.writeMsg')}
                     minRows={minRows}
                     maxRows={6}
-                    className='box-border w-full resize-none scroll-pb-5 rounded-none border-0 bg-transparent px-[52px] py-5 text-[13px] leading-[20px] text-gray-500 focus:border-transparent focus:outline-none focus:ring-0 xl:px-6 xl:py-6 xl:pr-[120px]'
+                    className='box-border w-full resize-none scroll-pb-5 rounded-none border-0 bg-transparent px-[52px] py-5 text-[13px] leading-[20px] text-gray-500 [-webkit-text-size-adjust:100%] focus:border-transparent focus:outline-none focus:ring-0 xl:px-6 xl:py-6 xl:pr-[120px] xl:text-[13px]'
                     {...field}
                   />
                   {/* Gradient overlays */}
