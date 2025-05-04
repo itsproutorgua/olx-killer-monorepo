@@ -66,10 +66,8 @@ class UserUtils:
             await consumer.close()
 
     @staticmethod
-    async def is_vaild_sender(message_id: int, sender_id: int) -> bool:
-        message = Message.objects.filter(id=message_id).first()
-        sender_profile = Profile.objects.select_related('profile').get(id=sender_id)
-        sender = sender_profile.user
+    async def is_vaild_sender(message_id: int, sender: int) -> bool:
+        message = await sync_to_async(lambda: Message.objects.select_related('sender').filter(id=message_id).first(), thread_sensitive=True)()
 
         if message.sender != sender:
             return False
