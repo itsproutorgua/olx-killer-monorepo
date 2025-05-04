@@ -66,15 +66,13 @@ class ChatConsumer(AsyncWebsocketConsumer):
             elif action == 'delete':
                 # Delete Message
                 message_id = data.get('message_id')
-                sender_id = data.get('sender_id')
-                if await UserUtils.is_vaild_sender(message_id, sender_id):
+                if await UserUtils.is_vaild_sender(message_id, self.scope['first_user']):
                     await MessageUtils.message_delete(self, message_id)
             elif action == 'edit':
                 # Edit message
                 message_id = data.get('message_id')
                 message_text = data.get('text')
-                sender_id = data.get('sender_id')
-                if await UserUtils.is_vaild_sender(message_id, sender_id):
+                if await UserUtils.is_vaild_sender(message_id, self.scope['first_user']):
                     await MessageUtils.message_edit(self, message_id, message_text)
 
         except json.JSONDecodeError:
