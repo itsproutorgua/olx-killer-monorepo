@@ -67,13 +67,26 @@ class ChatConsumer(AsyncWebsocketConsumer):
                 # Delete Message
                 message_id = data.get('message_id')
                 if await UserUtils.is_vaild_sender(message_id, self.scope['first_user']):
-                    await MessageUtils.message_delete(self, message_id)
+                    await self.channel_layer.group_send(
+                            self.chat_group_name,
+                            {
+                                'type': 'message_delete',
+                                'message_id': message_id,
+                            }
+                        )
             elif action == 'edit':
                 # Edit message
                 message_id = data.get('message_id')
                 message_text = data.get('text')
                 if await UserUtils.is_vaild_sender(message_id, self.scope['first_user']):
-                    await MessageUtils.message_edit(self, message_id, message_text)
+                        await self.channel_layer.group_send(
+                            self.chat_group_name,
+                            {
+                                'type': 'message_edit',
+                                'message_id': message_id,
+                                'message_text': message_text
+                            }
+                        )
 
         except json.JSONDecodeError:
             await self.send_error('Invalid JSON format')

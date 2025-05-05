@@ -132,7 +132,8 @@ class MessageUtils:
         await consumer.send(text_data=json.dumps(event['messages'], ensure_ascii=False))
 
     @staticmethod
-    async def message_delete(consumer, message_id: int) -> None:
+    async def message_delete(consumer, event) -> None:
+        message_id = event['message_id']
         await sync_to_async(
             lambda: Message.objects.filter(id=message_id).delete(),
             thread_sensitive=True,
@@ -148,7 +149,8 @@ class MessageUtils:
         )
 
     @staticmethod
-    async def message_edit(consumer, message_id: int, message_text: str) -> None:
+    async def message_edit(consumer, event) -> None:
+        message_id, message_text = event['message_id'], event['message_text']
         await sync_to_async(
             lambda: Message.objects.filter(id=message_id).update(text=message_text), thread_sensitive=True
         )()
