@@ -20,4 +20,6 @@ export type WebSocketEventType =
 export interface WebSocketResponse {
   type: WebSocketEventType
   message: Message
+  message_id?: number
+  text?: string
 }

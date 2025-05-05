@@ -123,14 +123,21 @@ export const useChat = (roomId: string | null) => {
       switch (data.type) {
         case 'chat_message':
           return [...prev, data.message]
-        case 'message_edited':
+        case 'message_edited': {
+          const { message_id, text } = data
+          if (!message_id || typeof text !== 'string') return prev
+
           return prev.map(msg =>
-            msg.message_id === data.message.message_id
-              ? { ...msg, text: data.message.text }
-              : msg,
+            msg.message_id === message_id ? { ...msg, text } : msg,
           )
-        case 'message_deleted':
-          return prev.filter(msg => msg.message_id !== data.message.message_id)
+        }
+
+        case 'message_deleted': {
+          const deletedId = data.message_id
+          if (!deletedId) return prev
+
+          return prev.filter(msg => msg.message_id !== deletedId)
+        }
         case 'mark_message_as_delivered':
         case 'mark_message_as_read':
           return prev.map(msg =>
@@ -159,5 +166,43 @@ export const useChat = (roomId: string | null) => {
     }
   }
 
-  return { messages, sendMessage, isConnected, isReady } // Added isReady for UI feedback
+  const editMessage = (messageId: number, newText: string) => {
+    const currentSocket = ws.current
+    if (!currentSocket || currentSocket.readyState !== WebSocket.OPEN) {
+      console.error('WebSocket not ready for edit')
+      return
+    }
+
+    const payload = {
+      action: 'edit',
+      message_id: messageId,
+      text: newText,
+    }
+
+    currentSocket.send(JSON.stringify(payload))
+  }
+
+  const deleteMessage = (messageId: number) => {
+    const currentSocket = ws.current
+    if (!currentSocket) {
+      console.error('WebSocket not ready for delete')
+      return
+    }
+
+    const payload = {
+      action: 'delete',
+      message_id: messageId,
+    }
+
+    currentSocket.send(JSON.stringify(payload))
+  }
+
+  return {
+    messages,
+    sendMessage,
+    editMessage,
+    deleteMessage,
+    isConnected,
+    isReady,
+  } // Added isReady for UI feedback
 }

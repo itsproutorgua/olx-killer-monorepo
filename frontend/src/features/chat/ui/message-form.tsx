@@ -31,7 +31,8 @@ const FormSchema = z.object({
 })
 
 export function MessageForm() {
-  const { sendMessage } = useChatContext()
+  const { sendMessage, editMessage, editingMessage, setEditingMessage } =
+    useChatContext()
   const { t } = useTranslation()
   const isDesktop = useMediaQuery('(min-width: 1440px)')
   const minRows = isDesktop ? 6 : 1
@@ -49,13 +50,24 @@ export function MessageForm() {
     }
   }, [prefill])
 
+  useEffect(() => {
+    if (editingMessage) {
+      form.setValue('msg', editingMessage.text)
+    }
+  }, [editingMessage])
+
   // Viewport meta tag for iOS on mount
   useEffect(() => {
     setViewportForIOS()
   }, [])
 
   const handleSubmit = (data: z.infer<typeof FormSchema>) => {
-    sendMessage(data.msg)
+    if (editingMessage) {
+      editMessage(editingMessage.message_id, data.msg)
+      setEditingMessage(null)
+    } else {
+      sendMessage(data.msg)
+    }
     form.reset({ msg: '' })
   }
 

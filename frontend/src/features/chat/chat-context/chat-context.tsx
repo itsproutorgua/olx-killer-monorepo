@@ -12,6 +12,10 @@ import { useChat as useBaseChat } from '@/features/chat/library/hooks/use-chat'
 interface ChatContextValue {
   messages: Message[]
   sendMessage: (text: string) => void
+  editingMessage: Message | null
+  setEditingMessage: (msg: Message | null) => void
+  editMessage: (id: number, text: string) => void
+  deleteMessage: (messageId: number) => void
   isConnected: boolean
   currentRoomId: string | null
   setCurrentRoomId: (roomId: string | null) => void
@@ -49,12 +53,17 @@ export const ChatProvider = ({
   const [currentRoomId, setCurrentRoomId] = useState<string | null>(
     initialRoomId || null,
   )
-  const { messages, sendMessage, isConnected } = useBaseChat(currentRoomId)
+  const { messages, sendMessage, editMessage, deleteMessage, isConnected } =
+    useBaseChat(currentRoomId)
+
+  const [editingMessage, setEditingMessage] = useState<Message | null>(null)
+
   const [selectedSellerProfile, setSelectedSellerProfile] = useState<{
     id: number
     picture: string | null
     username: string
   } | null>(null)
+
   const [mobileView, setMobileView] = useState<'list' | 'chat'>('list')
 
   useEffect(() => {
@@ -63,9 +72,13 @@ export const ChatProvider = ({
     }
   }, [initialRoomId, currentRoomId])
 
-  const value = {
+  const value: ChatContextValue = {
     messages,
     sendMessage,
+    editingMessage,
+    setEditingMessage,
+    editMessage,
+    deleteMessage,
     isConnected,
     currentRoomId,
     setCurrentRoomId,
