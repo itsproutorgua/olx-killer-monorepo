@@ -77,7 +77,7 @@ export const AccountPageMobile = () => {
 
       <button
         onClick={() => logout()}
-        className='mt-[10px] flex w-fit cursor-pointer items-center justify-center gap-[9px] place-self-center py-2 text-sm font-medium leading-none text-gray-500'
+        className='mb-[30px] mt-[10px] flex w-fit cursor-pointer items-center justify-center gap-[9px] place-self-center py-2 text-sm font-medium leading-none text-gray-500'
       >
         <ExitDoorIcon />
         {t('account.logOut')}

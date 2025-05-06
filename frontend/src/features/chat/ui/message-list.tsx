@@ -43,8 +43,16 @@ export const MessageList = () => {
   const handleRightClick = (e: React.MouseEvent, msg: Message) => {
     if (msg.sender_id !== user?.id) return
     e.preventDefault()
+    e.stopPropagation()
+
+    const menuWidth = 160 // Adjust based on your menu width
+    const menuHeight = 100 // Adjust based on your menu height
+
+    const x = Math.min(e.clientX, window.innerWidth - menuWidth)
+    const y = Math.min(e.clientY, window.innerHeight - menuHeight)
+
     setContextMenuMessage(msg)
-    setMenuPosition({ x: e.clientX, y: e.clientY })
+    setMenuPosition({ x, y })
   }
 
   const closeMenu = () => setContextMenuMessage(null)
@@ -62,11 +70,33 @@ export const MessageList = () => {
                 onContextMenu={e => handleRightClick(e, msg)}
                 onTouchStart={e => {
                   const target = e.currentTarget
+
+                  const touch = e.touches[0]
+                  const x = touch.clientX
+                  const y = touch.clientY
+
+                  // Estimated dropdown size (adjust if needed)
+                  const menuWidth = 160
+                  const menuHeight = 100
+
+                  // Clamp to viewport to avoid overflow
+                  const clampedX = Math.min(x, window.innerWidth - menuWidth)
+                  const clampedY = Math.min(y, window.innerHeight - menuHeight)
+
+                  // Save position in dataset
+                  target.dataset.touchX = clampedX.toString()
+                  target.dataset.touchY = clampedY.toString()
+
                   target.dataset.pressTimer = String(
                     setTimeout(() => {
-                      target.dispatchEvent(
-                        new MouseEvent('contextmenu', { bubbles: true }),
-                      )
+                      const contextMenuEvent = new MouseEvent('contextmenu', {
+                        bubbles: true,
+                        cancelable: true,
+                        clientX: clampedX,
+                        clientY: clampedY,
+                      })
+
+                      target.dispatchEvent(contextMenuEvent)
                     }, LONG_PRESS_DURATION),
                   )
                 }}
