@@ -8,7 +8,7 @@ import { useMediaQuery } from '@/shared/library/hooks'
 export const AccountRootLayout = () => {
   const isMobile = useMediaQuery('(max-width: 767px)')
   return (
-    <div className='grid min-h-screen grid-rows-[_auto_1fr]'>
+    <div className='grid grid-rows-[_auto_1fr] xl:min-h-screen'>
       <Header />
       <main>
         <Outlet />
