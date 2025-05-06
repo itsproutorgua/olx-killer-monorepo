@@ -71,7 +71,7 @@ export const uk = {
         shippingAndPickup: 'Доставка та самовивіз',
         returnsAndExchanges: 'Повернення та обмін',
         faq: 'Часті питання',
-        myAccount: 'Мій аккаунт',
+        myAccount: 'Мій акаунт',
         customerSupport: 'Підтримка клієнтів',
       },
     },
@@ -183,7 +183,7 @@ export const uk = {
     settings: 'Налаштування',
     otherSettings: 'Інші параметри',
     logIn: 'Увійти в кабінет',
-    logOut: 'Вийти з аккаунту',
+    logOut: 'Вийти з акаунту',
     welcomeMessage:
       'Створіть або увійдіть в акаунт, щоб розмістити своє оголошення!',
   },

@@ -7,7 +7,6 @@ import {
   AvatarFallback,
   AvatarImage,
 } from '@/shared/ui/shadcn-ui/avatar'
-import { PhoneIcon } from '@/shared/ui'
 import { ArrowDownSmall } from '@/shared/ui/icons'
 
 export const MessageHeader = () => {
@@ -40,9 +39,10 @@ export const MessageHeader = () => {
           </p>
         </div>
       </div>
-      <button className='flex size-[52px] items-center justify-center rounded-full border border-border text-primary-900'>
-        <PhoneIcon />
-      </button>
+      {/*TODO: uncomment when phone icon will be added*/}
+      {/*<button className='flex size-[52px] items-center justify-center rounded-full border border-border text-primary-900'>*/}
+      {/*  <PhoneIcon />*/}
+      {/*</button>*/}
     </div>
   )
 }

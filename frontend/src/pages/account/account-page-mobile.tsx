@@ -7,9 +7,8 @@ import { AddListingButton } from '@/features/announcement/ui/add-listing-button.
 import { useUserProfile } from '@/entities/user'
 import { useListingsState } from '@/entities/user-listings/library'
 import { UserListingsTabs } from '@/entities/user-listings/ui/user-listings-tabs.tsx'
-import { EditProfile, SpinnerIcon } from '@/shared/ui/icons'
+import { EditProfile, ExitDoorIcon, SpinnerIcon } from '@/shared/ui/icons'
 import { ArrowDownSmall } from '@/shared/ui/icons/arrow-down-small.tsx'
-import { ArrowLeftRed } from '@/shared/ui/icons/arrow-left-red.tsx'
 import { PRIVATE_PAGES } from '@/shared/constants'
 
 export const AccountPageMobile = () => {
@@ -78,9 +77,9 @@ export const AccountPageMobile = () => {
 
       <button
         onClick={() => logout()}
-        className='mt-[10px] flex w-fit cursor-pointer items-center justify-center gap-3 place-self-center py-2 text-sm font-medium leading-none text-error-700'
+        className='mt-[10px] flex w-fit cursor-pointer items-center justify-center gap-[9px] place-self-center py-2 text-sm font-medium leading-none text-gray-500'
       >
-        <ArrowLeftRed />
+        <ExitDoorIcon />
         {t('account.logOut')}
       </button>
     </div>
