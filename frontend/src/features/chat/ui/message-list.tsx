@@ -19,6 +19,7 @@ export const MessageList = () => {
   const { messages, setEditingMessage, deleteMessage } = useChatContext()
   const { data: user } = useUserProfile()
   const scrollRef = useRef<HTMLDivElement>(null)
+  const LONG_PRESS_DURATION = 500
 
   const [contextMenuMessage, setContextMenuMessage] = useState<Message | null>(
     null,
@@ -59,6 +60,24 @@ export const MessageList = () => {
             <li key={msg.message_id} className='space-y-2.5'>
               <div
                 onContextMenu={e => handleRightClick(e, msg)}
+                onTouchStart={e => {
+                  const target = e.currentTarget
+                  target.dataset.pressTimer = String(
+                    setTimeout(() => {
+                      target.dispatchEvent(
+                        new MouseEvent('contextmenu', { bubbles: true }),
+                      )
+                    }, LONG_PRESS_DURATION),
+                  )
+                }}
+                onTouchEnd={e => {
+                  const target = e.currentTarget
+                  clearTimeout(Number(target.dataset.pressTimer))
+                }}
+                onTouchMove={e => {
+                  const target = e.currentTarget
+                  clearTimeout(Number(target.dataset.pressTimer))
+                }}
                 className={cn(
                   'w-fit min-w-[96px] max-w-[332px] rounded-[10px] px-3.5 py-2 text-sm/[21px] tracking-tight',
                   msg.sender_id === user?.id
