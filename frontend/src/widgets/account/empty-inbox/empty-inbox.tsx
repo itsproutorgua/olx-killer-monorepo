@@ -25,7 +25,9 @@ export const EmptyInbox = ({ type }: { type?: string }) => {
             {t(`listings.addListings`)}
           </p>
         )}
-        {type !== 'favorite' && <AddListingButton />}
+        {type !== 'favorite' && (
+          <AddListingButton className='mb-[70px] xl:mb-0' />
+        )}
       </div>
     </div>
   )
