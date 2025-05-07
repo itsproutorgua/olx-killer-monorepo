@@ -148,6 +148,7 @@ export const en = {
     createAccount: 'Create an account',
     contactSeller: 'CONTACT THE SELLER',
     showAll: 'Show all',
+    copy: 'Copy',
   },
   filters: {
     price: 'Price',
@@ -229,5 +230,7 @@ export const en = {
     loginToWrite: 'You need to log in to write a message',
     writeYourself: 'You cannot write to yourself',
     errorChatStart: 'Chat creation error. Try again',
+    messageCopied: 'Message copied!',
+    messageCopiedError: 'Failed to copy message.',
   },
 }
