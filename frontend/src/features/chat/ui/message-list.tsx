@@ -1,4 +1,4 @@
-import { MouseEvent, useLayoutEffect, useRef, useState } from 'react'
+import { MouseEvent, useLayoutEffect, useRef } from 'react'
 import toast from 'react-hot-toast'
 import { useTranslation } from 'react-i18next'
 
@@ -23,12 +23,8 @@ export const MessageList = () => {
   const { messages, setEditingMessage, deleteMessage } = useChatContext()
   const { data: user } = useUserProfile()
   const scrollRef = useRef<HTMLDivElement>(null)
-  const { isPressing, bind } = useLongPressContextMenu()
-
-  const [contextMenuMessage, setContextMenuMessage] = useState<Message | null>(
-    null,
-  )
-  const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 })
+  const { isPressing, contextMenuData, setContextMenuData, bind, closeMenu } =
+    useLongPressContextMenu<Message>()
 
   useLayoutEffect(() => {
     if (scrollRef.current) {
@@ -49,17 +45,14 @@ export const MessageList = () => {
     e.preventDefault()
     e.stopPropagation()
 
-    const menuWidth = 160 // Adjust based on your menu width
-    const menuHeight = 100 // Adjust based on your menu height
-
+    const menuWidth = 160
+    const menuHeight = 100
     const x = Math.min(e.clientX, window.innerWidth - menuWidth)
     const y = Math.min(e.clientY, window.innerHeight - menuHeight)
 
-    setContextMenuMessage(msg)
-    setMenuPosition({ x, y })
+    // Update context menu data for right-click using setContextMenuData
+    setContextMenuData({ message: msg, x, y })
   }
-
-  const closeMenu = () => setContextMenuMessage(null)
 
   return (
     <>
@@ -72,7 +65,7 @@ export const MessageList = () => {
             <li key={msg.message_id} className='space-y-2.5'>
               <div
                 onContextMenu={e => handleRightClick(e, msg)}
-                {...bind}
+                {...bind(msg)}
                 className={cn(
                   'w-fit min-w-[96px] max-w-[332px] rounded-[10px] px-3.5 py-2 text-sm/[21px] tracking-tight',
                   msg.sender_id === user?.id
@@ -106,7 +99,7 @@ export const MessageList = () => {
         </ul>
       </ScrollArea>
 
-      {contextMenuMessage && (
+      {contextMenuData.message && (
         <DropdownMenu open onOpenChange={closeMenu}>
           <DropdownMenuContent
             side='right'
@@ -114,18 +107,17 @@ export const MessageList = () => {
             className='z-50 bg-gray-50'
             style={{
               position: 'fixed',
-              top: menuPosition.y,
-              left: menuPosition.x,
+              top: contextMenuData.y,
+              left: contextMenuData.x,
             }}
           >
             <DropdownMenuItem
               className='cursor-pointer'
               onClick={() => {
                 navigator.clipboard
-                  .writeText(contextMenuMessage.text)
+                  .writeText(contextMenuData.message!.text)
                   .then(() => toast.success(t('messages.messageCopied')))
                   .catch(() => toast.error(t('messages.messageCopiedError')))
-                  .finally(() => closeMenu())
                 closeMenu()
               }}
             >
@@ -134,7 +126,7 @@ export const MessageList = () => {
             <DropdownMenuItem
               className='cursor-pointer'
               onClick={() => {
-                setEditingMessage(contextMenuMessage)
+                setEditingMessage(contextMenuData.message!)
                 closeMenu()
               }}
             >
@@ -143,7 +135,7 @@ export const MessageList = () => {
             <DropdownMenuItem
               className='text-destructive cursor-pointer'
               onClick={() => {
-                deleteMessage(contextMenuMessage.message_id)
+                deleteMessage(contextMenuData.message!.message_id)
                 closeMenu()
               }}
             >
