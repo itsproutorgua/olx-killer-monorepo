@@ -73,8 +73,19 @@ export const MessageList = () => {
                     : 'mr-auto rounded-tl-none bg-background text-gray-950',
                   isPressing && 'select-none',
                 )}
+                style={{
+                  WebkitUserSelect: 'none',
+                  userSelect: 'none',
+                  WebkitTouchCallout: 'none', // disables iOS callout menu
+                }}
               >
-                <p className='whitespace-pre-wrap break-words'>
+                <p
+                  className='whitespace-pre-wrap break-words'
+                  style={{
+                    WebkitUserSelect: 'none',
+                    userSelect: 'none',
+                  }}
+                >
                   {linkifyText(msg.text)}
                 </p>
               </div>

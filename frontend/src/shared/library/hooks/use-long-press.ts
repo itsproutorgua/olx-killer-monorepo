@@ -13,6 +13,7 @@ export function useLongPressContextMenu<T>() {
 
   const onTouchStart = useCallback(
     (e: React.TouchEvent<HTMLElement>, message: T) => {
+      e.stopPropagation()
       const touch = e.touches[0]
       const x = Math.min(touch.clientX, window.innerWidth - 160)
       const y = Math.min(touch.clientY, window.innerHeight - 100)
