@@ -1,4 +1,6 @@
-import { useLayoutEffect, useRef, useState } from 'react'
+import { MouseEvent, useLayoutEffect, useRef, useState } from 'react'
+import toast from 'react-hot-toast'
+import { useTranslation } from 'react-i18next'
 
 import { Message } from '@/features/chat'
 import { useChatContext } from '@/features/chat/chat-context/chat-context.tsx'
@@ -11,15 +13,17 @@ import {
 import { ScrollArea } from '@/shared/ui/shadcn-ui/scroll-area'
 import { CheckedDoubleIcon } from '@/shared/ui/icons'
 import { MessageDeliveredIcon } from '@/shared/ui/icons/message-delivered.tsx'
+import { useLongPressContextMenu } from '@/shared/library/hooks/use-long-press.ts'
 import { cn } from '@/shared/library/utils'
 import { formatMessageTime } from '@/shared/library/utils/format-message-time.tsx'
 import { linkifyText } from '@/shared/library/utils/linkify-text.tsx'
 
 export const MessageList = () => {
+  const { t } = useTranslation()
   const { messages, setEditingMessage, deleteMessage } = useChatContext()
   const { data: user } = useUserProfile()
   const scrollRef = useRef<HTMLDivElement>(null)
-  const LONG_PRESS_DURATION = 500
+  const { isPressing, bind } = useLongPressContextMenu()
 
   const [contextMenuMessage, setContextMenuMessage] = useState<Message | null>(
     null,
@@ -40,7 +44,7 @@ export const MessageList = () => {
     }
   }, [messages])
 
-  const handleRightClick = (e: React.MouseEvent, msg: Message) => {
+  const handleRightClick = (e: MouseEvent, msg: Message) => {
     if (msg.sender_id !== user?.id) return
     e.preventDefault()
     e.stopPropagation()
@@ -68,51 +72,13 @@ export const MessageList = () => {
             <li key={msg.message_id} className='space-y-2.5'>
               <div
                 onContextMenu={e => handleRightClick(e, msg)}
-                onTouchStart={e => {
-                  const target = e.currentTarget
-
-                  const touch = e.touches[0]
-                  const x = touch.clientX
-                  const y = touch.clientY
-
-                  // Estimated dropdown size (adjust if needed)
-                  const menuWidth = 160
-                  const menuHeight = 100
-
-                  // Clamp to viewport to avoid overflow
-                  const clampedX = Math.min(x, window.innerWidth - menuWidth)
-                  const clampedY = Math.min(y, window.innerHeight - menuHeight)
-
-                  // Save position in dataset
-                  target.dataset.touchX = clampedX.toString()
-                  target.dataset.touchY = clampedY.toString()
-
-                  target.dataset.pressTimer = String(
-                    setTimeout(() => {
-                      const contextMenuEvent = new MouseEvent('contextmenu', {
-                        bubbles: true,
-                        cancelable: true,
-                        clientX: clampedX,
-                        clientY: clampedY,
-                      })
-
-                      target.dispatchEvent(contextMenuEvent)
-                    }, LONG_PRESS_DURATION),
-                  )
-                }}
-                onTouchEnd={e => {
-                  const target = e.currentTarget
-                  clearTimeout(Number(target.dataset.pressTimer))
-                }}
-                onTouchMove={e => {
-                  const target = e.currentTarget
-                  clearTimeout(Number(target.dataset.pressTimer))
-                }}
+                {...bind}
                 className={cn(
                   'w-fit min-w-[96px] max-w-[332px] rounded-[10px] px-3.5 py-2 text-sm/[21px] tracking-tight',
                   msg.sender_id === user?.id
                     ? 'ml-auto rounded-tr-none bg-primary-500 text-background'
                     : 'mr-auto rounded-tl-none bg-background text-gray-950',
+                  isPressing && 'select-none',
                 )}
               >
                 <p className='whitespace-pre-wrap break-words'>
@@ -155,11 +121,24 @@ export const MessageList = () => {
             <DropdownMenuItem
               className='cursor-pointer'
               onClick={() => {
+                navigator.clipboard
+                  .writeText(contextMenuMessage.text)
+                  .then(() => toast.success(t('messages.messageCopied')))
+                  .catch(() => toast.error(t('messages.messageCopiedError')))
+                  .finally(() => closeMenu())
+                closeMenu()
+              }}
+            >
+              {t('words.copy')}
+            </DropdownMenuItem>
+            <DropdownMenuItem
+              className='cursor-pointer'
+              onClick={() => {
                 setEditingMessage(contextMenuMessage)
                 closeMenu()
               }}
             >
-              Edit
+              {t('words.edit')}
             </DropdownMenuItem>
             <DropdownMenuItem
               className='text-destructive cursor-pointer'
@@ -168,7 +147,7 @@ export const MessageList = () => {
                 closeMenu()
               }}
             >
-              Delete
+              {t('buttons.delete')}
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

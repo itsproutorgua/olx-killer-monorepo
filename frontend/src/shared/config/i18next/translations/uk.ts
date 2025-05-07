@@ -147,6 +147,7 @@ export const uk = {
     createAccount: 'Створити профіль',
     contactSeller: "Зв'язатись з продавцем",
     showAll: 'Показати всі',
+    copy: 'Копіювати',
   },
   filters: {
     price: 'Ціна',
@@ -228,5 +229,7 @@ export const uk = {
     loginToWrite: 'Ви повинні увійти, щоб написати повідомлення',
     writeYourself: 'Ви не можете написати повідомлення самому собі',
     errorChatStart: 'Помилка при створенні чату. Спробуйте ще раз',
+    messageCopied: 'Повідомлення скопійоване',
+    messageCopiedError: 'Помилка при копіюванні повідомлення',
   },
 }
