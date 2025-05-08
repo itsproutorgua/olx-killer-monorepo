@@ -11,7 +11,7 @@ export const MessageButton = ({ className }: { className?: string }) => {
     <Link
       to={`${PRIVATE_PAGES.CHAT}`}
       className={cn(
-        'group relative flex size-11 items-center justify-center text-gray-50 transition-colors duration-300',
+        'group relative flex size-11 -translate-x-0.5 translate-y-[1px] items-center justify-center text-gray-50 transition-colors duration-300',
         className,
       )}
     >
