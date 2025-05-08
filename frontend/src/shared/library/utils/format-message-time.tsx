@@ -1,4 +1,7 @@
-export const formatMessageTime = (dateString: string): string => {
+export const formatMessageTime = (
+  dateString: string,
+  locale: 'en' | 'uk' = 'en',
+): string => {
   const date = new Date(dateString)
   const now = new Date()
 
@@ -15,16 +18,27 @@ export const formatMessageTime = (dateString: string): string => {
     date.getMonth() === yesterday.getMonth() &&
     date.getFullYear() === yesterday.getFullYear()
 
-  const time = date.toLocaleTimeString([], {
+  const time = date.toLocaleTimeString(locale, {
     hour: '2-digit',
     minute: '2-digit',
     hour12: false, // ✅ 24-hour format
   })
 
-  if (isToday) return `Today ${time}`
-  if (isYesterday) return `Yesterday ${time}`
+  const labels: Record<typeof locale, { today: string; yesterday: string }> = {
+    en: {
+      today: 'Today',
+      yesterday: 'Yesterday',
+    },
+    uk: {
+      today: 'Сьогодні',
+      yesterday: 'Вчора',
+    },
+  }
 
-  const formattedDate = date.toLocaleDateString([], {
+  if (isToday) return `${labels[locale].today} ${time}`
+  if (isYesterday) return `${labels[locale].yesterday} ${time}`
+
+  const formattedDate = date.toLocaleDateString(locale, {
     day: '2-digit',
     month: '2-digit',
     year: 'numeric',

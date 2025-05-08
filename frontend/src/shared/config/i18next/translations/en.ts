@@ -226,6 +226,11 @@ export const en = {
     deleteListingMessage:
       'After deletion, your listing will disappear forever. Make sure you no longer need it.',
   },
+  chatList: {
+    loading: 'Loading user data...',
+    error: 'Error loading user: {{message}}',
+    noUser: 'No user data available.',
+  },
   messages: {
     loginToWrite: 'You need to log in to write a message',
     writeYourself: 'You cannot write to yourself',
@@ -235,5 +240,7 @@ export const en = {
     noConversations: 'You have no messages yet',
     startChatHint:
       'New messages from sellers will appear here. Follow your deals and communicate easily.',
+    isYou: 'You',
+    noMessages: 'No messages',
   },
 }

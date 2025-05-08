@@ -120,7 +120,7 @@ const ChatContent = ({
     <div className='flex h-[calc(100dvh-150px)] xl:h-[calc(100vh-100px)]'>
       {(mobileView === 'list' || !isMobile) && (
         <div
-          className={`w-full ${!isMobile ? 'max-w-[402px] px-6' : 'px-[10px]'} space-y-6 py-[30px]`}
+          className={`w-full ${!isMobile ? 'max-w-[329px] px-[18px]' : 'px-[10px]'} space-y-6 py-[30px]`}
         >
           <div className='space-y-3'>
             <h2 className='pl-5 text-xl/none font-medium text-gray-950'>
