@@ -232,5 +232,8 @@ export const en = {
     errorChatStart: 'Chat creation error. Try again',
     messageCopied: 'Message copied!',
     messageCopiedError: 'Failed to copy message.',
+    noConversations: 'You have no messages yet',
+    startChatHint:
+      'New messages from sellers will appear here. Follow your deals and communicate easily.',
   },
 }
