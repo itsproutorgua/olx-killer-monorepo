@@ -242,5 +242,8 @@ export const en = {
       'New messages from sellers will appear here. Follow your deals and communicate easily.',
     isYou: 'You',
     noMessages: 'No messages',
+    error: {
+      emptyEdit: 'Message cannot be empty.',
+    },
   },
 }
