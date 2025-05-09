@@ -137,7 +137,10 @@ export const MessageList = () => {
             <DropdownMenuItem
               className='cursor-pointer'
               onClick={() => {
-                setEditingMessage(contextMenuData.message!)
+                setEditingMessage(null)
+                setTimeout(() => {
+                  setEditingMessage(contextMenuData.message!)
+                }, 0)
                 closeMenu()
               }}
             >

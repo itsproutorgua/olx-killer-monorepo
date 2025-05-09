@@ -3,6 +3,7 @@
 import { useEffect } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
+import toast from 'react-hot-toast'
 import { useTranslation } from 'react-i18next'
 import { useLocation } from 'react-router-dom'
 import TextareaAutosize from 'react-textarea-autosize'
@@ -22,9 +23,9 @@ import { setViewportForIOS } from '@/shared/library/utils/viewportAutozoom.ts'
 const FormSchema = z.object({
   msg: z
     .string()
-    .min(1, {
-      message: 'Message must be at least 2 characters.',
-    })
+    // .min(1, {
+    //   message: 'Message must be at least 2 characters.',
+    // })
     .max(500, {
       message: 'Message must not be longer than 1000 characters.',
     }),
@@ -62,12 +63,19 @@ export function MessageForm() {
   }, [])
 
   const handleSubmit = (data: z.infer<typeof FormSchema>) => {
+    const trimmedMsg = data.msg.trim()
+
     if (editingMessage) {
-      editMessage(editingMessage.message_id, data.msg)
+      if (trimmedMsg.length == 0) {
+        toast.error(t('messages.error.emptyEdit'))
+        return
+      }
+      editMessage(editingMessage.message_id, trimmedMsg)
       setEditingMessage(null)
     } else {
-      sendMessage(data.msg)
+      sendMessage(trimmedMsg)
     }
+
     form.reset({ msg: '' })
   }
 

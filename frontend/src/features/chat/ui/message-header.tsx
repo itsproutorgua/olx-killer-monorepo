@@ -24,7 +24,10 @@ export const MessageHeader = () => {
         </button>
 
         <Avatar className='h-[52px] w-[52px]'>
-          <AvatarImage src={selectedSellerProfile?.picture || profileDefault} />
+          <AvatarImage
+            src={selectedSellerProfile?.picture || profileDefault}
+            className='object-cover'
+          />
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
         <div className='space-y-1'>
