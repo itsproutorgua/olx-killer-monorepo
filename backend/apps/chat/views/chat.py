@@ -5,10 +5,8 @@ from django.db.models.functions import Coalesce
 from drf_spectacular.utils import extend_schema
 from drf_spectacular.utils import OpenApiParameter
 from drf_spectacular.utils import OpenApiResponse
-from rest_framework.generics import CreateAPIView
-from rest_framework.generics import ListAPIView
+from rest_framework.generics import CreateAPIView, ListAPIView, DestroyAPIView
 from rest_framework.permissions import IsAuthenticated
-
 
 from apps.chat.models.chat import ChatRoom
 from apps.chat.models.message import Message
@@ -64,6 +62,15 @@ class ChatRoomCreateView(CreateAPIView):
     )
     def post(self, request, *args, **kwargs):
         return super().create(request, *args, **kwargs)
+
+@extend_schema(
+    tags=['Chat'],
+    summary='Delete chatroom',
+    description='This endpoint delete user`s chat.',
+)
+class ChatRoomDeleteView(DestroyAPIView):
+    permission_classes = [IsAuthenticated]
+    queryset = ChatRoom.objects.all()
 
 
 @extend_schema(
