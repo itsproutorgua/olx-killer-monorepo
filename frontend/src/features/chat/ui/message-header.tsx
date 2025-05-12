@@ -7,7 +7,6 @@ import {
   AvatarFallback,
   AvatarImage,
 } from '@/shared/ui/shadcn-ui/avatar'
-import { PhoneIcon } from '@/shared/ui'
 import { ArrowDownSmall } from '@/shared/ui/icons'
 
 export const MessageHeader = () => {
@@ -25,7 +24,10 @@ export const MessageHeader = () => {
         </button>
 
         <Avatar className='h-[52px] w-[52px]'>
-          <AvatarImage src={selectedSellerProfile?.picture || profileDefault} />
+          <AvatarImage
+            src={selectedSellerProfile?.picture || profileDefault}
+            className='object-cover'
+          />
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
         <div className='space-y-1'>
@@ -40,9 +42,10 @@ export const MessageHeader = () => {
           </p>
         </div>
       </div>
-      <button className='flex size-[52px] items-center justify-center rounded-full border border-border text-primary-900'>
-        <PhoneIcon />
-      </button>
+      {/*TODO: uncomment when phone icon will be added*/}
+      {/*<button className='flex size-[52px] items-center justify-center rounded-full border border-border text-primary-900'>*/}
+      {/*  <PhoneIcon />*/}
+      {/*</button>*/}
     </div>
   )
 }

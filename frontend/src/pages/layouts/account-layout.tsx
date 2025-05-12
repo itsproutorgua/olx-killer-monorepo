@@ -12,7 +12,7 @@ export const AccountLayout = () => {
 
   return (
     <div
-      className={`${shouldApplyContainer ? 'container' : ''} min-h-[calc(100dvh)] xl:flex xl:min-h-[calc(100dvh-96px)]`}
+      className={`${shouldApplyContainer ? 'container' : ''} min-h-[calc(100vh-200px)] xl:flex xl:min-h-[calc(100dvh-96px)]`}
     >
       <AccountSidebar className='hidden xl:block' />
       <div className='flex-1'>

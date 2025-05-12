@@ -6,9 +6,9 @@ import BottomBar from '@/widgets/mobile-bottom-bar/bottom-bar.tsx'
 import { useMediaQuery } from '@/shared/library/hooks'
 
 export const AccountRootLayout = () => {
-  const isMobile = useMediaQuery('(max-width: 767px)')
+  const isMobile = useMediaQuery('(max-width: 1280px)')
   return (
-    <div className='grid min-h-screen grid-rows-[_auto_1fr]'>
+    <div className='grid grid-rows-[_auto_1fr] xl:min-h-screen'>
       <Header />
       <main>
         <Outlet />

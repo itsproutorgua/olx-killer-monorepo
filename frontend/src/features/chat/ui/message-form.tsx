@@ -1,10 +1,11 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
+import toast from 'react-hot-toast'
 import { useTranslation } from 'react-i18next'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import TextareaAutosize from 'react-textarea-autosize'
 import { z } from 'zod'
 
@@ -20,55 +21,110 @@ import { useMediaQuery } from '@/shared/library/hooks'
 import { setViewportForIOS } from '@/shared/library/utils/viewportAutozoom.ts'
 
 const FormSchema = z.object({
-  msg: z
-    .string()
-    .min(1, {
-      message: 'Message must be at least 2 characters.',
-    })
-    .max(500, {
-      message: 'Message must not be longer than 1000 characters.',
-    }),
+  msg: z.string().max(500, {
+    message: 'Message must not be longer than 1000 characters.',
+  }),
 })
 
 export function MessageForm() {
-  const { sendMessage, editMessage, editingMessage, setEditingMessage } =
-    useChatContext()
+  const {
+    sendMessage,
+    editMessage,
+    editingMessage,
+    setEditingMessage,
+    currentRoomId,
+  } = useChatContext()
+
   const { t } = useTranslation()
   const isDesktop = useMediaQuery('(min-width: 1440px)')
   const minRows = isDesktop ? 6 : 1
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
+    defaultValues: { msg: '' },
   })
 
   const location = useLocation()
+  const navigate = useNavigate()
   const prefill = location.state?.prefill
 
-  useEffect(() => {
-    if (prefill) {
-      form.setValue('msg', prefill)
-    }
-  }, [prefill])
+  // Track prefill application per room
+  const prefillAppliedRef = useRef<{ roomId: string | null; applied: boolean }>(
+    {
+      roomId: null,
+      applied: false,
+    },
+  )
 
+  // Handle prefill logic
+  useEffect(() => {
+    if (
+      prefill &&
+      !editingMessage &&
+      currentRoomId &&
+      prefillAppliedRef.current.roomId !== currentRoomId
+    ) {
+      form.setValue('msg', prefill)
+      prefillAppliedRef.current = { roomId: currentRoomId, applied: true }
+
+      // Attempt to clear prefill from router state
+      navigate(location.pathname, {
+        replace: true,
+        state: {
+          roomId: currentRoomId,
+          mobileView: location.state?.mobileView,
+        },
+      })
+    }
+  }, [prefill, editingMessage, currentRoomId, location, navigate])
+
+  // Handle edit mode population
   useEffect(() => {
     if (editingMessage) {
       form.setValue('msg', editingMessage.text)
     }
   }, [editingMessage])
 
-  // Viewport meta tag for iOS on mount
+  // Reset form when switching rooms
+  useEffect(() => {
+    // Skip reset if prefill was just applied for the current room
+    if (
+      prefillAppliedRef.current.applied &&
+      prefillAppliedRef.current.roomId === currentRoomId
+    ) {
+      return
+    }
+
+    // Reset form
+    form.reset({ msg: '' })
+    form.setValue('msg', '')
+    if (editingMessage) {
+      setEditingMessage(null)
+    }
+    prefillAppliedRef.current = { roomId: null, applied: false }
+  }, [currentRoomId])
+
+  // iOS viewport fix
   useEffect(() => {
     setViewportForIOS()
   }, [])
 
   const handleSubmit = (data: z.infer<typeof FormSchema>) => {
+    const trimmedMsg = data.msg.trim()
+    if (trimmedMsg.length === 0) {
+      toast.error(t('messages.error.emptyEdit'))
+      return
+    }
+
     if (editingMessage) {
-      editMessage(editingMessage.message_id, data.msg)
+      editMessage(editingMessage.message_id, trimmedMsg)
       setEditingMessage(null)
     } else {
-      sendMessage(data.msg)
+      sendMessage(trimmedMsg)
     }
+
     form.reset({ msg: '' })
+    prefillAppliedRef.current = { roomId: null, applied: false }
   }
 
   return (

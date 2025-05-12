@@ -56,7 +56,7 @@ export const TopBar = () => {
 
       {/* Search Section */}
       <div
-        className={`ml-[90px] flex items-center gap-5 ${isExpanded && 'w-full'}`}
+        className={`flex items-center gap-5 xl:ml-[90px] ${isExpanded && 'w-full'}`}
       >
         <div className='relative w-full xl:w-[630px]' ref={searchRef}>
           <div
