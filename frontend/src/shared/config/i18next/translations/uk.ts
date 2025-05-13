@@ -12,6 +12,7 @@ export const uk = {
   },
 
   buttons: {
+    cancel: 'Скасувати',
     cancelAll: 'Скасувати все',
     next: 'Наступна',
     previous: 'Попередня',
@@ -97,6 +98,7 @@ export const uk = {
     status: 'У мережі',
     searchPlaceholder: 'Введіть ім’я',
     writeMsg: 'Написати повідомлення...',
+    editing: 'Редагування',
   },
   date: {
     m: 'хв',

@@ -1,11 +1,11 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 import { useTranslation } from 'react-i18next'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import TextareaAutosize from 'react-textarea-autosize'
 import { z } from 'zod'
 
@@ -45,63 +45,24 @@ export function MessageForm() {
   })
 
   const location = useLocation()
-  const navigate = useNavigate()
-  const prefill = location.state?.prefill
 
-  // Track prefill application per room
-  const prefillAppliedRef = useRef<{ roomId: string | null; applied: boolean }>(
-    {
-      roomId: null,
-      applied: false,
-    },
-  )
-
-  // Handle prefill logic
-  useEffect(() => {
-    if (
-      prefill &&
-      !editingMessage &&
-      currentRoomId &&
-      prefillAppliedRef.current.roomId !== currentRoomId
-    ) {
-      form.setValue('msg', prefill)
-      prefillAppliedRef.current = { roomId: currentRoomId, applied: true }
-
-      // Attempt to clear prefill from router state
-      navigate(location.pathname, {
-        replace: true,
-        state: {
-          roomId: currentRoomId,
-          mobileView: location.state?.mobileView,
-        },
-      })
-    }
-  }, [prefill, editingMessage, currentRoomId, location, navigate])
-
-  // Handle edit mode population
   useEffect(() => {
     if (editingMessage) {
       form.setValue('msg', editingMessage.text)
     }
   }, [editingMessage])
 
-  // Reset form when switching rooms
   useEffect(() => {
-    // Skip reset if prefill was just applied for the current room
-    if (
-      prefillAppliedRef.current.applied &&
-      prefillAppliedRef.current.roomId === currentRoomId
-    ) {
-      return
-    }
-
-    // Reset form
-    form.reset({ msg: '' })
-    form.setValue('msg', '')
     if (editingMessage) {
       setEditingMessage(null)
     }
-    prefillAppliedRef.current = { roomId: null, applied: false }
+
+    if (location.state?.prefill) {
+      form.setValue('msg', location.state.prefill)
+      window.history.replaceState({}, '')
+    } else {
+      form.reset({ msg: '' })
+    }
   }, [currentRoomId])
 
   // iOS viewport fix
@@ -124,7 +85,6 @@ export function MessageForm() {
     }
 
     form.reset({ msg: '' })
-    prefillAppliedRef.current = { roomId: null, applied: false }
   }
 
   return (
@@ -136,18 +96,35 @@ export function MessageForm() {
           render={({ field }) => (
             <FormItem className='space-y-0 leading-[0px]'>
               <FormControl>
-                <div className='relative'>
-                  <TextareaAutosize
-                    placeholder={t('chat.writeMsg')}
-                    minRows={minRows}
-                    maxRows={6}
-                    className='box-border w-full resize-none scroll-pb-5 rounded-none border-0 bg-transparent px-[52px] py-5 text-[13px] leading-[20px] [-webkit-text-size-adjust:100%] focus:border-transparent focus:outline-none focus:ring-0 xl:px-6 xl:py-6 xl:pr-[120px] xl:text-[13px]'
-                    {...field}
-                  />
-                  {/* Gradient overlays */}
-                  <div className='pointer-events-none absolute inset-0 flex flex-col justify-between pr-4'>
-                    <div className='h-6 bg-gradient-to-b from-background to-transparent' />
-                    <div className='h-6 bg-gradient-to-t from-background to-transparent' />
+                <div>
+                  {editingMessage && (
+                    <div className='bg-yellow-100 dark:bg-yellow-900 dark:text-yellow-100 flex items-center justify-between border-b-[1px] border-primary-400 px-3 py-1 text-sm text-primary-500'>
+                      <span>{t('chat.editing')}...</span>
+                      <button
+                        type='button'
+                        onClick={() => {
+                          setEditingMessage(null)
+                          form.reset({ msg: '' })
+                        }}
+                        className='ml-4 text-xs text-gray-500 hover:text-primary-900'
+                      >
+                        {t('buttons.cancel')}
+                      </button>
+                    </div>
+                  )}
+                  <div className='relative'>
+                    <TextareaAutosize
+                      placeholder={t('chat.writeMsg')}
+                      minRows={minRows}
+                      maxRows={6}
+                      className='box-border w-full resize-none scroll-pb-5 rounded-none border-0 bg-transparent px-[52px] py-5 text-[13px] leading-[20px] [-webkit-text-size-adjust:100%] focus:border-transparent focus:outline-none focus:ring-0 xl:px-6 xl:py-6 xl:pr-[120px] xl:text-[13px]'
+                      {...field}
+                    />
+                    {/* Gradient overlays */}
+                    <div className='pointer-events-none absolute inset-0 flex flex-col justify-between pr-4'>
+                      <div className='h-6 bg-gradient-to-b from-background to-transparent' />
+                      <div className='h-6 bg-gradient-to-t from-background to-transparent' />
+                    </div>
                   </div>
                 </div>
               </FormControl>

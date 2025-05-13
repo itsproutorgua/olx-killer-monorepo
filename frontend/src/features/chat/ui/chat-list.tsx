@@ -1,5 +1,6 @@
 import { profileDefault } from '@/shared/assets'
 import { useTranslation } from 'react-i18next'
+import { useNavigate } from 'react-router-dom'
 
 import { useChatContext } from '@/features/chat/chat-context/chat-context.tsx'
 import { useUserProfile } from '@/entities/user'
@@ -38,6 +39,7 @@ export const ChatList = ({
   error: Error | null
 }) => {
   const { t, i18n } = useTranslation()
+  const navigate = useNavigate()
 
   const {
     setCurrentRoomId,
@@ -57,8 +59,9 @@ export const ChatList = ({
   ) => {
     setCurrentRoomId(roomId)
     setSelectedSellerProfile(sellerProfile)
+    navigate(`/account/chat?roomId=${roomId}`)
     if (window.innerWidth < 1440) {
-      setMobileView('chat') // switch to chat view on mobile
+      setMobileView('chat')
     }
   }
 
@@ -66,7 +69,7 @@ export const ChatList = ({
     <ScrollArea className='h-[calc(100dvh-285px)] flex-grow overflow-y-auto xl:h-[calc(100dvh-230px)]'>
       <ul>
         {chats?.map(chat => {
-          const isChatActive = chat.room_id == currentRoomId
+          const isChatActive = chat.room_id === currentRoomId
           const sellerProfile =
             chat.second_user_profile.id === user?.id
               ? chat.first_user_profile

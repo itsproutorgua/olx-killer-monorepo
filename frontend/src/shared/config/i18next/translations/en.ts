@@ -11,6 +11,7 @@ export const en = {
     searchPlaceholder: "I'm looking for...",
   },
   buttons: {
+    cancel: 'Cancel',
     cancelAll: 'Cancel all',
     next: 'Next',
     previous: 'Previous',
@@ -97,6 +98,7 @@ export const en = {
     status: 'Online',
     searchPlaceholder: 'Enter name',
     writeMsg: 'Write a message...',
+    editing: 'Editing',
   },
   date: {
     m: 'm',
