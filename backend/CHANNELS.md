@@ -145,10 +145,20 @@ Example response
 - Saves the message to the database.
 
 **Example Request:**
+
+```javascript
+const normalizedFileName = file.name.replace(/\s+/g, '_').replace(/[^\w\.-]/g, '');
+```
 ```json
 {
     "action": "send",
     "message": "Hello, how are you?"
+    "file": {
+          "name": normalizedFileName,
+          "size": file.size,
+          "type": file.type || "application/octet-stream",
+          "data": fileData 
+            }
 }
 ```
 
