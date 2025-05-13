@@ -51,6 +51,17 @@ Example responce
 
 ```
 
+### Delete chat room `http://127.0.0.1:8000/en/api/v1/chat/delete/<room_id>`
+
+Example request
+```http
+DELETE http://127.0.0.1:8000/en/api/v1/chat/delete/90
+```
+
+Example response
+
+
+
 ## WebSocket Endpoints
 
 ### Connect
@@ -82,29 +93,45 @@ Example responce
 ```json
 [
     {
-        "message_id": 45,
-        "text": "hello",
-        "sender_email": "daragan.liza@gmail.com",
-        "status": "read",
-        "created_at": "2025-02-18T18:28:52.258755+00:00",
-        "updated_at": "2025-02-18T18:28:52.258773+00:00"
-    },
+        "text": "vrgrwq", 
+        "message_id": 179, 
+        "sender_id": 19639, 
+        "status": "read", 
+        "created_at": "2025-05-12T15:09:23.065265+00:00", 
+        "updated_at": "2025-05-12T15:09:23.065283+00:00", 
+        "attachments": []
+    }, 
     {
-        "message_id": 44,
-        "text": "hello",
-        "sender_email": "daragan.liza@gmail.com",
-        "status": "read",
-        "created_at": "2025-02-16T21:20:22.998221+00:00",
-        "updated_at": "2025-02-16T21:20:22.998242+00:00"
-    },
+        "text": "fewf", 
+        "message_id": 180, 
+        "sender_id": 15535, 
+        "status": "read", 
+        "created_at": "2025-05-12T15:09:31.260001+00:00", 
+        "updated_at": "2025-05-12T15:09:31.260021+00:00", 
+        "attachments": []
+    }, 
     {
-        "message_id": 43,
-        "text": "hello",
-        "sender_email": "gavriliuk.sviatoslav@gmail.com",
-        "status": "read",
-        "created_at": "2025-02-16T20:50:16.726344+00:00",
-        "updated_at": "2025-02-21T16:57:26.073464+00:00"
-    },
+        "text": "frwfe", 
+        "message_id": 181, 
+        "sender_id": 19639, 
+        "status": "read", 
+        "created_at": "2025-05-12T15:09:43.577118+00:00", 
+        "updated_at": "2025-05-12T15:09:43.577139+00:00", 
+        "attachments": []
+        }, 
+    {
+        "text": "fewewwe", 
+        "message_id": 182, 
+        "sender_id": 19639, 
+        "status": "delivered", 
+        "created_at": "2025-05-12T15:22:02.959298+00:00", 
+        "updated_at": "2025-05-12T15:22:02.959319+00:00", 
+        "attachments": [{
+            "file_url": "https://s3olxclone.s3.amazonaws.com/media/chat_attachments/images/2025/05/12/Screenshot_2025-01-28_191925.png", 
+            "file_name": "Screenshot_2025-01-28_191925.png", 
+            "content_type": "image/png"
+            }]
+    }    
     {
     ...
     }
@@ -216,97 +243,194 @@ Example responce
 
 ## Example code
 
-```javascript
+```html
 <!DOCTYPE html>
 <html>
   <head>
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Socket chat</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socket Chat</title>
     <style>
-      body { margin: 0; padding-bottom: 3rem; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+      body { margin: 0; padding-bottom: 5rem; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
 
       #form { background: rgba(0, 0, 0, 0.15); padding: 0.25rem; position: fixed; bottom: 0; left: 0; right: 0; display: flex; height: 3rem; box-sizing: border-box; backdrop-filter: blur(10px); }
       #input { border: none; padding: 0 1rem; flex-grow: 1; border-radius: 2rem; margin: 0.25rem; }
       #input:focus { outline: none; }
-      #form > button { background: #333; border: none; padding: 0 1rem; margin: 0.25rem; border-radius: 3px; outline: none; color: #fff; }
+      #file-input { margin: 0.25rem; }
+      #form > button { background: #333; border: none; padding: 0 1rem; margin: 0.25rem; border-radius: 3px; outline: none; color: #fff; cursor: pointer; }
+      #form > button:disabled { background: #666; cursor: not-allowed; }
 
       #messages { list-style-type: none; margin: 0; padding: 0; }
-      #messages > li { padding: 0.5rem 1rem; display: flex; justify-content: space-between; align-items: center; }
+      #messages > li { padding: 0.5rem 1rem; display: flex; justify-content: space-between; align-items: flex-start; }
       #messages > li:nth-child(odd) { background: #efefef; }
+      .message-content { flex-grow: 1; }
+      .message-content img { max-width: 200px; margin-top: 0.5rem; }
+      .message-content a { color: blue; text-decoration: underline; }
       .delete-btn { background: none; border: none; color: red; font-size: 1rem; cursor: pointer; }
     </style>
   </head>
   <body>
     <ul id="messages"></ul>
     <form id="form">
-      <input id="input" autocomplete="off" /><button>Send</button>
+      <input id="input" autocomplete="off" placeholder="Type a message..." />
+      <input id="file-input" type="file" accept="image/png,image/jpeg,image/gif,image/webp,application/pdf" />
+      <button type="submit" id="send-button">Send</button>
     </form>
     <script>
-        const token = "token"
-        const socket = new WebSocket("ws://127.0.0.1:8001/ws/chat/?firts_user=1&second_user=2/", ["Bearer", token]);
+      const socket = new WebSocket("ws://127.0.0.1:8001/ws/chat/?room_id=93", ["Bearer", token]);
 
-        socket.onopen = function () {
-            console.log("Connected to  WebSocket");
-        };
+      socket.onopen = function () {
+        console.log("Подключено к WebSocket");
+      };
 
-        socket.onmessage = function (event) {
-            console.log("Message received", event.data);
-            const data = JSON.parse(event.data);
-        };
+      socket.onmessage = function (event) {
+        console.log("Получено сообщение", event.data);
+        const data = JSON.parse(event.data);
 
-        socket.onerror = function (error) {
-            console.error("Error WebSocket:", error);
-        };
+        if (data.type === "chat_message") {
+          const message = data.message;
+          addMessageToList(
+            message.message_id,
+            message.sender_id,
+            message.text,
+            message.attachments
+          );
+        } else if (data.type === "message_deleted") {
+          removeMessageFromList(data.message_id);
+        } else if (data.type === "message_edited") {
+          updateMessageInList(data.message_id, data.text);
+        } else if (data.type === "error") {
+          alert(`Ошибка: ${data.message}`);
+        } else if (data.type === "presigned_url") {
+          // Получен presigned URL для загрузки файла в S3
+          uploadFileToS3(data.presigned_url, data.file_path, data.message);
+        }
+      };
 
-        socket.onclose = function (event) {
-            console.log(" WebSocket closed:", event.code, event.reason);
-        };
+      socket.onerror = function (error) {
+        console.error("Ошибка WebSocket:", error);
+      };
 
-        document.getElementById("form").addEventListener("submit", function (e) {
-            e.preventDefault();
-            sendMessage();
-        });
+      socket.onclose = function (event) {
+        console.log("WebSocket закрыт:", event.code, event.reason);
+      };
 
-        function sendMessage() {
-            const input = document.getElementById("input");
-            if (input.value.trim() !== "") {
+    document.getElementById("form").addEventListener("submit", function(e) {
+        e.preventDefault();
+        sendMessage();
+    });
+
+    function sendMessage() {
+        const input = document.getElementById("input");
+        const fileInput = document.getElementById("file-input");
+        const sendButton = document.getElementById("send-button");
+        const messageText = input.value.trim();
+        const file = fileInput.files[0];
+
+        if (!messageText && !file) {
+            alert("Введите сообщение или выберите файл.");
+            return;
+        }
+
+        sendButton.disabled = true;
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const fileData = e.target.result; // base64-строка
+                const normalizedFileName = file.name.replace(/\s+/g, '_').replace(/[^\w\.-]/g, '');
                 socket.send(JSON.stringify({
                     action: "send",
-                    message: input.value
+                    message: messageText,
+                    file: {
+                        name: normalizedFileName,
+                        size: file.size,
+                        type: file.type || "application/octet-stream",
+                        data: fileData // Отправляем base64
+                    }
                 }));
-                input.value = "";  
-            }
-        }
-
-        function deleteMessage(messageId) {
+                resetForm();
+            };
+            reader.readAsDataURL(file);
+        } else {
             socket.send(JSON.stringify({
-                action: "delete",
-                message_id: messageId
+                action: "send",
+                message: messageText,
+                file: null
             }));
+            resetForm();
         }
 
-        function editMessage(messageId, newMessage) {
-            socket.send(JSON.stringify({
-                action: "edit",
-                message_id: messageId,
-                text: newMessage
-            }));
+        function resetForm() {
+            input.value = "";
+            fileInput.value = "";
+            sendButton.disabled = false;
+        }
+    }
+
+      function deleteMessage(messageId) {
+        socket.send(JSON.stringify({
+          action: "delete",
+          message_id: messageId,
+        }));
+      }
+
+      function editMessage(messageId, newMessage) {
+        socket.send(JSON.stringify({
+          action: "edit",
+          message_id: messageId,
+          text: newMessage,
+        }));
+      }
+
+      function addMessageToList(messageId, user, message, attachments = []) {
+        const li = document.createElement("li");
+        li.id = `msg-${messageId}`;
+        const contentDiv = document.createElement("div");
+        contentDiv.className = "message-content";
+
+        if (message) {
+          const textSpan = document.createElement("span");
+          textSpan.innerHTML = `<b>${user}:</b> ${message}`;
+          contentDiv.appendChild(textSpan);
         }
 
-        function addMessageToList(messageId, user, message) {
-            const li = document.createElement("li");
-            li.id = `msg-${messageId}`;
-            li.innerHTML = `<span><b>${user}:</b> ${message}</span> 
-                            <button class="delete-btn" onclick="deleteMessage('${messageId}')">🗑</button>`;
-            document.getElementById("messages").appendChild(li);
-        }
+        attachments.forEach(attachment => {
+          const fileUrl = attachment.file_url;
+          if (fileUrl.includes(".png") || fileUrl.includes(".jpg") || fileUrl.includes(".jpeg") || fileUrl.includes(".gif") || fileUrl.includes(".webp")) {
+            const img = document.createElement("img");
+            img.src = fileUrl; // Используем presigned URL для чтения
+            contentDiv.appendChild(img);
+          } else {
+            const link = document.createElement("a");
+            link.href = fileUrl;
+            link.textContent = "Download file";
+            link.download = "";
+            contentDiv.appendChild(link);
+          }
+        });
 
-        function removeMessageFromList(messageId) {
-            const messageElement = document.getElementById(`msg-${messageId}`);
-            if (messageElement) {
-                messageElement.remove();
-            }
+        li.appendChild(contentDiv);
+        li.innerHTML += `<button class="delete-btn" onclick="deleteMessage('${messageId}')">🗑</button>`;
+        document.getElementById("messages").appendChild(li);
+      }
+
+      function removeMessageFromList(messageId) {
+        const messageElement = document.getElementById(`msg-${messageId}`);
+        if (messageElement) {
+          messageElement.remove();
         }
+      }
+
+      function updateMessageInList(messageId, newMessage) {
+        const messageElement = document.getElementById(`msg-${messageId}`);
+        if (messageElement) {
+          const textSpan = messageElement.querySelector(".message-content span");
+          if (textSpan) {
+            const user = textSpan.querySelector("b").textContent;
+            textSpan.innerHTML = `<b>${user}</b> ${newMessage}`;
+          }
+        }
+      }
     </script>
   </body>
 </html>
