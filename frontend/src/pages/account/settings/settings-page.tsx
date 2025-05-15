@@ -1,3 +1,9 @@
+import { DevelopmentPage } from '@/shared/ui'
+
 export const SettingsPage = () => {
-  return <div>Settings Page</div>
+  return (
+    <div>
+      <DevelopmentPage />
+    </div>
+  )
 }
