@@ -11,7 +11,13 @@ import {
   DropdownMenuItem,
 } from '@/shared/ui/shadcn-ui/dropdown-menu'
 import { ScrollArea } from '@/shared/ui/shadcn-ui/scroll-area'
-import { CheckedDoubleIcon } from '@/shared/ui/icons'
+import {
+  CheckedDoubleIcon,
+  CopyIcon,
+  DeleteIcon,
+  DotsMenu,
+  EditIcon,
+} from '@/shared/ui/icons'
 import { MessageDeliveredIcon } from '@/shared/ui/icons/message-delivered.tsx'
 import { useLongPressContextMenu } from '@/shared/library/hooks/use-long-press.ts'
 import { cn } from '@/shared/library/utils'
@@ -58,16 +64,16 @@ export const MessageList = () => {
     <>
       <ScrollArea
         ref={scrollRef}
-        className='relative h-full flex-grow overflow-y-auto border-y border-y-border bg-gray-100 p-[18px] md:p-6'
+        className='relative h-full flex-grow overflow-y-auto border-y border-y-border bg-gray-100 py-[18px] !pr-0 pl-[18px] md:py-6 md:pl-6'
       >
         <ul className='space-y-[17px]'>
           {messages.map(msg => (
-            <li key={msg.message_id} className='space-y-2.5'>
+            <li key={msg.message_id} className='mr-[18px] space-y-2.5 md:mr-6'>
               <div
                 onContextMenu={e => handleRightClick(e, msg)}
                 {...bind(msg)}
                 className={cn(
-                  'w-fit min-w-[96px] max-w-[332px] rounded-[10px] px-3.5 py-2 text-sm/[21px] tracking-tight',
+                  'relative w-fit min-w-[96px] max-w-[332px] rounded-[10px] px-3.5 py-2 text-sm/[21px] tracking-tight',
                   msg.sender_id === user?.id
                     ? 'ml-auto rounded-tr-none bg-primary-500 text-background'
                     : 'mr-auto rounded-tl-none bg-background text-gray-950',
@@ -88,6 +94,14 @@ export const MessageList = () => {
                 >
                   {linkifyText(msg.text)}
                 </p>
+                {msg.sender_id === user?.id && (
+                  <div
+                    onClick={e => handleRightClick(e, msg)}
+                    className='absolute -right-[18px] top-0 md:-right-[21px]'
+                  >
+                    <DotsMenu className='text-gray-500' />
+                  </div>
+                )}
               </div>
               <div
                 className={cn(
@@ -115,7 +129,7 @@ export const MessageList = () => {
           <DropdownMenuContent
             side='right'
             align='start'
-            className='z-50 bg-gray-50'
+            className='z-50 bg-gray-50 p-0'
             style={{
               position: 'fixed',
               top: contextMenuData.y,
@@ -123,7 +137,7 @@ export const MessageList = () => {
             }}
           >
             <DropdownMenuItem
-              className='cursor-pointer'
+              className='flex cursor-pointer items-center justify-start gap-[6px] px-[20px] py-[14px]'
               onClick={() => {
                 navigator.clipboard
                   .writeText(contextMenuData.message!.text)
@@ -132,10 +146,11 @@ export const MessageList = () => {
                 closeMenu()
               }}
             >
+              <CopyIcon />
               {t('words.copy')}
             </DropdownMenuItem>
             <DropdownMenuItem
-              className='cursor-pointer'
+              className='flex cursor-pointer items-center justify-start gap-[6px] border-b-[1px] border-t-[1px] border-gray-200 px-[20px] py-[14px]'
               onClick={() => {
                 setEditingMessage(null)
                 setTimeout(() => {
@@ -144,15 +159,17 @@ export const MessageList = () => {
                 closeMenu()
               }}
             >
+              <EditIcon className='h-[14px] w-[14px]' />
               {t('words.edit')}
             </DropdownMenuItem>
             <DropdownMenuItem
-              className='text-destructive cursor-pointer'
+              className='text-destructive flex cursor-pointer items-center justify-start gap-[6px] px-[20px] py-[14px]'
               onClick={() => {
                 deleteMessage(contextMenuData.message!.message_id)
                 closeMenu()
               }}
             >
+              <DeleteIcon />
               {t('buttons.delete')}
             </DropdownMenuItem>
           </DropdownMenuContent>

@@ -6,6 +6,7 @@ import bestDeals_375 from './images/bestDeals/bestDeal_375.png'
 import bestDeals_1440_x2 from './images/bestDeals/bestDeal_1440_x2.png'
 import bestDeals_1440 from './images/bestDeals/bestDeal_1440.png'
 import chats_empty_image from './images/chat/chats_empty_image.png'
+import develop_image from './images/developImage.png'
 import newProduct1_1440_x2 from './images/newProducts/newProduct1_1440_x2.png'
 import newProduct1_1440 from './images/newProducts/newProduct1_1440.png'
 import newProduct2_1440_x2 from './images/newProducts/newProduct2_1440_2x.png'
@@ -39,3 +40,5 @@ export { emptyInbox }
 export { profileDefault }
 
 export { chats_empty_image }
+
+export { develop_image }

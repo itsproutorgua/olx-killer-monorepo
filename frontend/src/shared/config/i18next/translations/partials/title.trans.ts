@@ -13,6 +13,7 @@ export const titles_uk = {
     listingSellFeedback: 'Чи вийшло продати товар на нашій платформі?',
     feedbackSuccess: 'Дякуємо за ваш відгук!',
     deleteListingWarning: 'Ви впевненні, що бажаєте видалити оголошення?',
+    aboutUs: 'Про нас',
   },
 }
 
@@ -31,5 +32,6 @@ export const titles_en = {
     listingSellFeedback: 'Did you manage to sell the product on our platform?',
     feedbackSuccess: 'Thank you for your feedback!',
     deleteListingWarning: 'Are you sure you want to delete the listing?',
+    aboutUs: 'About us',
   },
 }

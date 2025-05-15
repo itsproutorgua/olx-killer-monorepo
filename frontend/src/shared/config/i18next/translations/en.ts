@@ -37,6 +37,7 @@ export const en = {
     submit: 'Submit',
     delete: 'Delete',
     toProfile: 'To profile page',
+    backToListings: 'Back to listings',
   },
   sort: {
     priceExpensive: 'From cheap to expensive',
@@ -247,5 +248,12 @@ export const en = {
     error: {
       emptyEdit: 'Message cannot be empty.',
     },
+  },
+  development: {
+    title: 'This page is in development',
+    text: 'Go to the listing board - there is a lot of interesting stuff for you!',
+  },
+  aboutUs: {
+    bannerText: 'Learn more about our platform for listings',
   },
 }
