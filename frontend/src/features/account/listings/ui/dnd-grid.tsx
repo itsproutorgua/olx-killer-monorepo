@@ -19,10 +19,18 @@ import {
 } from '@dnd-kit/sortable'
 import { ImagePlus } from 'lucide-react'
 import { useFormContext } from 'react-hook-form'
+import toast from 'react-hot-toast'
 import { useTranslation } from 'react-i18next'
 
 import { XCircleSmall } from '@/shared/ui/icons'
 import { DndSortableItem } from './dnd-sortable-item'
+
+const ALLOWED_MIME_TYPES = [
+  'image/jpeg',
+  'image/png',
+  'image/heic',
+  'image/heif',
+]
 
 export const DndGrid = () => {
   const { t } = useTranslation()
@@ -64,16 +72,32 @@ export const DndGrid = () => {
   )
 
   const handleAddFiles = (newFiles: FileList) => {
-    const newFilesArray = Array.from(newFiles).map(file => {
-      return new File([file], `${Date.now()}-${file.name}`, {
-        type: file.type,
-      })
+    const filesArray = Array.from(newFiles)
+    const validFiles: File[] = []
+    const invalidFiles: File[] = []
+
+    filesArray.forEach(file => {
+      if (ALLOWED_MIME_TYPES.includes(file.type)) {
+        validFiles.push(
+          new File([file], `${Date.now()}-${file.name}`, {
+            type: file.type,
+          }),
+        )
+      } else {
+        invalidFiles.push(file)
+      }
     })
 
-    setFiles(prevFiles => [
-      ...prevFiles,
-      ...newFilesArray.slice(0, 8 - prevFiles.length),
-    ])
+    if (invalidFiles.length > 0) {
+      toast.error(t('errors.input.invalidImageFormat'))
+    }
+
+    if (validFiles.length > 0) {
+      setFiles(prevFiles => [
+        ...prevFiles,
+        ...validFiles.slice(0, 8 - prevFiles.length),
+      ])
+    }
   }
 
   const handleDragStart = (e: DragEndEvent) => {

@@ -20,7 +20,7 @@ export const errors_en = {
       invalidCharacters:
         'Only letters, numbers, spaces, and dash/apostrophe between are allowed',
       maxImages: 'You can upload a maximum of {{max}} images',
-      invalidImageFormat: 'Only JPEG and PNG formats are allowed',
+      invalidImageFormat: 'Only JPG, PNG, HEIC or HEIF formats are allowed',
       imageSizeExceeded: 'Image size should be less than {{maxSize}}',
       invalidVideoFormat: 'Only MP4 and WebM formats are allowed',
       videoSizeExceeded: 'Video size should be less than {{maxSize}}',
@@ -59,7 +59,7 @@ export const errors_uk = {
       invalidCharacters:
         'Допускаються лише літери, цифри, пробіли та дефіс/апостроф всередині',
       maxImages: 'Ви можете завантажити максимум {{max}} зображень',
-      invalidImageFormat: 'Допускаються лише формати JPEG та PNG',
+      invalidImageFormat: 'Допускаються лише формати JPG, PNG, HEIC та HEIF',
       imageSizeExceeded: 'Розмір зображення повинен бути менше {{maxSize}}',
       invalidVideoFormat: 'Допускаються лише формати MP4 і WebM',
       videoSizeExceeded: 'Розмір відео повинен бути менше {{maxSize}}',
