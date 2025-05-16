@@ -52,6 +52,7 @@ interface Props {
 
 const minTextareaLength = 10
 const maxTextareaLength = 10000
+const ALLOWED_VIDEO_TYPES = ['video/mp4', 'video/webm', 'video/quicktime']
 
 export function CreateListingForm({
   mode = 'create',
@@ -474,14 +475,18 @@ export function CreateListingForm({
                               accept='video/mp4, video/webm, video/quicktime'
                               className='hidden'
                               onChange={e => {
-                                if (
-                                  e.target.files &&
-                                  e.target.files.length > 0
-                                ) {
-                                  const file = e.target.files[0]
-                                  setSelectedVideoFile(file)
-                                  field.onChange(file)
+                                const file = e.target.files?.[0]
+                                if (!file) return
+
+                                if (!ALLOWED_VIDEO_TYPES.includes(file.type)) {
+                                  toast.error(
+                                    t('errors.input.invalidVideoFormat'),
+                                  )
+                                  return
                                 }
+
+                                setSelectedVideoFile(file)
+                                field.onChange(file)
                               }}
                             />
                           </label>

@@ -91,7 +91,7 @@ const BottomBar = () => {
         </div>
 
         {/* Center Floating Action Button */}
-        <div className='absolute left-1/2 top-[-24px] -translate-x-1/2 transform rounded-full bg-gray-50 p-[5px] shadow-custom-purple'>
+        <div className='absolute left-1/2 top-[9px] -translate-x-1/2 transform rounded-full bg-gray-50 p-[5px] shadow-custom-purple'>
           <Link
             to={PRIVATE_PAGES.LISTING_CREATE}
             className='flex h-12 w-12 items-center justify-center rounded-full bg-white text-[#2c2a84]'
