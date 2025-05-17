@@ -18,6 +18,7 @@ const BottomBar = () => {
 
   const [isVisible, setIsVisible] = useState(true)
   const [lastScrollY, setLastScrollY] = useState(0)
+  const [isLandscape, setIsLandscape] = useState(false)
 
   const handleScroll = () => {
     const currentScrollY = window.scrollY
@@ -60,11 +61,31 @@ const BottomBar = () => {
     }
   }, [lastScrollY])
 
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(
+      '(max-width: 1024px) and (orientation: landscape)',
+    )
+
+    const handleOrientationChange = (
+      e: MediaQueryListEvent | MediaQueryList,
+    ) => {
+      setIsLandscape(e.matches)
+    }
+
+    handleOrientationChange(mediaQuery)
+
+    mediaQuery.addEventListener('change', handleOrientationChange)
+
+    return () => {
+      mediaQuery.removeEventListener('change', handleOrientationChange)
+    }
+  }, [])
+
   return (
     <div
       className={clsx(
         'fixed bottom-0 left-0 right-0 z-50 transform transition-transform duration-300 xl:hidden',
-        isVisible ? 'translate-y-0' : 'translate-y-[100px]',
+        isVisible && !isLandscape ? 'translate-y-0' : 'translate-y-[100px]',
       )}
     >
       {/* Bottom Menu Bar */}

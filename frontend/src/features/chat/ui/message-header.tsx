@@ -14,7 +14,7 @@ export const MessageHeader = () => {
   const { selectedSellerProfile, setMobileView } = useChatContext()
 
   return (
-    <div className='flex items-center justify-between p-[18px] md:p-6'>
+    <div className='flex items-center justify-between p-[18px] md:p-6 [@media(max-width:1024px)_and_(orientation:landscape)]:p-[10px]'>
       <div className='flex items-start gap-3'>
         <button
           onClick={() => setMobileView('list')}

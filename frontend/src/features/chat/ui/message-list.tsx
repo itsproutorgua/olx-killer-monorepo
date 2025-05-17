@@ -64,7 +64,7 @@ export const MessageList = () => {
     <>
       <ScrollArea
         ref={scrollRef}
-        className='relative h-full flex-grow overflow-y-auto border-y border-y-border bg-gray-100 py-[18px] !pr-0 pl-[18px] md:py-6 md:pl-6'
+        className='relative h-full flex-grow overflow-y-auto border-y border-y-border bg-gray-100 py-[18px] !pr-0 pl-[18px] md:py-6 md:pl-6 [@media(max-width:1024px)_and_(orientation:landscape)]:py-1'
       >
         <ul className='space-y-[17px]'>
           {messages.map(msg => (

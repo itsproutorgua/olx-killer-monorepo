@@ -22,7 +22,7 @@ export const errors_en = {
       maxImages: 'You can upload a maximum of {{max}} images',
       invalidImageFormat: 'Only JPG, PNG, HEIC or HEIF formats are allowed',
       imageSizeExceeded: 'Image size should be less than {{maxSize}}',
-      invalidVideoFormat: 'Only MP4 and WebM formats are allowed',
+      invalidVideoFormat: 'Only MP4, WebM or MOV formats are allowed',
       videoSizeExceeded: 'Video size should be less than {{maxSize}}',
       videoDurationExceeded: 'Video duration must not exceed {{max}} seconds',
       phone: {
@@ -61,7 +61,7 @@ export const errors_uk = {
       maxImages: 'Ви можете завантажити максимум {{max}} зображень',
       invalidImageFormat: 'Допускаються лише формати JPG, PNG, HEIC та HEIF',
       imageSizeExceeded: 'Розмір зображення повинен бути менше {{maxSize}}',
-      invalidVideoFormat: 'Допускаються лише формати MP4 і WebM',
+      invalidVideoFormat: 'Допускаються лише формати MP4, WebM і MOV',
       videoSizeExceeded: 'Розмір відео повинен бути менше {{maxSize}}',
       videoDurationExceeded:
         'Тривалість відео не повинна перевищувати {{max}} секунд',
