@@ -12,7 +12,6 @@ from rest_framework.response import Response
 from apps.api_tags import FAVORITE_TAG
 from apps.favorites.models import Favorite
 from apps.favorites.serializers import UserFavoriteSerializer
-from apps.products.models import Product
 
 
 class FavoriteViewSet(
@@ -28,7 +27,7 @@ class FavoriteViewSet(
         return (
             self.queryset.select_related('product')
             .prefetch_related('product__prices__currency', 'product__product_images')
-            .filter(user=self.request.user, product__publication_status=Product.PublicationStatus.ACTIVE)
+            .filter(user=self.request.user)
             .order_by('-created_at')
         )
 
