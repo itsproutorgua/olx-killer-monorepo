@@ -31,12 +31,17 @@ export const CategoryNavbarMobile = ({ data }: { data: CategoryChild[] }) => {
                     <li key={item.path} className='text-sm font-medium'>
                       {item.title.length > 20 ? (
                         <Link to={href} className='flex gap-1'>
-                          <span className='line-clamp-1'>{item.title}</span>
+                          <span className='line-clamp-1'>
+                            {item.title.charAt(0).toUpperCase() +
+                              item.title.slice(1)}
+                          </span>
                           <span>({item.products_cumulative_count || 0})</span>
                         </Link>
                       ) : (
                         <Link to={href}>
-                          {item.title} ({item.products_cumulative_count || 0})
+                          {item.title.charAt(0).toUpperCase() +
+                            item.title.slice(1)}{' '}
+                          ({item.products_cumulative_count || 0})
                         </Link>
                       )}
                     </li>

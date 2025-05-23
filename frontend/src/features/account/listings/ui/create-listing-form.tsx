@@ -208,7 +208,7 @@ export function CreateListingForm({
           })
         },
         onError: () => {
-          toast.error('Error during form submission!')
+          toast.error(t('listingForm.toastMessages.errorSubmit'))
         },
       })
     } else {
@@ -217,13 +217,13 @@ export function CreateListingForm({
           if (onOpenChange) {
             onOpenChange(false)
           }
-          toast.success('Product updated successfully!')
+          toast.success(t('listingForm.toastMessages.updateSuccess'))
         },
         onError: () => {
           if (onOpenChange) {
             onOpenChange(false)
           }
-          toast.error('Error during form submission!')
+          toast.error(t('listingForm.toastMessages.errorSubmit'))
         },
       })
     }

@@ -58,7 +58,7 @@ export function MessageForm() {
     }
 
     if (location.state?.prefill) {
-      form.setValue('msg', location.state.prefill)
+      form.setValue('msg', location.state.prefill + ' ')
       window.history.replaceState({}, '')
     } else {
       form.reset({ msg: '' })
