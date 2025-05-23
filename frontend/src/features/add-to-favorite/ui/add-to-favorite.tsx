@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
+import { useTranslation } from 'react-i18next'
 
 import {
   useFavoriteMutations,
@@ -15,6 +16,7 @@ export const AddToFavorite = ({
   productId: number
   className?: string
 }) => {
+  const { t } = useTranslation()
   const { isAuthenticated } = useAuth0()
   const { data: favorites, isSuccess } = useFavorites()
   const { addToFavorites, removeFromFavorites } = useFavoriteMutations()
@@ -80,7 +82,7 @@ export const AddToFavorite = ({
       />
       {showTooltip && (
         <div className='absolute -left-[61px] top-2 z-[999] w-[120px] -translate-x-1/2 rounded-md bg-gray-900 px-3 py-2 text-left text-[12px] leading-5 text-gray-50 shadow-lg xl:-top-16 xl:left-1/2 xl:w-[325px] xl:text-sm'>
-          To add this item to favorites, sign up or log in to your account.
+          {t('buttons.addToFavoritesTooltip')}
           <div className='absolute left-[120px] top-[5px] -rotate-90 border-8 border-x-transparent border-b-transparent border-t-gray-900 xl:left-1/2 xl:top-full xl:-translate-x-1/2 xl:rotate-0' />
         </div>
       )}

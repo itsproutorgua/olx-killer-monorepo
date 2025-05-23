@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { useInfiniteQuery } from '@tanstack/react-query'
+import i18n from 'i18next'
 import { LoaderCircle } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 
@@ -18,6 +19,7 @@ export const ProductGridMobile = ({ path }: { path: string }) => {
   const { t } = useTranslation()
   const { sort, filters } = useFilters()
   const { setCount } = useStrictContext(ProductsContext)
+  const currency_code = i18n.language === 'uk' ? 'UAH' : 'USD'
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading } =
     useInfiniteQuery({
@@ -27,6 +29,7 @@ export const ProductGridMobile = ({ path }: { path: string }) => {
         sort,
         filters.status,
         filters.price,
+        currency_code,
       ],
       queryFn: meta =>
         productApi.findByFilters(
@@ -42,6 +45,7 @@ export const ProductGridMobile = ({ path }: { path: string }) => {
               : undefined,
             status: filters.status,
             sort,
+            currency_code,
           },
           meta,
         ),

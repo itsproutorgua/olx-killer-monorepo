@@ -64,6 +64,10 @@ export const listingForms_en = {
       update: 'Save changes',
     },
     update: 'Edit listing',
+    toastMessages: {
+      updateSuccess: 'Product updated successfully!',
+      errorSubmit: 'Error during form submission!',
+    },
   },
   feedbackForm: {
     answer: {
@@ -145,6 +149,10 @@ export const listingForms_uk = {
       update: 'Зберегти зміни',
     },
     update: 'Редагування оголошення',
+    toastMessages: {
+      updateSuccess: 'Оголошення оновлено успішно!',
+      errorSubmit: 'Помилка під час відправки форми!',
+    },
   },
   feedbackForm: {
     answer: {

@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import i18n from 'i18next'
 import { useTranslation } from 'react-i18next'
 
 import { PageToolbar } from '@/widgets/page-toolbar'
@@ -29,6 +30,7 @@ export const ProductGrid = ({ path }: { path: string }) => {
   const price_min = Number.isInteger(priceRange[0]) ? priceRange[0] : undefined
   const price_max = Number.isInteger(priceRange[1]) ? priceRange[1] : undefined
   const status = getQueryParamByKey(FilterEnum.STATUS)
+  const currency_code = i18n.language === 'uk' ? 'UAH' : 'USD'
 
   const { data, cursor } = useProducts(
     {
@@ -39,6 +41,7 @@ export const ProductGrid = ({ path }: { path: string }) => {
       price_max,
       status,
       sort,
+      currency_code,
     },
     {},
   )
