@@ -117,7 +117,7 @@ const ChatContent = ({
   }
 
   return (
-    <div className='flex h-[calc(100vh-150px)] xl:h-[calc(100vh-100px)] [@media(max-width:1024px)_and_(orientation:landscape)]:h-[calc(100vh-80px)]'>
+    <div className='flex h-[calc(100dvh-150px)] xl:h-[calc(100vh-100px)] [@media(max-width:1024px)_and_(orientation:landscape)]:h-[calc(100vh-80px)]'>
       {(mobileView === 'list' || !isMobile) && (
         <div
           className={`w-full ${!isMobile ? 'max-w-[329px] px-[18px]' : 'px-[10px]'} space-y-6 py-[30px]`}

@@ -190,7 +190,10 @@ export const ProductCarousel: React.FC<Props> = ({ product }) => {
 
       {/* Fullscreen Dialog Modal */}
       <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-        <DialogContent className='rounded-[16px]' aria-describedby={undefined}>
+        <DialogContent
+          className='h-[calc(100dvh-20px)] rounded-[16px]'
+          aria-describedby={undefined}
+        >
           <DialogHeader>
             <DialogTitle>{product.title}</DialogTitle>
           </DialogHeader>
