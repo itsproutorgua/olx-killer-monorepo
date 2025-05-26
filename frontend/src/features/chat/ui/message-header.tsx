@@ -18,7 +18,7 @@ export const MessageHeader = () => {
       <div className='flex items-start gap-3'>
         <button
           onClick={() => setMobileView('list')}
-          className='my-auto mr-2 block md:hidden'
+          className='my-auto mr-2 block xl:hidden'
         >
           <ArrowDownSmall className='rotate-90' />
         </button>

@@ -66,7 +66,7 @@ export const ChatList = ({
   }
 
   return (
-    <ScrollArea className='h-[calc(100dvh-285px)] flex-grow overflow-y-auto xl:h-[calc(100dvh-230px)]'>
+    <ScrollArea className='h-[calc(100dvh-205px)] flex-grow overflow-y-auto xl:h-[calc(100dvh-230px)] [@media(max-width:1024px)_and_(orientation:landscape)]:!mt-2'>
       <ul>
         {chats?.map(chat => {
           const isChatActive = chat.room_id === currentRoomId
