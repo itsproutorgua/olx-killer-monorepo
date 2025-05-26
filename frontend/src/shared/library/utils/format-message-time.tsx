@@ -35,8 +35,10 @@ export const formatMessageTime = (
     },
   }
 
-  if (isToday) return `${labels[locale].today} ${time}`
-  if (isYesterday) return `${labels[locale].yesterday} ${time}`
+  const label = labels[locale] ?? labels['en']
+
+  if (isToday) return `${label.today} ${time}`
+  if (isYesterday) return `${label.yesterday} ${time}`
 
   const formattedDate = date.toLocaleDateString(locale, {
     day: '2-digit',
