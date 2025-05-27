@@ -80,7 +80,7 @@ INSTALLED_APPS += [
     'apps.products.apps.ProductsConfig',
     'apps.locations.apps.LocationsConfig',
     'apps.favorites.apps.FavoritesConfig',
-    'apps.sendpulse.apps.SendpulseConfig'
+    'apps.sendpulse.apps.SendpulseConfig',
     'apps.common',
     'apps.chat.apps.ChatConfig',
 ]
