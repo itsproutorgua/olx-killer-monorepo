@@ -11,10 +11,10 @@ class RoomUtils:
     def get_chat_room(room_id: int) -> Optional[ChatRoom]:
         """
         Retrieve a chat room by its ID.
-        
+
         Args:
             room_id (int): The ID of the chat room to retrieve.
-            
+
         Returns:
             Optional[ChatRoom]: The ChatRoom object if found, else None.
         """

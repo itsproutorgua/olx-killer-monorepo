@@ -446,3 +446,71 @@ const normalizedFileName = file.name.replace(/\s+/g, '_').replace(/[^\w\.-]/g, '
 </html>
 
 ```
+
+
+### Notification
+
+```ws
+ws://127.0.0.1:8001/ws/chat/notifications/
+```
+#### Description
+- Authenticates the user using a JWT token id token.
+- Send all unreaded messages
+
+
+when user connects to socket
+```json
+Получено сообщение {"type": "notify",
+                    "counter": 0,
+                    "messages":
+                          [
+                              {
+                              "counter_by_room": "",
+                              "created_at": "2025-05-24T09:16:29.306214+00:00", 
+                              "updated_at": "2025-05-24T09:16:29.306232+00:00",
+                              "last_message": "",
+                              "status": "delivered",
+                              "sender_id": 19630,
+                              "room_id": 93
+                            }, 
+                            {
+                              "counter_by_room": "",
+                              "created_at": "2025-05-24T09:16:29.306214+00:00", 
+                              "updated_at": "2025-05-24T09:16:29.306232+00:00",
+                              "last_message": "",
+                              "status": "delivered",
+                              "sender_id": 19630,
+                              "room_id": 95
+                              }
+                          ]
+                  }
+```
+
+When user online
+
+```json
+Получено сообщение {"type": "notify",
+                    "counter": 55,
+                    "messages":
+                          [
+                              {
+                              "counter_by_room": 9,
+                              "created_at": "2025-05-24T09:16:29.306214+00:00", 
+                              "updated_at": "2025-05-24T09:16:29.306232+00:00",
+                              "last_message": "",
+                              "status": "delivered",
+                              "sender_id": 19630,
+                              "room_id": 93
+                            }, 
+                            {
+                              "counter_by_room": 46,
+                              "created_at": "2025-05-24T09:16:29.306214+00:00", 
+                              "updated_at": "2025-05-24T09:16:29.306232+00:00",
+                              "last_message": "",
+                              "status": "delivered",
+                              "sender_id": 19630,
+                              "room_id": 93
+                              }
+                          ]
+                  }
+```

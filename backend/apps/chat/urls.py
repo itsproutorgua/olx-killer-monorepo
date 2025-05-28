@@ -1,6 +1,8 @@
 from django.urls import path
 
-from apps.chat.views.chat import ChatRoomCreateView, ChatsReceiveView, ChatRoomDeleteView
+from apps.chat.views.chat import ChatRoomCreateView
+from apps.chat.views.chat import ChatRoomDeleteView
+from apps.chat.views.chat import ChatsReceiveView
 
 
 app_name = 'chat'

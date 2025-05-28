@@ -11,7 +11,7 @@ class AttachmentSerializer(serializers.ModelSerializer):
 
     @staticmethod
     def create_attachments(message, file_data_list):
-        """Создаёт вложения для сообщения."""
+        """Creates attachments for a message."""
         for file_data in file_data_list:
             try:
                 attachment = Attachment(
@@ -20,14 +20,14 @@ class AttachmentSerializer(serializers.ModelSerializer):
                     file_size=file_data["file_size"],
                     content_type=file_data["content_type"],
                 )
-                # Для обратной совместимости с action="file_uploaded"
-                # Предполагается, что file_path не используется, так как файл уже сохранён
+                # For backward compatibility with action="file_uploaded"
+                # It is assumed that file_path is not used, as the file is already saved
                 attachment.save()
-                logger.info(f"Создано вложение для сообщения {message.id}: {file_data['file_name']}")
+                logger.info(f"Created attachment for message {message.id}: {file_data['file_name']}")
             except Exception as e:
-                logger.error(f"Ошибка создания вложения: {str(e)}")
+                logger.error(f"Error creating attachment: {str(e)}")
                 raise
 
     def create(self, validated_data):
-        """Создаёт одно вложение."""
+        """Creates a single attachment."""
         return Attachment.objects.create(**validated_data)

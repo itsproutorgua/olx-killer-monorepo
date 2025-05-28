@@ -1,4 +1,5 @@
-from typing import Optional, Tuple
+from typing import Optional
+from typing import Tuple
 
 from channels.db import database_sync_to_async
 from django.db.utils import IntegrityError
@@ -7,7 +8,6 @@ from rest_framework.exceptions import AuthenticationFailed
 
 from apps.chat.exceptions.exceptions import DatabaseIntegrityError
 from apps.chat.exceptions.exceptions import InvalidTokenFormatError
-from apps.chat.exceptions.exceptions import MalformedAuthorizationHeaderError
 from apps.chat.models.chat import ChatRoom
 from apps.chat.models.message import Message
 from apps.chat.models.useractivity import UserActivity
@@ -21,7 +21,7 @@ class UserUtils:
     def update_user_status(user: User, is_online: bool) -> None:
         """
         Update user online/offline status and last seen timestamp.
-        
+
         Args:
             user (User): The user to update.
             is_online (bool): Whether the user is online.
@@ -30,7 +30,7 @@ class UserUtils:
         try:
             UserActivity.objects.update_or_create(
                 user=user,
-                defaults={"status": status, "last_seen": timezone.now()},
+                defaults={'status': status, 'last_seen': timezone.now()},
             )
         except IntegrityError:
             raise DatabaseIntegrityError()
@@ -39,16 +39,16 @@ class UserUtils:
     async def authenticate_user(scope: dict) -> Optional[User]:
         """
         Authenticate a user from WebSocket subprotocols.
-        
+
         Args:
             scope (dict): WebSocket connection scope.
-            
+
         Returns:
             Optional[User]: Authenticated user or None if authentication fails.
         """
-        subprotocols = scope.get("subprotocols", [])
+        subprotocols = scope.get('subprotocols', [])
         try:
-            if not subprotocols or subprotocols[0] != "Bearer":
+            if not subprotocols or subprotocols[0] != 'Bearer':
                 return None
             token = subprotocols[1]
             if not token:
@@ -69,10 +69,10 @@ class UserUtils:
     def get_users(room: ChatRoom) -> Tuple[User, User]:
         """
         Retrieve both users associated with a chat room.
-        
+
         Args:
             room (ChatRoom): The chat room to query.
-            
+
         Returns:
             Tuple[User, User]: The first and second users of the room.
         """
@@ -82,14 +82,14 @@ class UserUtils:
     async def validate_user(consumer) -> bool:
         """
         Validate if the user is a participant in the chat room.
-        
+
         Args:
             consumer: The WebSocket consumer instance.
-            
+
         Returns:
             bool: True if user is valid, False otherwise (closes connection if invalid).
         """
-        first_user = consumer.scope["first_user"]
+        first_user = consumer.scope['first_user']
         room = consumer.room
         room_first_user, room_second_user = await UserUtils.get_users(room)
 
@@ -103,15 +103,15 @@ class UserUtils:
     def is_valid_sender(message_id: int, sender: User) -> bool:
         """
         Check if the sender is the author of the message.
-        
+
         Args:
             message_id (int): The ID of the message.
             sender (User): The user to validate.
-            
+
         Returns:
             bool: True if the sender is valid, False otherwise.
         """
-        message = Message.objects.select_related("sender").filter(id=message_id).first()
+        message = Message.objects.select_related('sender').filter(id=message_id).first()
         return message.sender == sender if message else False
 
     @staticmethod
@@ -119,11 +119,11 @@ class UserUtils:
     def get_recipient(room: ChatRoom, user: User) -> Optional[User]:
         """
         Get the recipient user of a chat room relative to the given user.
-        
+
         Args:
             room (ChatRoom): The chat room.
             user (User): The user to find the recipient for.
-            
+
         Returns:
             Optional[User]: The recipient user or None if not found.
         """
@@ -134,10 +134,10 @@ class UserUtils:
     def is_user_online(user: User) -> bool:
         """
         Check if a user is online.
-        
+
         Args:
             user (User): The user to check.
-            
+
         Returns:
             bool: True if the user is online, False otherwise.
         """
