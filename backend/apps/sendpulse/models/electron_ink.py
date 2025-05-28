@@ -9,4 +9,4 @@ class UserLeadsFromElectronInk(models.Model):
 
     class Meta:
         db_table = 'electron_ink_table'
-        app_label = 'chat'
+        app_label = 'sendpulse'
