@@ -10,6 +10,7 @@ from apps.chat.utils.messages import MessageUtils
 from apps.chat.utils.rooms import RoomUtils
 from apps.chat.utils.users import UserUtils
 from apps.users.models import User
+from apps.chat.utils.notification import Notification
 
 
 # Set up logging for the module
@@ -59,6 +60,10 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
         # Send the last messages in the room to the connected user
         await MessageUtils.send_last_messages(self)
+
+        # Send notificstion
+        await Notification._send_notification(self, send_to=self.scope["first_user"])
+
         # Update the user's online status to true
         await UserUtils.update_user_status(self.scope['first_user'], is_online=True)
 

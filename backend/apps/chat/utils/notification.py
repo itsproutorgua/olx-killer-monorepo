@@ -61,3 +61,10 @@ class Notification:
     @staticmethod
     async def get_notifications(user):
         return await Notification._get_msg_data(user)
+    
+    @staticmethod
+    async def _send_notification(consumer, send_to):
+        notification_group_name = f'notifications_{send_to.id}'
+        data = await Notification._get_msg_data(send_to)
+
+        await consumer.channel_layer.group_send(notification_group_name, {'type': 'notify', 'messages': data})

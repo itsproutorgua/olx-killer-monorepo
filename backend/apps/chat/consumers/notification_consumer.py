@@ -49,7 +49,7 @@ class NotificationConsumer(AsyncWebsocketConsumer):
         Processes incoming notification events and forwards them to the client.
         """
         # Send the notification data to the client via WebSocket
-        await self.send(text_data=json.dumps(event["data"]))
+        await self.send(text_data=json.dumps(event["messages"]))
 
     async def receive(self, text_data=None):
         """

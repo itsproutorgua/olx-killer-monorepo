@@ -106,7 +106,7 @@ class MessageUtils:
                 }
             )
         return serialized
-
+    
     @staticmethod
     @database_sync_to_async
     def get_message(message_id: int) -> Optional[Message]:
@@ -243,12 +243,7 @@ class MessageUtils:
         room = consumer.room
         recipient = await sync_to_async(room.get_recipient)(consumer.scope['first_user'])
 
-        if message.sender and message.sender != consumer.scope['first_user']:
-            notification_group_name = f'notifications_{consumer.scope["first_user"].id}'
-
-            data = await Notification._get_msg_data(consumer.scope['first_user'])
-
-            await consumer.channel_layer.group_send(notification_group_name, {'type': 'notify', 'data': data})
+        await Notification._send_notification(consumer=consumer, send_to=recipient)
 
         # Check if the recipient is online and mark the message as read if applicable
         if recipient and await UserUtils.is_user_online(recipient):
@@ -278,15 +273,10 @@ class MessageUtils:
                 ensure_ascii=False,
             )
         )
+        room = consumer.room
+        recipient = await sync_to_async(room.get_recipient)(consumer.scope['first_user'])
 
-        if message.sender and message.sender != consumer.scope['first_user']:
-            notification_group_name = f'notifications_{consumer.scope["first_user"].id}'
-
-            data = await Notification._get_msg_data(consumer.scope['first_user'])
-
-            print(consumer.scope['first_user'])
-
-            await consumer.channel_layer.group_send(notification_group_name, {'type': 'notify', 'data': data})
+        await Notification._send_notification(consumer=consumer, send_to=recipient)
 
     @staticmethod
     async def send_last_messages(consumer) -> None:
@@ -333,6 +323,7 @@ class MessageUtils:
                     'messages': read_messages_data,
                 },
             )
+        
 
     @staticmethod
     async def send_last_readed_messages(consumer, event) -> None:
