@@ -39,6 +39,8 @@ export const uk = {
     delete: 'Видалити',
     toProfile: 'Перейти у профіль',
     backToListings: 'Повернутись до оголошень',
+    addToFavoritesTooltip:
+      'Щоб додати оглошення до улюблених, увійдіть або зареєструйтесь',
   },
   sort: {
     priceExpensive: 'Від дешевих до дорогих',

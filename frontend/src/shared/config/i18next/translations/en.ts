@@ -38,6 +38,8 @@ export const en = {
     delete: 'Delete',
     toProfile: 'To profile page',
     backToListings: 'Back to listings',
+    addToFavoritesTooltip:
+      'To add this item to favorites, sign up or log in to your account.',
   },
   sort: {
     priceExpensive: 'From cheap to expensive',

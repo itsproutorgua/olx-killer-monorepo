@@ -36,6 +36,7 @@ api = [
     path('', include('apps.favorites.urls', namespace='favorites')),
     path('', include('apps.locations.urls', namespace='locations')),
     path('', include('apps.chat.urls', namespace='chat')),
+    path('', include('apps.sendpulse.urls', namespace='sendpulse')),
     # Spectacular
     path('schema/', SpectacularAPIView.as_view(), name='schema'),
     # Optional UI:
