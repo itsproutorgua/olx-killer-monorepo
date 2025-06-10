@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { useProducts, type Product } from '@/entities/product'
@@ -19,6 +19,8 @@ export const BestDeals = () => {
   const isDesktop = useMediaQuery('(min-width: 1440px)')
   const { t } = useTranslation()
   const limit = 28
+  const sectionRef = useRef<HTMLElement | null>(null)
+  const prevOpen = useRef(false)
 
   const { data, cursor } = useProducts(
     {
@@ -28,8 +30,19 @@ export const BestDeals = () => {
     { Skeleton: <BestDealsSkeleton /> },
   )
 
+  // Scroll back into view when collapsing
+  useEffect(() => {
+    if (prevOpen.current && !isOpen && sectionRef.current) {
+      sectionRef.current.scrollIntoView({ behavior: 'smooth' })
+    }
+    prevOpen.current = isOpen
+  }, [isOpen])
+
   return (
-    <section className='container flex flex-col pt-[91px] xl:pt-[100px]'>
+    <section
+      ref={sectionRef}
+      className='container flex flex-col pt-[91px] xl:pt-[100px]'
+    >
       <SectionTitle title={t('title.bestDealsTitle')} />
       <Collapsible open={isOpen} onOpenChange={setIsOpen}>
         {cursor}
