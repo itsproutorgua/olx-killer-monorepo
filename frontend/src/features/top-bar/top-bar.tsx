@@ -43,10 +43,10 @@ export const TopBar = () => {
   }, [isExpanded, isSidebarOpen])
 
   return (
-    <div className='relative flex w-full items-center justify-between'>
+    <div className={`relative flex w-full items-center justify-between`}>
       <CatalogMenu
         onClick={() => setIsSidebarOpen(true)}
-        className='mr-5 h-10 w-10 shrink-0 cursor-pointer xl:hidden'
+        className={`mr-5 h-10 w-10 shrink-0 cursor-pointer xl:hidden ${isExpanded && 'hidden'}`}
       />
       <Logo
         className={`flex items-center justify-center transition-opacity duration-700 ${
@@ -78,7 +78,10 @@ export const TopBar = () => {
             <SearchIcon className='absolute left-[17.49px] xl:left-[22.49px] xl:top-1/2 xl:-translate-y-1/2' />
           </div>
         </div>
-        <button onClick={handleToggleSearch} className='z-10 ml-auto xl:hidden'>
+        <button
+          onClick={handleToggleSearch}
+          className={`z-10 ml-auto xl:hidden ${isExpanded && 'hidden'}`}
+        >
           <SearchIconRounded />
         </button>
 
