@@ -1,0 +1,382 @@
+[
+{
+  "model": "chat.chatroom",
+  "pk": 1,
+  "fields": {
+    "created_at": "2025-02-08T19:16:57.169Z",
+    "updated_at": "2025-02-08T19:16:57.169Z",
+    "first_user": 1,
+    "second_user": 2
+  }
+},
+{
+  "model": "chat.chatroom",
+  "pk": 2,
+  "fields": {
+    "created_at": "2025-02-21T16:48:02.491Z",
+    "updated_at": "2025-02-21T16:48:02.491Z",
+    "first_user": 3,
+    "second_user": 4
+  }
+},
+{
+  "model": "chat.chatroom",
+  "pk": 3,
+  "fields": {
+    "created_at": "2025-02-22T19:40:22.605Z",
+    "updated_at": "2025-02-22T19:40:22.605Z",
+    "first_user": 5,
+    "second_user": 4
+  }
+},
+{
+  "model": "chat.chatroom",
+  "pk": 54,
+  "fields": {
+    "created_at": "2025-02-24T14:35:27.412Z",
+    "updated_at": "2025-02-24T14:35:27.412Z",
+    "first_user": 15,
+    "second_user": 56
+  }
+},
+{
+  "model": "chat.chatroom",
+  "pk": 55,
+  "fields": {
+    "created_at": "2025-02-24T14:35:34.934Z",
+    "updated_at": "2025-02-24T14:35:34.934Z",
+    "first_user": 12,
+    "second_user": 56
+  }
+},
+{
+  "model": "chat.chatroom",
+  "pk": 58,
+  "fields": {
+    "created_at": "2025-02-24T14:41:15.380Z",
+    "updated_at": "2025-02-24T14:41:15.380Z",
+    "first_user": 15,
+    "second_user": 57
+  }
+},
+{
+  "model": "chat.chatroom",
+  "pk": 59,
+  "fields": {
+    "created_at": "2025-02-24T14:41:20.591Z",
+    "updated_at": "2025-02-24T14:41:20.591Z",
+    "first_user": 15,
+    "second_user": 58
+  }
+},
+{
+  "model": "chat.chatroom",
+  "pk": 61,
+  "fields": {
+    "created_at": "2025-02-24T14:43:03.822Z",
+    "updated_at": "2025-02-24T14:43:03.822Z",
+    "first_user": 1,
+    "second_user": 5
+  }
+},
+{
+  "model": "chat.chatroom",
+  "pk": 62,
+  "fields": {
+    "created_at": "2025-02-24T14:43:21.489Z",
+    "updated_at": "2025-02-24T14:43:21.489Z",
+    "first_user": 1,
+    "second_user": 6
+  }
+},
+{
+  "model": "chat.chatroom",
+  "pk": 64,
+  "fields": {
+    "created_at": "2025-02-24T14:44:01.395Z",
+    "updated_at": "2025-02-24T14:44:01.395Z",
+    "first_user": 1,
+    "second_user": 7
+  }
+},
+{
+  "model": "chat.chatroom",
+  "pk": 66,
+  "fields": {
+    "created_at": "2025-02-24T14:45:48.978Z",
+    "updated_at": "2025-02-24T14:45:48.978Z",
+    "first_user": 2,
+    "second_user": 8
+  }
+},
+{
+  "model": "chat.chatroom",
+  "pk": 68,
+  "fields": {
+    "created_at": "2025-02-24T14:58:24.165Z",
+    "updated_at": "2025-02-24T14:58:24.165Z",
+    "first_user": 2,
+    "second_user": 10
+  }
+},
+{
+  "model": "chat.chatroom",
+  "pk": 70,
+  "fields": {
+    "created_at": "2025-02-24T15:00:06.468Z",
+    "updated_at": "2025-02-24T15:00:06.468Z",
+    "first_user": 11,
+    "second_user": 2
+  }
+},
+{
+  "model": "chat.chatroom",
+  "pk": 71,
+  "fields": {
+    "created_at": "2025-02-24T15:00:12.936Z",
+    "updated_at": "2025-02-24T15:00:12.936Z",
+    "first_user": 2,
+    "second_user": 11
+  }
+},
+{
+  "model": "chat.chatroom",
+  "pk": 72,
+  "fields": {
+    "created_at": "2025-02-24T15:06:46.961Z",
+    "updated_at": "2025-02-24T15:06:46.961Z",
+    "first_user": 3,
+    "second_user": 11
+  }
+},
+{
+  "model": "chat.chatroom",
+  "pk": 73,
+  "fields": {
+    "created_at": "2025-02-24T15:06:57.621Z",
+    "updated_at": "2025-02-24T15:06:57.621Z",
+    "first_user": 11,
+    "second_user": 3
+  }
+},
+{
+  "model": "chat.chatroom",
+  "pk": 74,
+  "fields": {
+    "created_at": "2025-02-24T15:07:39.262Z",
+    "updated_at": "2025-02-24T15:07:39.262Z",
+    "first_user": 15,
+    "second_user": 3
+  }
+},
+{
+  "model": "chat.chatroom",
+  "pk": 75,
+  "fields": {
+    "created_at": "2025-02-24T15:11:28.584Z",
+    "updated_at": "2025-02-24T15:11:28.584Z",
+    "first_user": 3,
+    "second_user": 15
+  }
+},
+{
+  "model": "chat.chatroom",
+  "pk": 76,
+  "fields": {
+    "created_at": "2025-02-24T15:23:10.233Z",
+    "updated_at": "2025-02-24T15:23:10.233Z",
+    "first_user": 1,
+    "second_user": 3
+  }
+},
+{
+  "model": "chat.chatroom",
+  "pk": 77,
+  "fields": {
+    "created_at": "2025-02-24T15:32:11.901Z",
+    "updated_at": "2025-02-24T15:32:11.901Z",
+    "first_user": 45,
+    "second_user": 568
+  }
+},
+{
+  "model": "chat.chatroom",
+  "pk": 78,
+  "fields": {
+    "created_at": "2025-02-24T20:41:28.683Z",
+    "updated_at": "2025-02-24T20:41:28.683Z",
+    "first_user": 3,
+    "second_user": 2
+  }
+},
+{
+  "model": "chat.chatroom",
+  "pk": 79,
+  "fields": {
+    "created_at": "2025-02-24T20:56:16.329Z",
+    "updated_at": "2025-02-24T20:56:16.329Z",
+    "first_user": 2,
+    "second_user": 2
+  }
+},
+{
+  "model": "chat.chatroom",
+  "pk": 80,
+  "fields": {
+    "created_at": "2025-02-24T21:02:26.804Z",
+    "updated_at": "2025-02-24T21:02:26.804Z",
+    "first_user": 19640,
+    "second_user": 1
+  }
+},
+{
+  "model": "chat.chatroom",
+  "pk": 81,
+  "fields": {
+    "created_at": "2025-02-26T15:52:18.137Z",
+    "updated_at": "2025-02-26T15:52:18.137Z",
+    "first_user": 19629,
+    "second_user": 19628
+  }
+},
+{
+  "model": "chat.chatroom",
+  "pk": 82,
+  "fields": {
+    "created_at": "2025-03-17T17:25:14.764Z",
+    "updated_at": "2025-03-17T17:25:14.764Z",
+    "first_user": 19628,
+    "second_user": 2
+  }
+},
+{
+  "model": "chat.chatroom",
+  "pk": 83,
+  "fields": {
+    "created_at": "2025-03-24T11:46:14.167Z",
+    "updated_at": "2025-03-24T11:46:14.167Z",
+    "first_user": 13185,
+    "second_user": 19629
+  }
+},
+{
+  "model": "chat.chatroom",
+  "pk": 84,
+  "fields": {
+    "created_at": "2025-03-24T12:02:03.149Z",
+    "updated_at": "2025-03-24T12:02:03.149Z",
+    "first_user": 13185,
+    "second_user": 13185
+  }
+},
+{
+  "model": "chat.chatroom",
+  "pk": 85,
+  "fields": {
+    "created_at": "2025-03-25T11:48:37.379Z",
+    "updated_at": "2025-03-25T11:48:37.379Z",
+    "first_user": 19641,
+    "second_user": 19629
+  }
+},
+{
+  "model": "chat.chatroom",
+  "pk": 86,
+  "fields": {
+    "created_at": "2025-03-25T19:03:47.367Z",
+    "updated_at": "2025-03-25T19:03:47.367Z",
+    "first_user": 19640,
+    "second_user": 19629
+  }
+},
+{
+  "model": "chat.chatroom",
+  "pk": 87,
+  "fields": {
+    "created_at": "2025-03-28T21:34:11.045Z",
+    "updated_at": "2025-03-28T21:34:11.045Z",
+    "first_user": 19640,
+    "second_user": 19641
+  }
+},
+{
+  "model": "chat.chatroom",
+  "pk": 88,
+  "fields": {
+    "created_at": "2025-03-30T12:03:35.496Z",
+    "updated_at": "2025-03-30T12:03:35.496Z",
+    "first_user": 19640,
+    "second_user": 19640
+  }
+},
+{
+  "model": "chat.chatroom",
+  "pk": 89,
+  "fields": {
+    "created_at": "2025-04-08T18:21:23.179Z",
+    "updated_at": "2025-04-08T18:21:23.179Z",
+    "first_user": 19640,
+    "second_user": 19622
+  }
+},
+{
+  "model": "chat.chatroom",
+  "pk": 91,
+  "fields": {
+    "created_at": "2025-04-18T20:06:58.882Z",
+    "updated_at": "2025-04-18T20:06:58.882Z",
+    "first_user": 15536,
+    "second_user": 15536
+  }
+},
+{
+  "model": "chat.chatroom",
+  "pk": 92,
+  "fields": {
+    "created_at": "2025-04-25T19:33:29.795Z",
+    "updated_at": "2025-04-25T19:33:29.795Z",
+    "first_user": 15536,
+    "second_user": 19640
+  }
+},
+{
+  "model": "chat.chatroom",
+  "pk": 93,
+  "fields": {
+    "created_at": "2025-04-29T16:55:22.010Z",
+    "updated_at": "2025-04-29T16:55:22.010Z",
+    "first_user": 19640,
+    "second_user": 15535
+  }
+},
+{
+  "model": "chat.chatroom",
+  "pk": 94,
+  "fields": {
+    "created_at": "2025-05-01T18:11:25.436Z",
+    "updated_at": "2025-05-01T18:11:25.436Z",
+    "first_user": 19640,
+    "second_user": 15534
+  }
+},
+{
+  "model": "chat.chatroom",
+  "pk": 95,
+  "fields": {
+    "created_at": "2025-05-01T18:16:53.063Z",
+    "updated_at": "2025-05-01T18:16:53.063Z",
+    "first_user": 19640,
+    "second_user": 15537
+  }
+},
+{
+  "model": "chat.chatroom",
+  "pk": 96,
+  "fields": {
+    "created_at": "2025-05-25T18:38:14.313Z",
+    "updated_at": "2025-05-25T18:38:14.313Z",
+    "first_user": 19640,
+    "second_user": 19642
+  }
+}
+]

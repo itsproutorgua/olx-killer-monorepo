@@ -1,0 +1,29 @@
+[
+{
+  "model": "sendpulse.userleadsfromelectronink",
+  "pk": 1,
+  "fields": {
+    "name": "John Doe",
+    "email": "user@example.com",
+    "text": "I want to know more about your services"
+  }
+},
+{
+  "model": "sendpulse.userleadsfromelectronink",
+  "pk": 2,
+  "fields": {
+    "name": "John Doe",
+    "email": "user@example.com",
+    "text": "I want to know more about your services"
+  }
+},
+{
+  "model": "sendpulse.userleadsfromelectronink",
+  "pk": 3,
+  "fields": {
+    "name": "John Doe",
+    "email": "user@example.com",
+    "text": "I want to know more about your services"
+  }
+}
+]
