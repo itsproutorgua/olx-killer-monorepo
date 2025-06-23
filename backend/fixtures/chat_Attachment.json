@@ -1,0 +1,35 @@
+[
+{
+  "model": "chat.attachment",
+  "pk": 1,
+  "fields": {
+    "message": 178,
+    "file": "chat_attachments/images/2025/05/12/Screenshot_2025-01-26_235322.png",
+    "file_name": "Screenshot_2025-01-26_235322.png",
+    "file_size": 115425,
+    "content_type": "image/png"
+  }
+},
+{
+  "model": "chat.attachment",
+  "pk": 2,
+  "fields": {
+    "message": 182,
+    "file": "chat_attachments/images/2025/05/12/Screenshot_2025-01-28_191925.png",
+    "file_name": "Screenshot_2025-01-28_191925.png",
+    "file_size": 46554,
+    "content_type": "image/png"
+  }
+},
+{
+  "model": "chat.attachment",
+  "pk": 3,
+  "fields": {
+    "message": 183,
+    "file": "chat_attachments/images/2025/05/13/Screenshot_2025-01-29_194356.png",
+    "file_name": "Screenshot_2025-01-29_194356.png",
+    "file_size": 58605,
+    "content_type": "image/png"
+  }
+}
+]

@@ -1,0 +1,2342 @@
+[
+{
+  "model": "chat.message",
+  "pk": 1,
+  "fields": {
+    "created_at": "2025-02-14T17:53:12.632Z",
+    "updated_at": "2025-02-14T17:53:12.632Z",
+    "chat_room": 1,
+    "sender": 1,
+    "text": "privet",
+    "status": "sent"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 2,
+  "fields": {
+    "created_at": "2025-02-14T17:53:15.879Z",
+    "updated_at": "2025-02-14T17:53:15.879Z",
+    "chat_room": 1,
+    "sender": 2,
+    "text": "poka",
+    "status": "sent"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 3,
+  "fields": {
+    "created_at": "2025-02-14T17:53:29.601Z",
+    "updated_at": "2025-02-14T17:53:29.601Z",
+    "chat_room": 1,
+    "sender": 1,
+    "text": "da",
+    "status": "sent"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 4,
+  "fields": {
+    "created_at": "2025-02-14T17:53:32.256Z",
+    "updated_at": "2025-02-14T17:53:32.256Z",
+    "chat_room": 1,
+    "sender": 2,
+    "text": "ne",
+    "status": "sent"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 5,
+  "fields": {
+    "created_at": "2025-02-16T18:52:14.939Z",
+    "updated_at": "2025-02-16T18:52:14.939Z",
+    "chat_room": 1,
+    "sender": 1,
+    "text": "ab?",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 6,
+  "fields": {
+    "created_at": "2025-02-16T18:55:06.417Z",
+    "updated_at": "2025-02-16T18:55:06.417Z",
+    "chat_room": 1,
+    "sender": 1,
+    "text": "ab?",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 7,
+  "fields": {
+    "created_at": "2025-02-16T19:02:22.505Z",
+    "updated_at": "2025-02-16T19:02:22.505Z",
+    "chat_room": 1,
+    "sender": 1,
+    "text": "ab?",
+    "status": "sent"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 8,
+  "fields": {
+    "created_at": "2025-02-16T19:07:44.920Z",
+    "updated_at": "2025-02-16T19:07:44.920Z",
+    "chat_room": 1,
+    "sender": 1,
+    "text": "ab?",
+    "status": "sent"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 9,
+  "fields": {
+    "created_at": "2025-02-16T19:09:35.011Z",
+    "updated_at": "2025-02-16T19:09:35.011Z",
+    "chat_room": 1,
+    "sender": 1,
+    "text": "ab?",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 10,
+  "fields": {
+    "created_at": "2025-02-16T19:12:00.538Z",
+    "updated_at": "2025-02-16T19:12:00.538Z",
+    "chat_room": 1,
+    "sender": 1,
+    "text": "ab?",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 11,
+  "fields": {
+    "created_at": "2025-02-16T19:14:59.167Z",
+    "updated_at": "2025-02-16T19:14:59.167Z",
+    "chat_room": 1,
+    "sender": 1,
+    "text": "ab?",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 12,
+  "fields": {
+    "created_at": "2025-02-16T19:19:07.600Z",
+    "updated_at": "2025-02-16T19:19:07.600Z",
+    "chat_room": 1,
+    "sender": 1,
+    "text": "ab?",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 13,
+  "fields": {
+    "created_at": "2025-02-16T19:21:56.232Z",
+    "updated_at": "2025-02-16T19:21:56.233Z",
+    "chat_room": 1,
+    "sender": 1,
+    "text": "ab?",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 14,
+  "fields": {
+    "created_at": "2025-02-16T19:24:06.810Z",
+    "updated_at": "2025-02-16T19:24:06.810Z",
+    "chat_room": 1,
+    "sender": 1,
+    "text": "ab?",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 15,
+  "fields": {
+    "created_at": "2025-02-16T19:25:45.132Z",
+    "updated_at": "2025-02-16T19:25:45.132Z",
+    "chat_room": 1,
+    "sender": 1,
+    "text": "ab?",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 16,
+  "fields": {
+    "created_at": "2025-02-16T19:32:51.910Z",
+    "updated_at": "2025-02-16T19:32:51.910Z",
+    "chat_room": 1,
+    "sender": 1,
+    "text": "ab?",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 17,
+  "fields": {
+    "created_at": "2025-02-16T19:34:31.971Z",
+    "updated_at": "2025-02-21T17:19:05.197Z",
+    "chat_room": 1,
+    "sender": 10073,
+    "text": "gegnhgr",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 18,
+  "fields": {
+    "created_at": "2025-02-16T19:38:52.103Z",
+    "updated_at": "2025-02-21T17:17:25.360Z",
+    "chat_room": 1,
+    "sender": 1,
+    "text": "import json\r\n\r\nfrom channels.generic.websocket import AsyncWebsocketConsumer\r\n\r\nfrom apps.chat.consumers.messages_operations import chat_message\r\nfrom apps.chat.consumers.messages_operations import get_message\r\nfrom apps.chat.consumers.messages_operations import mark_message_as_delivered\r\nfrom apps.chat.consumers.messages_operations import mark_message_as_read\r\nfrom apps.chat.consumers.messages_operations import message_deleted\r\nfrom apps.chat.consumers.messages_operations import message_edited\r\nfrom apps.chat.consumers.messages_operations import save_message\r\nfrom apps.chat.consumers.messages_operations import send_last_messages\r\nfrom apps.chat.consumers.messages_operations import serialize_message\r\nfrom apps.chat.consumers.users_and_rooms_operations import authenticate_user\r\nfrom apps.chat.consumers.users_and_rooms_operations import get_chat_room\r\nfrom apps.chat.consumers.users_and_rooms_operations import get_recipient\r\nfrom apps.chat.consumers.users_and_rooms_operations import is_user_in_chat\r\nfrom apps.chat.consumers.users_and_rooms_operations import is_user_online\r\nfrom apps.chat.consumers.users_and_rooms_operations import update_user_status\r\n\r\n\r\nclass ChatConsumer(AsyncWebsocketConsumer):\r\n    async def connect(self):\r\n        self.room_id = self.scope['url_route']['kwargs']['room_id']\r\n        self.chat_group_name = f'chat_{self.room_id}'\r\n\r\n        # Check if chat room exists\r\n        self.room = await get_chat_room(self.room_id)\r\n        if not self.room:\r\n            return await self.close()\r\n\r\n        # Authenticate user\r\n        self.scope['user'] = await authenticate_user(self.scope)\r\n        if not self.scope['user']:\r\n            return await self.close()\r\n\r\n        # Check if user is in chat\r\n        if not await is_user_in_chat(self.room_id, self.scope['user'].email):\r\n            return await self.close()\r\n\r\n        # Connect to chat group\r\n        await self.channel_layer.group_add(self.chat_group_name, self.channel_name)\r\n        await self.accept()\r\n\r\n        # Sending last messages\r\n        await send_last_messages(self)\r\n\r\n        # Update user status\r\n        await update_user_status(self.scope['user'], is_online=True)\r\n\r\n    async def disconnect(self, close_code):\r\n        # Leave chat group\r\n        await self.channel_layer.group_discard(self.chat_group_name, self.channel_name)\r\n\r\n        # Update user status\r\n        await update_user_status(self.scope['user'], is_online=False)\r\n\r\n    async def receive(self, text_data):\r\n        data = json.loads(text_data)\r\n        message_text = data.get('message')\r\n        if not message_text:\r\n            return\r\n\r\n        # Save message to database\r\n        message = await save_message(self, message_text)\r\n\r\n        # Send message to chat group\r\n        await self.channel_layer.group_send(\r\n            self.chat_group_name,\r\n            {\r\n                'type': 'chat_message',\r\n                'message_id': message.id,\r\n            },\r\n        )\r\n\r\n    async def chat_message(self, event):\r\n        await chat_message(self, event)\r\n\r\n    async def mark_message_as_delivered(self, message_id):\r\n        await mark_message_as_delivered(self, message_id)\r\n\r\n    async def mark_message_as_read(self, message_id):\r\n        await mark_message_as_read(self, message_id)\r\n\r\n    async def get_recipient(self):\r\n        return await get_recipient(self.room, self.scope['user'])\r\n\r\n    async def message_deleted(self, event):\r\n        await message_deleted(self, event)\r\n\r\n    async def message_edited(self, event):\r\n        await message_edited(self, event)\r\n\r\n    @staticmethod\r\n    async def is_user_online(user):\r\n        return await is_user_online(user)\r\n\r\n    @staticmethod\r\n    async def get_message(message_id):\r\n        return await get_message(message_id)\r\n\r\n    @staticmethod\r\n    async def serialize_message(message):\r\n        return await serialize_message(message)",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 19,
+  "fields": {
+    "created_at": "2025-02-16T19:39:12.764Z",
+    "updated_at": "2025-02-16T19:39:12.764Z",
+    "chat_room": 1,
+    "sender": 1,
+    "text": "bb?",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 20,
+  "fields": {
+    "created_at": "2025-02-16T19:48:39.976Z",
+    "updated_at": "2025-02-16T19:48:39.976Z",
+    "chat_room": 1,
+    "sender": 1,
+    "text": "bb?",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 21,
+  "fields": {
+    "created_at": "2025-02-16T19:49:11.455Z",
+    "updated_at": "2025-02-16T19:49:11.455Z",
+    "chat_room": 1,
+    "sender": 1,
+    "text": "bb?",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 22,
+  "fields": {
+    "created_at": "2025-02-16T19:51:45.657Z",
+    "updated_at": "2025-02-16T19:51:45.657Z",
+    "chat_room": 1,
+    "sender": 1,
+    "text": "bb?",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 23,
+  "fields": {
+    "created_at": "2025-02-16T19:52:07.218Z",
+    "updated_at": "2025-02-16T19:52:07.218Z",
+    "chat_room": 1,
+    "sender": 1,
+    "text": "bb?",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 24,
+  "fields": {
+    "created_at": "2025-02-16T19:54:47.391Z",
+    "updated_at": "2025-02-16T19:54:47.391Z",
+    "chat_room": 1,
+    "sender": 1,
+    "text": "bb?",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 25,
+  "fields": {
+    "created_at": "2025-02-16T19:55:13.038Z",
+    "updated_at": "2025-02-16T19:55:13.038Z",
+    "chat_room": 1,
+    "sender": 1,
+    "text": "bb?",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 26,
+  "fields": {
+    "created_at": "2025-02-16T19:56:41.691Z",
+    "updated_at": "2025-02-16T19:56:41.691Z",
+    "chat_room": 1,
+    "sender": 1,
+    "text": "bb?",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 27,
+  "fields": {
+    "created_at": "2025-02-16T19:58:21.401Z",
+    "updated_at": "2025-02-16T19:58:21.401Z",
+    "chat_room": 1,
+    "sender": 1,
+    "text": "bb?",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 28,
+  "fields": {
+    "created_at": "2025-02-16T20:04:09.549Z",
+    "updated_at": "2025-02-16T20:04:09.549Z",
+    "chat_room": 1,
+    "sender": 1,
+    "text": "bb?",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 29,
+  "fields": {
+    "created_at": "2025-02-16T20:04:16.979Z",
+    "updated_at": "2025-02-16T20:04:16.979Z",
+    "chat_room": 1,
+    "sender": 1,
+    "text": "bb?",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 30,
+  "fields": {
+    "created_at": "2025-02-16T20:06:53.043Z",
+    "updated_at": "2025-02-16T20:06:53.043Z",
+    "chat_room": 1,
+    "sender": 1,
+    "text": "fgfsd",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 31,
+  "fields": {
+    "created_at": "2025-02-16T20:13:44.011Z",
+    "updated_at": "2025-02-16T20:13:44.011Z",
+    "chat_room": 1,
+    "sender": 1,
+    "text": "fgfsd",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 32,
+  "fields": {
+    "created_at": "2025-02-16T20:16:36.383Z",
+    "updated_at": "2025-02-16T20:16:36.383Z",
+    "chat_room": 1,
+    "sender": 1,
+    "text": "fgfsd",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 33,
+  "fields": {
+    "created_at": "2025-02-16T20:21:17.520Z",
+    "updated_at": "2025-02-16T20:21:17.520Z",
+    "chat_room": 1,
+    "sender": 1,
+    "text": "fgfsd",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 34,
+  "fields": {
+    "created_at": "2025-02-16T20:23:04.062Z",
+    "updated_at": "2025-02-16T20:23:04.062Z",
+    "chat_room": 1,
+    "sender": 1,
+    "text": "fgfsd",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 35,
+  "fields": {
+    "created_at": "2025-02-16T20:28:16.439Z",
+    "updated_at": "2025-02-16T20:28:16.439Z",
+    "chat_room": 1,
+    "sender": 1,
+    "text": "fgfsd",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 36,
+  "fields": {
+    "created_at": "2025-02-16T20:32:52.675Z",
+    "updated_at": "2025-02-16T20:32:52.675Z",
+    "chat_room": 1,
+    "sender": 1,
+    "text": "fgfsd",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 37,
+  "fields": {
+    "created_at": "2025-02-16T20:38:58.694Z",
+    "updated_at": "2025-02-16T20:38:58.694Z",
+    "chat_room": 1,
+    "sender": 1,
+    "text": "fgfsd",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 38,
+  "fields": {
+    "created_at": "2025-02-16T20:41:45.140Z",
+    "updated_at": "2025-02-16T20:41:45.140Z",
+    "chat_room": 1,
+    "sender": 1,
+    "text": "fgfsd",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 39,
+  "fields": {
+    "created_at": "2025-02-16T20:45:24.523Z",
+    "updated_at": "2025-02-16T20:45:24.523Z",
+    "chat_room": 1,
+    "sender": 1,
+    "text": "fgfsd",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 40,
+  "fields": {
+    "created_at": "2025-02-16T20:45:39.245Z",
+    "updated_at": "2025-02-16T20:45:39.245Z",
+    "chat_room": 1,
+    "sender": 1,
+    "text": "fgfsd",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 41,
+  "fields": {
+    "created_at": "2025-02-16T20:49:38.131Z",
+    "updated_at": "2025-02-16T20:49:38.131Z",
+    "chat_room": 1,
+    "sender": 1,
+    "text": "fgfsd",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 42,
+  "fields": {
+    "created_at": "2025-02-16T20:50:16.726Z",
+    "updated_at": "2025-02-21T16:57:26.073Z",
+    "chat_room": 1,
+    "sender": 5613,
+    "text": "boba",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 43,
+  "fields": {
+    "created_at": "2025-02-16T21:10:21.166Z",
+    "updated_at": "2025-02-16T21:10:21.166Z",
+    "chat_room": 1,
+    "sender": 1,
+    "text": "fgfsd",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 44,
+  "fields": {
+    "created_at": "2025-02-16T21:20:22.998Z",
+    "updated_at": "2025-02-16T21:20:22.998Z",
+    "chat_room": 1,
+    "sender": 1,
+    "text": "fgfsd",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 45,
+  "fields": {
+    "created_at": "2025-02-18T18:28:52.258Z",
+    "updated_at": "2025-02-18T18:28:52.258Z",
+    "chat_room": 1,
+    "sender": 1,
+    "text": "boba??",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 59,
+  "fields": {
+    "created_at": "2025-02-22T10:09:14.098Z",
+    "updated_at": "2025-02-22T10:09:14.098Z",
+    "chat_room": 2,
+    "sender": 3,
+    "text": "alo",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 60,
+  "fields": {
+    "created_at": "2025-02-23T01:34:51.629Z",
+    "updated_at": "2025-02-23T01:34:51.629Z",
+    "chat_room": 2,
+    "sender": 3,
+    "text": "hello",
+    "status": "delivered"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 61,
+  "fields": {
+    "created_at": "2025-02-23T01:42:26.888Z",
+    "updated_at": "2025-02-23T01:42:26.888Z",
+    "chat_room": 2,
+    "sender": 3,
+    "text": "alo",
+    "status": "delivered"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 66,
+  "fields": {
+    "created_at": "2025-02-24T17:28:24.011Z",
+    "updated_at": "2025-02-24T17:28:24.011Z",
+    "chat_room": 2,
+    "sender": 3,
+    "text": "grsdfnh",
+    "status": "delivered"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 99,
+  "fields": {
+    "created_at": "2025-02-24T20:53:22.663Z",
+    "updated_at": "2025-02-24T20:53:22.663Z",
+    "chat_room": 78,
+    "sender": 3,
+    "text": "cvbj,m.",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 100,
+  "fields": {
+    "created_at": "2025-02-24T21:42:27.688Z",
+    "updated_at": "2025-02-24T21:42:27.688Z",
+    "chat_room": 1,
+    "sender": 2,
+    "text": "popa",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 101,
+  "fields": {
+    "created_at": "2025-02-24T21:45:25.688Z",
+    "updated_at": "2025-02-24T21:45:25.688Z",
+    "chat_room": 1,
+    "sender": 1,
+    "text": "fgdgf",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 102,
+  "fields": {
+    "created_at": "2025-02-26T15:52:57.237Z",
+    "updated_at": "2025-02-26T15:52:57.237Z",
+    "chat_room": 81,
+    "sender": 19629,
+    "text": "bebaaaaa",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 103,
+  "fields": {
+    "created_at": "2025-02-26T15:56:47.173Z",
+    "updated_at": "2025-02-26T15:56:47.173Z",
+    "chat_room": 81,
+    "sender": 19628,
+    "text": "dcsfcs",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 104,
+  "fields": {
+    "created_at": "2025-02-28T21:21:15.402Z",
+    "updated_at": "2025-02-28T21:21:15.402Z",
+    "chat_room": 81,
+    "sender": 19628,
+    "text": "fdsfs",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 105,
+  "fields": {
+    "created_at": "2025-03-01T00:04:28.142Z",
+    "updated_at": "2025-03-01T00:04:28.142Z",
+    "chat_room": 81,
+    "sender": 19628,
+    "text": "dsffdsf",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 106,
+  "fields": {
+    "created_at": "2025-03-05T18:50:44.860Z",
+    "updated_at": "2025-03-05T18:50:44.860Z",
+    "chat_room": 81,
+    "sender": 19628,
+    "text": "cdscdsv",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 107,
+  "fields": {
+    "created_at": "2025-03-05T18:54:02.035Z",
+    "updated_at": "2025-03-05T18:54:02.035Z",
+    "chat_room": 81,
+    "sender": 19628,
+    "text": "egtb",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 108,
+  "fields": {
+    "created_at": "2025-03-24T06:44:32.156Z",
+    "updated_at": "2025-03-24T06:44:32.156Z",
+    "chat_room": 81,
+    "sender": 19628,
+    "text": "аівсівм",
+    "status": "delivered"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 109,
+  "fields": {
+    "created_at": "2025-03-25T12:36:31.236Z",
+    "updated_at": "2025-03-25T12:36:31.236Z",
+    "chat_room": 85,
+    "sender": 19641,
+    "text": "авиуапі",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 110,
+  "fields": {
+    "created_at": "2025-03-25T12:36:37.439Z",
+    "updated_at": "2025-03-25T12:36:37.440Z",
+    "chat_room": 85,
+    "sender": 19641,
+    "text": "перемога",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 111,
+  "fields": {
+    "created_at": "2025-03-25T19:04:18.339Z",
+    "updated_at": "2025-03-25T19:04:18.339Z",
+    "chat_room": 86,
+    "sender": 19640,
+    "text": "fesdas",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 114,
+  "fields": {
+    "created_at": "2025-04-03T14:28:22.747Z",
+    "updated_at": "2025-04-03T14:28:22.747Z",
+    "chat_room": 86,
+    "sender": 19640,
+    "text": "redfbgfg",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 115,
+  "fields": {
+    "created_at": "2025-04-03T14:45:47.787Z",
+    "updated_at": "2025-04-03T14:45:47.787Z",
+    "chat_room": 87,
+    "sender": 19640,
+    "text": "baba",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 124,
+  "fields": {
+    "created_at": "2025-04-29T16:58:48.005Z",
+    "updated_at": "2025-04-29T16:58:48.005Z",
+    "chat_room": 93,
+    "sender": 15535,
+    "text": "frwqecwe",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 125,
+  "fields": {
+    "created_at": "2025-04-29T16:58:50.814Z",
+    "updated_at": "2025-04-29T16:58:50.814Z",
+    "chat_room": 93,
+    "sender": 15535,
+    "text": "eqdwcx",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 126,
+  "fields": {
+    "created_at": "2025-04-29T16:59:51.278Z",
+    "updated_at": "2025-04-29T16:59:51.278Z",
+    "chat_room": 93,
+    "sender": 19640,
+    "text": "dwqqwdqw",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 127,
+  "fields": {
+    "created_at": "2025-04-29T18:24:44.000Z",
+    "updated_at": "2025-04-29T18:24:44.000Z",
+    "chat_room": 93,
+    "sender": 19640,
+    "text": "vfsa",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 128,
+  "fields": {
+    "created_at": "2025-04-29T18:25:54.740Z",
+    "updated_at": "2025-04-29T18:25:54.740Z",
+    "chat_room": 93,
+    "sender": 19640,
+    "text": "dwqfeqw",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 129,
+  "fields": {
+    "created_at": "2025-04-29T18:26:17.662Z",
+    "updated_at": "2025-04-29T18:26:17.662Z",
+    "chat_room": 93,
+    "sender": 19640,
+    "text": "fegwev",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 130,
+  "fields": {
+    "created_at": "2025-04-29T18:26:19.887Z",
+    "updated_at": "2025-04-29T18:26:19.887Z",
+    "chat_room": 93,
+    "sender": 19640,
+    "text": "csfrw",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 131,
+  "fields": {
+    "created_at": "2025-04-29T18:26:43.996Z",
+    "updated_at": "2025-04-29T18:26:43.996Z",
+    "chat_room": 93,
+    "sender": 19640,
+    "text": "ferf",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 132,
+  "fields": {
+    "created_at": "2025-04-29T18:26:46.820Z",
+    "updated_at": "2025-04-29T18:26:46.820Z",
+    "chat_room": 93,
+    "sender": 19640,
+    "text": "fwdqfwe",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 133,
+  "fields": {
+    "created_at": "2025-04-29T18:26:49.082Z",
+    "updated_at": "2025-04-29T18:26:49.082Z",
+    "chat_room": 93,
+    "sender": 19640,
+    "text": "fqewfewq",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 134,
+  "fields": {
+    "created_at": "2025-04-30T11:16:38.285Z",
+    "updated_at": "2025-04-30T11:16:38.285Z",
+    "chat_room": 93,
+    "sender": 19640,
+    "text": "fvwegoqquevhk",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 135,
+  "fields": {
+    "created_at": "2025-04-30T11:16:56.312Z",
+    "updated_at": "2025-04-30T11:16:56.312Z",
+    "chat_room": 93,
+    "sender": 19640,
+    "text": "efwwqeew",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 136,
+  "fields": {
+    "created_at": "2025-04-30T11:16:58.038Z",
+    "updated_at": "2025-04-30T11:16:58.038Z",
+    "chat_room": 93,
+    "sender": 19640,
+    "text": "dfewqfqew",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 137,
+  "fields": {
+    "created_at": "2025-04-30T11:17:15.010Z",
+    "updated_at": "2025-04-30T11:17:15.010Z",
+    "chat_room": 93,
+    "sender": 19640,
+    "text": "fwweq",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 138,
+  "fields": {
+    "created_at": "2025-04-30T11:17:16.891Z",
+    "updated_at": "2025-04-30T11:17:16.891Z",
+    "chat_room": 93,
+    "sender": 19640,
+    "text": "dfwewqwe",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 139,
+  "fields": {
+    "created_at": "2025-04-30T14:09:00.068Z",
+    "updated_at": "2025-04-30T14:09:00.068Z",
+    "chat_room": 93,
+    "sender": 15535,
+    "text": "fgrvwfqwj",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 140,
+  "fields": {
+    "created_at": "2025-04-30T14:10:53.488Z",
+    "updated_at": "2025-04-30T14:10:53.488Z",
+    "chat_room": 93,
+    "sender": 15535,
+    "text": "hblvrbhjkrf",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 141,
+  "fields": {
+    "created_at": "2025-04-30T14:17:07.457Z",
+    "updated_at": "2025-04-30T14:17:07.458Z",
+    "chat_room": 93,
+    "sender": 15535,
+    "text": "gthheegh",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 142,
+  "fields": {
+    "created_at": "2025-04-30T14:17:21.309Z",
+    "updated_at": "2025-04-30T14:17:21.309Z",
+    "chat_room": 93,
+    "sender": 15535,
+    "text": "bghheheat",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 143,
+  "fields": {
+    "created_at": "2025-04-30T14:17:25.009Z",
+    "updated_at": "2025-04-30T14:17:25.009Z",
+    "chat_room": 93,
+    "sender": 15535,
+    "text": "vdsgsgsr",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 144,
+  "fields": {
+    "created_at": "2025-04-30T14:24:49.592Z",
+    "updated_at": "2025-04-30T14:24:49.592Z",
+    "chat_room": 93,
+    "sender": 15535,
+    "text": "свфсфф",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 145,
+  "fields": {
+    "created_at": "2025-04-30T14:33:42.829Z",
+    "updated_at": "2025-04-30T14:33:42.829Z",
+    "chat_room": 93,
+    "sender": 15535,
+    "text": "мкуфмпц",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 146,
+  "fields": {
+    "created_at": "2025-04-30T14:36:10.276Z",
+    "updated_at": "2025-04-30T14:36:10.276Z",
+    "chat_room": 93,
+    "sender": 15535,
+    "text": "иотод",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 147,
+  "fields": {
+    "created_at": "2025-04-30T14:36:56.419Z",
+    "updated_at": "2025-04-30T14:36:56.419Z",
+    "chat_room": 93,
+    "sender": 15535,
+    "text": "толд.",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 148,
+  "fields": {
+    "created_at": "2025-04-30T14:40:10.010Z",
+    "updated_at": "2025-04-30T14:40:10.010Z",
+    "chat_room": 93,
+    "sender": 15535,
+    "text": "vdsasdvdsv",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 149,
+  "fields": {
+    "created_at": "2025-04-30T14:40:16.106Z",
+    "updated_at": "2025-04-30T14:40:16.106Z",
+    "chat_room": 93,
+    "sender": 15535,
+    "text": "vsdavsc",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 150,
+  "fields": {
+    "created_at": "2025-04-30T14:44:51.477Z",
+    "updated_at": "2025-04-30T14:44:51.477Z",
+    "chat_room": 93,
+    "sender": 19640,
+    "text": "gugjhjjh",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 157,
+  "fields": {
+    "created_at": "2025-05-01T20:15:53.058Z",
+    "updated_at": "2025-05-01T20:15:53.058Z",
+    "chat_room": 87,
+    "sender": 19640,
+    "text": "bfsdzbf",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 160,
+  "fields": {
+    "created_at": "2025-05-05T17:14:25.291Z",
+    "updated_at": "2025-05-05T17:14:25.291Z",
+    "chat_room": 93,
+    "sender": 19640,
+    "text": "fwefew",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 162,
+  "fields": {
+    "created_at": "2025-05-05T17:19:52.073Z",
+    "updated_at": "2025-05-05T17:19:52.073Z",
+    "chat_room": 93,
+    "sender": 19640,
+    "text": "qwdd",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 164,
+  "fields": {
+    "created_at": "2025-05-05T17:28:10.339Z",
+    "updated_at": "2025-05-05T17:28:10.339Z",
+    "chat_room": 93,
+    "sender": 19640,
+    "text": "  1",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 165,
+  "fields": {
+    "created_at": "2025-05-07T10:22:39.847Z",
+    "updated_at": "2025-05-07T10:22:39.847Z",
+    "chat_room": 93,
+    "sender": 19640,
+    "text": "fe2ew",
+    "status": "sent"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 166,
+  "fields": {
+    "created_at": "2025-05-07T10:25:13.663Z",
+    "updated_at": "2025-05-07T10:25:13.663Z",
+    "chat_room": 93,
+    "sender": 19640,
+    "text": "bkjk",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 167,
+  "fields": {
+    "created_at": "2025-05-11T10:25:16.951Z",
+    "updated_at": "2025-05-11T10:25:16.951Z",
+    "chat_room": 93,
+    "sender": 19640,
+    "text": "rgwe",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 168,
+  "fields": {
+    "created_at": "2025-05-11T18:20:04.805Z",
+    "updated_at": "2025-05-11T18:20:04.805Z",
+    "chat_room": 93,
+    "sender": 19640,
+    "text": "гдиол",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 169,
+  "fields": {
+    "created_at": "2025-05-11T18:20:34.378Z",
+    "updated_at": "2025-05-11T18:20:34.378Z",
+    "chat_room": 93,
+    "sender": 19640,
+    "text": "мдри",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 170,
+  "fields": {
+    "created_at": "2025-05-11T18:28:49.947Z",
+    "updated_at": "2025-05-11T18:28:49.947Z",
+    "chat_room": 93,
+    "sender": 19640,
+    "text": "nhkl/",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 171,
+  "fields": {
+    "created_at": "2025-05-11T18:36:14.999Z",
+    "updated_at": "2025-05-11T18:36:14.999Z",
+    "chat_room": 93,
+    "sender": 19640,
+    "text": "nhkl/",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 172,
+  "fields": {
+    "created_at": "2025-05-12T10:16:49.454Z",
+    "updated_at": "2025-05-12T10:16:49.454Z",
+    "chat_room": 93,
+    "sender": 19640,
+    "text": "",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 173,
+  "fields": {
+    "created_at": "2025-05-12T14:15:36.926Z",
+    "updated_at": "2025-05-12T14:15:36.926Z",
+    "chat_room": 93,
+    "sender": 19640,
+    "text": "",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 174,
+  "fields": {
+    "created_at": "2025-05-12T14:21:15.442Z",
+    "updated_at": "2025-05-12T14:21:15.442Z",
+    "chat_room": 93,
+    "sender": 19640,
+    "text": "vffvvf",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 175,
+  "fields": {
+    "created_at": "2025-05-12T14:21:42.899Z",
+    "updated_at": "2025-05-12T14:21:42.899Z",
+    "chat_room": 93,
+    "sender": 19640,
+    "text": "",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 176,
+  "fields": {
+    "created_at": "2025-05-12T14:27:21.471Z",
+    "updated_at": "2025-05-12T14:27:21.472Z",
+    "chat_room": 93,
+    "sender": 19640,
+    "text": "",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 177,
+  "fields": {
+    "created_at": "2025-05-12T15:00:27.700Z",
+    "updated_at": "2025-05-12T15:00:27.700Z",
+    "chat_room": 93,
+    "sender": 19640,
+    "text": "fewfwew",
+    "status": "sent"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 178,
+  "fields": {
+    "created_at": "2025-05-12T15:05:23.947Z",
+    "updated_at": "2025-05-12T15:05:23.947Z",
+    "chat_room": 93,
+    "sender": 19640,
+    "text": "beawg",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 179,
+  "fields": {
+    "created_at": "2025-05-12T15:09:23.065Z",
+    "updated_at": "2025-05-12T15:09:23.065Z",
+    "chat_room": 93,
+    "sender": 19640,
+    "text": "vrgrwq",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 180,
+  "fields": {
+    "created_at": "2025-05-12T15:09:31.260Z",
+    "updated_at": "2025-05-12T15:09:31.260Z",
+    "chat_room": 93,
+    "sender": 15535,
+    "text": "fewf",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 181,
+  "fields": {
+    "created_at": "2025-05-12T15:09:43.577Z",
+    "updated_at": "2025-05-12T15:09:43.577Z",
+    "chat_room": 93,
+    "sender": 19640,
+    "text": "frwfe",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 182,
+  "fields": {
+    "created_at": "2025-05-12T15:22:02.959Z",
+    "updated_at": "2025-05-12T15:22:02.959Z",
+    "chat_room": 93,
+    "sender": 19640,
+    "text": "fewewwe",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 183,
+  "fields": {
+    "created_at": "2025-05-13T08:48:09.532Z",
+    "updated_at": "2025-05-13T08:48:09.532Z",
+    "chat_room": 93,
+    "sender": 19640,
+    "text": "",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 184,
+  "fields": {
+    "created_at": "2025-05-24T07:55:37.620Z",
+    "updated_at": "2025-05-24T07:55:37.621Z",
+    "chat_room": 93,
+    "sender": 15535,
+    "text": "wfewrf",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 185,
+  "fields": {
+    "created_at": "2025-05-24T07:57:49.607Z",
+    "updated_at": "2025-05-24T07:57:49.607Z",
+    "chat_room": 93,
+    "sender": 15535,
+    "text": "bkljnjk",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 186,
+  "fields": {
+    "created_at": "2025-05-24T07:57:52.194Z",
+    "updated_at": "2025-05-24T07:57:52.194Z",
+    "chat_room": 93,
+    "sender": 15535,
+    "text": "bjkjk",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 187,
+  "fields": {
+    "created_at": "2025-05-24T07:59:56.351Z",
+    "updated_at": "2025-05-24T07:59:56.351Z",
+    "chat_room": 93,
+    "sender": 19640,
+    "text": "jbkk;",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 188,
+  "fields": {
+    "created_at": "2025-05-24T08:01:05.339Z",
+    "updated_at": "2025-05-24T08:01:05.339Z",
+    "chat_room": 93,
+    "sender": 15535,
+    "text": "fewwe",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 189,
+  "fields": {
+    "created_at": "2025-05-24T08:10:40.909Z",
+    "updated_at": "2025-05-24T08:10:40.909Z",
+    "chat_room": 93,
+    "sender": 15535,
+    "text": "wfeeq",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 190,
+  "fields": {
+    "created_at": "2025-05-24T08:13:52.995Z",
+    "updated_at": "2025-05-24T08:13:52.995Z",
+    "chat_room": 93,
+    "sender": 15535,
+    "text": "vchjl ",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 191,
+  "fields": {
+    "created_at": "2025-05-24T08:14:34.161Z",
+    "updated_at": "2025-05-24T08:14:34.161Z",
+    "chat_room": 93,
+    "sender": 15535,
+    "text": "bjk;j;",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 192,
+  "fields": {
+    "created_at": "2025-05-24T08:22:48.656Z",
+    "updated_at": "2025-05-24T08:22:48.656Z",
+    "chat_room": 93,
+    "sender": 15535,
+    "text": "bubjl;n'n;l",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 193,
+  "fields": {
+    "created_at": "2025-05-24T09:16:27.901Z",
+    "updated_at": "2025-05-24T09:16:27.901Z",
+    "chat_room": 93,
+    "sender": 15535,
+    "text": "wfwee",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 194,
+  "fields": {
+    "created_at": "2025-05-24T09:16:29.306Z",
+    "updated_at": "2025-05-24T09:16:29.306Z",
+    "chat_room": 93,
+    "sender": 15535,
+    "text": "fewew",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 195,
+  "fields": {
+    "created_at": "2025-05-24T09:16:38.388Z",
+    "updated_at": "2025-05-24T09:16:38.388Z",
+    "chat_room": 93,
+    "sender": 15535,
+    "text": "fewfewfwe",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 196,
+  "fields": {
+    "created_at": "2025-05-24T09:16:39.605Z",
+    "updated_at": "2025-05-24T09:16:39.605Z",
+    "chat_room": 93,
+    "sender": 15535,
+    "text": "fwew",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 197,
+  "fields": {
+    "created_at": "2025-05-24T09:22:05.404Z",
+    "updated_at": "2025-05-24T09:22:05.404Z",
+    "chat_room": 93,
+    "sender": 15535,
+    "text": "bjbkjbbj",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 198,
+  "fields": {
+    "created_at": "2025-05-24T09:22:07.084Z",
+    "updated_at": "2025-05-24T09:22:07.084Z",
+    "chat_room": 93,
+    "sender": 15535,
+    "text": "bjbk",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 199,
+  "fields": {
+    "created_at": "2025-05-24T09:23:37.648Z",
+    "updated_at": "2025-05-24T09:23:37.648Z",
+    "chat_room": 93,
+    "sender": 19640,
+    "text": "fewew",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 200,
+  "fields": {
+    "created_at": "2025-05-24T09:26:05.297Z",
+    "updated_at": "2025-05-24T09:26:05.297Z",
+    "chat_room": 93,
+    "sender": 19640,
+    "text": "fweew",
+    "status": "delivered"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 201,
+  "fields": {
+    "created_at": "2025-05-24T09:26:15.384Z",
+    "updated_at": "2025-05-24T09:26:15.384Z",
+    "chat_room": 93,
+    "sender": 19640,
+    "text": "efwewew",
+    "status": "delivered"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 202,
+  "fields": {
+    "created_at": "2025-05-24T09:40:49.260Z",
+    "updated_at": "2025-05-24T09:40:49.260Z",
+    "chat_room": 93,
+    "sender": 19640,
+    "text": "fewwefew",
+    "status": "delivered"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 203,
+  "fields": {
+    "created_at": "2025-05-24T09:44:03.370Z",
+    "updated_at": "2025-05-24T09:44:03.370Z",
+    "chat_room": 93,
+    "sender": 19640,
+    "text": "ghlkk;",
+    "status": "delivered"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 204,
+  "fields": {
+    "created_at": "2025-05-25T18:38:46.497Z",
+    "updated_at": "2025-05-25T18:38:46.497Z",
+    "chat_room": 96,
+    "sender": 19640,
+    "text": "fefee",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 205,
+  "fields": {
+    "created_at": "2025-05-25T18:43:39.727Z",
+    "updated_at": "2025-05-25T18:43:39.727Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "efef",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 206,
+  "fields": {
+    "created_at": "2025-05-25T18:45:29.448Z",
+    "updated_at": "2025-05-25T18:45:29.448Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "fewfe",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 207,
+  "fields": {
+    "created_at": "2025-05-25T18:46:12.795Z",
+    "updated_at": "2025-05-25T18:46:12.795Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "rffr",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 208,
+  "fields": {
+    "created_at": "2025-05-25T18:47:11.000Z",
+    "updated_at": "2025-05-25T18:47:11.000Z",
+    "chat_room": 96,
+    "sender": 19640,
+    "text": "rf3fwe",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 209,
+  "fields": {
+    "created_at": "2025-05-25T18:48:01.397Z",
+    "updated_at": "2025-05-25T18:48:01.397Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "fwefee",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 210,
+  "fields": {
+    "created_at": "2025-05-25T18:48:14.039Z",
+    "updated_at": "2025-05-25T18:48:14.039Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "fwfee",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 211,
+  "fields": {
+    "created_at": "2025-05-25T18:48:38.470Z",
+    "updated_at": "2025-05-25T18:48:38.470Z",
+    "chat_room": 96,
+    "sender": 19640,
+    "text": "ewffwefwe",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 212,
+  "fields": {
+    "created_at": "2025-05-25T19:00:59.779Z",
+    "updated_at": "2025-05-25T19:00:59.779Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "32rfew",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 213,
+  "fields": {
+    "created_at": "2025-05-25T19:02:22.842Z",
+    "updated_at": "2025-05-25T19:02:22.842Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "hjbvbhjbhj",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 214,
+  "fields": {
+    "created_at": "2025-05-25T19:22:13.297Z",
+    "updated_at": "2025-05-25T19:22:13.297Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "3fefewfew",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 215,
+  "fields": {
+    "created_at": "2025-05-25T19:26:14.124Z",
+    "updated_at": "2025-05-25T19:26:14.124Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "fewfwe",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 216,
+  "fields": {
+    "created_at": "2025-05-25T19:31:10.166Z",
+    "updated_at": "2025-05-25T19:31:10.166Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "frwffeew",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 217,
+  "fields": {
+    "created_at": "2025-05-25T19:32:15.727Z",
+    "updated_at": "2025-05-25T19:32:15.727Z",
+    "chat_room": 96,
+    "sender": 19640,
+    "text": "fefeewf",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 218,
+  "fields": {
+    "created_at": "2025-05-25T19:33:12.802Z",
+    "updated_at": "2025-05-25T19:33:12.802Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "fewfe",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 219,
+  "fields": {
+    "created_at": "2025-05-25T19:33:16.355Z",
+    "updated_at": "2025-05-25T19:33:16.355Z",
+    "chat_room": 96,
+    "sender": 19640,
+    "text": "fweew",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 220,
+  "fields": {
+    "created_at": "2025-05-25T19:34:02.274Z",
+    "updated_at": "2025-05-25T19:34:02.274Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "fefew",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 221,
+  "fields": {
+    "created_at": "2025-05-25T19:34:07.015Z",
+    "updated_at": "2025-05-25T19:34:07.015Z",
+    "chat_room": 96,
+    "sender": 19640,
+    "text": "fewew",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 222,
+  "fields": {
+    "created_at": "2025-05-25T19:34:23.655Z",
+    "updated_at": "2025-05-25T19:34:23.655Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "fewfwe",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 223,
+  "fields": {
+    "created_at": "2025-05-25T19:34:31.236Z",
+    "updated_at": "2025-05-25T19:34:31.236Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "fweew",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 224,
+  "fields": {
+    "created_at": "2025-05-25T19:34:33.118Z",
+    "updated_at": "2025-05-25T19:34:33.118Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "fwew",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 225,
+  "fields": {
+    "created_at": "2025-05-25T19:34:49.793Z",
+    "updated_at": "2025-05-25T19:34:49.793Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "fweewe",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 226,
+  "fields": {
+    "created_at": "2025-05-25T19:35:02.410Z",
+    "updated_at": "2025-05-25T19:35:02.410Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "feww",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 227,
+  "fields": {
+    "created_at": "2025-05-28T17:43:52.752Z",
+    "updated_at": "2025-05-28T17:43:52.752Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "fewwfewe",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 228,
+  "fields": {
+    "created_at": "2025-05-28T17:43:54.134Z",
+    "updated_at": "2025-05-28T17:43:54.134Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "fwfewfew",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 229,
+  "fields": {
+    "created_at": "2025-05-28T17:58:05.914Z",
+    "updated_at": "2025-05-28T17:58:05.914Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "dfcwe",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 230,
+  "fields": {
+    "created_at": "2025-05-28T17:59:42.841Z",
+    "updated_at": "2025-05-28T17:59:42.841Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "fwewfe",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 231,
+  "fields": {
+    "created_at": "2025-05-28T18:04:06.900Z",
+    "updated_at": "2025-05-28T18:04:06.900Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "ewfew",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 232,
+  "fields": {
+    "created_at": "2025-05-28T18:06:06.195Z",
+    "updated_at": "2025-05-28T18:06:06.195Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "rwger",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 233,
+  "fields": {
+    "created_at": "2025-05-28T18:07:59.540Z",
+    "updated_at": "2025-05-28T18:07:59.540Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "dvd",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 234,
+  "fields": {
+    "created_at": "2025-05-28T18:08:09.204Z",
+    "updated_at": "2025-05-28T18:08:09.204Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "vsddsv",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 235,
+  "fields": {
+    "created_at": "2025-05-28T18:08:36.639Z",
+    "updated_at": "2025-05-28T18:08:36.639Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "fefewwe",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 236,
+  "fields": {
+    "created_at": "2025-05-28T18:09:43.218Z",
+    "updated_at": "2025-05-28T18:09:43.218Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "hvjl",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 237,
+  "fields": {
+    "created_at": "2025-05-28T18:10:08.183Z",
+    "updated_at": "2025-05-28T18:10:08.183Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "dvdsabvd",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 238,
+  "fields": {
+    "created_at": "2025-05-28T18:24:04.387Z",
+    "updated_at": "2025-05-28T18:24:04.387Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "feqfew",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 239,
+  "fields": {
+    "created_at": "2025-05-28T18:25:24.957Z",
+    "updated_at": "2025-05-28T18:25:24.957Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "feqgw",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 240,
+  "fields": {
+    "created_at": "2025-05-28T18:27:13.782Z",
+    "updated_at": "2025-05-28T18:27:13.782Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "feew",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 241,
+  "fields": {
+    "created_at": "2025-05-28T18:27:50.403Z",
+    "updated_at": "2025-05-28T18:27:50.403Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "fewfeww",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 242,
+  "fields": {
+    "created_at": "2025-05-28T18:29:45.732Z",
+    "updated_at": "2025-05-28T18:29:45.732Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "scadc",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 243,
+  "fields": {
+    "created_at": "2025-05-28T18:33:38.898Z",
+    "updated_at": "2025-05-28T18:33:38.898Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "fewfew",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 244,
+  "fields": {
+    "created_at": "2025-05-28T18:34:02.494Z",
+    "updated_at": "2025-05-28T18:34:02.494Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "defweew",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 245,
+  "fields": {
+    "created_at": "2025-05-28T18:35:16.884Z",
+    "updated_at": "2025-05-28T18:35:16.884Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "fewfwewe",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 246,
+  "fields": {
+    "created_at": "2025-05-28T18:35:32.844Z",
+    "updated_at": "2025-05-28T18:35:32.844Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "fewfe",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 247,
+  "fields": {
+    "created_at": "2025-05-28T18:35:36.870Z",
+    "updated_at": "2025-05-28T18:35:36.870Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "fewew",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 248,
+  "fields": {
+    "created_at": "2025-05-28T18:37:51.042Z",
+    "updated_at": "2025-05-28T18:37:51.043Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "fewwe",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 249,
+  "fields": {
+    "created_at": "2025-05-28T18:38:03.361Z",
+    "updated_at": "2025-05-28T18:38:03.361Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "fewfeew",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 250,
+  "fields": {
+    "created_at": "2025-05-28T18:38:07.380Z",
+    "updated_at": "2025-05-28T18:38:07.380Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "fewfew",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 251,
+  "fields": {
+    "created_at": "2025-05-28T18:39:26.775Z",
+    "updated_at": "2025-05-28T18:39:26.775Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "fewew",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 252,
+  "fields": {
+    "created_at": "2025-05-28T18:39:29.586Z",
+    "updated_at": "2025-05-28T18:39:29.586Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "fwefew",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 253,
+  "fields": {
+    "created_at": "2025-05-28T18:39:41.481Z",
+    "updated_at": "2025-05-28T18:39:41.481Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "fefewfew",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 254,
+  "fields": {
+    "created_at": "2025-05-28T18:39:58.372Z",
+    "updated_at": "2025-05-28T18:39:58.372Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "fwewe",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 255,
+  "fields": {
+    "created_at": "2025-05-28T18:43:11.906Z",
+    "updated_at": "2025-05-28T18:43:11.906Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "fweew",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 256,
+  "fields": {
+    "created_at": "2025-05-28T18:43:13.526Z",
+    "updated_at": "2025-05-28T18:43:13.526Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "fewfew",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 257,
+  "fields": {
+    "created_at": "2025-05-28T18:44:46.000Z",
+    "updated_at": "2025-05-28T18:44:46.000Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "ffewfew",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 258,
+  "fields": {
+    "created_at": "2025-05-28T18:44:47.496Z",
+    "updated_at": "2025-05-28T18:44:47.496Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "fewwe",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 259,
+  "fields": {
+    "created_at": "2025-05-28T18:48:19.338Z",
+    "updated_at": "2025-05-28T18:48:19.338Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "efwfeewf",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 260,
+  "fields": {
+    "created_at": "2025-05-28T18:48:19.229Z",
+    "updated_at": "2025-05-28T18:48:19.229Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "fewfew",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 261,
+  "fields": {
+    "created_at": "2025-05-28T18:56:07.825Z",
+    "updated_at": "2025-05-28T18:56:07.825Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "dsvew",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 262,
+  "fields": {
+    "created_at": "2025-05-28T18:56:09.273Z",
+    "updated_at": "2025-05-28T18:56:09.273Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "fewfefw",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 263,
+  "fields": {
+    "created_at": "2025-05-28T18:59:38.046Z",
+    "updated_at": "2025-05-28T18:59:38.046Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "fwfewfw",
+    "status": "read"
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 264,
+  "fields": {
+    "created_at": "2025-05-28T18:59:42.279Z",
+    "updated_at": "2025-05-28T18:59:42.279Z",
+    "chat_room": 96,
+    "sender": 19642,
+    "text": "feweew",
+    "status": "read"
+  }
+}
+]
