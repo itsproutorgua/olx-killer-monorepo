@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { LoaderCircle } from 'lucide-react'
@@ -22,17 +22,11 @@ import {
 } from '@/shared/ui/shadcn-ui/form.tsx'
 import { Input } from '@/shared/ui/shadcn-ui/input.tsx'
 import { PageLoader, PenIcon } from '@/shared/ui'
-import { useDebounce } from '@/shared/library/hooks'
+import { useDebounce, useRefreshEmailVerified } from '@/shared/library/hooks'
 
 export function ProfileEditForm() {
   const { t } = useTranslation()
-  const {
-    user: userAuth,
-    isAuthenticated,
-    getIdTokenClaims,
-    isLoading,
-  } = useAuth0()
-  const [isEmailVerified, setIsEmailVerified] = useState<boolean | null>(null)
+  const { user: userAuth, isAuthenticated, isLoading } = useAuth0()
   const { data: user, isSuccess: profileLoaded } = useUserProfile()
   const { mutate, isPending } = useUpdateProfile()
   const [searchTerm, setSearchTerm] = useState('')
@@ -44,14 +38,7 @@ export function ProfileEditForm() {
   )
   const { locations, cursor } = useLocations(debouncedSearchTerm, {})
   const ProfileFormSchema = useProfileSchema()
-  const refreshEmailVerified = useCallback(async () => {
-    try {
-      const claims = await getIdTokenClaims()
-      setIsEmailVerified(claims?.email_verified || false)
-    } catch (err) {
-      console.error('Refresh failed:', err)
-    }
-  }, [getIdTokenClaims])
+  const { isEmailVerified, refreshEmailVerified } = useRefreshEmailVerified()
   const form = useForm<z.infer<typeof ProfileFormSchema>>({
     resolver: zodResolver(ProfileFormSchema),
     mode: 'onChange',

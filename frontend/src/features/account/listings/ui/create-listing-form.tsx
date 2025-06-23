@@ -39,6 +39,7 @@ import {
   Textarea,
 } from '@/shared/ui/shadcn-ui'
 import { PRIVATE_PAGES } from '@/shared/constants'
+import { useRefreshEmailVerified } from '@/shared/library/hooks'
 import { cn } from '@/shared/library/utils'
 import { urlToFile } from '@/shared/library/utils/url-to-image-file.ts'
 import { urlToVideoFile } from '@/shared/library/utils/url-to-video.ts'
@@ -60,7 +61,7 @@ export function CreateListingForm({
   onOpenChange,
 }: Props) {
   const { t } = useTranslation()
-  const { user: userAuth } = useAuth0()
+  const { user: userAuth, isAuthenticated } = useAuth0()
   const { data: existingProduct, isSuccess: productLoaded } = useProduct(
     productSlug ?? '',
     {
@@ -74,6 +75,7 @@ export function CreateListingForm({
   } = useUserProfile()
   const navigate = useNavigate()
   const [isCategoryDialogOpen, setIsCategoryDialogOpen] = useState(false)
+  const { isEmailVerified, refreshEmailVerified } = useRefreshEmailVerified()
   const [categoryTitle, setCategoryTitle] = useState('')
   const [selectedVideoFile, setSelectedVideoFile] = useState<File | null>(null)
   const handleCancelVideo = () => {
@@ -173,6 +175,12 @@ export function CreateListingForm({
     loadImageFiles()
   }, [existingProduct, mode, productLoaded, profileLoaded, userProfile])
 
+  useEffect(() => {
+    if (isAuthenticated) {
+      refreshEmailVerified()
+    }
+  }, [isAuthenticated, refreshEmailVerified])
+
   const { mutate: createProduct, isPending } = useCreateProduct()
   const { mutate: updateProduct, isPending: isUpdatePending } =
     useUpdateProduct(productSlug || '')
@@ -235,8 +243,11 @@ export function CreateListingForm({
         onSubmit={form.handleSubmit(onSubmit)}
         className='space-y-[50px] xl:w-[885px]'
       >
-        {!userAuth?.email_verified && (
-          <EmailNotVerified className='-mb-10 -mt-[10px] max-w-[666px] xl:-mt-5' />
+        {isEmailVerified === false && (
+          <EmailNotVerified
+            className='-mb-10 -mt-[10px] max-w-[666px] xl:-mt-5'
+            refreshEmailVerified={refreshEmailVerified}
+          />
         )}
         {userProfile &&
           (form.watch('user_phone') === '' ||
