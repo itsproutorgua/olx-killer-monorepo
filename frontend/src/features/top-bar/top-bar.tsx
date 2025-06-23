@@ -69,7 +69,7 @@ export const TopBar = () => {
             <input
               name='search'
               type='text'
-              className='w-full rounded-[60px] py-2.5 pl-[48.92px] pr-[97px] placeholder:text-foreground focus:outline-none xl:pl-[58.49px] xl:pr-[133.89px]'
+              className='w-full rounded-[60px] py-2.5 pl-[48.92px] pr-[97px] placeholder:text-[13px] placeholder:text-gray-500 focus:outline-none xl:pl-[58.49px] xl:pr-[133.89px]'
               placeholder={t('inputs.searchPlaceholder')}
             />
             <button className='absolute right-[4.81px] top-1/2 flex h-9 w-[91px] -translate-y-1/2 items-center justify-center rounded-[60px] bg-primary-900 text-[13px] text-gray-50 transition-colors duration-300 hover:bg-primary-500 active:bg-primary-600 active:duration-0 xl:right-[4.89px] xl:w-[117px]'>

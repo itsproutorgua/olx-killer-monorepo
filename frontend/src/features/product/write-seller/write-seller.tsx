@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import toast from 'react-hot-toast'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 
+import { LoginToWrite } from '@/features/product/write-seller/login-to-write.tsx'
 import { useUserProfile } from '@/entities/user'
 import { useIdToken } from '@/entities/user/library/hooks/use-id-token.tsx'
 import { PenIcon } from '@/shared/ui'
@@ -19,17 +20,18 @@ export const WriteSeller: React.FC<Props> = ({
   sellerId,
   productSlug,
 }) => {
-  const { isAuthenticated } = useAuth0()
+  const { isAuthenticated, isLoading } = useAuth0()
   const { data: user } = useUserProfile()
   const getIdToken = useIdToken()
 
   const { t } = useTranslation()
   const navigate = useNavigate()
   const isSelf = user?.id === sellerId
+  const [isLoginOpen, setIsLoginOpen] = useState(false)
 
   const handleWriteSeller = async () => {
     if (!isAuthenticated) {
-      toast.error(`${t('messages.loginToWrite')}`)
+      setIsLoginOpen(true)
       return
     }
 
@@ -67,18 +69,25 @@ export const WriteSeller: React.FC<Props> = ({
   }
 
   return (
-    <div className={className}>
-      <button
-        className='relative flex h-[53px] w-[238px] min-w-full items-center justify-center rounded-[60px] bg-primary-900 text-base/4 text-gray-50 transition-colors duration-300 hover:bg-primary-500 active:bg-primary-600 active:duration-0 disabled:bg-gray-300 md:min-w-[238px]'
-        onClick={handleWriteSeller}
-        disabled={isSelf}
-        title={isSelf ? `${t('messages.writeYourself')}` : ''}
-      >
-        <span className='mr-8'>{t('buttons.writeSeller')}</span>
-        <span className='absolute right-[5px] flex size-[43px] items-center justify-center rounded-full bg-background text-foreground'>
-          <PenIcon />
-        </span>
-      </button>
-    </div>
+    <>
+      <div className={className}>
+        <button
+          className='relative flex h-[53px] w-[238px] min-w-full items-center justify-center rounded-[60px] bg-primary-900 text-base/4 text-gray-50 transition-colors duration-300 hover:bg-primary-500 active:bg-primary-600 active:duration-0 disabled:bg-gray-300 md:min-w-[238px]'
+          onClick={handleWriteSeller}
+          disabled={isSelf}
+          title={isSelf ? `${t('messages.writeYourself')}` : ''}
+        >
+          <span className='mr-8'>{t('buttons.writeSeller')}</span>
+          <span className='absolute right-[5px] flex size-[43px] items-center justify-center rounded-full bg-background text-foreground'>
+            <PenIcon />
+          </span>
+        </button>
+      </div>
+      <LoginToWrite
+        open={isLoginOpen}
+        onOpenChange={setIsLoginOpen}
+        isLoading={isLoading}
+      />
+    </>
   )
 }
