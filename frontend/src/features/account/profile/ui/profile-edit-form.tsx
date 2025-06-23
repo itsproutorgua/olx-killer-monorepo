@@ -22,11 +22,11 @@ import {
 } from '@/shared/ui/shadcn-ui/form.tsx'
 import { Input } from '@/shared/ui/shadcn-ui/input.tsx'
 import { PageLoader, PenIcon } from '@/shared/ui'
-import { useDebounce } from '@/shared/library/hooks'
+import { useDebounce, useRefreshEmailVerified } from '@/shared/library/hooks'
 
 export function ProfileEditForm() {
   const { t } = useTranslation()
-  const { user: userAuth } = useAuth0()
+  const { user: userAuth, isAuthenticated, isLoading } = useAuth0()
   const { data: user, isSuccess: profileLoaded } = useUserProfile()
   const { mutate, isPending } = useUpdateProfile()
   const [searchTerm, setSearchTerm] = useState('')
@@ -38,6 +38,7 @@ export function ProfileEditForm() {
   )
   const { locations, cursor } = useLocations(debouncedSearchTerm, {})
   const ProfileFormSchema = useProfileSchema()
+  const { isEmailVerified, refreshEmailVerified } = useRefreshEmailVerified()
   const form = useForm<z.infer<typeof ProfileFormSchema>>({
     resolver: zodResolver(ProfileFormSchema),
     mode: 'onChange',
@@ -49,6 +50,12 @@ export function ProfileEditForm() {
       user_email: '',
     },
   })
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      refreshEmailVerified()
+    }
+  }, [isAuthenticated, refreshEmailVerified])
 
   useEffect(() => {
     if (profileLoaded && user) {
@@ -126,8 +133,12 @@ export function ProfileEditForm() {
             />
             <div>
               <div className='space-y-6 xl:flex xl:max-w-[422px] xl:flex-col xl:gap-y-[30px] xl:space-y-0'>
-                {!userAuth?.email_verified && (
-                  <EmailNotVerified className='-mb-4' />
+                {isEmailVerified === false && (
+                  <EmailNotVerified
+                    refreshEmailVerified={refreshEmailVerified}
+                    className='-mb-4'
+                    isLoading={isLoading}
+                  />
                 )}
                 <h1 className='-mb-1 text-lg font-semibold xl:-mb-[10px]'>
                   {t('profileForm.titles.editProfile')}

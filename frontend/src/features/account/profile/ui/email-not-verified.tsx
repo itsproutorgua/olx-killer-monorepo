@@ -6,9 +6,15 @@ import { cn } from '@/shared/library/utils'
 
 interface Props {
   className?: string
+  refreshEmailVerified: () => void
+  isLoading?: boolean
 }
 
-export const EmailNotVerified: React.FC<Props> = ({ className }) => {
+export const EmailNotVerified: React.FC<Props> = ({
+  className,
+  refreshEmailVerified,
+  isLoading,
+}) => {
   const { t } = useTranslation()
   return (
     <div className={cn('rounded-[10px] bg-error-200 p-6', className)}>
@@ -21,6 +27,14 @@ export const EmailNotVerified: React.FC<Props> = ({ className }) => {
       <p className='mt-[10px] text-xs text-gray-800 xl:text-sm'>
         {t('profileForm.messages.verifyEmail')}
       </p>
+      <button
+        type='button'
+        onClick={refreshEmailVerified}
+        className='mt-2 rounded-[30px] bg-gray-500 px-3 py-2 text-xs text-gray-100'
+      >
+        {isLoading && '...'}
+        {t('buttons.recheckAgain')}
+      </button>
     </div>
   )
 }

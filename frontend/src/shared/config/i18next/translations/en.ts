@@ -40,6 +40,7 @@ export const en = {
     backToListings: 'Back to listings',
     addToFavoritesTooltip:
       'To add this item to favorites, sign up or log in to your account.',
+    recheckAgain: 'Recheck',
   },
   sort: {
     priceExpensive: 'From cheap to expensive',
@@ -237,7 +238,8 @@ export const en = {
     noUser: 'No user data available.',
   },
   messages: {
-    loginToWrite: 'You need to log in to write a message',
+    loginToWrite:
+      'Want to message the seller? Log into your profile or create a new one — it’ll only take a minute!',
     writeYourself: 'You cannot write to yourself',
     errorChatStart: 'Chat creation error. Try again',
     messageCopied: 'Message copied!',

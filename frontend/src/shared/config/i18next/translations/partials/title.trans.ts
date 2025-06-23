@@ -14,6 +14,7 @@ export const titles_uk = {
     feedbackSuccess: 'Дякуємо за ваш відгук!',
     deleteListingWarning: 'Ви впевненні, що бажаєте видалити оголошення?',
     aboutUs: 'Про нас',
+    loginToContinue: 'Увійдіть, щоб продовжити',
   },
 }
 
