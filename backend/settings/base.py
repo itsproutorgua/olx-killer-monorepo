@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'modeltranslation',  # translation
     'jazzmin',  # admin panel
     'daphne',  # ASGI
+    'django_elasticsearch_dsl', # Elastic
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -106,6 +107,12 @@ ASGI_APPLICATION = 'apps.asgi.application'
 
 DATABASES = {
     'default': env.db('DATABASE_URL'),
+}
+
+ELASTICSEARCH_DSL = {
+    'default':{
+        'hosts': 'http://elasticsearch:9200'
+    }
 }
 
 # Password validation
