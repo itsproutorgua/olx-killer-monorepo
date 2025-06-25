@@ -8,7 +8,7 @@ class SearchProductView(ListAPIView):
         q = self.request.GET.get("query", "")
         if q:
             query = MultiMatch(query=q, fields=["title^3", 
-                                                "description^2", 
+                                                "description^3", 
                                                 "category_title^2", 
                                                 "category_parent_title^1"])
             search = ProductDocument.search().query(query)
