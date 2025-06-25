@@ -1,15 +1,16 @@
 from apps.products.search.documents import ProductDocument
-from elasticsearch.dsl.query import MultiMatch
 from rest_framework.generics import ListAPIView
+from apps.products.serializers.product.product import ProductSerializer
 
 
 class SearchProductView(ListAPIView):
+
+    serializer_class=ProductSerializer
+
     def get_queryset(self):
         q = self.request.GET.get("query", "")
         if q:
-            query = MultiMatch(query=q, fields=["title", 
-                                                "description", 
-                                                "category_title", 
-                                                "category_parent_title"], fuzziness="auto")
-            search = ProductDocument.search().query(query)
-            return search.to_queryset()
+            search = (ProductDocument.search()
+                      .query('multi-match', query=q, fields=["title^2", "description"]))
+            response = search.execute()
+            return response
