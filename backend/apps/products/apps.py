@@ -9,3 +9,4 @@ class ProductsConfig(AppConfig):
 
     def ready(self):
         import apps.products.signals  # noqa: F401
+        import apps.products.search.documents
