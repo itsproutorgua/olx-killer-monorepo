@@ -11,5 +11,5 @@ class SearchProductView(ListAPIView):
                                                 "description", 
                                                 "category_title", 
                                                 "category_parent_title"])
-            search = ProductDocument.search().query(query)
+            search = ProductDocument.search().query(query).to_queryset()
             return search
