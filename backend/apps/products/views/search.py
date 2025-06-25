@@ -10,6 +10,6 @@ class SearchProductView(ListAPIView):
             query = MultiMatch(query=q, fields=["title", 
                                                 "description", 
                                                 "category_title", 
-                                                "category_parent_title"])
-            search = ProductDocument.search().query(query).to_queryset()
-            return search
+                                                "category_parent_title"], fuzziness="auto")
+            search = ProductDocument.search().query(query)
+            return search.to_queryset()
