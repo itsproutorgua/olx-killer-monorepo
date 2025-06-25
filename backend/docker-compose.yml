@@ -25,6 +25,7 @@ services:
     depends_on:
       - db
       - redis
+      - elasticsearch
     restart: unless-stopped
     volumes:
       - .:/code
