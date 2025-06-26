@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     'jazzmin',  # admin panel
     'daphne',  # ASGI
     'django_elasticsearch_dsl', # Elastic
+    'django_elasticsearch_dsl_drf',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
