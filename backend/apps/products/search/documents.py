@@ -40,4 +40,4 @@ class ProductDocument(Document):
 
     class Django:
         model = Product
-        fields = []
+        fields = ['title', 'description']
