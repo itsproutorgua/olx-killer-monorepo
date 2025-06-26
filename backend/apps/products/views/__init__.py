@@ -6,6 +6,7 @@ from apps.products.views.product_filters import ProductFilterViewSet
 from apps.products.views.product_search import ProductSearchViewSet
 from apps.products.views.products_latest import LatestProductListView
 from apps.products.views.tmp_product import TMPProductCreateAPIView
+from apps.products.views.search import SearchProductView
 
 
 __all__ = [
@@ -17,4 +18,5 @@ __all__ = [
     'ProductSearchViewSet',
     'ProductDeactivationFeedbackCreateView',
     'TMPProductCreateAPIView',
+    'SearchProductView',
 ]

@@ -72,7 +72,10 @@ channels-redis = "^4.2.1"
 uvicorn = "^0.34.0"
 chardet = "^5.2.0"
 pysendpulse = "^0.1.8"
-django-elasticsearch-dsl = "^8.2"
+django-elasticsearch-dsl = "7.3"
+django-elasticsearch-dsl-drf = "0.22.5"
+elasticsearch = "7.17.9"
+elasticsearch-dsl = "7.4.1"
 
 [tool.poetry.dependencies.djangorestframework-simplejwt]
 extras = ["crypto", ]
