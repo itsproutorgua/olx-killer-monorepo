@@ -34,5 +34,6 @@ export const titles_en = {
     feedbackSuccess: 'Thank you for your feedback!',
     deleteListingWarning: 'Are you sure you want to delete the listing?',
     aboutUs: 'About us',
+    loginToContinue: 'Login to continue',
   },
 }

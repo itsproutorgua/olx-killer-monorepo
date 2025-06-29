@@ -21,9 +21,12 @@ export const Providers = ({ children }: { children: React.ReactNode }) => {
       clientId='GxCqyK8Oxo6xrwunlkNcoMo7pVUmC6xn'
       authorizationParams={{
         redirect_uri: window.location.origin,
+        audience: '',
+        scope: 'openid profile email offline_access',
       }}
       onRedirectCallback={onRedirectCallback}
-      useRefreshTokens
+      useRefreshTokens={true}
+      useRefreshTokensFallback={true}
       cacheLocation='localstorage'
     >
       <QueryClientProvider client={queryClient}>
