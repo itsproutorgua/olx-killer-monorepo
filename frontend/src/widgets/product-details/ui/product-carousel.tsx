@@ -195,7 +195,9 @@ export const ProductCarousel: React.FC<Props> = ({ product }) => {
           aria-describedby={undefined}
         >
           <DialogHeader>
-            <DialogTitle>{product.title}</DialogTitle>
+            <DialogTitle className='absolute left-1/2 top-16 w-full -translate-x-1/2 px-10'>
+              {product.title}
+            </DialogTitle>
           </DialogHeader>
           <p id='dialog-description' className='sr-only'>
             View media of {product.title}. Use arrow keys to navigate through
