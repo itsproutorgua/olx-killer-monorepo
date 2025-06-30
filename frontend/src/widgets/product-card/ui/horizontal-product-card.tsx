@@ -10,7 +10,6 @@ import {
   ListingSellFeedback,
 } from '@/features/account/listings'
 import { FeedbackFormData } from '@/features/account/listings/library/sell-feedback-shema.tsx'
-import { ListingDeleteWarning } from '@/features/account/listings/ui/listing-delete-warning.tsx'
 import { ProductStats } from '@/features/product'
 import { useFavoriteMutations } from '@/entities/favorite/library/hooks/use-favorites.tsx'
 import { useDeactivateProduct } from '@/entities/product/library/hooks/use-deactivate-product.tsx'
@@ -22,6 +21,7 @@ import {
   DialogTitle,
 } from '@/shared/ui/shadcn-ui/dialog.tsx'
 import { Separator } from '@/shared/ui/shadcn-ui/separator.tsx'
+import { DeleteWarningDialog } from '@/shared/ui'
 import { DeleteSmall } from '@/shared/ui/icons/delete-small.tsx'
 import { EditSmall } from '@/shared/ui/icons/edit-small.tsx'
 import { PUBLIC_PAGES } from '@/shared/constants'
@@ -239,11 +239,13 @@ export const HorizontalProductCard = ({
               open={isSuccessOpen}
               onOpenChange={handleSuccessClose}
             />
-            <ListingDeleteWarning
+            <DeleteWarningDialog
               open={isDeleteWarningOpen}
               onOpenChange={setIsDeleteWarningOpen}
               onClickDelete={handleDeleteClick}
               isDeleting={isDeleting}
+              title='title.deleteListingWarning'
+              message='listings.deleteListingMessage'
             />
           </div>
         </div>
