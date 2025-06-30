@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
+import { useQueryClient } from '@tanstack/react-query'
 
 import { Message, WebSocketResponse } from '@/features/chat'
 import { useUserProfile } from '@/entities/user'
 import { useIdToken } from '@/entities/user/library/hooks/use-id-token.tsx'
 
 export const useChat = (roomId: string | null) => {
+  const queryClient = useQueryClient()
   const [messages, setMessages] = useState<Message[]>([])
   const { data: user } = useUserProfile()
   const [isConnected, setIsConnected] = useState(false)
@@ -107,7 +109,9 @@ export const useChat = (roomId: string | null) => {
       }
     }
 
-    connect()
+    connect().then(() =>
+      queryClient.invalidateQueries({ queryKey: ['chatList', user?.id] }),
+    )
 
     return () => {
       isCurrent = false // Mark this effect as stale

@@ -8,6 +8,7 @@ import {
   useChatContext,
 } from '@/features/chat/chat-context/chat-context.tsx'
 import { useChatList } from '@/features/chat/library/hooks/use-chat-list.tsx'
+import { ChatNotSelected } from '@/features/chat/ui/chat-not-selected.tsx'
 import { useUserProfile } from '@/entities/user'
 import { SpinnerIcon } from '@/shared/ui/icons'
 import { useMediaQuery } from '@/shared/library/hooks'
@@ -50,7 +51,7 @@ const ChatContent = ({
 
   // Handle initial room selection
   useEffect(() => {
-    if (!user?.id || !chats.length) return
+    if (!user?.id || !chats?.length) return
 
     if (requestedRoomId) {
       const foundChat = chats.find(chat => chat.room_id == requestedRoomId)
@@ -62,15 +63,6 @@ const ChatContent = ({
         setSelectedSellerProfile(sellerProfile)
         setCurrentRoomId(foundChat.room_id)
       }
-    } else {
-      // Default to first chat if no room selected
-      const firstChat = chats[0]
-      setCurrentRoomId(firstChat.room_id)
-      const sellerProfile =
-        firstChat.second_user_profile.id === user.id
-          ? firstChat.first_user_profile
-          : firstChat.second_user_profile
-      setSelectedSellerProfile(sellerProfile)
     }
   }, [
     chats,
@@ -89,7 +81,7 @@ const ChatContent = ({
     }
   }, [initialMobileView, isMobile, setMobileView])
 
-  if (isLoading) {
+  if (isLoading || chats === undefined) {
     return (
       <div className='flex h-[calc(100dvh-150px)] items-center justify-center'>
         <span className='text-muted-foreground'>
@@ -99,7 +91,6 @@ const ChatContent = ({
     )
   }
 
-  // Show empty state if no chats
   if (!chats.length) {
     return (
       <div className='text-muted-foreground container mt-[128px] flex h-full flex-col items-center text-center text-gray-950 xl:mt-[143px]'>
@@ -131,14 +122,16 @@ const ChatContent = ({
           <ChatList chats={chats} isLoading={isLoading} error={error} />
         </div>
       )}
-
-      {(mobileView === 'chat' || !isMobile) && (
-        <div className='grid flex-grow grid-rows-[auto_1fr_auto] self-stretch border-x border-x-border'>
-          <MessageHeader />
-          <MessageList />
-          <MessageForm />
-        </div>
-      )}
+      {(mobileView === 'chat' || !isMobile) &&
+        (requestedRoomId ? (
+          <div className='grid flex-grow grid-rows-[auto_1fr_auto] self-stretch border-x border-x-border'>
+            <MessageHeader />
+            <MessageList />
+            <MessageForm />
+          </div>
+        ) : (
+          <ChatNotSelected className='flex-1 flex-grow self-stretch border-l border-l-border pt-72' />
+        ))}
     </div>
   )
 }

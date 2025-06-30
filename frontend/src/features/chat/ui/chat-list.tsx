@@ -34,7 +34,7 @@ export const ChatList = ({
   isLoading,
   error,
 }: {
-  chats: Chat[]
+  chats?: Chat[]
   isLoading: boolean
   error: Error | null
 }) => {

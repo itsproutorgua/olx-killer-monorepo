@@ -10,35 +10,38 @@ import {
 } from '@/shared/ui/shadcn-ui/dialog'
 import { DeleteSmall } from '@/shared/ui/icons/delete-small.tsx'
 
-interface ListingDeleteWarningProps {
+interface DeleteWarningProps {
   open: boolean
   onOpenChange: (open: boolean) => void
-  onClickDelete: () => void
+  onClickDelete: (roomId?: string) => void
   isDeleting: boolean
+  title?: string
+  message?: string
 }
 
-export function ListingDeleteWarning({
+export function DeleteWarningDialog({
   open,
   onOpenChange,
   onClickDelete,
   isDeleting,
-}: ListingDeleteWarningProps) {
+  title,
+  message,
+}: DeleteWarningProps) {
   const { t } = useTranslation()
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent
         aria-describedby={undefined}
-        onInteractOutside={e => e.preventDefault()}
         className='w-full max-w-[451px] gap-[30px] rounded-[20px] border-none bg-gray-50 p-[50px] text-gray-900'
       >
         <DialogHeader className='space-y-4'>
           <DialogTitle className='flex flex-col items-center gap-5 text-2xl font-medium leading-[29px] text-gray-900'>
             <DeleteSmall className='h-[34px] w-[34px] text-error-700' />
-            <span>{t('title.deleteListingWarning')}</span>
+            <span>{title ? t(title) : t('title.deleteDefaultWarning')}</span>
           </DialogTitle>
           <DialogDescription className='text-[16px] font-normal leading-5'>
-            {t('listings.deleteListingMessage')}
+            {message ? t(message) : t('words.deleteDefaultWarning')}
           </DialogDescription>
         </DialogHeader>
         <div className='flex flex-col gap-[10px]'>

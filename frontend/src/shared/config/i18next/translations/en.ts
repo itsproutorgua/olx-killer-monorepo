@@ -103,6 +103,9 @@ export const en = {
     searchPlaceholder: 'Enter name',
     writeMsg: 'Write a message...',
     editing: 'Editing',
+    selectChat: 'Select chat for messaging',
+    deleteChatMessage:
+      'After deletion, your chat will disappear forever. Make sure you no longer need it.',
   },
   date: {
     m: 'm',
@@ -155,6 +158,8 @@ export const en = {
     contactSeller: 'CONTACT THE SELLER',
     showAll: 'Show all',
     copy: 'Copy',
+    deleteDefaultWarning:
+      'After deletion, the data will be lost forever. Make sure you no longer need it.',
   },
   filters: {
     price: 'Price',
