@@ -2,7 +2,8 @@ import { useCallback, useState } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 
 export const useRefreshEmailVerified = () => {
-  const { getIdTokenClaims, getAccessTokenSilently } = useAuth0()
+  const { getIdTokenClaims, getAccessTokenSilently, loginWithRedirect } =
+    useAuth0()
   const [isEmailVerified, setIsEmailVerified] = useState<boolean | null>(null)
 
   const refreshEmailVerified = useCallback(async () => {
@@ -13,9 +14,18 @@ export const useRefreshEmailVerified = () => {
       })
       const claims = await getIdTokenClaims()
       setIsEmailVerified(claims?.email_verified || false)
-    } catch (err) {
-      console.error('Refresh failed:', err)
-      setIsEmailVerified(false)
+    } catch (err: unknown) {
+      if (
+        typeof err === 'object' &&
+        err !== null &&
+        'error' in err &&
+        err?.error === 'login_required'
+      ) {
+        await loginWithRedirect()
+      } else {
+        console.error('Unexpected error:', err)
+        setIsEmailVerified(false)
+      }
     }
   }, [getAccessTokenSilently, getIdTokenClaims])
 
