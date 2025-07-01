@@ -6,6 +6,7 @@ import { Toaster } from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
 
 import { queryClient } from '@/shared/api'
+import { isSafari } from '@/shared/library/utils'
 
 export const Providers = ({ children }: { children: React.ReactNode }) => {
   const navigate = useNavigate()
@@ -25,8 +26,8 @@ export const Providers = ({ children }: { children: React.ReactNode }) => {
         scope: 'openid profile email offline_access',
       }}
       onRedirectCallback={onRedirectCallback}
-      useRefreshTokens={true}
-      useRefreshTokensFallback={true}
+      useRefreshTokens={!isSafari()}
+      useRefreshTokensFallback={!isSafari()}
       cacheLocation='localstorage'
     >
       <QueryClientProvider client={queryClient}>
