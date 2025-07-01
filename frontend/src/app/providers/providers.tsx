@@ -21,7 +21,7 @@ export const Providers = ({ children }: { children: React.ReactNode }) => {
       clientId='GxCqyK8Oxo6xrwunlkNcoMo7pVUmC6xn'
       authorizationParams={{
         redirect_uri: window.location.origin,
-        audience: '',
+        audience: 'https://app.house-community.site',
         scope: 'openid profile email offline_access',
       }}
       onRedirectCallback={onRedirectCallback}
