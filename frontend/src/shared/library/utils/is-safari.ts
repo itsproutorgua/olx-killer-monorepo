@@ -1,2 +1,9 @@
-export const isSafari = () =>
-  /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
+export const isSafari = () => {
+  const ua = navigator.userAgent
+  return (
+    ua.includes('Safari') &&
+    !ua.includes('Chrome') &&
+    !ua.includes('Chromium') &&
+    !ua.includes('Android')
+  )
+}
