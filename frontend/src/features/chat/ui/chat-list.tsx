@@ -1,4 +1,5 @@
 import { profileDefault } from '@/shared/assets'
+import { useNotificationContext } from '@/shared/notifications-context/use-notification-context.ts'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 
@@ -48,6 +49,7 @@ export const ChatList = ({
     setMobileView,
   } = useChatContext()
   const { data: user } = useUserProfile()
+  const { rooms } = useNotificationContext()
 
   if (isLoading) return <div>{t('chatList.loading')}</div>
   if (error) return <div>{t('chatList.error', { message: error.message })}</div>
@@ -76,6 +78,11 @@ export const ChatList = ({
               : chat.second_user_profile
           const lastMessage = chat.last_message
 
+          const notificationForRoom = rooms.find(
+            r => r.room_id === Number(chat.room_id),
+          )
+          const unreadCount = notificationForRoom?.counter_by_room
+
           return (
             <li
               key={chat.room_id}
@@ -99,25 +106,43 @@ export const ChatList = ({
                       {sellerProfile.username}
                     </h3>
                     <span className='text-[9px] text-gray-500'>
-                      {lastMessage
+                      {notificationForRoom?.created_at
                         ? formatMessageTime(
-                            lastMessage.created_at,
+                            notificationForRoom.created_at,
                             i18n.language as 'en' | 'uk',
                           )
-                        : t('messages.noMessages')}
+                        : lastMessage?.created_at
+                          ? formatMessageTime(
+                              lastMessage.created_at,
+                              i18n.language as 'en' | 'uk',
+                            )
+                          : t('messages.noMessages')}
                     </span>
                   </div>
                   <div className='flex items-center justify-between'>
                     <p className='line-clamp-1 w-[198px] text-xs/[14.52px] text-gray-950'>
-                      {lastMessage?.from_this_user &&
+                      {notificationForRoom?.sender_id === user.id &&
                         t('messages.isYou') + ': '}
-                      {lastMessage
-                        ? lastMessage.content.length > 25
-                          ? lastMessage.content.slice(0, 25) + '...'
-                          : lastMessage.content
-                        : t('messages.noMessages')}
+                      {notificationForRoom?.last_message
+                        ? notificationForRoom.last_message.length > 25
+                          ? notificationForRoom.last_message.slice(0, 25) +
+                            '...'
+                          : notificationForRoom.last_message
+                        : lastMessage?.content
+                          ? lastMessage.content.length > 25
+                            ? lastMessage.content.slice(0, 25) + '...'
+                            : lastMessage.content
+                          : t('messages.noMessages')}
                     </p>
-                    {lastMessage && <CheckedDoubleIcon />}
+                    {!lastMessage?.from_this_user ? (
+                      unreadCount && (
+                        <span className='flex h-4 w-4 items-center justify-center rounded-full bg-primary-900 text-[8px] font-medium text-gray-50'>
+                          {unreadCount}
+                        </span>
+                      )
+                    ) : (
+                      <CheckedDoubleIcon />
+                    )}
                   </div>
                 </div>
               </div>

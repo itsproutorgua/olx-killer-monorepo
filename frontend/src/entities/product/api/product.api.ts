@@ -62,8 +62,13 @@ class ProductApi {
     return response.data
   }
 
-  async findLatest({ signal }: { signal: AbortSignal }) {
-    const url = `${this.BASE_URL}/latest`
+  async findLatest({ signal, limit }: { signal: AbortSignal; limit?: number }) {
+    const params = new URLSearchParams()
+    if (limit !== undefined) {
+      params.set('limit', limit.toString())
+    }
+
+    const url = `${this.BASE_URL}/latest?${params.toString()}`
     const response = await instanceBase.get<Product[]>(url, { signal })
     return response.data
   }
@@ -117,10 +122,10 @@ class ProductApi {
     })
   }
 
-  findLatestQueryOptions(i18n: i18n) {
+  findLatestQueryOptions(i18n: i18n, limit?: number) {
     return queryOptions<Product[]>({
-      queryKey: [QUERY_KEYS.PRODUCT, i18n.language],
-      queryFn: meta => this.findLatest(meta),
+      queryKey: [QUERY_KEYS.PRODUCT, i18n.language, limit],
+      queryFn: meta => this.findLatest({ signal: meta.signal, limit }),
     })
   }
 

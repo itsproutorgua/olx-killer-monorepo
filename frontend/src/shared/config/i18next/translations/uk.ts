@@ -112,7 +112,9 @@ export const uk = {
     ago: 'Тому',
     today: 'Сьогодні',
     yesterday: 'Вчора',
+    yesterdayAt: 'вчора о {{time}}',
     days: 'днів',
+    never: 'Ніколи',
   },
   currency: {
     symbol: '₴',

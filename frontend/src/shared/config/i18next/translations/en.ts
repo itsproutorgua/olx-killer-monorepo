@@ -113,6 +113,8 @@ export const en = {
     today: 'Today',
     yesterday: 'Yesterday',
     days: 'days',
+    yesterdayAt: 'yesterday at {{time}}',
+    never: 'Never logged in',
   },
   currency: {
     symbol: '$',

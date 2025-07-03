@@ -7,12 +7,14 @@ import { FetchError } from '@/shared/ui/error/fetch-error.tsx'
 
 export const useLatestProducts = ({
   Skeleton,
+  limit = 10,
 }: {
   Skeleton?: React.ReactNode
+  limit?: number
 }) => {
   const { i18n } = useTranslation()
   const { data, isLoading, isError } = useQuery<Product[]>({
-    ...productApi.findLatestQueryOptions(i18n),
+    ...productApi.findLatestQueryOptions(i18n, limit),
   })
 
   const cursor = (
