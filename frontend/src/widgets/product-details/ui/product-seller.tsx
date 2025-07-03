@@ -1,5 +1,5 @@
 import React from 'react'
-import sellerLogo from '@/shared/assets/images/seller/seller_logo.png'
+import { profileDefault } from '@/shared/assets'
 import { format } from 'date-fns'
 import { enGB } from 'date-fns/locale'
 import { useTranslation } from 'react-i18next'
@@ -32,8 +32,9 @@ export const ProductSeller: React.FC<SellerProps> = ({
         <div className='flex flex-row gap-4'>
           <div className='h-[51px] w-[51px]'>
             <img
-              src={sellerLogo}
+              src={product.seller.picture_url || profileDefault}
               alt={`Logo of ${product?.seller?.first_name ?? 'Product Name'}`}
+              className='rounded-full'
             />
           </div>
           <div className='flex flex-col gap-3'>

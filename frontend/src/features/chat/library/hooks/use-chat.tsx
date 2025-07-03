@@ -122,6 +122,16 @@ export const useChat = (roomId: string | null) => {
     }
   }, [roomId, user?.id])
 
+  let invalidateTimeout: ReturnType<typeof setTimeout> | null = null
+
+  const debounceInvalidateChatList = () => {
+    if (invalidateTimeout !== null) return // already scheduled
+    invalidateTimeout = setTimeout(() => {
+      queryClient.invalidateQueries({ queryKey: ['chatList'] })
+      invalidateTimeout = null
+    }, 300) // Delay just enough to group multiple events
+  }
+
   const handleMessage = (data: WebSocketResponse) => {
     setMessages(prev => {
       switch (data.type) {
@@ -153,6 +163,7 @@ export const useChat = (roomId: string | null) => {
           return prev
       }
     })
+    debounceInvalidateChatList()
   }
 
   const sendMessage = (text: string) => {
@@ -208,5 +219,5 @@ export const useChat = (roomId: string | null) => {
     deleteMessage,
     isConnected,
     isReady,
-  } // Added isReady for UI feedback
+  }
 }

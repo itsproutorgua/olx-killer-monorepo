@@ -1,5 +1,5 @@
 import React from 'react'
-import sellerLogo from '@/shared/assets/images/seller/seller_logo.png'
+import { profileDefault } from '@/shared/assets'
 import { format } from 'date-fns'
 import { enGB } from 'date-fns/locale'
 import { useTranslation } from 'react-i18next'
@@ -27,7 +27,11 @@ export const ContactSellerCard: React.FC<SellerProps> = ({
         <div className='mt-[10px] flex flex-col items-start justify-between gap-[22px] md:mt-7 md:flex-row md:items-center md:gap-1 xl:gap-[22px]'>
           <div className='flex flex-row items-center gap-[17px]'>
             <div className='h-[76px] w-[76px] md:h-14 md:w-14 xl:h-[76px] xl:w-[76px]'>
-              <img src={sellerLogo} alt='Seller Logo' />
+              <img
+                src={product.seller.picture_url || profileDefault}
+                alt='Seller Logo'
+                className='rounded-full'
+              />
             </div>
             <div className='flex flex-col gap-3'>
               <h4 className='leading-none md:text-xl'>

@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { useProducts, type Product } from '@/entities/product'
+import { type Product } from '@/entities/product'
+import { useLatestProducts } from '@/entities/product/library/hooks/use-latest-products.tsx'
 import {
   Collapsible,
   CollapsibleContent,
@@ -12,23 +13,18 @@ import { BestDealsSkeleton } from '@/shared/ui/skeletons'
 import { useMediaQuery } from '@/shared/library/hooks'
 import { ProductCard } from '../product-card'
 
-const path = 'elektronika/telefony-i-aksesuary/mobilnye-telefony-smartfony'
-
 export const BestDeals = () => {
   const [isOpen, setIsOpen] = useState(false)
   const isDesktop = useMediaQuery('(min-width: 1440px)')
   const { t } = useTranslation()
-  const limit = 28
+  const limit = 40
   const sectionRef = useRef<HTMLElement | null>(null)
   const prevOpen = useRef(false)
 
-  const { data, cursor } = useProducts(
-    {
-      path,
-      limit,
-    },
-    { Skeleton: <BestDealsSkeleton /> },
-  )
+  const { data, cursor } = useLatestProducts({
+    Skeleton: <BestDealsSkeleton />,
+    limit,
+  })
 
   // Scroll back into view when collapsing
   useEffect(() => {
@@ -47,16 +43,16 @@ export const BestDeals = () => {
       <Collapsible open={isOpen} onOpenChange={setIsOpen}>
         {cursor}
         <div className='grid grid-cols-2 gap-x-[10px] gap-y-[40px] self-center md:grid-cols-3 xl:grid-cols-4 xl:gap-x-5 xl:gap-y-[60px]'>
-          {data?.results
-            .slice(0, 8)
+          {data
+            ?.slice(0, 8)
             .map((product: Product) => (
               <ProductCard key={product.slug} product={product} />
             ))}
         </div>
         <CollapsibleContent>
           <div className='mt-[35px] grid grid-cols-2 gap-x-[10px] gap-y-[40px] self-center md:grid-cols-3 xl:mt-[50px] xl:grid-cols-4 xl:gap-x-5 xl:gap-y-[60px]'>
-            {data?.results
-              .slice(8, isDesktop ? data?.results.length : 16)
+            {data
+              ?.slice(8, isDesktop ? data?.length : 16)
               .map((product: Product) => (
                 <ProductCard key={product.slug} product={product} />
               ))}

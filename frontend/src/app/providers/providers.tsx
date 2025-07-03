@@ -1,4 +1,5 @@
 import React from 'react'
+import { NotificationProvider } from '@/shared/notifications-context/notification-context.tsx'
 import { AppState, Auth0Provider } from '@auth0/auth0-react'
 import { QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
@@ -31,9 +32,11 @@ export const Providers = ({ children }: { children: React.ReactNode }) => {
       cacheLocation='localstorage'
     >
       <QueryClientProvider client={queryClient}>
-        {children}
-        <Toaster />
-        <ReactQueryDevtools initialIsOpen={false} />
+        <NotificationProvider>
+          {children}
+          <Toaster />
+          <ReactQueryDevtools initialIsOpen={false} />
+        </NotificationProvider>
       </QueryClientProvider>
     </Auth0Provider>
   )
