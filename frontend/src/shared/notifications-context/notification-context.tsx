@@ -99,11 +99,12 @@ export const NotificationProvider = ({ children }: { children: ReactNode }) => {
       }
     }
 
-    connect()
+    connect().then()
 
     return () => {
       isMounted = false
       socketRef.current?.close()
+      console.log(`Notifications WebSocket closed`)
     }
   }, [user?.id])
 
