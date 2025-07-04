@@ -19,7 +19,6 @@ export const useChat = (roomId: string | null) => {
     if (!roomId || !user?.id) return
     setMessages([])
 
-    let socket: WebSocket | null = null
     let isCurrent = true // Track if this effect is still relevant
 
     const connect = async () => {
@@ -31,16 +30,15 @@ export const useChat = (roomId: string | null) => {
         //wss://api.house-community.site
         const url = `wss://chat.house-community.site/ws/chat/?room_id=${roomId}`
 
-        socket = new WebSocket(url, ['Bearer', token])
-        ws.current = socket // Update ref with current socket
+        ws.current = new WebSocket(url, ['Bearer', token])
 
-        socket.onopen = () => {
+        ws.current.onopen = () => {
           if (!isCurrent) return // Skip if effect was cleaned up
           setIsConnected(true)
           setIsReady(true)
         }
 
-        socket.onmessage = e => {
+        ws.current.onmessage = e => {
           if (!isCurrent) return
 
           try {
@@ -81,13 +79,13 @@ export const useChat = (roomId: string | null) => {
           }
         }
 
-        socket.onerror = error => {
+        ws.current.onerror = error => {
           if (!isCurrent) return
           console.error('WebSocket error:', error)
           setIsReady(false)
         }
 
-        socket.onclose = event => {
+        ws.current.onclose = event => {
           if (!isCurrent) return
           console.log(
             `WebSocket closed for sellerId: ${roomId}`,
@@ -97,9 +95,9 @@ export const useChat = (roomId: string | null) => {
           setIsConnected(false)
           setIsReady(false)
           // Only nullify if the closed socket is the current one
-          if (ws.current === socket) {
-            ws.current = null
-          }
+          // if (ws.current === socket) {
+          //   ws.current = null
+          // }
           isConnecting.current = false
         }
       } catch (error) {
@@ -115,8 +113,11 @@ export const useChat = (roomId: string | null) => {
 
     return () => {
       isCurrent = false // Mark this effect as stale
-      socket?.close() // Close only the socket from this effect
-      // DO NOT nullify ws.current here - it may belong to a newer effect
+      if (ws.current) {
+        ws.current.close()
+        console.log(`WebSocket closed for sellerId: ${roomId}`)
+        ws.current = null
+      }
       setIsConnected(false)
       setIsReady(false)
     }

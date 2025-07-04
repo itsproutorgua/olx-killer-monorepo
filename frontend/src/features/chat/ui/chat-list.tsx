@@ -121,7 +121,8 @@ export const ChatList = ({
                   </div>
                   <div className='flex items-center justify-between'>
                     <p className='line-clamp-1 w-[198px] text-xs/[14.52px] text-gray-950'>
-                      {notificationForRoom?.sender_id === user.id &&
+                      {!notificationForRoom?.sender_id &&
+                        lastMessage?.from_this_user &&
                         t('messages.isYou') + ': '}
                       {notificationForRoom?.last_message
                         ? notificationForRoom.last_message.length > 25
@@ -134,7 +135,7 @@ export const ChatList = ({
                             : lastMessage.content
                           : t('messages.noMessages')}
                     </p>
-                    {!lastMessage?.from_this_user ? (
+                    {notificationForRoom?.sender_id !== user.id ? (
                       unreadCount && (
                         <span className='flex h-4 w-4 items-center justify-center rounded-full bg-primary-900 text-[8px] font-medium text-gray-50'>
                           {unreadCount}
