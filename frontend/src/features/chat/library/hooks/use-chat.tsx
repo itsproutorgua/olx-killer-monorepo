@@ -11,6 +11,7 @@ export const useChat = (roomId: string | null) => {
   const { data: user } = useUserProfile()
   const [isConnected, setIsConnected] = useState(false)
   const ws = useRef<WebSocket | null>(null)
+  const activeSocketRef = useRef<WebSocket | null>(null)
   const getIdToken = useIdToken()
   const isConnecting = useRef(false)
   const [isReady, setIsReady] = useState(false)
@@ -21,7 +22,7 @@ export const useChat = (roomId: string | null) => {
 
     let isCurrent = true // Track if this effect is still relevant
 
-    const connect = async () => {
+    const reconnect = async () => {
       isConnecting.current = true
 
       try {
@@ -31,6 +32,7 @@ export const useChat = (roomId: string | null) => {
         const url = `wss://chat.house-community.site/ws/chat/?room_id=${roomId}`
 
         ws.current = new WebSocket(url, ['Bearer', token])
+        activeSocketRef.current = ws.current
 
         ws.current.onopen = () => {
           if (!isCurrent) return // Skip if effect was cleaned up
@@ -39,7 +41,7 @@ export const useChat = (roomId: string | null) => {
         }
 
         ws.current.onmessage = e => {
-          if (!isCurrent) return
+          if (!isCurrent || activeSocketRef.current !== ws.current) return
 
           try {
             const data = JSON.parse(e.data)
@@ -94,11 +96,17 @@ export const useChat = (roomId: string | null) => {
           )
           setIsConnected(false)
           setIsReady(false)
-          // Only nullify if the closed socket is the current one
-          // if (ws.current === socket) {
-          //   ws.current = null
-          // }
+          if (activeSocketRef.current === ws.current) {
+            activeSocketRef.current = null
+          }
           isConnecting.current = false
+
+          setTimeout(() => {
+            if (document.visibilityState === 'visible') {
+              reconnect()
+              console.log('reconnected')
+            }
+          }, 1000)
         }
       } catch (error) {
         console.error('Failed to connect WebSocket:', error)
@@ -107,19 +115,39 @@ export const useChat = (roomId: string | null) => {
       }
     }
 
-    connect().then(() =>
+    reconnect().then(() =>
       queryClient.invalidateQueries({ queryKey: ['chatList', user?.id] }),
     )
 
+    const handleVisibilityChange = () => {
+      console.log(document.visibilityState)
+      if (document.visibilityState === 'visible') {
+        const socket = ws.current
+        if (!socket || socket.readyState === WebSocket.CLOSED) {
+          console.warn('WebSocket was closed. Reconnecting...')
+          reconnect()
+        }
+      }
+    }
+
+    document.addEventListener('visibilitychange', handleVisibilityChange)
+
     return () => {
       isCurrent = false // Mark this effect as stale
-      if (ws.current) {
-        ws.current.close()
-        console.log(`WebSocket closed for sellerId: ${roomId}`)
+      const socket = activeSocketRef.current
+      if (socket) {
+        socket.onopen = null
+        socket.onclose = null
+        socket.onerror = null
+        socket.onmessage = null
+        socket.close()
+        console.log('Closed WebSocket during cleanup')
+        activeSocketRef.current = null
         ws.current = null
       }
       setIsConnected(false)
       setIsReady(false)
+      document.removeEventListener('visibilitychange', handleVisibilityChange)
     }
   }, [roomId, user?.id])
 
