@@ -49,6 +49,7 @@ class Notification:
                 "last_message": last_message_in_room.text,
                 "status": last_message_in_room.status,
                 "sender_id": sender.id,
+                'sender_status': sender.user.status,
                 "room_id": key
             })
         
