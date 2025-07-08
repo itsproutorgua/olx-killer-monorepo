@@ -242,7 +242,6 @@ class MessageUtils:
 
         room = consumer.room
         recipient = await sync_to_async(room.get_recipient)(consumer.scope['first_user'])
-
         await Notification._send_notification(consumer=consumer, send_to=recipient)
 
         # Check if the recipient is online and mark the message as read if applicable

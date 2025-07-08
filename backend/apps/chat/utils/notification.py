@@ -1,7 +1,9 @@
 from collections import Counter
 from apps.chat.models.message import Message
 from apps.users.models.profile import Profile
+from apps.chat.models.useractivity import UserActivity
 from channels.db import database_sync_to_async
+from django.db.models import Q
 
 
 class Notification:
@@ -21,10 +23,12 @@ class Notification:
         """
         # Query unread messages (DELIVERED) for user, with related chat_room and sender
         msgs = Message.objects.filter(
-            status=Message.Status.DELIVERED, 
-            chat_room__first_user=user 
+            Q(chat_room__first_user=user) | Q(chat_room__second_user=user),
+            status=Message.Status.DELIVERED  
         ).select_related('chat_room', 'sender')
         
+        
+
         # Count total unread messages
         all_unreaded = len(msgs)
         # Group unread messages by chat room ID
@@ -41,6 +45,8 @@ class Notification:
             # Get sender's profile for latest message
             sender = Profile.objects.filter(user=last_message_in_room.sender).first()
 
+            activity = UserActivity.objects.get(user=sender.user)
+
             # Append room-specific message data
             return_data.append({
                 "counter_by_room": value,
@@ -49,7 +55,7 @@ class Notification:
                 "last_message": last_message_in_room.text,
                 "status": last_message_in_room.status,
                 "sender_id": sender.id,
-                'sender_status': sender.user.status,
+                'sender_status': activity.status,
                 "room_id": key
             })
         

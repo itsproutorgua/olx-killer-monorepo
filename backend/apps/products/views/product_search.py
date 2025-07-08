@@ -44,7 +44,7 @@ class ProductSearchViewSet(ListModelMixin, GenericViewSet):
     serializer_class = ProductSearchSerializer
     pagination_class = ProductPagination
     permission_classes = (AllowAny,)
-    search_fields = ['title']
+    search_fields = ['title', 'seller__username']
 
     def get_queryset(self):
         queryset = self.queryset
@@ -54,7 +54,7 @@ class ProductSearchViewSet(ListModelMixin, GenericViewSet):
             raise ValidationError(_('The search query must be at least 3 characters long.'))
 
         queryset = (
-            queryset.annotate(search=SearchVector('title'))
+            queryset.annotate(search=SearchVector('title', 'seller__username'))
             .filter(search__icontains=search_query)
             .select_related(
                 'seller',
