@@ -62,6 +62,13 @@ const ChatContent = ({
             : foundChat.second_user_profile
         setSelectedSellerProfile(sellerProfile)
         setCurrentRoomId(foundChat.room_id)
+      } else {
+        setSelectedSellerProfile(null)
+        setCurrentRoomId(null)
+
+        if (isMobile) {
+          setMobileView('list')
+        }
       }
     }
   }, [
@@ -130,7 +137,9 @@ const ChatContent = ({
             <MessageForm />
           </div>
         ) : (
-          <ChatNotSelected className='flex-1 flex-grow self-stretch border-l border-l-border pt-72' />
+          !isMobile && (
+            <ChatNotSelected className='flex-1 flex-grow self-stretch border-l border-l-border pt-72' />
+          )
         ))}
     </div>
   )
