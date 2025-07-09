@@ -114,9 +114,7 @@ export function ProfileEditForm() {
       ) : (
         <Form {...form}>
           <form
-            onSubmit={form.handleSubmit(onSubmit, errors => {
-              console.log('Validation errors:', errors)
-            })}
+            onSubmit={form.handleSubmit(onSubmit)}
             className='space-y-10 xl:space-y-[54px]'
           >
             <FormField

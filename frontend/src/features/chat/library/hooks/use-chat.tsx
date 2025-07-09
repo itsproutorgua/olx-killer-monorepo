@@ -87,13 +87,8 @@ export const useChat = (roomId: string | null) => {
           setIsReady(false)
         }
 
-        ws.current.onclose = event => {
+        ws.current.onclose = () => {
           if (!isCurrent) return
-          console.log(
-            `WebSocket closed for sellerId: ${roomId}`,
-            event.code,
-            event.reason,
-          )
           setIsConnected(false)
           setIsReady(false)
           if (activeSocketRef.current === ws.current) {
@@ -104,7 +99,6 @@ export const useChat = (roomId: string | null) => {
           setTimeout(() => {
             if (document.visibilityState === 'visible') {
               reconnect()
-              console.log('reconnected')
             }
           }, 1000)
         }
@@ -120,7 +114,6 @@ export const useChat = (roomId: string | null) => {
     )
 
     const handleVisibilityChange = () => {
-      console.log(document.visibilityState)
       if (document.visibilityState === 'visible') {
         const socket = ws.current
         if (!socket || socket.readyState === WebSocket.CLOSED) {
@@ -141,7 +134,6 @@ export const useChat = (roomId: string | null) => {
         socket.onerror = null
         socket.onmessage = null
         socket.close()
-        console.log('Closed WebSocket during cleanup')
         activeSocketRef.current = null
         ws.current = null
       }

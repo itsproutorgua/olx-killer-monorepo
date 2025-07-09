@@ -121,7 +121,10 @@ export const ProductInfo: React.FC<Props> = ({
         </button>
       </div>
       <div className='mt-10 md:hidden'>
-        <SimilarProductsSlider onProductClick={onProductClick} />
+        <SimilarProductsSlider
+          onProductClick={onProductClick}
+          path={product.category.path}
+        />
       </div>
       <ProductLocation
         location={product.seller.location}

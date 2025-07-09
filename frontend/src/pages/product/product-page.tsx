@@ -40,7 +40,6 @@ export const ProductPage = () => {
   return (
     <div className='container mt-[27px] md:mt-[38px]'>
       <Breadcrumbs crumbs={crumbs} />
-
       {cursor}
       {data && (
         <ProductDetails
@@ -59,7 +58,10 @@ export const ProductPage = () => {
       </div>
 
       <div className='mb-[53px] hidden min-h-[277px] md:relative md:block xl:min-h-[440px]'>
-        <SimilarProducts onProductClick={handleProductClick} />
+        <SimilarProducts
+          onProductClick={handleProductClick}
+          path={data?.category.parent?.path}
+        />
       </div>
     </div>
   )

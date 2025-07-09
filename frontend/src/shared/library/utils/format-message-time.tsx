@@ -1,6 +1,6 @@
 export const formatMessageTime = (
   dateString: string,
-  locale: 'en' | 'uk' = 'en',
+  locale: string = 'en',
 ): string => {
   const date = new Date(dateString)
   const now = new Date()

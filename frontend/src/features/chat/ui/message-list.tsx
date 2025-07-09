@@ -1,4 +1,5 @@
 import { MouseEvent, useLayoutEffect, useRef } from 'react'
+import i18n from 'i18next'
 import toast from 'react-hot-toast'
 import { useTranslation } from 'react-i18next'
 
@@ -110,7 +111,7 @@ export const MessageList = () => {
                 )}
               >
                 <span className='text-xs text-opacity-80'>
-                  {formatMessageTime(msg.created_at)}
+                  {formatMessageTime(msg.created_at, i18n.language)}
                 </span>
                 {msg.sender_id === user?.id && msg.status === 'read' && (
                   <CheckedDoubleIcon className='h-4 w-4' />
