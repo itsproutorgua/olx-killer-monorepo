@@ -9,14 +9,14 @@ const config = {
   },
   theme: {
     screens: {
-      xs: '375px',
+      xs: '358px',
       md: '768px',
       xl: '1439px',
     },
     container: {
       center: true,
       padding: {
-        DEFAULT: '10px',
+        DEFAULT: '1px',
         md: '110px',
         xl: '80px',
       },

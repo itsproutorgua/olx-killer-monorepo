@@ -12,74 +12,74 @@ export const Footer = () => {
       title: t('footerContent.aboutCompany.title'),
       items: [
         { label: t('footerContent.aboutCompany.items.aboutUs'), link: '#' },
-        { label: t('footerContent.aboutCompany.items.careers'), link: '#' },
-        { label: t('footerContent.aboutCompany.items.partners'), link: '#' },
-        { label: t('footerContent.aboutCompany.items.contactUs'), link: '#' },
-        {
-          label: t('footerContent.aboutCompany.items.forInvestors'),
-          link: '#',
-        },
-        {
-          label: t('footerContent.aboutCompany.items.legalInformation'),
-          link: '#',
-        },
-        {
-          label: t('footerContent.aboutCompany.items.privacyPolicy'),
-          link: '#',
-        },
-        { label: t('footerContent.aboutCompany.items.termsOfUse'), link: '#' },
+        // { label: t('footerContent.aboutCompany.items.careers'), link: '#' },
+        // { label: t('footerContent.aboutCompany.items.partners'), link: '#' },
+        // { label: t('footerContent.aboutCompany.items.contactUs'), link: '#' },
+        // {
+        //   label: t('footerContent.aboutCompany.items.forInvestors'),
+        //   link: '#',
+        // },
+        // {
+        //   label: t('footerContent.aboutCompany.items.legalInformation'),
+        //   link: '#',
+        // },
+        // {
+        //   label: t('footerContent.aboutCompany.items.privacyPolicy'),
+        //   link: '#',
+        // },
+        // { label: t('footerContent.aboutCompany.items.termsOfUse'), link: '#' },
       ],
     },
-    {
-      title: t('footerContent.forSellers.title'),
-      items: [
-        {
-          label: t('footerContent.forSellers.items.howToStartSelling'),
-          link: '#',
-        },
-        {
-          label: t('footerContent.forSellers.items.sellerRegistration'),
-          link: '#',
-        },
-        {
-          label: t('footerContent.forSellers.items.pricingAndFees'),
-          link: '#',
-        },
-        {
-          label: t('footerContent.forSellers.items.orderProcessing'),
-          link: '#',
-        },
-        {
-          label: t('footerContent.forSellers.items.rulesAndPolicies'),
-          link: '#',
-        },
-        { label: t('footerContent.forSellers.items.sellerSupport'), link: '#' },
-      ],
-    },
+    // {
+    //   title: t('footerContent.forSellers.title'),
+    //   items: [
+    //     {
+    //       label: t('footerContent.forSellers.items.howToStartSelling'),
+    //       link: '#',
+    //     },
+    //     {
+    //       label: t('footerContent.forSellers.items.sellerRegistration'),
+    //       link: '#',
+    //     },
+    //     {
+    //       label: t('footerContent.forSellers.items.pricingAndFees'),
+    //       link: '#',
+    //     },
+    //     {
+    //       label: t('footerContent.forSellers.items.orderProcessing'),
+    //       link: '#',
+    //     },
+    //     {
+    //       label: t('footerContent.forSellers.items.rulesAndPolicies'),
+    //       link: '#',
+    //     },
+    //     { label: t('footerContent.forSellers.items.sellerSupport'), link: '#' },
+    //   ],
+    // },
     {
       title: t('footerContent.forBuyers.title'),
       items: [
         { label: t('footerContent.forBuyers.items.catalog'), link: '#' },
-        {
-          label: t('footerContent.forBuyers.items.dealsAndDiscounts'),
-          link: '#',
-        },
-        { label: t('footerContent.forBuyers.items.howToOrder'), link: '#' },
-        { label: t('footerContent.forBuyers.items.paymentMethods'), link: '#' },
-        {
-          label: t('footerContent.forBuyers.items.shippingAndPickup'),
-          link: '#',
-        },
-        {
-          label: t('footerContent.forBuyers.items.returnsAndExchanges'),
-          link: '#',
-        },
+        // {
+        //   label: t('footerContent.forBuyers.items.dealsAndDiscounts'),
+        //   link: '#',
+        // },
+        // { label: t('footerContent.forBuyers.items.howToOrder'), link: '#' },
+        // { label: t('footerContent.forBuyers.items.paymentMethods'), link: '#' },
+        // {
+        //   label: t('footerContent.forBuyers.items.shippingAndPickup'),
+        //   link: '#',
+        // },
+        // {
+        //   label: t('footerContent.forBuyers.items.returnsAndExchanges'),
+        //   link: '#',
+        // },
         { label: t('footerContent.forBuyers.items.faq'), link: '#' },
         { label: t('footerContent.forBuyers.items.myAccount'), link: '#' },
-        {
-          label: t('footerContent.forBuyers.items.customerSupport'),
-          link: '#',
-        },
+        // {
+        //   label: t('footerContent.forBuyers.items.customerSupport'),
+        //   link: '#',
+        // },
       ],
     },
   ]

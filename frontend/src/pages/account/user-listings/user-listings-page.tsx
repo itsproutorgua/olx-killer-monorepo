@@ -40,7 +40,7 @@ export const UserListingsPage = () => {
   const totalCount = data?.[tabKey]
 
   return (
-    <div className='pt-10 xl:min-h-[calc(100dvh-200px)] xl:pl-[42px] xl:pt-[55px]'>
+    <div className='px-2 pt-10 md:px-0 xl:min-h-[calc(100dvh-200px)] xl:pl-[42px] xl:pt-[55px]'>
       <Link
         to={PRIVATE_PAGES.ACCOUNT}
         className='mb-[30px] flex items-center gap-[14px] xl:hidden'
