@@ -97,9 +97,9 @@ const ChatContent = ({
         <img
           src={chats_empty_image}
           alt='Chats Empty'
-          className='mb-[48px] max-h-[241px] max-w-[276px]'
+          className='mb-[22px] max-h-[186px] max-w-[213] xl:mb-[48px] xl:max-h-[241px] xl:max-w-[276px]'
         />
-        <p className='mb-4 text-xl font-medium'>
+        <p className='mb-4 max-w-[271px] text-xl font-medium xl:max-w-[512px]'>
           {t('messages.noConversations')}
         </p>
         <p className='max-w-[512px]'>{t('messages.startChatHint')}</p>
