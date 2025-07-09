@@ -24,7 +24,7 @@ export const AccountPageMobile = () => {
   }
 
   return (
-    <div className='mb-16 flex h-full flex-col gap-5 text-black'>
+    <div className='mb-16 flex h-full flex-col gap-5 px-2 text-black xl:px-0'>
       {profileLoaded ? (
         <div className='relative mt-5 flex flex-col items-center gap-[10px] rounded-[20px] bg-white py-[26px] shadow-sm'>
           <img

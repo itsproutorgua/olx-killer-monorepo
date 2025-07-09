@@ -9,7 +9,7 @@ export const CreateListingPage = () => {
   const { t } = useTranslation()
 
   return (
-    <PageWrapper>
+    <PageWrapper className='px-2 md:px-0'>
       <Link
         to={PRIVATE_PAGES.LISTINGS}
         className='mb-[30px] flex items-center gap-3 text-sm/none xl:gap-5 xl:text-base/[19.36px]'
