@@ -3,6 +3,7 @@ import { NotificationProvider } from '@/shared/notifications-context/notificatio
 import { AppState, Auth0Provider } from '@auth0/auth0-react'
 import { QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import i18n from 'i18next'
 import { Toaster } from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
 
@@ -25,6 +26,7 @@ export const Providers = ({ children }: { children: React.ReactNode }) => {
         redirect_uri: window.location.origin,
         audience: 'https://dev-oiwvoe5rjc073q1x.eu.auth0.com/api/v2/',
         scope: 'openid profile email offline_access',
+        ui_locales: i18n.language,
       }}
       onRedirectCallback={onRedirectCallback}
       useRefreshTokens={!isSafari()}

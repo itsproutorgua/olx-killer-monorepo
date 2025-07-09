@@ -4,7 +4,7 @@ import { UserMenu } from '@/entities/user'
 
 export const NavToolbar = () => {
   return (
-    <ul className='hidden xl:flex xl:items-center'>
+    <ul className='hidden xl:-mr-2 xl:flex xl:items-center'>
       <FavoriteButton />
       <MessageButton />
       <UserMenu />
