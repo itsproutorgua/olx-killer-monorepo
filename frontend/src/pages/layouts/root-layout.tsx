@@ -6,7 +6,7 @@ import BottomBar from '@/widgets/mobile-bottom-bar/bottom-bar.tsx'
 
 export const RootLayout = () => {
   return (
-    <div className='grid min-h-screen min-w-[382px] grid-rows-[_auto_1fr_auto]'>
+    <div className='grid min-h-screen grid-rows-[_auto_1fr_auto]'>
       <Header />
       <main>
         <Outlet />
