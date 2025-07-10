@@ -14,7 +14,7 @@ export const titles_uk = {
     feedbackSuccess: 'Дякуємо за ваш відгук!',
     deleteDefaultWarning: 'Ви впевненні, що бажаєте це видалити?',
     deleteListingWarning: 'Ви впевненні, що бажаєте видалити оголошення?',
-    deleteChatWarning: 'Ви впевненні, що бажаєте видалити чат?',
+    deleteChatWarning: 'Ви впевненні, що бажаєте видалити діалог?',
     aboutUs: 'Про нас',
     loginToContinue: 'Увійдіть, щоб продовжити',
   },

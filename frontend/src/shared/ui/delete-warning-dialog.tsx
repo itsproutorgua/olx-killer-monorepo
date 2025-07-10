@@ -58,7 +58,7 @@ export function DeleteWarningDialog({
           </button>
           <button
             onClick={() => onOpenChange(false)}
-            className='w-full px-5 py-[13px] leading-4'
+            className='w-full px-5 py-[13px] text-sm xl:text-[16px]'
           >
             {t('buttons.returnBack')}
           </button>

@@ -25,8 +25,13 @@ import {
 
 export const MessageHeader = () => {
   const { t } = useTranslation()
-  const { selectedSellerProfile, setMobileView, currentRoomId } =
-    useChatContext()
+  const {
+    selectedSellerProfile,
+    setMobileView,
+    currentRoomId,
+    setSelectedSellerProfile,
+    setCurrentRoomId,
+  } = useChatContext()
   const { isLoading, deleteChat, isDeleting } = useChatList()
   const [isDeleteWarningOpen, setIsDeleteWarningOpen] = useState(false)
 
@@ -47,7 +52,11 @@ export const MessageHeader = () => {
       ) : (
         <div className='flex items-start gap-3'>
           <button
-            onClick={() => setMobileView('list')}
+            onClick={() => {
+              setMobileView('list')
+              setSelectedSellerProfile(null)
+              setCurrentRoomId(null)
+            }}
             className='my-auto mr-2 block xl:hidden'
           >
             <ArrowDownSmall className='rotate-90' />

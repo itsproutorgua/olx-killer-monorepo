@@ -3,6 +3,6 @@ import { UserListingsPage } from '@/pages/account/user-listings/user-listings-pa
 import { useMediaQuery } from '@/shared/library/hooks'
 
 export const AccountPage = () => {
-  const isMobile = useMediaQuery('(max-width: 1439px)')
+  const isMobile = useMediaQuery('(max-width: 1438px)')
   return <>{isMobile ? <AccountPageMobile /> : <UserListingsPage />}</>
 }

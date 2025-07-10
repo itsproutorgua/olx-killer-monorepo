@@ -22,7 +22,7 @@ export const ChatWrapper = () => {
   const location = useLocation()
   const initialRoomId = location.state?.roomId || null
   const initialMobileView = location.state?.mobileView || null
-  const isMobile = useMediaQuery('(max-width: 1440px)')
+  const isMobile = useMediaQuery('(max-width: 1438px)')
   return (
     <ChatProvider initialRoomId={initialRoomId}>
       <ChatContent isMobile={isMobile} initialMobileView={initialMobileView} />
