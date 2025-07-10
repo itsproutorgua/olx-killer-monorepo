@@ -33,14 +33,14 @@ export function DeleteWarningDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent
         aria-describedby={undefined}
-        className='w-full max-w-[451px] gap-[30px] rounded-[20px] border-none bg-gray-50 p-[50px] text-gray-900'
+        className='w-full max-w-[451px] gap-[30px] rounded-[20px] border-none bg-gray-50 p-[30px] pb-[17px] text-gray-900 xl:p-[50px] xl:pb-[37px]'
       >
-        <DialogHeader className='space-y-4'>
-          <DialogTitle className='flex flex-col items-center gap-5 text-2xl font-medium leading-[29px] text-gray-900'>
+        <DialogHeader className='mx-auto max-w-[295px] space-y-4 xl:max-w-[352px]'>
+          <DialogTitle className='flex max-w-[295] flex-col items-center gap-5 text-[20px] font-medium leading-[29px] text-gray-900 xl:max-w-[352px] xl:text-2xl'>
             <DeleteSmall className='h-[34px] w-[34px] text-error-700' />
             <span>{title ? t(title) : t('title.deleteDefaultWarning')}</span>
           </DialogTitle>
-          <DialogDescription className='text-[16px] font-normal leading-5'>
+          <DialogDescription className='text-sm font-normal xl:text-[16px] xl:leading-5'>
             {message ? t(message) : t('words.deleteDefaultWarning')}
           </DialogDescription>
         </DialogHeader>
@@ -48,7 +48,7 @@ export function DeleteWarningDialog({
           <button
             onClick={() => onClickDelete()}
             disabled={isDeleting}
-            className='flex w-full justify-center rounded-[60px] bg-error-700 px-5 py-[13px] leading-4 text-gray-50 transition duration-300 hover:bg-error-800 disabled:cursor-not-allowed disabled:bg-gray-400 disabled:text-gray-50'
+            className='flex w-full justify-center rounded-[60px] bg-error-700 px-5 py-[13px] text-sm text-gray-50 transition duration-300 hover:bg-error-800 disabled:cursor-not-allowed disabled:bg-gray-400 disabled:text-gray-50 xl:text-[16px] xl:leading-4'
           >
             {isDeleting ? (
               <LoaderCircle className='size-4 animate-spin self-center' />
