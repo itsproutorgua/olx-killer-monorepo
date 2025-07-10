@@ -126,6 +126,7 @@ const BottomBar = () => {
         <div className='flex w-[35%] flex-row justify-between gap-2'>
           <Link
             to={PRIVATE_PAGES.CHAT}
+            state={{ mobileView: 'list' }}
             className='relative flex w-[70px] cursor-pointer flex-col items-center'
           >
             <ChatIcon className='h-[30px h-[30px] stroke-1' />
