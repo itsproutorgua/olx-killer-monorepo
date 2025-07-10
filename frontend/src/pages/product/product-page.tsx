@@ -36,6 +36,7 @@ export const ProductPage = () => {
       generateProductCrumbs(data, setCrumbs)
     }
   }, [data])
+  console.log(data)
 
   return (
     <div className='container mt-[27px] md:mt-[38px]'>
@@ -49,15 +50,25 @@ export const ProductPage = () => {
         />
       )}
 
-      <div className='mb-[53px] hidden min-h-[277px] md:relative md:block xl:min-h-[440px]'>
-        <ProductsBySeller onProductClick={handleProductClick} />
-      </div>
+      {data?.seller.id && (
+        <>
+          <div className='mb-[53px] hidden min-h-[277px] xl:relative xl:block xl:min-h-[440px]'>
+            <ProductsBySeller
+              sellerId={data.seller.id}
+              onProductClick={handleProductClick}
+            />
+          </div>
 
-      <div className='mb-[126px] md:hidden'>
-        <ProductsBySellerSlider onProductClick={handleProductClick} />
-      </div>
+          <div className='mb-[126px] xl:hidden'>
+            <ProductsBySellerSlider
+              sellerId={data.seller.id}
+              onProductClick={handleProductClick}
+            />
+          </div>
+        </>
+      )}
 
-      <div className='mb-[53px] hidden min-h-[277px] md:relative md:block xl:min-h-[440px]'>
+      <div className='mb-[53px] hidden min-h-[277px] md:relative xl:block xl:min-h-[440px]'>
         <SimilarProducts
           onProductClick={handleProductClick}
           path={data?.category.parent?.path}
