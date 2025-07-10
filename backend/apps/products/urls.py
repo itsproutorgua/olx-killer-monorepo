@@ -20,6 +20,7 @@ urlpatterns = [
     path('categories/<path:path>/', views.CategoryAPIViewSet.as_view({'get': 'retrieve'}), name='category-detail'),
     path('currencies/', views.CurrencyListView.as_view(), name='currency-list'),
     path('create-temp-product/', views.TMPProductCreateAPIView.as_view(), name='create-temp-product'),
+    path('products/get-by-seller/', views.ReturnSellerProductsView.as_view(), name='get-seller-producrs'),
 ]
 
 urlpatterns += router.urls
