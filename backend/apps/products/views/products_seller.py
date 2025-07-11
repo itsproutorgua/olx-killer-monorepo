@@ -49,7 +49,8 @@ class ReturnSellerProductsView(ListAPIView):
 
         try:
             profile = Profile.objects.get(id=profile_id)
-            queryset = Product.objects.prefetch_related('prices__currency', 'product_images').filter(seller=profile.user)
+            queryset = Product.objects.prefetch_related('prices__currency', 'product_images').filter(seller=profile.user, 
+                                                                                                     publication_status=Product.PublicationStatus.ACTIVE)
         except Profile.DoesNotExist:
             return Response(
                 {'error': _('Profile not found for the given ID.')},
