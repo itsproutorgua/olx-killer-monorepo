@@ -4,8 +4,12 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { isSafari } from '@/shared/library/utils'
 
 export const useRefreshEmailVerified = () => {
-  const { getIdTokenClaims, getAccessTokenSilently, loginWithRedirect } =
-    useAuth0()
+  const {
+    getIdTokenClaims,
+    getAccessTokenSilently,
+    loginWithRedirect,
+    isLoading: isRefreshing,
+  } = useAuth0()
   const [isEmailVerified, setIsEmailVerified] = useState<boolean | null>(null)
 
   const refreshEmailVerified = useCallback(async () => {
@@ -37,5 +41,5 @@ export const useRefreshEmailVerified = () => {
     }
   }, [getAccessTokenSilently, getIdTokenClaims, loginWithRedirect])
 
-  return { isEmailVerified, refreshEmailVerified }
+  return { isEmailVerified, refreshEmailVerified, isRefreshing }
 }

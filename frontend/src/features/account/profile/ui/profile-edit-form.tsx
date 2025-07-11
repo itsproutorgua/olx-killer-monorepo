@@ -26,7 +26,7 @@ import { useDebounce, useRefreshEmailVerified } from '@/shared/library/hooks'
 
 export function ProfileEditForm() {
   const { t } = useTranslation()
-  const { user: userAuth, isAuthenticated, isLoading } = useAuth0()
+  const { user: userAuth } = useAuth0()
   const { data: user, isSuccess: profileLoaded } = useUserProfile()
   const { mutate, isPending } = useUpdateProfile()
   const [searchTerm, setSearchTerm] = useState('')
@@ -38,7 +38,7 @@ export function ProfileEditForm() {
   )
   const { locations, cursor } = useLocations(debouncedSearchTerm, {})
   const ProfileFormSchema = useProfileSchema()
-  const { isEmailVerified, refreshEmailVerified } = useRefreshEmailVerified()
+  const { refreshEmailVerified, isRefreshing } = useRefreshEmailVerified()
   const form = useForm<z.infer<typeof ProfileFormSchema>>({
     resolver: zodResolver(ProfileFormSchema),
     mode: 'onChange',
@@ -50,12 +50,6 @@ export function ProfileEditForm() {
       user_email: '',
     },
   })
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      refreshEmailVerified()
-    }
-  }, [isAuthenticated, refreshEmailVerified])
 
   useEffect(() => {
     if (profileLoaded && user) {
@@ -131,11 +125,11 @@ export function ProfileEditForm() {
             />
             <div>
               <div className='space-y-6 xl:flex xl:max-w-[422px] xl:flex-col xl:gap-y-[30px] xl:space-y-0'>
-                {isEmailVerified === false && (
+                {userAuth?.email_verified === false && (
                   <EmailNotVerified
                     refreshEmailVerified={refreshEmailVerified}
                     className='-mb-4'
-                    isLoading={isLoading}
+                    isLoading={isRefreshing}
                   />
                 )}
                 <h1 className='-mb-1 text-lg font-semibold xl:-mb-[10px]'>

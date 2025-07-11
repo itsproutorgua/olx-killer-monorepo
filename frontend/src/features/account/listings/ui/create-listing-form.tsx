@@ -20,7 +20,7 @@ import { ProductImage, useProduct } from '@/entities/product'
 import { useCreateProduct } from '@/entities/product/library/hooks/use-create-product.tsx'
 import { useUpdateProduct } from '@/entities/product/library/hooks/use-update-product.tsx'
 import { useUserProfile } from '@/entities/user'
-import { PenIcon, SpinnerIcon } from '@/shared/ui'
+import { PenIcon } from '@/shared/ui'
 import {
   ArrowDownSmall,
   VideoUploadIcon,
@@ -61,21 +61,17 @@ export function CreateListingForm({
   onOpenChange,
 }: Props) {
   const { t } = useTranslation()
-  const { user: userAuth, isAuthenticated } = useAuth0()
+  const { user: userAuth } = useAuth0()
   const { data: existingProduct, isSuccess: productLoaded } = useProduct(
     productSlug ?? '',
     {
       enabled: mode === 'edit',
     },
   )
-  const {
-    data: userProfile,
-    isLoading,
-    isSuccess: profileLoaded,
-  } = useUserProfile()
+  const { data: userProfile, isSuccess: profileLoaded } = useUserProfile()
   const navigate = useNavigate()
   const [isCategoryDialogOpen, setIsCategoryDialogOpen] = useState(false)
-  const { isEmailVerified, refreshEmailVerified } = useRefreshEmailVerified()
+  const { refreshEmailVerified } = useRefreshEmailVerified()
   const [categoryTitle, setCategoryTitle] = useState('')
   const [selectedVideoFile, setSelectedVideoFile] = useState<File | null>(null)
   const handleCancelVideo = () => {
@@ -97,15 +93,15 @@ export function CreateListingForm({
       uploaded_images: undefined,
       upload_video: undefined,
       status: 'new',
-      user_name:
-        userProfile?.username || t('listingForm.fields.userName.placeholder'),
-      user_email: userProfile?.email || t('listingForm.fields.userEmail.label'),
-      user_phone:
-        userProfile?.phone_numbers[0] ||
-        t('listingForm.fields.userPhone.placeholder'),
-      location:
-        `${userProfile?.location?.name}, ${userProfile?.location.region}` ||
-        t('listingForm.fields.city.placeholder'),
+      // user_name:
+      //   userProfile?.username || t('listingForm.fields.userName.placeholder'),
+      // user_email: userProfile?.email || t('listingForm.fields.userEmail.label'),
+      // user_phone:
+      //   userProfile?.phone_numbers[0] ||
+      //   t('listingForm.fields.userPhone.placeholder'),
+      // location:
+      //   `${userProfile?.location?.name}, ${userProfile?.location.region}` ||
+      //   t('listingForm.fields.city.placeholder'),
     },
   })
 
@@ -123,27 +119,28 @@ export function CreateListingForm({
             existingProduct?.status === 'Вживаний'
               ? 'used'
               : 'new',
-          user_name: userProfile?.username || '',
-          location:
-            `${userProfile?.location?.name}, ${userProfile?.location.region}` ||
-            '',
-          user_phone: userProfile?.phone_numbers?.[0] || '',
-          user_email: userProfile?.email || '',
+          // user_name: userProfile?.username || '',
+          // location:
+          //   `${userProfile?.location?.name}, ${userProfile?.location.region}` ||
+          //   '',
+          // user_phone: userProfile?.phone_numbers?.[0] || '',
+          // user_email: userProfile?.email || '',
         })
 
         if (existingProduct?.category?.title) {
           setCategoryTitle(existingProduct.category.title)
         }
-      } else {
-        form.reset({
-          user_name: userProfile?.username || '',
-          location: userProfile?.location?.name
-            ? `${userProfile?.location.name}, ${userProfile?.location.region}`
-            : '',
-          user_phone: userProfile?.phone_numbers?.[0] || '',
-          user_email: userProfile?.email || '',
-        })
       }
+      // } else {
+      //   form.reset({
+      //     user_name: userProfile?.username || '',
+      //     location: userProfile?.location?.name
+      //       ? `${userProfile?.location.name}, ${userProfile?.location.region}`
+      //       : '',
+      //     user_phone: userProfile?.phone_numbers?.[0] || '',
+      //     user_email: userProfile?.email || '',
+      //   })
+      // }
     }
 
     const loadImageFiles = async () => {
@@ -173,13 +170,7 @@ export function CreateListingForm({
 
     resetFormFields()
     loadImageFiles()
-  }, [existingProduct, mode, productLoaded, profileLoaded, userProfile])
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      refreshEmailVerified()
-    }
-  }, [isAuthenticated, refreshEmailVerified])
+  }, [existingProduct, mode, productLoaded, userProfile])
 
   const { mutate: createProduct, isPending } = useCreateProduct()
   const { mutate: updateProduct, isPending: isUpdatePending } =
@@ -243,15 +234,16 @@ export function CreateListingForm({
         onSubmit={form.handleSubmit(onSubmit)}
         className='space-y-[50px] xl:w-[885px]'
       >
-        {isEmailVerified === false && (
+        {userAuth?.email_verified === false && (
           <EmailNotVerified
             className='-mb-10 -mt-[10px] max-w-[666px] xl:-mt-5'
             refreshEmailVerified={refreshEmailVerified}
           />
         )}
         {userProfile &&
-          (form.watch('user_phone') === '' ||
-            form.watch('location') === '') && (
+          profileLoaded &&
+          (userProfile.phone_numbers.length === 0 ||
+            userProfile.location === null) && (
             <div>
               <ProfileNotFilled className='-mt-[10px] min-h-[164px] max-w-[666px] xl:-mt-5' />
             </div>
@@ -547,122 +539,122 @@ export function CreateListingForm({
             </div>
           </div>
 
-          {/* Contacts info */}
-          <div className='space-y-[30px]'>
-            <div className='flex items-center gap-4'>
-              <div className='flex size-8 flex-none items-center justify-center rounded-full border border-dashed border-primary-400 text-base/none font-semibold text-primary-700'>
-                2
-              </div>
-              <div className='space-y-2'>
-                <h2 className='text-lg/[21.78px] font-medium xl:text-2xl/[29.05px]'>
-                  {t('listingForm.contactInfo.title')}
-                </h2>
-              </div>
-            </div>
+          {/*/!* Contacts info *!/*/}
+          {/*<div className='space-y-[30px]'>*/}
+          {/*  <div className='flex items-center gap-4'>*/}
+          {/*    <div className='flex size-8 flex-none items-center justify-center rounded-full border border-dashed border-primary-400 text-base/none font-semibold text-primary-700'>*/}
+          {/*      2*/}
+          {/*    </div>*/}
+          {/*    <div className='space-y-2'>*/}
+          {/*      <h2 className='text-lg/[21.78px] font-medium xl:text-2xl/[29.05px]'>*/}
+          {/*        {t('listingForm.contactInfo.title')}*/}
+          {/*      </h2>*/}
+          {/*    </div>*/}
+          {/*  </div>*/}
 
-            {isLoading ? (
-              <div className='flex justify-center xl:max-w-[422px] xl:justify-start xl:pl-32'>
-                <SpinnerIcon className='h-12 w-12 animate-spin text-primary-900' />
-              </div>
-            ) : (
-              <div className='flex flex-col gap-6 xl:max-w-[422px] xl:gap-[30px]'>
-                <FormField
-                  control={form.control}
-                  name='user_name'
-                  render={({ field }) => (
-                    <FormItem className='form-item'>
-                      <FormLabel className='form-label' htmlFor='username'>
-                        {t('listingForm.fields.userName.label')}*
-                      </FormLabel>
-                      <FormControl>
-                        <Input
-                          {...field}
-                          id='username'
-                          readOnly
-                          placeholder={t(
-                            'listingForm.fields.userName.placeholder',
-                          )}
-                          className='form-input bg-gray-50'
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+          {/*  {isLoading ? (*/}
+          {/*    <div className='flex justify-center xl:max-w-[422px] xl:justify-start xl:pl-32'>*/}
+          {/*      <SpinnerIcon className='h-12 w-12 animate-spin text-primary-900' />*/}
+          {/*    </div>*/}
+          {/*  ) : (*/}
+          {/*    <div className='flex flex-col gap-6 xl:max-w-[422px] xl:gap-[30px]'>*/}
+          {/*      <FormField*/}
+          {/*        control={form.control}*/}
+          {/*        name='user_name'*/}
+          {/*        render={({ field }) => (*/}
+          {/*          <FormItem className='form-item'>*/}
+          {/*            <FormLabel className='form-label' htmlFor='username'>*/}
+          {/*              {t('listingForm.fields.userName.label')}**/}
+          {/*            </FormLabel>*/}
+          {/*            <FormControl>*/}
+          {/*              <Input*/}
+          {/*                {...field}*/}
+          {/*                id='username'*/}
+          {/*                readOnly*/}
+          {/*                placeholder={t(*/}
+          {/*                  'listingForm.fields.userName.placeholder',*/}
+          {/*                )}*/}
+          {/*                className='form-input bg-gray-50'*/}
+          {/*              />*/}
+          {/*            </FormControl>*/}
+          {/*            <FormMessage />*/}
+          {/*          </FormItem>*/}
+          {/*        )}*/}
+          {/*      />*/}
 
-                {/* Email display */}
-                <FormField
-                  control={form.control}
-                  name='user_email'
-                  render={({ field }) => (
-                    <FormItem className='form-item'>
-                      <FormLabel className='form-label' htmlFor='email'>
-                        {t('listingForm.fields.userEmail.label')}*
-                      </FormLabel>
-                      <FormControl>
-                        <Input
-                          {...field}
-                          id='email'
-                          readOnly
-                          placeholder={t('listingForm.fields.userEmail.label')}
-                          className='form-input bg-gray-50'
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+          {/*      /!* Email display *!/*/}
+          {/*      <FormField*/}
+          {/*        control={form.control}*/}
+          {/*        name='user_email'*/}
+          {/*        render={({ field }) => (*/}
+          {/*          <FormItem className='form-item'>*/}
+          {/*            <FormLabel className='form-label' htmlFor='email'>*/}
+          {/*              {t('listingForm.fields.userEmail.label')}**/}
+          {/*            </FormLabel>*/}
+          {/*            <FormControl>*/}
+          {/*              <Input*/}
+          {/*                {...field}*/}
+          {/*                id='email'*/}
+          {/*                readOnly*/}
+          {/*                placeholder={t('listingForm.fields.userEmail.label')}*/}
+          {/*                className='form-input bg-gray-50'*/}
+          {/*              />*/}
+          {/*            </FormControl>*/}
+          {/*            <FormMessage />*/}
+          {/*          </FormItem>*/}
+          {/*        )}*/}
+          {/*      />*/}
 
-                {/* Phone display */}
-                <FormField
-                  control={form.control}
-                  name='user_phone'
-                  render={({ field }) => (
-                    <FormItem className='form-item'>
-                      <FormLabel className='form-label' htmlFor='phone'>
-                        {t('listingForm.fields.userPhone.label')}*
-                      </FormLabel>
-                      <FormControl>
-                        <Input
-                          {...field}
-                          id='phone'
-                          readOnly
-                          placeholder={t(
-                            'listingForm.fields.userPhone.placeholder',
-                          )}
-                          className='form-input bg-gray-50'
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+          {/*      /!* Phone display *!/*/}
+          {/*      <FormField*/}
+          {/*        control={form.control}*/}
+          {/*        name='user_phone'*/}
+          {/*        render={({ field }) => (*/}
+          {/*          <FormItem className='form-item'>*/}
+          {/*            <FormLabel className='form-label' htmlFor='phone'>*/}
+          {/*              {t('listingForm.fields.userPhone.label')}**/}
+          {/*            </FormLabel>*/}
+          {/*            <FormControl>*/}
+          {/*              <Input*/}
+          {/*                {...field}*/}
+          {/*                id='phone'*/}
+          {/*                readOnly*/}
+          {/*                placeholder={t(*/}
+          {/*                  'listingForm.fields.userPhone.placeholder',*/}
+          {/*                )}*/}
+          {/*                className='form-input bg-gray-50'*/}
+          {/*              />*/}
+          {/*            </FormControl>*/}
+          {/*            <FormMessage />*/}
+          {/*          </FormItem>*/}
+          {/*        )}*/}
+          {/*      />*/}
 
-                {/* Location display */}
-                <FormField
-                  control={form.control}
-                  name='location'
-                  render={({ field }) => (
-                    <FormItem className='form-item'>
-                      <FormLabel className='form-label' htmlFor='location'>
-                        {t('listingForm.fields.city.label')}*
-                      </FormLabel>
-                      <FormControl>
-                        <Input
-                          {...field}
-                          id='location'
-                          readOnly
-                          placeholder={t('listingForm.fields.city.placeholder')}
-                          className='form-input bg-gray-50'
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-            )}
-          </div>
+          {/*      /!* Location display *!/*/}
+          {/*      <FormField*/}
+          {/*        control={form.control}*/}
+          {/*        name='location'*/}
+          {/*        render={({ field }) => (*/}
+          {/*          <FormItem className='form-item'>*/}
+          {/*            <FormLabel className='form-label' htmlFor='location'>*/}
+          {/*              {t('listingForm.fields.city.label')}**/}
+          {/*            </FormLabel>*/}
+          {/*            <FormControl>*/}
+          {/*              <Input*/}
+          {/*                {...field}*/}
+          {/*                id='location'*/}
+          {/*                readOnly*/}
+          {/*                placeholder={t('listingForm.fields.city.placeholder')}*/}
+          {/*                className='form-input bg-gray-50'*/}
+          {/*              />*/}
+          {/*            </FormControl>*/}
+          {/*            <FormMessage />*/}
+          {/*          </FormItem>*/}
+          {/*        )}*/}
+          {/*      />*/}
+          {/*    </div>*/}
+          {/*  )}*/}
+          {/*</div>*/}
         </div>
 
         <button
