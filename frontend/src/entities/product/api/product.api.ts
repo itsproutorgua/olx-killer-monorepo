@@ -73,6 +73,21 @@ class ProductApi {
     return response.data
   }
 
+  async findBySeller({
+    signal,
+    profileId,
+  }: {
+    signal: AbortSignal
+    profileId: string | number
+  }) {
+    const params = new URLSearchParams()
+    params.set('q', profileId.toString())
+
+    const url = `${this.BASE_URL}/get-by-seller/?${params.toString()}`
+    const response = await instanceBase.get<ProductResponse>(url, { signal })
+    return response.data
+  }
+
   findByFiltersQueryOptions({
     path,
     currency_code,
@@ -126,6 +141,13 @@ class ProductApi {
     return queryOptions<Product[]>({
       queryKey: [QUERY_KEYS.PRODUCT, i18n.language, limit],
       queryFn: meta => this.findLatest({ signal: meta.signal, limit }),
+    })
+  }
+
+  findBySellerQueryOptions(i18n: i18n, profileId: string | number) {
+    return queryOptions<ProductResponse>({
+      queryKey: [QUERY_KEYS.PRODUCT_BY_SELLER, i18n.language, profileId],
+      queryFn: meta => this.findBySeller({ signal: meta.signal, profileId }),
     })
   }
 

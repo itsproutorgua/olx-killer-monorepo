@@ -2,13 +2,14 @@ import React from 'react'
 
 import { SellerProductProps } from '@/widgets/other-products-by-seller/products-by-seller.tsx'
 import { ProductSlider } from '@/widgets/product-slider/product-slider.tsx'
-import { useLatestProducts } from '@/entities/product/library/hooks/use-latest-products.tsx'
+import { useProductsBySeller } from '@/entities/product'
 import { ProductSliderSkeleton } from '@/shared/ui/skeletons'
 
 export const ProductsBySellerSlider: React.FC<SellerProductProps> = ({
+  sellerId,
   onProductClick,
 }) => {
-  const { data, cursor } = useLatestProducts({
+  const { data, cursor } = useProductsBySeller(sellerId, {
     Skeleton: <ProductSliderSkeleton />,
   })
   return (

@@ -68,7 +68,7 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({
   return (
     <div className={className}>
       <Carousel
-        className='mb-6'
+        className='relative mb-6'
         setApi={setApi}
         opts={{
           align: 'start',
@@ -79,7 +79,7 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({
         {/* Skeleton Loader: Display two skeletons per CarouselItem when loading */}
         {cursor}
         {/* Actual Data */}
-        {data && (
+        {data && data.length > 0 && (
           <CarouselContent>
             {chunkArray(data, dynamicChunkSize).map(
               (pair: Product[], index: number) => (
