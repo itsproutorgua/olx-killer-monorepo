@@ -1,7 +1,8 @@
+import { useEffect } from 'react'
 import { profileDefault } from '@/shared/assets'
 import { useNotificationContext } from '@/shared/notifications-context/use-notification-context.ts'
 import { useTranslation } from 'react-i18next'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 
 import { useChatContext } from '@/features/chat/chat-context/chat-context.tsx'
 import { useUserProfile } from '@/entities/user'
@@ -50,6 +51,16 @@ export const ChatList = ({
   } = useChatContext()
   const { data: user } = useUserProfile()
   const { rooms } = useNotificationContext()
+  const [searchParams] = useSearchParams()
+
+  useEffect(() => {
+    const roomIdParam = searchParams.get('roomId')
+    if (!roomIdParam) {
+      // Deselect chat when roomId is removed from URL
+      setCurrentRoomId(null)
+      setSelectedSellerProfile(null)
+    }
+  }, [searchParams])
 
   if (isLoading) return <div>{t('chatList.loading')}</div>
   if (error) return <div>{t('chatList.error', { message: error.message })}</div>
@@ -82,6 +93,11 @@ export const ChatList = ({
             r => r.room_id === Number(chat.room_id),
           )
           const unreadCount = notificationForRoom?.counter_by_room
+          const isFromCurrentUser =
+            notificationForRoom?.sender_id === user.id ||
+            (!notificationForRoom?.sender_id && lastMessage?.from_this_user)
+          const showUnreadBadge =
+            !isFromCurrentUser && unreadCount && unreadCount > 0
 
           return (
             <li
@@ -119,11 +135,9 @@ export const ChatList = ({
                           : t('messages.noMessages')}
                     </span>
                   </div>
-                  <div className='flex items-center justify-between'>
+                  <div className='flex min-h-[18px] items-center justify-between'>
                     <p className='line-clamp-1 w-[198px] text-xs/[14.52px] text-gray-950'>
-                      {!notificationForRoom?.sender_id &&
-                        lastMessage?.from_this_user &&
-                        t('messages.isYou') + ': '}
+                      {isFromCurrentUser && t('messages.isYou') + ': '}
                       {notificationForRoom?.last_message
                         ? notificationForRoom.last_message.length > 25
                           ? notificationForRoom.last_message.slice(0, 25) +
@@ -135,15 +149,13 @@ export const ChatList = ({
                             : lastMessage.content
                           : t('messages.noMessages')}
                     </p>
-                    {notificationForRoom?.sender_id !== user.id ? (
-                      unreadCount && (
-                        <span className='flex h-4 w-4 items-center justify-center rounded-full bg-primary-900 text-[8px] font-medium text-gray-50'>
-                          {unreadCount}
-                        </span>
-                      )
-                    ) : (
+                    {showUnreadBadge ? (
+                      <span className='flex h-4 w-4 items-center justify-center rounded-full bg-primary-900 text-[8px] font-medium text-gray-50'>
+                        {unreadCount}
+                      </span>
+                    ) : isFromCurrentUser ? (
                       <CheckedDoubleIcon />
-                    )}
+                    ) : null}
                   </div>
                 </div>
               </div>

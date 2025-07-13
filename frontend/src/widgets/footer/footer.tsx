@@ -75,7 +75,10 @@ export const Footer = () => {
         //   link: '#',
         // },
         { label: t('footerContent.forBuyers.items.faq'), link: '#' },
-        { label: t('footerContent.forBuyers.items.myAccount'), link: '#' },
+        {
+          label: t('footerContent.forBuyers.items.myAccount'),
+          link: '/account/profile',
+        },
         // {
         //   label: t('footerContent.forBuyers.items.customerSupport'),
         //   link: '#',

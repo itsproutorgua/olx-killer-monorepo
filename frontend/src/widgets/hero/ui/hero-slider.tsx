@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import {
   Carousel,
@@ -15,6 +15,40 @@ export const HeroSlider = () => {
   const [api, setApi] = useState<CarouselApi>()
   const [current, setCurrent] = useState(0)
   const [count, setCount] = useState(0)
+  const carouselRef = useRef<HTMLDivElement>(null)
+  const [isVisibleOnScreen, setIsVisibleOnScreen] = useState(false)
+  const [isTabActive, setIsTabActive] = useState(
+    document.visibilityState === 'visible',
+  )
+  const shouldAutoscroll = isVisibleOnScreen && isTabActive
+
+  // Observe visibility
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisibleOnScreen(entry.isIntersecting)
+      },
+      { threshold: 0.5 },
+    )
+
+    const node = carouselRef.current
+    if (node) observer.observe(node)
+    return () => {
+      if (node) observer.unobserve(node)
+    }
+  }, [])
+
+  // Visibility change listener for tab switch
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      setIsTabActive(document.visibilityState === 'visible')
+    }
+
+    document.addEventListener('visibilitychange', handleVisibilityChange)
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange)
+    }
+  }, [])
 
   useEffect(() => {
     if (!api) {
@@ -28,14 +62,27 @@ export const HeroSlider = () => {
       setCurrent(api.selectedScrollSnap() + 1)
     })
   }, [api])
+
+  // Autoscroll
+  useEffect(() => {
+    if (!api || !shouldAutoscroll) return
+
+    const interval = setInterval(() => {
+      api.scrollNext()
+    }, 7000)
+
+    return () => clearInterval(interval)
+  }, [api, shouldAutoscroll])
+
   return (
     <Carousel
+      ref={carouselRef}
       setApi={setApi}
       opts={{
         align: 'start',
         loop: true,
       }}
-      className='max-w-[630px]'
+      className='max-w-[630px] rounded-[15px]'
     >
       <CarouselContent>
         {HERO_DATA.map(item => (
@@ -55,13 +102,13 @@ export const HeroSlider = () => {
       <CarouselPrevious
         variant={null}
         size={null}
-        className='text-primary-foreground left-[22px]'
+        className='left-[10px] text-gray-50 xl:left-[22px]'
       >
         <svg
           width='24'
           height='24'
           viewBox='0 0 24 24'
-          className='fill-gray-50 transition-colors duration-300 hover:fill-primary-300 active:fill-primary-900 active:duration-0'
+          className='fill-gray-200 opacity-70 transition-colors duration-300 hover:fill-primary-300 active:fill-primary-900 active:duration-0'
           xmlns='http://www.w3.org/2000/svg'
         >
           <path
@@ -74,13 +121,13 @@ export const HeroSlider = () => {
       <CarouselNext
         variant={null}
         size={null}
-        className='text-primary-foreground right-[22px]'
+        className='text-primary-foreground right-[10px] xl:right-[22px]'
       >
         <svg
           width='24'
           height='24'
           viewBox='0 0 24 24'
-          className='fill-gray-50 transition-colors duration-300 hover:fill-primary-300 active:fill-primary-900 active:duration-0'
+          className='fill-gray-200 opacity-70 transition-colors duration-300 hover:fill-primary-300 active:fill-primary-900 active:duration-0'
           xmlns='http://www.w3.org/2000/svg'
         >
           <path
