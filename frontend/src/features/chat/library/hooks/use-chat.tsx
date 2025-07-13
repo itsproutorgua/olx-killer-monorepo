@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { useQueryClient } from '@tanstack/react-query'
+import { useLocation } from 'react-router-dom'
 
 import { Message, WebSocketResponse } from '@/features/chat'
 import { useUserProfile } from '@/entities/user'
@@ -7,6 +8,7 @@ import { useIdToken } from '@/entities/user/library/hooks/use-id-token.tsx'
 
 export const useChat = (roomId: string | null) => {
   const queryClient = useQueryClient()
+  const location = useLocation()
   const [messages, setMessages] = useState<Message[]>([])
   const { data: user } = useUserProfile()
   const [isConnected, setIsConnected] = useState(false)
@@ -134,6 +136,7 @@ export const useChat = (roomId: string | null) => {
         socket.onerror = null
         socket.onmessage = null
         socket.close()
+        console.log('WS closed')
         activeSocketRef.current = null
         ws.current = null
       }
@@ -141,7 +144,7 @@ export const useChat = (roomId: string | null) => {
       setIsReady(false)
       document.removeEventListener('visibilitychange', handleVisibilityChange)
     }
-  }, [roomId, user?.id])
+  }, [roomId, user?.id, location.key])
 
   let invalidateTimeout: ReturnType<typeof setTimeout> | null = null
 

@@ -11,7 +11,7 @@ export const HomePage = () => {
   return (
     <div className='overflow-x-hidden pb-[197px] pt-[15px] xl:pb-[100px] xl:pt-[27px]'>
       <div className='xl:hidden'>
-        <div className='container'>
+        <div className='container rounded-[15px]'>
           <HeroSlider />
         </div>
       </div>
