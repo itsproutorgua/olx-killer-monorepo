@@ -69,7 +69,7 @@ export const HeroSlider = () => {
 
     const interval = setInterval(() => {
       api.scrollNext()
-    }, 7000)
+    }, 8000)
 
     return () => clearInterval(interval)
   }, [api, shouldAutoscroll])
@@ -148,8 +148,8 @@ export const HeroSlider = () => {
               key={index}
               onClick={() => api?.scrollTo(index)}
               className={cn(
-                'size-2 rounded-full transition-colors duration-300 hover:bg-primary-500 active:fill-primary-500 active:duration-0',
-                isActive ? 'bg-primary-900' : 'bg-gray-50',
+                'size-2 rounded-full transition-colors duration-300 hover:bg-primary-900 active:fill-primary-900 active:duration-0',
+                isActive ? 'bg-primary-400' : 'bg-gray-300',
               )}
             />
           )

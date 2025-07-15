@@ -1,9 +1,9 @@
+import hero_0 from '@/shared/assets/images/hero/hero_0.png'
 import hero_1 from '@/shared/assets/images/hero/hero_1.png'
 import hero_2 from '@/shared/assets/images/hero/hero_2.png'
 import hero_3 from '@/shared/assets/images/hero/hero_3.png'
 import hero_4 from '@/shared/assets/images/hero/hero_4.png'
 import hero_5 from '@/shared/assets/images/hero/hero_5.png'
-import hero_6 from '@/shared/assets/images/hero/hero_6.png'
 
 export interface HeroItem {
   id: number
@@ -14,6 +14,16 @@ export interface HeroItem {
 }
 
 export const HERO_DATA: HeroItem[] = [
+  {
+    id: 0,
+    alt: 'hero image',
+    src: hero_0,
+    type: 'image/png',
+    srcset: [
+      { width: 375, items: [hero_0, hero_0] },
+      { width: 1440, items: [hero_0, hero_0] },
+    ],
+  },
   {
     id: 1,
     alt: 'hero image',
@@ -62,16 +72,6 @@ export const HERO_DATA: HeroItem[] = [
     srcset: [
       { width: 375, items: [hero_5, hero_5] },
       { width: 1440, items: [hero_5, hero_5] },
-    ],
-  },
-  {
-    id: 6,
-    alt: 'hero image',
-    src: hero_6,
-    type: 'image/png',
-    srcset: [
-      { width: 375, items: [hero_6, hero_6] },
-      { width: 1440, items: [hero_6, hero_6] },
     ],
   },
 ]
