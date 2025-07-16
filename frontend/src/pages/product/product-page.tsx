@@ -36,7 +36,6 @@ export const ProductPage = () => {
       generateProductCrumbs(data, setCrumbs)
     }
   }, [data])
-  console.log(data)
 
   return (
     <div className='container mt-[27px] md:mt-[38px]'>
