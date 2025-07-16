@@ -29,7 +29,12 @@ export const BestDeals = () => {
   // Scroll back into view when collapsing
   useEffect(() => {
     if (prevOpen.current && !isOpen && sectionRef.current) {
-      sectionRef.current.scrollIntoView({ behavior: 'smooth' })
+      setTimeout(() => {
+        sectionRef.current?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        })
+      }, 300)
     }
     prevOpen.current = isOpen
   }, [isOpen])

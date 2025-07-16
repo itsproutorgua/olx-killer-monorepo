@@ -99,22 +99,24 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({
           </CarouselContent>
         )}
         {/* DOTS */}
-        <div className='absolute bottom-[-24px] left-1/2 flex -translate-x-1/2 items-center gap-1'>
-          {Array.from({ length: count }).map((_, index: number) => {
-            const isActive = index === current - 1
+        {data && data.length > chunkSize && (
+          <div className='absolute bottom-[-24px] left-1/2 flex -translate-x-1/2 items-center gap-1'>
+            {Array.from({ length: count }).map((_, index: number) => {
+              const isActive = index === current - 1
 
-            return (
-              <button
-                key={index}
-                onClick={() => api?.scrollTo(index)}
-                className={cn(
-                  'size-2 rounded-full transition-colors duration-300 hover:bg-primary-500 active:fill-primary-500 active:duration-0',
-                  isActive ? 'bg-primary-900' : 'bg-gray-200',
-                )}
-              />
-            )
-          })}
-        </div>
+              return (
+                <button
+                  key={index}
+                  onClick={() => api?.scrollTo(index)}
+                  className={cn(
+                    'size-2 rounded-full transition-colors duration-300 hover:bg-primary-500 active:fill-primary-500 active:duration-0',
+                    isActive ? 'bg-primary-900' : 'bg-gray-200',
+                  )}
+                />
+              )
+            })}
+          </div>
+        )}
       </Carousel>
     </div>
   )
