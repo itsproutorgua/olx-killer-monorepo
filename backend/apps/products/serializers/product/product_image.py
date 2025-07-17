@@ -4,6 +4,9 @@ from django.db import IntegrityError
 from django.db import transaction
 from django.utils.translation import gettext_lazy as _
 from rest_framework import serializers
+from PIL import Image
+from io import BytesIO
+from django.core.files.base import ContentFile
 
 from apps.common import errors
 from apps.products.models import Product
@@ -32,6 +35,21 @@ class ProductImageSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data: dict) -> ProductImage:
         product = validated_data.pop('product', None)
+        image = validated_data.get('image')
+        img = Image.open(image)
+
+        if img.mode == 'RGBA':
+            img = img.convert('RGB')
+
+        img.thumbnail((300, 300), Image.Resampling.LANCZOS)
+
+        buffer = BytesIO()
+        img.save(buffer, format='JPEG', quality=75, optimize=True, progressive=True)
+        buffer.seek(0)
+        
+        file_name = f"{image.name.rsplit('.', 1)[0]}.jpg"
+
+        validated_data['image'] = ContentFile(buffer.read(), name=file_name)
 
         if product is None:
             raise ValidationError(_('The product does not exist.'))
