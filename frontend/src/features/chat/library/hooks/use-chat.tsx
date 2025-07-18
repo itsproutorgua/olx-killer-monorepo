@@ -3,6 +3,7 @@ import { useQueryClient } from '@tanstack/react-query'
 import { useLocation } from 'react-router-dom'
 
 import { Message, WebSocketResponse } from '@/features/chat'
+import { useChatList } from '@/features/chat/library/hooks/use-chat-list.tsx'
 import { useUserProfile } from '@/entities/user'
 import { useIdToken } from '@/entities/user/library/hooks/use-id-token.tsx'
 
@@ -17,9 +18,10 @@ export const useChat = (roomId: string | null) => {
   const getIdToken = useIdToken()
   const isConnecting = useRef(false)
   const [isReady, setIsReady] = useState(false)
+  const { chats } = useChatList()
 
   useEffect(() => {
-    if (!roomId || !user?.id) return
+    if (!roomId || !user?.id || chats?.length === 0) return
     setMessages([])
 
     let isCurrent = true // Track if this effect is still relevant
