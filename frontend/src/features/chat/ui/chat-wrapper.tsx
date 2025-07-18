@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { chats_empty_image } from '@/shared/assets'
+import { useIsFetching } from '@tanstack/react-query'
 import { useTranslation } from 'react-i18next'
 import { useLocation, useSearchParams } from 'react-router-dom'
 
@@ -11,6 +12,7 @@ import { useChatList } from '@/features/chat/library/hooks/use-chat-list.tsx'
 import { ChatNotSelected } from '@/features/chat/ui/chat-not-selected.tsx'
 import { useUserProfile } from '@/entities/user'
 import { SpinnerIcon } from '@/shared/ui/icons'
+import { queryClient } from '@/shared/api'
 import { useMediaQuery } from '@/shared/library/hooks'
 import { ChatList } from './chat-list'
 import { ChatSearch } from './chat-search'
@@ -23,6 +25,11 @@ export const ChatWrapper = () => {
   const initialRoomId = location.state?.roomId || null
   const initialMobileView = location.state?.mobileView || null
   const isMobile = useMediaQuery('(max-width: 1438px)')
+  useEffect(() => {
+    if (location.state?.refetchChats) {
+      queryClient.invalidateQueries({ queryKey: ['chatList'] })
+    }
+  }, [location.state])
   return (
     <ChatProvider initialRoomId={initialRoomId}>
       <ChatContent isMobile={isMobile} initialMobileView={initialMobileView} />
@@ -48,6 +55,7 @@ const ChatContent = ({
   const [searchParams] = useSearchParams()
   const { data: user } = useUserProfile()
   const requestedRoomId = searchParams.get('roomId')
+  const isFetchingChats = useIsFetching({ queryKey: ['chatList'] }) > 0
 
   // Handle initial room selection
   useEffect(() => {
@@ -88,7 +96,7 @@ const ChatContent = ({
     }
   }, [initialMobileView, isMobile, setMobileView])
 
-  if (isLoading || chats === undefined) {
+  if (isLoading || isFetchingChats || chats === undefined) {
     return (
       <div className='flex h-[calc(100dvh-150px)] items-center justify-center'>
         <span className='text-muted-foreground'>
@@ -98,7 +106,7 @@ const ChatContent = ({
     )
   }
 
-  if (!chats.length) {
+  if (!isLoading && chats.length === 0) {
     return (
       <div className='text-muted-foreground container mt-[128px] flex h-full flex-col items-center text-center text-gray-950 xl:mt-[143px]'>
         <img

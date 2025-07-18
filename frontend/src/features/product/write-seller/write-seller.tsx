@@ -60,6 +60,7 @@ export const WriteSeller: React.FC<Props> = ({
           roomId: data.id,
           mobileView: 'chat',
           prefill: `${productUrl}`,
+          refetchChats: true,
         },
       })
     } catch (error) {
