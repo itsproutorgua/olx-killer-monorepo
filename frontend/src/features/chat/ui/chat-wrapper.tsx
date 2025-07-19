@@ -1,6 +1,5 @@
 import { useEffect } from 'react'
 import { chats_empty_image } from '@/shared/assets'
-import { useIsFetching } from '@tanstack/react-query'
 import { useTranslation } from 'react-i18next'
 import { useLocation, useSearchParams } from 'react-router-dom'
 
@@ -29,7 +28,7 @@ export const ChatWrapper = () => {
     if (location.state?.refetchChats) {
       queryClient.invalidateQueries({ queryKey: ['chatList'] })
     }
-  }, [location.state])
+  }, [])
   return (
     <ChatProvider initialRoomId={initialRoomId}>
       <ChatContent isMobile={isMobile} initialMobileView={initialMobileView} />
@@ -55,7 +54,6 @@ const ChatContent = ({
   const [searchParams] = useSearchParams()
   const { data: user } = useUserProfile()
   const requestedRoomId = searchParams.get('roomId')
-  const isFetchingChats = useIsFetching({ queryKey: ['chatList'] }) > 0
 
   // Handle initial room selection
   useEffect(() => {
@@ -96,7 +94,7 @@ const ChatContent = ({
     }
   }, [initialMobileView, isMobile, setMobileView])
 
-  if (isLoading || isFetchingChats || chats === undefined) {
+  if (isLoading || chats === undefined) {
     return (
       <div className='flex h-[calc(100dvh-150px)] items-center justify-center'>
         <span className='text-muted-foreground'>

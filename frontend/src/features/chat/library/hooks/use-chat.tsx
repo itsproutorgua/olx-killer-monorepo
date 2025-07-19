@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { useQueryClient } from '@tanstack/react-query'
 import { useLocation } from 'react-router-dom'
 
@@ -19,9 +19,14 @@ export const useChat = (roomId: string | null) => {
   const isConnecting = useRef(false)
   const [isReady, setIsReady] = useState(false)
   const { chats } = useChatList()
+  const chatExists = useMemo(() => {
+    if (!roomId || !chats || chats.length === 0) return false
+    return chats.some(chat => chat.room_id === roomId)
+  }, [roomId, chats])
 
   useEffect(() => {
-    if (!roomId || !user?.id || chats?.length === 0) return
+    if (!user?.id || !roomId || !chatExists) return
+
     setMessages([])
 
     let isCurrent = true // Track if this effect is still relevant
@@ -146,7 +151,7 @@ export const useChat = (roomId: string | null) => {
       setIsReady(false)
       document.removeEventListener('visibilitychange', handleVisibilityChange)
     }
-  }, [roomId, user?.id, location.key])
+  }, [roomId, user?.id, location.key, chatExists])
 
   let invalidateTimeout: ReturnType<typeof setTimeout> | null = null
 

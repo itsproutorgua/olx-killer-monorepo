@@ -33,6 +33,7 @@ export function MessageForm() {
     editingMessage,
     setEditingMessage,
     currentRoomId,
+    isConnected,
   } = useChatContext()
 
   const { t } = useTranslation()
@@ -146,7 +147,8 @@ export function MessageForm() {
           </button>
           <button
             type='submit'
-            className='flex size-8 items-center justify-center rounded-full bg-primary-900 text-background xl:size-[52px]'
+            disabled={!isConnected}
+            className='flex size-8 items-center justify-center rounded-full bg-primary-900 text-background disabled:bg-gray-500 xl:size-[52px]'
           >
             <SendIcon className='h-4 w-4 xl:h-6 xl:w-6' />
           </button>

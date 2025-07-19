@@ -59,6 +59,7 @@ export const useChatList = () => {
     isError,
     error,
     refetch,
+    isFetching,
   } = useQuery<Chat[], Error>({
     queryKey: ['chatList', user?.id],
     queryFn: async () => {
@@ -93,6 +94,7 @@ export const useChatList = () => {
   return {
     chats,
     isLoading,
+    isFetching,
     isError,
     error,
     refetch,
