@@ -6,6 +6,7 @@ import { Message, WebSocketResponse } from '@/features/chat'
 import { useChatList } from '@/features/chat/library/hooks/use-chat-list.tsx'
 import { useUserProfile } from '@/entities/user'
 import { useIdToken } from '@/entities/user/library/hooks/use-id-token.tsx'
+import { debounceInvalidateQuery } from '@/shared/library/hooks'
 
 export const useChat = (roomId: string | null) => {
   const queryClient = useQueryClient()
@@ -119,7 +120,7 @@ export const useChat = (roomId: string | null) => {
     }
 
     reconnect().then(() =>
-      queryClient.invalidateQueries({ queryKey: ['chatList', user?.id] }),
+      debounceInvalidateQuery(queryClient, ['chatList', user.id]),
     )
 
     const handleVisibilityChange = () => {
@@ -153,16 +154,6 @@ export const useChat = (roomId: string | null) => {
     }
   }, [roomId, user?.id, location.key, chatExists])
 
-  let invalidateTimeout: ReturnType<typeof setTimeout> | null = null
-
-  const debounceInvalidateChatList = () => {
-    if (invalidateTimeout !== null) return // already scheduled
-    invalidateTimeout = setTimeout(() => {
-      queryClient.invalidateQueries({ queryKey: ['chatList'] })
-      invalidateTimeout = null
-    }, 300) // Delay just enough to group multiple events
-  }
-
   const handleMessage = (data: WebSocketResponse) => {
     setMessages(prev => {
       switch (data.type) {
@@ -194,7 +185,7 @@ export const useChat = (roomId: string | null) => {
           return prev
       }
     })
-    debounceInvalidateChatList()
+    debounceInvalidateQuery(queryClient, ['chatList', user?.id])
   }
 
   const sendMessage = (text: string) => {

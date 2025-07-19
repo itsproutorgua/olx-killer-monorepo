@@ -109,8 +109,8 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({
                   key={index}
                   onClick={() => api?.scrollTo(index)}
                   className={cn(
-                    'size-2 rounded-full transition-colors duration-300 hover:bg-primary-500 active:fill-primary-500 active:duration-0',
-                    isActive ? 'bg-primary-900' : 'bg-gray-200',
+                    'size-2 rounded-full transition-colors duration-300 hover:bg-primary-900 active:fill-primary-400 active:duration-0',
+                    isActive ? 'bg-primary-400' : 'bg-gray-200',
                   )}
                 />
               )

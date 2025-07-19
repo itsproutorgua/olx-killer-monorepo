@@ -91,6 +91,7 @@ export const en = {
         sellerSupport: 'Seller Support',
       },
     },
+    menu: 'Menu',
     rights: 'All rights reserved',
   },
   asideLinks: {

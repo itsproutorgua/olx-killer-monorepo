@@ -102,7 +102,7 @@ export const HeroSlider = () => {
       <CarouselPrevious
         variant={null}
         size={null}
-        className='left-[10px] text-gray-50 xl:left-[22px]'
+        className='left-1 text-gray-50 xl:left-[22px]'
       >
         <svg
           width='24'
@@ -121,7 +121,7 @@ export const HeroSlider = () => {
       <CarouselNext
         variant={null}
         size={null}
-        className='text-primary-foreground right-[10px] xl:right-[22px]'
+        className='text-primary-foreground right-1 xl:right-[22px]'
       >
         <svg
           width='24'
@@ -149,7 +149,7 @@ export const HeroSlider = () => {
               onClick={() => api?.scrollTo(index)}
               className={cn(
                 'size-2 rounded-full transition-colors duration-300 hover:bg-primary-900 active:fill-primary-900 active:duration-0',
-                isActive ? 'bg-primary-400' : 'bg-gray-300',
+                isActive ? 'bg-primary-400' : 'bg-gray-200',
               )}
             />
           )

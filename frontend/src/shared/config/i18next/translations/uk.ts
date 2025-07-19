@@ -91,6 +91,7 @@ export const uk = {
         sellerSupport: 'Підтримка продавців',
       },
     },
+    menu: 'Меню',
     rights: 'Всі права захищені',
   },
   asideLinks: {

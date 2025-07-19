@@ -81,87 +81,100 @@ export const ChatList = ({
   return (
     <ScrollArea className='h-[calc(100dvh-205px)] flex-grow overflow-y-auto xl:h-[calc(100dvh-230px)] [@media(max-width:1024px)_and_(orientation:landscape)]:!mt-2'>
       <ul>
-        {chats?.map(chat => {
-          const isChatActive = chat.room_id === currentRoomId
-          const sellerProfile =
-            chat.second_user_profile.id === user?.id
-              ? chat.first_user_profile
-              : chat.second_user_profile
-          const lastMessage = chat.last_message
+        {chats
+          ?.slice()
+          .sort((a, b) => {
+            const aTime =
+              rooms.find(r => r.room_id === Number(a.room_id))?.created_at ??
+              a.last_message?.created_at ??
+              ''
+            const bTime =
+              rooms.find(r => r.room_id === Number(b.room_id))?.created_at ??
+              b.last_message?.created_at ??
+              ''
+            return new Date(bTime).getTime() - new Date(aTime).getTime()
+          })
+          .map(chat => {
+            const isChatActive = chat.room_id === currentRoomId
+            const sellerProfile =
+              chat.second_user_profile.id === user?.id
+                ? chat.first_user_profile
+                : chat.second_user_profile
+            const lastMessage = chat.last_message
 
-          const notificationForRoom = rooms.find(
-            r => r.room_id === Number(chat.room_id),
-          )
-          const unreadCount = notificationForRoom?.counter_by_room
-          const isFromCurrentUser =
-            notificationForRoom?.sender_id === user.id ||
-            (!notificationForRoom?.sender_id && lastMessage?.from_this_user)
-          const showUnreadBadge =
-            !isFromCurrentUser && unreadCount && unreadCount > 0
+            const notificationForRoom = rooms.find(
+              r => r.room_id === Number(chat.room_id),
+            )
+            const unreadCount = notificationForRoom?.counter_by_room
+            const isFromCurrentUser =
+              notificationForRoom?.sender_id === user.id ||
+              (!notificationForRoom?.sender_id && lastMessage?.from_this_user)
+            const showUnreadBadge =
+              !isFromCurrentUser && unreadCount && unreadCount > 0
 
-          return (
-            <li
-              key={chat.room_id}
-              onClick={() => handleChatSelect(chat.room_id, sellerProfile)}
-              className='border-b border-b-border py-1 first:pt-0'
-            >
-              <div
-                className={cn(
-                  'flex cursor-pointer gap-3 rounded-[10px] p-2.5 xl:max-w-[293px]',
-                  isChatActive && 'bg-none xl:bg-primary-50',
-                )}
+            return (
+              <li
+                key={chat.room_id}
+                onClick={() => handleChatSelect(chat.room_id, sellerProfile)}
+                className='border-b border-b-border py-1 first:pt-0'
               >
-                <img
-                  src={sellerProfile.picture || profileDefault}
-                  alt={`User ${sellerProfile.id}`}
-                  className='size-12 flex-none rounded-full object-cover'
-                />
-                <div className='my-auto flex-1 items-baseline justify-center space-y-1 xl:max-w-[213px]'>
-                  <div className='flex items-baseline justify-between'>
-                    <h3 className='text-sm/[21px] font-semibold text-primary-900'>
-                      {sellerProfile.username}
-                    </h3>
-                    <span className='text-[9px] text-gray-500'>
-                      {notificationForRoom?.created_at
-                        ? formatMessageTime(
-                            notificationForRoom.created_at,
-                            i18n.language as 'en' | 'uk',
-                          )
-                        : lastMessage?.created_at
+                <div
+                  className={cn(
+                    'flex cursor-pointer gap-3 rounded-[10px] p-2.5 xl:max-w-[293px]',
+                    isChatActive && 'bg-none xl:bg-primary-50',
+                  )}
+                >
+                  <img
+                    src={sellerProfile.picture || profileDefault}
+                    alt={`User ${sellerProfile.id}`}
+                    className='size-12 flex-none rounded-full object-cover'
+                  />
+                  <div className='my-auto flex-1 items-baseline justify-center space-y-1 xl:max-w-[213px]'>
+                    <div className='flex items-baseline justify-between'>
+                      <h3 className='text-sm/[21px] font-semibold text-primary-900'>
+                        {sellerProfile.username}
+                      </h3>
+                      <span className='text-[9px] text-gray-500'>
+                        {notificationForRoom?.created_at
                           ? formatMessageTime(
-                              lastMessage.created_at,
+                              notificationForRoom.created_at,
                               i18n.language as 'en' | 'uk',
                             )
-                          : t('messages.noMessages')}
-                    </span>
-                  </div>
-                  <div className='flex min-h-[18px] items-center justify-between'>
-                    <p className='line-clamp-1 w-[198px] text-xs/[14.52px] text-gray-950'>
-                      {isFromCurrentUser && t('messages.isYou') + ': '}
-                      {notificationForRoom?.last_message
-                        ? notificationForRoom.last_message.length > 25
-                          ? notificationForRoom.last_message.slice(0, 25) +
-                            '...'
-                          : notificationForRoom.last_message
-                        : lastMessage?.content
-                          ? lastMessage.content.length > 25
-                            ? lastMessage.content.slice(0, 25) + '...'
-                            : lastMessage.content
-                          : t('messages.noMessages')}
-                    </p>
-                    {showUnreadBadge ? (
-                      <span className='flex h-4 w-4 items-center justify-center rounded-full bg-primary-900 text-[8px] font-medium text-gray-50'>
-                        {unreadCount}
+                          : lastMessage?.created_at
+                            ? formatMessageTime(
+                                lastMessage.created_at,
+                                i18n.language as 'en' | 'uk',
+                              )
+                            : t('messages.noMessages')}
                       </span>
-                    ) : isFromCurrentUser ? (
-                      <CheckedDoubleIcon />
-                    ) : null}
+                    </div>
+                    <div className='flex min-h-[18px] items-center justify-between'>
+                      <p className='line-clamp-1 w-[198px] text-xs/[14.52px] text-gray-950'>
+                        {isFromCurrentUser && t('messages.isYou') + ': '}
+                        {notificationForRoom?.last_message
+                          ? notificationForRoom.last_message.length > 25
+                            ? notificationForRoom.last_message.slice(0, 25) +
+                              '...'
+                            : notificationForRoom.last_message
+                          : lastMessage?.content
+                            ? lastMessage.content.length > 25
+                              ? lastMessage.content.slice(0, 25) + '...'
+                              : lastMessage.content
+                            : t('messages.noMessages')}
+                      </p>
+                      {showUnreadBadge ? (
+                        <span className='flex h-4 w-4 items-center justify-center rounded-full bg-primary-900 text-[8px] font-medium text-gray-50'>
+                          {unreadCount}
+                        </span>
+                      ) : isFromCurrentUser ? (
+                        <CheckedDoubleIcon />
+                      ) : null}
+                    </div>
                   </div>
                 </div>
-              </div>
-            </li>
-          )
-        })}
+              </li>
+            )
+          })}
       </ul>
     </ScrollArea>
   )

@@ -68,6 +68,9 @@ export const useChatList = () => {
       return fetchChats(user?.id, token)
     },
     enabled: !!user?.id,
+    staleTime: 10000,
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
   })
 
   // === Delete Chat Mutation ===
