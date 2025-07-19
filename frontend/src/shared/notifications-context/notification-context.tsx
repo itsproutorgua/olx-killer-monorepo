@@ -1,7 +1,9 @@
 import { createContext, ReactNode, useEffect, useRef, useState } from 'react'
+import { useQueryClient } from '@tanstack/react-query'
 
 import { useUserProfile } from '@/entities/user'
 import { useIdToken } from '@/entities/user/library/hooks/use-id-token'
+import { debounceInvalidateQuery } from '@/shared/library/hooks'
 
 export interface NotificationRoom {
   counter_by_room: number
@@ -37,6 +39,7 @@ export const NotificationProvider = ({ children }: { children: ReactNode }) => {
   const [notifications, setNotifications] =
     useState<NotificationPayload | null>(null)
   const [isConnected, setIsConnected] = useState(false)
+  const queryClient = useQueryClient()
 
   const socketRef = useRef<WebSocket | null>(null)
   const updateTimeout = useRef<ReturnType<typeof setTimeout> | null>(null)
@@ -85,6 +88,7 @@ export const NotificationProvider = ({ children }: { children: ReactNode }) => {
           updateTimeout.current = setTimeout(() => {
             try {
               const parsed = JSON.parse(e.data)
+              debounceInvalidateQuery(queryClient, ['chatList', user?.id])
 
               if (parsed.type === 'notify' && parsed.messages) {
                 setNotifications(parsed)
