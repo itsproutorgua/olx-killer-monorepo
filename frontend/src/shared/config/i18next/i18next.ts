@@ -29,6 +29,8 @@ i18n
     interpolation: {
       escapeValue: false, // react already safes from xss
     },
+    pluralSeparator: '_',
+    compatibilityJSON: 'v3', // ensures older plural rule support
   })
 
 export default i18n
