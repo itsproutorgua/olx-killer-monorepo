@@ -4,6 +4,7 @@ class PublicPages {
   REGISTER = '/register'
   PRODUCTS = '/products'
   CATALOG = '/catalog'
+  SEARCH = '/search'
 }
 
 export const PUBLIC_PAGES = new PublicPages()

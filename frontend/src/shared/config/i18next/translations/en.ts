@@ -50,6 +50,15 @@ export const en = {
     rating: 'Behind the rating',
   },
 
+  search: {
+    searchError: 'Failed to load results',
+    searchNotFound: 'No listings found',
+    searchResult: 'Search results',
+    foundListings: 'We found {{count}} listing',
+    foundListings_plural: 'We found {{count}} listings',
+    tryFullWord: 'Try entering a full word',
+  },
+
   footerContent: {
     footerMessage:
       'Our marketplace is a one-stop platform that connects thousands of sellers and buyers. We offer a wide range of products, including clothing and accessories, electronics, home and garden products, baby products and more.',

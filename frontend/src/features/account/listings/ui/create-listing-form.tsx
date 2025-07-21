@@ -79,6 +79,10 @@ export function CreateListingForm({
     form.setValue('upload_video', undefined)
     form.clearErrors('upload_video')
   }
+  const isProfileIncomplete =
+    !profileLoaded ||
+    userProfile?.phone_numbers.length === 0 ||
+    userProfile?.location === null
 
   const FormSchema = useFormSchema()
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -240,14 +244,11 @@ export function CreateListingForm({
             refreshEmailVerified={refreshEmailVerified}
           />
         )}
-        {userProfile &&
-          profileLoaded &&
-          (userProfile.phone_numbers.length === 0 ||
-            userProfile.location === null) && (
-            <div>
-              <ProfileNotFilled className='-mt-[10px] min-h-[164px] max-w-[666px] xl:-mt-5' />
-            </div>
-          )}
+        {userProfile && isProfileIncomplete && (
+          <div>
+            <ProfileNotFilled className='-mt-[10px] min-h-[164px] max-w-[666px] xl:-mt-5' />
+          </div>
+        )}
         <div className='space-y-[60px]'>
           {/* Info about product */}
           <div className='space-y-10'>
@@ -662,7 +663,12 @@ export function CreateListingForm({
           className={`relative mx-auto flex h-[53px] min-w-[315px] items-center gap-6 rounded-[60px] bg-primary-900 py-[5px] pr-[5px] text-base/4 text-gray-50 transition-colors duration-300 hover:bg-primary-500 active:bg-primary-600 active:duration-0 disabled:cursor-not-allowed disabled:bg-gray-300 xl:mx-0 ${
             i18n.language !== 'uk' ? 'pl-[37px]' : 'xl:pl-[20px]'
           }`}
-          disabled={isPending || !userAuth?.email_verified || isUpdatePending}
+          disabled={
+            isPending ||
+            !userAuth?.email_verified ||
+            isUpdatePending ||
+            isProfileIncomplete
+          }
         >
           {isPending || isUpdatePending ? (
             <span

@@ -40,7 +40,7 @@ export const CatalogPage = () => {
   }, [data])
 
   return (
-    <div className='min-h-screen pb-32 pt-[27px] xl:pb-[53px] xl:pt-[38px]'>
+    <div className='min-h-screen pb-32 pt-[27px] xl:pb-[53px] xl:pt-[42px]'>
       <div className='container'>
         <Breadcrumbs crumbs={crumbs} />
 

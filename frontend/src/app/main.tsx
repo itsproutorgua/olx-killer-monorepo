@@ -24,6 +24,7 @@ import { HomePage } from '@/pages/home/home-page'
 import { AccountLayout, RootLayout } from '@/pages/layouts'
 import { AccountRootLayout } from '@/pages/layouts/account-root-layout.tsx'
 import { ProductPage } from '@/pages/product/product-page.tsx'
+import { SearchPage } from '@/pages/search/search-page.tsx'
 import { PRIVATE_PAGES, PUBLIC_PAGES } from '@/shared/constants'
 import { ScrollToTop } from '@/shared/library/utils/scroll-to-top.ts'
 
@@ -43,6 +44,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
               path={`${PUBLIC_PAGES.PRODUCTS}/*`}
               element={<ProductPage />}
             />
+            <Route path={`${PUBLIC_PAGES.SEARCH}/*`} element={<SearchPage />} />
           </Route>
           <Route element={<AccountRootLayout />}>
             <Route element={<PrivateRoute />}>
