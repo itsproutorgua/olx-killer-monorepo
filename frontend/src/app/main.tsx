@@ -9,6 +9,7 @@ import './styles/index.css'
 
 import PrivateRoute from '@/app/routes/private-routes.tsx'
 
+import { AboutPage } from '@/pages/about-us/about-us-page.tsx'
 import { AccountPage } from '@/pages/account/account-page.tsx'
 import { ChatPage } from '@/pages/account/chat/chat-page.tsx'
 import { FavoritesPage } from '@/pages/account/favorites/favorites-page.tsx'
@@ -45,6 +46,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
               element={<ProductPage />}
             />
             <Route path={`${PUBLIC_PAGES.SEARCH}/*`} element={<SearchPage />} />
+            <Route path='/about' element={<AboutPage />} />
           </Route>
           <Route element={<AccountRootLayout />}>
             <Route element={<PrivateRoute />}>

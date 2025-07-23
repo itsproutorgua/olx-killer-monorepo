@@ -11,7 +11,10 @@ export const Footer = () => {
     {
       title: t('footerContent.menu'),
       items: [
-        { label: t('footerContent.aboutCompany.items.aboutUs'), link: '#' },
+        {
+          label: t('footerContent.aboutCompany.items.aboutUs'),
+          link: '/about',
+        },
         {
           label: t('footerContent.forBuyers.items.myAccount'),
           link: '/account/profile',

@@ -33,6 +33,7 @@ export const en = {
     back: 'Back',
     show: 'Show',
     backToAccount: 'Back to account',
+    backToMain: 'To main',
     returnBack: 'Return back',
     submit: 'Submit',
     delete: 'Delete',

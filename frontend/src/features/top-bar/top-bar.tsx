@@ -93,7 +93,7 @@ export const TopBar = () => {
               name='search'
               type='text'
               ref={inputRef}
-              className='w-full rounded-[60px] py-2.5 pl-[48.92px] pr-[97px] placeholder:text-[13px] placeholder:text-gray-500 focus:outline-none xl:pl-[58.49px] xl:pr-[133.89px]'
+              className='w-full rounded-[60px] py-2.5 pl-[48.92px] pr-[134px] placeholder:text-[13px] placeholder:text-gray-500 focus:outline-none xl:pl-[58.49px] xl:pr-[165px]'
               placeholder={t('inputs.searchPlaceholder')}
               value={input}
               onChange={e => setInput(e.target.value)}
