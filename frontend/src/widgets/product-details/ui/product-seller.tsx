@@ -51,7 +51,15 @@ export const ProductSeller: React.FC<SellerProps> = ({
               {t('words.online')}
               {formatLastOnline(product?.seller?.last_login)}
             </p>
-            <button className='mt-2 flex flex-row items-center gap-[9px] text-xs'>
+            <button
+              onClick={() => {
+                const target = document.getElementById('productsBySeller')
+                if (target) {
+                  target.scrollIntoView({ behavior: 'smooth' })
+                }
+              }}
+              className='mt-2 flex flex-row items-center gap-[9px] text-xs'
+            >
               {t('words.allAdsByAuthor')}
               <ArrowIcon className='w-6 font-bold' />
             </button>

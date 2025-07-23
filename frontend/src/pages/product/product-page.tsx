@@ -50,7 +50,7 @@ export const ProductPage = () => {
       )}
 
       {data?.seller.id && (
-        <>
+        <div id='productsBySeller'>
           <div className='mb-[53px] hidden min-h-[277px] xl:relative xl:block xl:min-h-[440px]'>
             <ProductsBySeller
               sellerId={data.seller.id}
@@ -64,7 +64,7 @@ export const ProductPage = () => {
               onProductClick={handleProductClick}
             />
           </div>
-        </>
+        </div>
       )}
 
       <div className='mb-[53px] hidden min-h-[277px] md:relative xl:block xl:min-h-[440px]'>

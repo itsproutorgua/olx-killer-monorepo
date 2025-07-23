@@ -34,6 +34,7 @@ export const uk = {
     back: 'Назад',
     show: 'Показати',
     backToAccount: 'Повернутись до кабінету',
+    backToMain: 'На головну',
     returnBack: 'Повернутись назад',
     submit: 'Відправити',
     delete: 'Видалити',
