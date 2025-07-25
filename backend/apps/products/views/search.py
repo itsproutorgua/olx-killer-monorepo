@@ -27,14 +27,14 @@ from django_elasticsearch_dsl_drf.constants import (
                 name="query",
                 type=OpenApiTypes.STR,
                 location=OpenApiParameter.QUERY,
-                required=False,
+                required=True,
                 description="Ключове слово для пошуку (multi_match по назві і категорії)."
             ),
             OpenApiParameter(
                 name="page",
                 type=OpenApiTypes.INT,
                 location=OpenApiParameter.QUERY,
-                required=True,
+                required=False,
                 description="Номер сторінки для пагінації."
             ),
         ],
